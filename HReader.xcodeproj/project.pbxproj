@@ -24,17 +24,17 @@
 		941DB0AC1471B32D00A96B8B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		941DB0AE1471B32D00A96B8B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		941DB0B01471B32D00A96B8B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		941DB0B41471B32D00A96B8B /* HReader-Info.plist */ = {isa = PBXFileReference; path = "HReader-Info.plist"; sourceTree = "<group>"; };
+		941DB0B41471B32D00A96B8B /* HReader-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HReader-Info.plist"; sourceTree = "<group>"; };
 		941DB0B61471B32D00A96B8B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		941DB0B81471B32D00A96B8B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		941DB0BA1471B32D00A96B8B /* HReader-Prefix.pch */ = {isa = PBXFileReference; path = "HReader-Prefix.pch"; sourceTree = "<group>"; };
-		941DB0BB1471B32D00A96B8B /* HRAppDelegate.h */ = {isa = PBXFileReference; path = HRAppDelegate.h; sourceTree = "<group>"; };
+		941DB0BA1471B32D00A96B8B /* HReader-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HReader-Prefix.pch"; sourceTree = "<group>"; };
+		941DB0BB1471B32D00A96B8B /* HRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRAppDelegate.h; sourceTree = "<group>"; };
 		941DB0BC1471B32D00A96B8B /* HRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRAppDelegate.m; sourceTree = "<group>"; };
 		941DB0BF1471B32D00A96B8B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		941DB0C21471B32D00A96B8B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		941DB0C41471B32D00A96B8B /* HRMasterViewController.h */ = {isa = PBXFileReference; path = HRMasterViewController.h; sourceTree = "<group>"; };
+		941DB0C41471B32D00A96B8B /* HRMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRMasterViewController.h; sourceTree = "<group>"; };
 		941DB0C51471B32D00A96B8B /* HRMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRMasterViewController.m; sourceTree = "<group>"; };
-		941DB0C71471B32D00A96B8B /* HRDetailViewController.h */ = {isa = PBXFileReference; path = HRDetailViewController.h; sourceTree = "<group>"; };
+		941DB0C71471B32D00A96B8B /* HRDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRDetailViewController.h; sourceTree = "<group>"; };
 		941DB0C81471B32D00A96B8B /* HRDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
