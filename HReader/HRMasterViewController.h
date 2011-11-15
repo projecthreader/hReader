@@ -13,5 +13,6 @@
 @interface HRMasterViewController : UITableViewController
 
 @property (strong, nonatomic) HRDetailViewController *detailViewController;
+@property (strong, nonatomic) NSArray *patientsArray;
 
 @end

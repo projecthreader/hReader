@@ -17,6 +17,10 @@
 		941DB0C31471B32D00A96B8B /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941DB0C11471B32D00A96B8B /* MainStoryboard_iPad.storyboard */; };
 		941DB0C61471B32D00A96B8B /* HRMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DB0C51471B32D00A96B8B /* HRMasterViewController.m */; };
 		941DB0C91471B32D00A96B8B /* HRDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DB0C81471B32D00A96B8B /* HRDetailViewController.m */; };
+		944A2F2D1472C62300694816 /* handmadepaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 944A2F2C1472C62300694816 /* handmadepaper.png */; };
+		94C5ECF51472F448009FE38D /* PatientDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C5ECF41472F448009FE38D /* PatientDetailsTableViewController.m */; };
+		94E3BB511472C95800E05D4D /* PatientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E3BB501472C95800E05D4D /* PatientSummaryViewController.m */; };
+		94E3BB571472CD2000E05D4D /* father.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E3BB561472CD2000E05D4D /* father.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,13 @@
 		941DB0C51471B32D00A96B8B /* HRMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRMasterViewController.m; sourceTree = "<group>"; };
 		941DB0C71471B32D00A96B8B /* HRDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRDetailViewController.h; sourceTree = "<group>"; };
 		941DB0C81471B32D00A96B8B /* HRDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRDetailViewController.m; sourceTree = "<group>"; };
+		944A2F2C1472C62300694816 /* handmadepaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handmadepaper.png; sourceTree = "<group>"; };
+		94C5ECF31472F448009FE38D /* PatientDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientDetailsTableViewController.h; sourceTree = "<group>"; };
+		94C5ECF41472F448009FE38D /* PatientDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientDetailsTableViewController.m; sourceTree = "<group>"; };
+		94E3BB4F1472C95800E05D4D /* PatientSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientSummaryViewController.h; sourceTree = "<group>"; };
+		94E3BB501472C95800E05D4D /* PatientSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientSummaryViewController.m; sourceTree = "<group>"; };
+		94E3BB561472CD2000E05D4D /* father.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = father.png; sourceTree = "<group>"; };
+		94E3BB581472E0DE00E05D4D /* HRConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRConfig.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				941DB0B21471B32D00A96B8B /* HReader */,
+				944A2F291472C5F900694816 /* Resources */,
 				941DB0AB1471B32D00A96B8B /* Frameworks */,
 				941DB0A91471B32D00A96B8B /* Products */,
 			);
@@ -82,15 +94,13 @@
 		941DB0B21471B32D00A96B8B /* HReader */ = {
 			isa = PBXGroup;
 			children = (
-				941DB0BB1471B32D00A96B8B /* HRAppDelegate.h */,
-				941DB0BC1471B32D00A96B8B /* HRAppDelegate.m */,
-				941DB0BE1471B32D00A96B8B /* MainStoryboard_iPhone.storyboard */,
-				941DB0C11471B32D00A96B8B /* MainStoryboard_iPad.storyboard */,
-				941DB0C41471B32D00A96B8B /* HRMasterViewController.h */,
-				941DB0C51471B32D00A96B8B /* HRMasterViewController.m */,
-				941DB0C71471B32D00A96B8B /* HRDetailViewController.h */,
-				941DB0C81471B32D00A96B8B /* HRDetailViewController.m */,
+				94E3BB581472E0DE00E05D4D /* HRConfig.h */,
+				94E3BB531472C96200E05D4D /* App Delegate */,
+				94E3BB541472C97600E05D4D /* Split View */,
+				94E3BB551472C98600E05D4D /* Patient Summary */,
 				941DB0B31471B32D00A96B8B /* Supporting Files */,
+				94C5ECF31472F448009FE38D /* PatientDetailsTableViewController.h */,
+				94C5ECF41472F448009FE38D /* PatientDetailsTableViewController.m */,
 			);
 			path = HReader;
 			sourceTree = "<group>";
@@ -104,6 +114,54 @@
 				941DB0BA1471B32D00A96B8B /* HReader-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		944A2F291472C5F900694816 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				944A2F2B1472C60600694816 /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		944A2F2B1472C60600694816 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				94E3BB561472CD2000E05D4D /* father.png */,
+				944A2F2C1472C62300694816 /* handmadepaper.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		94E3BB531472C96200E05D4D /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				941DB0BE1471B32D00A96B8B /* MainStoryboard_iPhone.storyboard */,
+				941DB0C11471B32D00A96B8B /* MainStoryboard_iPad.storyboard */,
+				941DB0BB1471B32D00A96B8B /* HRAppDelegate.h */,
+				941DB0BC1471B32D00A96B8B /* HRAppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		94E3BB541472C97600E05D4D /* Split View */ = {
+			isa = PBXGroup;
+			children = (
+				941DB0C41471B32D00A96B8B /* HRMasterViewController.h */,
+				941DB0C51471B32D00A96B8B /* HRMasterViewController.m */,
+				941DB0C71471B32D00A96B8B /* HRDetailViewController.h */,
+				941DB0C81471B32D00A96B8B /* HRDetailViewController.m */,
+			);
+			name = "Split View";
+			sourceTree = "<group>";
+		};
+		94E3BB551472C98600E05D4D /* Patient Summary */ = {
+			isa = PBXGroup;
+			children = (
+				94E3BB4F1472C95800E05D4D /* PatientSummaryViewController.h */,
+				94E3BB501472C95800E05D4D /* PatientSummaryViewController.m */,
+			);
+			name = "Patient Summary";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +218,8 @@
 				941DB0B71471B32D00A96B8B /* InfoPlist.strings in Resources */,
 				941DB0C01471B32D00A96B8B /* MainStoryboard_iPhone.storyboard in Resources */,
 				941DB0C31471B32D00A96B8B /* MainStoryboard_iPad.storyboard in Resources */,
+				944A2F2D1472C62300694816 /* handmadepaper.png in Resources */,
+				94E3BB571472CD2000E05D4D /* father.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +234,8 @@
 				941DB0BD1471B32D00A96B8B /* HRAppDelegate.m in Sources */,
 				941DB0C61471B32D00A96B8B /* HRMasterViewController.m in Sources */,
 				941DB0C91471B32D00A96B8B /* HRDetailViewController.m in Sources */,
+				94E3BB511472C95800E05D4D /* PatientSummaryViewController.m in Sources */,
+				94C5ECF51472F448009FE38D /* PatientDetailsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +355,7 @@
 				941DB0CE1471B32D00A96B8B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

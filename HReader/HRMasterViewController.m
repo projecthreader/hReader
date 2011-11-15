@@ -13,6 +13,7 @@
 @implementation HRMasterViewController
 
 @synthesize detailViewController = _detailViewController;
+@synthesize patientsArray = __patientsArray;
 
 - (void)awakeFromNib
 {
@@ -25,6 +26,7 @@
 
 - (void)dealloc
 {
+    [__patientsArray release];
     [_detailViewController release];
     [super dealloc];
 }
@@ -42,9 +44,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.detailViewController = (HRDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
-    }
+    
+    self.patientsArray = [[NSArray arrayWithObjects:@"Stephan Jackson", @"Sabrina Jackson", @"Thomas Jackson", @"Hue Jackson", nil] autorelease];
+    
+//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+//        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+//    }
 }
 
 - (void)viewDidUnload
@@ -82,6 +87,25 @@
     } else {
         return YES;
     }
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.patientsArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"PatientCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    // Configure the cell...
+    NSString *patientName = [self.patientsArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = patientName;
+    return cell;
 }
 
 /*
