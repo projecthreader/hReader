@@ -1,0 +1,1368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 http://xreg2.nist.gov:8080/hitspValidation/schema/cdar2c32/infrastructure/cda/C32_CDA.xsd">
+  <realmCode code="US"/>
+  <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+  <templateId root="2.16.840.1.113883.3.27.1776" assigningAuthorityName="CDA/R2"/>
+  <templateId root="2.16.840.1.113883.10.20.3" assigningAuthorityName="HL7/CDT Header"/>
+  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.1" assigningAuthorityName="IHE/PCC"/>
+  <templateId root="2.16.840.1.113883.3.88.11.32.1" assigningAuthorityName="HITSP/C32"/>
+  <id root="2.16.840.1.113883.3.72" extension="HITSP_C32v2.5_Rev6_16Sections_Entries_MinimalErrors" assigningAuthorityName="NIST Healthcare Project"/>
+  <code code="34133-9" displayName="Summarization of episode note" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+  <title>Cypress C32 Patient Test Record: Johnny Smith</title>
+  <effectiveTime value="20111116182104"/>
+  <confidentialityCode code="N"/>
+  <languageCode code="nn-CC"/>
+  <recordTarget>
+    <patientRole>
+      <id root="Cypress" extension="4ebbd26e7042f97ce200004b"/>
+      <addr use="HP">
+        <streetAddressLine>202 Burlington Rd.</streetAddressLine>
+        <city>Bedford</city>
+        <state>MA</state>
+        <postalCode>01730</postalCode>
+      </addr>
+      <telecom value="tel:+1-781-271-3000"/>
+      <patient>
+        <name>
+          <given>Johnny</given>
+          <family>Smith</family>
+        </name>
+        <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1" codeSystemName="HL7 AdministrativeGender"/>
+        <birthTime value="20090620040000"/>
+        <languageCommunication>
+          <templateId root="2.16.840.1.113883.3.88.11.83.2" assigningAuthorityName="HITSP/C83"/>
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.2.1" assigningAuthorityName="IHE/PCC"/>
+          <languageCode code="en-US"/>
+        </languageCommunication>
+      </patient>
+    </patientRole>
+  </recordTarget>
+  <author>
+    <time value="20111116182104"/>
+    <assignedAuthor>
+      <id/>
+      <addr/>
+      <telecom value="tel:+1-781-271-3000"/>
+      <assignedPerson>
+        <name>Auto Generated</name>
+      </assignedPerson>
+    </assignedAuthor>
+  </author>
+  <custodian>
+    <assignedCustodian>
+      <representedCustodianOrganization>
+        <id/>
+        <name>Cypress</name>
+        <telecom value="tel:+1-781-271-3000"/>
+        <addr>
+          <streetAddressLine>202 Burlington Rd.</streetAddressLine>
+          <city>Bedford</city>
+          <state>MA</state>
+          <postalCode>01730</postalCode>
+        </addr>
+      </representedCustodianOrganization>
+    </assignedCustodian>
+  </custodian>
+  <component>
+    <structuredBody>
+        <component>
+  <!--Medications-->
+  <section>
+    <templateId root="2.16.840.1.113883.10.20.1.8" assigningAuthorityName="HL7 SDTC CCD"/>
+    <templateId root="2.16.840.1.113883.3.88.11.83.112" assigningAuthorityName="HITSP"/>
+    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.19" assigningAuthorityName="IHE"/>
+    <code code="10160-0" displayName="History of medication use" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+    <title>Medications - Prescription and Non-Prescription</title>
+    <text>
+  <table border="1" width="100%">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Codes</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td ID="medications-desc-0">Hepatitis A Vaccine</td>
+          <td ID="medications-code-0">RxNorm: 798481</td>
+          <td>June 27th, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-1">DTAP Vaccine</td>
+          <td ID="medications-code-1">RxNorm: 795926</td>
+          <td>December 21st, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-2">IPV Vaccination</td>
+          <td ID="medications-code-2">CPT: 90713</td>
+          <td>December 21st, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-3">MMR Vaccine</td>
+          <td ID="medications-code-3">RxNorm: 804186</td>
+          <td>September 20th, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-4">VZV Vaccine</td>
+          <td ID="medications-code-4">RxNorm: 759609</td>
+          <td>September 20th, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-5">Hepatitis A Vaccine</td>
+          <td ID="medications-code-5">RxNorm: 798481</td>
+          <td>September 20th, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-6">Pneumococcal Vaccine</td>
+          <td ID="medications-code-6">RxNorm: 854969</td>
+          <td>June 20th, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-7">Influenza Vaccine</td>
+          <td ID="medications-code-7">RxNorm: 857942</td>
+          <td>June 20th, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-8">Hepatitis B Vaccine</td>
+          <td ID="medications-code-8">RxNorm: 763313</td>
+          <td>December 26th, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-9">DTAP Vaccine</td>
+          <td ID="medications-code-9">RxNorm: 795926</td>
+          <td>December 26th, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-10">Pneumococcal Vaccine</td>
+          <td ID="medications-code-10">RxNorm: 854969</td>
+          <td>December 26th, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-11">Influenza Vaccine</td>
+          <td ID="medications-code-11">RxNorm: 857942</td>
+          <td>December 26th, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-12">Rotavirus Vaccine</td>
+          <td ID="medications-code-12">RxNorm: 805576</td>
+          <td>October 24th, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-13">DTAP Vaccine</td>
+          <td ID="medications-code-13">RxNorm: 795926</td>
+          <td>October 24th, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-14">HiB Vaccine</td>
+          <td ID="medications-code-14">CPT: 90721</td>
+          <td>October 24th, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-15">Pneumococcal Vaccine</td>
+          <td ID="medications-code-15">RxNorm: 854969</td>
+          <td>October 24th, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-16">IPV Vaccination</td>
+          <td ID="medications-code-16">CPT: 90713</td>
+          <td>October 24th, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-17">Rotavirus Vaccine</td>
+          <td ID="medications-code-17">RxNorm: 805576</td>
+          <td>August 22nd, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-18">DTAP Vaccine</td>
+          <td ID="medications-code-18">RxNorm: 795926</td>
+          <td>August 22nd, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-19">HiB Vaccine</td>
+          <td ID="medications-code-19">CPT: 90721</td>
+          <td>August 22nd, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-20">Pneumococcal Vaccine</td>
+          <td ID="medications-code-20">RxNorm: 854969</td>
+          <td>August 22nd, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-21">IPV Vaccination</td>
+          <td ID="medications-code-21">CPT: 90713</td>
+          <td>August 22nd, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-22">Hepatitis B Vaccine</td>
+          <td ID="medications-code-22">RxNorm: 763313</td>
+          <td>July 20th, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="medications-desc-23">Hepatitis B Vaccine</td>
+          <td ID="medications-code-23">RxNorm: 763313</td>
+          <td>June 22nd, 2010 00:00</td>
+        </tr>
+    </tbody>
+  </table>
+</text>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab5f9450-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20100627040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="798481" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-0"/></originalText>
+</code>
+
+              <name>Hepatitis A Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab5fa270-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20101221050000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="795926" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-1"/></originalText>
+</code>
+
+              <name>DTAP Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab5fb280-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20101221050000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="90713" codeSystem="2.16.840.1.113883.6.12">
+  <originalText><reference value="#medications-desc-2"/></originalText>
+</code>
+
+              <name>IPV Vaccination</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab5fc730-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20100920040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="804186" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-3"/></originalText>
+</code>
+
+              <name>MMR Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab5fd5d0-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20100920040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="759609" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-4"/></originalText>
+</code>
+
+              <name>VZV Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab5fe4d0-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20100920040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="798481" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-5"/></originalText>
+</code>
+
+              <name>Hepatitis A Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab5ffa70-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20100620040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="854969" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-6"/></originalText>
+</code>
+
+              <name>Pneumococcal Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab600f20-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20100620040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="857942" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-7"/></originalText>
+</code>
+
+              <name>Influenza Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab6023e0-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20091226050000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="763313" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-8"/></originalText>
+</code>
+
+              <name>Hepatitis B Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab603980-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20091226050000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="795926" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-9"/></originalText>
+</code>
+
+              <name>DTAP Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab6050f0-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20091226050000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="854969" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-10"/></originalText>
+</code>
+
+              <name>Pneumococcal Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab606030-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20091226050000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="857942" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-11"/></originalText>
+</code>
+
+              <name>Influenza Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab606f80-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20091024040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="805576" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-12"/></originalText>
+</code>
+
+              <name>Rotavirus Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab607d40-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20091024040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="795926" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-13"/></originalText>
+</code>
+
+              <name>DTAP Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab608b10-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20091024040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="90721" codeSystem="2.16.840.1.113883.6.12">
+  <originalText><reference value="#medications-desc-14"/></originalText>
+</code>
+
+              <name>HiB Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab609930-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20091024040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="854969" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-15"/></originalText>
+</code>
+
+              <name>Pneumococcal Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab60a730-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20091024040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="90713" codeSystem="2.16.840.1.113883.6.12">
+  <originalText><reference value="#medications-desc-16"/></originalText>
+</code>
+
+              <name>IPV Vaccination</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab60b500-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20090822040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="805576" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-17"/></originalText>
+</code>
+
+              <name>Rotavirus Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab60c2b0-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20090822040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="795926" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-18"/></originalText>
+</code>
+
+              <name>DTAP Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab60cfe0-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20090822040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="90721" codeSystem="2.16.840.1.113883.6.12">
+  <originalText><reference value="#medications-desc-19"/></originalText>
+</code>
+
+              <name>HiB Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab60dd40-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20090822040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="854969" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-20"/></originalText>
+</code>
+
+              <name>Pneumococcal Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab60eae0-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20090822040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="90713" codeSystem="2.16.840.1.113883.6.12">
+  <originalText><reference value="#medications-desc-21"/></originalText>
+</code>
+
+              <name>IPV Vaccination</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab60f800-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20090720040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="763313" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-22"/></originalText>
+</code>
+
+              <name>Hepatitis B Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+    <entry>
+      <!--CCD Medication activity - Required-->
+      <substanceAdministration classCode="SBADM" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.24" assigningAuthorityName="HL7 SDTC CCD"/>
+        <templateId root="2.16.840.1.113883.3.88.11.83.8"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+        <id root="ab610530-f2ad-012e-b83f-48bcc8e65958"/>
+        <statusCode code="completed"/>
+        <effectiveTime xsi:type="IVL_TS">
+          <low value="20100622040000"/>
+          <high nullFlavor="UNK"/>
+        </effectiveTime>
+        <consumable>
+          <!--CCD Product - Required-->
+          <manufacturedProduct classCode="MANU">
+            <templateId root="2.16.840.1.113883.10.20.1.53" assigningAuthorityName="HL7 SDTC CCD"/>
+            <templateId root="2.16.840.1.113883.3.88.11.83.8.2"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+            <manufacturedMaterial>
+              <code code="763313" codeSystem="2.16.840.1.113883.6.88">
+  <originalText><reference value="#medications-desc-23"/></originalText>
+</code>
+
+              <name>Hepatitis B Vaccine</name>
+            </manufacturedMaterial>
+          </manufacturedProduct>
+        </consumable>
+      </substanceAdministration>
+    </entry>
+  </section>
+</component>
+        <component>
+  <!--Encounters-->
+  <section>
+    <templateId root="2.16.840.1.113883.3.88.11.83.127" assigningAuthorityName="HITSP/C83"/>
+    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.5.3.3" assigningAuthorityName="IHE PCC"/>
+    <templateId root="2.16.840.1.113883.10.20.1.3" assigningAuthorityName="HL7 CCD"/>
+    <!--Encounters section template-->
+    <code code="46240-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of encounters"/>
+    <title>Encounters</title>
+    <text>
+  <table border="1" width="100%">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Codes</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td ID="encounters-desc-0">encounter outpatient-children</td>
+          <td ID="encounters-code-0">ICD-10-CM: Z00.1</td>
+          <td>June 27th, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="encounters-desc-1">encounter outpatient-children</td>
+          <td ID="encounters-code-1">ICD-10-CM: Z00.1</td>
+          <td>December 21st, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="encounters-desc-2">encounter outpatient-children</td>
+          <td ID="encounters-code-2">ICD-10-CM: Z00.1</td>
+          <td>September 17th, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="encounters-desc-3">encounter outpatient-children</td>
+          <td ID="encounters-code-3">ICD-10-CM: Z00.1</td>
+          <td>June 20th, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="encounters-desc-4">Encounter Outpatient</td>
+          <td ID="encounters-code-4">CPT: 99213</td>
+          <td>November 16th, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="encounters-desc-5">encounter outpatient-children</td>
+          <td ID="encounters-code-5">ICD-10-CM: Z00.1</td>
+          <td>December 26th, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="encounters-desc-6">encounter outpatient-children</td>
+          <td ID="encounters-code-6">ICD-10-CM: Z00.1</td>
+          <td>October 24th, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="encounters-desc-7">encounter outpatient-children</td>
+          <td ID="encounters-code-7">ICD-10-CM: Z00.1</td>
+          <td>August 22nd, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="encounters-desc-8">encounter outpatient-children</td>
+          <td ID="encounters-code-8">ICD-10-CM: Z00.1</td>
+          <td>July 20th, 2009 00:00</td>
+        </tr>
+    </tbody>
+  </table>
+</text>
+    <entry typeCode="DRIV">
+      <encounter classCode="ENC" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.3.88.11.83.16" assigningAuthorityName="HITSP C83"/>
+        <templateId root="2.16.840.1.113883.10.20.1.21" assigningAuthorityName="CCD"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.14" assigningAuthorityName="IHE PCC"/>
+        <!-- Encounter activity template -->
+        <id root="ab616060-f2ad-012e-b83f-48bcc8e65958"/>
+        <code code="Z00.1" codeSystem="2.16.840.1.113883.6.90">
+  <originalText><reference value="#encounters-desc-0"/></originalText>
+</code>
+
+        <text>
+          <reference value="#encounters-desc-0"/>
+        </text>
+        <effectiveTime value="20100627040000"/>
+      </encounter>
+    </entry>
+    <entry typeCode="DRIV">
+      <encounter classCode="ENC" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.3.88.11.83.16" assigningAuthorityName="HITSP C83"/>
+        <templateId root="2.16.840.1.113883.10.20.1.21" assigningAuthorityName="CCD"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.14" assigningAuthorityName="IHE PCC"/>
+        <!-- Encounter activity template -->
+        <id root="ab616d50-f2ad-012e-b83f-48bcc8e65958"/>
+        <code code="Z00.1" codeSystem="2.16.840.1.113883.6.90">
+  <originalText><reference value="#encounters-desc-1"/></originalText>
+</code>
+
+        <text>
+          <reference value="#encounters-desc-1"/>
+        </text>
+        <effectiveTime value="20101221050000"/>
+      </encounter>
+    </entry>
+    <entry typeCode="DRIV">
+      <encounter classCode="ENC" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.3.88.11.83.16" assigningAuthorityName="HITSP C83"/>
+        <templateId root="2.16.840.1.113883.10.20.1.21" assigningAuthorityName="CCD"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.14" assigningAuthorityName="IHE PCC"/>
+        <!-- Encounter activity template -->
+        <id root="ab617a20-f2ad-012e-b83f-48bcc8e65958"/>
+        <code code="Z00.1" codeSystem="2.16.840.1.113883.6.90">
+  <originalText><reference value="#encounters-desc-2"/></originalText>
+</code>
+
+        <text>
+          <reference value="#encounters-desc-2"/>
+        </text>
+        <effectiveTime value="20100917040000"/>
+      </encounter>
+    </entry>
+    <entry typeCode="DRIV">
+      <encounter classCode="ENC" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.3.88.11.83.16" assigningAuthorityName="HITSP C83"/>
+        <templateId root="2.16.840.1.113883.10.20.1.21" assigningAuthorityName="CCD"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.14" assigningAuthorityName="IHE PCC"/>
+        <!-- Encounter activity template -->
+        <id root="ab6186f0-f2ad-012e-b83f-48bcc8e65958"/>
+        <code code="Z00.1" codeSystem="2.16.840.1.113883.6.90">
+  <originalText><reference value="#encounters-desc-3"/></originalText>
+</code>
+
+        <text>
+          <reference value="#encounters-desc-3"/>
+        </text>
+        <effectiveTime value="20100620040000"/>
+      </encounter>
+    </entry>
+    <entry typeCode="DRIV">
+      <encounter classCode="ENC" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.3.88.11.83.16" assigningAuthorityName="HITSP C83"/>
+        <templateId root="2.16.840.1.113883.10.20.1.21" assigningAuthorityName="CCD"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.14" assigningAuthorityName="IHE PCC"/>
+        <!-- Encounter activity template -->
+        <id root="ab6194b0-f2ad-012e-b83f-48bcc8e65958"/>
+        <code code="99213" codeSystem="2.16.840.1.113883.6.12">
+  <originalText><reference value="#encounters-desc-4"/></originalText>
+</code>
+
+        <text>
+          <reference value="#encounters-desc-4"/>
+        </text>
+        <effectiveTime value="20101116050000"/>
+      </encounter>
+    </entry>
+    <entry typeCode="DRIV">
+      <encounter classCode="ENC" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.3.88.11.83.16" assigningAuthorityName="HITSP C83"/>
+        <templateId root="2.16.840.1.113883.10.20.1.21" assigningAuthorityName="CCD"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.14" assigningAuthorityName="IHE PCC"/>
+        <!-- Encounter activity template -->
+        <id root="ab61a180-f2ad-012e-b83f-48bcc8e65958"/>
+        <code code="Z00.1" codeSystem="2.16.840.1.113883.6.90">
+  <originalText><reference value="#encounters-desc-5"/></originalText>
+</code>
+
+        <text>
+          <reference value="#encounters-desc-5"/>
+        </text>
+        <effectiveTime value="20101226050000"/>
+      </encounter>
+    </entry>
+    <entry typeCode="DRIV">
+      <encounter classCode="ENC" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.3.88.11.83.16" assigningAuthorityName="HITSP C83"/>
+        <templateId root="2.16.840.1.113883.10.20.1.21" assigningAuthorityName="CCD"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.14" assigningAuthorityName="IHE PCC"/>
+        <!-- Encounter activity template -->
+        <id root="ab61ae30-f2ad-012e-b83f-48bcc8e65958"/>
+        <code code="Z00.1" codeSystem="2.16.840.1.113883.6.90">
+  <originalText><reference value="#encounters-desc-6"/></originalText>
+</code>
+
+        <text>
+          <reference value="#encounters-desc-6"/>
+        </text>
+        <effectiveTime value="20091024040000"/>
+      </encounter>
+    </entry>
+    <entry typeCode="DRIV">
+      <encounter classCode="ENC" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.3.88.11.83.16" assigningAuthorityName="HITSP C83"/>
+        <templateId root="2.16.840.1.113883.10.20.1.21" assigningAuthorityName="CCD"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.14" assigningAuthorityName="IHE PCC"/>
+        <!-- Encounter activity template -->
+        <id root="ab61bb60-f2ad-012e-b83f-48bcc8e65958"/>
+        <code code="Z00.1" codeSystem="2.16.840.1.113883.6.90">
+  <originalText><reference value="#encounters-desc-7"/></originalText>
+</code>
+
+        <text>
+          <reference value="#encounters-desc-7"/>
+        </text>
+        <effectiveTime value="20090822040000"/>
+      </encounter>
+    </entry>
+    <entry typeCode="DRIV">
+      <encounter classCode="ENC" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.3.88.11.83.16" assigningAuthorityName="HITSP C83"/>
+        <templateId root="2.16.840.1.113883.10.20.1.21" assigningAuthorityName="CCD"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.14" assigningAuthorityName="IHE PCC"/>
+        <!-- Encounter activity template -->
+        <id root="ab61c840-f2ad-012e-b83f-48bcc8e65958"/>
+        <code code="Z00.1" codeSystem="2.16.840.1.113883.6.90">
+  <originalText><reference value="#encounters-desc-8"/></originalText>
+</code>
+
+        <text>
+          <reference value="#encounters-desc-8"/>
+        </text>
+        <effectiveTime value="20090720040000"/>
+      </encounter>
+    </entry>
+  </section>
+</component>
+        <component>
+  <!--Vital Signs-->
+  <section>
+    <templateId root="2.16.840.1.113883.10.20.1.16" assigningAuthorityName="HL7 CCD"/>
+    <templateId root="2.16.840.1.113883.3.88.11.83.119" assigningAuthorityName="HITSP/C83"/>
+    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.5.3.2" assigningAuthorityName="IHE PCC"/>
+    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.25" assigningAuthorityName="IHE PCC"/>
+    <!--Vital Signs section template-->
+    <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Vital signs"/>
+    <title>Vital Signs</title>
+    <text>
+  <table border="1" width="100%">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Codes</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td ID="vitals-desc-0">BMI</td>
+          <td ID="vitals-code-0">SNOMED-CT: 60621009</td>
+          <td>June 27th, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="vitals-desc-1">BMI</td>
+          <td ID="vitals-code-1">SNOMED-CT: 60621009</td>
+          <td>December 21st, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="vitals-desc-2">BMI</td>
+          <td ID="vitals-code-2">SNOMED-CT: 60621009</td>
+          <td>September 17th, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="vitals-desc-3">BMI</td>
+          <td ID="vitals-code-3">SNOMED-CT: 60621009</td>
+          <td>June 20th, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="vitals-desc-4">BMI</td>
+          <td ID="vitals-code-4">SNOMED-CT: 60621009</td>
+          <td>December 26th, 2010 00:00</td>
+        </tr>
+        <tr>
+          <td ID="vitals-desc-5">BMI</td>
+          <td ID="vitals-code-5">SNOMED-CT: 60621009</td>
+          <td>October 24th, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="vitals-desc-6">BMI</td>
+          <td ID="vitals-code-6">SNOMED-CT: 60621009</td>
+          <td>August 22nd, 2009 00:00</td>
+        </tr>
+        <tr>
+          <td ID="vitals-desc-7">BMI</td>
+          <td ID="vitals-code-7">SNOMED-CT: 60621009</td>
+          <td>July 20th, 2009 00:00</td>
+        </tr>
+    </tbody>
+  </table>
+</text>
+    <entry typeCode="DRIV">
+      <organizer classCode="CLUSTER" moodCode="EVN">
+        <templateId root="2.16.840.1.113883.10.20.1.32" assigningAuthorityName="CCD"/>
+        <templateId root="2.16.840.1.113883.10.20.1.35" assigningAuthorityName="CCD"/>
+        <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.1" assigningAuthorityName="IHE PCC"/>
+        <!-- Vital signs organizer template -->
+        <id root="ab6219d0-f2ad-012e-b83f-48bcc8e65958"/>
+        <code code="46680005" codeSystem="2.16.840.1.113883.6.96" displayName="Vital signs" codeSystemName="SNOMED CT"/>
+        <statusCode code="completed"/>
+        <effectiveTime value="19991114"/>
+        <component>
+          <observation classCode="OBS" moodCode="EVN">
+            <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP C83"/>
+            <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC"/>
+            <!-- Result observation template -->
+            <id root="ab621a90-f2ad-012e-b83f-48bcc8e65958"/>
+            <code code="60621009" codeSystem="2.16.840.1.113883.6.96" ><originalText>BMI</originalText></code>
+            <text>
+              <reference value="vitals-desc-0"/>
+            </text>
+            <statusCode code="completed"/>
+            <effectiveTime value="20100627040000"/>
+            <value xsi:type="PQ" value="17.358024691358025" />
+          </observation>
+        </component>
+        <component>
+          <observation classCode="OBS" moodCode="EVN">
+            <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP C83"/>
+            <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC"/>
+            <!-- Result observation template -->
+            <id root="ab621e40-f2ad-012e-b83f-48bcc8e65958"/>
+            <code code="60621009" codeSystem="2.16.840.1.113883.6.96" ><originalText>BMI</originalText></code>
+            <text>
+              <reference value="vitals-desc-1"/>
+            </text>
+            <statusCode code="completed"/>
+            <effectiveTime value="20101221050000"/>
+            <value xsi:type="PQ" value="19.22265625" />
+          </observation>
+        </component>
+        <component>
+          <observation classCode="OBS" moodCode="EVN">
+            <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP C83"/>
+            <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC"/>
+            <!-- Result observation template -->
+            <id root="ab622080-f2ad-012e-b83f-48bcc8e65958"/>
+            <code code="60621009" codeSystem="2.16.840.1.113883.6.96" ><originalText>BMI</originalText></code>
+            <text>
+              <reference value="vitals-desc-2"/>
+            </text>
+            <statusCode code="completed"/>
+            <effectiveTime value="20100917040000"/>
+            <value xsi:type="PQ" value="18.746666666666666" />
+          </observation>
+        </component>
+        <component>
+          <observation classCode="OBS" moodCode="EVN">
+            <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP C83"/>
+            <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC"/>
+            <!-- Result observation template -->
+            <id root="ab622290-f2ad-012e-b83f-48bcc8e65958"/>
+            <code code="60621009" codeSystem="2.16.840.1.113883.6.96" ><originalText>BMI</originalText></code>
+            <text>
+              <reference value="vitals-desc-3"/>
+            </text>
+            <statusCode code="completed"/>
+            <effectiveTime value="20100620040000"/>
+            <value xsi:type="PQ" value="19.75887573964497" />
+          </observation>
+        </component>
+        <component>
+          <observation classCode="OBS" moodCode="EVN">
+            <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP C83"/>
+            <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC"/>
+            <!-- Result observation template -->
+            <id root="ab6224c0-f2ad-012e-b83f-48bcc8e65958"/>
+            <code code="60621009" codeSystem="2.16.840.1.113883.6.96" ><originalText>BMI</originalText></code>
+            <text>
+              <reference value="vitals-desc-4"/>
+            </text>
+            <statusCode code="completed"/>
+            <effectiveTime value="20101226050000"/>
+            <value xsi:type="PQ" value="15.7472" />
+          </observation>
+        </component>
+        <component>
+          <observation classCode="OBS" moodCode="EVN">
+            <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP C83"/>
+            <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC"/>
+            <!-- Result observation template -->
+            <id root="ab6226d0-f2ad-012e-b83f-48bcc8e65958"/>
+            <code code="60621009" codeSystem="2.16.840.1.113883.6.96" ><originalText>BMI</originalText></code>
+            <text>
+              <reference value="vitals-desc-5"/>
+            </text>
+            <statusCode code="completed"/>
+            <effectiveTime value="20091024040000"/>
+            <value xsi:type="PQ" value="13.820793950850662" />
+          </observation>
+        </component>
+        <component>
+          <observation classCode="OBS" moodCode="EVN">
+            <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP C83"/>
+            <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC"/>
+            <!-- Result observation template -->
+            <id root="ab6228f0-f2ad-012e-b83f-48bcc8e65958"/>
+            <code code="60621009" codeSystem="2.16.840.1.113883.6.96" ><originalText>BMI</originalText></code>
+            <text>
+              <reference value="vitals-desc-6"/>
+            </text>
+            <statusCode code="completed"/>
+            <effectiveTime value="20090822040000"/>
+            <value xsi:type="PQ" value="13.798553719008265" />
+          </observation>
+        </component>
+        <component>
+          <observation classCode="OBS" moodCode="EVN">
+            <templateId root="2.16.840.1.113883.3.88.11.83.14" assigningAuthorityName="HITSP C83"/>
+            <templateId root="2.16.840.1.113883.10.20.1.31" assigningAuthorityName="CCD"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13.2" assigningAuthorityName="IHE PCC"/>
+            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.13" assigningAuthorityName="IHE PCC"/>
+            <!-- Result observation template -->
+            <id root="ab622b00-f2ad-012e-b83f-48bcc8e65958"/>
+            <code code="60621009" codeSystem="2.16.840.1.113883.6.96" ><originalText>BMI</originalText></code>
+            <text>
+              <reference value="vitals-desc-7"/>
+            </text>
+            <statusCode code="completed"/>
+            <effectiveTime value="20090720040000"/>
+            <value xsi:type="PQ" value="13.549886621315192" />
+          </observation>
+        </component>
+      </organizer>
+    </entry>
+  </section>
+</component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>

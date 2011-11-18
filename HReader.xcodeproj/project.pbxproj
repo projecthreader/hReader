@@ -19,6 +19,9 @@
 		941DB0C91471B32D00A96B8B /* HRDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DB0C81471B32D00A96B8B /* HRDetailViewController.m */; };
 		944A2F2D1472C62300694816 /* handmadepaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 944A2F2C1472C62300694816 /* handmadepaper.png */; };
 		9464C58314769E190076B991 /* hReader_icon_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9464C58214769E190076B991 /* hReader_icon_72x72.png */; };
+		9464C5871476BDAE0076B991 /* Johnny_Smith_96.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */; };
+		9464C5881476BDAE0076B991 /* Johnny_Smith_96.html in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */; };
+		9464C58C1476CB4F0076B991 /* C32ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464C58B1476CB4F0076B991 /* C32ViewController.m */; };
 		94C5ECF51472F448009FE38D /* PatientDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C5ECF41472F448009FE38D /* PatientDetailsTableViewController.m */; };
 		94E3BB511472C95800E05D4D /* PatientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E3BB501472C95800E05D4D /* PatientSummaryViewController.m */; };
 		94E3BB571472CD2000E05D4D /* father.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E3BB561472CD2000E05D4D /* father.png */; };
@@ -43,6 +46,10 @@
 		941DB0C81471B32D00A96B8B /* HRDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRDetailViewController.m; sourceTree = "<group>"; };
 		944A2F2C1472C62300694816 /* handmadepaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handmadepaper.png; sourceTree = "<group>"; };
 		9464C58214769E190076B991 /* hReader_icon_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hReader_icon_72x72.png; sourceTree = "<group>"; };
+		9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Johnny_Smith_96.xml; sourceTree = "<group>"; };
+		9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Johnny_Smith_96.html; sourceTree = "<group>"; };
+		9464C58A1476CB4F0076B991 /* C32ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C32ViewController.h; sourceTree = "<group>"; };
+		9464C58B1476CB4F0076B991 /* C32ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = C32ViewController.m; sourceTree = "<group>"; };
 		94C5ECF31472F448009FE38D /* PatientDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientDetailsTableViewController.h; sourceTree = "<group>"; };
 		94C5ECF41472F448009FE38D /* PatientDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientDetailsTableViewController.m; sourceTree = "<group>"; };
 		94E3BB4F1472C95800E05D4D /* PatientSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientSummaryViewController.h; sourceTree = "<group>"; };
@@ -134,6 +141,15 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		9464C5891476BF250076B991 /* C32 Patient Record */ = {
+			isa = PBXGroup;
+			children = (
+				9464C58A1476CB4F0076B991 /* C32ViewController.h */,
+				9464C58B1476CB4F0076B991 /* C32ViewController.m */,
+			);
+			name = "C32 Patient Record";
+			sourceTree = "<group>";
+		};
 		94C5ECFA1472FF7A009FE38D /* Patient Summary */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +162,8 @@
 		94C5ECFB1472FFA2009FE38D /* C32 */ = {
 			isa = PBXGroup;
 			children = (
+				9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */,
+				9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */,
 			);
 			name = C32;
 			sourceTree = "<group>";
@@ -179,6 +197,7 @@
 				94C5ECF31472F448009FE38D /* PatientDetailsTableViewController.h */,
 				94C5ECF41472F448009FE38D /* PatientDetailsTableViewController.m */,
 				94C5ECFA1472FF7A009FE38D /* Patient Summary */,
+				9464C5891476BF250076B991 /* C32 Patient Record */,
 			);
 			name = "Patient Details";
 			sourceTree = "<group>";
@@ -241,6 +260,8 @@
 				944A2F2D1472C62300694816 /* handmadepaper.png in Resources */,
 				94E3BB571472CD2000E05D4D /* father.png in Resources */,
 				9464C58314769E190076B991 /* hReader_icon_72x72.png in Resources */,
+				9464C5871476BDAE0076B991 /* Johnny_Smith_96.xml in Resources */,
+				9464C5881476BDAE0076B991 /* Johnny_Smith_96.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +295,7 @@
 				941DB0C91471B32D00A96B8B /* HRDetailViewController.m in Sources */,
 				94E3BB511472C95800E05D4D /* PatientSummaryViewController.m in Sources */,
 				94C5ECF51472F448009FE38D /* PatientDetailsTableViewController.m in Sources */,
+				9464C58C1476CB4F0076B991 /* C32ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
