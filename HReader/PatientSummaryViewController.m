@@ -9,6 +9,11 @@
 #import "PatientSummaryViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
+
+@interface PatientSummaryViewController ()
+- (void)setPageCurlShadowForImageView:(UIImageView *)imageView;
+@end
+
 @implementation PatientSummaryViewController
 
 @synthesize patientImageView = __patientImageView;
@@ -40,15 +45,6 @@
 
 #pragma mark - View lifecycle
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -57,9 +53,7 @@
     self.patientImageView.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.patientImageView.layer.borderWidth = 3.0;
     
-    self.patientImageView.layer.shadowColor = [[UIColor blackColor] CGColor];
-    self.patientImageView.layer.shadowOffset = CGSizeMake(0, 3);
-    self.patientImageView.layer.shadowOpacity = 0.5;
+    [self setPageCurlShadowForImageView:self.patientImageView];
     
     self.patientNameLabel.layer.shadowColor = [[UIColor darkGrayColor] CGColor];
     self.patientNameLabel.layer.shadowOpacity = 0.5;
@@ -78,9 +72,30 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-//    return (interfaceOrientation == UIInterfaceOrientationPortrait);
     return YES;
+}
+
+#pragma mark - Private methods
+
+- (void)setPageCurlShadowForImageView:(UIImageView *)imageView {
+    imageView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    imageView.layer.shadowOpacity = 0.5f;
+    imageView.layer.shadowOffset = CGSizeMake(0.0f, 10.0f);
+    imageView.layer.shadowRadius = 5.0f;
+    
+    CGSize size = imageView.bounds.size;
+    CGFloat curlFactor = 15.0f;
+    CGFloat shadowDepth = 5.0f;
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(0.0f, 0.0f)];
+    [path addLineToPoint:CGPointMake(size.width, 0.0f)];
+    [path addLineToPoint:CGPointMake(size.width, size.height + shadowDepth)];
+    
+    [path addCurveToPoint:CGPointMake(0.0f, size.height + shadowDepth)
+            controlPoint1:CGPointMake(size.width - curlFactor, size.height + shadowDepth - curlFactor)
+            controlPoint2:CGPointMake(curlFactor, size.height + shadowDepth - curlFactor)];
+    
+    imageView.layer.shadowPath = path.CGPath;
 }
 
 @end

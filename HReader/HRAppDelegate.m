@@ -21,6 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [self setAppearanceProxies];
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
@@ -66,6 +68,13 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+}
+
+- (void)setAppearanceProxies {
+    UIView *redView = [[UIView alloc] init];
+    redView.backgroundColor = LIGHT_RED;
+    [[UITableViewCell appearance] setSelectedBackgroundView:redView];
+    [redView release];
 }
 
 @end

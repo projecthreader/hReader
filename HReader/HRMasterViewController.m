@@ -102,6 +102,11 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
+    UIView *redView = [[UIView alloc] init];
+    redView.backgroundColor = LIGHT_RED;
+    cell.selectedBackgroundView = redView;
+    [redView release];
+    
     // Configure the cell...
     NSString *patientName = [self.patientsArray objectAtIndex:indexPath.row];
     cell.textLabel.text = patientName;
