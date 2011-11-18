@@ -92,7 +92,7 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="52z-yw-2Rj" kind="push" id="a8N-wp-MhL"/>
+                                    <segue destination="52z-yw-2Rj" kind="push" identifier="PatientDetails" id="a8N-wp-MhL"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

@@ -10,4 +10,6 @@
 
 @interface PatientDetailsTableViewController : UITableViewController
 
+@property (copy, nonatomic) NSString *patientName;
+
 @end

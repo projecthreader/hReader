@@ -7,8 +7,8 @@
 //
 
 #import "HRMasterViewController.h"
-
 #import "HRDetailViewController.h"
+#import "PatientDetailsTableViewController.h"
 
 @implementation HRMasterViewController
 
@@ -112,6 +112,18 @@
     cell.textLabel.text = patientName;
     return cell;
 }
+
+/*
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([segue.identifier isEqualToString:@"PatientDetails"])
+	{
+		PatientDetailsTableViewController *patientDetailsViewController = segue.destinationViewController;
+//        NSString *patientName = [self.patientsArray objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+        patientDetailsViewController.patientName = @"foo";
+	}
+}
+ */
 
 /*
 // Override to support conditional editing of the table view.
