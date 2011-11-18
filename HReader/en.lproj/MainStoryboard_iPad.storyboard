@@ -200,7 +200,7 @@
                         <rect key="frame" x="0.0" y="64" width="703" height="704"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Jackson, Stephan " lineBreakMode="tailTruncation" minimumFontSize="10" id="Hia-1D-Xxr">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Smith, Tom" lineBreakMode="tailTruncation" minimumFontSize="10" id="Hia-1D-Xxr">
                                 <rect key="frame" x="208" y="20" width="319" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
