@@ -6,7 +6,7 @@ BetaBuilder::Tasks.new do |config|
   config.target = "HReader"
 
   # the Xcode configuration profile
-  config.configuration = "Adhoc"
+  config.configuration = "Ad Hoc"
   
   config.deploy_using(:testflight) do |tf|
     tf.api_token          = "DTtxmqCuN63znsxUo2Cjz3HO6PqettzBghSQSA4uPRQ"
