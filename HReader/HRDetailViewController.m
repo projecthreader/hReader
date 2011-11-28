@@ -66,7 +66,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 //    [self configureView];
-    self.view.backgroundColor = TEXTURE_COLOR;
+    self.view.backgroundColor = [UIColor hReaderTexture];
 }
 
 - (void)viewDidUnload

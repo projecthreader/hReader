@@ -49,16 +49,36 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = TEXTURE_COLOR;
+    self.view.backgroundColor = [UIColor hReaderTexture];
     self.patientImageView.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.patientImageView.layer.borderWidth = 3.0;
     
     [self setPageCurlShadowForImageView:self.patientImageView];
     
-    self.patientNameLabel.layer.shadowColor = [[UIColor darkGrayColor] CGColor];
-    self.patientNameLabel.layer.shadowOpacity = 0.5;
-    self.patientNameLabel.layer.shadowOffset = CGSizeMake(0, 3);
-    self.patientNameLabel.layer.masksToBounds = NO;
+    UIImage *logo = [UIImage imageNamed:@"hReader_Logo_34x150"];
+    UIImageView *logoView = [[UIImageView alloc] initWithImage:logo];
+    logoView.frame = CGRectMake(5, 5, 150, 34);
+    [self.navigationController.navigationBar addSubview:logoView];
+    [logoView release];
+    
+    UIBarButtonItem *flex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace 
+                                                                          target:nil 
+                                                                          action:nil];
+    UILabel *lastUpdatedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0 , 11.0f, self.view.frame.size.width, 21.0f)];
+    lastUpdatedLabel.text = @"Last Updated: 05 May by Joseph Yang, M.D. (Columbia Pediatric Associates)";
+    lastUpdatedLabel.textAlignment = UITextAlignmentCenter;
+    lastUpdatedLabel.shadowColor = [UIColor whiteColor];
+    lastUpdatedLabel.shadowOffset = CGSizeMake(0.0, 1.0);
+    lastUpdatedLabel.font = [UIFont boldSystemFontOfSize:14.0];
+    lastUpdatedLabel.textColor = [UIColor grayColor];
+    lastUpdatedLabel.backgroundColor = [UIColor clearColor];
+    UIBarButtonItem *lastUpdated = [[UIBarButtonItem alloc] initWithCustomView:lastUpdatedLabel];
+    self.toolbarItems = [NSArray arrayWithObjects:flex, lastUpdated, flex, nil];
+    
+//    self.patientNameLabel.layer.shadowColor = [[UIColor darkGrayColor] CGColor];
+//    self.patientNameLabel.layer.shadowOpacity = 0.5;
+//    self.patientNameLabel.layer.shadowOffset = CGSizeMake(0, 3);
+//    self.patientNameLabel.layer.masksToBounds = NO;
 }
 
 
@@ -72,7 +92,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return YES;
+    return ((interfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (interfaceOrientation ==  UIInterfaceOrientationLandscapeRight));
 }
 
 #pragma mark - Private methods
@@ -80,22 +100,22 @@
 - (void)setPageCurlShadowForImageView:(UIImageView *)imageView {
     imageView.layer.shadowColor = [[UIColor blackColor] CGColor];
     imageView.layer.shadowOpacity = 0.5f;
-    imageView.layer.shadowOffset = CGSizeMake(0.0f, 10.0f);
+    imageView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
     imageView.layer.shadowRadius = 5.0f;
     
-    CGSize size = imageView.bounds.size;
-    CGFloat curlFactor = 15.0f;
-    CGFloat shadowDepth = 5.0f;
-    UIBezierPath *path = [UIBezierPath bezierPath];
-    [path moveToPoint:CGPointMake(0.0f, 0.0f)];
-    [path addLineToPoint:CGPointMake(size.width, 0.0f)];
-    [path addLineToPoint:CGPointMake(size.width, size.height + shadowDepth)];
-    
-    [path addCurveToPoint:CGPointMake(0.0f, size.height + shadowDepth)
-            controlPoint1:CGPointMake(size.width - curlFactor, size.height + shadowDepth - curlFactor)
-            controlPoint2:CGPointMake(curlFactor, size.height + shadowDepth - curlFactor)];
-    
-    imageView.layer.shadowPath = path.CGPath;
+//    CGSize size = imageView.bounds.size;
+//    CGFloat curlFactor = 15.0f;
+//    CGFloat shadowDepth = 5.0f;
+//    UIBezierPath *path = [UIBezierPath bezierPath];
+//    [path moveToPoint:CGPointMake(0.0f, 0.0f)];
+//    [path addLineToPoint:CGPointMake(size.width, 0.0f)];
+//    [path addLineToPoint:CGPointMake(size.width, size.height + shadowDepth)];
+//    
+//    [path addCurveToPoint:CGPointMake(0.0f, size.height + shadowDepth)
+//            controlPoint1:CGPointMake(size.width - curlFactor, size.height + shadowDepth - curlFactor)
+//            controlPoint2:CGPointMake(curlFactor, size.height + shadowDepth - curlFactor)];
+//    
+//    imageView.layer.shadowPath = path.CGPath;
 }
 
 @end

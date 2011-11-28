@@ -103,7 +103,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     UIView *redView = [[UIView alloc] init];
-    redView.backgroundColor = LIGHT_RED;
+    redView.backgroundColor = [UIColor hReaderLightRed];
     cell.selectedBackgroundView = redView;
     [redView release];
     

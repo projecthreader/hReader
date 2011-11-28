@@ -17,6 +17,8 @@
 		941DB0C31471B32D00A96B8B /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941DB0C11471B32D00A96B8B /* MainStoryboard_iPad.storyboard */; };
 		941DB0C61471B32D00A96B8B /* HRMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DB0C51471B32D00A96B8B /* HRMasterViewController.m */; };
 		941DB0C91471B32D00A96B8B /* HRDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DB0C81471B32D00A96B8B /* HRDetailViewController.m */; };
+		9424C15A147A9CB3008BF5CE /* UIColor+hReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9424C159147A9CB3008BF5CE /* UIColor+hReader.m */; };
+		9424C15C147AD9C0008BF5CE /* hReader_Logo_34x150.png in Resources */ = {isa = PBXBuildFile; fileRef = 9424C15B147AD9C0008BF5CE /* hReader_Logo_34x150.png */; };
 		944A2F2D1472C62300694816 /* handmadepaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 944A2F2C1472C62300694816 /* handmadepaper.png */; };
 		9464C58314769E190076B991 /* hReader_icon_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9464C58214769E190076B991 /* hReader_icon_72x72.png */; };
 		9464C5871476BDAE0076B991 /* Johnny_Smith_96.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */; };
@@ -44,6 +46,9 @@
 		941DB0C51471B32D00A96B8B /* HRMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRMasterViewController.m; sourceTree = "<group>"; };
 		941DB0C71471B32D00A96B8B /* HRDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRDetailViewController.h; sourceTree = "<group>"; };
 		941DB0C81471B32D00A96B8B /* HRDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRDetailViewController.m; sourceTree = "<group>"; };
+		9424C158147A9CB3008BF5CE /* UIColor+hReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+hReader.h"; sourceTree = "<group>"; };
+		9424C159147A9CB3008BF5CE /* UIColor+hReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+hReader.m"; sourceTree = "<group>"; };
+		9424C15B147AD9C0008BF5CE /* hReader_Logo_34x150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hReader_Logo_34x150.png; sourceTree = "<group>"; };
 		944A2F2C1472C62300694816 /* handmadepaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handmadepaper.png; sourceTree = "<group>"; };
 		9464C58214769E190076B991 /* hReader_icon_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hReader_icon_72x72.png; sourceTree = "<group>"; };
 		9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Johnny_Smith_96.xml; sourceTree = "<group>"; };
@@ -104,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				94E3BB581472E0DE00E05D4D /* HRConfig.h */,
+				9424C156147A9C95008BF5CE /* Categories */,
 				94E3BB531472C96200E05D4D /* App Delegate */,
 				94E3BB541472C97600E05D4D /* Patient List */,
 				941DB0B31471B32D00A96B8B /* Supporting Files */,
@@ -122,6 +128,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9424C156147A9C95008BF5CE /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				9424C158147A9CB3008BF5CE /* UIColor+hReader.h */,
+				9424C159147A9CB3008BF5CE /* UIColor+hReader.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		944A2F291472C5F900694816 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +149,7 @@
 		944A2F2B1472C60600694816 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9424C15B147AD9C0008BF5CE /* hReader_Logo_34x150.png */,
 				9464C58214769E190076B991 /* hReader_icon_72x72.png */,
 				94E3BB561472CD2000E05D4D /* father.png */,
 				944A2F2C1472C62300694816 /* handmadepaper.png */,
@@ -262,6 +278,7 @@
 				9464C58314769E190076B991 /* hReader_icon_72x72.png in Resources */,
 				9464C5871476BDAE0076B991 /* Johnny_Smith_96.xml in Resources */,
 				9464C5881476BDAE0076B991 /* Johnny_Smith_96.html in Resources */,
+				9424C15C147AD9C0008BF5CE /* hReader_Logo_34x150.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +313,7 @@
 				94E3BB511472C95800E05D4D /* PatientSummaryViewController.m in Sources */,
 				94C5ECF51472F448009FE38D /* PatientDetailsTableViewController.m in Sources */,
 				9464C58C1476CB4F0076B991 /* C32ViewController.m in Sources */,
+				9424C15A147A9CB3008BF5CE /* UIColor+hReader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,7 +352,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -377,10 +394,12 @@
 		941DB0CD1471B32D00A96B8B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HReader/HReader-Prefix.pch";
 				INFOPLIST_FILE = "HReader/HReader-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -388,13 +407,47 @@
 		941DB0CE1471B32D00A96B8B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: The MITRE Corporation";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HReader/HReader-Prefix.pch";
 				INFOPLIST_FILE = "HReader/HReader-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "E1DD9AD9-A475-415B-B1EE-D02E260B4BCC";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
+		};
+		94231792147AFE2500268377 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Ad Hoc";
+		};
+		94231793147AFE2500268377 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HReader/HReader-Prefix.pch";
+				INFOPLIST_FILE = "HReader/HReader-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = "Ad Hoc";
 		};
 /* End XCBuildConfiguration section */
 
@@ -404,6 +457,7 @@
 			buildConfigurations = (
 				941DB0CA1471B32D00A96B8B /* Debug */,
 				941DB0CB1471B32D00A96B8B /* Release */,
+				94231792147AFE2500268377 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -413,6 +467,7 @@
 			buildConfigurations = (
 				941DB0CD1471B32D00A96B8B /* Debug */,
 				941DB0CE1471B32D00A96B8B /* Release */,
+				94231793147AFE2500268377 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
