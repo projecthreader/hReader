@@ -10,6 +10,7 @@
 
 @interface PatientSummaryViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIImageView *patientImageView;
 @property (strong, nonatomic) IBOutlet UILabel *patientNameLabel;
 

@@ -7,6 +7,7 @@
 //
 
 #import "PatientSummaryViewController.h"
+#import "TimelineViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -16,6 +17,7 @@
 
 @implementation PatientSummaryViewController
 
+@synthesize scrollView       = __scrollView;
 @synthesize patientImageView = __patientImageView;
 @synthesize patientNameLabel = __patientNameLabel;
 
@@ -29,6 +31,7 @@
 }
 
 - (void)dealloc {
+    [__scrollView release];
     [__patientNameLabel release];
     [__patientImageView release];
     
@@ -49,7 +52,19 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor hReaderTexture];
+    self.scrollView.contentSize = CGSizeMake(1024 * 2, 768 - 88);
+    
+    TimelineViewController *timelineViewController = [[TimelineViewController alloc] initWithNibName:nil bundle:nil];
+    timelineViewController.view.frame = CGRectMake(1024, 0, 1024, 768 - 88);
+    
+    [self.scrollView addSubview:timelineViewController.view];
+
+//    UILabel *timeline = [[UILabel alloc] initWithFrame:CGRectMake(200, 200, 50, 21)];
+//    timeline.text = @"Timeline";
+//    [self.scrollView addSubview:timeline];
+    
+    
+//    self.view.backgroundColor = [UIColor hReaderTexture];
     self.patientImageView.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.patientImageView.layer.borderWidth = 3.0;
     
@@ -86,6 +101,7 @@
 {
     [super viewDidUnload];
     
+    self.scrollView = nil;
     self.patientImageView = nil;
     self.patientNameLabel = nil;
 }
@@ -93,6 +109,15 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return ((interfaceOrientation == UIInterfaceOrientationLandscapeLeft) || (interfaceOrientation ==  UIInterfaceOrientationLandscapeRight));
+}
+
+#pragma mark - UIScrollViewDelegate method
+
+- (void)scrollViewDidScroll:(UIScrollView *)sender {
+    // Update the page when more than 50% of the previous/next page is visible
+//    CGFloat pageWidth = self.scrollView.frame.size.width;
+//    int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+//    self.pageControl.currentPage = page;
 }
 
 #pragma mark - Private methods
