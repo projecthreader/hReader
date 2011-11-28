@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'betabuilder'
 
+RestClient.proxy = ENV['http_proxy']
+
 BetaBuilder::Tasks.new do |config|
   # your Xcode target name
   config.target = "HReader"
