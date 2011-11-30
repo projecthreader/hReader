@@ -26,6 +26,10 @@
 		9464C58C1476CB4F0076B991 /* C32ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464C58B1476CB4F0076B991 /* C32ViewController.m */; };
 		94AEAE0414841CEB00C005B2 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0214841CEB00C005B2 /* TimelineViewController.m */; };
 		94AEAE0514841CEB00C005B2 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEAE0314841CEB00C005B2 /* TimelineViewController.xib */; };
+		94AEAE0914868BC200C005B2 /* HRRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0814868BC200C005B2 /* HRRootViewController.m */; };
+		94AEAE0C14868F7900C005B2 /* HRSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0B14868F7900C005B2 /* HRSplitViewController.m */; };
+		94AEAE10148690DA00C005B2 /* HRPatientSummarySplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0E148690DA00C005B2 /* HRPatientSummarySplitViewController.m */; };
+		94AEAE11148690DA00C005B2 /* HRPatientSummarySplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEAE0F148690DA00C005B2 /* HRPatientSummarySplitViewController.xib */; };
 		94C5ECF51472F448009FE38D /* PatientDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C5ECF41472F448009FE38D /* PatientDetailsTableViewController.m */; };
 		94E3BB511472C95800E05D4D /* PatientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E3BB501472C95800E05D4D /* PatientSummaryViewController.m */; };
 		94E3BB571472CD2000E05D4D /* father.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E3BB561472CD2000E05D4D /* father.png */; };
@@ -60,6 +64,13 @@
 		94AEAE0114841CEB00C005B2 /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		94AEAE0214841CEB00C005B2 /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 		94AEAE0314841CEB00C005B2 /* TimelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineViewController.xib; sourceTree = "<group>"; };
+		94AEAE0714868BC200C005B2 /* HRRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRRootViewController.h; sourceTree = "<group>"; };
+		94AEAE0814868BC200C005B2 /* HRRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRRootViewController.m; sourceTree = "<group>"; };
+		94AEAE0A14868F7900C005B2 /* HRSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSplitViewController.h; sourceTree = "<group>"; };
+		94AEAE0B14868F7900C005B2 /* HRSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSplitViewController.m; sourceTree = "<group>"; };
+		94AEAE0D148690DA00C005B2 /* HRPatientSummarySplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPatientSummarySplitViewController.h; sourceTree = "<group>"; };
+		94AEAE0E148690DA00C005B2 /* HRPatientSummarySplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPatientSummarySplitViewController.m; sourceTree = "<group>"; };
+		94AEAE0F148690DA00C005B2 /* HRPatientSummarySplitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPatientSummarySplitViewController.xib; sourceTree = "<group>"; };
 		94C5ECF31472F448009FE38D /* PatientDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientDetailsTableViewController.h; sourceTree = "<group>"; };
 		94C5ECF41472F448009FE38D /* PatientDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientDetailsTableViewController.m; sourceTree = "<group>"; };
 		94E3BB4F1472C95800E05D4D /* PatientSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientSummaryViewController.h; sourceTree = "<group>"; };
@@ -113,6 +124,7 @@
 		941DB0B21471B32D00A96B8B /* HReader */ = {
 			isa = PBXGroup;
 			children = (
+				94AEAE0614868B9F00C005B2 /* Refactor */,
 				94E3BB581472E0DE00E05D4D /* HRConfig.h */,
 				9424C156147A9C95008BF5CE /* Categories */,
 				94E3BB531472C96200E05D4D /* App Delegate */,
@@ -169,6 +181,20 @@
 				9464C58B1476CB4F0076B991 /* C32ViewController.m */,
 			);
 			name = "C32 Patient Record";
+			sourceTree = "<group>";
+		};
+		94AEAE0614868B9F00C005B2 /* Refactor */ = {
+			isa = PBXGroup;
+			children = (
+				94AEAE0714868BC200C005B2 /* HRRootViewController.h */,
+				94AEAE0814868BC200C005B2 /* HRRootViewController.m */,
+				94AEAE0A14868F7900C005B2 /* HRSplitViewController.h */,
+				94AEAE0B14868F7900C005B2 /* HRSplitViewController.m */,
+				94AEAE0D148690DA00C005B2 /* HRPatientSummarySplitViewController.h */,
+				94AEAE0E148690DA00C005B2 /* HRPatientSummarySplitViewController.m */,
+				94AEAE0F148690DA00C005B2 /* HRPatientSummarySplitViewController.xib */,
+			);
+			name = Refactor;
 			sourceTree = "<group>";
 		};
 		94C5ECFA1472FF7A009FE38D /* Patient Summary */ = {
@@ -288,6 +314,7 @@
 				9464C5881476BDAE0076B991 /* Johnny_Smith_96.html in Resources */,
 				9424C15C147AD9C0008BF5CE /* hReader_Logo_34x150.png in Resources */,
 				94AEAE0514841CEB00C005B2 /* TimelineViewController.xib in Resources */,
+				94AEAE11148690DA00C005B2 /* HRPatientSummarySplitViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +351,9 @@
 				9464C58C1476CB4F0076B991 /* C32ViewController.m in Sources */,
 				9424C15A147A9CB3008BF5CE /* UIColor+hReader.m in Sources */,
 				94AEAE0414841CEB00C005B2 /* TimelineViewController.m in Sources */,
+				94AEAE0914868BC200C005B2 /* HRRootViewController.m in Sources */,
+				94AEAE0C14868F7900C005B2 /* HRSplitViewController.m in Sources */,
+				94AEAE10148690DA00C005B2 /* HRPatientSummarySplitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

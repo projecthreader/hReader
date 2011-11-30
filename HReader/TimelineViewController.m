@@ -9,6 +9,7 @@
 #import "TimelineViewController.h"
 
 @implementation TimelineViewController
+@synthesize webView = __webView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,10 +34,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+
+    
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://oreilly.com/news/graphics/prog_lang_poster.pdf"]]];
+    
 }
 
 - (void)viewDidUnload
 {
+    [self setWebView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -48,4 +54,8 @@
 	return YES;
 }
 
+- (void)dealloc {
+    [__webView release];
+    [super dealloc];
+}
 @end

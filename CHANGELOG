@@ -1,0 +1,12 @@
+== 2011-11-30
+
+* Refactored app to use new full screen view. Every view in the app must have a header of the same size to accommodate swiping. The content views will be able to contain any type of iOS view elements and can be interacted with without the headers intercepting the touch events.
+
+* Segmented control is dynamically created based on the views and it autosizes the width. Selecting a segment scrolls to the correct view.
+
+* Added WebView to content area which can be pinched and zoomed to show that it can be interacted with without affecting the swiping
+
+== 2011-11-28
+
+* Scrollview test
+* Added red placeholder for timeline view and swiping. Next step is to refactor the entire structure to accommodate the new navigation behavior.

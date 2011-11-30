@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11C74" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="psk-5E-08U">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11C74" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="kql-EE-soS">
     <dependencies>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
@@ -23,6 +23,60 @@
                 </navigationController>
             </objects>
             <point key="canvasLocation" x="-618" y="-1527"/>
+        </scene>
+        <scene sceneID="2Ki-i2-Rgl">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PjV-qG-z0E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="GW8-lK-xxa" customClass="HRRootViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="brZ-iS-dEW">
+                        <rect key="frame" x="0.0" y="64" width="1024" height="660"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="MNG-gN-OIK">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="250"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="GW8-lK-xxa" id="N8V-oj-hji"/>
+                                </connections>
+                            </scrollView>
+                            <view contentMode="scaleToFill" id="HWM-rf-co7">
+                                <rect key="frame" x="0.0" y="250" width="1024" height="411"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0H1-3e-CAx">
+                        <nil key="title"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contentView" destination="HWM-rf-co7" id="21N-iG-J5Z"/>
+                        <outlet property="scrollView" destination="MNG-gN-OIK" id="7zN-T9-pFK"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="678" y="-379"/>
+        </scene>
+        <scene sceneID="n49-W3-7C3">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jbo-N9-b5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" toolbarHidden="NO" id="kql-EE-soS" sceneMemberID="viewController">
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="R8c-io-LP3">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="UeG-k7-uCe">
+                        <rect key="frame" x="0.0" y="724" width="1024" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="GW8-lK-xxa" kind="relationship" relationship="rootViewController" id="8zP-5R-pOp"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-558" y="-379"/>
         </scene>
         <scene sceneID="24">
             <objects>
@@ -63,7 +117,7 @@
                     <navigationItem key="navigationItem" title="hReader" id="39"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1947" y="-451"/>
+            <point key="canvasLocation" x="1963" y="-1419"/>
         </scene>
         <scene sceneID="Ra4-Vo-Dn2">
             <objects>
@@ -366,10 +420,10 @@
                             <rect key="frame" x="213" y="7" width="597" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="Summary"/>
-                                <segment title="Timeline"/>
-                                <segment title="Messages (0)"/>
-                                <segment title="Doctors"/>
+                                <segment title="Summary" width="148.5"/>
+                                <segment title="Timeline" width="148.5"/>
+                                <segment title="Messages (0)" width="148.5"/>
+                                <segment title="Doctors" width="148.5"/>
                             </segments>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="7Nn-pR-gkJ">
@@ -398,6 +452,14 @@
     <classes>
         <class className="HRMasterViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRMasterViewController.h"/>
+        </class>
+        <class className="HRRootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRRootViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
+            </relationships>
         </class>
         <class className="PatientSummaryViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PatientSummaryViewController.h"/>

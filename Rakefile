@@ -15,5 +15,10 @@ BetaBuilder::Tasks.new do |config|
     tf.team_token         = "e8ef4e7b3c88827400af56886c6fe280_MjYyNTYyMDExLTEwLTE5IDE2OjU3OjQ3LjMyNDk4OQ"
     tf.notify             = true
     tf.distribution_lists = ["hReader Core"]
+    
+    tf.generate_release_notes do
+      File.open("CHANGELOG", "rb").read
+    end
   end
+  
 end
