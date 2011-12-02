@@ -11,7 +11,7 @@
 @interface HRRootViewController : UIViewController <UIScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) IBOutlet UIView *contentView;
+//@property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) UISegmentedControl *segmentedControl;
 
 @end

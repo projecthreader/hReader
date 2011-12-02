@@ -1,5 +1,5 @@
 //
-//  HRSplitViewController.h
+//  HRPatientSummarySplitViewController.h
 //  HReader
 //
 //  Created by Marshall Huss on 11/30/11.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRSplitViewController : UIViewController
-
-@property (strong, nonatomic) IBOutlet UIView *detailView;
+@interface HRPatientSummaryViewController : UIViewController
 
 @end

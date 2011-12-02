@@ -9,7 +9,10 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "HRRootViewController.h"
-#import "HRPatientSummarySplitViewController.h"
+#import "HRPatientSummaryViewController.h"
+#import "HRTimelineViewController.h"
+#import "HRMessagesViewController.h"
+#import "HRDoctorsViewController.h"
 
 @interface HRRootViewController ()
 - (void)setupPatientLabelWithText:(NSString *)text;
@@ -21,13 +24,13 @@
 @implementation HRRootViewController
 
 @synthesize scrollView          = __scrollView;
-@synthesize contentView         = __contentView;
+//@synthesize contentView         = __contentView;
 @synthesize segmentedControl    = __segmentedControl;
 
 
 - (void)dealloc {
     [__scrollView release];
-    [__contentView release];
+//    [__contentView release];
     [__segmentedControl release];
     
     [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -41,25 +44,22 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        HRPatientSummarySplitViewController *patientSummaryViewController = [[[HRPatientSummarySplitViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+        HRPatientSummaryViewController *patientSummaryViewController = [[[HRPatientSummaryViewController alloc] initWithNibName:nil bundle:nil] autorelease];
         patientSummaryViewController.title = @"Summary";
-        patientSummaryViewController.view.backgroundColor = [UIColor greenColor];
+        patientSummaryViewController.view.backgroundColor = [UIColor whiteColor];
         [self addChildViewController:patientSummaryViewController];
         
-        HRPatientSummarySplitViewController *patientSummaryViewController2 = [[[HRPatientSummarySplitViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-        patientSummaryViewController2.title = @"Timeline";
-        patientSummaryViewController2.view.backgroundColor = [UIColor redColor];
-        [self addChildViewController:patientSummaryViewController2];
+        HRTimelineViewController *timelineViewController = [[HRTimelineViewController alloc] initWithNibName:nil bundle:nil];
+        [self addChildViewController:timelineViewController];
+        [timelineViewController release];
         
-        HRPatientSummarySplitViewController *patientSummaryViewController3 = [[[HRPatientSummarySplitViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-        patientSummaryViewController3.title = @"Messages (0)";
-        patientSummaryViewController3.view.backgroundColor = [UIColor yellowColor];
-        [self addChildViewController:patientSummaryViewController3];
-        
-        HRPatientSummarySplitViewController *patientSummaryViewController4 = [[[HRPatientSummarySplitViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-        patientSummaryViewController4.title = @"Doctors";
-        patientSummaryViewController4.view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
-        [self addChildViewController:patientSummaryViewController4];
+        HRMessagesViewController *messagesViewController = [[HRMessagesViewController alloc] initWithNibName:nil bundle:nil];
+        [self addChildViewController:messagesViewController];
+        [messagesViewController release];
+
+        HRDoctorsViewController *doctorsViewController = [[HRDoctorsViewController alloc] initWithNibName:nil bundle:nil];
+        [self addChildViewController:doctorsViewController];
+        [doctorsViewController release];
         
         [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [obj addObserver:self forKeyPath:@"title" options:0 context:0];
@@ -81,10 +81,10 @@
     
 
     [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([obj isKindOfClass:[HRSplitViewController class]]) {
-            HRSplitViewController *splitViewController = (HRSplitViewController *)obj;
+        if ([obj isKindOfClass:[UIViewController class]]) {
+            UIViewController *splitViewController = (UIViewController *)obj;
             [self.scrollView addSubview:splitViewController.view];
-            [self.contentView addSubview:splitViewController.detailView];
+//            [self.contentView addSubview:splitViewController.detailView];
         }
     }];
     
@@ -98,7 +98,7 @@
     [super viewDidUnload];
     
     self.scrollView = nil;
-    self.contentView = nil;
+//    self.contentView = nil;
     self.segmentedControl = nil;
 }
 
@@ -108,12 +108,12 @@
     self.scrollView.contentSize = CGSizeMake(viewSize.width * [self.childViewControllers count], self.scrollView.bounds.size.height);
     
     [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([obj isKindOfClass:[HRSplitViewController class]]) {
-            HRSplitViewController *splitViewController = (HRSplitViewController *)obj;
+        if ([obj isKindOfClass:[UIViewController class]]) {
+            UIViewController *splitViewController = (UIViewController *)obj;
 
             splitViewController.view.frame = CGRectMake(viewSize.width * idx, 0, viewSize.width, self.scrollView.bounds.size.height);
         
-            splitViewController.detailView.frame = CGRectMake(viewSize.width * idx, 0, viewSize.width, self.contentView.bounds.size.height);
+//            splitViewController.detailView.frame = CGRectMake(viewSize.width * idx, 0, viewSize.width, self.contentView.bounds.size.height);
             
         }
     }];
@@ -127,14 +127,14 @@
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGSize size = self.contentView.bounds.size;
-    
-    [self.contentView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([obj isKindOfClass:[UIView class]]) {
-            UIView *view = (UIView *)obj;
-            view.frame = CGRectMake(self.scrollView.contentOffset.x * -1.0 + size.width * idx, 0.0, size.width, size.height);
-        }
-    }];
+//    CGSize size = self.contentView.bounds.size;
+//    
+//    [self.contentView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//        if ([obj isKindOfClass:[UIView class]]) {
+//            UIView *view = (UIView *)obj;
+//            view.frame = CGRectMake(self.scrollView.contentOffset.x * -1.0 + size.width * idx, 0.0, size.width, size.height);
+//        }
+//    }];
     
     
 }
