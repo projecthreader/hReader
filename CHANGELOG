@@ -1,3 +1,9 @@
+== 2011-12-02
+
+* Refactored app to use new navigation
+* Added static image for timeline
+* Added placeholder views for all other componenets
+
 == 2011-11-30
 
 * Refactored app to use new full screen view. Every view in the app must have a header of the same size to accommodate swiping. The content views will be able to contain any type of iOS view elements and can be interacted with without the headers intercepting the touch events.
