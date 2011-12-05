@@ -71,10 +71,10 @@
 }
 
 - (void)setAppearanceProxies {
-    UIView *redView = [[UIView alloc] init];
-    redView.backgroundColor = [UIColor hReaderLightRed];
-    [[UITableViewCell appearance] setSelectedBackgroundView:redView];
-    [redView release];
+//    UIView *redView = [[UIView alloc] init];
+//    redView.backgroundColor = [UIColor hReaderLightRed];
+//    [[UITableViewCell appearance] setSelectedBackgroundView:redView];
+//    [redView release];
 }
 
 @end

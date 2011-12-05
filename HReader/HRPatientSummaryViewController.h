@@ -10,4 +10,10 @@
 
 @interface HRPatientSummaryViewController : UIViewController
 
+@property (retain, nonatomic) IBOutlet UIView *patientHeaderView;
+@property (retain, nonatomic) IBOutlet UIView *patientImageShadowView;
+@property (retain, nonatomic) IBOutlet UIImageView *patientImageView;
+@property (retain, nonatomic) IBOutlet UIScrollView *patientScrollView;
+@property (retain, nonatomic) IBOutlet UIView *patientSummaryView;
+
 @end

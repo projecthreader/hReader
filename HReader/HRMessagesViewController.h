@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRMessagesViewController : UIViewController
+@interface HRMessagesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) IBOutlet UIView *patientImageShadowView;
+@property (strong, nonatomic) IBOutlet UIImageView *patientImageView;
+@property (strong, nonatomic) NSArray *datesArray;
+@property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (retain, nonatomic) IBOutlet UIView *messageContentView;
 
 @end

@@ -24,13 +24,11 @@
 @implementation HRRootViewController
 
 @synthesize scrollView          = __scrollView;
-//@synthesize contentView         = __contentView;
 @synthesize segmentedControl    = __segmentedControl;
 
 
 - (void)dealloc {
     [__scrollView release];
-//    [__contentView release];
     [__segmentedControl release];
     
     [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -84,7 +82,6 @@
         if ([obj isKindOfClass:[UIViewController class]]) {
             UIViewController *splitViewController = (UIViewController *)obj;
             [self.scrollView addSubview:splitViewController.view];
-//            [self.contentView addSubview:splitViewController.detailView];
         }
     }];
     
@@ -98,23 +95,17 @@
     [super viewDidUnload];
     
     self.scrollView = nil;
-//    self.contentView = nil;
     self.segmentedControl = nil;
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    
     CGSize viewSize = self.view.bounds.size;
     self.scrollView.contentSize = CGSizeMake(viewSize.width * [self.childViewControllers count], self.scrollView.bounds.size.height);
     
     [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([obj isKindOfClass:[UIViewController class]]) {
             UIViewController *splitViewController = (UIViewController *)obj;
-
             splitViewController.view.frame = CGRectMake(viewSize.width * idx, 0, viewSize.width, self.scrollView.bounds.size.height);
-        
-//            splitViewController.detailView.frame = CGRectMake(viewSize.width * idx, 0, viewSize.width, self.contentView.bounds.size.height);
-            
         }
     }];
 }
@@ -125,19 +116,6 @@
 
 
 #pragma mark - UIScrollViewDelegate
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    CGSize size = self.contentView.bounds.size;
-//    
-//    [self.contentView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//        if ([obj isKindOfClass:[UIView class]]) {
-//            UIView *view = (UIView *)obj;
-//            view.frame = CGRectMake(self.scrollView.contentOffset.x * -1.0 + size.width * idx, 0.0, size.width, size.height);
-//        }
-//    }];
-    
-    
-}
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     self.segmentedControl.selectedSegmentIndex = self.scrollView.contentOffset.x / self.scrollView.bounds.size.width;

@@ -10,4 +10,8 @@
 
 @interface HRDoctorsViewController : UIViewController
 
+@property (retain, nonatomic) IBOutlet UIView *patientImageShadowView;
+@property (retain, nonatomic) IBOutlet UIImageView *patientImageView;
+@property (retain, nonatomic) IBOutlet UIImageView *doctorImageView;
+
 @end

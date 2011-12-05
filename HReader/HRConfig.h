@@ -7,3 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+
+@interface HRConfig : NSObject
+
++ (UIColor *)textureColor;
++ (UIColor *)redColor;
++ (UIColor *)greenColor;
++ (UIColor *)lightRedColor;
++ (UIColor *)redGradientTopColor;
++ (UIColor *)redGradientBottomColor;
+
++ (void)setShadowForView:(UIView *)shadowView borderForView:(UIView *)borderView;
+
+@end

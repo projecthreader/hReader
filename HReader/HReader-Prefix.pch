@@ -12,5 +12,4 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "HRConfig.h"
-    #import "UIColor+hReader.h"
 #endif

@@ -43,10 +43,9 @@
 							<object class="IBUIImageView" id="183406098">
 								<reference key="NSNextResponder" ref="271440658"/>
 								<int key="NSvFlags">256</int>
-								<string key="NSFrameSize">{7063, 660}</string>
+								<string key="NSFrame">{{-80, 0}, {7063, 660}}</string>
 								<reference key="NSSuperview" ref="271440658"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">4</int>
@@ -63,6 +62,7 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="183406098"/>
 						<string key="NSReuseIdentifierKey">_NS:206</string>
+						<bool key="IBUIAutoresizesSubviews">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -212,7 +212,7 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="NS.key.0">timeline-image.png</string>
-			<string key="NS.object.0">{7063, 660}</string>
+			<string key="NS.object.0">{6904, 665}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>

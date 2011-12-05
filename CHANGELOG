@@ -1,8 +1,15 @@
+== 2011-12-05
+
+* Finished up static content for patient summary
+* Tweaked timeline view
+* Mocked up Messages view
+* Mocked up Doctors view
+
 == 2011-12-02
 
 * Refactored app to use new navigation
 * Added static image for timeline
-* Added placeholder views for all other componenets
+* Added placeholder views for all other components
 
 == 2011-11-30
 
