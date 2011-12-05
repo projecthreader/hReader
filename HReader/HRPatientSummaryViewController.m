@@ -80,7 +80,7 @@
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView.contentOffset.y != 0) {
+    if (scrollView.contentOffset.y > 0) {
         [self toggleViewShadow:YES];
     } else {
         [self toggleViewShadow:NO];
