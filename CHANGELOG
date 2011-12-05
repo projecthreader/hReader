@@ -1,30 +1,36 @@
-= 2011-12-05
+- - -
 
-== Patient Summary View
+# 2011-12-05
+
+## Patient Summary View
 * Finished up static content for patient summary
 * Pixel perfect tweaks
 * Only show shadow on patient summary when scrolled, otherwise hide it
 
-== Timeline View
+## Timeline View
 * Shifted image left to align with edge of iPad
 
-== Messages View
+## Messages View
 * Mocked up
 * Added border to left of content view
 * Added shadow to patient image view
 * Set background to linen
 
-== Doctors View
+## Doctors View
 * Mocked up
 * Added border and shadow to doctor image
 
-= 2011-12-02
+- - -
+
+# 2011-12-02
 
 * Refactored app to use new navigation
 * Added static image for timeline
 * Added placeholder views for all other components
 
-= 2011-11-30
+- - -
+
+# 2011-11-30
 
 * Refactored app to use new full screen view. Every view in the app must have a header of the same size to accommodate swiping. The content views will be able to contain any type of iOS view elements and can be interacted with without the headers intercepting the touch events.
 
@@ -32,7 +38,9 @@
 
 * Added WebView to content area which can be pinched and zoomed to show that it can be interacted with without affecting the swiping
 
-= 2011-11-28
+- - -
+
+# 2011-11-28
 
 * Scrollview test
 * Added red placeholder for timeline view and swiping. Next step is to refactor the entire structure to accommodate the new navigation behavior.
