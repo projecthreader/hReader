@@ -12,7 +12,7 @@
 
 
 @interface HRPatientSummaryViewController ()
-- (void)setHeaderViewShadow;
+- (void)toggleViewShadow:(BOOL)on;
 @end
 
 @implementation HRPatientSummaryViewController
@@ -47,9 +47,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Shadow for patient image
     [HRConfig setShadowForView:self.patientImageShadowView borderForView:self.patientImageView];
-    [self setHeaderViewShadow];
     
+    // Header shadow
+    CALayer *layer = self.patientHeaderView.layer;
+    layer.shadowColor = [[UIColor clearColor] CGColor];
+    layer.shadowOpacity = 0.5;
+    layer.shadowOffset = CGSizeMake(0, 3);
+    layer.masksToBounds = NO;
+    [self.view bringSubviewToFront:self.patientHeaderView];   
+    
+    // Set scrollview content size and add patient summary view
     self.patientScrollView.contentSize = self.patientSummaryView.frame.size;
     [self.patientScrollView addSubview:self.patientSummaryView];
     
@@ -68,17 +77,27 @@
 	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView.contentOffset.y != 0) {
+        [self toggleViewShadow:YES];
+    } else {
+        [self toggleViewShadow:NO];
+    }
+}
 
 
 #pragma mark - Private methods
 
-- (void)setHeaderViewShadow {
+- (void)toggleViewShadow:(BOOL)on {
     CALayer *layer = self.patientHeaderView.layer;
-    layer.shadowColor = [[UIColor darkGrayColor] CGColor];
-    layer.shadowOpacity = 0.5;
-    layer.shadowOffset = CGSizeMake(0, 3);
-    layer.masksToBounds = NO;
-    [self.view bringSubviewToFront:self.patientHeaderView];    
+
+    if (on) {
+        layer.shadowColor = [[UIColor darkGrayColor] CGColor];     
+    } else {
+        layer.shadowColor = [[UIColor clearColor] CGColor];
+    }
 }
 
 @end

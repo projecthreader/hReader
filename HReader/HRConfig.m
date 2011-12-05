@@ -48,7 +48,7 @@
     shadowView.backgroundColor = [UIColor clearColor];
     shadowLayer.shadowColor = [[UIColor blackColor] CGColor];
     shadowLayer.shadowOpacity = 0.5f;
-    shadowLayer.shadowOffset = CGSizeMake(3.0f, 1.0f);
+    shadowLayer.shadowOffset = CGSizeMake(3.0f, 2.0f);
     shadowLayer.shadowRadius = 5.0f;
     
     // Border

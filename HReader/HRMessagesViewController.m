@@ -6,7 +6,13 @@
 //  Copyright (c) 2011 MITRE Corporation. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "HRMessagesViewController.h"
+
+@interface HRMessagesViewController ()
+- (void)setHeaderViewShadow;
+@end
 
 @implementation HRMessagesViewController
 
@@ -15,14 +21,16 @@
 @synthesize datesArray                  = __datesArray;
 @synthesize scrollView                  = __scrollView;
 @synthesize messageContentView          = __messageContentView;
+@synthesize patientView                 = __patientView;
 
 - (void)dealloc {
     [__patientImageShadowView release];
     [__patientImageView release];
     [__datesArray release];
-    
     [__scrollView release];
     [__messageContentView release];
+    [__patientView release];
+    
     [super dealloc];
 }
 
@@ -45,6 +53,10 @@
     self.scrollView.contentSize = self.messageContentView.bounds.size;
     [self.scrollView addSubview:self.messageContentView];
     
+    [self setHeaderViewShadow];
+    
+
+    
 }
 
 - (void)viewDidUnload {
@@ -53,6 +65,7 @@
     
     [self setScrollView:nil];
     [self setMessageContentView:nil];
+    [self setPatientView:nil];
     [super viewDidUnload];
 }
 
@@ -82,6 +95,17 @@
     cell.textLabel.text = [self.datesArray objectAtIndex:indexPath.row];
 
     return cell;
+}
+
+#pragma mark - Private methods
+
+- (void)setHeaderViewShadow {
+    CALayer *layer = self.patientView.layer;
+    layer.shadowColor = [[UIColor darkGrayColor] CGColor];
+    layer.shadowOpacity = 0.5;
+    layer.shadowOffset = CGSizeMake(0, 3);
+    layer.masksToBounds = NO;
+    [self.view bringSubviewToFront:self.patientView];    
 }
 
 @end

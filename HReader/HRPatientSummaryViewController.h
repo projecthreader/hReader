@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRPatientSummaryViewController : UIViewController
+@interface HRPatientSummaryViewController : UIViewController <UIScrollViewDelegate>
 
 @property (retain, nonatomic) IBOutlet UIView *patientHeaderView;
 @property (retain, nonatomic) IBOutlet UIView *patientImageShadowView;
