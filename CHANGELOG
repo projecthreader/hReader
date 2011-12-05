@@ -5,7 +5,7 @@
 ## Patient Summary View
 * Finished up static content for patient summary
 * Pixel perfect tweaks
-* Only show shadow on patient summary when scrolled, otherwise hide it
+* Only show shadow on patient summary when scrolled down, otherwise hide it
 
 ## Timeline View
 * Shifted image left to align with edge of iPad

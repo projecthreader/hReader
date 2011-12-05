@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'betabuilder'
+require 'redcarpet'
 
 RestClient.proxy = ENV['http_proxy']
 
@@ -17,7 +18,9 @@ BetaBuilder::Tasks.new do |config|
     tf.distribution_lists = ["hReader Core"]
     
     tf.generate_release_notes do
-      File.open("CHANGELOG", "rb").read
+      markdown  = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+      changelog = File.open("CHANGELOG", "rb").read
+      markdown.render changelog
     end
   end
   
