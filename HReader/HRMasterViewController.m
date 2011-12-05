@@ -45,7 +45,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.detailViewController = (HRDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
-    self.patientsArray = [[NSArray arrayWithObjects:@"Tom Smith", @"Susan Smith", @"Johnny Smith", @"Molly Smith", @"Ethel Smith", nil] autorelease];
+    self.patientsArray = [NSArray arrayWithObjects:@"Tom Smith", @"Susan Smith", @"Johnny Smith", @"Molly Smith", @"Ethel Smith", nil];
     
 //    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
 //        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionMiddle];

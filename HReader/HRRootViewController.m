@@ -138,6 +138,9 @@
     lastUpdatedLabel.backgroundColor = [UIColor clearColor];
     UIBarButtonItem *lastUpdated = [[UIBarButtonItem alloc] initWithCustomView:lastUpdatedLabel];
     self.toolbarItems = [NSArray arrayWithObjects:flex, lastUpdated, flex, nil];
+    [lastUpdatedLabel release];
+    [lastUpdated release];
+    [flex release];
 }
 
 - (void)setLogo {

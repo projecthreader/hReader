@@ -47,7 +47,7 @@
 }
 
 #pragma mark - View lifecycle
-
+/*
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -95,7 +95,7 @@
 //    self.patientNameLabel.layer.shadowOffset = CGSizeMake(0, 3);
 //    self.patientNameLabel.layer.masksToBounds = NO;
 }
-
+*/
 
 - (void)viewDidUnload
 {
