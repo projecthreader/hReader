@@ -60,8 +60,8 @@
     
     // Header shadow
     CALayer *layer = self.patientHeaderView.layer;
-    layer.shadowColor = [[UIColor clearColor] CGColor];
-    layer.shadowOpacity = 0.5;
+    layer.shadowColor = [[UIColor darkGrayColor] CGColor];
+    layer.shadowOpacity = 0.0;
     layer.shadowOffset = CGSizeMake(0, 3);
     layer.masksToBounds = NO;
     [self.view bringSubviewToFront:self.patientHeaderView];   
@@ -121,9 +121,9 @@
     CALayer *layer = self.patientHeaderView.layer;
 
     if (on) {
-        layer.shadowColor = [[UIColor darkGrayColor] CGColor];     
+        layer.shadowOpacity = 0.5;
     } else {
-        layer.shadowColor = [[UIColor clearColor] CGColor];
+        layer.shadowOpacity = 0.0;
     }
 }
 

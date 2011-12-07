@@ -105,6 +105,7 @@
 		DD695D8214897C2200E4E2E1 /* HRMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMessagesViewController.h; sourceTree = "<group>"; };
 		DD695D8314897C2200E4E2E1 /* HRMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMessagesViewController.m; sourceTree = "<group>"; };
 		DD695D8414897C2200E4E2E1 /* HRMessagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRMessagesViewController.xib; sourceTree = "<group>"; };
+		DD7037B21490103300F58A83 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DD8BD9DA148D13910090F729 /* chevron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chevron.png; sourceTree = "<group>"; };
 		DD8BD9DD148D1D660090F729 /* Henry_Smith.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Henry_Smith.png; sourceTree = "<group>"; };
 		DD8BD9DE148D1D660090F729 /* Johnny_Smith.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Johnny_Smith.png; sourceTree = "<group>"; };
@@ -131,6 +132,7 @@
 		941DB09D1471B32D00A96B8B = {
 			isa = PBXGroup;
 			children = (
+				DD7037B21490103300F58A83 /* QuartzCore.framework */,
 				941DB0B21471B32D00A96B8B /* HReader */,
 				944A2F291472C5F900694816 /* Resources */,
 				941DB0AB1471B32D00A96B8B /* Frameworks */,

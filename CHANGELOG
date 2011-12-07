@@ -3,6 +3,13 @@
 # 2011-12-05
 
 ## Patient Summary View
+* Created a reusable patient swipe view with a page control. You can now swipe the users image or tap the dots to change a user. Currently this only works on the summary view. It also changes the users name.
+
+- - -
+
+# 2011-12-05
+
+## Patient Summary View
 * Finished up static content for patient summary
 * Pixel perfect tweaks
 * Only show shadow on patient summary when scrolled down, otherwise hide it
