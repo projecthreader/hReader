@@ -9,7 +9,9 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "HRPatientSummaryViewController.h"
-
+#import "HRPatientSwipeViewController.h"
+#import "HRRootViewController.h"
+#import "HRPatient.h"
 
 @interface HRPatientSummaryViewController ()
 - (void)toggleViewShadow:(BOOL)on;
@@ -17,19 +19,22 @@
 
 @implementation HRPatientSummaryViewController
 
-@synthesize patientHeaderView       = __patientHeaderView;
-@synthesize patientImageShadowView  = __patientImageShadowView;
-@synthesize patientImageView        = __patientImageView;
-@synthesize patientScrollView       = __patientScrollView;
-@synthesize patientSummaryView      = __patientSummaryView;
+@synthesize patientHeaderView           = __patientHeaderView;
+@synthesize patientScrollView           = __patientScrollView;
+@synthesize patientSummaryView          = __patientSummaryView;
+@synthesize patientSwipeViewContoller   = __patientSwipeViewController;
+
+@synthesize patientName                 = __patientName;
 
 
 - (void)dealloc {
-    [__patientImageView release];
+    [__patientSummaryView release];
     [__patientScrollView release];
     [__patientSummaryView release];
     [__patientHeaderView release];
-    [__patientImageShadowView release];
+    [__patientSwipeViewController release];
+    
+    [__patientName release];
     
     [super dealloc];
 }
@@ -47,8 +52,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Shadow for patient image
-    [HRConfig setShadowForView:self.patientImageShadowView borderForView:self.patientImageView];
+    self.patientSwipeViewContoller = [[[HRPatientSwipeViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+    self.patientSwipeViewContoller.patientsArray = [HRConfig patients];
+    self.patientSwipeViewContoller.view.frame = CGRectMake(32, 15, 175, 175);
+    [self.patientHeaderView addSubview:self.patientSwipeViewContoller.view];
+    
     
     // Header shadow
     CALayer *layer = self.patientHeaderView.layer;
@@ -62,15 +70,26 @@
     self.patientScrollView.contentSize = self.patientSummaryView.frame.size;
     [self.patientScrollView addSubview:self.patientSummaryView];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patientChanged:) name:HRPatientDidChangeNotification object:nil];
+    
 }
 
 - (void)viewDidUnload {
-    [self setPatientImageView:nil];
-    [self setPatientScrollView:nil];
-    [self setPatientSummaryView:nil];
-    [self setPatientHeaderView:nil];
-    [self setPatientImageShadowView:nil];
+    self.patientSummaryView = nil;
+    self.patientScrollView = nil;
+    self.patientSummaryView = nil;
+    self.patientHeaderView = nil;
+    self.patientSwipeViewContoller = nil;
+    
+    self.patientName = nil;
+    
     [super viewDidUnload];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+//    self.patientSwipeViewContoller.delegate = (HRRootViewController *)self.parentViewController;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -85,6 +104,14 @@
     } else {
         [self toggleViewShadow:NO];
     }
+}
+
+#pragma mark - NSNotificationCenter
+
+- (void)patientChanged:(NSNotification *)notif {
+    HRPatient *patient = [notif.userInfo objectForKey:@"patient"];
+    NSLog(@"Name: %@", patient.name);
+    self.patientName.text = [patient.name uppercaseString];
 }
 
 

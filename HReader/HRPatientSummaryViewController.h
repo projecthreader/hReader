@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class HRPatientSwipeViewController;
+
 @interface HRPatientSummaryViewController : UIViewController <UIScrollViewDelegate>
 
 @property (retain, nonatomic) IBOutlet UIView *patientHeaderView;
-@property (retain, nonatomic) IBOutlet UIView *patientImageShadowView;
-@property (retain, nonatomic) IBOutlet UIImageView *patientImageView;
 @property (retain, nonatomic) IBOutlet UIScrollView *patientScrollView;
 @property (retain, nonatomic) IBOutlet UIView *patientSummaryView;
+@property (retain, nonatomic) HRPatientSwipeViewController *patientSwipeViewContoller;
+
+@property (retain, nonatomic) IBOutlet UILabel *patientName;
+
 
 @end

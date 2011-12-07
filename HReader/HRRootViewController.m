@@ -13,6 +13,7 @@
 #import "HRTimelineViewController.h"
 #import "HRMessagesViewController.h"
 #import "HRDoctorsViewController.h"
+#import "HRPatient.h"
 
 @interface HRRootViewController ()
 - (void)setupPatientLabelWithText:(NSString *)text;

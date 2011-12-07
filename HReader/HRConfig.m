@@ -9,7 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
 
+#import "HRPatient.h"
+
+NSString * const HRPatientDidChangeNotification = @"HRPatientDidChangeNotification";
+
 @implementation HRConfig
+
+#pragma mark - Colors
 
 + (UIColor *)textureColor {
     return [UIColor colorWithPatternImage:[UIImage imageNamed:@"handmadepaper"]];
@@ -35,6 +41,20 @@
 + (UIColor *)redGradientBottomColor {
     return [UIColor colorWithRed:221/255.0 green:59/255.0 blue:81/255.0 alpha:1.0];
 }
+
+#pragma mark - Objects
+
++ (NSArray *)patients {
+    HRPatient *johnny = [[HRPatient alloc] initWithName:@"Johhny Smith" image:[UIImage imageNamed:@"Johnny_Smith"]];
+    HRPatient *henry = [[HRPatient alloc] initWithName:@"Henry Smith" image:[UIImage imageNamed:@"Henry_Smith"]];
+    HRPatient *molly = [[HRPatient alloc] initWithName:@"Molly Smith" image:[UIImage imageNamed:@"Molly_Smith"]];
+    HRPatient *sarah = [[HRPatient alloc] initWithName:@"Sarah Smith" image:[UIImage imageNamed:@"Sarah_Smith"]];
+    HRPatient *tom = [[HRPatient alloc] initWithName:@"Tom Smith" image:[UIImage imageNamed:@"Tom_Smith"]];
+    
+    return [NSArray arrayWithObjects:johnny, henry, molly, sarah, tom, nil];
+}
+
+#pragma mark - Helper methods
 
 + (void)setShadowForView:(UIView *)shadowView borderForView:(UIView *)borderView {
     CALayer *borderLayer = borderView.layer;

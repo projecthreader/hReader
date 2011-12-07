@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const HRPatientDidChangeNotification;
+
 @interface HRConfig : NSObject
 
 + (UIColor *)textureColor;
@@ -16,6 +18,8 @@
 + (UIColor *)lightRedColor;
 + (UIColor *)redGradientTopColor;
 + (UIColor *)redGradientBottomColor;
+
++ (NSArray *)patients;
 
 + (void)setShadowForView:(UIView *)shadowView borderForView:(UIView *)borderView;
 

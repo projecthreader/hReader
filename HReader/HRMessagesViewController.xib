@@ -52,7 +52,7 @@
 										<reference key="NSNextResponder" ref="73142841"/>
 										<int key="NSvFlags">1316</int>
 										<object class="NSPSMatrix" key="NSFrameMatrix"/>
-										<string key="NSFrame">{{0, 14}, {175, 175}}</string>
+										<string key="NSFrameSize">{175, 175}</string>
 										<reference key="NSSuperview" ref="73142841"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="682593707"/>
@@ -64,7 +64,7 @@
 										</object>
 									</object>
 								</array>
-								<string key="NSFrame">{{20, 20}, {175, 175}}</string>
+								<string key="NSFrame">{{32, 15}, {175, 175}}</string>
 								<reference key="NSSuperview" ref="695130875"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="218019069"/>
