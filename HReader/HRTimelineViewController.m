@@ -12,11 +12,13 @@
 
 @synthesize scrollView  = __scrollView;
 @synthesize imageView   = __imageView;
+@synthesize webView     = __webView;
 
 - (void)dealloc {
     [__scrollView release];
     [__imageView release];
     
+    [__webView release];
     [super dealloc];
 }
 
@@ -33,12 +35,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.scrollView.contentSize = self.imageView.frame.size;
+//    self.scrollView.contentSize = self.imageView.frame.size;
+    
+    NSURL *html = [[NSBundle mainBundle] URLForResource:@"timeline-index" withExtension:@"html"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:html];
+    [self.webView loadRequest:request];
+    
 }
 
 - (void)viewDidUnload {
     self.scrollView = nil;
     self.imageView = nil;
+    self.webView = nil;
 
     [super viewDidUnload];
 }
