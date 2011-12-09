@@ -63,7 +63,6 @@
         [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [obj addObserver:self forKeyPath:@"title" options:0 context:0];
         }];
-        
     }
     return self;
 }
@@ -74,7 +73,7 @@
 {
     [super viewDidLoad];
     
-    [self setScrollViewShadow];
+//    [self setScrollViewShadow];
     [self setupPatientLabelWithText:@"Last Updated: 05 May by Joseph Yang, M.D. (Columbia Pediatric Associates)"];
     [self setLogo];
     
@@ -152,14 +151,17 @@
     [logoView release];
 }
 
+/*
 - (void)setScrollViewShadow {
     CALayer *layer = self.scrollView.layer;
     layer.shadowColor = [[UIColor darkGrayColor] CGColor];
     layer.shadowOpacity = 0.5;
     layer.shadowOffset = CGSizeMake(0, 3);
     layer.masksToBounds = NO;
+    layer.shouldRasterize = YES;
     [self.view bringSubviewToFront:self.scrollView];    
 }
+ */
 
 - (void)setupSegmentedControl {
     

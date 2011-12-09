@@ -23,6 +23,10 @@
 		9464C5871476BDAE0076B991 /* Johnny_Smith_96.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */; };
 		9464C5881476BDAE0076B991 /* Johnny_Smith_96.html in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */; };
 		9464C58C1476CB4F0076B991 /* C32ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464C58B1476CB4F0076B991 /* C32ViewController.m */; };
+		946662C51492520C004E1968 /* timeline-canvas.html in Resources */ = {isa = PBXBuildFile; fileRef = 946662C11492520C004E1968 /* timeline-canvas.html */; };
+		946662C61492520C004E1968 /* timeline-dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 946662C21492520C004E1968 /* timeline-dot.png */; };
+		946662C71492520C004E1968 /* timeline-index.html in Resources */ = {isa = PBXBuildFile; fileRef = 946662C31492520C004E1968 /* timeline-index.html */; };
+		946662C81492520C004E1968 /* timeline-main.css in Resources */ = {isa = PBXBuildFile; fileRef = 946662C41492520C004E1968 /* timeline-main.css */; };
 		94AEAE0414841CEB00C005B2 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0214841CEB00C005B2 /* TimelineViewController.m */; };
 		94AEAE0514841CEB00C005B2 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEAE0314841CEB00C005B2 /* TimelineViewController.xib */; };
 		94AEAE0914868BC200C005B2 /* HRRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0814868BC200C005B2 /* HRRootViewController.m */; };
@@ -75,6 +79,10 @@
 		9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Johnny_Smith_96.html; sourceTree = "<group>"; };
 		9464C58A1476CB4F0076B991 /* C32ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C32ViewController.h; sourceTree = "<group>"; };
 		9464C58B1476CB4F0076B991 /* C32ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = C32ViewController.m; sourceTree = "<group>"; };
+		946662C11492520C004E1968 /* timeline-canvas.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "timeline-canvas.html"; sourceTree = "<group>"; };
+		946662C21492520C004E1968 /* timeline-dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline-dot.png"; sourceTree = "<group>"; };
+		946662C31492520C004E1968 /* timeline-index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "timeline-index.html"; sourceTree = "<group>"; };
+		946662C41492520C004E1968 /* timeline-main.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "timeline-main.css"; sourceTree = "<group>"; };
 		94AEAE0114841CEB00C005B2 /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		94AEAE0214841CEB00C005B2 /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 		94AEAE0314841CEB00C005B2 /* TimelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineViewController.xib; sourceTree = "<group>"; };
@@ -132,7 +140,6 @@
 		941DB09D1471B32D00A96B8B = {
 			isa = PBXGroup;
 			children = (
-				DD7037B21490103300F58A83 /* QuartzCore.framework */,
 				941DB0B21471B32D00A96B8B /* HReader */,
 				944A2F291472C5F900694816 /* Resources */,
 				941DB0AB1471B32D00A96B8B /* Frameworks */,
@@ -151,6 +158,7 @@
 		941DB0AB1471B32D00A96B8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DD7037B21490103300F58A83 /* QuartzCore.framework */,
 				941DB0AC1471B32D00A96B8B /* UIKit.framework */,
 				941DB0AE1471B32D00A96B8B /* Foundation.framework */,
 				941DB0B01471B32D00A96B8B /* CoreGraphics.framework */,
@@ -372,6 +380,10 @@
 				DD695D791489439100E4E2E1 /* HRTimelineViewController.h */,
 				DD695D7A1489439100E4E2E1 /* HRTimelineViewController.m */,
 				DD695D7B1489439100E4E2E1 /* HRTimelineViewController.xib */,
+				946662C11492520C004E1968 /* timeline-canvas.html */,
+				946662C21492520C004E1968 /* timeline-dot.png */,
+				946662C31492520C004E1968 /* timeline-index.html */,
+				946662C41492520C004E1968 /* timeline-main.css */,
 			);
 			name = Timeline;
 			sourceTree = "<group>";
@@ -471,6 +483,10 @@
 				DD8BD9E6148D1D660090F729 /* Tom_Smith.png in Resources */,
 				DD124DAE148D3EF300E23A44 /* Doctor.png in Resources */,
 				DD191741148FEE8E00B87AAF /* HRPatientSwipeViewController.xib in Resources */,
+				946662C51492520C004E1968 /* timeline-canvas.html in Resources */,
+				946662C61492520C004E1968 /* timeline-dot.png in Resources */,
+				946662C71492520C004E1968 /* timeline-index.html in Resources */,
+				946662C81492520C004E1968 /* timeline-main.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
