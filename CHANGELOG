@@ -3,9 +3,18 @@
 # 2011-12-05
 
 * Fixed issue which slowed down device orientation issues
+* Patient swipe view now updates users photo when swiped from another patient swipe view
 
 ## Timeline View
 * Changed timeline to use HTML provided by Jeff
+* Added patient swipe view
+
+## Messages View
+* Added patient swipe view
+
+## Doctor View
+* Change name for Dr. Finger
+* Added patient swipe view
 
 - - -
 
