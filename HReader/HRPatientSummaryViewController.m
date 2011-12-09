@@ -22,7 +22,6 @@
 @synthesize patientHeaderView           = __patientHeaderView;
 @synthesize patientScrollView           = __patientScrollView;
 @synthesize patientSummaryView          = __patientSummaryView;
-@synthesize patientSwipeViewContoller   = __patientSwipeViewController;
 
 @synthesize patientName                 = __patientName;
 
@@ -32,8 +31,6 @@
     [__patientScrollView release];
     [__patientSummaryView release];
     [__patientHeaderView release];
-    [__patientSwipeViewController release];
-    
     [__patientName release];
     
     [super dealloc];
@@ -42,7 +39,10 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        HRPatientSwipeViewController *patientSwipeViewController = [[HRPatientSwipeViewController alloc] initWithNibName:nil bundle:nil];
+        [self addChildViewController:patientSwipeViewController];
+        patientSwipeViewController.patientsArray = [HRConfig patients];
+        [patientSwipeViewController release];
     }
     return self;
 }
@@ -52,11 +52,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.patientSwipeViewContoller = [[[HRPatientSwipeViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-    self.patientSwipeViewContoller.patientsArray = [HRConfig patients];
-    self.patientSwipeViewContoller.view.frame = CGRectMake(32, 15, 175, 175);
-    [self.patientHeaderView addSubview:self.patientSwipeViewContoller.view];
-    
+    HRPatientSwipeViewController *patientSwipeViewController = (HRPatientSwipeViewController *)[self.childViewControllers objectAtIndex:0];
+    [self.patientHeaderView addSubview:patientSwipeViewController.view];
     
     // Header shadow
     CALayer *layer = self.patientHeaderView.layer;
@@ -78,9 +75,7 @@
     self.patientSummaryView = nil;
     self.patientScrollView = nil;
     self.patientSummaryView = nil;
-    self.patientHeaderView = nil;
-    self.patientSwipeViewContoller = nil;
-    
+    self.patientHeaderView = nil;    
     self.patientName = nil;
     
     [super viewDidUnload];
@@ -109,7 +104,7 @@
 #pragma mark - NSNotificationCenter
 
 - (void)patientChanged:(NSNotification *)notif {
-    HRPatient *patient = [notif.userInfo objectForKey:@"patient"];
+    HRPatient *patient = [notif.userInfo objectForKey:HRPatientKey];
     NSLog(@"Name: %@", patient.name);
     self.patientName.text = [patient.name uppercaseString];
 }

@@ -11,10 +11,6 @@
 #import "HRPatientSwipeViewController.h"
 #import "HRPatient.h"
 
-@interface HRPatientSwipeViewController ()
-- (void)patientChanged;
-@end
-
 @implementation HRPatientSwipeViewController
 
 @synthesize patientsArray   = __patientArray;
@@ -47,6 +43,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.frame = CGRectMake(32, 15, 175, 175);
+    
     self.scrollView.pagingEnabled = YES;
     self.scrollView.contentSize = CGSizeMake(175 * [self.patientsArray count], 175);
     self.scrollView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
@@ -56,6 +54,7 @@
         UIImageView *patientImageView = [[UIImageView alloc] initWithImage:patient.image];
         patientImageView.frame = CGRectMake(175 * idx, 0, 175, 175);
         [self.scrollView addSubview:patientImageView];
+        [patientImageView release];
     }];
     
     [self.view addSubview:self.scrollView];
@@ -79,6 +78,9 @@
     self.shadowView.layer.shadowOpacity = 0.5f;
     self.shadowView.layer.shadowOffset = CGSizeMake(8.0f, 7.0f);
     self.shadowView.layer.shadowRadius = 5.0f;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patientChanged:) name:HRPatientDidChangeNotification object:nil];
+    
 }
 
 
@@ -105,7 +107,7 @@
     NSInteger index = self.scrollView.contentOffset.x / self.scrollView.bounds.size.width;
     self.pageControl.currentPage = index;
     HRPatient *patient = [self.patientsArray objectAtIndex:index];
-    [[NSNotificationCenter defaultCenter] postNotificationName:HRPatientDidChangeNotification object:self userInfo:[NSDictionary dictionaryWithObject:patient forKey:@"patient"]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:HRPatientDidChangeNotification object:self userInfo:[NSDictionary dictionaryWithObject:patient forKey:HRPatientKey]];
 }
 
 #pragma mark - UIPageControl targets
@@ -116,8 +118,13 @@
 
 #pragma mark - private methods
 
-- (void)patientChanged {
-    
+- (void)patientChanged:(NSNotification *)notif {
+    if ([notif object] != self) {
+        HRPatient *patient = [notif.userInfo objectForKey:HRPatientKey];
+        NSUInteger index = [self.patientsArray indexOfObject:patient];
+        self.scrollView.contentOffset = CGPointMake(index * self.scrollView.bounds.size.width, 0);
+        self.pageControl.currentPage = index;
+    }
 }
 
 @end

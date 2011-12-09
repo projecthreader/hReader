@@ -11,7 +11,7 @@
 @interface HRTimelineViewController : UIViewController
 
 @property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (retain, nonatomic) IBOutlet UIImageView *imageView;
 @property (retain, nonatomic) IBOutlet UIWebView *webView;
+@property (retain, nonatomic) IBOutlet UIView *headerView;
 
 @end

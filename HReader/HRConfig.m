@@ -13,6 +13,8 @@
 
 NSString * const HRPatientDidChangeNotification = @"HRPatientDidChangeNotification";
 
+NSString * const HRPatientKey = @"HRPatientKey";
+
 @implementation HRConfig
 
 #pragma mark - Colors
@@ -45,13 +47,21 @@ NSString * const HRPatientDidChangeNotification = @"HRPatientDidChangeNotificati
 #pragma mark - Objects
 
 + (NSArray *)patients {
-    HRPatient *johnny = [[HRPatient alloc] initWithName:@"Johhny Smith" image:[UIImage imageNamed:@"Johnny_Smith"]];
-    HRPatient *henry = [[HRPatient alloc] initWithName:@"Henry Smith" image:[UIImage imageNamed:@"Henry_Smith"]];
-    HRPatient *molly = [[HRPatient alloc] initWithName:@"Molly Smith" image:[UIImage imageNamed:@"Molly_Smith"]];
-    HRPatient *sarah = [[HRPatient alloc] initWithName:@"Sarah Smith" image:[UIImage imageNamed:@"Sarah_Smith"]];
-    HRPatient *tom = [[HRPatient alloc] initWithName:@"Tom Smith" image:[UIImage imageNamed:@"Tom_Smith"]];
     
-    return [NSArray arrayWithObjects:johnny, henry, molly, sarah, tom, nil];
+    static NSArray *array = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        HRPatient *johnny = [[[HRPatient alloc] initWithName:@"Johhny Smith" image:[UIImage imageNamed:@"Johnny_Smith"]] autorelease];
+        HRPatient *henry = [[[HRPatient alloc] initWithName:@"Henry Smith" image:[UIImage imageNamed:@"Henry_Smith"]] autorelease];
+        HRPatient *molly = [[[HRPatient alloc] initWithName:@"Molly Smith" image:[UIImage imageNamed:@"Molly_Smith"]] autorelease];
+        HRPatient *sarah = [[[HRPatient alloc] initWithName:@"Sarah Smith" image:[UIImage imageNamed:@"Sarah_Smith"]] autorelease];
+        HRPatient *tom = [[[HRPatient alloc] initWithName:@"Tom Smith" image:[UIImage imageNamed:@"Tom_Smith"]] autorelease];
+        
+        array = [[NSArray alloc] initWithObjects:johnny, henry, molly, sarah, tom, nil];
+    });
+    
+    
+    return array;
 }
 
 #pragma mark - Helper methods

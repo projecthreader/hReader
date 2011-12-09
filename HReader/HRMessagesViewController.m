@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "HRMessagesViewController.h"
+#import "HRPatientSwipeViewController.h"
 
 @interface HRMessagesViewController ()
 - (void)setHeaderViewShadow;
@@ -39,6 +40,11 @@
     if (self) {
         self.title = @"Messages (0)";
         self.datesArray = [NSArray arrayWithObjects:@"7 Apr. 2011", @"28 Mar. 2011", @"27 Mar. 2011", @"17 Jan. 2011", @"13 Dec. 2010", @"5 Dec. 2010", @"28 Oct. 2010", @"23 Oct. 2010", nil];
+        
+        HRPatientSwipeViewController *patientSwipeViewController = [[HRPatientSwipeViewController alloc] initWithNibName:nil bundle:nil];
+        [self addChildViewController:patientSwipeViewController];
+        patientSwipeViewController.patientsArray = [HRConfig patients];
+        [patientSwipeViewController release];
     }
     return self;
 }
@@ -47,25 +53,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    HRPatientSwipeViewController *patientSwipeViewController = (HRPatientSwipeViewController *)[self.childViewControllers objectAtIndex:0];
+    [self.patientView addSubview:patientSwipeViewController.view];
     
     [HRConfig setShadowForView:self.patientImageShadowView borderForView:self.patientImageView];
     
     self.scrollView.contentSize = self.messageContentView.bounds.size;
     [self.scrollView addSubview:self.messageContentView];
     
-    [self setHeaderViewShadow];
-    
-
-    
+    [self setHeaderViewShadow];    
 }
 
 - (void)viewDidUnload {
-    [self setPatientImageShadowView:nil];
-    [self setPatientImageView:nil];
+    self.patientImageShadowView = nil;
+    self.patientImageView = nil;
+    self.scrollView = nil;
+    self.messageContentView = nil;
+    self.patientView = nil;
     
-    [self setScrollView:nil];
-    [self setMessageContentView:nil];
-    [self setPatientView:nil];
     [super viewDidUnload];
 }
 

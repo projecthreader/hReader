@@ -9,15 +9,15 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "HRDoctorsViewController.h"
+#import "HRPatientSwipeViewController.h"
 
 @implementation HRDoctorsViewController
-@synthesize patientImageShadowView      = __patientImageShadowView;
-@synthesize patientImageView            = __patientImageView;
+
+@synthesize patientView                 = __patientView;
 @synthesize doctorImageView             = __doctorImageView;
 
 - (void)dealloc {
-    [__patientImageShadowView release];
-    [__patientImageView release];
+    [__patientView release];;
     [__doctorImageView release];
     
     [super dealloc];
@@ -27,6 +27,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Doctors";
+        
+        HRPatientSwipeViewController *patientSwipeViewController = [[HRPatientSwipeViewController alloc] initWithNibName:nil bundle:nil];
+        [self addChildViewController:patientSwipeViewController];
+        patientSwipeViewController.patientsArray = [HRConfig patients];
+        [patientSwipeViewController release];
     }
     return self;
 }
@@ -35,6 +40,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    HRPatientSwipeViewController *patientSwipeViewController = (HRPatientSwipeViewController *)[self.childViewControllers objectAtIndex:0];
+    [self.patientView addSubview:patientSwipeViewController.view];
     
     // Border
 //    self.doctorImageView.clipsToBounds = NO;
@@ -47,14 +55,14 @@
     self.doctorImageView.layer.shadowOffset = CGSizeMake(2.0f, 0.0f);
     self.doctorImageView.layer.shadowRadius = 5.0f;
 
-     [HRConfig setShadowForView:self.patientImageShadowView borderForView:self.patientImageView];   
+//     [HRConfig setShadowForView:self.patientImageShadowView borderForView:self.patientImageView];   
 }
 
 - (void)viewDidUnload {
-    [self setPatientImageShadowView:nil];
-    [self setPatientImageView:nil];
-    [self setDoctorImageView:nil];
     [super viewDidUnload];
+    
+    self.patientView = nil;
+    self.doctorImageView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class HRPatientSwipeViewController;
+
 @interface HRDoctorsViewController : UIViewController
 
-@property (retain, nonatomic) IBOutlet UIView *patientImageShadowView;
-@property (retain, nonatomic) IBOutlet UIImageView *patientImageView;
+@property (retain, nonatomic) IBOutlet UIView *patientView;
 @property (retain, nonatomic) IBOutlet UIImageView *doctorImageView;
 
 @end

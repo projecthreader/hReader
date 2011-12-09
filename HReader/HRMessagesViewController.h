@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class HRPatientSwipeViewController;
+
 @interface HRMessagesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UIView *patientImageShadowView;

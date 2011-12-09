@@ -7,18 +7,20 @@
 //
 
 #import "HRTimelineViewController.h"
+#import "HRPatientSwipeViewController.h"
+
 
 @implementation HRTimelineViewController
 
 @synthesize scrollView  = __scrollView;
-@synthesize imageView   = __imageView;
 @synthesize webView     = __webView;
+@synthesize headerView  = __headerView;
 
 - (void)dealloc {
     [__scrollView release];
-    [__imageView release];
-    
+    [__headerView release];
     [__webView release];
+    
     [super dealloc];
 }
 
@@ -26,6 +28,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Timeline";
+        
+        HRPatientSwipeViewController *patientSwipeViewController = [[HRPatientSwipeViewController alloc] initWithNibName:nil bundle:nil];
+        [self addChildViewController:patientSwipeViewController];
+        patientSwipeViewController.patientsArray = [HRConfig patients];
+        [patientSwipeViewController release];
     }
     return self;
 }
@@ -35,7 +42,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.scrollView.contentSize = self.imageView.frame.size;
+    HRPatientSwipeViewController *patientSwipeViewController = (HRPatientSwipeViewController *)[self.childViewControllers objectAtIndex:0];
+    [self.headerView addSubview:patientSwipeViewController.view];
+    
+    
+    self.headerView.backgroundColor = [UIColor clearColor];
     
     NSURL *html = [[NSBundle mainBundle] URLForResource:@"timeline-index" withExtension:@"html"];
     NSURLRequest *request = [NSURLRequest requestWithURL:html];
@@ -45,7 +56,7 @@
 
 - (void)viewDidUnload {
     self.scrollView = nil;
-    self.imageView = nil;
+    self.headerView = nil;
     self.webView = nil;
 
     [super viewDidUnload];

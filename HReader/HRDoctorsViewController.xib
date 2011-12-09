@@ -40,51 +40,17 @@
 					<object class="IBUIView" id="121484459">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUIView" id="1050336840">
-								<reference key="NSNextResponder" ref="121484459"/>
-								<int key="NSvFlags">292</int>
-								<array class="NSMutableArray" key="NSSubviews">
-									<object class="IBUIImageView" id="878415586">
-										<reference key="NSNextResponder" ref="1050336840"/>
-										<int key="NSvFlags">1316</int>
-										<object class="NSPSMatrix" key="NSFrameMatrix"/>
-										<string key="NSFrame">{{0, -1}, {175, 175}}</string>
-										<reference key="NSSuperview" ref="1050336840"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="516439030"/>
-										<bool key="IBUIUserInteractionEnabled">NO</bool>
-										<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-										<object class="NSCustomResource" key="IBUIImage">
-											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">Johnny_Smith.png</string>
-										</object>
-									</object>
-								</array>
-								<string key="NSFrame">{{20, 20}, {175, 175}}</string>
-								<reference key="NSSuperview" ref="121484459"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="878415586"/>
-								<string key="NSReuseIdentifierKey">_NS:212</string>
-								<object class="NSColor" key="IBUIBackgroundColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MQA</bytes>
-									<object class="NSColorSpace" key="NSCustomColorSpace" id="439630617">
-										<int key="NSID">2</int>
-									</object>
-								</object>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-							</object>
-						</array>
 						<string key="NSFrameSize">{283, 217}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="1050336840"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:212</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
-							<reference key="NSCustomColorSpace" ref="439630617"/>
+							<object class="NSColorSpace" key="NSCustomColorSpace">
+								<int key="NSID">2</int>
+							</object>
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
@@ -179,20 +145,20 @@
 						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
 						<bool key="IBUIEditable">NO</bool>
 						<object class="NSMutableString" key="IBUIText">
-							<bytes key="NS.bytes">V2luY2hlc3RlciwgTWFzcy4gLSBEci4gQ3J5c3RhbCBGaW5nZXIsIE1EIGhhcyBqb2luZWQgV2luY2hl
-c3RlciBIb3NwaXRhbCdzIG1lZGljYWwgc3RhZmYgYXQgV2luY2hlc3RlciBGYW1pbHkgUGh5c2ljaWFu
-cy4KCkRyLiBDcnlzdGFsIEZpbmdlciBNRCBwcmFjdGljZXMgcGVkaWF0cmljIG1lZGljaW5lIGluIFdp
-bmNoZXN0ZXIgTWFzc2FjaHVzZXR0cy4KClBob25lIE51bWJlcjogNzgxLTcyOS0xODEwCgpBIHJlc2lk
-ZW50IG9mIE1hbGRlbiwgRHIuIEZpbmdlciB3YXMgcHJldmlvdXNseSBhIHJlc2lkZW50IHBlZGlhdHJp
-Y2lhbiBmZWxsb3cgYXQgU3dlaWRocyBGYW1pbHkgTWVkaWNpbmUgaW4gU2VhdHRsZSB3aGVyZSBzaGUg
-YWxzbyBzZXJ2ZWQgb24gdGhlIFByYWN0aWNlIE1hbmFnZW1lbnQgQ29tbWl0dGVlLCBQYXRpZW50IEVk
-dWNhdGlvbiBDb21taXR0ZWUgYW5kIERpYWJldGVzIEdyb3VwIFZpc2l0IFRlYW0uCgpEci4gRmluZ2Vy
-IGVhcm5lZCBoZXIgbWVkaWNhbCBkZWdyZWUgZnJvbSB0aGUgVW5pdmVyc2l0eSBvZiBQZW5uc3lsdmFu
-aWEgU2Nob29sIG9mIE1lZGljaW5lIGluIDIwMDMsIGFuZCBoZXIgYmFjaGVsb3IncyBkZWdyZWUgaW4g
-cHN5Y2hvYmlvbG9neSBtYWduYSBjdW0gbGF1ZGUgZnJvbSBZYWxlIFVuaXZlcnNpdHkgaW4gTmV3IEhh
-dmVuLCBDb25uLiBpbiAxOTk5LiBCb2FyZCBjZXJ0aWZpZWQgYnkgdGhlIEFtZXJpY2FuIEJvYXJkIG9m
-IEZhbWlseSBQaHlzaWNpYW5zLCBzaGUgaXMgYSBtZW1iZXIgb2YgdGhlIEFtZXJpY2FuIEFjYWRlbXkg
-b2YgRmFtaWx5IFBoeXNpY2lhbnMuA</bytes>
+							<bytes key="NS.bytes">V2luY2hlc3RlciwgTWFzcy4gLSBEci4gQ3J5c3RhbCBKb2hhbnNlbiwgTUQgaGFzIGpvaW5lZCBXaW5j
+aGVzdGVyIEhvc3BpdGFsJ3MgbWVkaWNhbCBzdGFmZiBhdCBXaW5jaGVzdGVyIEZhbWlseSBQaHlzaWNp
+YW5zLgoKRHIuIENyeXN0YWwgSm9oYW5zZW4gTUQgcHJhY3RpY2VzIHBlZGlhdHJpYyBtZWRpY2luZSBp
+biBXaW5jaGVzdGVyIE1hc3NhY2h1c2V0dHMuCgpQaG9uZSBOdW1iZXI6IDc4MS03MjktMTgxMAoKQSBy
+ZXNpZGVudCBvZiBNYWxkZW4sIERyLiBKb2hhbnNlbiB3YXMgcHJldmlvdXNseSBhIHJlc2lkZW50IHBl
+ZGlhdHJpY2lhbiBmZWxsb3cgYXQgU3dlaWQncyBGYW1pbHkgTWVkaWNpbmUgaW4gU2VhdHRsZSB3aGVy
+ZSBzaGUgYWxzbyBzZXJ2ZWQgb24gdGhlIFByYWN0aWNlIE1hbmFnZW1lbnQgQ29tbWl0dGVlLCBQYXRp
+ZW50IEVkdWNhdGlvbiBDb21taXR0ZWUgYW5kIERpYWJldGVzIEdyb3VwIFZpc2l0IFRlYW0uCgpEci4g
+Sm9oYW5zZW4gZWFybmVkIGhlciBtZWRpY2FsIGRlZ3JlZSBmcm9tIHRoZSBVbml2ZXJzaXR5IG9mIFBl
+bm5zeWx2YW5pYSBTY2hvb2wgb2YgTWVkaWNpbmUgaW4gMjAwMywgYW5kIGhlciBiYWNoZWxvcidzIGRl
+Z3JlZSBpbiBwc3ljaG9iaW9sb2d5IG1hZ25hIGN1bSBsYXVkZSBmcm9tIFlhbGUgVW5pdmVyc2l0eSBp
+biBOZXcgSGF2ZW4sIENvbm4uIGluIDE5OTkuIEJvYXJkIGNlcnRpZmllZCBieSB0aGUgQW1lcmljYW4g
+Qm9hcmQgb2YgRmFtaWx5IFBoeXNpY2lhbnMsIHNoZSBpcyBhIG1lbWJlciBvZiB0aGUgQW1lcmljYW4g
+QWNhZGVteSBvZiBGYW1pbHkgUGh5c2ljaWFucy4</bytes>
 						</object>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 							<int key="IBUIAutocapitalizationType">2</int>
@@ -260,27 +226,19 @@ b2YgRmFtaWx5IFBoeXNpY2lhbnMuA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">patientImageShadowView</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="1050336840"/>
-					</object>
-					<int key="connectionID">13</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">patientImageView</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="878415586"/>
-					</object>
-					<int key="connectionID">14</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">doctorImageView</string>
 						<reference key="source" ref="841351856"/>
 						<reference key="destination" ref="345509764"/>
 					</object>
 					<int key="connectionID">16</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">patientView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="121484459"/>
+					</object>
+					<int key="connectionID">17</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -318,25 +276,9 @@ b2YgRmFtaWx5IFBoeXNpY2lhbnMuA</bytes>
 					<object class="IBObjectRecord">
 						<int key="objectID">4</int>
 						<reference key="object" ref="121484459"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="1050336840"/>
-						</array>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="766721923"/>
 						<string key="objectName">Patient View</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">5</int>
-						<reference key="object" ref="1050336840"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="878415586"/>
-						</array>
-						<reference key="parent" ref="121484459"/>
-						<string key="objectName">Shadow View</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">6</int>
-						<reference key="object" ref="878415586"/>
-						<reference key="parent" ref="1050336840"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">8</int>
@@ -376,10 +318,6 @@ b2YgRmFtaWx5IFBoeXNpY2lhbnMuA</bytes>
 				<string key="15.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<reference key="6.IBUserGuides" ref="0"/>
-				<boolean value="NO" key="6.showNotes"/>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<reference key="8.IBUserGuides" ref="0"/>
 				<boolean value="NO" key="8.showNotes"/>
@@ -391,7 +329,7 @@ b2YgRmFtaWx5IFBoeXNpY2lhbnMuA</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">16</int>
+			<int key="maxID">17</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -400,21 +338,16 @@ b2YgRmFtaWx5IFBoeXNpY2lhbnMuA</bytes>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="doctorImageView">UIImageView</string>
-						<string key="patientImageShadowView">UIView</string>
-						<string key="patientImageView">UIImageView</string>
+						<string key="patientView">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="doctorImageView">
 							<string key="name">doctorImageView</string>
 							<string key="candidateClassName">UIImageView</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="patientImageShadowView">
-							<string key="name">patientImageShadowView</string>
+						<object class="IBToOneOutletInfo" key="patientView">
+							<string key="name">patientView</string>
 							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="patientImageView">
-							<string key="name">patientImageView</string>
-							<string key="candidateClassName">UIImageView</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -428,10 +361,10 @@ b2YgRmFtaWx5IFBoeXNpY2lhbnMuA</bytes>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="Doctor.png">{273, 406}</string>
-			<string key="Johnny_Smith.png">{170, 170}</string>
-		</dictionary>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NS.key.0">Doctor.png</string>
+			<string key="NS.object.0">{273, 406}</string>
+		</object>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>
 </archive>
