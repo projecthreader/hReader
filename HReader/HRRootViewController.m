@@ -18,7 +18,6 @@
 @interface HRRootViewController ()
 - (void)setupPatientLabelWithText:(NSString *)text;
 - (void)setLogo;
-- (void)setScrollViewShadow;
 - (void)setupSegmentedControl;
 @end
 
@@ -73,10 +72,8 @@
 {
     [super viewDidLoad];
     
-//    [self setScrollViewShadow];
     [self setupPatientLabelWithText:@"Last Updated: 05 May by Joseph Yang, M.D. (Columbia Pediatric Associates)"];
     [self setLogo];
-    
 
     [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([obj isKindOfClass:[UIViewController class]]) {
@@ -150,18 +147,6 @@
     [self.navigationController.navigationBar addSubview:logoView];
     [logoView release];
 }
-
-/*
-- (void)setScrollViewShadow {
-    CALayer *layer = self.scrollView.layer;
-    layer.shadowColor = [[UIColor darkGrayColor] CGColor];
-    layer.shadowOpacity = 0.5;
-    layer.shadowOffset = CGSizeMake(0, 3);
-    layer.masksToBounds = NO;
-    layer.shouldRasterize = YES;
-    [self.view bringSubviewToFront:self.scrollView];    
-}
- */
 
 - (void)setupSegmentedControl {
     
