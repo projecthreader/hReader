@@ -1,0 +1,115 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, fieldset, form, label, legend, caption, tfoot, thead, article, aside, dialog, figure, footer, header, hgroup, nav section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: arial;
+  vertical-align: baseline;
+}
+
+article, aside, dialog, figure, footer, header, hgroup, nav, section { display: block; }
+
+body { line-height: 1.5; }
+
+
+
+
+table tr {
+  height: 32px;
+  border: 1 solid #ccc;
+  border-spacing: 0;
+}
+
+table {
+  text-align: left;
+  border-spacing: 0;
+}
+
+#Categories table, tbody, tr:nth-child(even)  { 
+  background-color: #CCC;
+  font-size: 12pt; 
+  border: none;
+  
+} 
+
+#Timeline table tbody tr:nth-child(2) {
+    background-color: white;
+}
+
+ table, tbody, tr:nth-child(odd)  { 
+  background-color: white;
+  font-size: 12pt; 
+} 
+
+td {
+  border: none;
+  padding: 0;
+}
+
+
+div#Timeline {
+  
+}
+
+#months th h1{
+  vertical-align: top;
+
+}
+
+div#Categories  {
+  position: fixed;
+  margin-top: 200px;
+  margin-width: 232px;
+  font-size: 13px;
+  z-index: 1;
+  border-right: 1px solid #999;
+
+}
+#Categories th {
+  width: 200px;
+  padding-left: 32px;
+}
+
+
+#Timeline {
+  float: left;
+  margin-left: 233px;
+  width: 792px;
+  height: 532px;
+  margin-top: 128px;
+  width: 100%;
+  border-left: 3px solid #999;
+}
+
+#Timeline td {
+  width: 80px;
+}
+
+
+h1 {
+  font-size: 36px;
+  color: #ccc;
+  background-color: white;
+  border: none;
+  height: 38px;
+  padding: 0;
+  font-weight: 500;
+  line:height: 24px;
+}
+
+#Timeline td {
+  border-right: 1px solid #ccc;
+}
+
+
+
+#Timeline th {
+  font-size: 12px;
+  color: #999;
+}
+
+td.dot {
+  background-image: url ('timeline-dot.png');
+}
