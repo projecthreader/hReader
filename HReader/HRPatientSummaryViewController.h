@@ -17,5 +17,7 @@
 @property (retain, nonatomic) IBOutlet UIView *patientSummaryView;
 @property (retain, nonatomic) IBOutlet UILabel *patientName;
 
+@property (retain, nonatomic) IBOutlet UILabel *addressLabel;
+@property (retain, nonatomic) IBOutlet UILabel *sexLabel;
 
 @end

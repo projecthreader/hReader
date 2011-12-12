@@ -10,13 +10,12 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "HRPatient.h"
+#import "HRAddress.h"
 
 NSString * const HRPatientDidChangeNotification = @"HRPatientDidChangeNotification";
-
 NSString * const HRPatientKey = @"HRPatientKey";
 
 @implementation HRConfig
-
 
 #pragma mark - App Info
 
@@ -72,11 +71,29 @@ NSString * const HRPatientKey = @"HRPatientKey";
     static NSArray *array = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        HRAddress *address = [[HRAddress alloc] initWithSteet1:@"2275 Rolling Run Dr." street2:nil city:@"Woodlawn" state:@"MD" zip:@"21244"];
+        
         HRPatient *johnny = [[[HRPatient alloc] initWithName:@"Johhny Smith" image:[UIImage imageNamed:@"Johnny_Smith"]] autorelease];
+        johnny.address = address;
+        johnny.sex = HRPatientSexMale;
+        
         HRPatient *henry = [[[HRPatient alloc] initWithName:@"Henry Smith" image:[UIImage imageNamed:@"Henry_Smith"]] autorelease];
+        henry.address = [[[HRAddress alloc] initWithSteet1:@"323 Summer Hill Ln." street2:nil city:@"Baltimore" state:@"MD" zip:@"21215"] autorelease];
+        henry.sex = HRPatientSexMale;
+        
         HRPatient *molly = [[[HRPatient alloc] initWithName:@"Molly Smith" image:[UIImage imageNamed:@"Molly_Smith"]] autorelease];
+        molly.address = address;
+        molly.sex = HRPatientSexFemale;
+        
         HRPatient *sarah = [[[HRPatient alloc] initWithName:@"Sarah Smith" image:[UIImage imageNamed:@"Sarah_Smith"]] autorelease];
+        sarah.address = address;
+        sarah.sex = HRPatientSexFemale;
+        
         HRPatient *tom = [[[HRPatient alloc] initWithName:@"Tom Smith" image:[UIImage imageNamed:@"Tom_Smith"]] autorelease];
+        tom.address = address;
+        tom.sex = HRPatientSexMale;
+        
+        [address release];
         
         array = [[NSArray alloc] initWithObjects:johnny, henry, molly, sarah, tom, nil];
     });

@@ -10,8 +10,18 @@
 
 @implementation HRPatient
 
-@synthesize name;
-@synthesize image;
+@synthesize name        = __name;
+@synthesize image       = __image;;
+@synthesize address     = __address;
+@synthesize sex         = __sex;
+
+- (void)dealloc {
+    [__name release];
+    [__image release];
+    [__address release];
+    
+    [super dealloc];
+}
 
 - (id)initWithName:(NSString *)aName image:(UIImage *)aImage {
     self = [super init];
@@ -21,6 +31,24 @@
     }
     
     return self;
+}
+
+- (NSString *)sexAsString {
+    switch (self.sex) {
+        case HRPatientSexMale:
+            return @"Male";
+            break;
+        case HRPatientSexFemale:
+            return @"Female";
+            break;
+        case HRPatientSexTransgender:
+            return @"Transgender";
+            break;
+        default:
+            return @"Unknown";
+            break;
+    }
+    return nil;
 }
 
 @end

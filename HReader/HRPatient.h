@@ -8,11 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
+@class HRAddress;
+
 @interface HRPatient : NSObject
+
+typedef enum {
+    HRPatientSexMale = 0,
+    HRPatientSexFemale = 1,
+    HRPatientSexTransgender = 2
+} HRPatientSex;
 
 @property (copy, nonatomic) NSString *name;
 @property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) HRAddress *address;
+@property (nonatomic) HRPatientSex sex;
 
 - (id)initWithName:(NSString *)aName image:(UIImage *)aImage;
+
+- (NSString *)sexAsString;
 
 @end

@@ -9,11 +9,9 @@
 #import <Foundation/Foundation.h>
 
 extern NSString * const HRPatientDidChangeNotification;
-
 extern NSString * const HRPatientKey;
 
 @interface HRConfig : NSObject
-
 
 + (NSString *)appVersion;
 + (NSString *)bundleVersion;

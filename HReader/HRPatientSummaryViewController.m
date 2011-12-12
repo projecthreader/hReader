@@ -12,6 +12,7 @@
 #import "HRPatientSwipeViewController.h"
 #import "HRRootViewController.h"
 #import "HRPatient.h"
+#import "HRAddress.h"
 
 @interface HRPatientSummaryViewController ()
 - (void)toggleViewShadow:(BOOL)on;
@@ -24,6 +25,8 @@
 @synthesize patientSummaryView          = __patientSummaryView;
 
 @synthesize patientName                 = __patientName;
+@synthesize addressLabel                = __addressLabel;
+@synthesize sexLabel                    = __sexLabel;
 
 
 - (void)dealloc {
@@ -32,6 +35,8 @@
     [__patientSummaryView release];
     [__patientHeaderView release];
     [__patientName release];
+    [__addressLabel release];
+    [__sexLabel release];
     
     [super dealloc];
 }
@@ -77,14 +82,10 @@
     self.patientSummaryView = nil;
     self.patientHeaderView = nil;    
     self.patientName = nil;
+    self.addressLabel = nil;
     
+    [self setSexLabel:nil];
     [super viewDidUnload];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-//    self.patientSwipeViewContoller.delegate = (HRRootViewController *)self.parentViewController;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -105,8 +106,11 @@
 
 - (void)patientChanged:(NSNotification *)notif {
     HRPatient *patient = [notif.userInfo objectForKey:HRPatientKey];
-    NSLog(@"Name: %@", patient.name);
     self.patientName.text = [patient.name uppercaseString];
+    
+    HRAddress *address = patient.address;
+    self.addressLabel.text = [NSString stringWithFormat:@"%@\n%@, %@ %@", address.street1, address.city, address.state, address.zip];
+    self.sexLabel.text = [patient sexAsString];
 }
 
 

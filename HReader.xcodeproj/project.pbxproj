@@ -39,6 +39,7 @@
 		94AEAE10148690DA00C005B2 /* HRPatientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0E148690DA00C005B2 /* HRPatientSummaryViewController.m */; };
 		94AEAE11148690DA00C005B2 /* HRPatientSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEAE0F148690DA00C005B2 /* HRPatientSummaryViewController.xib */; };
 		94BB031A149688FA009B2FCC /* raw.html in Resources */ = {isa = PBXBuildFile; fileRef = 94BB0319149688FA009B2FCC /* raw.html */; };
+		94BB031E14969675009B2FCC /* HRAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BB031D14969675009B2FCC /* HRAddress.m */; };
 		94C5ECF51472F448009FE38D /* PatientDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C5ECF41472F448009FE38D /* PatientDetailsTableViewController.m */; };
 		94E3BB511472C95800E05D4D /* PatientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E3BB501472C95800E05D4D /* PatientSummaryViewController.m */; };
 		94E3BB571472CD2000E05D4D /* father.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E3BB561472CD2000E05D4D /* father.png */; };
@@ -108,6 +109,8 @@
 		94AEAE0E148690DA00C005B2 /* HRPatientSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPatientSummaryViewController.m; sourceTree = "<group>"; };
 		94AEAE0F148690DA00C005B2 /* HRPatientSummaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPatientSummaryViewController.xib; sourceTree = "<group>"; };
 		94BB0319149688FA009B2FCC /* raw.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = raw.html; sourceTree = "<group>"; };
+		94BB031C14969675009B2FCC /* HRAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAddress.h; sourceTree = "<group>"; };
+		94BB031D14969675009B2FCC /* HRAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAddress.m; sourceTree = "<group>"; };
 		94C5ECF31472F448009FE38D /* PatientDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientDetailsTableViewController.h; sourceTree = "<group>"; };
 		94C5ECF41472F448009FE38D /* PatientDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientDetailsTableViewController.m; sourceTree = "<group>"; };
 		94E3BB4F1472C95800E05D4D /* PatientSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientSummaryViewController.h; sourceTree = "<group>"; };
@@ -273,6 +276,7 @@
 		94689AD114967DF500E1FCA6 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				DD7037B014900E5900F58A83 /* Patient Swipe */,
 				94689AD314967E0600E1FCA6 /* About */,
 				94689AD214967E0100E1FCA6 /* C32 */,
 			);
@@ -362,6 +366,8 @@
 			children = (
 				DD19173D148FDEBB00B87AAF /* HRPatient.h */,
 				DD19173E148FDEBB00B87AAF /* HRPatient.m */,
+				94BB031C14969675009B2FCC /* HRAddress.h */,
+				94BB031D14969675009B2FCC /* HRAddress.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -414,7 +420,6 @@
 				94AEAE0714868BC200C005B2 /* HRRootViewController.h */,
 				94AEAE0814868BC200C005B2 /* HRRootViewController.m */,
 				94689AD114967DF500E1FCA6 /* Support */,
-				DD7037B014900E5900F58A83 /* Patient Swipe */,
 				DD8BD9ED148D2B5A0090F729 /* Patient Summary */,
 				DD8BD9EE148D2B660090F729 /* Timeline */,
 				DD8BD9EF148D2B6C0090F729 /* Messages */,
@@ -604,6 +609,7 @@
 				DD19173F148FDEBB00B87AAF /* HRPatient.m in Sources */,
 				94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */,
 				94689AD714967E3600E1FCA6 /* HRC32ViewController.m in Sources */,
+				94BB031E14969675009B2FCC /* HRAddress.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

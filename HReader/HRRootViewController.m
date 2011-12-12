@@ -64,6 +64,10 @@
         [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [obj addObserver:self forKeyPath:@"title" options:0 context:0];
         }];
+        
+        
+        HRPatient *patient = [[HRConfig patients] objectAtIndex:0];
+        [[NSNotificationCenter defaultCenter] postNotificationName:HRPatientDidChangeNotification object:self userInfo:[NSDictionary dictionaryWithObject:patient forKey:HRPatientKey]];
     }
     return self;
 }
