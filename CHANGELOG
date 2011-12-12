@@ -2,6 +2,16 @@
 
 # 2011-12-05
 
+* Added the TestFlight SDK to help gather feedback and statistics
+
+## About View
+* Added version
+* Added feedback form
+
+- - -
+
+# 2011-12-05
+
 * Fixed issue which slowed down device orientation issues
 * Patient swipe view now updates users photo when swiped from another patient swipe view
 
