@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Raw C32</title>
+        
+        <script>
+            function replaceXml(xml) {
+                pre = document.getElementsByTagName("pre")[0];
+                xml = xml.replace("&", "&amp;");
+                xml = xml.replace("<", "&lt;");
+                xml = xml.replace(">", "&gt;");
+                pre.innerHTML = xml;
+            }
+        </script>
+    </head>
+    <body>
+        <pre></pre>
+    </body>
+</html>

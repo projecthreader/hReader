@@ -14,11 +14,13 @@
 #import "HRMessagesViewController.h"
 #import "HRDoctorsViewController.h"
 #import "HRPatient.h"
+#import "HRC32ViewController.h"
 
 @interface HRRootViewController ()
 - (void)setupPatientLabelWithText:(NSString *)text;
 - (void)setLogo;
 - (void)setupSegmentedControl;
+- (void)showRawC32:(id)sender;
 @end
 
 @implementation HRRootViewController
@@ -83,7 +85,6 @@
     }];
     
     [self setupSegmentedControl];
-    
 }
 
 
@@ -134,9 +135,13 @@
     lastUpdatedLabel.textColor = [UIColor grayColor];
     lastUpdatedLabel.backgroundColor = [UIColor clearColor];
     UIBarButtonItem *lastUpdated = [[UIBarButtonItem alloc] initWithCustomView:lastUpdatedLabel];
-    self.toolbarItems = [NSArray arrayWithObjects:flex, lastUpdated, flex, nil];
+    
+    UIBarButtonItem *rawC32Button = [[UIBarButtonItem alloc] initWithTitle:@"C32" style:UIBarButtonItemStyleBordered target:self action:@selector(showRawC32:)];
+    
+    self.toolbarItems = [NSArray arrayWithObjects:flex, lastUpdated, flex, rawC32Button, nil];
     [lastUpdatedLabel release];
     [lastUpdated release];
+    [rawC32Button release];
     [flex release];
 }
 
@@ -168,6 +173,13 @@
 
 - (void)segmentSelected {
     [self.scrollView setContentOffset:CGPointMake(self.segmentedControl.selectedSegmentIndex * self.scrollView.bounds.size.width, 0) animated:YES];
+}
+
+- (void)showRawC32:(id)sender {
+    HRC32ViewController *c32ViewController = [[HRC32ViewController alloc] initWithNibName:nil bundle:nil];
+    c32ViewController.modalPresentationStyle = UIModalPresentationPageSheet;
+    [self presentModalViewController:c32ViewController animated:YES];
+    [c32ViewController release];
 }
 
 #pragma mark - kvo
