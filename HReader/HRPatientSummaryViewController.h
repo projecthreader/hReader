@@ -19,5 +19,6 @@
 
 @property (retain, nonatomic) IBOutlet UILabel *addressLabel;
 @property (retain, nonatomic) IBOutlet UILabel *sexLabel;
+@property (retain, nonatomic) IBOutlet UILabel *ageLabel;
 
 @end

@@ -27,6 +27,7 @@
 @synthesize patientName                 = __patientName;
 @synthesize addressLabel                = __addressLabel;
 @synthesize sexLabel                    = __sexLabel;
+@synthesize ageLabel                    = __ageLabel;
 
 
 - (void)dealloc {
@@ -37,6 +38,7 @@
     [__patientName release];
     [__addressLabel release];
     [__sexLabel release];
+    [__ageLabel release];
     
     [super dealloc];
 }
@@ -85,6 +87,7 @@
     self.addressLabel = nil;
     
     [self setSexLabel:nil];
+    [self setAgeLabel:nil];
     [super viewDidUnload];
 }
 
@@ -111,6 +114,7 @@
     HRAddress *address = patient.address;
     self.addressLabel.text = [NSString stringWithFormat:@"%@\n%@, %@ %@", address.street1, address.city, address.state, address.zip];
     self.sexLabel.text = [patient sexAsString];
+    self.ageLabel.text = [patient age];
 }
 
 

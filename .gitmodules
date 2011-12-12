@@ -1,3 +1,0 @@
-[submodule "vendor/FormatterKit"]
-	path = vendor/FormatterKit
-	url = https://github.com/mattt/FormatterKit.git
