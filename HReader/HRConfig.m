@@ -17,6 +17,27 @@ NSString * const HRPatientKey = @"HRPatientKey";
 
 @implementation HRConfig
 
+
+#pragma mark - App Info
+
++ (NSString *)appVersion { 
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+}
+
++ (NSString *)bundleVersion {
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+}
+
++ (NSString *)formattedVersion {
+    return [NSString stringWithFormat:@"%@ (%@)", [self appVersion], [self bundleVersion]];
+}
+
+#pragma mark - API Keys
+
++ (NSString *)testFlightTeamToken {
+    return @"e8ef4e7b3c88827400af56886c6fe280_MjYyNTYyMDExLTEwLTE5IDE2OjU3OjQ3LjMyNDk4OQ";
+}
+
 #pragma mark - Colors
 
 + (UIColor *)textureColor {

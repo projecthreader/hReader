@@ -20,6 +20,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Load TestFlight SDK
+#ifdef DEBUG
+    [TestFlight takeOff:[HRConfig testFlightTeamToken]];
+#endif
+    
     // Override point for customization after application launch.
     [self setAppearanceProxies];
     

@@ -14,6 +14,13 @@ extern NSString * const HRPatientKey;
 
 @interface HRConfig : NSObject
 
+
++ (NSString *)appVersion;
++ (NSString *)bundleVersion;
++ (NSString *)formattedVersion;
+
++ (NSString *)testFlightTeamToken;
+
 + (UIColor *)textureColor;
 + (UIColor *)redColor;
 + (UIColor *)greenColor;

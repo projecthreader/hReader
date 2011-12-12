@@ -27,6 +27,10 @@
 		946662C61492520C004E1968 /* timeline-dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 946662C21492520C004E1968 /* timeline-dot.png */; };
 		946662C71492520C004E1968 /* timeline-index.html in Resources */ = {isa = PBXBuildFile; fileRef = 946662C31492520C004E1968 /* timeline-index.html */; };
 		946662C81492520C004E1968 /* timeline-main.css in Resources */ = {isa = PBXBuildFile; fileRef = 946662C41492520C004E1968 /* timeline-main.css */; };
+		94689AC314964BE400E1FCA6 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94689ABF14964BE400E1FCA6 /* libTestFlight.a */; };
+		94689AC414964BE400E1FCA6 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 94689AC014964BE400E1FCA6 /* README.txt */; };
+		94689AC514964BE400E1FCA6 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 94689AC114964BE400E1FCA6 /* release_notes.txt */; };
+		94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94689ACA1496560C00E1FCA6 /* HRAboutTableViewController.m */; };
 		94AEAE0414841CEB00C005B2 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0214841CEB00C005B2 /* TimelineViewController.m */; };
 		94AEAE0514841CEB00C005B2 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEAE0314841CEB00C005B2 /* TimelineViewController.xib */; };
 		94AEAE0914868BC200C005B2 /* HRRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0814868BC200C005B2 /* HRRootViewController.m */; };
@@ -83,6 +87,12 @@
 		946662C21492520C004E1968 /* timeline-dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline-dot.png"; sourceTree = "<group>"; };
 		946662C31492520C004E1968 /* timeline-index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "timeline-index.html"; sourceTree = "<group>"; };
 		946662C41492520C004E1968 /* timeline-main.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "timeline-main.css"; sourceTree = "<group>"; };
+		94689ABF14964BE400E1FCA6 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = vendor/TestFlight/libTestFlight.a; sourceTree = "<group>"; };
+		94689AC014964BE400E1FCA6 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.txt; path = vendor/TestFlight/README.txt; sourceTree = "<group>"; };
+		94689AC114964BE400E1FCA6 /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = release_notes.txt; path = vendor/TestFlight/release_notes.txt; sourceTree = "<group>"; };
+		94689AC214964BE400E1FCA6 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestFlight.h; path = vendor/TestFlight/TestFlight.h; sourceTree = "<group>"; };
+		94689AC91496560C00E1FCA6 /* HRAboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAboutTableViewController.h; sourceTree = "<group>"; };
+		94689ACA1496560C00E1FCA6 /* HRAboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAboutTableViewController.m; sourceTree = "<group>"; };
 		94AEAE0114841CEB00C005B2 /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		94AEAE0214841CEB00C005B2 /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 		94AEAE0314841CEB00C005B2 /* TimelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineViewController.xib; sourceTree = "<group>"; };
@@ -131,6 +141,7 @@
 				941DB0AD1471B32D00A96B8B /* UIKit.framework in Frameworks */,
 				941DB0AF1471B32D00A96B8B /* Foundation.framework in Frameworks */,
 				941DB0B11471B32D00A96B8B /* CoreGraphics.framework in Frameworks */,
+				94689AC314964BE400E1FCA6 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +151,7 @@
 		941DB09D1471B32D00A96B8B = {
 			isa = PBXGroup;
 			children = (
+				94689ABC14964BBF00E1FCA6 /* Vendor */,
 				941DB0B21471B32D00A96B8B /* HReader */,
 				944A2F291472C5F900694816 /* Resources */,
 				941DB0AB1471B32D00A96B8B /* Frameworks */,
@@ -232,6 +244,25 @@
 			name = "C32 Patient Record";
 			sourceTree = "<group>";
 		};
+		94689ABC14964BBF00E1FCA6 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				94689ABE14964BCF00E1FCA6 /* TestFlight */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		94689ABE14964BCF00E1FCA6 /* TestFlight */ = {
+			isa = PBXGroup;
+			children = (
+				94689ABF14964BE400E1FCA6 /* libTestFlight.a */,
+				94689AC014964BE400E1FCA6 /* README.txt */,
+				94689AC114964BE400E1FCA6 /* release_notes.txt */,
+				94689AC214964BE400E1FCA6 /* TestFlight.h */,
+			);
+			name = TestFlight;
+			sourceTree = "<group>";
+		};
 		94C5ECFA1472FF7A009FE38D /* Patient Summary */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +286,8 @@
 			children = (
 				941DB0BB1471B32D00A96B8B /* HRAppDelegate.h */,
 				941DB0BC1471B32D00A96B8B /* HRAppDelegate.m */,
+				94689AC91496560C00E1FCA6 /* HRAboutTableViewController.h */,
+				94689ACA1496560C00E1FCA6 /* HRAboutTableViewController.m */,
 			);
 			name = "App Delegate";
 			sourceTree = "<group>";
@@ -487,6 +520,8 @@
 				946662C61492520C004E1968 /* timeline-dot.png in Resources */,
 				946662C71492520C004E1968 /* timeline-index.html in Resources */,
 				946662C81492520C004E1968 /* timeline-main.css in Resources */,
+				94689AC414964BE400E1FCA6 /* README.txt in Resources */,
+				94689AC514964BE400E1FCA6 /* release_notes.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +565,7 @@
 				DD8BD9F2148D2BDC0090F729 /* HRConfig.m in Sources */,
 				DD19173B148FDDBD00B87AAF /* HRPatientSwipeViewController.m in Sources */,
 				DD19173F148FDEBB00B87AAF /* HRPatient.m in Sources */,
+				94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,6 +631,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -614,6 +651,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HReader/HReader-Prefix.pch";
 				INFOPLIST_FILE = "HReader/HReader-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/vendor/TestFlight\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -627,6 +668,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HReader/HReader-Prefix.pch";
 				INFOPLIST_FILE = "HReader/HReader-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/vendor/TestFlight\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -640,6 +685,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "ADHOC=1";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -659,6 +705,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HReader/HReader-Prefix.pch";
 				INFOPLIST_FILE = "HReader/HReader-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/vendor/TestFlight\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
