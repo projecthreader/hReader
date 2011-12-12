@@ -4,6 +4,9 @@
 
 * Added the TestFlight SDK to help gather feedback and statistics
 
+## C32 View
+* Added button to lower right to show HTML version of C32 modally 
+
 ## About View
 * Added version
 * Added feedback form
