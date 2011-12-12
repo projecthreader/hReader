@@ -21,7 +21,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Load TestFlight SDK
-#ifdef DEBUG
+#if defined(DEBUG) || 1
     [TestFlight takeOff:[HRConfig testFlightTeamToken]];
 #endif
     
