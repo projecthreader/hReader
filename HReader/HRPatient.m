@@ -13,7 +13,7 @@
 @synthesize name        = __name;
 @synthesize image       = __image;;
 @synthesize address     = __address;
-@synthesize sex         = __sex;
+@synthesize gender      = __gender;
 @synthesize birthday    = __birthday;
 
 - (void)dealloc {
@@ -35,16 +35,13 @@
     return self;
 }
 
-- (NSString *)sexAsString {
-    switch (self.sex) {
-        case HRPatientSexMale:
+- (NSString *)genderAsString {
+    switch (self.gender) {
+        case HRPatientGenderMale:
             return @"Male";
             break;
-        case HRPatientSexFemale:
+        case HRPatientGenderFemale:
             return @"Female";
-            break;
-        case HRPatientSexTransgender:
-            return @"Transgender";
             break;
         default:
             return @"Unknown";
@@ -61,6 +58,16 @@
     } else {
         return @"-";
     }
+}
+
+- (NSString *)dateOfBirthString {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd MMMM YYYY"];
+    
+    NSString *dobString = [formatter stringFromDate:self.birthday];
+    [formatter release];
+    
+    return dobString;
 }
 
 @end

@@ -427,7 +427,6 @@
 						<string key="NSFrame">{{0, 200}, {1024, 460}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:206</string>
 						<object class="NSColor" key="IBUIBackgroundColor" id="386023370">
 							<int key="NSColorSpace">10</int>
@@ -5725,7 +5724,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<string key="NSFrame">{{702, 401}, {153, 21}}</string>
 						<reference key="NSSuperview" ref="185214576"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -5970,19 +5968,27 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">sexLabel</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="553884630"/>
-					</object>
-					<int key="connectionID">238</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">ageLabel</string>
 						<reference key="source" ref="841351856"/>
 						<reference key="destination" ref="1056907955"/>
 					</object>
 					<int key="connectionID">239</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">genderLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="553884630"/>
+					</object>
+					<int key="connectionID">240</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">dobLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="352648494"/>
+					</object>
+					<int key="connectionID">241</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -6683,7 +6689,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">239</int>
+			<int key="maxID">241</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -6692,15 +6698,24 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="addressLabel">UILabel</string>
+						<string key="ageLabel">UILabel</string>
+						<string key="genderLabel">UILabel</string>
 						<string key="patientHeaderView">UIView</string>
 						<string key="patientName">UILabel</string>
 						<string key="patientScrollView">UIScrollView</string>
 						<string key="patientSummaryView">UIView</string>
-						<string key="sexLabel">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="addressLabel">
 							<string key="name">addressLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="ageLabel">
+							<string key="name">ageLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="genderLabel">
+							<string key="name">genderLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="patientHeaderView">
@@ -6718,10 +6733,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<object class="IBToOneOutletInfo" key="patientSummaryView">
 							<string key="name">patientSummaryView</string>
 							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="sexLabel">
-							<string key="name">sexLabel</string>
-							<string key="candidateClassName">UILabel</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

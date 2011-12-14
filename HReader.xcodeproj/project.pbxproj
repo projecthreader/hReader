@@ -257,12 +257,12 @@
 		94689ABC14964BBF00E1FCA6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				94689ABE14964BCF00E1FCA6 /* TestFlight */,
+				94689ABE14964BCF00E1FCA6 /* TestFlight-0.8.4 */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
 		};
-		94689ABE14964BCF00E1FCA6 /* TestFlight */ = {
+		94689ABE14964BCF00E1FCA6 /* TestFlight-0.8.4 */ = {
 			isa = PBXGroup;
 			children = (
 				94689ABF14964BE400E1FCA6 /* libTestFlight.a */,
@@ -270,7 +270,7 @@
 				94689AC114964BE400E1FCA6 /* release_notes.txt */,
 				94689AC214964BE400E1FCA6 /* TestFlight.h */,
 			);
-			name = TestFlight;
+			name = "TestFlight-0.8.4";
 			sourceTree = "<group>";
 		};
 		94689AD114967DF500E1FCA6 /* Support */ = {

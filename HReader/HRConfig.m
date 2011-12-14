@@ -75,28 +75,28 @@ NSString * const HRPatientKey = @"HRPatientKey";
         
         HRPatient *johnny = [[[HRPatient alloc] initWithName:@"Johhny Smith" image:[UIImage imageNamed:@"Johnny_Smith"]] autorelease];
         johnny.address = address;
-        johnny.sex = HRPatientSexMale;
+        johnny.gender = HRPatientGenderMale;
         johnny.birthday = [self dateForString:@"20061122"];
 
         
         HRPatient *henry = [[[HRPatient alloc] initWithName:@"Henry Smith" image:[UIImage imageNamed:@"Henry_Smith"]] autorelease];
         henry.address = [[[HRAddress alloc] initWithSteet1:@"323 Summer Hill Ln." street2:nil city:@"Baltimore" state:@"MD" zip:@"21215"] autorelease];
-        henry.sex = HRPatientSexMale;
+        henry.gender = HRPatientGenderMale;
         henry.birthday = [self dateForString:@"19421012"];
         
         HRPatient *molly = [[[HRPatient alloc] initWithName:@"Molly Smith" image:[UIImage imageNamed:@"Molly_Smith"]] autorelease];
         molly.address = address;
-        molly.sex = HRPatientSexFemale;
+        molly.gender = HRPatientGenderFemale;
         molly.birthday = [self dateForString:@"19940312"];
         
         HRPatient *sarah = [[[HRPatient alloc] initWithName:@"Sarah Smith" image:[UIImage imageNamed:@"Sarah_Smith"]] autorelease];
         sarah.address = address;
-        sarah.sex = HRPatientSexFemale;
+        sarah.gender = HRPatientGenderFemale;
         sarah.birthday = [self dateForString:@"19741111"];
         
         HRPatient *tom = [[[HRPatient alloc] initWithName:@"Tom Smith" image:[UIImage imageNamed:@"Tom_Smith"]] autorelease];
         tom.address = address;
-        tom.sex = HRPatientSexMale;
+        tom.gender = HRPatientGenderMale;
         tom.birthday = [self dateForString:@"19721012"];
         
         [address release];

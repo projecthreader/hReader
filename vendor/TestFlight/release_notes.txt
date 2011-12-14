@@ -1,3 +1,14 @@
+0.8.2 BETA 4 - December 12, 2011
+Prevented "The string argument is NULL" from occuring during finishedHandshake in rare cases
+Resolved issue where background data may not be sent
+
+0.8.2 BETA 3 - December 8, 2011
+Added auto-release pools to background setup and tear down 
+Added C++ specific code to TFLog declaration
+
+0.8.2 BETA 2 - December 5, 2011
+Fixed the "pointer being freed was not allocated" bug
+
 0.8.1 - November 18, 2011
 Implemented TFLog logging system, see README for more information
 Fixed an issue where Session End events may not be sent until next launch

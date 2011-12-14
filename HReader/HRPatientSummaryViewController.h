@@ -18,7 +18,8 @@
 @property (retain, nonatomic) IBOutlet UILabel *patientName;
 
 @property (retain, nonatomic) IBOutlet UILabel *addressLabel;
-@property (retain, nonatomic) IBOutlet UILabel *sexLabel;
+@property (retain, nonatomic) IBOutlet UILabel *genderLabel;
 @property (retain, nonatomic) IBOutlet UILabel *ageLabel;
+@property (retain, nonatomic) IBOutlet UILabel *dobLabel;
 
 @end

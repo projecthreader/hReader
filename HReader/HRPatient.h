@@ -13,20 +13,20 @@
 @interface HRPatient : NSObject
 
 typedef enum {
-    HRPatientSexMale = 0,
-    HRPatientSexFemale = 1,
-    HRPatientSexTransgender = 2
-} HRPatientSex;
+    HRPatientGenderMale = 0,
+    HRPatientGenderFemale = 1
+} HRPatientGender;
 
 @property (copy, nonatomic) NSString *name;
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) HRAddress *address;
-@property (nonatomic) HRPatientSex sex;
+@property (nonatomic) HRPatientGender gender;
 @property (strong, nonatomic) NSDate *birthday;
 
 - (id)initWithName:(NSString *)aName image:(UIImage *)aImage;
 
-- (NSString *)sexAsString;
+- (NSString *)genderAsString;
 - (NSString *)age;
+- (NSString *)dateOfBirthString;
 
 @end
