@@ -107,7 +107,7 @@
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     NSInteger index = self.scrollView.contentOffset.x / self.scrollView.bounds.size.width;
 
-    if (index > 0 && index != self.lastIndex) {
+    if (index != self.lastIndex) {
         self.pageControl.currentPage = index;
         HRPatient *patient = [self.patientsArray objectAtIndex:index];
         [[NSNotificationCenter defaultCenter] postNotificationName:HRPatientDidChangeNotification 
