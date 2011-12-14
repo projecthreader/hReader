@@ -5994,6 +5994,38 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">placeOfBirthLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="940810563"/>
+					</object>
+					<int key="connectionID">244</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">raceLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="840319026"/>
+					</object>
+					<int key="connectionID">245</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">ethnicityLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="150437527"/>
+					</object>
+					<int key="connectionID">246</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">phoneNumberLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="138894777"/>
+					</object>
+					<int key="connectionID">247</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="865077382"/>
 						<reference key="destination" ref="841351856"/>
@@ -6691,7 +6723,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">241</int>
+			<int key="maxID">247</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -6702,11 +6734,14 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<string key="addressLabel">UILabel</string>
 						<string key="ageLabel">UILabel</string>
 						<string key="dobLabel">UILabel</string>
+						<string key="ethnicityLabel">UILabel</string>
 						<string key="genderLabel">UILabel</string>
 						<string key="patientHeaderView">UIView</string>
 						<string key="patientName">UILabel</string>
 						<string key="patientScrollView">UIScrollView</string>
 						<string key="patientSummaryView">UIView</string>
+						<string key="placeOfBirthLabel">UILabel</string>
+						<string key="raceLabel">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="addressLabel">
@@ -6719,6 +6754,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						</object>
 						<object class="IBToOneOutletInfo" key="dobLabel">
 							<string key="name">dobLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="ethnicityLabel">
+							<string key="name">ethnicityLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="genderLabel">
@@ -6740,6 +6779,14 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<object class="IBToOneOutletInfo" key="patientSummaryView">
 							<string key="name">patientSummaryView</string>
 							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="placeOfBirthLabel">
+							<string key="name">placeOfBirthLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="raceLabel">
+							<string key="name">raceLabel</string>
+							<string key="candidateClassName">UILabel</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

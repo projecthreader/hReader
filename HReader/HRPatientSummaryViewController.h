@@ -21,5 +21,11 @@
 @property (retain, nonatomic) IBOutlet UILabel *genderLabel;
 @property (retain, nonatomic) IBOutlet UILabel *ageLabel;
 @property (retain, nonatomic) IBOutlet UILabel *dobLabel;
+@property (retain, nonatomic) IBOutlet UILabel *placeOfBirthLabel;
+@property (retain, nonatomic) IBOutlet UILabel *raceLabel;
+@property (retain, nonatomic) IBOutlet UILabel *ethnicityLabel;
+@property (retain, nonatomic) IBOutlet UILabel *phoneNumberLabel;
+
+@property (retain, nonatomic) NSArray *labelsArray;
 
 @end

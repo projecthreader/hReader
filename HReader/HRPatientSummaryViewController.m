@@ -26,9 +26,15 @@
 
 @synthesize patientName                 = __patientName;
 @synthesize addressLabel                = __addressLabel;
-@synthesize genderLabel                 = __sexLabel;
+@synthesize genderLabel                 = __genderLabel;
 @synthesize ageLabel                    = __ageLabel;
 @synthesize dobLabel                    = __dobLabel;
+@synthesize placeOfBirthLabel           = __placeOfBirthLabel;
+@synthesize raceLabel                   = __raceLabel;
+@synthesize ethnicityLabel              = __ethnicityLabel;
+@synthesize phoneNumberLabel            = __phoneNumberLabel;
+
+@synthesize labelsArray                 = __labelsArray;
 
 
 - (void)dealloc {
@@ -38,10 +44,16 @@
     [__patientHeaderView release];
     [__patientName release];
     [__addressLabel release];
-    [__sexLabel release];
+    [__genderLabel release];
     [__ageLabel release];
-    
     [__dobLabel release];
+    [__placeOfBirthLabel release];
+    [__raceLabel release];
+    [__ethnicityLabel release];
+    [__phoneNumberLabel release];
+    
+    [__labelsArray release];
+
     [super dealloc];
 }
 
@@ -60,6 +72,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.labelsArray = [NSArray arrayWithObjects:self.patientName, self.addressLabel, self.genderLabel, self.ageLabel, self.dobLabel, self.placeOfBirthLabel, self.raceLabel, self.ethnicityLabel, self.phoneNumberLabel, nil];
+    [self.labelsArray setValue:[NSNumber numberWithDouble:0.0] forKeyPath:@"alpha"];
     
     HRPatientSwipeViewController *patientSwipeViewController = (HRPatientSwipeViewController *)[self.childViewControllers objectAtIndex:0];
     [self.patientHeaderView addSubview:patientSwipeViewController.view];
@@ -91,6 +106,11 @@
     self.ageLabel = nil;
     
     [self setDobLabel:nil];
+    [self setPlaceOfBirthLabel:nil];
+    [self setRaceLabel:nil];
+    [self setEthnicityLabel:nil];
+    [self setPhoneNumberLabel:nil];
+    
     [super viewDidUnload];
 }
 
@@ -112,13 +132,26 @@
 
 - (void)patientChanged:(NSNotification *)notif {
     HRPatient *patient = [notif.userInfo objectForKey:HRPatientKey];
-    self.patientName.text = [patient.name uppercaseString];
     
     HRAddress *address = patient.address;
-    self.addressLabel.text = [NSString stringWithFormat:@"%@\n%@, %@ %@", address.street1, address.city, address.state, address.zip];
-    self.genderLabel.text = [patient genderAsString];
-    self.ageLabel.text = [patient age];
-    self.dobLabel.text = [patient dateOfBirthString];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        [self.labelsArray setValue:[NSNumber numberWithDouble:0.0] forKey:@"alpha"];
+    } completion:^(BOOL finished) {
+        self.patientName.text = [patient.name uppercaseString];
+        self.addressLabel.text = [NSString stringWithFormat:@"%@\n%@, %@ %@", address.street1, address.city, address.state, address.zip];
+        self.genderLabel.text = [patient genderAsString];
+        
+        self.ageLabel.text = [patient age];
+        self.dobLabel.text = [patient dateOfBirthString];
+        self.placeOfBirthLabel.text = patient.placeOfBirth;
+        self.raceLabel.text = patient.race;
+        self.ethnicityLabel.text = patient.ethnicity;
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            [self.labelsArray setValue:[NSNumber numberWithDouble:1.0] forKey:@"alpha"];
+        }];
+    }];
 }
 
 

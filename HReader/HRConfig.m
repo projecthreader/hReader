@@ -77,27 +77,47 @@ NSString * const HRPatientKey = @"HRPatientKey";
         johnny.address = address;
         johnny.gender = HRPatientGenderMale;
         johnny.birthday = [self dateForString:@"20061122"];
+        johnny.placeOfBirth = @"Boston, MA USA";
+        johnny.race = @"White";
+        johnny.ethnicity = @"Germanic";
+        johnny.phoneNumber = @"410.555.0350 (home)";
 
         
         HRPatient *henry = [[[HRPatient alloc] initWithName:@"Henry Smith" image:[UIImage imageNamed:@"Henry_Smith"]] autorelease];
         henry.address = [[[HRAddress alloc] initWithSteet1:@"323 Summer Hill Ln." street2:nil city:@"Baltimore" state:@"MD" zip:@"21215"] autorelease];
         henry.gender = HRPatientGenderMale;
         henry.birthday = [self dateForString:@"19421012"];
+        henry.placeOfBirth = @"Austin, TX USA";
+        henry.race = @"White";
+        henry.ethnicity = @"Germanic";
+        henry.phoneNumber = @"425.555.5492 (cell)";
         
         HRPatient *molly = [[[HRPatient alloc] initWithName:@"Molly Smith" image:[UIImage imageNamed:@"Molly_Smith"]] autorelease];
         molly.address = address;
         molly.gender = HRPatientGenderFemale;
         molly.birthday = [self dateForString:@"19940312"];
+        molly.placeOfBirth = @"Manchester, NH USA";
+        molly.race = @"White";
+        molly.ethnicity = @"Germanic";
+        molly.phoneNumber = @"410.555.0350 (home)";
         
         HRPatient *sarah = [[[HRPatient alloc] initWithName:@"Sarah Smith" image:[UIImage imageNamed:@"Sarah_Smith"]] autorelease];
         sarah.address = address;
         sarah.gender = HRPatientGenderFemale;
         sarah.birthday = [self dateForString:@"19741111"];
+        sarah.placeOfBirth = @"Boston, MA USA";
+        sarah.race = @"White";
+        sarah.ethnicity = @"Germanic";
+        sarah.phoneNumber = @"410.555.0350 (home)";
         
         HRPatient *tom = [[[HRPatient alloc] initWithName:@"Tom Smith" image:[UIImage imageNamed:@"Tom_Smith"]] autorelease];
         tom.address = address;
         tom.gender = HRPatientGenderMale;
         tom.birthday = [self dateForString:@"19721012"];
+        tom.placeOfBirth = @"Milford, MA USA";
+        tom.race = @"White";
+        tom.ethnicity = @"Germanic";
+        tom.phoneNumber = @"410.555.0350 (home)";
         
         [address release];
         

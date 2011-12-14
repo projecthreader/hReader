@@ -10,17 +10,25 @@
 
 @implementation HRPatient
 
-@synthesize name        = __name;
-@synthesize image       = __image;;
-@synthesize address     = __address;
-@synthesize gender      = __gender;
-@synthesize birthday    = __birthday;
+@synthesize name            = __name;
+@synthesize image           = __image;;
+@synthesize address         = __address;
+@synthesize gender          = __gender;
+@synthesize birthday        = __birthday;
+@synthesize placeOfBirth    = __placeOfBirth;
+@synthesize race            = __race;
+@synthesize ethnicity       = __ethnicity;
+@synthesize phoneNumber     = __phoneNumber;
 
 - (void)dealloc {
     [__name release];
     [__image release];
     [__address release];
     [__birthday release];
+    [__placeOfBirth release];
+    [__race release];
+    [__ethnicity release];
+    [__phoneNumber release];
     
     [super dealloc];
 }

@@ -22,6 +22,10 @@ typedef enum {
 @property (strong, nonatomic) HRAddress *address;
 @property (nonatomic) HRPatientGender gender;
 @property (strong, nonatomic) NSDate *birthday;
+@property (copy, nonatomic) NSString *placeOfBirth;
+@property (copy, nonatomic) NSString *race;
+@property (copy, nonatomic) NSString *ethnicity;
+@property (copy, nonatomic) NSString *phoneNumber;
 
 - (id)initWithName:(NSString *)aName image:(UIImage *)aImage;
 
