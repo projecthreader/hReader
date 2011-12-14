@@ -22,6 +22,8 @@
 @property (strong, nonatomic) IBOutlet UIView *shadowView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 
+@property (nonatomic) NSInteger lastIndex;
+
 @property (assign, nonatomic) id<HRPatientSwipeDelegate> delegate;
 
 @end

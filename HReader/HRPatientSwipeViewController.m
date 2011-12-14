@@ -17,6 +17,7 @@
 @synthesize scrollView      = __scrollView;
 @synthesize shadowView      = __shadowView;
 @synthesize pageControl     = __pageControl;
+@synthesize lastIndex       = __lastIndex;
 @synthesize delegate        = __delegate;
 
 - (void)dealloc {
@@ -105,10 +106,16 @@
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     NSInteger index = self.scrollView.contentOffset.x / self.scrollView.bounds.size.width;
-    self.pageControl.currentPage = index;
-    HRPatient *patient = [self.patientsArray objectAtIndex:index];
-    [[NSNotificationCenter defaultCenter] postNotificationName:HRPatientDidChangeNotification object:self userInfo:[NSDictionary dictionaryWithObject:patient forKey:HRPatientKey]];
-    [TestFlight passCheckpoint:@"Patient Swipe"];
+
+    if (index > 0 && index != self.lastIndex) {
+        self.pageControl.currentPage = index;
+        HRPatient *patient = [self.patientsArray objectAtIndex:index];
+        [[NSNotificationCenter defaultCenter] postNotificationName:HRPatientDidChangeNotification 
+                                                            object:self 
+                                                          userInfo:[NSDictionary dictionaryWithObject:patient forKey:HRPatientKey]];       
+        self.lastIndex = index;
+        [TestFlight passCheckpoint:@"Patient Swipe"];
+    }
 }
 
 #pragma mark - UIPageControl targets
