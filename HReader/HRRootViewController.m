@@ -140,7 +140,7 @@
     lastUpdatedLabel.backgroundColor = [UIColor clearColor];
     UIBarButtonItem *lastUpdated = [[UIBarButtonItem alloc] initWithCustomView:lastUpdatedLabel];
     
-    UIBarButtonItem *rawC32Button = [[UIBarButtonItem alloc] initWithTitle:@"C32" style:UIBarButtonItemStyleBordered target:self action:@selector(showRawC32:)];
+    UIBarButtonItem *rawC32Button = [[UIBarButtonItem alloc] initWithTitle:@"C32 HTML" style:UIBarButtonItemStyleBordered target:self action:@selector(showRawC32:)];
     
     self.toolbarItems = [NSArray arrayWithObjects:flex, lastUpdated, flex, rawC32Button, nil];
     [lastUpdatedLabel release];
@@ -176,14 +176,25 @@
 }
 
 - (void)segmentSelected {
+    NSInteger index = self.segmentedControl.selectedSegmentIndex;
+    NSString *title = [[self.childViewControllers objectAtIndex:index] title];
+    [TestFlight passCheckpoint:[NSString stringWithFormat:@"Navigation - %@", title]];
+    
     [self.scrollView setContentOffset:CGPointMake(self.segmentedControl.selectedSegmentIndex * self.scrollView.bounds.size.width, 0) animated:YES];
 }
 
 - (void)showRawC32:(id)sender {
+    [TestFlight passCheckpoint:@"View C32 HTML"];
     HRC32ViewController *c32ViewController = [[HRC32ViewController alloc] initWithNibName:nil bundle:nil];
     c32ViewController.modalPresentationStyle = UIModalPresentationPageSheet;
     [self presentModalViewController:c32ViewController animated:YES];
     [c32ViewController release];
+}
+
+#pragma mark - segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [TestFlight passCheckpoint:segue.identifier];
 }
 
 #pragma mark - kvo

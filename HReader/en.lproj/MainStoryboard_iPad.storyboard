@@ -28,7 +28,7 @@
                         <nil key="title"/>
                         <barButtonItem key="rightBarButtonItem" title="About" id="yvk-UI-KfQ">
                             <connections>
-                                <segue destination="2Hp-Fe-994" kind="modal" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="hp3-q0-AaZ"/>
+                                <segue destination="2Hp-Fe-994" kind="modal" identifier="About Button" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="hp3-q0-AaZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -42,7 +42,7 @@
         <scene sceneID="ciq-l9-LIG">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ey-c1-DV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" id="2Hp-Fe-994" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="" definesPresentationContext="YES" id="2Hp-Fe-994" sceneMemberID="viewController">
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="HN2-6Y-fEl">

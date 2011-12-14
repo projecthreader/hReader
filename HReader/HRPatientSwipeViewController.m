@@ -119,6 +119,7 @@
 #pragma mark - private methods
 
 - (void)patientChanged:(NSNotification *)notif {
+    [TestFlight passCheckpoint:@"Patient Swipe"];
     if ([notif object] != self) {
         HRPatient *patient = [notif.userInfo objectForKey:HRPatientKey];
         NSUInteger index = [self.patientsArray indexOfObject:patient];
