@@ -135,7 +135,7 @@
     
     HRAddress *address = patient.address;
     
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.4 animations:^{
         [self.labelsArray setValue:[NSNumber numberWithDouble:0.0] forKey:@"alpha"];
     } completion:^(BOOL finished) {
         self.patientName.text = [patient.name uppercaseString];
@@ -148,7 +148,7 @@
         self.raceLabel.text = patient.race;
         self.ethnicityLabel.text = patient.ethnicity;
         
-        [UIView animateWithDuration:0.5 animations:^{
+        [UIView animateWithDuration:0.4 animations:^{
             [self.labelsArray setValue:[NSNumber numberWithDouble:1.0] forKey:@"alpha"];
         }];
     }];
