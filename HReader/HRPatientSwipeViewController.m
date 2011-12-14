@@ -108,6 +108,7 @@
     self.pageControl.currentPage = index;
     HRPatient *patient = [self.patientsArray objectAtIndex:index];
     [[NSNotificationCenter defaultCenter] postNotificationName:HRPatientDidChangeNotification object:self userInfo:[NSDictionary dictionaryWithObject:patient forKey:HRPatientKey]];
+    [TestFlight passCheckpoint:@"Patient Swipe"];
 }
 
 #pragma mark - UIPageControl targets
@@ -119,7 +120,6 @@
 #pragma mark - private methods
 
 - (void)patientChanged:(NSNotification *)notif {
-    [TestFlight passCheckpoint:@"Patient Swipe"];
     if ([notif object] != self) {
         HRPatient *patient = [notif.userInfo objectForKey:HRPatientKey];
         NSUInteger index = [self.patientsArray indexOfObject:patient];
