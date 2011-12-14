@@ -7,6 +7,7 @@
 ## Summary View
 * Added variable DOB, phone number, place of birth, race, ethicity
 * Added fade out/fade in of info when switching users
+* Fixed issue when trying to swipe when at first or last patient
 
 - - -
 
