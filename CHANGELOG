@@ -5,7 +5,9 @@
 * Added TestFlight checkpoints to check usage
 
 ## Summary View
-* Added variable DOB
+* Added variable DOB, phone number, place of birth, race, ethicity
+* Added fade out/fade in of info when switching users
+
 - - -
 
 # 2011-12-05
