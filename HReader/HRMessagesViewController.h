@@ -25,6 +25,7 @@
 @property (retain, nonatomic) IBOutlet UITextView *bodyLabel;
 
 
+@property (retain, nonatomic) IBOutlet UIView *messageView;
 
 
 @end

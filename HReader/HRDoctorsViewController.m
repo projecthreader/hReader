@@ -13,13 +13,14 @@
 
 @implementation HRDoctorsViewController
 
+@synthesize doctorDetailView            = __doctorDetailView;
 @synthesize patientView                 = __patientView;
 @synthesize doctorImageView             = __doctorImageView;
 
 - (void)dealloc {
     [__patientView release];;
     [__doctorImageView release];
-    
+    [__doctorDetailView release];
     [super dealloc];
 }
 
@@ -42,10 +43,14 @@
     [super viewDidLoad];
     
     HRPatientSwipeViewController *patientSwipeViewController = (HRPatientSwipeViewController *)[self.childViewControllers objectAtIndex:0];
-    [self.patientView addSubview:patientSwipeViewController.view];
+    [self.view addSubview:patientSwipeViewController.view];
+    
+    // Doctor detail view
+
+    [self.view addSubview:self.doctorDetailView];
+    self.doctorDetailView.alpha = 0.0;
     
     // Border
-//    self.doctorImageView.clipsToBounds = NO;
     self.doctorImageView.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.doctorImageView.layer.borderWidth = 3.0f;
     
@@ -54,11 +59,12 @@
     self.doctorImageView.layer.shadowOpacity = 0.5f;
     self.doctorImageView.layer.shadowOffset = CGSizeMake(2.0f, 0.0f);
     self.doctorImageView.layer.shadowRadius = 5.0f;
+    self.doctorImageView.layer.shouldRasterize = YES;
 
-//     [HRConfig setShadowForView:self.patientImageShadowView borderForView:self.patientImageView];   
 }
 
 - (void)viewDidUnload {
+    [self setDoctorDetailView:nil];
     [super viewDidUnload];
     
     self.patientView = nil;
@@ -67,6 +73,20 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+}
+
+- (IBAction)showDoctor:(id)sender {
+    [TestFlight passCheckpoint:@"Show Doctor"];
+    [UIView animateWithDuration:1.0 animations:^{
+        self.doctorDetailView.alpha = 1.0;
+    }];
+}
+
+- (IBAction)hideDoctor:(id)sender {
+    [TestFlight passCheckpoint:@"Hide Doctor"];
+    [UIView animateWithDuration:1.0 animations:^{
+        self.doctorDetailView.alpha = 0.0;
+    }];    
 }
 
 @end

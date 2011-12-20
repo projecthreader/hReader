@@ -23,8 +23,9 @@
 @synthesize messagesArray               = __messagesArray;
 @synthesize scrollView                  = __scrollView;
 @synthesize messageContentView          = __messageContentView;
-@synthesize subjectLabel = _subjectLabel;
-@synthesize bodyLabel = _bodyLabel;
+@synthesize subjectLabel                = __subjectLabel;
+@synthesize bodyLabel                   = __bodyLabel;
+@synthesize messageView                 = __messageView;
 @synthesize patientView                 = __patientView;
 @synthesize dateFormatter               = __dateFormatter;
 
@@ -36,9 +37,9 @@
     [__messageContentView release];
     [__patientView release];
     [__dateFormatter release];
-    
-    [_subjectLabel release];
-    [_bodyLabel release];
+    [__subjectLabel release];
+    [__bodyLabel release];
+    [__messageView release];
     [super dealloc];
 }
 
@@ -96,6 +97,7 @@
     
     [self setSubjectLabel:nil];
     [self setBodyLabel:nil];
+    [self setMessageView:nil];
     [super viewDidUnload];
 }
 
@@ -108,6 +110,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     HRMessage *message = [self.messagesArray objectAtIndex:indexPath.row];
+    
+    [TestFlight passCheckpoint:[NSString stringWithFormat:@"View Message (%@)", message.subject]];
     
     self.subjectLabel.text = message.subject;
     self.bodyLabel.text = message.body;

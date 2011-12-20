@@ -2,8 +2,13 @@
 
 # 2011-12-20
 
+* Research on passcode verification
+
 ## Messages View
 * Added dynamic content, still waiting on mock data to fill real messages in
+
+## Doctors View
+* Added hospital when selected fades in a doctor detail view
 
 - - -
 
