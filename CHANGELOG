@@ -1,6 +1,13 @@
 - - -
 
-# 2011-14-05
+# 2011-12-20
+
+## Messages View
+* Added dynamic content, still waiting on mock data to fill real messages in
+
+- - -
+
+# 2011-12-14
 
 * Added TestFlight checkpoints to check usage
 
