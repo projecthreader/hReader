@@ -12,12 +12,19 @@
 
 @interface HRMessagesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
+@property (copy, nonatomic) NSArray *messagesArray;
+@property (retain, nonatomic) NSDateFormatter *dateFormatter;
+
+@property (retain, nonatomic) IBOutlet UIView *patientView;
 @property (strong, nonatomic) IBOutlet UIView *patientImageShadowView;
 @property (strong, nonatomic) IBOutlet UIImageView *patientImageView;
-@property (strong, nonatomic) NSArray *datesArray;
-@property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
 
+@property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (retain, nonatomic) IBOutlet UIView *messageContentView;
-@property (retain, nonatomic) IBOutlet UIView *patientView;
+@property (retain, nonatomic) IBOutlet UILabel *subjectLabel;
+@property (retain, nonatomic) IBOutlet UITextView *bodyLabel;
+
+
+
 
 @end

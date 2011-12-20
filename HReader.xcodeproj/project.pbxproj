@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9415151F14A0E8FA009FF674 /* HRMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9415151E14A0E8FA009FF674 /* HRMessage.m */; };
 		941DB0AD1471B32D00A96B8B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941DB0AC1471B32D00A96B8B /* UIKit.framework */; };
 		941DB0AF1471B32D00A96B8B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941DB0AE1471B32D00A96B8B /* Foundation.framework */; };
 		941DB0B11471B32D00A96B8B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941DB0B01471B32D00A96B8B /* CoreGraphics.framework */; };
@@ -40,6 +41,9 @@
 		94AEAE11148690DA00C005B2 /* HRPatientSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEAE0F148690DA00C005B2 /* HRPatientSummaryViewController.xib */; };
 		94BB031A149688FA009B2FCC /* raw.html in Resources */ = {isa = PBXBuildFile; fileRef = 94BB0319149688FA009B2FCC /* raw.html */; };
 		94BB031E14969675009B2FCC /* HRAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BB031D14969675009B2FCC /* HRAddress.m */; };
+		94BB0326149BAF25009B2FCC /* HRPasscodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BB0325149BAF25009B2FCC /* HRPasscodeManager.m */; };
+		94BB032C149BB393009B2FCC /* HRPasscodeWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BB032A149BB392009B2FCC /* HRPasscodeWarningViewController.m */; };
+		94BB032D149BB393009B2FCC /* HRPasscodeWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BB032B149BB393009B2FCC /* HRPasscodeWarningViewController.xib */; };
 		94C5ECF51472F448009FE38D /* PatientDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C5ECF41472F448009FE38D /* PatientDetailsTableViewController.m */; };
 		94E3BB511472C95800E05D4D /* PatientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E3BB501472C95800E05D4D /* PatientSummaryViewController.m */; };
 		94E3BB571472CD2000E05D4D /* father.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E3BB561472CD2000E05D4D /* father.png */; };
@@ -64,6 +68,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9415151D14A0E8FA009FF674 /* HRMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMessage.h; sourceTree = "<group>"; };
+		9415151E14A0E8FA009FF674 /* HRMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMessage.m; sourceTree = "<group>"; };
 		941DB0A81471B32D00A96B8B /* HReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		941DB0AC1471B32D00A96B8B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		941DB0AE1471B32D00A96B8B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -111,6 +117,11 @@
 		94BB0319149688FA009B2FCC /* raw.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = raw.html; sourceTree = "<group>"; };
 		94BB031C14969675009B2FCC /* HRAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAddress.h; sourceTree = "<group>"; };
 		94BB031D14969675009B2FCC /* HRAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAddress.m; sourceTree = "<group>"; };
+		94BB0324149BAF24009B2FCC /* HRPasscodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPasscodeManager.h; sourceTree = "<group>"; };
+		94BB0325149BAF25009B2FCC /* HRPasscodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPasscodeManager.m; sourceTree = "<group>"; };
+		94BB0329149BB392009B2FCC /* HRPasscodeWarningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPasscodeWarningViewController.h; sourceTree = "<group>"; };
+		94BB032A149BB392009B2FCC /* HRPasscodeWarningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPasscodeWarningViewController.m; sourceTree = "<group>"; };
+		94BB032B149BB393009B2FCC /* HRPasscodeWarningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPasscodeWarningViewController.xib; sourceTree = "<group>"; };
 		94C5ECF31472F448009FE38D /* PatientDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientDetailsTableViewController.h; sourceTree = "<group>"; };
 		94C5ECF41472F448009FE38D /* PatientDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientDetailsTableViewController.m; sourceTree = "<group>"; };
 		94E3BB4F1472C95800E05D4D /* PatientSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientSummaryViewController.h; sourceTree = "<group>"; };
@@ -276,6 +287,7 @@
 		94689AD114967DF500E1FCA6 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				94BB032E149BB398009B2FCC /* Passcode Warning */,
 				DD7037B014900E5900F58A83 /* Patient Swipe */,
 				94689AD314967E0600E1FCA6 /* About */,
 				94689AD214967E0100E1FCA6 /* C32 */,
@@ -303,6 +315,16 @@
 			name = About;
 			sourceTree = "<group>";
 		};
+		94BB032E149BB398009B2FCC /* Passcode Warning */ = {
+			isa = PBXGroup;
+			children = (
+				94BB0329149BB392009B2FCC /* HRPasscodeWarningViewController.h */,
+				94BB032A149BB392009B2FCC /* HRPasscodeWarningViewController.m */,
+				94BB032B149BB393009B2FCC /* HRPasscodeWarningViewController.xib */,
+			);
+			name = "Passcode Warning";
+			sourceTree = "<group>";
+		};
 		94C5ECFA1472FF7A009FE38D /* Patient Summary */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +348,8 @@
 			children = (
 				941DB0BB1471B32D00A96B8B /* HRAppDelegate.h */,
 				941DB0BC1471B32D00A96B8B /* HRAppDelegate.m */,
+				94BB0324149BAF24009B2FCC /* HRPasscodeManager.h */,
+				94BB0325149BAF25009B2FCC /* HRPasscodeManager.m */,
 			);
 			name = "App Delegate";
 			sourceTree = "<group>";
@@ -368,6 +392,8 @@
 				DD19173E148FDEBB00B87AAF /* HRPatient.m */,
 				94BB031C14969675009B2FCC /* HRAddress.h */,
 				94BB031D14969675009B2FCC /* HRAddress.m */,
+				9415151D14A0E8FA009FF674 /* HRMessage.h */,
+				9415151E14A0E8FA009FF674 /* HRMessage.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -564,6 +590,7 @@
 				94689AC514964BE400E1FCA6 /* release_notes.txt in Resources */,
 				94689AD814967E3600E1FCA6 /* HRC32ViewController.xib in Resources */,
 				94BB031A149688FA009B2FCC /* raw.html in Resources */,
+				94BB032D149BB393009B2FCC /* HRPasscodeWarningViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,6 +637,9 @@
 				94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */,
 				94689AD714967E3600E1FCA6 /* HRC32ViewController.m in Sources */,
 				94BB031E14969675009B2FCC /* HRAddress.m in Sources */,
+				94BB0326149BAF25009B2FCC /* HRPasscodeManager.m in Sources */,
+				94BB032C149BB393009B2FCC /* HRPasscodeWarningViewController.m in Sources */,
+				9415151F14A0E8FA009FF674 /* HRMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

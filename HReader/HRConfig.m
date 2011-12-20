@@ -130,10 +130,10 @@ NSString * const HRPatientKey = @"HRPatientKey";
 
 #pragma mark - Helper methods
 
-+ (NSDate *)dateForString:(NSString *)birthday {
++ (NSDate *)dateForString:(NSString *)str {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyyMMdd";
-    NSDate *date = [formatter dateFromString:birthday];
+    NSDate *date = [formatter dateFromString:str];
     [formatter release];
     
     return date;

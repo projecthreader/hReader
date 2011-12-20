@@ -10,6 +10,7 @@
 
 #import "HRMessagesViewController.h"
 #import "HRPatientSwipeViewController.h"
+#import "HRMessage.h"
 
 @interface HRMessagesViewController ()
 - (void)setHeaderViewShadow;
@@ -19,19 +20,25 @@
 
 @synthesize patientImageShadowView      = __patientImageShadowView;
 @synthesize patientImageView            = __patientImageView;
-@synthesize datesArray                  = __datesArray;
+@synthesize messagesArray               = __messagesArray;
 @synthesize scrollView                  = __scrollView;
 @synthesize messageContentView          = __messageContentView;
+@synthesize subjectLabel = _subjectLabel;
+@synthesize bodyLabel = _bodyLabel;
 @synthesize patientView                 = __patientView;
+@synthesize dateFormatter               = __dateFormatter;
 
 - (void)dealloc {
     [__patientImageShadowView release];
     [__patientImageView release];
-    [__datesArray release];
+    [__messagesArray release];
     [__scrollView release];
     [__messageContentView release];
     [__patientView release];
+    [__dateFormatter release];
     
+    [_subjectLabel release];
+    [_bodyLabel release];
     [super dealloc];
 }
 
@@ -39,7 +46,22 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Messages (0)";
-        self.datesArray = [NSArray arrayWithObjects:@"7 Apr. 2011", @"28 Mar. 2011", @"27 Mar. 2011", @"17 Jan. 2011", @"13 Dec. 2010", @"5 Dec. 2010", @"28 Oct. 2010", @"23 Oct. 2010", nil];
+        
+        self.dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+        self.dateFormatter.dateFormat = @"M LLL. YYYY";
+        
+        NSMutableArray *messages = [[NSMutableArray alloc] init];
+        [messages addObject:[HRMessage messageWithSubject:@"Johnny Smith's Health Record" body:@"Noah d. Porter's Health Record was updated on 07 July, 2011 by Candy Remandy, M.D. at Columbia Pediatric Associates.\n\n\tThe following sections of the Health Record were changed in this update:\n\n\tMedications\n\n\tVital Signs\n\n\tProblems\n\nIf you have any questions or concerns, please contact Columbia Pediatrics ASsociates at 410.555.8752" date:[HRConfig dateForString:@"20110407"]]];
+        [messages addObject:[HRMessage messageWithSubject:@"Johnny Smith's Message 2" body:@"Message 2 body here" date:[HRConfig dateForString:@"20110328"]]];
+        [messages addObject:[HRMessage messageWithSubject:@"Johnny Smith's Message 3" body:@"Message 3 body here" date:[HRConfig dateForString:@"20110327"]]];
+        [messages addObject:[HRMessage messageWithSubject:@"Johnny Smith's Message 4" body:@"Message 4 body here" date:[HRConfig dateForString:@"20110117"]]];
+        [messages addObject:[HRMessage messageWithSubject:@"Johnny Smith's Message 5" body:@"Message 5 body here" date:[HRConfig dateForString:@"20111213"]]];
+        [messages addObject:[HRMessage messageWithSubject:@"Johnny Smith's Message 6" body:@"Message 6 body here" date:[HRConfig dateForString:@"20111205"]]];
+        [messages addObject:[HRMessage messageWithSubject:@"Johnny Smith's Message 7" body:@"Message 7 body here" date:[HRConfig dateForString:@"20101028"]]];
+        
+
+        self.messagesArray = messages;
+        [messages release];
         
         HRPatientSwipeViewController *patientSwipeViewController = [[HRPatientSwipeViewController alloc] initWithNibName:nil bundle:nil];
         [self addChildViewController:patientSwipeViewController];
@@ -72,6 +94,8 @@
     self.messageContentView = nil;
     self.patientView = nil;
     
+    [self setSubjectLabel:nil];
+    [self setBodyLabel:nil];
     [super viewDidUnload];
 }
 
@@ -82,12 +106,17 @@
 
 #pragma mark - UITableViewDelegate
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    HRMessage *message = [self.messagesArray objectAtIndex:indexPath.row];
+    
+    self.subjectLabel.text = message.subject;
+    self.bodyLabel.text = message.body;
+}
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.datesArray count];
+    return [self.messagesArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -97,8 +126,11 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
     }
-
-    cell.textLabel.text = [self.datesArray objectAtIndex:indexPath.row];
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    HRMessage *message = [self.messagesArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = [self.dateFormatter stringFromDate:message.received];
 
     return cell;
 }

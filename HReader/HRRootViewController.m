@@ -15,12 +15,15 @@
 #import "HRDoctorsViewController.h"
 #import "HRPatient.h"
 #import "HRC32ViewController.h"
+#import "HRPasscodeWarningViewController.h"
+#import "HRPasscodeManager.h"
 
 @interface HRRootViewController ()
 - (void)setupPatientLabelWithText:(NSString *)text;
 - (void)setLogo;
 - (void)setupSegmentedControl;
 - (void)showRawC32:(id)sender;
+- (void)showPrivacyWarning;
 @end
 
 @implementation HRRootViewController
@@ -77,6 +80,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+#if !defined(DEBUG) || 1
+//    BOOL passcodeEnabled = [HRPasscodeManager passcodeIsSet];
+//    NSLog(@"Passcode Set: %i", passcodeEnabled);
+//    if (!passcodeEnabled) {
+//        [self showPrivacyWarning];
+//    }
+#endif
     
     [self setupPatientLabelWithText:@"Last Updated: 05 May by Joseph Yang, M.D. (Columbia Pediatric Associates)"];
     [self setLogo];
@@ -189,6 +200,15 @@
     c32ViewController.modalPresentationStyle = UIModalPresentationPageSheet;
     [self presentModalViewController:c32ViewController animated:YES];
     [c32ViewController release];
+}
+
+
+#pragma mark - Privacy warning
+
+- (void)showPrivacyWarning {
+    HRPasscodeWarningViewController *warningViewController = [[HRPasscodeWarningViewController alloc] initWithNibName:nil bundle:nil];
+    [self presentModalViewController:warningViewController animated:YES];
+    [warningViewController release];
 }
 
 #pragma mark - segue
