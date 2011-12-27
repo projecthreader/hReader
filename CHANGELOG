@@ -1,5 +1,11 @@
 - - -
 
+# 2011-12-27
+
+* Added privacy education and warning screen which shows on first launch. The user is asked to lock their iPad to check if the passcode is enabled and then tells the user if it is or not.
+
+- - -
+
 # 2011-12-20
 
 * Research on passcode verification
