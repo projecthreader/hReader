@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9415151F14A0E8FA009FF674 /* HRMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9415151E14A0E8FA009FF674 /* HRMessage.m */; };
+		9415152314AA3A7B009FF674 /* fail.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152114AA3A7B009FF674 /* fail.png */; };
+		9415152414AA3A7B009FF674 /* win.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152214AA3A7B009FF674 /* win.png */; };
+		9415152614AA3F9F009FF674 /* question_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152514AA3F9F009FF674 /* question_mark.png */; };
 		941DB0AD1471B32D00A96B8B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941DB0AC1471B32D00A96B8B /* UIKit.framework */; };
 		941DB0AF1471B32D00A96B8B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941DB0AE1471B32D00A96B8B /* Foundation.framework */; };
 		941DB0B11471B32D00A96B8B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941DB0B01471B32D00A96B8B /* CoreGraphics.framework */; };
@@ -70,6 +73,9 @@
 /* Begin PBXFileReference section */
 		9415151D14A0E8FA009FF674 /* HRMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMessage.h; sourceTree = "<group>"; };
 		9415151E14A0E8FA009FF674 /* HRMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMessage.m; sourceTree = "<group>"; };
+		9415152114AA3A7B009FF674 /* fail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fail.png; sourceTree = "<group>"; };
+		9415152214AA3A7B009FF674 /* win.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = win.png; sourceTree = "<group>"; };
+		9415152514AA3F9F009FF674 /* question_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question_mark.png; sourceTree = "<group>"; };
 		941DB0A81471B32D00A96B8B /* HReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		941DB0AC1471B32D00A96B8B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		941DB0AE1471B32D00A96B8B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -252,6 +258,9 @@
 				DD8BD9DA148D13910090F729 /* chevron.png */,
 				9424C15B147AD9C0008BF5CE /* hReader_Logo_34x150.png */,
 				9464C58214769E190076B991 /* hReader_icon_72x72.png */,
+				9415152114AA3A7B009FF674 /* fail.png */,
+				9415152214AA3A7B009FF674 /* win.png */,
+				9415152514AA3F9F009FF674 /* question_mark.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -591,6 +600,9 @@
 				94689AD814967E3600E1FCA6 /* HRC32ViewController.xib in Resources */,
 				94BB031A149688FA009B2FCC /* raw.html in Resources */,
 				94BB032D149BB393009B2FCC /* HRPasscodeWarningViewController.xib in Resources */,
+				9415152314AA3A7B009FF674 /* fail.png in Resources */,
+				9415152414AA3A7B009FF674 /* win.png in Resources */,
+				9415152614AA3F9F009FF674 /* question_mark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

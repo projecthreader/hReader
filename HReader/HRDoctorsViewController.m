@@ -57,7 +57,7 @@
     // Shadow
     self.doctorImageView.layer.shadowColor = [[UIColor blackColor] CGColor];
     self.doctorImageView.layer.shadowOpacity = 0.5f;
-    self.doctorImageView.layer.shadowOffset = CGSizeMake(2.0f, 0.0f);
+    self.doctorImageView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
     self.doctorImageView.layer.shadowRadius = 5.0f;
     self.doctorImageView.layer.shouldRasterize = YES;
 

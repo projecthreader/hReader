@@ -10,8 +10,16 @@
 
 @implementation HRPasscodeWarningViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+@synthesize imageView;
+@synthesize confirmButton;
+
+- (void)dealloc {
+    [imageView release];
+    [confirmButton release];
+    [super dealloc];
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -19,31 +27,46 @@
     return self;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    self.confirmButton.hidden = YES;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPrivacyCheck:) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
+    [self setImageView:nil];
+    [self setConfirmButton:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
+
+- (void)didPrivacyCheck:(NSNotification *)notif {
+    if ([HRConfig hasLaunched])  {
+        if ([HRConfig passcodeEnabled]) {
+            self.imageView.image = [UIImage imageNamed:@"win"];
+            [self.confirmButton setTitle:@"Continue" forState:UIControlStateNormal];
+        } else {
+            self.imageView.image = [UIImage imageNamed:@"fail"];
+            [self.confirmButton setTitle:@"I understand my privacy isn't protected without a passcode!" forState:UIControlStateNormal];
+        }
+        
+        self.confirmButton.hidden = NO;
+        
+    } else {
+        [HRConfig setHasLaunched:YES];
+    }
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+}
+
+- (IBAction)confirmButtonPressed:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

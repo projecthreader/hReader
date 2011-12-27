@@ -7,6 +7,7 @@
 //
 
 #import "HRAppDelegate.h"
+#import "HRPasscodeWarningViewController.h"
 
 @implementation HRAppDelegate
 
@@ -22,8 +23,18 @@
     // Load TestFlight SDK
 #if !defined(DEBUG)// || 1
     [TestFlight takeOff:[HRConfig testFlightTeamToken]];
-#endif
+#endif 
     
+    [self.window makeKeyAndVisible];
+        
+#if !defined(DEBUG) || 1
+//    [HRConfig setPasscodeEnabled:NO];
+//    [HRConfig setHasLaunched:NO];
+    [self showPrivacyWarning];
+#endif
+
+
+
     // Override point for customization after application launch.
     [self setAppearanceProxies];
     
@@ -70,11 +81,10 @@
 }
 
 - (void)applicationProtectedDataWillBecomeUnavailable:(UIApplication *)application {
-    NSLog(@"goo");
+    [HRConfig setPasscodeEnabled:YES];
 }
 
 - (void)applicationProtectedDataDidBecomeAvailable:(UIApplication *)application {
-    NSLog(@"goo");
 }
 
 - (void)setAppearanceProxies {
@@ -83,5 +93,16 @@
 //    [[UITableViewCell appearance] setSelectedBackgroundView:redView];
 //    [redView release];
 }
+
+#pragma mark - Privacy warning
+
+- (void)showPrivacyWarning {
+    if (![HRConfig hasLaunched]) {
+        HRPasscodeWarningViewController *warningViewController = [[HRPasscodeWarningViewController alloc] initWithNibName:nil bundle:nil];
+        [self.window.rootViewController presentModalViewController:warningViewController animated:NO];
+        [warningViewController release];
+    }
+}
+
 
 @end

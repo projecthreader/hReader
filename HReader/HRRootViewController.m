@@ -23,7 +23,6 @@
 - (void)setLogo;
 - (void)setupSegmentedControl;
 - (void)showRawC32:(id)sender;
-- (void)showPrivacyWarning;
 @end
 
 @implementation HRRootViewController
@@ -43,8 +42,7 @@
     [super dealloc];
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
+- (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
         HRPatientSummaryViewController *patientSummaryViewController = [[[HRPatientSummaryViewController alloc] initWithNibName:nil bundle:nil] autorelease];
@@ -77,18 +75,9 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
-#if !defined(DEBUG) || 1
-//    BOOL passcodeEnabled = [HRPasscodeManager passcodeIsSet];
-//    NSLog(@"Passcode Set: %i", passcodeEnabled);
-//    if (!passcodeEnabled) {
-//        [self showPrivacyWarning];
-//    }
-#endif
-    
+
     [self setupPatientLabelWithText:@"Last Updated: 05 May by Joseph Yang, M.D. (Columbia Pediatric Associates)"];
     [self setLogo];
 
@@ -200,15 +189,6 @@
     c32ViewController.modalPresentationStyle = UIModalPresentationPageSheet;
     [self presentModalViewController:c32ViewController animated:YES];
     [c32ViewController release];
-}
-
-
-#pragma mark - Privacy warning
-
-- (void)showPrivacyWarning {
-    HRPasscodeWarningViewController *warningViewController = [[HRPasscodeWarningViewController alloc] initWithNibName:nil bundle:nil];
-    [self presentModalViewController:warningViewController animated:YES];
-    [warningViewController release];
 }
 
 #pragma mark - segue

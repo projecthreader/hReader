@@ -13,6 +13,6 @@
 @property (strong, nonatomic) UIWindow *window;
 
 - (void)setAppearanceProxies;
-//- (void)showPrivacyWarning;
+- (void)showPrivacyWarning;
 
 @end

@@ -10,4 +10,9 @@
 
 @interface HRPasscodeWarningViewController : UIViewController
 
+@property (retain, nonatomic) IBOutlet UIImageView *imageView;
+@property (retain, nonatomic) IBOutlet UIButton *confirmButton;
+
+- (IBAction)confirmButtonPressed:(id)sender;
+
 @end

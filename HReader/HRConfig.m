@@ -14,6 +14,8 @@
 
 NSString * const HRPatientDidChangeNotification = @"HRPatientDidChangeNotification";
 NSString * const HRPatientKey = @"HRPatientKey";
+NSString * const HRHasLaunched = @"has_launched";
+NSString * const HRPasscodeEnabled = @"passcode_enabled";
 
 @implementation HRConfig
 
@@ -126,6 +128,31 @@ NSString * const HRPatientKey = @"HRPatientKey";
     
     
     return array;
+}
+
+#pragma mark - System settings
+
++ (BOOL)hasLaunched {
+    BOOL hasLaunched = [[NSUserDefaults standardUserDefaults] boolForKey:HRHasLaunched];
+    if (hasLaunched) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
++ (void)setHasLaunched:(BOOL)hasLaunched {
+    [[NSUserDefaults standardUserDefaults] setBool:hasLaunched forKey:HRHasLaunched];
+}
++ (BOOL)passcodeEnabled {
+    BOOL passcodeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:HRPasscodeEnabled];
+    if (passcodeEnabled) {
+        return YES;
+    } else {
+        return NO;
+    }    
+}
++ (void)setPasscodeEnabled:(BOOL)passcodeEnabled {
+    [[NSUserDefaults standardUserDefaults] setBool:passcodeEnabled forKey:HRPasscodeEnabled];
 }
 
 #pragma mark - Helper methods
