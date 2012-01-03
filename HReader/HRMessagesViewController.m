@@ -46,17 +46,17 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"Messages (0)";
+        self.title = @"Messages (7)";
         
         self.dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
         self.dateFormatter.dateFormat = @"M LLL. YYYY";
         
         NSMutableArray *messages = [[NSMutableArray alloc] init];
-        [messages addObject:[HRMessage messageWithSubject:@"Johnny Smith's Health Record" body:@"Noah d. Porter's Health Record was updated on 07 July, 2011 by Candy Remandy, M.D. at Columbia Pediatric Associates.\n\n\tThe following sections of the Health Record were changed in this update:\n\n\tMedications\n\n\tVital Signs\n\n\tProblems\n\nIf you have any questions or concerns, please contact Columbia Pediatrics ASsociates at 410.555.8752" date:[HRConfig dateForString:@"20110407"]]];
-        [messages addObject:[HRMessage messageWithSubject:@"Johnny Smith's Message 2" body:@"Message 2 body here" date:[HRConfig dateForString:@"20110328"]]];
-        [messages addObject:[HRMessage messageWithSubject:@"Johnny Smith's Message 3" body:@"Message 3 body here" date:[HRConfig dateForString:@"20110327"]]];
-        [messages addObject:[HRMessage messageWithSubject:@"Johnny Smith's Message 4" body:@"Message 4 body here" date:[HRConfig dateForString:@"20110117"]]];
-        [messages addObject:[HRMessage messageWithSubject:@"Johnny Smith's Message 5" body:@"Message 5 body here" date:[HRConfig dateForString:@"20111213"]]];
+        [messages addObject:[HRMessage messageWithSubject:@"Johnny Smith's Health Record" body:@"Johnny Smith's Health Record was updated on 07 July, 2011 by Candy Remandy, M.D. at Columbia Pediatric Associates.\n\n\tThe following sections of the Health Record were changed in this update:\n\n\tMedications\n\n\tVital Signs\n\n\tProblems\n\nIf you have any questions or concerns, please contact Columbia Pediatrics Associates at 410.555.8752" date:[HRConfig dateForString:@"20110407"]]];
+        [messages addObject:[HRMessage messageWithSubject:@"Appointment Reminder" body:@"Dear Valued Patient,\n\n\nThis messages is to remind you that you have an appointment scheduled for Monday, March 21, 2011.  Please call 508-555-1212 to confirm appointment.\n\nThank You" date:[HRConfig dateForString:@"20110328"]]];
+        [messages addObject:[HRMessage messageWithSubject:@"Appointment Confirmed" body:@"Dear Valued Patient,\n\n\nThis messages is to confim your appointment scheduled for Monday, March 21, 2011.\n\nThank You" date:[HRConfig dateForString:@"20110327"]]];
+        [messages addObject:[HRMessage messageWithSubject:@"Yearly Checkup Reminder" body:@"Dear Valued Patient,\n\n\nThis messages is to remind you that it is that time of the year again for your yearly physical. \n\nPlease email or call 508-555-1212 to schedule an appointment.\n\nThank You" date:[HRConfig dateForString:@"20110117"]]];
+        [messages addObject:[HRMessage messageWithSubject:@"Lab Results" body:@"Dear Valued Patient,\n\n\nYour lab results are complete, please connect to this <LINK> to download and view. \n\nPlease email or call 508-555-1212 with any questions or issues with download.\n\nThank You" date:[HRConfig dateForString:@"20111213"]]];
         [messages addObject:[HRMessage messageWithSubject:@"Johnny Smith's Message 6" body:@"Message 6 body here" date:[HRConfig dateForString:@"20111205"]]];
         [messages addObject:[HRMessage messageWithSubject:@"Johnny Smith's Message 7" body:@"Message 7 body here" date:[HRConfig dateForString:@"20101028"]]];
         

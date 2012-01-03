@@ -12,9 +12,11 @@
 @implementation HRAboutTableViewController
 
 @synthesize versionLabel = __versionLabel;
+@synthesize aboutLabel = __aboutLabel;
 
 - (void)dealloc {
     [__versionLabel release];
+    [__aboutLabel release];
     [super dealloc];
 }
 
@@ -42,11 +44,13 @@
     [super viewDidLoad];
 
     self.versionLabel.text = [HRConfig formattedVersion];
+    self.aboutLabel.text = @"\nThe MITRE Corporation c2012\n\nhReader prototype demonstration application.\nAll data contained in this application is synthetic and fictional for research purposes.";
 }
 
 - (void)viewDidUnload
 {
     self.versionLabel = nil;
+    self.aboutLabel = nil;
     
     [super viewDidUnload];
     // Release any retained subviews of the main view.

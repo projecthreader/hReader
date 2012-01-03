@@ -11,6 +11,7 @@
 @interface HRAboutTableViewController : UITableViewController
 
 @property (retain, nonatomic) IBOutlet UILabel *versionLabel;
+@property (retain, nonatomic) IBOutlet UILabel *aboutLabel;
 
 - (IBAction)done:(id)sender;
 
