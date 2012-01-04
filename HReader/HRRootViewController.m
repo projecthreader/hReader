@@ -23,6 +23,8 @@
 - (void)setLogo;
 - (void)setupSegmentedControl;
 - (void)showRawC32:(id)sender;
+- (void)setupScrollViewWithOrientation:(UIInterfaceOrientation)interfaceOrientation;
+- (CGSize)sizeForView:(UIView *)view orientation:(UIInterfaceOrientation)interfaceOrientation;
 @end
 
 @implementation HRRootViewController
@@ -66,7 +68,6 @@
             [obj addObserver:self forKeyPath:@"title" options:0 context:0];
         }];
         
-        
         HRPatient *patient = [[HRConfig patients] objectAtIndex:0];
         [[NSNotificationCenter defaultCenter] postNotificationName:HRPatientDidChangeNotification object:self userInfo:[NSDictionary dictionaryWithObject:patient forKey:HRPatientKey]];
     }
@@ -89,6 +90,7 @@
     }];
     
     [self setupSegmentedControl];
+    [self setupScrollViewWithOrientation:self.interfaceOrientation];
 }
 
 
@@ -100,16 +102,42 @@
     self.segmentedControl = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self willAnimateRotationToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft duration:1.0];
+}
+
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    CGSize viewSize = self.view.bounds.size;
-    self.scrollView.contentSize = CGSizeMake(viewSize.width * [self.childViewControllers count], self.scrollView.bounds.size.height);
+    [self setupScrollViewWithOrientation:toInterfaceOrientation];
+}
+
+- (void)setupScrollViewWithOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    CGSize viewSize = [self sizeForView:self.view orientation:interfaceOrientation];
+    NSLog(@"%@", NSStringFromCGSize(viewSize));
+    self.scrollView.contentSize = CGSizeMake(viewSize.width * [self.childViewControllers count], viewSize.height);
     
     [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([obj isKindOfClass:[UIViewController class]]) {
             UIViewController *splitViewController = (UIViewController *)obj;
-            splitViewController.view.frame = CGRectMake(viewSize.width * idx, 0, viewSize.width, self.scrollView.bounds.size.height);
+            splitViewController.view.frame = CGRectMake(viewSize.width * idx, 0, viewSize.width, viewSize.height);
         }
-    }];
+    }];    
+}
+
+- (CGSize)sizeForView:(UIView *)view orientation:(UIInterfaceOrientation)interfaceOrientation {
+//    CGSize size = view.bounds.size;
+//    CGFloat width;
+//    CGFloat height;
+//    if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
+//        width = size.width;
+//        height = size.height;
+//    } else {
+//        width = size.height;
+//        height = size.width;
+//    }
+    
+//    return CGSizeMake(width, height);
+    return CGSizeMake(1024, 660); // works!
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {

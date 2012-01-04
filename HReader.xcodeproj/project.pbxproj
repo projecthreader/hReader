@@ -41,6 +41,11 @@
 		947FCE4614B4C18600C716FD /* chevron-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE4514B4C18600C716FD /* chevron-left.png */; };
 		947FCE4B14B4C76700C716FD /* HRPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947FCE4914B4C76700C716FD /* HRPrivacyViewController.m */; };
 		947FCE4C14B4C76700C716FD /* HRPrivacyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE4A14B4C76700C716FD /* HRPrivacyViewController.xib */; };
+		947FCE5414B4D7C400C716FD /* GCPINViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947FCE5014B4D7C400C716FD /* GCPINViewController.m */; };
+		947FCE5514B4D7C400C716FD /* PINBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE5114B4D7C400C716FD /* PINBox.png */; };
+		947FCE5614B4D7C400C716FD /* PINBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE5214B4D7C400C716FD /* PINBox@2x.png */; };
+		947FCE5714B4D7C400C716FD /* PINViewDefault.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE5314B4D7C400C716FD /* PINViewDefault.xib */; };
+		947FCE5914B4D7E400C716FD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947FCE5814B4D7E400C716FD /* AudioToolbox.framework */; };
 		94AEAE0414841CEB00C005B2 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0214841CEB00C005B2 /* TimelineViewController.m */; };
 		94AEAE0514841CEB00C005B2 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEAE0314841CEB00C005B2 /* TimelineViewController.xib */; };
 		94AEAE0914868BC200C005B2 /* HRRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0814868BC200C005B2 /* HRRootViewController.m */; };
@@ -121,6 +126,12 @@
 		947FCE4814B4C76700C716FD /* HRPrivacyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPrivacyViewController.h; sourceTree = "<group>"; };
 		947FCE4914B4C76700C716FD /* HRPrivacyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPrivacyViewController.m; sourceTree = "<group>"; };
 		947FCE4A14B4C76700C716FD /* HRPrivacyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPrivacyViewController.xib; sourceTree = "<group>"; };
+		947FCE4F14B4D7C400C716FD /* GCPINViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCPINViewController.h; path = vendor/pinview/pinview/GCPINViewController.h; sourceTree = "<group>"; };
+		947FCE5014B4D7C400C716FD /* GCPINViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCPINViewController.m; path = vendor/pinview/pinview/GCPINViewController.m; sourceTree = "<group>"; };
+		947FCE5114B4D7C400C716FD /* PINBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PINBox.png; path = vendor/pinview/pinview/PINBox.png; sourceTree = "<group>"; };
+		947FCE5214B4D7C400C716FD /* PINBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PINBox@2x.png"; path = "vendor/pinview/pinview/PINBox@2x.png"; sourceTree = "<group>"; };
+		947FCE5314B4D7C400C716FD /* PINViewDefault.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PINViewDefault.xib; path = vendor/pinview/pinview/PINViewDefault.xib; sourceTree = "<group>"; };
+		947FCE5814B4D7E400C716FD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		94AEAE0114841CEB00C005B2 /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		94AEAE0214841CEB00C005B2 /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 		94AEAE0314841CEB00C005B2 /* TimelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineViewController.xib; sourceTree = "<group>"; };
@@ -174,6 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				947FCE5914B4D7E400C716FD /* AudioToolbox.framework in Frameworks */,
 				941DB0AD1471B32D00A96B8B /* UIKit.framework in Frameworks */,
 				941DB0AF1471B32D00A96B8B /* Foundation.framework in Frameworks */,
 				941DB0B11471B32D00A96B8B /* CoreGraphics.framework in Frameworks */,
@@ -206,6 +218,7 @@
 		941DB0AB1471B32D00A96B8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				947FCE5814B4D7E400C716FD /* AudioToolbox.framework */,
 				DD7037B21490103300F58A83 /* QuartzCore.framework */,
 				941DB0AC1471B32D00A96B8B /* UIKit.framework */,
 				941DB0AE1471B32D00A96B8B /* Foundation.framework */,
@@ -289,6 +302,7 @@
 		94689ABC14964BBF00E1FCA6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				947FCE4E14B4D7A600C716FD /* pinview */,
 				94689ABE14964BCF00E1FCA6 /* TestFlight-0.8.4 */,
 			);
 			name = Vendor;
@@ -344,6 +358,18 @@
 				947FCE4A14B4C76700C716FD /* HRPrivacyViewController.xib */,
 			);
 			name = "Privacy Shield";
+			sourceTree = "<group>";
+		};
+		947FCE4E14B4D7A600C716FD /* pinview */ = {
+			isa = PBXGroup;
+			children = (
+				947FCE4F14B4D7C400C716FD /* GCPINViewController.h */,
+				947FCE5014B4D7C400C716FD /* GCPINViewController.m */,
+				947FCE5114B4D7C400C716FD /* PINBox.png */,
+				947FCE5214B4D7C400C716FD /* PINBox@2x.png */,
+				947FCE5314B4D7C400C716FD /* PINViewDefault.xib */,
+			);
+			name = pinview;
 			sourceTree = "<group>";
 		};
 		94BB032E149BB398009B2FCC /* Passcode Warning */ = {
@@ -628,6 +654,9 @@
 				94026FB414B4A8A600F40185 /* timeline in Resources */,
 				947FCE4614B4C18600C716FD /* chevron-left.png in Resources */,
 				947FCE4C14B4C76700C716FD /* HRPrivacyViewController.xib in Resources */,
+				947FCE5514B4D7C400C716FD /* PINBox.png in Resources */,
+				947FCE5614B4D7C400C716FD /* PINBox@2x.png in Resources */,
+				947FCE5714B4D7C400C716FD /* PINViewDefault.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,6 +707,7 @@
 				94BB032C149BB393009B2FCC /* HRPasscodeWarningViewController.m in Sources */,
 				9415151F14A0E8FA009FF674 /* HRMessage.m in Sources */,
 				947FCE4B14B4C76700C716FD /* HRPrivacyViewController.m in Sources */,
+				947FCE5414B4D7C400C716FD /* GCPINViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

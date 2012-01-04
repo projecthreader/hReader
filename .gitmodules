@@ -1,0 +1,3 @@
+[submodule "vendor/pinview"]
+	path = vendor/pinview
+	url = https://github.com/guicocoa/pinview.git

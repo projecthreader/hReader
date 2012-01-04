@@ -9,6 +9,7 @@
 #import "HRAppDelegate.h"
 #import "HRPasscodeWarningViewController.h"
 #import "HRPrivacyViewController.h"
+#import "GCPINViewController.h"
 
 @implementation HRAppDelegate
 
@@ -49,7 +50,6 @@
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
 //    [self.window addSubview:self.privacyViewController.view];
-    [TestFlight passCheckpoint:@"Window Hidden"];
     self.window.hidden = YES;
 }
 
@@ -66,6 +66,7 @@
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
+        self.window.hidden = NO;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -75,6 +76,17 @@
 //    [self.privacyViewController.view removeFromSuperview];
     [TestFlight passCheckpoint:@"Window Unhidden"];
     self.window.hidden = NO;
+    
+    GCPINViewController *PIN = [[GCPINViewController alloc] initWithNibName:@"PINViewDefault" bundle:nil mode:GCPINViewControllerModeVerify];
+    PIN.messageText = @"Enter your Passcode";
+    PIN.errorText = @"Incorrect passcode";
+    PIN.verifyBlock = ^(NSString *code) {
+        NSLog(@"checking code: %@", code);
+        return [code isEqualToString:@"0000"];
+    };
+    [PIN presentFromViewController:self.window.rootViewController animated:NO];
+    [PIN release];
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
