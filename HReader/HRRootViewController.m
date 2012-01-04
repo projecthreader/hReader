@@ -107,6 +107,7 @@
     [self willAnimateRotationToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft duration:1.0];
 }
 
+
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     [self setupScrollViewWithOrientation:toInterfaceOrientation];
 }
