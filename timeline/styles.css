@@ -1,0 +1,66 @@
+@import url("http://www.simile-widgets.org/styles/common.css");
+
+.timeline-default {
+    font-family: Trebuchet MS, Helvetica, Arial, sans serif;
+    font-size: 8pt;
+    border: 1px solid #aaa;
+}
+
+.tape-special_event, .small-special_event { background-color: orange; }
+
+#titles {
+    position:   absolute;
+    width:      200px;
+    height:     400px;
+    top: 		243px;
+    left: 		49px;
+    z-index: 	1000;
+    font-weight: 500;
+    background-color: white;
+    border-right: 1px solid #ccc;
+}
+
+h2 {
+	font-size: 1.4em;
+	font-weight: normal;
+	padding-left: 20px;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding: 8px 10px 8px 20px;
+}
+
+h2.gray {
+	background: #EFEEEE;
+	padding: 8px 10px 8px 20px;
+
+}
+
+.footnotes {
+    background: #eee;
+    padding: 0.25em;
+}
+
+.controls {
+    margin: 1em 0;
+    padding: 0.5em;
+}
+
+.timeline-ether-bg{width:100%; height:100%;}
+.timeline-band-0 .timeline-ether-bg{background-color:#EFEEEE}
+.timeline-band-1 .timeline-ether-bg{background-color:#fff}
+.timeline-band-2 .timeline-ether-bg{background-color:#EFEEEE}
+.timeline-band-3 .timeline-ether-bg{background-color:#fff}
+.timeline-band-4 .timeline-ether-bg{background-color:#EFEEEE}
+.timeline-band-5 .timeline-ether-bg{background-color:#fff}
+.timeline-band-6 .timeline-ether-bg{background-color:#EFEEEE}
+.timeline-band-7 .timeline-ether-bg{background-color:#fff}
+.timeline-band-8 .timeline-ether-bg{background-color:#EFEEEE}
+.timeline-band-9 .timeline-ether-bg{background-color:#fff}
+.timeline-band-10 .timeline-ether-bg{background-color:#EFEEEE}
+.timeline-band-11 .timeline-ether-bg{background-color:#fff}
+.timeline-band-12 .timeline-ether-bg{background-color:#EFEEEE}
+
+.timeline-default .timeline-band-1 {
+    font-color: #fff;
+    font-size:0px;
+}

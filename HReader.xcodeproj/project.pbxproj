@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94026FB414B4A8A600F40185 /* timeline in Resources */ = {isa = PBXBuildFile; fileRef = 94026FB314B4A8A600F40185 /* timeline */; };
 		9415151F14A0E8FA009FF674 /* HRMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9415151E14A0E8FA009FF674 /* HRMessage.m */; };
 		9415152314AA3A7B009FF674 /* fail.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152114AA3A7B009FF674 /* fail.png */; };
 		9415152414AA3A7B009FF674 /* win.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152214AA3A7B009FF674 /* win.png */; };
@@ -71,6 +72,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		94026FB314B4A8A600F40185 /* timeline */ = {isa = PBXFileReference; lastKnownFileType = folder; path = timeline; sourceTree = "<group>"; };
 		9415151D14A0E8FA009FF674 /* HRMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMessage.h; sourceTree = "<group>"; };
 		9415151E14A0E8FA009FF674 /* HRMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMessage.m; sourceTree = "<group>"; };
 		9415152114AA3A7B009FF674 /* fail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fail.png; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 		944A2F291472C5F900694816 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				94026FB314B4A8A600F40185 /* timeline */,
 				94C5ECFB1472FFA2009FE38D /* C32 */,
 				944A2F2B1472C60600694816 /* Images */,
 			);
@@ -603,6 +606,7 @@
 				9415152314AA3A7B009FF674 /* fail.png in Resources */,
 				9415152414AA3A7B009FF674 /* win.png in Resources */,
 				9415152614AA3F9F009FF674 /* question_mark.png in Resources */,
+				94026FB414B4A8A600F40185 /* timeline in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

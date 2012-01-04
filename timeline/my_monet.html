@@ -1,0 +1,277 @@
+<html>
+  <head>
+    <title>SIMILE Widgets | Timeline | Examples | The Life of Monet</title>
+    <link rel='stylesheet' href='../styles.css' type='text/css' />
+    <link rel='stylesheet' href='../styles.css' type='text/css' />
+    <!-- ############################################################################ -->
+    <!-- To use this file on your own system, replace ../../api/timeline-api.js with  -->
+    <!--     http://api.simile-widgets.org/timeline/2.3.1/timeline-api.js          -->
+    <!-- (where 2.3.1 is the current release number.)                                 -->
+    <script src="../../api/timeline-api.js?bundle=true" type="text/javascript"></script>
+
+
+    <script>
+        var tl;
+        function onLoad() {
+            var eventSource_all = new Timeline.DefaultEventSource(0);
+            
+            var theme = Timeline.ClassicTheme.create();
+            theme.event.bubble.width = 500;
+            theme.event.bubble.height = 460;
+            theme.ether.backgroundColors[1] = theme.ether.backgroundColors[0];
+
+            var d = Timeline.DateTime.parseGregorianDateTime("2010")
+            var bandInfos = [
+                Timeline.createBandInfo({
+                    width:          "16%", 
+                    intervalUnit:   Timeline.DateTime.YEAR, 
+                    intervalPixels: 80,
+                    date:           d,
+                    showEventText:  false,
+                    theme:          theme
+                }),
+                Timeline.createBandInfo({
+                    width:          "7%", 
+                    intervalUnit:   Timeline.DateTime.MONTH, 
+                    intervalPixels: 50,
+                    eventSource:    eventSource_allergies,
+                    date:           d,
+                    theme:          theme
+                }),
+                Timeline.createBandInfo({
+                    width:          "7%", 
+                    intervalUnit:   Timeline.DateTime.MONTH, 
+                    intervalPixels: 50,
+                    eventSource:    eventSource_conditions,
+                    date:           d,
+                    showEventText:  false,
+                    theme:          theme
+                }),
+                Timeline.createBandInfo({
+                    width:          "7%", 
+                    intervalUnit:   Timeline.DateTime.MONTH, 
+                    intervalPixels: 50,
+                    eventSource:    eventSource_medications,
+                    date:           d,
+                    showEventText:  false,
+                    theme:          theme
+                }),
+                Timeline.createBandInfo({
+                    width:          "7%", 
+                    intervalUnit:   Timeline.DateTime.MONTH, 
+                    intervalPixels: 50,
+                    eventSource:    eventSource_results,
+                    date:           d,
+                    showEventText:  false,
+                    theme:          theme
+                }),
+                Timeline.createBandInfo({
+                    width:          "7%", 
+                    intervalUnit:   Timeline.DateTime.MONTH, 
+                    intervalPixels: 50,
+                    eventSource:    eventSource_vitals,
+                    date:           d,
+                    showEventText:  false,
+                    theme:          theme
+                }),
+                Timeline.createBandInfo({
+                    width:          "7%", 
+                    intervalUnit:   Timeline.DateTime.MONTH, 
+                    intervalPixels: 50,
+                    eventSource:    eventSource_procedures,
+                    date:           d,
+                    showEventText:  false,
+                    theme:          theme
+                }),
+                Timeline.createBandInfo({
+                    width:          "7%", 
+                    intervalUnit:   Timeline.DateTime.MONTH, 
+                    intervalPixels: 50,
+                    eventSource:    eventSource_plan,
+                    date:           d,
+                    showEventText:  false,
+                    theme:          theme
+                }),
+                Timeline.createBandInfo({
+                    width:          "7%", 
+                    intervalUnit:   Timeline.DateTime.MONTH, 
+                    intervalPixels: 50,
+                    eventSource:    eventSource_immunizations,
+                    date:           d,
+                    showEventText:  false,
+                    theme:          theme
+                }),
+                Timeline.createBandInfo({
+                    width:          "7%", 
+                    intervalUnit:   Timeline.DateTime.MONTH, 
+                    intervalPixels: 50,
+                    eventSource:    eventSource_encounters,
+                    date:           d,
+                    showEventText:  false,
+                    theme:          theme
+                }),
+                Timeline.createBandInfo({
+                    width:          "7%", 
+                    intervalUnit:   Timeline.DateTime.MONTH, 
+                    intervalPixels: 50,
+                    eventSource:    eventSource_equipment,
+                    date:           d,
+                    showEventText:  false,
+                    theme:          theme
+                }),
+                Timeline.createBandInfo({
+                    width:          "7%", 
+                    intervalUnit:   Timeline.DateTime.MONTH, 
+                    intervalPixels: 50,
+                    eventSource:    eventSource_functional,
+                    date:           d,
+                    showEventText:  false,
+                    theme:          theme
+                }),
+                Timeline.createBandInfo({
+                    width:          "7%", 
+                    intervalUnit:   Timeline.DateTime.MONTH, 
+                    intervalPixels: 50,
+                    eventSource:    eventSource_directives,
+                    date:           d,
+                    showEventText:  false,
+                    theme:          theme
+                })
+
+            ];
+            bandInfos[0].etherPainter = new Timeline.YearCountEtherPainter({
+                startDate:  "Jan 01 2010 00:00:00 GMT",
+                multiple:   5,
+                theme:      theme
+            });
+            bandInfos[0].syncWith = 1;
+            bandInfos[1].syncWith = 2;
+            bandInfos[2].syncWith = 3;
+            bandInfos[3].syncWith = 4;
+            bandInfos[4].syncWith = 5;
+            bandInfos[5].syncWith = 6;
+            bandInfos[6].syncWith = 7;
+            bandInfos[7].syncWith = 8;
+            bandInfos[8].syncWith = 9;
+            bandInfos[9].syncWith = 10;
+            bandInfos[10].syncWith = 11;
+            bandInfos[11].syncWith = 12;
+            bandInfos[0].highlight = true;
+            bandInfos[0].decorators = [
+                new Timeline.SpanHighlightDecorator({
+                    startDate:  "Jan 01 2010 00:00:00 GMT",
+                    endDate:    "Jan 01 2012 00:00:00 GMT",
+                    startLabel: "",
+                    endLabel:   "",
+                    color:      "white",
+                    opacity:    20,
+                    theme:      theme
+                })
+            ];
+            
+            tl = Timeline.create(document.getElementById("tl"), bandInfos, Timeline.HORIZONTAL);
+            tl.loadXML("monet.xml", function(xml, url) {
+                eventSource_all.loadXML(xml, url);
+
+            var iterator = eventSource.getEventReverseIterator(minDate, maxDate);
+            while (iterator.hasNext()) {
+                var evt = iterator.next();
+                if (filterMatcher(evt)) {
+                    this.eventSouce_allergy.add();
+                }
+                var evt = iterator.next();
+                if (filterMatcher(evt)) {
+                    this.eventSouce_conditions.add();
+                }
+                var evt = iterator.next();
+                if (filterMatcher(evt)) {
+                    this.eventSouce_medications.add();
+                }
+                var evt = iterator.next();
+                if (filterMatcher(evt)) {
+                    this.eventSouce_results.add();
+                }
+                var evt = iterator.next();
+                if (filterMatcher(evt)) {
+                    this.eventSouce_vitals.add();
+                }
+                var evt = iterator.next();
+                if (filterMatcher(evt)) {
+                    this.eventSouce_procedures.add();
+                }
+                var evt = iterator.next();
+                if (filterMatcher(evt)) {
+                    this.eventSouce_plan.add();
+                }
+                var evt = iterator.next();
+                if (filterMatcher(evt)) {
+                    this.eventSouce_immunizations.add();
+                }
+                var evt = iterator.next();
+                if (filterMatcher(evt)) {
+                    this.eventSouce_encounters.add();
+                }
+                var evt = iterator.next();
+                if (filterMatcher(evt)) {
+                    this.eventSouce_equipment.add();
+                }
+                var evt = iterator.next();
+                if (filterMatcher(evt)) {
+                    this.eventSouce_functional.add();
+                }
+                var evt = iterator.next();
+                if (filterMatcher(evt)) {
+                    this.eventSouce_directives.add();
+                }
+            });
+        }
+        var resizeTimerID = null;
+        function onResize() {
+            if (resizeTimerID == null) {
+                resizeTimerID = window.setTimeout(function() {
+                    resizeTimerID = null;
+                    tl.layout();
+                }, 500);
+            }
+        }
+    </script>
+  </head>
+  <body onload="onLoad();" onresize="onResize();">
+    <ul id="path">
+      <li><a href="/" title="Home">SIMILE Widgets</a></li>
+      <li><a href="../../" title="Timeline">Timeline</a></li>
+      <li><a href="../" title="Examples">Examples</a></li>
+      <li><span>My Health Timeline</span></li>
+    </ul>
+  
+    <div id="header">
+      <h1>My Health Timeline</h1>
+    </div>
+  
+    <div id="content">
+      <p>Timeline version <span id='tl_ver'></span>.</p>
+      <p>Allergies</p>
+      <script>Timeline.writeVersion('tl_ver')</script>
+      
+      <div id="tl" class="timeline-default" style="height: 514px;"></div>
+    </div>
+    <div id="titles">
+        <h2>Allergies/Alerts</h2>
+        <h2 class="gray">Conditions</h2>
+        <h2>Medications</h2>
+        <h2 class="gray">Results</h2>
+        <h2>Vital Signs</h2>
+        <h2 class="gray">Procedures</h2>
+        <h2>Plan of Care</h2>
+        <h2 class="gray">Immunizations</h2>
+        <h2>Encounters</h2>
+        <h2 class="gray">Medical Equipment</h2>
+        <h2>Functional Status</h2>
+        <h2 class="gray">Advance Directives</h2>
+    </div>
+    
+    <div id="footer">
+      Copyright &copy; <a href="http://web.mit.edu/">Massachusetts Institute of Technology</a> and Contributors 2006-2009 ~ Some rights reserved
+    </div>
+  </body>
+</html>
