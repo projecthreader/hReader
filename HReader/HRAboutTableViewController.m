@@ -44,7 +44,7 @@
     [super viewDidLoad];
 
     self.versionLabel.text = [HRConfig formattedVersion];
-    self.aboutLabel.text = @"\nThe MITRE Corporation c2012\n\nhReader prototype demonstration application.\nAll data contained in this application is synthetic and fictional for research purposes.";
+//    self.aboutLabel.text = @"\nThe MITRE Corporation c2012\n\nhReader prototype demonstration application.\nAll data contained in this application is synthetic and fictional for research purposes.";
 }
 
 - (void)viewDidUnload
