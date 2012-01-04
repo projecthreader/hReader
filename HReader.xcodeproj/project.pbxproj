@@ -38,6 +38,7 @@
 		94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94689ACA1496560C00E1FCA6 /* HRAboutTableViewController.m */; };
 		94689AD714967E3600E1FCA6 /* HRC32ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94689AD514967E3600E1FCA6 /* HRC32ViewController.m */; };
 		94689AD814967E3600E1FCA6 /* HRC32ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94689AD614967E3600E1FCA6 /* HRC32ViewController.xib */; };
+		947FCE4614B4C18600C716FD /* chevron-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE4514B4C18600C716FD /* chevron-left.png */; };
 		94AEAE0414841CEB00C005B2 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0214841CEB00C005B2 /* TimelineViewController.m */; };
 		94AEAE0514841CEB00C005B2 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEAE0314841CEB00C005B2 /* TimelineViewController.xib */; };
 		94AEAE0914868BC200C005B2 /* HRRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0814868BC200C005B2 /* HRRootViewController.m */; };
@@ -114,6 +115,7 @@
 		94689AD414967E3600E1FCA6 /* HRC32ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRC32ViewController.h; sourceTree = "<group>"; };
 		94689AD514967E3600E1FCA6 /* HRC32ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRC32ViewController.m; sourceTree = "<group>"; };
 		94689AD614967E3600E1FCA6 /* HRC32ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRC32ViewController.xib; sourceTree = "<group>"; };
+		947FCE4514B4C18600C716FD /* chevron-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chevron-left.png"; sourceTree = "<group>"; };
 		94AEAE0114841CEB00C005B2 /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		94AEAE0214841CEB00C005B2 /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 		94AEAE0314841CEB00C005B2 /* TimelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineViewController.xib; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				DD8BD9E8148D1D800090F729 /* Backgrounds */,
 				DD8BD9E7148D1D6C0090F729 /* Family */,
 				DD8BD9DA148D13910090F729 /* chevron.png */,
+				947FCE4514B4C18600C716FD /* chevron-left.png */,
 				9424C15B147AD9C0008BF5CE /* hReader_Logo_34x150.png */,
 				9464C58214769E190076B991 /* hReader_icon_72x72.png */,
 				9415152114AA3A7B009FF674 /* fail.png */,
@@ -607,6 +610,7 @@
 				9415152414AA3A7B009FF674 /* win.png in Resources */,
 				9415152614AA3F9F009FF674 /* question_mark.png in Resources */,
 				94026FB414B4A8A600F40185 /* timeline in Resources */,
+				947FCE4614B4C18600C716FD /* chevron-left.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
