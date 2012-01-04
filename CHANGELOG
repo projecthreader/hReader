@@ -1,5 +1,21 @@
 - - -
 
+# 2012-01-04
+
+## About View
+* Added shadow and font changes to about text
+
+## Doctors View
+* Added 6 doctors
+
+## Messages Vie
+* Number of messages in segmented control is now dynamic based on the actual number of messages
+
+## Timeline
+* Added current SIMILE timeline
+
+- - -
+
 # 2011-12-27
 
 * Added privacy education and warning screen which shows on first launch. The user is asked to lock their iPad to check if the passcode is enabled and then tells the user if it is or not.
