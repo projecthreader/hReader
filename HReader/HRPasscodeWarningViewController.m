@@ -46,10 +46,12 @@
 - (void)didPrivacyCheck:(NSNotification *)notif {
     if ([HRConfig hasLaunched])  {
         if ([HRConfig passcodeEnabled]) {
+            [TestFlight passCheckpoint:@"Passcode Enabled"];
             self.imageView.image = [UIImage imageNamed:@"win"];
             [self.confirmButton setTitle:@"Continue" forState:UIControlStateNormal];
         } else {
             self.imageView.image = [UIImage imageNamed:@"fail"];
+            [TestFlight passCheckpoint:@"Passcode NOT Enabled"];
             [self.confirmButton setTitle:@"I understand my privacy isn't protected without a passcode!" forState:UIControlStateNormal];
         }
         
@@ -66,6 +68,7 @@
 }
 
 - (IBAction)confirmButtonPressed:(id)sender {
+    [TestFlight passCheckpoint:@"Privacy Education Button Pressed"];
     [self dismissModalViewControllerAnimated:YES];
 }
 

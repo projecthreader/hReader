@@ -2,6 +2,9 @@
 
 # 2012-01-04
 
+* Hide the window when the app goes to background to protect against caching screenshots of the screen. To test just double click the home button.
+* Added TestFlight checkpoints to see how users are testing the app.
+
 ## About View
 * Added shadow and font changes to about text
 
@@ -13,6 +16,7 @@
 
 ## Timeline
 * Added current SIMILE timeline
+* Disabled events that cause the keyboard to show
 
 - - -
 

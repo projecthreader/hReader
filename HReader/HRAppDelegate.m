@@ -49,6 +49,7 @@
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
 //    [self.window addSubview:self.privacyViewController.view];
+    [TestFlight passCheckpoint:@"Window Hidden"];
     self.window.hidden = YES;
 }
 
@@ -70,6 +71,7 @@
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
 //    [self.privacyViewController.view removeFromSuperview];
+    [TestFlight passCheckpoint:@"Window Unhidden"];
     self.window.hidden = NO;
 }
 
