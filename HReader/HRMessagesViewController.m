@@ -46,8 +46,6 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"Messages (7)";
-        
         self.dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
         self.dateFormatter.dateFormat = @"M LLL. YYYY";
         
@@ -63,6 +61,8 @@
 
         self.messagesArray = messages;
         [messages release];
+        
+        self.title = [NSString stringWithFormat:@"Messages (%lu)", [self.messagesArray count]];
         
         HRPatientSwipeViewController *patientSwipeViewController = [[HRPatientSwipeViewController alloc] initWithNibName:nil bundle:nil];
         [self addChildViewController:patientSwipeViewController];
