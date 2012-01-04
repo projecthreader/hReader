@@ -262,7 +262,7 @@ this._positionHighlight();
 Timeline._Band.prototype._onMouseUp=function(B,A,C){
 this._dragging=false;
 //console.log("mouse up");
-this._keyboardInput.focus();
+//this._keyboardInput.focus();
 };
 Timeline._Band.prototype._onMouseOut=function(C,B,D){var A=SimileAjax.DOM.getEventRelativeCoordinates(B,C);
 A.x+=this._viewOffset;
