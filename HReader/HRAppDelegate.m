@@ -8,34 +8,31 @@
 
 #import "HRAppDelegate.h"
 #import "HRPasscodeWarningViewController.h"
+#import "HRPrivacyViewController.h"
 
 @implementation HRAppDelegate
 
 @synthesize window = _window;
+@synthesize privacyViewController = __privacyViewController;
 
 - (void)dealloc {
     [_window release];
+    [__privacyViewController release];
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    // Load TestFlight SDK
-#if !defined(DEBUG)// || 1
-    [TestFlight takeOff:[HRConfig testFlightTeamToken]];
-#endif 
+    [self loadTestFlight];
     
     [self.window makeKeyAndVisible];
         
-#if !defined(DEBUG) || 1
-//    [HRConfig setPasscodeEnabled:NO];
-//    [HRConfig setHasLaunched:NO];
+#if !defined(DEBUG)// || 1
     [self showPrivacyWarning];
 #endif
+    
+    [self setupPrivacyView];
 
-
-
-    // Override point for customization after application launch.
     [self setAppearanceProxies];
     
 //    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
@@ -51,6 +48,8 @@
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
+//    [self.window addSubview:self.privacyViewController.view];
+    self.window.hidden = YES;
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -70,6 +69,8 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
+//    [self.privacyViewController.view removeFromSuperview];
+    self.window.hidden = NO;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -102,6 +103,17 @@
         [self.window.rootViewController presentModalViewController:warningViewController animated:NO];
         [warningViewController release];
     }
+}
+
+// Load TestFlight SDK
+- (void)loadTestFlight {
+#if !defined(DEBUG)// || 1
+    [TestFlight takeOff:[HRConfig testFlightTeamToken]];
+#endif 
+}
+
+- (void)setupPrivacyView {
+    self.privacyViewController = [[HRPrivacyViewController alloc] initWithNibName:nil bundle:nil];
 }
 
 

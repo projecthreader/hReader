@@ -39,6 +39,8 @@
 		94689AD714967E3600E1FCA6 /* HRC32ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94689AD514967E3600E1FCA6 /* HRC32ViewController.m */; };
 		94689AD814967E3600E1FCA6 /* HRC32ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94689AD614967E3600E1FCA6 /* HRC32ViewController.xib */; };
 		947FCE4614B4C18600C716FD /* chevron-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE4514B4C18600C716FD /* chevron-left.png */; };
+		947FCE4B14B4C76700C716FD /* HRPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947FCE4914B4C76700C716FD /* HRPrivacyViewController.m */; };
+		947FCE4C14B4C76700C716FD /* HRPrivacyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE4A14B4C76700C716FD /* HRPrivacyViewController.xib */; };
 		94AEAE0414841CEB00C005B2 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0214841CEB00C005B2 /* TimelineViewController.m */; };
 		94AEAE0514841CEB00C005B2 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEAE0314841CEB00C005B2 /* TimelineViewController.xib */; };
 		94AEAE0914868BC200C005B2 /* HRRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0814868BC200C005B2 /* HRRootViewController.m */; };
@@ -116,6 +118,9 @@
 		94689AD514967E3600E1FCA6 /* HRC32ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRC32ViewController.m; sourceTree = "<group>"; };
 		94689AD614967E3600E1FCA6 /* HRC32ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRC32ViewController.xib; sourceTree = "<group>"; };
 		947FCE4514B4C18600C716FD /* chevron-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chevron-left.png"; sourceTree = "<group>"; };
+		947FCE4814B4C76700C716FD /* HRPrivacyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPrivacyViewController.h; sourceTree = "<group>"; };
+		947FCE4914B4C76700C716FD /* HRPrivacyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPrivacyViewController.m; sourceTree = "<group>"; };
+		947FCE4A14B4C76700C716FD /* HRPrivacyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPrivacyViewController.xib; sourceTree = "<group>"; };
 		94AEAE0114841CEB00C005B2 /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		94AEAE0214841CEB00C005B2 /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 		94AEAE0314841CEB00C005B2 /* TimelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineViewController.xib; sourceTree = "<group>"; };
@@ -218,6 +223,7 @@
 				DD8BD9EC148D2B3C0090F729 /* Storyboards */,
 				DD7037B114900E8A00F58A83 /* Models */,
 				94E3BB531472C96200E05D4D /* App Delegate */,
+				947FCE4D14B4C7CB00C716FD /* Privacy Shield */,
 				DD8BD9EB148D2B270090F729 /* Root View */,
 				941DB0B31471B32D00A96B8B /* Supporting Files */,
 				DD8BD9EA148D2AF00090F729 /* Old */,
@@ -328,6 +334,16 @@
 				94689ACA1496560C00E1FCA6 /* HRAboutTableViewController.m */,
 			);
 			name = About;
+			sourceTree = "<group>";
+		};
+		947FCE4D14B4C7CB00C716FD /* Privacy Shield */ = {
+			isa = PBXGroup;
+			children = (
+				947FCE4814B4C76700C716FD /* HRPrivacyViewController.h */,
+				947FCE4914B4C76700C716FD /* HRPrivacyViewController.m */,
+				947FCE4A14B4C76700C716FD /* HRPrivacyViewController.xib */,
+			);
+			name = "Privacy Shield";
 			sourceTree = "<group>";
 		};
 		94BB032E149BB398009B2FCC /* Passcode Warning */ = {
@@ -611,6 +627,7 @@
 				9415152614AA3F9F009FF674 /* question_mark.png in Resources */,
 				94026FB414B4A8A600F40185 /* timeline in Resources */,
 				947FCE4614B4C18600C716FD /* chevron-left.png in Resources */,
+				947FCE4C14B4C76700C716FD /* HRPrivacyViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,6 +677,7 @@
 				94BB0326149BAF25009B2FCC /* HRPasscodeManager.m in Sources */,
 				94BB032C149BB393009B2FCC /* HRPasscodeWarningViewController.m in Sources */,
 				9415151F14A0E8FA009FF674 /* HRMessage.m in Sources */,
+				947FCE4B14B4C76700C716FD /* HRPrivacyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class HRPrivacyViewController;
+
 @interface HRAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) HRPrivacyViewController *privacyViewController;
 
 - (void)setAppearanceProxies;
 - (void)showPrivacyWarning;
+- (void)loadTestFlight;
+- (void)setupPrivacyView;
 
 @end
