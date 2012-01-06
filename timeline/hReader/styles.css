@@ -1,0 +1,107 @@
+.timeline-default {
+    font-family: Trebuchet MS, Helvetica, Arial, sans serif;
+    font-size: 8pt;
+    border: 1px solid #aaa;
+}
+
+.tape-special_event, .small-special_event { background-color: orange; }
+
+#titles {
+    position:   absolute;
+    width:      200px;
+    height:     382px;
+    top: 		261px;
+    left: 		31px;
+    z-index: 	1000;
+    font-weight: 500;
+    background-color: white;
+}
+
+h2 {
+	font-size: 1.4em;
+	font-weight: normal;
+	padding-left: 20px;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding: 5px 10px 6px 20px;
+    background: #EFEEEE;
+    border-right: 1px solid #ccc;
+}
+
+h2.even {
+	background: #fff;
+	padding: 5px 10px 6px 20px;
+
+}
+h2.last {
+    padding-bottom: 20px;
+    
+}
+
+.footnotes {
+    background: #eee;
+    padding: 0.25em;
+}
+
+.controls {
+    margin: 1em 0;
+    padding: 0.5em;
+}
+.timeline-default {font-family:Helvetica;background-color:white}
+.timeline-container {
+  -moz-user-select:none;
+  -webkit-user-select:none;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+.timeline-band-layer-inner { overflow:hidden}
+.timeline-ether-bg{width:100%; height:100%;}
+.timeline-band-0 .timeline-ether-bg{background-color:#fff}
+.timeline-band-1 .timeline-ether-bg{background-color:#EFEEEE}
+.timeline-band-2 .timeline-ether-bg{background-color:#fff}
+.timeline-band-3 .timeline-ether-bg{background-color:#EFEEEE}
+.timeline-band-4 .timeline-ether-bg{background-color:#fff}
+.timeline-band-5 .timeline-ether-bg{background-color:#EFEEEE}
+.timeline-band-6 .timeline-ether-bg{background-color:#fff}
+.timeline-band-7 .timeline-ether-bg{background-color:#EFEEEE}
+.timeline-band-8 .timeline-ether-bg{background-color:#fff}
+.timeline-band-9 .timeline-ether-bg{background-color:#EFEEEE}
+.timeline-band-10 .timeline-ether-bg{background-color:#fff}
+.timeline-band-11 .timeline-ether-bg{background-color:#EFEEEE}
+.timeline-band-12 .timeline-ether-bg{background-color:#fff}
+
+.timeline-default .timeline-band-0 {
+    color: #EFEEEE;
+    font-size:24px;
+}
+.timeline-event-tape,
+.timeline-small-event-tape,
+.timeline-small-event-icon{
+  background-color:#f56768;
+  width:2px;
+}
+.timeline-ether-highlight{position:absolute; background-color:#CCC;}
+.timeline-horizontal .timeline-date-label-em{height:6em;line-height:10em}
+#content {
+    height: 460px;
+    margin:170px 30px 30px;
+}
+
+		
+	.timeline-band-label-layer {
+			position : absolute;
+			z-index : 200;
+			left : 0;
+			opacity: 1.0;
+			background-color : #fff;
+			width : 150px;
+			height: 21px;
+			cursor:pointer;
+			border-right : 1px solid #eee;
+			border-bottom : 1px solid #eee;
+
+		}
+		.timeline-band-label-layer div {
+			margin:3px 0 0 3px;
+			line-height:1.2em;
+			font-size:9pt;
+		}

@@ -53,9 +53,9 @@
 //    [self.webView loadRequest:request];
 
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"hReader_timeline" 
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"hReader" 
                                                      ofType:@"html"
-                                                inDirectory:@"timeline"];
+                                                inDirectory:@"timeline/hReader"];
     NSLog(@"Path: %@", path);
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]];
     [self.webView loadRequest:request];

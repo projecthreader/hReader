@@ -1,0 +1,87 @@
+﻿<data
+    wiki-url="http://simile.mit.edu/shelf/"
+    wiki-section="Simile Monet Timeline">
+    <!-- Source:
+        http://en.wikipedia.org/wiki/Monet
+        http://www.accents-n-art.com/artists/claude-monet-biography.html
+    -->
+    <event start="Nov 14 2010 00:00:00 GMT"
+        title=""
+        category="allergies">
+        Johnny Smith is has developed a peanut allergy.
+        &lt;p&gt;
+            The patient has had no prior allergies reported prior to this incident but has since developed a severe reaction to peanuts and other legumes.
+        &lt;/p&gt;
+    </event>
+
+    <event start="Jun 14 2010 00:00:00 GMT"
+        title=""
+        category="conditions">
+        Claude Monet, also known as Oscar-Claude Monet or Claude Oscar Monet
+        was born to Adolphe and Louise-Justine Monet of 45 Rue Laffitte, 
+        in the 9th arrondissement of Paris. 
+        &lt;p&gt;
+            He was christened as Oscar-Claude at the church of 
+            Notre-Dame-de-Lorette. His father wanted him to go into the family 
+            (grocery store) business, but Claude Monet wanted to become an artist. 
+            His mother was a singer, both parents were second-generation Parisians.
+        &lt;/p&gt;
+    </event>
+
+    <event start="Aug 14 2010 00:00:00 GMT"
+        title=""
+        category="results">
+        Blood test 
+        &lt;p&gt;
+            negative for infection.
+        &lt;/p&gt;
+    </event>
+    <event start="Jul 14 2011 00:00:00 GMT"
+        title=""
+        category="care">
+        Plan of Care for the next year 
+        &lt;p&gt;
+            Get more exercise and don't eat peanuts.
+        &lt;/p&gt;
+    </event>
+      <event start="Dec 14 2009 00:00:00 GMT"
+        title=""
+        category="encounters">
+        Physical Checkup
+        &lt;p&gt;
+            The patient is in perfect health.
+        &lt;/p&gt;
+    </event>
+      <event start="Jul 14 2010 00:00:00 GMT"
+        title=""
+        category="vitals">
+        Blood pressure
+        &lt;p&gt;
+        BP 25
+        &lt;/p&gt;
+    </event>
+
+    <event start="Dec 14 2010 00:00:00 GMT"
+        title=""
+        category="medications">
+        Epipen
+        &lt;p&gt;
+            Use in case of an allergy reaction after injesting peanuts.
+        &lt;/p&gt;
+    </event>
+
+        
+    <event start="Jan 28 2010 00:00:00 GMT"
+        title=""
+        category="procedures">
+        >
+        Tested for Allergies.
+        </event>
+
+    <event start="Mar 18 2010 00:00:00 GMT"
+        title=""
+        category="immunizations">
+        >
+        varicella vaccine
+        </event>
+</data>
