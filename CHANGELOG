@@ -1,5 +1,12 @@
 - - -
 
+# 2012-01-06
+
+## Timeline View
+* Updated to latest timeline simile.
+
+- - -
+
 # 2012-01-04
 
 * Hide the window when the app goes to background to protect against caching screenshots of the screen. To test just double click the home button.
