@@ -82,8 +82,8 @@ h2.last {
 .timeline-ether-highlight{position:absolute; background-color:#CCC;}
 .timeline-horizontal .timeline-date-label-em{height:6em;line-height:10em}
 #content {
-    height: 460px;
-    margin:170px 30px 30px;
+    height: 440px;
+    margin:190px 30px 30px;
 }
 
 		
@@ -100,6 +100,9 @@ h2.last {
 			border-bottom : 1px solid #eee;
 
 		}
+    .timeline-band-label-layer:nth-child(2n+1) {
+        background-color:#EFEEEE;
+    }
 		.timeline-band-label-layer div {
 			margin:3px 0 0 3px;
 			line-height:1.2em;
