@@ -69,14 +69,67 @@
     <event start="Jan 28 2010 00:00:00 GMT"
         title=""
         category="procedures">
-        >
+        
         Tested for Allergies.
         </event>
 
-    <event start="Mar 18 2010 00:00:00 GMT"
+
+    <event start="Jun 27 2010 00:00:00 GMT"
         title=""
         category="immunizations">
-        >
-        varicella vaccine
+        Hepatitis A Vaccine
+    </event>   
+    <event start="Sep 10 2010 00:00:00 GMT"
+        title=""
+        category="immunizations">
+        MMR Vaccine
+    </event>    
+    <event start="Mar 26 2010 00:00:00 GMT"
+        title=""
+        category="immunizations">
+        VZV Vaccine
+    </event>    
+    <event start="Sep 26 2010 00:00:00 GMT"
+        title=""
+        category="immunizations">
+        Hepatitis A Vaccine
+    </event>
+        <event start="Mar 8 2010 00:00:00 GMT"
+        title=""
+        category="immunizations">
+        Pneumococcal Vaccine
         </event>
+
+    <event start="Dec 26 2009 00:00:00 GMT"
+        title=""
+        category="immunizations">
+        Influenza Vaccine
+    </event>
+
+    <event start="Oct 24 2008 00:00:00 GMT"
+        title=""
+        category="immunizations">
+        DTAP Vaccine    
+    </event>     
+    <event start="Oct 24 2009 00:00:00 GMT"
+        title=""
+        category="immunizations">
+        Pneumococcal Vaccine
+    </event>    
+
+    <event start="Aug 22 2009 00:00:00 GMT"
+        title=""
+        category="immunizations">
+        Rotavirus Vaccine
+    </event>  
+    <event start="Jul 20 2009 00:00:00 GMT"
+        title=""
+        category="immunizations">
+        Hepatitis B Vaccine
+    </event>    
+    <event start="Jun 2 2010 00:00:00 GMT"
+        title=""
+        category="immunizations">
+        Hepatitis B Vaccine
+    </event>
 </data>
