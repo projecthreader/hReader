@@ -38,6 +38,45 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
+					<object class="IBUIButton" id="702573727">
+						<reference key="NSNextResponder" ref="766721923"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{319, 84}, {50, 50}}</string>
+						<reference key="NSSuperview" ref="766721923"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="516439030"/>
+						<string key="NSReuseIdentifierKey">_NS:241</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<object class="NSColor" key="IBUIHighlightedTitleColor" id="96377462">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
+						</object>
+						<reference key="IBUIDisabledTitleColor" ref="96377462"/>
+						<reference key="IBUISelectedTitleColor" ref="96377462"/>
+						<reference key="IBUINormalTitleColor" ref="96377462"/>
+						<object class="NSColor" key="IBUINormalTitleShadowColor" id="230629431">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MC41AA</bytes>
+						</object>
+						<object class="NSCustomResource" key="IBUIHighlightedImage" id="467474667">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">chevron-left.png</string>
+						</object>
+						<reference key="IBUISelectedImage" ref="467474667"/>
+						<reference key="IBUINormalImage" ref="467474667"/>
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="974251319">
+							<int key="type">2</int>
+							<double key="pointSize">15</double>
+						</object>
+						<object class="NSFont" key="IBUIFont" id="530901573">
+							<string key="NSName">Helvetica-Bold</string>
+							<double key="NSSize">15</double>
+							<int key="NSfFlags">16</int>
+						</object>
+					</object>
 					<object class="IBUIView" id="646946067">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">1316</int>
@@ -46,17 +85,14 @@
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="345509764"/>
-						<object class="NSColor" key="IBUIBackgroundColor" id="96377462">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
-						</object>
+						<reference key="IBUIBackgroundColor" ref="96377462"/>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
 					<object class="IBUILabel" id="516439030">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">1316</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrame">{{339, 93}, {233, 31}}</string>
+						<string key="NSFrame">{{358, 93}, {233, 31}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="646946067"/>
@@ -175,47 +211,11 @@ QWNhZGVteSBvZiBGYW1pbHkgUGh5c2ljaWFucy4</bytes>
 							<string key="NSResourceName">Doctor.png</string>
 						</object>
 					</object>
-					<object class="IBUIButton" id="702573727">
-						<reference key="NSNextResponder" ref="766721923"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{320, 0}, {50, 50}}</string>
-						<reference key="NSSuperview" ref="766721923"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="516439030"/>
-						<string key="NSReuseIdentifierKey">_NS:241</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<int key="IBUIContentHorizontalAlignment">0</int>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<reference key="IBUIHighlightedTitleColor" ref="96377462"/>
-						<reference key="IBUIDisabledTitleColor" ref="96377462"/>
-						<reference key="IBUISelectedTitleColor" ref="96377462"/>
-						<reference key="IBUINormalTitleColor" ref="96377462"/>
-						<object class="NSColor" key="IBUINormalTitleShadowColor" id="230629431">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MC41AA</bytes>
-						</object>
-						<object class="NSCustomResource" key="IBUIHighlightedImage" id="467474667">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">chevron-left.png</string>
-						</object>
-						<reference key="IBUISelectedImage" ref="467474667"/>
-						<reference key="IBUINormalImage" ref="467474667"/>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="974251319">
-							<int key="type">2</int>
-							<double key="pointSize">15</double>
-						</object>
-						<object class="NSFont" key="IBUIFont" id="530901573">
-							<string key="NSName">Helvetica-Bold</string>
-							<double key="NSSize">15</double>
-							<int key="NSfFlags">16</int>
-						</object>
-					</object>
 				</array>
 				<string key="NSFrame">{{0, 64}, {1024, 660}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
+				<reference key="NSNextKeyView" ref="702573727"/>
 				<object class="NSColor" key="IBUIBackgroundColor" id="270098800">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -415,7 +415,7 @@ QWNhZGVteSBvZiBGYW1pbHkgUGh5c2ljaWFucy4</bytes>
 						<reference key="NSNextResponder" ref="646824382"/>
 						<int key="NSvFlags">1316</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrame">{{367, 223}, {233, 31}}</string>
+						<string key="NSFrame">{{367, 223}, {272, 31}}</string>
 						<reference key="NSSuperview" ref="646824382"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="526622978"/>
@@ -424,7 +424,7 @@ QWNhZGVteSBvZiBGYW1pbHkgUGh5c2ljaWFucy4</bytes>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">PROCTOLOGIST</string>
+						<string key="IBUIText">PRIMARY CARE PHYSICIAN</string>
 						<reference key="IBUITextColor" ref="96377462"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -499,7 +499,7 @@ QWNhZGVteSBvZiBGYW1pbHkgUGh5c2ljaWFucy4</bytes>
 					<object class="IBUIImageView" id="526622978">
 						<reference key="NSNextResponder" ref="646824382"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrame">{{633, 223}, {25, 25}}</string>
+						<string key="NSFrame">{{633, 227}, {25, 25}}</string>
 						<reference key="NSSuperview" ref="646824382"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="7911732"/>
@@ -569,7 +569,7 @@ QWNhZGVteSBvZiBGYW1pbHkgUGh5c2ljaWFucy4</bytes>
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">CARDIOLOGIST</string>
+						<string key="IBUIText">DERMATOLOGIST</string>
 						<reference key="IBUITextColor" ref="96377462"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -1320,7 +1320,6 @@ QWNhZGVteSBvZiBGYW1pbHkgUGh5c2ljaWFucy4</bytes>
 							<reference ref="307869592"/>
 							<reference ref="526622978"/>
 							<reference ref="300152871"/>
-							<reference ref="539981828"/>
 							<reference ref="644617608"/>
 							<reference ref="368289566"/>
 							<reference ref="940112320"/>
@@ -1353,6 +1352,7 @@ QWNhZGVteSBvZiBGYW1pbHkgUGh5c2ljaWFucy4</bytes>
 							<reference ref="864231357"/>
 							<reference ref="90642403"/>
 							<reference ref="1052634010"/>
+							<reference ref="539981828"/>
 						</array>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Doctor List View</string>
