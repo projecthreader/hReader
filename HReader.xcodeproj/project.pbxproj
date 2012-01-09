@@ -29,6 +29,7 @@
 		945560D214BB892100A3DC43 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560C914BB892100A3DC43 /* DDXMLDocument.m */; };
 		945560D314BB892100A3DC43 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560CB14BB892100A3DC43 /* DDXMLElement.m */; };
 		945560D414BB892100A3DC43 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560CD14BB892100A3DC43 /* DDXMLNode.m */; };
+		945560D714BB89B400A3DC43 /* HREncounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560D614BB89B400A3DC43 /* HREncounter.m */; };
 		9464C58314769E190076B991 /* hReader_icon_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9464C58214769E190076B991 /* hReader_icon_72x72.png */; };
 		9464C5871476BDAE0076B991 /* Johnny_Smith_96.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */; };
 		9464C5881476BDAE0076B991 /* Johnny_Smith_96.html in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */; };
@@ -121,6 +122,8 @@
 		945560CC14BB892100A3DC43 /* DDXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDXMLNode.h; path = vendor/KissXML/KissXML/DDXMLNode.h; sourceTree = "<group>"; };
 		945560CD14BB892100A3DC43 /* DDXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDXMLNode.m; path = vendor/KissXML/KissXML/DDXMLNode.m; sourceTree = "<group>"; };
 		945560CF14BB892100A3DC43 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
+		945560D514BB89B400A3DC43 /* HREncounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HREncounter.h; sourceTree = "<group>"; };
+		945560D614BB89B400A3DC43 /* HREncounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HREncounter.m; sourceTree = "<group>"; };
 		9464C58214769E190076B991 /* hReader_icon_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hReader_icon_72x72.png; sourceTree = "<group>"; };
 		9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Johnny_Smith_96.xml; sourceTree = "<group>"; };
 		9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Johnny_Smith_96.html; sourceTree = "<group>"; };
@@ -515,6 +518,8 @@
 				94BB031D14969675009B2FCC /* HRAddress.m */,
 				9415151D14A0E8FA009FF674 /* HRMessage.h */,
 				9415151E14A0E8FA009FF674 /* HRMessage.m */,
+				945560D514BB89B400A3DC43 /* HREncounter.h */,
+				945560D614BB89B400A3DC43 /* HREncounter.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -777,6 +782,7 @@
 				945560D214BB892100A3DC43 /* DDXMLDocument.m in Sources */,
 				945560D314BB892100A3DC43 /* DDXMLElement.m in Sources */,
 				945560D414BB892100A3DC43 /* DDXMLNode.m in Sources */,
+				945560D714BB89B400A3DC43 /* HREncounter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,6 +27,8 @@ typedef enum {
 @property (copy, nonatomic) NSString *ethnicity;
 @property (copy, nonatomic) NSString *phoneNumber;
 
+@property (strong, nonatomic) NSMutableArray *encounters;
+
 - (id)initWithName:(NSString *)aName image:(UIImage *)aImage;
 
 - (NSString *)genderAsString;

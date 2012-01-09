@@ -20,6 +20,8 @@
 @synthesize ethnicity       = __ethnicity;
 @synthesize phoneNumber     = __phoneNumber;
 
+@synthesize encounters      = __encounters;
+
 - (void)dealloc {
     [__name release];
     [__image release];
