@@ -10,12 +10,13 @@
 
 @implementation HRPasscodeWarningViewController
 
-@synthesize imageView;
-@synthesize confirmButton;
+@synthesize imageView           = __imageView;
+@synthesize confirmButton       = __confirmButton;
+@synthesize demoMode            = __demoMode;
 
 - (void)dealloc {
-    [imageView release];
-    [confirmButton release];
+    [__imageView release];
+    [__confirmButton release];
     [super dealloc];
 }
 
@@ -23,6 +24,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.demoMode = NO;
     }
     return self;
 }
@@ -33,6 +35,11 @@
     [super viewDidLoad];
 
     self.confirmButton.hidden = YES;
+
+    if (self.demoMode) {        
+        [self.confirmButton setTitle:@"Dismiss Demo" forState:UIControlStateNormal];
+        self.confirmButton.hidden = NO;
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didPrivacyCheck:) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
@@ -69,6 +76,7 @@
 
 - (IBAction)confirmButtonPressed:(id)sender {
     [TestFlight passCheckpoint:@"Privacy Education Button Pressed"];
+    [HRConfig setPrivacyWarningConfirmed:YES];
     [self dismissModalViewControllerAnimated:YES];
 }
 

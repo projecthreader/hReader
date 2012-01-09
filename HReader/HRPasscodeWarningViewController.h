@@ -13,6 +13,8 @@
 @property (retain, nonatomic) IBOutlet UIImageView *imageView;
 @property (retain, nonatomic) IBOutlet UIButton *confirmButton;
 
+@property (nonatomic) BOOL demoMode;
+
 - (IBAction)confirmButtonPressed:(id)sender;
 
 @end
