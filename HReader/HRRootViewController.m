@@ -25,6 +25,7 @@
 - (void)showRawC32:(id)sender;
 - (void)setupScrollViewWithOrientation:(UIInterfaceOrientation)interfaceOrientation;
 - (CGSize)sizeForView:(UIView *)view orientation:(UIInterfaceOrientation)interfaceOrientation;
+- (void)privacyCheck:(id)sender;
 @end
 
 @implementation HRRootViewController
@@ -105,6 +106,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self willAnimateRotationToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft duration:1.0];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 
@@ -235,6 +240,12 @@
         [self.segmentedControl setTitle:viewController.title 
                       forSegmentAtIndex:[self.childViewControllers indexOfObject:viewController]];
     }
+}
+
+- (void)privacyCheck:(id)sender {
+//    HRPasscodeWarningViewController *warningViewController = [[HRPasscodeWarningViewController alloc] initWithNibName:nil bundle:nil];
+//    [self presentModalViewController:warningViewController animated:YES];
+//    [warningViewController release];
 }
 
 @end

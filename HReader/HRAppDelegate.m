@@ -28,8 +28,8 @@
     
     [self.window makeKeyAndVisible];
         
-#if !defined(DEBUG)// || 1
-    [self showPrivacyWarning];
+#if !defined(DEBUG) || 1
+//    [self showPrivacyWarning];
 #endif
     
     [self setupPrivacyView];
@@ -52,7 +52,7 @@
     
     [TestFlight passCheckpoint:@"Window Hidden"];
     self.window.hidden = YES;
-    [self.window.rootViewController dismissModalViewControllerAnimated:NO];
+//    [self.window.rootViewController dismissModalViewControllerAnimated:NO];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -137,7 +137,7 @@
     PIN.verifyBlock = ^(NSString *code) {
 //        NSLog(@"checking code: %@", code);
         return [code isEqualToString:@"0000"];
-    }; 
+    };
     
     return PIN;
 }
