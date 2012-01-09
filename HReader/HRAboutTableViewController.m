@@ -7,7 +7,7 @@
 //
 
 #import "HRAboutTableViewController.h"
-
+#import "HRPasscodeWarningViewController.h"
 
 @implementation HRAboutTableViewController
 
@@ -144,7 +144,15 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [TestFlight openFeedbackView];
+    if (indexPath.row == 0) {
+        [TestFlight openFeedbackView];         
+    } else if (indexPath.row == 1) {
+        HRPasscodeWarningViewController *warningViewController = [[HRPasscodeWarningViewController alloc] initWithNibName:nil bundle:nil];
+        warningViewController.demoMode = YES;
+        [self presentModalViewController:warningViewController animated:YES];
+        [warningViewController release];
+    } else {}
+
 }
 
 
