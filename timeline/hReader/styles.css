@@ -110,3 +110,7 @@ h2.last {
 			line-height:1.2em;
 			font-size:9pt;
 		}
+div.simileAjax-bubble-contentContainer {
+    background: mone repeat scroll 0 0 black;
+}
+
