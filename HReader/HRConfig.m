@@ -13,9 +13,10 @@
 #import "HRAddress.h"
 
 NSString * const HRPatientDidChangeNotification = @"HRPatientDidChangeNotification";
-NSString * const HRPatientKey = @"HRPatientKey";
-NSString * const HRHasLaunched = @"has_launched";
-NSString * const HRPasscodeEnabled = @"passcode_enabled";
+NSString * const HRPatientKey                   = @"HRPatientKey";
+NSString * const HRHasLaunched                  = @"has_launched";
+NSString * const HRPasscodeEnabled              = @"passcode_enabled";
+NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
 
 @implementation HRConfig
 
@@ -75,7 +76,7 @@ NSString * const HRPasscodeEnabled = @"passcode_enabled";
     dispatch_once(&onceToken, ^{
         HRAddress *address = [[HRAddress alloc] initWithSteet1:@"2275 Rolling Run Dr." street2:nil city:@"Woodlawn" state:@"MD" zip:@"21244"];
         
-        HRPatient *johnny = [[[HRPatient alloc] initWithName:@"Johhny Smith" image:[UIImage imageNamed:@"Johnny_Smith"]] autorelease];
+        HRPatient *johnny = [[[HRPatient alloc] initWithName:@"Johnny Smith" image:[UIImage imageNamed:@"Johnny_Smith"]] autorelease];
         johnny.address = address;
         johnny.gender = HRPatientGenderMale;
         johnny.birthday = [self dateForString:@"20061122"];
@@ -153,6 +154,17 @@ NSString * const HRPasscodeEnabled = @"passcode_enabled";
 }
 + (void)setPasscodeEnabled:(BOOL)passcodeEnabled {
     [[NSUserDefaults standardUserDefaults] setBool:passcodeEnabled forKey:HRPasscodeEnabled];
+}
++ (BOOL)privacyWarningConfirmed {
+    BOOL passcodeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:HRPPrivacyWarningConfirmed];
+    if (passcodeEnabled) {
+        return YES;
+    } else {
+        return NO;
+    }        
+}
++ (void)setPrivacyWarningConfirmed:(BOOL)confirmed {
+    [[NSUserDefaults standardUserDefaults] setBool:confirmed forKey:HRPPrivacyWarningConfirmed];
 }
 
 #pragma mark - Helper methods

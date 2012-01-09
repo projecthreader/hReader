@@ -32,6 +32,9 @@ extern NSString * const HRPatientKey;
 + (void)setHasLaunched:(BOOL)hasLaunched;
 + (BOOL)passcodeEnabled;
 + (void)setPasscodeEnabled:(BOOL)passcodeEnabled;
++ (BOOL)privacyWarningConfirmed;
++ (void)setPrivacyWarningConfirmed:(BOOL)confirmed;
+
 
 + (NSDate *)dateForString:(NSString *)birthday;
 + (void)setShadowForView:(UIView *)shadowView borderForView:(UIView *)borderView;
