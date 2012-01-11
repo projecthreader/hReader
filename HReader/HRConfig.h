@@ -37,6 +37,5 @@ extern NSString * const HRPatientKey;
 
 
 + (NSDate *)dateForString:(NSString *)birthday;
-+ (void)setShadowForView:(UIView *)shadowView borderForView:(UIView *)borderView;
 
 @end

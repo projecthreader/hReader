@@ -11,12 +11,20 @@
 
 #import "HRPatient.h"
 #import "HRAddress.h"
+#import "HREncounter.h"
+
+#import "DDXML.h"
 
 NSString * const HRPatientDidChangeNotification = @"HRPatientDidChangeNotification";
 NSString * const HRPatientKey                   = @"HRPatientKey";
 NSString * const HRHasLaunched                  = @"has_launched";
 NSString * const HRPasscodeEnabled              = @"passcode_enabled";
 NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
+
+@interface HRConfig ()
++ (void)parseEncounters;
+@end
+
 
 @implementation HRConfig
 
@@ -74,6 +82,9 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
     static NSArray *array = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        
+        [self parseEncounters];
+        
         HRAddress *address = [[HRAddress alloc] initWithSteet1:@"2275 Rolling Run Dr." street2:nil city:@"Woodlawn" state:@"MD" zip:@"21244"];
         
         HRPatient *johnny = [[[HRPatient alloc] initWithName:@"Johnny Smith" image:[UIImage imageNamed:@"Johnny_Smith"]] autorelease];
@@ -84,7 +95,6 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
         johnny.race = @"White";
         johnny.ethnicity = @"Germanic";
         johnny.phoneNumber = @"410.555.0350 (home)";
-
         
         HRPatient *henry = [[[HRPatient alloc] initWithName:@"Henry Smith" image:[UIImage imageNamed:@"Henry_Smith"]] autorelease];
         henry.address = [[[HRAddress alloc] initWithSteet1:@"323 Summer Hill Ln." street2:nil city:@"Baltimore" state:@"MD" zip:@"21215"] autorelease];
@@ -178,41 +188,71 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
     return date;
 }
 
-+ (void)setShadowForView:(UIView *)shadowView borderForView:(UIView *)borderView {
-    CALayer *borderLayer = borderView.layer;
-    CALayer *shadowLayer = shadowView.layer;
++ (void)parseEncounters {
+    // Ugly XML to get encounter until we move to JSON
+    __block NSMutableArray *patientEncounters = [[NSMutableArray alloc] init];
+    NSError *error = nil;
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Johnny_Smith_96" ofType:@"xml"];
+    NSData *data = [NSData dataWithContentsOfFile:filePath];
+    DDXMLDocument *doc = [[DDXMLDocument alloc] initWithData:data options:0 error:&error];
+    if (error) NSLog(@"ERROR Reading DOC %@", error);
+    NSArray *results = [doc nodesForXPath:@"//*[local-name()=\"section\"]" error:&error];
+    if (error) NSLog(@"ERROR %@", error);
+//    NSLog(@"parsed: %i", [results count]);
+    for (DDXMLElement *section in results) {
+        NSArray *encounters = [section nodesForXPath:@".//*[local-name()=\"title\"]" error:&error];
+//        NSLog(@"Encounters count: %i", [encounters count]);
+        if (error) NSLog(@"Section Error %@", error);
+        DDXMLNode *encounterNode = [encounters objectAtIndex:0];
+        if ([[encounterNode stringValue] isEqualToString:@"Encounters"]) {
+            NSArray *tbody = [section nodesForXPath:@".//*[local-name()=\"tbody\"]" error:nil];
+            DDXMLNode *encNode = [tbody objectAtIndex:0];
+            NSArray *enc = [encNode nodesForXPath:@".//*[local-name()=\"tr\"]" error:&error];
+//            NSLog(@"Encounters trs: %i", [enc count]);
+            for (DDXMLNode *tdNode in enc) {
+                NSString *title = [[tdNode childAtIndex:0] stringValue];
+//                NSLog(@"Title %@", title);
+                NSString *code = [[tdNode childAtIndex:1] stringValue];
+//                NSLog(@"Code %@", code);
+                __block NSMutableString *date = [[[tdNode childAtIndex:2] stringValue] mutableCopy];
+                NSArray *orindals = [NSArray arrayWithObjects:@"st", @"nd", @"rd", @"th", nil];
+                [orindals enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop) {
+                    [date replaceOccurrencesOfString:obj 
+                                          withString:@"" 
+                                             options:NSCaseInsensitiveSearch 
+                                               range:NSMakeRange(0, [date length])];
+                }];
+//                NSLog(@"Date %@", date);
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                NSLocale *enUS = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+                [formatter setLocale:enUS];
+                [enUS release];
+                [formatter setDateFormat:@"MMMM dd, yyyy mm:hh"]; /* Unicode Locale Data Markup Language */
+                NSDate *theDate = [formatter dateFromString:date]; /*e.g. @"Thu, 11 Sep 2008 12:34:12 +0200" */
+                HREncounter *hrEncounter = [[HREncounter alloc] initWithTitle:title code:code date:theDate];
+                [patientEncounters addObject:hrEncounter];
+            }
+        }
+    }
+    NSLog(@"Patient Encounters: %@", patientEncounters);
     
-    // Rounded corners
-    borderLayer.masksToBounds = YES;
-    borderLayer.cornerRadius = 5.0f;
+    NSString *timelinePath = [[NSBundle mainBundle] pathForResource:@"timeline/hReader/hReader" ofType:@"xml"];
+    NSData *timelineData = [NSData dataWithContentsOfFile:timelinePath];
+    DDXMLDocument *timelineDoc = [[DDXMLDocument alloc] initWithData:timelineData options:0 error:&error];
+//    NSLog(@"---- %@", timelineDoc);
+    DDXMLElement *dataElement = [[timelineDoc nodesForXPath:@"/data" error:&error] lastObject];
     
-    // Shadow
-    shadowView.backgroundColor = [UIColor clearColor];
-    shadowLayer.shadowColor = [[UIColor blackColor] CGColor];
-    shadowLayer.shadowOpacity = 0.5f;
-    shadowLayer.shadowOffset = CGSizeMake(3.0f, 2.0f);
-    shadowLayer.shadowRadius = 5.0f;
+    for (HREncounter *encounter in patientEncounters) {
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"MMM d yyyy 00:00:00"];
+        NSString *dateString = [df stringFromDate:encounter.date];
+        NSString *xml = [NSString stringWithFormat:@"<event start=\"%@ GMT\" title=\"\" category=\"encounters\">%@ - %@</event>", dateString, encounter.title, encounter.code];
+        DDXMLElement *eElement = [[DDXMLElement alloc] initWithXMLString:xml error:&error];
+        [dataElement addChild:eElement];
+    }
     
-    // Border
-    borderLayer.borderColor = [[UIColor blackColor] CGColor];
-    borderLayer.borderWidth = 2.0f;
-    
-    
-    
-    // Page Curl
-    //    CGSize size = imageView.bounds.size;
-    //    CGFloat curlFactor = 15.0f;
-    //    CGFloat shadowDepth = 5.0f;
-    //    UIBezierPath *path = [UIBezierPath bezierPath];
-    //    [path moveToPoint:CGPointMake(0.0f, 0.0f)];
-    //    [path addLineToPoint:CGPointMake(size.width, 0.0f)];
-    //    [path addLineToPoint:CGPointMake(size.width, size.height + shadowDepth)];
-    //    
-    //    [path addCurveToPoint:CGPointMake(0.0f, size.height + shadowDepth)
-    //            controlPoint1:CGPointMake(size.width - curlFactor, size.height + shadowDepth - curlFactor)
-    //            controlPoint2:CGPointMake(curlFactor, size.height + shadowDepth - curlFactor)];
-    //    
-    //    imageView.layer.shadowPath = path.CGPath;
+    NSString *p = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    [[timelineDoc XMLData] writeToFile:[p stringByAppendingPathComponent:@"hReader.xml"] atomically:YES];
 }
 
 @end
