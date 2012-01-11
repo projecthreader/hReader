@@ -22,11 +22,11 @@ Timeline.GregorianNoLabelEtherPainter.prototype.initialize = function(band, time
     
     this._markerLayer = null;
     this._lineLayer = null;
-    
     var align = ("align" in this._params && this._params.align != undefined) ? this._params.align : 
         this._theme.ether.interval.marker[timeline.isHorizontal() ? "hAlign" : "vAlign"];
     var showLine = ("showLine" in this._params) ? this._params.showLine : 
         this._theme.ether.interval.line.show;
+    this._showLine = showLine;
         
     this._intervalMarkerLayout = new Timeline.EtherIntervalMarkerNoLabelLayout(
         this._timeline, this._band, this._theme, align, showLine);
@@ -51,8 +51,8 @@ Timeline.GregorianNoLabelEtherPainter.prototype.paint = function() {
         this._band.removeLayerDiv(this._lineLayer);
     }
     this._lineLayer = this._band.createLayerDiv(1);
-    this._lineLayer.setAttribute("name", "ether-lines"); // for debugging
-    this._lineLayer.style.display = "none";
+  //  this._lineLayer.setAttribute("name", "ether-lines"); // for debugging
+  //  this._lineLayer.style.display = "none";
     
     var minDate = this._band.getMinDate();
     var maxDate = this._band.getMaxDate();
@@ -75,8 +75,8 @@ Timeline.GregorianNoLabelEtherPainter.prototype.paint = function() {
             
         incrementDate(minDate);
     }
-    this._markerLayer.style.display = "block";
-    this._lineLayer.style.display = "block";
+   // this._markerLayer.style.display = "block";
+   // this._lineLayer.style.display = "block";
 };
 
 Timeline.GregorianNoLabelEtherPainter.prototype.softPaint = function() {
