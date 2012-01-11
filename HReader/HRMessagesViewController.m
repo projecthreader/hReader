@@ -80,8 +80,6 @@
     HRPatientSwipeViewController *patientSwipeViewController = (HRPatientSwipeViewController *)[self.childViewControllers objectAtIndex:0];
     [self.patientView addSubview:patientSwipeViewController.view];
     
-    [HRConfig setShadowForView:self.patientImageShadowView borderForView:self.patientImageView];
-    
     self.scrollView.contentSize = self.messageContentView.bounds.size;
     [self.scrollView addSubview:self.messageContentView];
     
