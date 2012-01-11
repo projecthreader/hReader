@@ -48,21 +48,12 @@
     
     self.headerView.backgroundColor = [UIColor clearColor];
     
-//    NSURL *html = [[NSBundle mainBundle] URLForResource:@"timeline-index" withExtension:@"html"];
-//    NSURLRequest *request = [NSURLRequest requestWithURL:html];
-//    [self.webView loadRequest:request];
-
-    
     NSString *path = [[NSBundle mainBundle] pathForResource:@"hReader" 
                                                      ofType:@"html"
                                                 inDirectory:@"timeline/hReader"];
     NSLog(@"Path: %@", path);
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]];
     [self.webView loadRequest:request];
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(keyboardWillShow:)
-//                                                 name:UIKeyboardWillShowNotification object:nil];
 }
 
 - (void)viewDidUnload {
@@ -73,24 +64,9 @@
     [super viewDidUnload];
 }
 
-/*
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
-
-- (void)keyboardWillShow:(NSNotification *)aNotification {
-    [self performSelector:@selector(esconde) withObject:nil afterDelay:0];
-}
-
-- (void)esconde {
-    for (UIWindow *keyboardWindow in [[UIApplication sharedApplication] windows]) {
-        for (UIView *keyboard in [keyboardWindow subviews]) {
-            if([[keyboard description] hasPrefix:@"<UIPeripheralHostView"] == YES) {
-                [keyboard removeFromSuperview];   
-            }
-        }
-    }
-}
- */
 
 @end

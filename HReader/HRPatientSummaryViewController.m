@@ -91,7 +91,10 @@
     self.patientScrollView.contentSize = self.patientSummaryView.frame.size;
     [self.patientScrollView addSubview:self.patientSummaryView];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patientChanged:) name:HRPatientDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(patientChanged:) 
+                                                 name:HRPatientDidChangeNotification 
+                                               object:nil];
     
 }
 

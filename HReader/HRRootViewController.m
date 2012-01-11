@@ -72,6 +72,7 @@
         HRPatient *patient = [[HRConfig patients] objectAtIndex:0];
         [[NSNotificationCenter defaultCenter] postNotificationName:HRPatientDidChangeNotification object:self userInfo:[NSDictionary dictionaryWithObject:patient forKey:HRPatientKey]];
     }
+    
     return self;
 }
 
@@ -119,7 +120,6 @@
 
 - (void)setupScrollViewWithOrientation:(UIInterfaceOrientation)interfaceOrientation {
     CGSize viewSize = [self sizeForView:self.view orientation:interfaceOrientation];
-    NSLog(@"%@", NSStringFromCGSize(viewSize));
     self.scrollView.contentSize = CGSizeMake(viewSize.width * [self.childViewControllers count], viewSize.height);
     
     [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -127,22 +127,10 @@
             UIViewController *splitViewController = (UIViewController *)obj;
             splitViewController.view.frame = CGRectMake(viewSize.width * idx, 0, viewSize.width, viewSize.height);
         }
-    }];    
+    }];
 }
 
 - (CGSize)sizeForView:(UIView *)view orientation:(UIInterfaceOrientation)interfaceOrientation {
-//    CGSize size = view.bounds.size;
-//    CGFloat width;
-//    CGFloat height;
-//    if (UIInterfaceOrientationIsPortrait(interfaceOrientation)) {
-//        width = size.width;
-//        height = size.height;
-//    } else {
-//        width = size.height;
-//        height = size.width;
-//    }
-    
-//    return CGSizeMake(width, height);
     return CGSizeMake(1024, 660); // works!
 }
 

@@ -38,10 +38,6 @@
 		9464C5871476BDAE0076B991 /* Johnny_Smith_96.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */; };
 		9464C5881476BDAE0076B991 /* Johnny_Smith_96.html in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */; };
 		9464C58C1476CB4F0076B991 /* C32ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464C58B1476CB4F0076B991 /* C32ViewController.m */; };
-		946662C51492520C004E1968 /* timeline-canvas.html in Resources */ = {isa = PBXBuildFile; fileRef = 946662C11492520C004E1968 /* timeline-canvas.html */; };
-		946662C61492520C004E1968 /* timeline-dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 946662C21492520C004E1968 /* timeline-dot.png */; };
-		946662C71492520C004E1968 /* timeline-index.html in Resources */ = {isa = PBXBuildFile; fileRef = 946662C31492520C004E1968 /* timeline-index.html */; };
-		946662C81492520C004E1968 /* timeline-main.css in Resources */ = {isa = PBXBuildFile; fileRef = 946662C41492520C004E1968 /* timeline-main.css */; };
 		94689AC314964BE400E1FCA6 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94689ABF14964BE400E1FCA6 /* libTestFlight.a */; };
 		94689AC414964BE400E1FCA6 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 94689AC014964BE400E1FCA6 /* README.txt */; };
 		94689AC514964BE400E1FCA6 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 94689AC114964BE400E1FCA6 /* release_notes.txt */; };
@@ -134,10 +130,6 @@
 		9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Johnny_Smith_96.html; sourceTree = "<group>"; };
 		9464C58A1476CB4F0076B991 /* C32ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C32ViewController.h; sourceTree = "<group>"; };
 		9464C58B1476CB4F0076B991 /* C32ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = C32ViewController.m; sourceTree = "<group>"; };
-		946662C11492520C004E1968 /* timeline-canvas.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "timeline-canvas.html"; sourceTree = "<group>"; };
-		946662C21492520C004E1968 /* timeline-dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline-dot.png"; sourceTree = "<group>"; };
-		946662C31492520C004E1968 /* timeline-index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "timeline-index.html"; sourceTree = "<group>"; };
-		946662C41492520C004E1968 /* timeline-main.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "timeline-main.css"; sourceTree = "<group>"; };
 		94689ABF14964BE400E1FCA6 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = vendor/TestFlight/libTestFlight.a; sourceTree = "<group>"; };
 		94689AC014964BE400E1FCA6 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.txt; path = vendor/TestFlight/README.txt; sourceTree = "<group>"; };
 		94689AC114964BE400E1FCA6 /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = release_notes.txt; path = vendor/TestFlight/release_notes.txt; sourceTree = "<group>"; };
@@ -613,10 +605,6 @@
 				DD695D791489439100E4E2E1 /* HRTimelineViewController.h */,
 				DD695D7A1489439100E4E2E1 /* HRTimelineViewController.m */,
 				DD695D7B1489439100E4E2E1 /* HRTimelineViewController.xib */,
-				946662C11492520C004E1968 /* timeline-canvas.html */,
-				946662C21492520C004E1968 /* timeline-dot.png */,
-				946662C31492520C004E1968 /* timeline-index.html */,
-				946662C41492520C004E1968 /* timeline-main.css */,
 			);
 			name = Timeline;
 			sourceTree = "<group>";
@@ -716,10 +704,6 @@
 				DD8BD9E6148D1D660090F729 /* Tom_Smith.png in Resources */,
 				DD124DAE148D3EF300E23A44 /* Doctor.png in Resources */,
 				DD191741148FEE8E00B87AAF /* HRPatientSwipeViewController.xib in Resources */,
-				946662C51492520C004E1968 /* timeline-canvas.html in Resources */,
-				946662C61492520C004E1968 /* timeline-dot.png in Resources */,
-				946662C71492520C004E1968 /* timeline-index.html in Resources */,
-				946662C81492520C004E1968 /* timeline-main.css in Resources */,
 				94689AC414964BE400E1FCA6 /* README.txt in Resources */,
 				94689AC514964BE400E1FCA6 /* release_notes.txt in Resources */,
 				94689AD814967E3600E1FCA6 /* HRC32ViewController.xib in Resources */,

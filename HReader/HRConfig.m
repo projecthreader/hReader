@@ -197,6 +197,7 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
     DDXMLDocument *doc = [[DDXMLDocument alloc] initWithData:data options:0 error:&error];
     if (error) NSLog(@"ERROR Reading DOC %@", error);
     NSArray *results = [doc nodesForXPath:@"//*[local-name()=\"section\"]" error:&error];
+    [doc release];
     if (error) NSLog(@"ERROR %@", error);
 //    NSLog(@"parsed: %i", [results count]);
     for (DDXMLElement *section in results) {
@@ -246,13 +247,17 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         [df setDateFormat:@"MMM d yyyy 00:00:00"];
         NSString *dateString = [df stringFromDate:encounter.date];
+        [df release];
         NSString *xml = [NSString stringWithFormat:@"<event start=\"%@ GMT\" title=\"\" category=\"encounters\">%@ - %@</event>", dateString, encounter.title, encounter.code];
         DDXMLElement *eElement = [[DDXMLElement alloc] initWithXMLString:xml error:&error];
         [dataElement addChild:eElement];
+        [eElement release];
     }
+    [patientEncounters release];
     
     NSString *p = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     [[timelineDoc XMLData] writeToFile:[p stringByAppendingPathComponent:@"hReader.xml"] atomically:YES];
+    [timelineDoc release];
 }
 
 @end
