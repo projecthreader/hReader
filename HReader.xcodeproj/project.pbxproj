@@ -30,6 +30,10 @@
 		945560D314BB892100A3DC43 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560CB14BB892100A3DC43 /* DDXMLElement.m */; };
 		945560D414BB892100A3DC43 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560CD14BB892100A3DC43 /* DDXMLNode.m */; };
 		945560D714BB89B400A3DC43 /* HREncounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560D614BB89B400A3DC43 /* HREncounter.m */; };
+		945560E714BDDB9F00A3DC43 /* GCPINViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560E314BDDB9F00A3DC43 /* GCPINViewController.m */; };
+		945560E814BDDB9F00A3DC43 /* PINBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 945560E414BDDB9F00A3DC43 /* PINBox.png */; };
+		945560E914BDDB9F00A3DC43 /* PINBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 945560E514BDDB9F00A3DC43 /* PINBox@2x.png */; };
+		945560EA14BDDB9F00A3DC43 /* PINViewDefault.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945560E614BDDB9F00A3DC43 /* PINViewDefault.xib */; };
 		9464C58314769E190076B991 /* hReader_icon_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9464C58214769E190076B991 /* hReader_icon_72x72.png */; };
 		9464C5871476BDAE0076B991 /* Johnny_Smith_96.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */; };
 		9464C5881476BDAE0076B991 /* Johnny_Smith_96.html in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */; };
@@ -47,10 +51,6 @@
 		947FCE4614B4C18600C716FD /* chevron-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE4514B4C18600C716FD /* chevron-left.png */; };
 		947FCE4B14B4C76700C716FD /* HRPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947FCE4914B4C76700C716FD /* HRPrivacyViewController.m */; };
 		947FCE4C14B4C76700C716FD /* HRPrivacyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE4A14B4C76700C716FD /* HRPrivacyViewController.xib */; };
-		947FCE5414B4D7C400C716FD /* GCPINViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947FCE5014B4D7C400C716FD /* GCPINViewController.m */; };
-		947FCE5514B4D7C400C716FD /* PINBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE5114B4D7C400C716FD /* PINBox.png */; };
-		947FCE5614B4D7C400C716FD /* PINBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE5214B4D7C400C716FD /* PINBox@2x.png */; };
-		947FCE5714B4D7C400C716FD /* PINViewDefault.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE5314B4D7C400C716FD /* PINViewDefault.xib */; };
 		947FCE5914B4D7E400C716FD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947FCE5814B4D7E400C716FD /* AudioToolbox.framework */; };
 		94AEAE0414841CEB00C005B2 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0214841CEB00C005B2 /* TimelineViewController.m */; };
 		94AEAE0514841CEB00C005B2 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEAE0314841CEB00C005B2 /* TimelineViewController.xib */; };
@@ -124,6 +124,11 @@
 		945560CF14BB892100A3DC43 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
 		945560D514BB89B400A3DC43 /* HREncounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HREncounter.h; sourceTree = "<group>"; };
 		945560D614BB89B400A3DC43 /* HREncounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HREncounter.m; sourceTree = "<group>"; };
+		945560E214BDDB9F00A3DC43 /* GCPINViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCPINViewController.h; path = "vendor/pinview-modified/GCPINViewController.h"; sourceTree = "<group>"; };
+		945560E314BDDB9F00A3DC43 /* GCPINViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCPINViewController.m; path = "vendor/pinview-modified/GCPINViewController.m"; sourceTree = "<group>"; };
+		945560E414BDDB9F00A3DC43 /* PINBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PINBox.png; path = "vendor/pinview-modified/PINBox.png"; sourceTree = "<group>"; };
+		945560E514BDDB9F00A3DC43 /* PINBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PINBox@2x.png"; path = "vendor/pinview-modified/PINBox@2x.png"; sourceTree = "<group>"; };
+		945560E614BDDB9F00A3DC43 /* PINViewDefault.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PINViewDefault.xib; path = "vendor/pinview-modified/PINViewDefault.xib"; sourceTree = "<group>"; };
 		9464C58214769E190076B991 /* hReader_icon_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hReader_icon_72x72.png; sourceTree = "<group>"; };
 		9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Johnny_Smith_96.xml; sourceTree = "<group>"; };
 		9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Johnny_Smith_96.html; sourceTree = "<group>"; };
@@ -146,11 +151,6 @@
 		947FCE4814B4C76700C716FD /* HRPrivacyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPrivacyViewController.h; sourceTree = "<group>"; };
 		947FCE4914B4C76700C716FD /* HRPrivacyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPrivacyViewController.m; sourceTree = "<group>"; };
 		947FCE4A14B4C76700C716FD /* HRPrivacyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPrivacyViewController.xib; sourceTree = "<group>"; };
-		947FCE4F14B4D7C400C716FD /* GCPINViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCPINViewController.h; path = vendor/pinview/pinview/GCPINViewController.h; sourceTree = "<group>"; };
-		947FCE5014B4D7C400C716FD /* GCPINViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCPINViewController.m; path = vendor/pinview/pinview/GCPINViewController.m; sourceTree = "<group>"; };
-		947FCE5114B4D7C400C716FD /* PINBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PINBox.png; path = vendor/pinview/pinview/PINBox.png; sourceTree = "<group>"; };
-		947FCE5214B4D7C400C716FD /* PINBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PINBox@2x.png"; path = "vendor/pinview/pinview/PINBox@2x.png"; sourceTree = "<group>"; };
-		947FCE5314B4D7C400C716FD /* PINViewDefault.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PINViewDefault.xib; path = vendor/pinview/pinview/PINViewDefault.xib; sourceTree = "<group>"; };
 		947FCE5814B4D7E400C716FD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		94AEAE0114841CEB00C005B2 /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		94AEAE0214841CEB00C005B2 /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
@@ -356,6 +356,18 @@
 			path = vendor/KissXML/KissXML/Private;
 			sourceTree = "<group>";
 		};
+		945560D814BDDB3F00A3DC43 /* pinview-modified */ = {
+			isa = PBXGroup;
+			children = (
+				945560E214BDDB9F00A3DC43 /* GCPINViewController.h */,
+				945560E314BDDB9F00A3DC43 /* GCPINViewController.m */,
+				945560E414BDDB9F00A3DC43 /* PINBox.png */,
+				945560E514BDDB9F00A3DC43 /* PINBox@2x.png */,
+				945560E614BDDB9F00A3DC43 /* PINViewDefault.xib */,
+			);
+			name = "pinview-modified";
+			sourceTree = "<group>";
+		};
 		9464C5891476BF250076B991 /* C32 Patient Record */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +380,7 @@
 		94689ABC14964BBF00E1FCA6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				945560D814BDDB3F00A3DC43 /* pinview-modified */,
 				945560BF14BB891500A3DC43 /* KissXML */,
 				947FCE4E14B4D7A600C716FD /* pinview */,
 				94689ABE14964BCF00E1FCA6 /* TestFlight-0.8.4 */,
@@ -430,11 +443,6 @@
 		947FCE4E14B4D7A600C716FD /* pinview */ = {
 			isa = PBXGroup;
 			children = (
-				947FCE4F14B4D7C400C716FD /* GCPINViewController.h */,
-				947FCE5014B4D7C400C716FD /* GCPINViewController.m */,
-				947FCE5114B4D7C400C716FD /* PINBox.png */,
-				947FCE5214B4D7C400C716FD /* PINBox@2x.png */,
-				947FCE5314B4D7C400C716FD /* PINViewDefault.xib */,
 			);
 			name = pinview;
 			sourceTree = "<group>";
@@ -723,9 +731,9 @@
 				94026FB414B4A8A600F40185 /* timeline in Resources */,
 				947FCE4614B4C18600C716FD /* chevron-left.png in Resources */,
 				947FCE4C14B4C76700C716FD /* HRPrivacyViewController.xib in Resources */,
-				947FCE5514B4D7C400C716FD /* PINBox.png in Resources */,
-				947FCE5614B4D7C400C716FD /* PINBox@2x.png in Resources */,
-				947FCE5714B4D7C400C716FD /* PINViewDefault.xib in Resources */,
+				945560E814BDDB9F00A3DC43 /* PINBox.png in Resources */,
+				945560E914BDDB9F00A3DC43 /* PINBox@2x.png in Resources */,
+				945560EA14BDDB9F00A3DC43 /* PINViewDefault.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -776,13 +784,13 @@
 				94BB032C149BB393009B2FCC /* HRPasscodeWarningViewController.m in Sources */,
 				9415151F14A0E8FA009FF674 /* HRMessage.m in Sources */,
 				947FCE4B14B4C76700C716FD /* HRPrivacyViewController.m in Sources */,
-				947FCE5414B4D7C400C716FD /* GCPINViewController.m in Sources */,
 				945560D014BB892100A3DC43 /* DDXMLElementAdditions.m in Sources */,
 				945560D114BB892100A3DC43 /* NSString+DDXML.m in Sources */,
 				945560D214BB892100A3DC43 /* DDXMLDocument.m in Sources */,
 				945560D314BB892100A3DC43 /* DDXMLElement.m in Sources */,
 				945560D414BB892100A3DC43 /* DDXMLNode.m in Sources */,
 				945560D714BB89B400A3DC43 /* HREncounter.m in Sources */,
+				945560E714BDDB9F00A3DC43 /* GCPINViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
