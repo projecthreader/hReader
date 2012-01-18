@@ -170,6 +170,7 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
         [info setObject:@"230" forKey:@"height"];
         [info setObject:@"5 Jan 2012" forKey:@"height_date"];
         [info setObject:@"< 200" forKey:@"height_normal"];
+        
         [info setObject:@"200" forKey:@"weight"];
         [info setObject:@"5 Jan 2012" forKey:@"weight_date"];
         [info setObject:@"154-166" forKey:@"weight_normal"];
@@ -190,8 +191,8 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
         [info setObject:@"20 Jul 2010" forKey:@"diagnosis_date"];
         [info setObject:@"Prostate Specific Antigen Test" forKey:@"diagnosis_results"];
         
-        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"height_sparklines"];
-        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"weight_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"height_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"weight_sparklines"];
         [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"bmi_sparklines"];
         [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"pulse_sparklines"];
         
@@ -223,9 +224,10 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
         
         
         [info setObject:@"Total Cholesterol" forKey:@"height_title_label"];
-        [info setObject:@"202" forKey:@"height"];
+        [info setObject:@"140" forKey:@"height"];
         [info setObject:@"5 Jan 2012" forKey:@"height_date"];
         [info setObject:@"< 200" forKey:@"height_normal"];        
+        
         [info setObject:@"110" forKey:@"weight"];
         [info setObject:@"5 Jan 2012" forKey:@"weight_date"];
         [info setObject:@"100-123" forKey:@"weight_normal"];
@@ -277,9 +279,12 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
         [info setObject:@"Office Visit" forKey:@"recent_encounters_type"];
         [info setObject:@"Seasonal Immunizations" forKey:@"recent_encounters_description"];
         [info setObject:@"Yes" forKey:@"immunizations"];
-        [info setObject:@"3'2\"" forKey:@"height"];
+        
+        [info setObject:@"Total Cholesterol" forKey:@"height_title_label"];
+        [info setObject:@"190" forKey:@"height"];
         [info setObject:@"5 Jan 2012" forKey:@"height_date"];
-        [info setObject:@"3'-3'4\"" forKey:@"height_normal"];
+        [info setObject:@"< 200" forKey:@"height_normal"];
+        
         [info setObject:@"139" forKey:@"weight"];
         [info setObject:@"5 Jan 2012" forKey:@"weight_date"];
         [info setObject:@"123-154" forKey:@"weight_normal"];
@@ -300,8 +305,8 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
         [info setObject:@"15 Nov 2010" forKey:@"diagnosis_date"];
         [info setObject:@"Pap Test/Normal" forKey:@"diagnosis_results"];
         
-        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"height_sparklines"];
-        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"weight_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"height_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"weight_sparklines"];
         [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"bmi_sparklines"];
         [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"pulse_sparklines"];
         
@@ -332,9 +337,12 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
         [info setObject:@"Office Visit" forKey:@"recent_encounters_type"];
         [info setObject:@"Foot Exam" forKey:@"recent_encounters_description"];
         [info setObject:@"Yes" forKey:@"immunizations"];
-        [info setObject:@"3'2\"" forKey:@"height"];
+
+        [info setObject:@"Total Cholesterol" forKey:@"height_title_label"];
+        [info setObject:@"197" forKey:@"height"];
         [info setObject:@"5 Jan 2012" forKey:@"height_date"];
-        [info setObject:@"3'-3'4\"" forKey:@"height_normal"];
+        [info setObject:@"< 200" forKey:@"height_normal"];
+        
         [info setObject:@"177" forKey:@"weight"];
         [info setObject:@"5 Jan 2012" forKey:@"weight_date"];
         [info setObject:@"165-178" forKey:@"weight_normal"];
