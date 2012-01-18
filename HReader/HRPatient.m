@@ -22,7 +22,10 @@
 
 @synthesize encounters      = __encounters;
 
+@synthesize info            = __info;
+
 - (void)dealloc {
+    [__info release];
     [__name release];
     [__image release];
     [__address release];

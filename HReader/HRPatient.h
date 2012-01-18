@@ -29,6 +29,8 @@ typedef enum {
 
 @property (strong, nonatomic) NSMutableArray *encounters;
 
+@property (strong, nonatomic) NSMutableDictionary *info;
+
 - (id)initWithName:(NSString *)aName image:(UIImage *)aImage;
 
 - (NSString *)genderAsString;

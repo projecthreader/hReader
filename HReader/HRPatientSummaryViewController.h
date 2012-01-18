@@ -17,15 +17,53 @@
 @property (retain, nonatomic) IBOutlet UIView *patientSummaryView;
 @property (retain, nonatomic) IBOutlet UILabel *patientName;
 
-@property (retain, nonatomic) IBOutlet UILabel *addressLabel;
-@property (retain, nonatomic) IBOutlet UILabel *genderLabel;
-@property (retain, nonatomic) IBOutlet UILabel *ageLabel;
 @property (retain, nonatomic) IBOutlet UILabel *dobLabel;
-@property (retain, nonatomic) IBOutlet UILabel *placeOfBirthLabel;
-@property (retain, nonatomic) IBOutlet UILabel *raceLabel;
-@property (retain, nonatomic) IBOutlet UILabel *ethnicityLabel;
-@property (retain, nonatomic) IBOutlet UILabel *phoneNumberLabel;
 
 @property (retain, nonatomic) NSArray *labelsArray;
+
+@property (retain, nonatomic) IBOutlet UILabel *allergiesLabel;
+@property (retain, nonatomic) IBOutlet UILabel *recentConditionsDateLabel;
+@property (retain, nonatomic) IBOutlet UILabel *recentConditionsLabel;
+@property (retain, nonatomic) IBOutlet UILabel *chronicConditionsLabel;
+@property (retain, nonatomic) IBOutlet UILabel *upcomingEventsLabel;
+@property (retain, nonatomic) IBOutlet UILabel *planOfCareLabel;
+@property (retain, nonatomic) IBOutlet UILabel *followUpAppointmentLabel;
+@property (retain, nonatomic) IBOutlet UILabel *medicationRefillLabel;
+
+@property (retain, nonatomic) IBOutlet UILabel *recentEncountersDateLabel;
+@property (retain, nonatomic) IBOutlet UILabel *recentEncountersTypeLabel;
+@property (retain, nonatomic) IBOutlet UILabel *recentEncountersDescriptionLabel;
+
+@property (retain, nonatomic) IBOutlet UILabel *immunizationsUpToDateLabel;
+
+@property (retain, nonatomic) IBOutlet UILabel *currentMedicationsLabel;
+@property (retain, nonatomic) IBOutlet UILabel *currentMedicationsDosageLabel;
+
+@property (retain, nonatomic) IBOutlet UILabel *functionalStatusDateLabel;
+@property (retain, nonatomic) IBOutlet UILabel *functionalStatusTypeLabel;
+@property (retain, nonatomic) IBOutlet UILabel *functionalStatusProblemLabel;
+@property (retain, nonatomic) IBOutlet UILabel *functionalStatusStatusLabel;
+
+@property (retain, nonatomic) IBOutlet UILabel *heightLabel;
+@property (retain, nonatomic) IBOutlet UILabel *heightDateLabel;
+@property (retain, nonatomic) IBOutlet UILabel *heightNormalLabel;
+
+@property (retain, nonatomic) IBOutlet UILabel *weightLabel;
+@property (retain, nonatomic) IBOutlet UILabel *weightDateLabel;
+@property (retain, nonatomic) IBOutlet UILabel *weightNormalLabel;
+
+@property (retain, nonatomic) IBOutlet UILabel *bmiLabel;
+@property (retain, nonatomic) IBOutlet UILabel *bmiDateLabel;
+@property (retain, nonatomic) IBOutlet UILabel *bmiNormalLabel;
+
+@property (retain, nonatomic) IBOutlet UILabel *pulseLabel;
+@property (retain, nonatomic) IBOutlet UILabel *pulseDateLabel;
+@property (retain, nonatomic) IBOutlet UILabel *pulseNormalLabel;
+
+@property (retain, nonatomic) IBOutlet UILabel *advanceDirectivesLabel;
+
+@property (retain, nonatomic) IBOutlet UILabel *diagnosisLabel;
+@property (retain, nonatomic) IBOutlet UILabel *diagnosisDateLabel;
+
 
 @end
