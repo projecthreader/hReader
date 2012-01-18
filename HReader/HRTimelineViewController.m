@@ -8,19 +8,21 @@
 
 #import "HRTimelineViewController.h"
 #import "HRPatientSwipeViewController.h"
-
+#import "HRPatient.h"
 
 @implementation HRTimelineViewController
 
 @synthesize scrollView  = __scrollView;
 @synthesize webView     = __webView;
 @synthesize headerView  = __headerView;
+@synthesize nameLabel = _nameLabel;
 
 - (void)dealloc {
     [__scrollView release];
     [__headerView release];
     [__webView release];
     
+    [_nameLabel release];
     [super dealloc];
 }
 
@@ -54,6 +56,12 @@
     NSLog(@"Path: %@", path);
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]];
     [self.webView loadRequest:request];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(patientChanged:) 
+                                                 name:HRPatientDidChangeNotification 
+                                               object:nil];
+    
 }
 
 - (void)viewDidUnload {
@@ -61,12 +69,28 @@
     self.headerView = nil;
     self.webView = nil;
 
+    [self setNameLabel:nil];
     [super viewDidUnload];
 }
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+}
+
+- (void)patientChanged:(NSNotification *)notif {
+    HRPatient *patient = [notif.userInfo objectForKey:HRPatientKey];
+    [UIView animateWithDuration:0.4 animations:^{
+        self.nameLabel.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        self.nameLabel.text = [patient.name uppercaseString];
+        
+        [UIView animateWithDuration:0.4 animations:^{
+            self.nameLabel.alpha = 1.0;
+        }];
+    }];
+
+    
 }
 
 @end
