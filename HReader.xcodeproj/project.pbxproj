@@ -23,6 +23,14 @@
 		941DB0C61471B32D00A96B8B /* HRMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DB0C51471B32D00A96B8B /* HRMasterViewController.m */; };
 		941DB0C91471B32D00A96B8B /* HRDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DB0C81471B32D00A96B8B /* HRDetailViewController.m */; };
 		9424C15C147AD9C0008BF5CE /* hReader_Logo_34x150.png in Resources */ = {isa = PBXBuildFile; fileRef = 9424C15B147AD9C0008BF5CE /* hReader_Logo_34x150.png */; };
+		942786DE14C74AD50003190F /* Sparklines_drop-to-plateau.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786D614C74AD50003190F /* Sparklines_drop-to-plateau.png */; };
+		942786DF14C74AD50003190F /* Sparklines_growing_levels.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786D714C74AD50003190F /* Sparklines_growing_levels.png */; };
+		942786E014C74AD50003190F /* Sparklines_low_levels.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786D814C74AD50003190F /* Sparklines_low_levels.png */; };
+		942786E114C74AD50003190F /* Sparklines_low-to-high_levels.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786D914C74AD50003190F /* Sparklines_low-to-high_levels.png */; };
+		942786E214C74AD50003190F /* Sparklines_normal_levels.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786DA14C74AD50003190F /* Sparklines_normal_levels.png */; };
+		942786E314C74AD50003190F /* Sparklines_normal-high_levels.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786DB14C74AD50003190F /* Sparklines_normal-high_levels.png */; };
+		942786E414C74AD50003190F /* Sparklines_varying_levels_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786DC14C74AD50003190F /* Sparklines_varying_levels_normal.png */; };
+		942786E514C74AD50003190F /* Sparklines_varying_levels.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786DD14C74AD50003190F /* Sparklines_varying_levels.png */; };
 		944A2F2D1472C62300694816 /* handmadepaper.png in Resources */ = {isa = PBXBuildFile; fileRef = 944A2F2C1472C62300694816 /* handmadepaper.png */; };
 		945560D014BB892100A3DC43 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560C314BB892100A3DC43 /* DDXMLElementAdditions.m */; };
 		945560D114BB892100A3DC43 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560C614BB892100A3DC43 /* NSString+DDXML.m */; };
@@ -105,6 +113,14 @@
 		941DB0C71471B32D00A96B8B /* HRDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRDetailViewController.h; sourceTree = "<group>"; };
 		941DB0C81471B32D00A96B8B /* HRDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRDetailViewController.m; sourceTree = "<group>"; };
 		9424C15B147AD9C0008BF5CE /* hReader_Logo_34x150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hReader_Logo_34x150.png; sourceTree = "<group>"; };
+		942786D614C74AD50003190F /* Sparklines_drop-to-plateau.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sparklines_drop-to-plateau.png"; sourceTree = "<group>"; };
+		942786D714C74AD50003190F /* Sparklines_growing_levels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparklines_growing_levels.png; sourceTree = "<group>"; };
+		942786D814C74AD50003190F /* Sparklines_low_levels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparklines_low_levels.png; sourceTree = "<group>"; };
+		942786D914C74AD50003190F /* Sparklines_low-to-high_levels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sparklines_low-to-high_levels.png"; sourceTree = "<group>"; };
+		942786DA14C74AD50003190F /* Sparklines_normal_levels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparklines_normal_levels.png; sourceTree = "<group>"; };
+		942786DB14C74AD50003190F /* Sparklines_normal-high_levels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sparklines_normal-high_levels.png"; sourceTree = "<group>"; };
+		942786DC14C74AD50003190F /* Sparklines_varying_levels_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparklines_varying_levels_normal.png; sourceTree = "<group>"; };
+		942786DD14C74AD50003190F /* Sparklines_varying_levels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparklines_varying_levels.png; sourceTree = "<group>"; };
 		944A2F2C1472C62300694816 /* handmadepaper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handmadepaper.png; sourceTree = "<group>"; };
 		945560C214BB892100A3DC43 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
 		945560C314BB892100A3DC43 /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
@@ -274,6 +290,21 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		942786D414C74AC30003190F /* Sparklines */ = {
+			isa = PBXGroup;
+			children = (
+				942786D614C74AD50003190F /* Sparklines_drop-to-plateau.png */,
+				942786D714C74AD50003190F /* Sparklines_growing_levels.png */,
+				942786D814C74AD50003190F /* Sparklines_low_levels.png */,
+				942786D914C74AD50003190F /* Sparklines_low-to-high_levels.png */,
+				942786DA14C74AD50003190F /* Sparklines_normal_levels.png */,
+				942786DB14C74AD50003190F /* Sparklines_normal-high_levels.png */,
+				942786DC14C74AD50003190F /* Sparklines_varying_levels_normal.png */,
+				942786DD14C74AD50003190F /* Sparklines_varying_levels.png */,
+			);
+			name = Sparklines;
+			sourceTree = "<group>";
+		};
 		944A2F291472C5F900694816 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +318,7 @@
 		944A2F2B1472C60600694816 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				942786D414C74AC30003190F /* Sparklines */,
 				DD124DAD148D3EF300E23A44 /* Doctor.png */,
 				DD8BD9E9148D1D8C0090F729 /* Mockups */,
 				DD8BD9E8148D1D800090F729 /* Backgrounds */,
@@ -718,6 +750,14 @@
 				945560E814BDDB9F00A3DC43 /* PINBox.png in Resources */,
 				945560E914BDDB9F00A3DC43 /* PINBox@2x.png in Resources */,
 				945560EA14BDDB9F00A3DC43 /* PINViewDefault.xib in Resources */,
+				942786DE14C74AD50003190F /* Sparklines_drop-to-plateau.png in Resources */,
+				942786DF14C74AD50003190F /* Sparklines_growing_levels.png in Resources */,
+				942786E014C74AD50003190F /* Sparklines_low_levels.png in Resources */,
+				942786E114C74AD50003190F /* Sparklines_low-to-high_levels.png in Resources */,
+				942786E214C74AD50003190F /* Sparklines_normal_levels.png in Resources */,
+				942786E314C74AD50003190F /* Sparklines_normal-high_levels.png in Resources */,
+				942786E414C74AD50003190F /* Sparklines_varying_levels_normal.png in Resources */,
+				942786E514C74AD50003190F /* Sparklines_varying_levels.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

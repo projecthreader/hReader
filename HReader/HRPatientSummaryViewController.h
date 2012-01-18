@@ -44,6 +44,8 @@
 @property (retain, nonatomic) IBOutlet UILabel *functionalStatusProblemLabel;
 @property (retain, nonatomic) IBOutlet UILabel *functionalStatusStatusLabel;
 
+@property (retain, nonatomic) IBOutlet UILabel *heightTitleLabel;
+
 @property (retain, nonatomic) IBOutlet UILabel *heightLabel;
 @property (retain, nonatomic) IBOutlet UILabel *heightDateLabel;
 @property (retain, nonatomic) IBOutlet UILabel *heightNormalLabel;
@@ -64,6 +66,10 @@
 
 @property (retain, nonatomic) IBOutlet UILabel *diagnosisLabel;
 @property (retain, nonatomic) IBOutlet UILabel *diagnosisDateLabel;
+@property (retain, nonatomic) IBOutlet UIImageView *heightImageView;
+@property (retain, nonatomic) IBOutlet UIImageView *weightImageView;
+@property (retain, nonatomic) IBOutlet UIImageView *bmiImageView;
+@property (retain, nonatomic) IBOutlet UIImageView *pulseImageView;
 
 
 @end

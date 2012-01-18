@@ -46,6 +46,7 @@
 @synthesize functionalStatusTypeLabel           = __functionalStatusTypeLabel;
 @synthesize functionalStatusProblemLabel        = __functionalStatusProblemLabel;
 @synthesize functionalStatusStatusLabel         = __functionalStatusStatusLabel;
+@synthesize heightTitleLabel                    = __heightTitleLabel;
 @synthesize heightLabel                         = __heightLabel;
 @synthesize heightDateLabel                     = __heightDateLabel;
 @synthesize heightNormalLabel                   = __heightNormalLabel;
@@ -61,6 +62,10 @@
 @synthesize advanceDirectivesLabel              = __advanceDirectivesLabel;
 @synthesize diagnosisLabel                      = __diagnosisLabel;
 @synthesize diagnosisDateLabel                  = __diagnosisDateLabel;
+@synthesize heightImageView                     = __heightImageView;
+@synthesize weightImageView                     = __weightImageView;
+@synthesize bmiImageView                        = __bmiImageView;
+@synthesize pulseImageView                      = __pulseImageView;
 
 
 - (void)dealloc {
@@ -105,6 +110,11 @@
     [__advanceDirectivesLabel release];
     [__diagnosisLabel release];
     [__diagnosisDateLabel release];
+    [__heightTitleLabel release];
+    [__heightImageView release];
+    [__weightImageView release];
+    [__bmiImageView release];
+    [__pulseImageView release];
     [super dealloc];
 }
 
@@ -124,7 +134,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.labelsArray = [NSArray arrayWithObjects:self.patientName, self.dobLabel, self.allergiesLabel, self.recentConditionsDateLabel, self.recentConditionsLabel, self.chronicConditionsLabel, self.upcomingEventsLabel, self.planOfCareLabel, self.followUpAppointmentLabel, self.medicationRefillLabel, self.recentEncountersDateLabel, self.recentEncountersTypeLabel, self.recentEncountersDescriptionLabel, self.immunizationsUpToDateLabel, self.currentMedicationsLabel, self.currentMedicationsDosageLabel, self.functionalStatusDateLabel, self.functionalStatusTypeLabel, self.functionalStatusProblemLabel, self.functionalStatusStatusLabel, self.heightLabel, self.heightDateLabel, self.heightNormalLabel, self.weightLabel, self.weightDateLabel, self.weightNormalLabel, self.bmiLabel, self.bmiDateLabel, self.bmiNormalLabel, self.pulseLabel, self.pulseDateLabel, self.pulseNormalLabel, self.advanceDirectivesLabel, self.diagnosisLabel, self.diagnosisDateLabel, nil];
+    self.labelsArray = [NSArray arrayWithObjects:self.patientName, self.dobLabel, self.allergiesLabel, self.recentConditionsDateLabel, self.recentConditionsLabel, self.chronicConditionsLabel, self.upcomingEventsLabel, self.planOfCareLabel, self.followUpAppointmentLabel, self.medicationRefillLabel, self.recentEncountersDateLabel, self.recentEncountersTypeLabel, self.recentEncountersDescriptionLabel, self.immunizationsUpToDateLabel, self.currentMedicationsLabel, self.currentMedicationsDosageLabel, self.functionalStatusDateLabel, self.functionalStatusTypeLabel, self.functionalStatusProblemLabel, self.functionalStatusStatusLabel, self.heightTitleLabel, self.heightLabel, self.heightDateLabel, self.heightNormalLabel, self.weightLabel, self.weightDateLabel, self.weightNormalLabel, self.bmiLabel, self.bmiDateLabel, self.bmiNormalLabel, self.pulseLabel, self.pulseDateLabel, self.pulseNormalLabel, self.advanceDirectivesLabel, self.diagnosisLabel, self.diagnosisDateLabel, self.heightImageView, self.bmiImageView, self.pulseImageView, self.weightImageView, nil];
     [self.labelsArray setValue:[NSNumber numberWithDouble:0.0] forKeyPath:@"alpha"];
     
     HRPatientSwipeViewController *patientSwipeViewController = (HRPatientSwipeViewController *)[self.childViewControllers objectAtIndex:0];
@@ -191,6 +201,11 @@
     [self setAdvanceDirectivesLabel:nil];
     [self setDiagnosisLabel:nil];
     [self setDiagnosisDateLabel:nil];
+    [self setHeightTitleLabel:nil];
+    [self setHeightImageView:nil];
+    [self setWeightImageView:nil];
+    [self setBmiImageView:nil];
+    [self setPulseImageView:nil];
     [super viewDidUnload];
 }
 
@@ -232,6 +247,8 @@
         self.recentEncountersTypeLabel.text = [patient.info objectForKey:@"recent_encounters_type"];
         self.recentEncountersDescriptionLabel.text = [patient.info objectForKey:@"recent_encounters_description"];
         self.immunizationsUpToDateLabel.text = [patient.info objectForKey:@"immunizations"];
+        
+        self.heightTitleLabel.text = [[patient.info objectForKey:@"height_title_label"] uppercaseString];
         self.heightLabel.text = [patient.info objectForKey:@"height"];
         self.heightDateLabel.text = [patient.info objectForKey:@"height_date"];
         self.heightNormalLabel.text = [patient.info objectForKey:@"height_normal"];
@@ -252,6 +269,11 @@
         self.functionalStatusTypeLabel.text = [patient.info objectForKey:@"functional_status_type"];
         self.diagnosisLabel.text = [patient.info objectForKey:@"diagnosis_results"];
         self.diagnosisDateLabel.text = [patient.info objectForKey:@"diagnosis_date"];
+        
+        self.heightImageView.image = [patient.info objectForKey:@"height_sparklines"];
+        self.bmiImageView.image = [patient.info objectForKey:@"bmi_sparklines"];
+        self.pulseImageView.image = [patient.info objectForKey:@"pulse_sparklines"];
+        self.weightImageView.image = [patient.info objectForKey:@"weight_sparklines"];
         
         [UIView animateWithDuration:0.4 animations:^{
             [self.labelsArray setValue:[NSNumber numberWithDouble:1.0] forKey:@"alpha"];

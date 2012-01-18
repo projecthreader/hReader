@@ -109,6 +109,8 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
         [info setObject:@"Office Visit" forKey:@"recent_encounters_type"];
         [info setObject:@"5 Yr. Immunizations" forKey:@"recent_encounters_description"];
         [info setObject:@"Yes" forKey:@"immunizations"];
+        
+        [info setObject:@"Height" forKey:@"height_title_label"];
         [info setObject:@"3'2\"" forKey:@"height"];
         [info setObject:@"5 Jan 2012" forKey:@"height_date"];
         [info setObject:@"3'-3'4\"" forKey:@"height_normal"];
@@ -131,6 +133,12 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
         [info setObject:@"Asthma Treatment" forKey:@"procedures_type"];
         [info setObject:@"20 Jul 2010" forKey:@"diagnosis_date"];
         [info setObject:@"Peak flow/Yellow Zone" forKey:@"diagnosis_results"];
+        
+        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"height_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"weight_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"bmi_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"pulse_sparklines"];
+        
         johnny.info = info;
         [info release];
         
@@ -157,9 +165,11 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
         [info setObject:@"Outpatient" forKey:@"recent_encounters_type"];
         [info setObject:@"Check up" forKey:@"recent_encounters_description"];
         [info setObject:@"Yes" forKey:@"immunizations"];
-        [info setObject:@"3'2\"" forKey:@"height"];
+        
+        [info setObject:@"Total Cholesterol" forKey:@"height_title_label"];
+        [info setObject:@"230" forKey:@"height"];
         [info setObject:@"5 Jan 2012" forKey:@"height_date"];
-        [info setObject:@"3'-3'4\"" forKey:@"height_normal"];
+        [info setObject:@"< 200" forKey:@"height_normal"];
         [info setObject:@"200" forKey:@"weight"];
         [info setObject:@"5 Jan 2012" forKey:@"weight_date"];
         [info setObject:@"154-166" forKey:@"weight_normal"];
@@ -179,6 +189,12 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
         [info setObject:@"Prostate Cancer Treatment" forKey:@"procedures_type"];
         [info setObject:@"20 Jul 2010" forKey:@"diagnosis_date"];
         [info setObject:@"Prostate Specific Antigen Test" forKey:@"diagnosis_results"];
+        
+        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"height_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"weight_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"bmi_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"pulse_sparklines"];
+        
         henry.info = info;
         [info release];
         
@@ -204,9 +220,12 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
         [info setObject:@"Office Visit" forKey:@"recent_encounters_type"];
         [info setObject:@"Yearly Check up" forKey:@"recent_encounters_description"];
         [info setObject:@"Yes" forKey:@"immunizations"];
-        [info setObject:@"3'2\"" forKey:@"height"];
+        
+        
+        [info setObject:@"Total Cholesterol" forKey:@"height_title_label"];
+        [info setObject:@"202" forKey:@"height"];
         [info setObject:@"5 Jan 2012" forKey:@"height_date"];
-        [info setObject:@"3'-3'4\"" forKey:@"height_normal"];
+        [info setObject:@"< 200" forKey:@"height_normal"];        
         [info setObject:@"110" forKey:@"weight"];
         [info setObject:@"5 Jan 2012" forKey:@"weight_date"];
         [info setObject:@"100-123" forKey:@"weight_normal"];
@@ -226,6 +245,12 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
         [info setObject:@"Asthma Treatment" forKey:@"procedures_type"];
         [info setObject:@"30 Jul 2010" forKey:@"diagnosis_date"];
         [info setObject:@"Peak flow/Yellow Zon" forKey:@"diagnosis_results"];
+        
+        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"height_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"weight_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"bmi_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"pulse_sparklines"];
+        
         molly.info = info;
         [info release];
 
@@ -274,6 +299,12 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
         [info setObject:@"Asthma Treatmen" forKey:@"procedures_type"];
         [info setObject:@"15 Nov 2010" forKey:@"diagnosis_date"];
         [info setObject:@"Pap Test/Normal" forKey:@"diagnosis_results"];
+        
+        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"height_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"weight_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"bmi_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"pulse_sparklines"];
+        
         sarah.info = info;
         [info release];
         
@@ -323,6 +354,12 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
         [info setObject:@"Asthma Treatmen" forKey:@"procedures_type"];
         [info setObject:@"10 Jul 2010" forKey:@"diagnosis_date"];
         [info setObject:@"Diabetes Treatment" forKey:@"diagnosis_results"];
+        
+        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"height_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"weight_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"bmi_sparklines"];
+        [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"pulse_sparklines"];
+        
         tom.info = info;
         [info release];
 
