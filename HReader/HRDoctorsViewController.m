@@ -10,17 +10,20 @@
 
 #import "HRDoctorsViewController.h"
 #import "HRPatientSwipeViewController.h"
+#import "HRPatient.h"
 
 @implementation HRDoctorsViewController
 
 @synthesize doctorDetailView            = __doctorDetailView;
 @synthesize patientView                 = __patientView;
+@synthesize nameLabel = _nameLabel;
 @synthesize doctorImageView             = __doctorImageView;
 
 - (void)dealloc {
     [__patientView release];;
     [__doctorImageView release];
     [__doctorDetailView release];
+    [_nameLabel release];
     [super dealloc];
 }
 
@@ -60,11 +63,17 @@
     self.doctorImageView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
     self.doctorImageView.layer.shadowRadius = 5.0f;
     self.doctorImageView.layer.shouldRasterize = YES;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(patientChanged:) 
+                                                 name:HRPatientDidChangeNotification 
+                                               object:nil];
 
 }
 
 - (void)viewDidUnload {
     [self setDoctorDetailView:nil];
+    [self setNameLabel:nil];
     [super viewDidUnload];
     
     self.patientView = nil;
@@ -87,6 +96,19 @@
     [UIView animateWithDuration:1.0 animations:^{
         self.doctorDetailView.alpha = 0.0;
     }];    
+}
+
+- (void)patientChanged:(NSNotification *)notif {
+    HRPatient *patient = [notif.userInfo objectForKey:HRPatientKey];
+    [UIView animateWithDuration:0.4 animations:^{
+        self.nameLabel.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        self.nameLabel.text = [patient.name uppercaseString];
+        
+        [UIView animateWithDuration:0.4 animations:^{
+            self.nameLabel.alpha = 1.0;
+        }];
+    }];   
 }
 
 @end

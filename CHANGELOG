@@ -5,8 +5,15 @@
 ## Summary View
 * Added mock data
 * Added sparklines
+* Tweaked layout
 
 ## Timeline View
+* Added patient name
+
+## Messages View
+* Set cell selected color to light gray
+
+## Doctors View
 * Added patient name
 
 - - -

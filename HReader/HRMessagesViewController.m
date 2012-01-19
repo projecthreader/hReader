@@ -83,7 +83,8 @@
     self.scrollView.contentSize = self.messageContentView.bounds.size;
     [self.scrollView addSubview:self.messageContentView];
     
-    [self setHeaderViewShadow];    
+    [self setHeaderViewShadow];   
+
 }
 
 - (void)viewDidUnload {

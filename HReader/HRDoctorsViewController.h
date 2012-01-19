@@ -16,6 +16,7 @@
 @property (retain, nonatomic) IBOutlet UIImageView *doctorImageView;
 
 @property (retain, nonatomic) IBOutlet UIView *patientView;
+@property (retain, nonatomic) IBOutlet UILabel *nameLabel;
 
 
 - (IBAction)showDoctor:(id)sender;

@@ -88,9 +88,7 @@
         [UIView animateWithDuration:0.4 animations:^{
             self.nameLabel.alpha = 1.0;
         }];
-    }];
-
-    
+    }];   
 }
 
 @end
