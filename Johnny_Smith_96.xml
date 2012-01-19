@@ -953,19 +953,9 @@
           <td>June 27th, 2010 00:00</td>
         </tr>
         <tr>
-          <td ID="encounters-desc-1">encounter outpatient-children</td>
-          <td ID="encounters-code-1">ICD-10-CM: Z00.1</td>
-          <td>December 21st, 2010 00:00</td>
-        </tr>
-        <tr>
           <td ID="encounters-desc-2">encounter outpatient-children</td>
           <td ID="encounters-code-2">ICD-10-CM: Z00.1</td>
           <td>September 17th, 2010 00:00</td>
-        </tr>
-        <tr>
-          <td ID="encounters-desc-3">encounter outpatient-children</td>
-          <td ID="encounters-code-3">ICD-10-CM: Z00.1</td>
-          <td>June 20th, 2010 00:00</td>
         </tr>
         <tr>
           <td ID="encounters-desc-4">Encounter Outpatient</td>
