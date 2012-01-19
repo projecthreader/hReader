@@ -114,7 +114,7 @@
             }
             //Links to the xml doc
             tl = Timeline.create(document.getElementById("tl"), bandInfos, Timeline.HORIZONTAL);
-            tl.loadXML("../../../Documents/hReader.xml", function(xml, url) {
+            tl.loadXML("hReader.xml", function(xml, url) {
                 eventSource_all.loadXML(xml, url);
                 var iterator=eventSource_all.getAllEventIterator();
                 while (iterator.hasNext()){

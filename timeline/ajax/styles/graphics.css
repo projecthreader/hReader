@@ -4,10 +4,11 @@ div.simileAjax-bubble-container {
     border:     none;
     position:   absolute;
     z-index:    1000;
+    top: 10px;
 }
 
 div.simileAjax-bubble-innerContainer {
-    margin:     0px;
+    margin:     0;
     padding:    0px;
     border:     none;
     position:   relative;
@@ -21,12 +22,14 @@ div.simileAjax-bubble-contentContainer {
     padding:    0px;
     border:     none;
     position:   absolute;
-    left:       0px;
+    left:       -10px;
     top:        0px;
     width:      100%;
     height:     100%;
     overflow:   auto;
     background: white;
+    border-radius: 8px;
+    padding: 0px 10px 20px 10px;
 }
 
 div.simileAjax-bubble-border-left {
@@ -37,7 +40,7 @@ div.simileAjax-bubble-border-left {
     height:     100%;
 }
 div.simileAjax-bubble-border-left-pngTranslucent {
-    background: url(../images/bubble-left.png) top right repeat-y;
+    background: url(../images/ipad_bubble-left.png) top right repeat-y;
 }
 
 div.simileAjax-bubble-border-right {
@@ -48,51 +51,53 @@ div.simileAjax-bubble-border-right {
     height:     100%;
 }
 .simileAjax-bubble-border-right-pngTranslucent {
-    background: url(../images/bubble-right.png) top left repeat-y;
+    background: url(../images/ipad_bubble-right.png) top left repeat-y;
 }
 
 div.simileAjax-bubble-border-top {
     position:   absolute;
-    top:        -50px;
+    top:        -60px;
     left:       0px;
     width:      100%;
-    height:     50px;
+    height:     60px;
 }
 .simileAjax-bubble-border-top-pngTranslucent {
-    background: url(../images/bubble-top.png) bottom left repeat-x;
+    background: url(../images/ipad_bubble-top.png) bottom left repeat-x;
 }
 
 div.simileAjax-bubble-border-bottom {
     position:   absolute;
-    bottom:     -50px;
+    bottom:     -51px;
     left:       0px;
     width:      100%;
     height:     50px;
 }
 .simileAjax-bubble-border-bottom-pngTranslucent {
-    background: url(../images/bubble-bottom.png) top left repeat-x;
+    background: url(../images/ipad_bubble-bottom.png) top left repeat-x;
 }
 
 div.simileAjax-bubble-border-top-left {
     position:   absolute;
-    top:        -50px;
+    top:        -60px;
     left:       -50px;
     width:      50px;
-    height:     50px;
+    height:     60px;
+
+
 }
 .simileAjax-bubble-border-top-left-pngTranslucent {
-    background: url(../images/bubble-top-left.png) bottom right no-repeat;
+    background: url(../images/ipad_bubble-top-left.png) bottom right no-repeat;
 }
 
 div.simileAjax-bubble-border-top-right {
     position:   absolute;
-    top:        -50px;
+    top:        -60px;
     right:      -50px;
     width:      50px;
-    height:     50px;
+    height:     60px;
 }
 .simileAjax-bubble-border-top-right-pngTranslucent {
-    background: url(../images/bubble-top-right.png) bottom left no-repeat;
+    background: url(../images/ipad_bubble-top-right.png) bottom left no-repeat;
 }
 
 div.simileAjax-bubble-border-bottom-left {
@@ -103,7 +108,7 @@ div.simileAjax-bubble-border-bottom-left {
     height:     50px;
 }
 .simileAjax-bubble-border-bottom-left-pngTranslucent {
-    background: url(../images/bubble-bottom-left.png) top right no-repeat;
+    background: url(../images/ipad_bubble-bottom-left.png) top right no-repeat;
 }
 
 div.simileAjax-bubble-border-bottom-right {
@@ -114,7 +119,7 @@ div.simileAjax-bubble-border-bottom-right {
     height:     50px;
 }
 .simileAjax-bubble-border-bottom-right-pngTranslucent {
-    background: url(../images/bubble-bottom-right.png) top left no-repeat;
+    background: url(../images/ipad_bubble-bottom-right.png) top left no-repeat;
 }
 
 div.simileAjax-bubble-arrow-point-left {
@@ -122,9 +127,10 @@ div.simileAjax-bubble-arrow-point-left {
     left:       -100px;
     width:      100px;
     height:     49px;
+
 }
 .simileAjax-bubble-arrow-point-left-pngTranslucent {
-    background: url(../images/bubble-arrow-point-left.png) center right no-repeat;
+    background: url(../images/ipad_bubble-point-left.png) center right no-repeat;
 }
 
 div.simileAjax-bubble-arrow-point-right {
@@ -132,40 +138,50 @@ div.simileAjax-bubble-arrow-point-right {
     right:      -100px;
     width:      100px;
     height:     49px;
+
 }
 .simileAjax-bubble-arrow-point-right-pngTranslucent {
-    background: url(../images/bubble-arrow-point-right.png) center left no-repeat;
+    background: url(../images/ipad_bubble-point-right.png) center left no-repeat;
 }
+
 
 div.simileAjax-bubble-arrow-point-up {
     position:   absolute;
     top:        -100px;
     width:      49px;
     height:     100px;
+
 }
 .simileAjax-bubble-arrow-point-up-pngTranslucent {
-    background: url(../images/bubble-arrow-point-up.png) bottom center no-repeat;
+    background: url(../images/ipad_bubble-point-up.png) bottom center no-repeat;
 }
 
 div.simileAjax-bubble-arrow-point-down {
     position:   absolute;
-    bottom:     -100px;
+    bottom:     -57px;
     width:      49px;
-    height:     100px;
+    height:     30px;
+
 }
 .simileAjax-bubble-arrow-point-down-pngTranslucent {
-    background: url(../images/bubble-arrow-point-down.png) bottom center no-repeat;
+    background: url(../images/ipad_bubble-point-down.png) bottom center no-repeat;
 }
 
 
 div.simileAjax-bubble-close {
     position:   absolute;
-    right:      -10px;
-    top:        -12px;
-    width:      16px;
-    height:     16px;
+    left:      -10px;
+    top:        -32px;
+    width:      70px;
+    height:     31px;
     cursor:     pointer;
+
 }
 .simileAjax-bubble-close-pngTranslucent {
-    background: url(../images/close-button.png) no-repeat;
+    background: url(../images/ipad_close_button.png) no-repeat;
 }
+
+div.timeline-event-bubble-title {
+    border: none;
+}
+

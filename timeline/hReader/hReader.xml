@@ -1,4 +1,4 @@
-﻿<data
+<data
     wiki-url="http://simile.mit.edu/shelf/"
     wiki-section="Simile Monet Timeline">
     <!-- Source:
@@ -127,9 +127,4 @@
         category="immunizations">
         Hepatitis B Vaccine
     </event>    
-    <event start="Jun 2 2010 00:00:00 GMT"
-        title=""
-        category="immunizations">
-        Hepatitis B Vaccine
-    </event>
 </data>
