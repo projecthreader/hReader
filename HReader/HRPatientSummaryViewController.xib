@@ -80,7 +80,7 @@
 								<string key="NSFrame">{{221, 140}, {142, 21}}</string>
 								<reference key="NSSuperview" ref="820384814"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="985649735"/>
+								<reference key="NSNextKeyView" ref="281398032"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -295,7 +295,7 @@
 								<string key="NSFrame">{{367, 48}, {233, 31}}</string>
 								<reference key="NSSuperview" ref="820384814"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="597404156"/>
+								<reference key="NSNextKeyView" ref="612973412"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -316,7 +316,7 @@
 								<string key="NSFrame">{{367, 85}, {146, 21}}</string>
 								<reference key="NSSuperview" ref="820384814"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="57730394"/>
+								<reference key="NSNextKeyView" ref="985649735"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -358,7 +358,7 @@
 								<string key="NSFrame">{{633, 49}, {25, 25}}</string>
 								<reference key="NSSuperview" ref="820384814"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="612973412"/>
+								<reference key="NSNextKeyView" ref="111013593"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">4</int>
@@ -436,7 +436,7 @@
 								<string key="NSFrame">{{699, 117}, {153, 21}}</string>
 								<reference key="NSSuperview" ref="820384814"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="281398032"/>
+								<reference key="NSNextKeyView" ref="57730394"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -457,7 +457,7 @@
 								<string key="NSFrame">{{699, 78}, {295, 1}}</string>
 								<reference key="NSSuperview" ref="820384814"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="111013593"/>
+								<reference key="NSNextKeyView" ref="597404156"/>
 								<reference key="IBUIBackgroundColor" ref="432377923"/>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 							</object>
@@ -6569,7 +6569,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="742467893"/>
 						<string key="NSReuseIdentifierKey">_NS:569</string>
-						<int key="IBUIContentMode">6</int>
+						<int key="IBUIContentMode">4</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
@@ -6581,7 +6581,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="903479209"/>
 						<string key="NSReuseIdentifierKey">_NS:569</string>
-						<int key="IBUIContentMode">6</int>
+						<int key="IBUIContentMode">4</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
@@ -6593,7 +6593,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1041101316"/>
 						<string key="NSReuseIdentifierKey">_NS:569</string>
-						<int key="IBUIContentMode">6</int>
+						<int key="IBUIContentMode">4</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
@@ -6605,7 +6605,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="585177478"/>
 						<string key="NSReuseIdentifierKey">_NS:569</string>
-						<int key="IBUIContentMode">6</int>
+						<int key="IBUIContentMode">4</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
