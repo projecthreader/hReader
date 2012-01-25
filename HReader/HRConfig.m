@@ -374,7 +374,7 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
         
         
         
-        array = [[NSArray alloc] initWithObjects:johnny, henry, molly, sarah, tom, nil];
+        array = [[NSArray alloc] initWithObjects:sarah, tom, henry, johnny, molly, nil];
     });
     
     
