@@ -352,7 +352,7 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
         [info setObject:@"70" forKey:@"pulse"];
         [info setObject:@"5 Jan 2012" forKey:@"pulse_date"];
         [info setObject:@"60-100" forKey:@"pulse_normal"];
-        [info setObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Inslin", @"1 unit", nil] forKey:@"medications"];
+        [info setObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Insulin", @"1 unit", nil] forKey:@"medications"];
         [info setObject:@"20 Jul 2010" forKey:@"functional_status_date"];
         [info setObject:@"Type 1 Diabetes" forKey:@"functional_status_problem"];
         [info setObject:@"Home/Living Situation" forKey:@"functional_status_type"];
