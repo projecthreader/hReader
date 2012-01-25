@@ -10,4 +10,9 @@
 
 @interface HRMedication : NSObject
 
+@property (copy, nonatomic) NSString *drug;
+@property (copy, nonatomic) NSString *dosage;
+
+- (id)initWithDrug:(NSString *)drug dosage:(NSString  *)dosage;
+
 @end

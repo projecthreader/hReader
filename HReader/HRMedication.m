@@ -10,4 +10,17 @@
 
 @implementation HRMedication
 
+@synthesize drug    = __drug;
+@synthesize dosage  = __dosage;
+
+- (id)initWithDrug:(NSString *)drug dosage:(NSString  *)dosage {
+    self = [super init];
+    if (self) {
+        self.drug = drug;
+        self.dosage = dosage;
+    }
+    
+    return self;
+}
+
 @end
