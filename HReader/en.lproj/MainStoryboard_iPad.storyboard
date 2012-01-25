@@ -150,7 +150,7 @@ All data contained in this application is synthetic and fictional for research p
                         </sections>
                     </tableView>
                     <navigationItem key="navigationItem" title="hReader" id="I4m-HT-7v9">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="aM1-O7-TvK">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="aM1-O7-TvK">
                             <connections>
                                 <action selector="done:" destination="Zdu-v2-keb" id="EBL-9O-DP2"/>
                             </connections>
