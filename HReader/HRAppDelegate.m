@@ -9,7 +9,6 @@
 #import "HRAppDelegate.h"
 #import "HRPasscodeWarningViewController.h"
 #import "HRPrivacyViewController.h"
-#import "GCPINViewController.h"
 
 @implementation HRAppDelegate
 
@@ -82,9 +81,6 @@
     
     [TestFlight passCheckpoint:@"Window Unhidden"];
     self.window.hidden = NO;
-    [TestFlight passCheckpoint:@"PIN Code Presented"];
-    GCPINViewController *PIN = [self pinCodeViewController];
-    [PIN presentFromViewController:self.window.rootViewController animated:NO];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -129,18 +125,5 @@
 - (void)setupPrivacyView {
     self.privacyViewController = [[[HRPrivacyViewController alloc] initWithNibName:nil bundle:nil] autorelease];
 }
-
-- (GCPINViewController *)pinCodeViewController {
-    GCPINViewController *PIN = [[[GCPINViewController alloc] initWithNibName:@"PINViewDefault" bundle:nil mode:GCPINViewControllerModeVerify] autorelease];
-    PIN.messageText = @"Enter your Passcode";
-    PIN.errorText = @"Incorrect passcode";
-    PIN.verifyBlock = ^(NSString *code) {
-//        NSLog(@"checking code: %@", code);
-        return [code isEqualToString:@"0000"];
-    };
-    
-    return PIN;
-}
-
 
 @end

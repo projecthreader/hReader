@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @class HRPrivacyViewController;
-@class GCPINViewController;
 
 @interface HRAppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -20,6 +19,5 @@
 - (void)showPrivacyWarning;
 - (void)loadTestFlight;
 - (void)setupPrivacyView;
-- (GCPINViewController *)pinCodeViewController;
 
 @end
