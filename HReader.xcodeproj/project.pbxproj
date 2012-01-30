@@ -386,7 +386,6 @@
 			isa = PBXGroup;
 			children = (
 				945560BF14BB891500A3DC43 /* KissXML */,
-				947FCE4E14B4D7A600C716FD /* pinview */,
 				94689ABE14964BCF00E1FCA6 /* TestFlight-0.8.4 */,
 			);
 			name = Vendor;
@@ -442,13 +441,6 @@
 				947FCE4A14B4C76700C716FD /* HRPrivacyViewController.xib */,
 			);
 			name = "Privacy Shield";
-			sourceTree = "<group>";
-		};
-		947FCE4E14B4D7A600C716FD /* pinview */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = pinview;
 			sourceTree = "<group>";
 		};
 		94BB032E149BB398009B2FCC /* Passcode Warning */ = {
