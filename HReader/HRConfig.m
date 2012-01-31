@@ -469,7 +469,8 @@ static HRPatient *selectedPatient = nil;
 //                NSLog(@"Title %@", title);
                 NSString *code = [[tdNode childAtIndex:1] stringValue];
 //                NSLog(@"Code %@", code);
-                __block NSMutableString *date = [[[tdNode childAtIndex:2] stringValue] mutableCopy];
+                NSString *nodeDate = [[tdNode childAtIndex:2] stringValue];
+                NSMutableString *date = [NSMutableString stringWithString:nodeDate];
                 NSArray *orindals = [NSArray arrayWithObjects:@"st", @"nd", @"rd", @"th", nil];
                 [orindals enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop) {
                     [date replaceOccurrencesOfString:obj 
@@ -478,7 +479,7 @@ static HRPatient *selectedPatient = nil;
                                                range:NSMakeRange(0, [date length])];
                 }];
 //                NSLog(@"Date %@", date);
-                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
                 NSLocale *enUS = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
                 [formatter setLocale:enUS];
                 [enUS release];
@@ -486,6 +487,7 @@ static HRPatient *selectedPatient = nil;
                 NSDate *theDate = [formatter dateFromString:date]; /*e.g. @"Thu, 11 Sep 2008 12:34:12 +0200" */
                 HREncounter *hrEncounter = [[HREncounter alloc] initWithTitle:title code:code date:theDate];
                 [patientEncounters addObject:hrEncounter];
+                [hrEncounter release];
             }
         }
     }

@@ -14,6 +14,14 @@
 @synthesize code    = __code;
 @synthesize date    = __date;
 
+- (void)dealloc {
+    [__title release];
+    [__code release];
+    [__date release];
+    
+    [super dealloc];
+}
+
 - (id)initWithTitle:(NSString *)title code:(NSString *)code date:(NSDate *)date {
     self = [super init];
     if (self) {

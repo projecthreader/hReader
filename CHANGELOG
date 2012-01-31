@@ -3,6 +3,10 @@
 # 2012-01-30
 
 * Refactored app navigation to not use wide scroll view. Also had to refactor how patient swipes were handled
+* Code cleanup
+
+## Timeline 
+* Updated layout
 
 - - -
 
@@ -16,7 +20,7 @@
 * Changed patients order
 * Fixed some typos
 
-# About View
+## About View
 * Changed done button to gray
 
 - - -

@@ -23,8 +23,6 @@
 - (void)setLogo;
 - (void)setupSegmentedControl;
 - (void)showRawC32:(id)sender;
-//- (void)setupScrollViewWithOrientation:(UIInterfaceOrientation)interfaceOrientation;
-//- (CGSize)sizeForView:(UIView *)view orientation:(UIInterfaceOrientation)interfaceOrientation;
 - (void)privacyCheck:(id)sender;
 
 @property (nonatomic, assign) NSInteger selectedIndex;
