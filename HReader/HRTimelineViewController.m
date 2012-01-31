@@ -10,19 +10,25 @@
 #import "HRPatientSwipeViewController.h"
 #import "HRPatient.h"
 
+@interface HRTimelineViewController ()
+- (void)reloadData;
+- (void)reloadDataAnimated;
+@end
+
 @implementation HRTimelineViewController
 
 @synthesize scrollView  = __scrollView;
 @synthesize webView     = __webView;
 @synthesize headerView  = __headerView;
-@synthesize nameLabel = _nameLabel;
+@synthesize nameLabel   = __nameLabel;
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     [__scrollView release];
     [__headerView release];
     [__webView release];
-    
-    [_nameLabel release];
+    [__nameLabel release];
     [super dealloc];
 }
 
@@ -35,6 +41,12 @@
         [self addChildViewController:patientSwipeViewController];
         patientSwipeViewController.patientsArray = [HRConfig patients];
         [patientSwipeViewController release];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(patientChanged:) 
+                                                     name:HRPatientDidChangeNotification 
+                                                   object:nil];
     }
     return self;
 }
@@ -45,6 +57,7 @@
     [super viewDidLoad];
     
     HRPatientSwipeViewController *patientSwipeViewController = (HRPatientSwipeViewController *)[self.childViewControllers objectAtIndex:0];
+    patientSwipeViewController.selectedPatient = [HRConfig selectedPatient];
     [self.headerView addSubview:patientSwipeViewController.view];
     
     
@@ -57,11 +70,6 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]];
     [self.webView loadRequest:request];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(patientChanged:) 
-                                                 name:HRPatientDidChangeNotification 
-                                               object:nil];
-    
 }
 
 - (void)viewDidUnload {
@@ -73,22 +81,36 @@
     [super viewDidUnload];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self reloadData];
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
+#pragma mark - NSNotificationCenter
+
 - (void)patientChanged:(NSNotification *)notif {
-    HRPatient *patient = [notif.userInfo objectForKey:HRPatientKey];
+    [self reloadDataAnimated];
+}
+
+- (void)reloadDataAnimated {
     [UIView animateWithDuration:0.4 animations:^{
         self.nameLabel.alpha = 0.0;
     } completion:^(BOOL finished) {
-        self.nameLabel.text = [patient.name uppercaseString];
+        [self reloadData];
         
         [UIView animateWithDuration:0.4 animations:^{
             self.nameLabel.alpha = 1.0;
         }];
     }];   
+}
+
+- (void)reloadData {
+    HRPatient *patient = [HRConfig selectedPatient];
+    self.nameLabel.text = [patient.name uppercaseString];
 }
 
 @end

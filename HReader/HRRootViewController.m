@@ -23,19 +23,19 @@
 - (void)setLogo;
 - (void)setupSegmentedControl;
 - (void)showRawC32:(id)sender;
-- (void)setupScrollViewWithOrientation:(UIInterfaceOrientation)interfaceOrientation;
-- (CGSize)sizeForView:(UIView *)view orientation:(UIInterfaceOrientation)interfaceOrientation;
+//- (void)setupScrollViewWithOrientation:(UIInterfaceOrientation)interfaceOrientation;
+//- (CGSize)sizeForView:(UIView *)view orientation:(UIInterfaceOrientation)interfaceOrientation;
 - (void)privacyCheck:(id)sender;
+
+@property (nonatomic, assign) NSInteger selectedIndex;
 @end
 
 @implementation HRRootViewController
 
-@synthesize scrollView          = __scrollView;
 @synthesize segmentedControl    = __segmentedControl;
-
+@synthesize selectedIndex = __selectedIndex;
 
 - (void)dealloc {
-    [__scrollView release];
     [__segmentedControl release];
     
     [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -70,7 +70,8 @@
         }];
         
         HRPatient *patient = [[HRConfig patients] objectAtIndex:0];
-        [[NSNotificationCenter defaultCenter] postNotificationName:HRPatientDidChangeNotification object:self userInfo:[NSDictionary dictionaryWithObject:patient forKey:HRPatientKey]];
+        [HRConfig setSelectedPatient:patient];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:HRPatientDidChangeNotification object:self userInfo:[NSDictionary dictionaryWithObject:patient forKey:HRPatientKey]];
     }
     
     return self;
@@ -84,40 +85,42 @@
     [self setupPatientLabelWithText:@"Last Updated: 05 May by Joseph Yang, M.D. (Columbia Pediatric Associates)"];
     [self setLogo];
 
-    [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([obj isKindOfClass:[UIViewController class]]) {
-            UIViewController *splitViewController = (UIViewController *)obj;
-            [self.scrollView addSubview:splitViewController.view];
-        }
-    }];
+    [self setSelectedIndex:0];
+    
+//    [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//        if ([obj isKindOfClass:[UIViewController class]]) {
+//            UIViewController *splitViewController = (UIViewController *)obj;
+//            [self.scrollView addSubview:splitViewController.view];
+//        }
+//    }];
     
     [self setupSegmentedControl];
-    [self setupScrollViewWithOrientation:self.interfaceOrientation];
+//    [self setupScrollViewWithOrientation:self.interfaceOrientation];
 }
 
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [super viewDidUnload];
-    
-    self.scrollView = nil;
+
     self.segmentedControl = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self willAnimateRotationToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft duration:1.0];
+//    [self willAnimateRotationToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft duration:1.0];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
 
-
+/*
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     [self setupScrollViewWithOrientation:toInterfaceOrientation];
 }
+ */
 
+/*
 - (void)setupScrollViewWithOrientation:(UIInterfaceOrientation)interfaceOrientation {
     CGSize viewSize = [self sizeForView:self.view orientation:interfaceOrientation];
     self.scrollView.contentSize = CGSizeMake(viewSize.width * [self.childViewControllers count], viewSize.height);
@@ -129,20 +132,14 @@
         }
     }];
 }
+ */
 
-- (CGSize)sizeForView:(UIView *)view orientation:(UIInterfaceOrientation)interfaceOrientation {
-    return CGSizeMake(1024, 660); // works!
-}
+//- (CGSize)sizeForView:(UIView *)view orientation:(UIInterfaceOrientation)interfaceOrientation {
+//    return CGSizeMake(1024, 660); // works!
+//}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
-}
-
-
-#pragma mark - UIScrollViewDelegate
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    self.segmentedControl.selectedSegmentIndex = self.scrollView.contentOffset.x / self.scrollView.bounds.size.width;
 }
 
 
@@ -198,11 +195,7 @@
 }
 
 - (void)segmentSelected {
-    NSInteger index = self.segmentedControl.selectedSegmentIndex;
-    NSString *title = [[self.childViewControllers objectAtIndex:index] title];
-    [TestFlight passCheckpoint:[NSString stringWithFormat:@"Navigation - %@", title]];
-    
-    [self.scrollView setContentOffset:CGPointMake(self.segmentedControl.selectedSegmentIndex * self.scrollView.bounds.size.width, 0) animated:YES];
+    self.selectedIndex = self.segmentedControl.selectedSegmentIndex;
 }
 
 - (void)showRawC32:(id)sender {
@@ -234,6 +227,36 @@
 //    HRPasscodeWarningViewController *warningViewController = [[HRPasscodeWarningViewController alloc] initWithNibName:nil bundle:nil];
 //    [self presentModalViewController:warningViewController animated:YES];
 //    [warningViewController release];
+}
+
+- (void)setSelectedIndex:(NSInteger)index {
+
+    // save old value
+    NSInteger oldValue = __selectedIndex;
+    
+    // save new value 
+    __selectedIndex = index;
+    
+    // get vc at old index
+    UIViewController *oldViewController = [self.childViewControllers objectAtIndex:oldValue];
+    // call lifecycle methods
+    [oldViewController viewWillDisappear:NO];
+    
+    NSString *title = [[self.childViewControllers objectAtIndex:index] title];
+    [TestFlight passCheckpoint:[NSString stringWithFormat:@"Navigation - %@", title]];
+
+    [self.view.subviews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
+        [view removeFromSuperview];
+     }];
+    [oldViewController viewDidDisappear:NO];
+    
+    UIViewController *viewController = [self.childViewControllers objectAtIndex:index];
+    UIView *view = viewController.view;
+    view.frame = self.view.bounds;
+    view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [viewController viewWillAppear:YES];
+    [self.view addSubview:view];
+    [viewController viewDidAppear:YES];
 }
 
 @end

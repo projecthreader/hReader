@@ -30,6 +30,8 @@
 @synthesize dateFormatter               = __dateFormatter;
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     [__patientImageShadowView release];
     [__patientImageView release];
     [__messagesArray release];
@@ -68,6 +70,11 @@
         [self addChildViewController:patientSwipeViewController];
         patientSwipeViewController.patientsArray = [HRConfig patients];
         [patientSwipeViewController release];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(patientChanged:) 
+                                                     name:HRPatientDidChangeNotification 
+                                                   object:nil];
     }
     return self;
 }
@@ -78,6 +85,7 @@
     [super viewDidLoad];
 
     HRPatientSwipeViewController *patientSwipeViewController = (HRPatientSwipeViewController *)[self.childViewControllers objectAtIndex:0];
+    patientSwipeViewController.selectedPatient = [HRConfig selectedPatient];
     [self.patientView addSubview:patientSwipeViewController.view];
     
     self.scrollView.contentSize = self.messageContentView.bounds.size;
@@ -98,6 +106,10 @@
     [self setBodyLabel:nil];
     [self setMessageView:nil];
     [super viewDidUnload];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -136,6 +148,12 @@
     cell.textLabel.text = [self.dateFormatter stringFromDate:message.received];
 
     return cell;
+}
+
+#pragma mark - NSNotificationCenter
+
+- (void)patientChanged:(NSNotification *)notif {
+
 }
 
 #pragma mark - Private methods

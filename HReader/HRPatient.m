@@ -83,4 +83,8 @@
     return dobString;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"<HRPatient #name: %@>", self.name];
+}
+
 @end

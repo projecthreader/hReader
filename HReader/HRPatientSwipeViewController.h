@@ -18,6 +18,8 @@
 
 @property (strong, nonatomic) NSArray *patientsArray;
 
+@property (strong, nonatomic) HRPatient *selectedPatient;
+
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *shadowView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;

@@ -12,18 +12,25 @@
 #import "HRPatientSwipeViewController.h"
 #import "HRPatient.h"
 
+@interface HRDoctorsViewController ()
+- (void)reloadData;
+- (void)reloadDataAnimated;
+@end
+
 @implementation HRDoctorsViewController
 
 @synthesize doctorDetailView            = __doctorDetailView;
 @synthesize patientView                 = __patientView;
-@synthesize nameLabel = _nameLabel;
+@synthesize nameLabel                   = __nameLabel;
 @synthesize doctorImageView             = __doctorImageView;
 
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     [__patientView release];;
     [__doctorImageView release];
     [__doctorDetailView release];
-    [_nameLabel release];
+    [__nameLabel release];
     [super dealloc];
 }
 
@@ -36,6 +43,11 @@
         [self addChildViewController:patientSwipeViewController];
         patientSwipeViewController.patientsArray = [HRConfig patients];
         [patientSwipeViewController release];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(patientChanged:) 
+                                                     name:HRPatientDidChangeNotification 
+                                                   object:nil];
     }
     return self;
 }
@@ -46,6 +58,7 @@
     [super viewDidLoad];
     
     HRPatientSwipeViewController *patientSwipeViewController = (HRPatientSwipeViewController *)[self.childViewControllers objectAtIndex:0];
+    patientSwipeViewController.selectedPatient = [HRConfig selectedPatient];
     [self.view addSubview:patientSwipeViewController.view];
     
     // Doctor detail view
@@ -64,11 +77,7 @@
     self.doctorImageView.layer.shadowRadius = 5.0f;
     self.doctorImageView.layer.shouldRasterize = YES;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(patientChanged:) 
-                                                 name:HRPatientDidChangeNotification 
-                                               object:nil];
-
+    [self reloadData];
 }
 
 - (void)viewDidUnload {
@@ -78,6 +87,10 @@
     
     self.patientView = nil;
     self.doctorImageView = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -98,17 +111,29 @@
     }];    
 }
 
+#pragma mark - NSNotificationCenter
+
 - (void)patientChanged:(NSNotification *)notif {
-    HRPatient *patient = [notif.userInfo objectForKey:HRPatientKey];
+    [self reloadDataAnimated];
+}
+
+#pragma mark - private methods
+
+- (void)reloadDataAnimated {
     [UIView animateWithDuration:0.4 animations:^{
         self.nameLabel.alpha = 0.0;
     } completion:^(BOOL finished) {
-        self.nameLabel.text = [patient.name uppercaseString];
+        [self reloadData];
         
         [UIView animateWithDuration:0.4 animations:^{
             self.nameLabel.alpha = 1.0;
         }];
-    }];   
+    }];       
+}
+
+- (void)reloadData {
+    HRPatient *patient = [HRConfig selectedPatient];
+    self.nameLabel.text = [patient.name uppercaseString];
 }
 
 @end

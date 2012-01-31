@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRRootViewController : UIViewController <UIScrollViewDelegate>
+@interface HRRootViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UISegmentedControl *segmentedControl;
+
 
 @end

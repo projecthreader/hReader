@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class HRPatient;
+
 extern NSString * const HRPatientDidChangeNotification;
 extern NSString * const HRPatientKey;
 
@@ -26,6 +28,8 @@ extern NSString * const HRPatientKey;
 + (UIColor *)redGradientTopColor;
 + (UIColor *)redGradientBottomColor;
 
++ (void)setSelectedPatient:(HRPatient *)patient;
++ (HRPatient *)selectedPatient;
 + (NSArray *)patients;
 
 + (BOOL)hasLaunched;

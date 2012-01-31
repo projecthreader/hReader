@@ -21,6 +21,8 @@ NSString * const HRHasLaunched                  = @"has_launched";
 NSString * const HRPasscodeEnabled              = @"passcode_enabled";
 NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
 
+static HRPatient *selectedPatient = nil;
+
 @interface HRConfig ()
 + (void)parseEncounters;
 @end
@@ -76,6 +78,18 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
 }
 
 #pragma mark - Objects
+
++ (void)setSelectedPatient:(HRPatient *)patient {
+    selectedPatient = patient;
+}
+
++ (HRPatient *)selectedPatient {
+    if (selectedPatient) {
+        return selectedPatient;
+    } else {
+        return [[HRConfig patients] objectAtIndex:0];
+    }
+}
 
 + (NSArray *)patients {
     

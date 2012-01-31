@@ -11,9 +11,14 @@
 #import "HRPatientSwipeViewController.h"
 #import "HRPatient.h"
 
+@interface HRPatientSwipeViewController ()
+- (void)postNotificationWithPatient:(HRPatient *)patient;
+@end
+
 @implementation HRPatientSwipeViewController
 
 @synthesize patientsArray   = __patientArray;
+@synthesize selectedPatient = __selectedPatient;
 @synthesize scrollView      = __scrollView;
 @synthesize shadowView      = __shadowView;
 @synthesize pageControl     = __pageControl;
@@ -50,6 +55,9 @@
     self.scrollView.contentSize = CGSizeMake(175 * [self.patientsArray count], 175);
     self.scrollView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     
+    NSInteger index = [self.patientsArray indexOfObject:self.selectedPatient];
+    self.scrollView.contentOffset = CGPointMake(self.scrollView.bounds.size.width * index, 0);
+    
     [self.patientsArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         HRPatient *patient = (HRPatient *)obj;
         UIImageView *patientImageView = [[UIImageView alloc] initWithImage:patient.image];
@@ -81,20 +89,20 @@
     self.shadowView.layer.shadowRadius = 5.0f;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patientChanged:) name:HRPatientDidChangeNotification object:nil];
-    
+//    [self postNotificationWithPatient:[self.patientsArray objectAtIndex:0]];
 }
 
 
 - (void)viewDidUnload {
     [super viewDidUnload];
 
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     self.scrollView = nil;
     self.shadowView = nil;
     self.pageControl = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
@@ -110,9 +118,8 @@
     if (index != self.lastIndex) {
         self.pageControl.currentPage = index;
         HRPatient *patient = [self.patientsArray objectAtIndex:index];
-        [[NSNotificationCenter defaultCenter] postNotificationName:HRPatientDidChangeNotification 
-                                                            object:self 
-                                                          userInfo:[NSDictionary dictionaryWithObject:patient forKey:HRPatientKey]];       
+        [HRConfig setSelectedPatient:patient];
+        [self postNotificationWithPatient:patient];
         self.lastIndex = index;
         [TestFlight passCheckpoint:@"Patient Swipe"];
     }
@@ -125,6 +132,12 @@
 }
 
 #pragma mark - private methods
+
+- (void)postNotificationWithPatient:(HRPatient *)patient {
+    [[NSNotificationCenter defaultCenter] postNotificationName:HRPatientDidChangeNotification 
+                                                        object:self 
+                                                      userInfo:[NSDictionary dictionaryWithObject:patient forKey:HRPatientKey]];           
+}
 
 - (void)patientChanged:(NSNotification *)notif {
     if ([notif object] != self) {
