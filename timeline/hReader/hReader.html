@@ -26,8 +26,8 @@
             var eventSource_all = new Timeline.DefaultEventSource(0);
 
             var eventSources=[];
-            var sections=['allergies','conditions', 'medications', 'results', 'vitals', 'procedures', 'care', 'immunizations', 'encounters', 'equipment', 'status', 'directives'];    
-            var sectionLabels = ['Allergies/Alerts','Conditions','Medications','Results','Vital Signs','Procedures','Plan of Care','Immunizations','Encounters','Medical Equipment','Functional Status','Advanced Directives'];
+            var sections=['encounters', 'conditions', 'immunizations', 'allergies', 'medications', 'results', 'procedures', 'vitals', 'equipment', 'status'];    
+            var sectionLabels = ['Encounters','Conditions','Immunizations','Allergies/Alerts','Medications','Results','Procedures','Vital Signs','Medical Equipment','Functional Status'];
       
         
             var theme = Timeline.ClassicTheme.create();
@@ -43,7 +43,7 @@
             var d = Timeline.DateTime.parseGregorianDateTime("2010")
             var bandInfos = [
                 Timeline.createBandInfo({
-                    width:          "13%", 
+                    width:          "15%", 
                     intervalUnit:   Timeline.DateTime.YEAR, 
                     intervalPixels: 180,
                     date:           d,
@@ -59,7 +59,7 @@
 
             
                 var bandInfo= new Timeline.createBandInfo({ 
-                    width:          "7%", 
+                    width:          "8%", 
                     intervalUnit:   Timeline.DateTime.MONTH, 
                     intervalPixels: 50,
                     eventSource:    eventSources[sections[i]],
@@ -77,7 +77,7 @@
 
             };
             var bandInfo= new Timeline.createBandInfo({ 
-                    width:          "10%", 
+                    width:          "13%", 
                     intervalUnit:   Timeline.DateTime.MONTH, 
                     intervalPixels: 50,
                     eventSource:    eventSources[sections[sections.length-1]],
