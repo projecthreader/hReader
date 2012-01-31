@@ -61,15 +61,7 @@
     [self.headerView addSubview:patientSwipeViewController.view];
     
     
-    self.headerView.backgroundColor = [UIColor clearColor];
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"hReader" 
-                                                     ofType:@"html"
-                                                inDirectory:@"timeline/hReader"];
-    NSLog(@"Path: %@", path);
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]];
-    [self.webView loadRequest:request];
-    
+    self.headerView.backgroundColor = [UIColor clearColor];    
 }
 
 - (void)viewDidUnload {
@@ -111,6 +103,12 @@
 - (void)reloadData {
     HRPatient *patient = [HRConfig selectedPatient];
     self.nameLabel.text = [patient.name uppercaseString];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"hReader" 
+                                                     ofType:@"html"
+                                                inDirectory:@"timeline/hReader"];
+    NSLog(@"Path: %@", path);
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]];
+    [self.webView loadRequest:request];
 }
 
 @end
