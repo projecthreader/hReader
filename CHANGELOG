@@ -2,6 +2,12 @@
 
 # 2012-01-30
 
+* Refactored app navigation to not use wide scroll view. Also had to refactor how patient swipes were handled
+
+- - -
+
+# 2012-01-30
+
 * Removed old PIN view
 - - -
 
