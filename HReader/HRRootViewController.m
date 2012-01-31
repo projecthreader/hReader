@@ -69,7 +69,6 @@
         
         HRPatient *patient = [[HRConfig patients] objectAtIndex:0];
         [HRConfig setSelectedPatient:patient];
-//        [[NSNotificationCenter defaultCenter] postNotificationName:HRPatientDidChangeNotification object:self userInfo:[NSDictionary dictionaryWithObject:patient forKey:HRPatientKey]];
     }
     
     return self;
@@ -85,15 +84,7 @@
 
     [self setSelectedIndex:0];
     
-//    [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//        if ([obj isKindOfClass:[UIViewController class]]) {
-//            UIViewController *splitViewController = (UIViewController *)obj;
-//            [self.scrollView addSubview:splitViewController.view];
-//        }
-//    }];
-    
     [self setupSegmentedControl];
-//    [self setupScrollViewWithOrientation:self.interfaceOrientation];
 }
 
 
@@ -105,36 +96,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-//    [self willAnimateRotationToInterfaceOrientation:UIInterfaceOrientationLandscapeLeft duration:1.0];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
-
-/*
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    [self setupScrollViewWithOrientation:toInterfaceOrientation];
-}
- */
-
-/*
-- (void)setupScrollViewWithOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    CGSize viewSize = [self sizeForView:self.view orientation:interfaceOrientation];
-    self.scrollView.contentSize = CGSizeMake(viewSize.width * [self.childViewControllers count], viewSize.height);
-    
-    [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([obj isKindOfClass:[UIViewController class]]) {
-            UIViewController *splitViewController = (UIViewController *)obj;
-            splitViewController.view.frame = CGRectMake(viewSize.width * idx, 0, viewSize.width, viewSize.height);
-        }
-    }];
-}
- */
-
-//- (CGSize)sizeForView:(UIView *)view orientation:(UIInterfaceOrientation)interfaceOrientation {
-//    return CGSizeMake(1024, 660); // works!
-//}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
