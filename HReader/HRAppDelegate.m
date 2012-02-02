@@ -32,8 +32,8 @@
     if (!visible) {
         visible = YES;
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
-        UINavigationController *controller = [storyboard instantiateInitialViewController];
-        PINCodeViewController *PIN = [controller.viewControllers objectAtIndex:0];
+        UINavigationController *navigation = [storyboard instantiateInitialViewController];
+        PINCodeViewController *PIN = [navigation.viewControllers objectAtIndex:0];
         PIN.mode = PINCodeViewControllerModeVerify;
         PIN.title = @"Enter Passcode";
         PIN.messageText = @"Enter passcode (it's 123456)";
@@ -43,7 +43,11 @@
             visible = !correct;
             return correct;
         };
-        [self.window.rootViewController presentModalViewController:controller animated:animated];
+        UIViewController *controller = self.window.rootViewController;
+        if (controller.presentedViewController) {
+            [controller dismissModalViewControllerAnimated:NO];
+        }
+        [controller presentModalViewController:navigation animated:animated];
     }
 }
 
@@ -56,9 +60,9 @@
 #endif
     
     // appearance proxies
-    UIView *grayView = [[[UIView alloc] init] autorelease];
-    grayView.backgroundColor = [UIColor lightGrayColor];
-    [[UITableViewCell appearance] setSelectedBackgroundView:grayView];
+//    UIView *grayView = [[[UIView alloc] init] autorelease];
+//    grayView.backgroundColor = [UIColor lightGrayColor];
+//    [[UITableViewCell appearance] setSelectedBackgroundView:grayView];
     
     // show window so we can present stuff
     [self.window makeKeyAndVisible];
