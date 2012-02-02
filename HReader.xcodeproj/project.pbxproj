@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BFE7A2714DADE2B0037738D /* PINCodeBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2114DADE2B0037738D /* PINCodeBackground.png */; };
+		3BFE7A2814DADE2B0037738D /* PINCodeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2214DADE2B0037738D /* PINCodeButton.png */; };
+		3BFE7A2914DADE2B0037738D /* PINCodeDeleteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2314DADE2B0037738D /* PINCodeDeleteButton.png */; };
+		3BFE7A2A14DADE2B0037738D /* PINCodeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2414DADE2B0037738D /* PINCodeStoryboard.storyboard */; };
+		3BFE7A2B14DADE2B0037738D /* PINCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2614DADE2B0037738D /* PINCodeViewController.m */; };
 		94026FB414B4A8A600F40185 /* timeline in Resources */ = {isa = PBXBuildFile; fileRef = 94026FB314B4A8A600F40185 /* timeline */; };
 		9415151F14A0E8FA009FF674 /* HRMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9415151E14A0E8FA009FF674 /* HRMessage.m */; };
 		9415152314AA3A7B009FF674 /* fail.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152114AA3A7B009FF674 /* fail.png */; };
@@ -86,6 +91,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3BFE7A2114DADE2B0037738D /* PINCodeBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PINCodeBackground.png; sourceTree = "<group>"; };
+		3BFE7A2214DADE2B0037738D /* PINCodeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PINCodeButton.png; sourceTree = "<group>"; };
+		3BFE7A2314DADE2B0037738D /* PINCodeDeleteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PINCodeDeleteButton.png; sourceTree = "<group>"; };
+		3BFE7A2414DADE2B0037738D /* PINCodeStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PINCodeStoryboard.storyboard; sourceTree = "<group>"; };
+		3BFE7A2514DADE2B0037738D /* PINCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINCodeViewController.h; sourceTree = "<group>"; };
+		3BFE7A2614DADE2B0037738D /* PINCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINCodeViewController.m; sourceTree = "<group>"; };
 		94026FB314B4A8A600F40185 /* timeline */ = {isa = PBXFileReference; lastKnownFileType = folder; path = timeline; sourceTree = "<group>"; };
 		9415151D14A0E8FA009FF674 /* HRMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMessage.h; sourceTree = "<group>"; };
 		9415151E14A0E8FA009FF674 /* HRMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMessage.m; sourceTree = "<group>"; };
@@ -217,6 +228,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3BFE7A2014DADE2B0037738D /* pinview */ = {
+			isa = PBXGroup;
+			children = (
+				3BFE7A2114DADE2B0037738D /* PINCodeBackground.png */,
+				3BFE7A2214DADE2B0037738D /* PINCodeButton.png */,
+				3BFE7A2314DADE2B0037738D /* PINCodeDeleteButton.png */,
+				3BFE7A2414DADE2B0037738D /* PINCodeStoryboard.storyboard */,
+				3BFE7A2514DADE2B0037738D /* PINCodeViewController.h */,
+				3BFE7A2614DADE2B0037738D /* PINCodeViewController.m */,
+			);
+			name = pinview;
+			path = vendor/pinview;
+			sourceTree = "<group>";
+		};
 		941DB09D1471B32D00A96B8B = {
 			isa = PBXGroup;
 			children = (
@@ -385,6 +410,7 @@
 		94689ABC14964BBF00E1FCA6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				3BFE7A2014DADE2B0037738D /* pinview */,
 				945560BF14BB891500A3DC43 /* KissXML */,
 				94689ABE14964BCF00E1FCA6 /* TestFlight-0.8.4 */,
 			);
@@ -727,6 +753,10 @@
 				942786E314C74AD50003190F /* Sparklines_normal-high_levels.png in Resources */,
 				942786E414C74AD50003190F /* Sparklines_varying_levels_normal.png in Resources */,
 				942786E514C74AD50003190F /* Sparklines_varying_levels.png in Resources */,
+				3BFE7A2714DADE2B0037738D /* PINCodeBackground.png in Resources */,
+				3BFE7A2814DADE2B0037738D /* PINCodeButton.png in Resources */,
+				3BFE7A2914DADE2B0037738D /* PINCodeDeleteButton.png in Resources */,
+				3BFE7A2A14DADE2B0037738D /* PINCodeStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,6 +815,7 @@
 				945560D714BB89B400A3DC43 /* HREncounter.m in Sources */,
 				947EF75B14D058E000A2AF97 /* HRMedication.m in Sources */,
 				947EF75E14D059AF00A2AF97 /* HRCondition.m in Sources */,
+				3BFE7A2B14DADE2B0037738D /* PINCodeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
