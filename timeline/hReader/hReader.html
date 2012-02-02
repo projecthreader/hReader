@@ -43,7 +43,7 @@
             var d = Timeline.DateTime.parseGregorianDateTime("2010")
             var bandInfos = [
                 Timeline.createBandInfo({
-                    width:          "15%", 
+                    width:          "14%", 
                     intervalUnit:   Timeline.DateTime.YEAR, 
                     intervalPixels: 180,
                     date:           d,
@@ -77,7 +77,7 @@
 
             };
             var bandInfo= new Timeline.createBandInfo({ 
-                    width:          "13%", 
+                    width:          "14%", 
                     intervalUnit:   Timeline.DateTime.MONTH, 
                     intervalPixels: 50,
                     eventSource:    eventSources[sections[sections.length-1]],
@@ -120,10 +120,11 @@
                 while (iterator.hasNext()){
                    var evt=iterator.next();
                    var cat = evt.getProperty('category'); 
-                   if (cat) {
-                      eventSources[cat].add(evt);
-                    }
 
+                   if (cat && eventSources[cat]){
+                      eventSources[cat].add(evt);
+
+                    }
                 }
                 tl.layout();
 
