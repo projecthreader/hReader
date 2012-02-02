@@ -16,3 +16,7 @@ profile
 
 # Finder
 .DS_Store
+
+.rake_tasks
+build.output
+pkg
