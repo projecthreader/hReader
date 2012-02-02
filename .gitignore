@@ -13,6 +13,6 @@ build/*
 xcuserdata
 profile
 *.moved-aside
-build.output
-pkg
-.rake_tasks
+
+# Finder
+.DS_Store
