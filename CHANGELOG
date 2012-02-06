@@ -2,6 +2,7 @@
 
 - Disable any kind of feedback on the PIN entry screen
 - Set messages table view to gray gradient selection style
+- Implement mechanism to set/change passcode
 
 2012-02-02
 
