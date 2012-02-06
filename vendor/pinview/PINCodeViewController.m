@@ -199,6 +199,14 @@
 static NSString * const HRKeychainService = @"org.mitre.hreader";
 static NSString * const HRKeychainAccount = @"org.mitre.hreader.account.default";
 
+#if defined (DEBUG) || defined (DEVELOPMENT)
++ (void)resetPersistedPasscode {
+    [SSKeychain
+     deletePasswordForService:HRKeychainService
+     account:HRKeychainAccount];
+}
+#endif
+
 + (void)setPersistedPasscode:(NSString *)code {
     [SSKeychain
      setPassword:code
@@ -213,7 +221,7 @@ static NSString * const HRKeychainAccount = @"org.mitre.hreader.account.default"
     return [code isEqualToString:keychain];
 }
 
-+ (BOOL)isPasscodeSet {
++ (BOOL)isPersistedPasscodeSet {
     NSString *keychain = [SSKeychain
                           passwordForService:HRKeychainService
                           account:HRKeychainAccount];
