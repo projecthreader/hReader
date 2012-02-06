@@ -5,6 +5,8 @@
 //  Copyright (c) 2012 MITRE. All rights reserved.
 //
 
+#import "SSKeychain.h"
+
 #import "PINCodeViewController.h"
 
 #define kGCPINViewControllerDelay 0.5
@@ -25,6 +27,7 @@
 @synthesize errorText = __errorText;
 @synthesize verifyBlock = __verifyBlock;
 @synthesize mode = __mode;
+@synthesize automaticallyDismissWhenValid = __automaticallyDismissWhenValid;
 
 @synthesize buttonOne = __buttonOne;
 @synthesize buttonTwo = __buttonTwo;
@@ -43,6 +46,13 @@
 @synthesize errorLabel = __errorLabel;
 
 #pragma mark - object methods
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        self.automaticallyDismissWhenValid = YES;
+    }
+    return self;
+}
 - (void)dealloc {
     self.messageText = nil;
     self.confirmText = nil;
@@ -86,12 +96,14 @@
     });
 }
 - (void)dismiss {
-    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, kGCPINViewControllerDelay * NSEC_PER_SEC);
-    dispatch_after(time, dispatch_get_main_queue(), ^(void){
-        [self dismissModalViewControllerAnimated:YES];
-        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-    });
+    if (self.automaticallyDismissWhenValid) {
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+        dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, kGCPINViewControllerDelay * NSEC_PER_SEC);
+        dispatch_after(time, dispatch_get_main_queue(), ^(void){
+            [self dismissModalViewControllerAnimated:YES];
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        });
+    }
 }
 - (void)passcodeTextDidChange {
     self.errorLabel.hidden = YES;
@@ -188,6 +200,42 @@
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
     return YES;
+}
+
+@end
+
+@implementation PINCodeViewController (HRKeychainAdditions)
+
+static NSString * const HRKeychainService = @"org.mitre.hreader";
+static NSString * const HRKeychainAccount = @"org.mitre.hreader.account.default";
+
+#if defined (DEBUG) || defined (DEVELOPMENT)
++ (void)resetPersistedPasscode {
+    [SSKeychain
+     deletePasswordForService:HRKeychainService
+     account:HRKeychainAccount];
+}
+#endif
+
++ (void)setPersistedPasscode:(NSString *)code {
+    [SSKeychain
+     setPassword:code
+     forService:HRKeychainService
+     account:HRKeychainAccount];
+}
+
++ (BOOL)isPasscodeValid:(NSString *)code {
+    NSString *keychain = [SSKeychain
+                          passwordForService:HRKeychainService
+                          account:HRKeychainAccount];
+    return [code isEqualToString:keychain];
+}
+
++ (BOOL)isPersistedPasscodeSet {
+    NSString *keychain = [SSKeychain
+                          passwordForService:HRKeychainService
+                          account:HRKeychainAccount];
+    return (keychain != nil);
 }
 
 @end

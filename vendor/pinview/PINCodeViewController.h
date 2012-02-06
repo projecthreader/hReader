@@ -79,6 +79,14 @@ typedef BOOL (^PINCodeVerifyBlock) (NSString *code);
 
 /*
  
+ Control whether the view controller is dismissed automatically if the passcode
+ is valid. This defaults to `YES`.
+ 
+ */
+@property (nonatomic, assign) BOOL automaticallyDismissWhenValid;
+
+/*
+ 
  User interface properties.
  
  */
@@ -97,5 +105,16 @@ typedef BOOL (^PINCodeVerifyBlock) (NSString *code);
 @property (nonatomic, retain) IBOutlet UILabel *errorLabel;
 - (IBAction)deleteButtonTap;
 - (IBAction)numberButtonTap:(UIButton *)sender;
+
+@end
+
+@interface PINCodeViewController (HRKeychainAdditions)
+
+#if defined (DEBUG) || defined (DEVELOPMENT)
++ (void)resetPersistedPasscode;
+#endif
++ (void)setPersistedPasscode:(NSString *)code;
++ (BOOL)isPasscodeValid:(NSString *)code;
++ (BOOL)isPersistedPasscodeSet;
 
 @end

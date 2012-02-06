@@ -9,6 +9,8 @@
 #import "HRAboutTableViewController.h"
 #import "HRPasscodeWarningViewController.h"
 
+#import "PINCodeViewController.h"
+
 @implementation HRAboutTableViewController
 
 @synthesize versionLabel = __versionLabel;
@@ -144,14 +146,69 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        [TestFlight openFeedbackView];         
-    } else if (indexPath.row == 1) {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    // feedback
+    if ([cell.reuseIdentifier isEqualToString:@"FeedbackCell"]) {
+        [TestFlight openFeedbackView];
+    }
+    
+    // privacy demo
+    else if ([cell.reuseIdentifier isEqualToString:@"PrivacyDemoCell"]) {
         HRPasscodeWarningViewController *warningViewController = [[HRPasscodeWarningViewController alloc] initWithNibName:nil bundle:nil];
         warningViewController.demoMode = YES;
         [self presentModalViewController:warningViewController animated:YES];
         [warningViewController release];
-    } else {}
+    }
+    
+    // passcode cell
+    else if ([cell.reuseIdentifier isEqualToString:@"ChangePasscodeCell"]) {
+        
+        // get storyboard
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
+        
+        // load up view controller
+        UINavigationController *verifyNavigation = [storyboard instantiateInitialViewController];
+        PINCodeViewController *verifyController = [verifyNavigation.viewControllers objectAtIndex:0];
+        verifyController.mode = PINCodeViewControllerModeVerify;
+        verifyController.title = @"Enter Passcode";
+        verifyController.messageText = @"Enter your passcode";
+        verifyController.errorText = @"Incorrect passcode";
+        verifyController.automaticallyDismissWhenValid = NO;
+        verifyController.verifyBlock = ^(NSString *code) {
+            if ([PINCodeViewController isPasscodeValid:code]) {
+                
+                // load up create controller
+                UINavigationController *createNavigation = [storyboard instantiateInitialViewController];
+                PINCodeViewController *createController = [createNavigation.viewControllers objectAtIndex:0];
+                createController.mode = PINCodeViewControllerModeCreate;
+                createController.title = @"Set Passcode";
+                createController.messageText = @"Enter a passcode";
+                createController.confirmText = @"Verify passcode";
+                createController.errorText = @"The passcodes do not match";
+                createController.automaticallyDismissWhenValid = NO;
+                createController.verifyBlock = ^(NSString *code) {
+                    if ([code length] == 6) {
+                        [PINCodeViewController setPersistedPasscode:code];
+                        [self dismissModalViewControllerAnimated:YES];
+                        return YES;
+                    }
+                    else {
+                        return NO;
+                    }
+                };
+                [verifyController presentModalViewController:createNavigation animated:NO];
+                
+                // return
+                return YES;
+                
+            }
+            else {
+                return NO;
+            }
+        };
+        [self presentModalViewController:verifyNavigation animated:YES];
+    }
 
 }
 

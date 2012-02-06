@@ -1,0 +1,3 @@
+[submodule "vendor/keychain"]
+	path = vendor/keychain
+	url = https://github.com/guicocoa/sskeychain
