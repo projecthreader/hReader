@@ -104,5 +104,6 @@ typedef BOOL (^PINCodeVerifyBlock) (NSString *code);
 
 + (void)setPersistedPasscode:(NSString *)code;
 + (BOOL)isPasscodeValid:(NSString *)code;
++ (BOOL)isPasscodeSet;
 
 @end

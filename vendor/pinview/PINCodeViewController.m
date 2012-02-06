@@ -201,7 +201,11 @@
 }
 
 + (BOOL)isPasscodeValid:(NSString *)code {
-    
+    return YES;
+}
+
++ (BOOL)isPasscodeSet {
+    return NO;
 }
 
 @end
