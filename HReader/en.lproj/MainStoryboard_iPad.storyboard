@@ -159,6 +159,7 @@ All data contained in this application is synthetic and fictional for research p
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="versionLabel" destination="vS6-de-HAa" id="ya1-Ln-dpI"/>
                         <outlet property="view" destination="tQJ-99-u8h" id="HDr-gu-Gaf"/>
                     </connections>
                 </tableViewController>
