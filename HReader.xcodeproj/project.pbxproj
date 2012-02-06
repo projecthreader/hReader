@@ -14,6 +14,10 @@
 		3BFE7A2B14DADE2B0037738D /* PINCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2614DADE2B0037738D /* PINCodeViewController.m */; };
 		3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2D14DAE5910037738D /* Icon-72.png */; };
 		94026FB414B4A8A600F40185 /* timeline in Resources */ = {isa = PBXBuildFile; fileRef = 94026FB314B4A8A600F40185 /* timeline */; };
+		940D3D3C14E056B800FE41E6 /* HRVital.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D3B14E056B800FE41E6 /* HRVital.m */; };
+		940D3D4114E0706C00FE41E6 /* HRWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D4014E0706C00FE41E6 /* HRWeight.m */; };
+		940D3D4414E077A500FE41E6 /* HRBloodPressure.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D4314E077A500FE41E6 /* HRBloodPressure.m */; };
+		940D3D4A14E07CEA00FE41E6 /* HRCholesterol.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D4914E07CEA00FE41E6 /* HRCholesterol.m */; };
 		9415151F14A0E8FA009FF674 /* HRMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9415151E14A0E8FA009FF674 /* HRMessage.m */; };
 		9415152314AA3A7B009FF674 /* fail.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152114AA3A7B009FF674 /* fail.png */; };
 		9415152414AA3A7B009FF674 /* win.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152214AA3A7B009FF674 /* win.png */; };
@@ -99,6 +103,14 @@
 		3BFE7A2614DADE2B0037738D /* PINCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINCodeViewController.m; sourceTree = "<group>"; };
 		3BFE7A2D14DAE5910037738D /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		94026FB314B4A8A600F40185 /* timeline */ = {isa = PBXFileReference; lastKnownFileType = folder; path = timeline; sourceTree = "<group>"; };
+		940D3D3A14E056B800FE41E6 /* HRVital.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRVital.h; sourceTree = "<group>"; };
+		940D3D3B14E056B800FE41E6 /* HRVital.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRVital.m; sourceTree = "<group>"; };
+		940D3D3F14E0706C00FE41E6 /* HRWeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRWeight.h; sourceTree = "<group>"; };
+		940D3D4014E0706C00FE41E6 /* HRWeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRWeight.m; sourceTree = "<group>"; };
+		940D3D4214E077A500FE41E6 /* HRBloodPressure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBloodPressure.h; sourceTree = "<group>"; };
+		940D3D4314E077A500FE41E6 /* HRBloodPressure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRBloodPressure.m; sourceTree = "<group>"; };
+		940D3D4814E07CEA00FE41E6 /* HRCholesterol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCholesterol.h; sourceTree = "<group>"; };
+		940D3D4914E07CEA00FE41E6 /* HRCholesterol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCholesterol.m; sourceTree = "<group>"; };
 		9415151D14A0E8FA009FF674 /* HRMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMessage.h; sourceTree = "<group>"; };
 		9415151E14A0E8FA009FF674 /* HRMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMessage.m; sourceTree = "<group>"; };
 		9415152114AA3A7B009FF674 /* fail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fail.png; sourceTree = "<group>"; };
@@ -240,6 +252,21 @@
 			);
 			name = pinview;
 			path = vendor/pinview;
+			sourceTree = "<group>";
+		};
+		940D3D3E14E0704E00FE41E6 /* Vitals */ = {
+			isa = PBXGroup;
+			children = (
+				940D3D3A14E056B800FE41E6 /* HRVital.h */,
+				940D3D3B14E056B800FE41E6 /* HRVital.m */,
+				940D3D3F14E0706C00FE41E6 /* HRWeight.h */,
+				940D3D4014E0706C00FE41E6 /* HRWeight.m */,
+				940D3D4214E077A500FE41E6 /* HRBloodPressure.h */,
+				940D3D4314E077A500FE41E6 /* HRBloodPressure.m */,
+				940D3D4814E07CEA00FE41E6 /* HRCholesterol.h */,
+				940D3D4914E07CEA00FE41E6 /* HRCholesterol.m */,
+			);
+			name = Vitals;
 			sourceTree = "<group>";
 		};
 		941DB09D1471B32D00A96B8B = {
@@ -542,6 +569,7 @@
 		DD7037B114900E8A00F58A83 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				940D3D3E14E0704E00FE41E6 /* Vitals */,
 				DD19173D148FDEBB00B87AAF /* HRPatient.h */,
 				DD19173E148FDEBB00B87AAF /* HRPatient.m */,
 				94BB031C14969675009B2FCC /* HRAddress.h */,
@@ -816,6 +844,10 @@
 				947EF75B14D058E000A2AF97 /* HRMedication.m in Sources */,
 				947EF75E14D059AF00A2AF97 /* HRCondition.m in Sources */,
 				3BFE7A2B14DADE2B0037738D /* PINCodeViewController.m in Sources */,
+				940D3D3C14E056B800FE41E6 /* HRVital.m in Sources */,
+				940D3D4114E0706C00FE41E6 /* HRWeight.m in Sources */,
+				940D3D4414E077A500FE41E6 /* HRBloodPressure.m in Sources */,
+				940D3D4A14E07CEA00FE41E6 /* HRCholesterol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

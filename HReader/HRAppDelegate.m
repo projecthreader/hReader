@@ -28,6 +28,7 @@
     [super dealloc];
 }
 - (void)presentPINCodeViewController:(BOOL)animated {
+#if !defined(DEBUG)// || 1
     static BOOL visible = NO;
     if (!visible) {
         visible = YES;
@@ -49,6 +50,7 @@
         }
         [controller presentModalViewController:navigation animated:animated];
     }
+#endif
 }
 
 #pragma mark - application lifecycle

@@ -12,6 +12,10 @@
 #import "HRPatient.h"
 #import "HRAddress.h"
 #import "HREncounter.h"
+#import "HRVital.h"
+#import "HRWeight.h"
+#import "HRBloodPressure.h"
+#import "HRCholesterol.h"
 
 #import "DDXML.h"
 
@@ -180,20 +184,52 @@ static HRPatient *selectedPatient = nil;
         [info setObject:@"Check up" forKey:@"recent_encounters_description"];
         [info setObject:@"Yes" forKey:@"immunizations"];
         
-        [info setObject:@"Total Cholesterol" forKey:@"height_title_label"];
-        [info setObject:@"230" forKey:@"height"];
-        [info setObject:@"5 Jan 2012" forKey:@"height_date"];
-        [info setObject:@"< 200" forKey:@"height_normal"];
+        // Vitals
         
-        [info setObject:@"200" forKey:@"weight"];
-        [info setObject:@"5 Jan 2012" forKey:@"weight_date"];
-        [info setObject:@"154-166" forKey:@"weight_normal"];
-        [info setObject:@"20" forKey:@"bmi"];
-        [info setObject:@"5 Jan 2012" forKey:@"bmi_date"];
-        [info setObject:@"18-25" forKey:@"bmi_normal"];
-        [info setObject:@"65" forKey:@"pulse"];
-        [info setObject:@"5 Jan 2012" forKey:@"pulse_date"];
-        [info setObject:@"60-100" forKey:@"pulse_normal"];
+        HRBloodPressure *bloodPressure = [[HRBloodPressure alloc] init];
+        bloodPressure.age = [henry.age intValue];
+        bloodPressure.gender = henry.gender;
+        bloodPressure.systolic = 159;
+        bloodPressure.diastolic = 95;
+        bloodPressure.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
+        bloodPressure.graph = [UIImage imageNamed:@""];
+        
+        HRWeight *weight = [[HRWeight alloc] init];
+        weight.weight = 200;
+        weight.gender = henry.gender;
+        weight.age = [henry.age intValue];
+        weight.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
+        weight.graph = [UIImage imageNamed:@""];
+        
+        HRCholesterol *cholesterol = [[HRCholesterol alloc] init];
+        cholesterol.cholesterol = 200;
+        cholesterol.gender = henry.gender;
+        cholesterol.age = [henry.age intValue];
+        cholesterol.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
+        cholesterol.graph = [UIImage imageNamed:@""];
+        
+        henry.vitals = [NSArray arrayWithObjects:bloodPressure, weight, cholesterol, nil];
+        [bloodPressure release];
+        [weight release];
+        [cholesterol release];
+        
+        // Old info
+//        [info setObject:@"200" forKey:@"weight"];
+//        [info setObject:@"5 Jan 2012" forKey:@"weight_date"];
+//        [info setObject:@"154-166" forKey:@"weight_normal"];
+
+//        [info setObject:@"20" forKey:@"bmi"];
+//        [info setObject:@"5 Jan 2012" forKey:@"bmi_date"];
+//        [info setObject:@"18-25" forKey:@"bmi_normal"];
+//        [info setObject:@"Total Cholesterol" forKey:@"height_title_label"];
+//        [info setObject:@"230" forKey:@"height"];
+//        [info setObject:@"5 Jan 2012" forKey:@"height_date"];
+//        [info setObject:@"< 200" forKey:@"height_normal"];
+//        [info setObject:@"65" forKey:@"pulse"];
+//        [info setObject:@"5 Jan 2012" forKey:@"pulse_date"];
+//        [info setObject:@"60-100" forKey:@"pulse_normal"];
+        
+        
         [info setObject:[NSDictionary dictionaryWithObjectsAndKeys:@"ACE Inhibitor", @"10 mg", @"Beta Blocker", @"100 mg", nil] forKey:@"medications"];
         [info setObject:@"20 Jul 2010" forKey:@"functional_status_date"];
         [info setObject:@"" forKey:@"functional_status_problem"];
