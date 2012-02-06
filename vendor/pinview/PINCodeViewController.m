@@ -27,6 +27,7 @@
 @synthesize errorText = __errorText;
 @synthesize verifyBlock = __verifyBlock;
 @synthesize mode = __mode;
+@synthesize automaticallyDismissWhenValid = __automaticallyDismissWhenValid;
 
 @synthesize buttonOne = __buttonOne;
 @synthesize buttonTwo = __buttonTwo;
@@ -45,6 +46,13 @@
 @synthesize errorLabel = __errorLabel;
 
 #pragma mark - object methods
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        self.automaticallyDismissWhenValid = YES;
+    }
+    return self;
+}
 - (void)dealloc {
     self.messageText = nil;
     self.confirmText = nil;
@@ -88,12 +96,14 @@
     });
 }
 - (void)dismiss {
-    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, kGCPINViewControllerDelay * NSEC_PER_SEC);
-    dispatch_after(time, dispatch_get_main_queue(), ^(void){
-        [self dismissModalViewControllerAnimated:YES];
-        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-    });
+    if (self.automaticallyDismissWhenValid) {
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+        dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, kGCPINViewControllerDelay * NSEC_PER_SEC);
+        dispatch_after(time, dispatch_get_main_queue(), ^(void){
+            [self dismissModalViewControllerAnimated:YES];
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+        });
+    }
 }
 - (void)passcodeTextDidChange {
     self.errorLabel.hidden = YES;

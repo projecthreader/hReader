@@ -79,6 +79,14 @@ typedef BOOL (^PINCodeVerifyBlock) (NSString *code);
 
 /*
  
+ Control whether the view controller is dismissed automatically if the passcode
+ is valid. This defaults to `YES`.
+ 
+ */
+@property (nonatomic, assign) BOOL automaticallyDismissWhenValid;
+
+/*
+ 
  User interface properties.
  
  */
