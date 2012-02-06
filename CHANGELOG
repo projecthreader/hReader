@@ -1,3 +1,12 @@
+2012-02-06
+
+- Disable any kind of feedback on the PIN entry screen
+
+2012-02-02
+
+- Change PIN entry screen to use new design and random digit layout
+- Present PIN entry screen every time the app goes to the background
+
 - - -
 
 # 2012-01-30
