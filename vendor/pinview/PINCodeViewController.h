@@ -99,3 +99,10 @@ typedef BOOL (^PINCodeVerifyBlock) (NSString *code);
 - (IBAction)numberButtonTap:(UIButton *)sender;
 
 @end
+
+@interface PINCodeViewController (HRKeychainAdditions)
+
++ (void)setPersistedPasscode:(NSString *)code;
++ (BOOL)isPasscodeValid:(NSString *)code;
+
+@end

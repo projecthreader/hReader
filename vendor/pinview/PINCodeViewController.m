@@ -5,6 +5,8 @@
 //  Copyright (c) 2012 MITRE. All rights reserved.
 //
 
+#import "SSKeychain.h"
+
 #import "PINCodeViewController.h"
 
 #define kGCPINViewControllerDelay 0.5
@@ -188,6 +190,18 @@
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
     return YES;
+}
+
+@end
+
+@implementation PINCodeViewController (HRKeychainAdditions)
+
++ (void)setPersistedPasscode:(NSString *)code {
+    
+}
+
++ (BOOL)isPasscodeValid:(NSString *)code {
+    
 }
 
 @end
