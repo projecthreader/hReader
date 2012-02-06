@@ -83,7 +83,7 @@ The MITRE Corporation © 2012
 hReader prototype demonstration application.
 All data contained in this application is synthetic and fictional for research purposes.</string>
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AboutFeedbackCell" textLabel="kpg-oL-wop" style="IBUITableViewCellStyleDefault" id="1Ge-gp-e9C">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedbackCell" textLabel="kpg-oL-wop" style="IBUITableViewCellStyleDefault" id="1Ge-gp-e9C">
                                         <rect key="frame" x="0.0" y="96" width="540" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -102,7 +102,7 @@ All data contained in this application is synthetic and fictional for research p
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PrivacyEduCell" textLabel="yPU-2N-h7z" style="IBUITableViewCellStyleDefault" id="p8Q-cJ-ju6">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PrivacyDemoCell" textLabel="yPU-2N-h7z" style="IBUITableViewCellStyleDefault" id="p8Q-cJ-ju6">
                                         <rect key="frame" x="0.0" y="141" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">

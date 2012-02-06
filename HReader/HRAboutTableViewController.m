@@ -148,17 +148,21 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    /*if (indexPath.row == 0) {
-//        [TestFlight openFeedbackView];         
-    } else if (indexPath.row == 1) {
-//        HRPasscodeWarningViewController *warningViewController = [[HRPasscodeWarningViewController alloc] initWithNibName:nil bundle:nil];
-//        warningViewController.demoMode = YES;
-//        [self presentModalViewController:warningViewController animated:YES];
-//        [warningViewController release];
+    // feedback
+    if ([cell.reuseIdentifier isEqualToString:@"FeedbackCell"]) {
+        [TestFlight openFeedbackView];
+    }
+    
+    // privacy demo
+    else if ([cell.reuseIdentifier isEqualToString:@"PrivacyDemoCell"]) {
+        HRPasscodeWarningViewController *warningViewController = [[HRPasscodeWarningViewController alloc] initWithNibName:nil bundle:nil];
+        warningViewController.demoMode = YES;
+        [self presentModalViewController:warningViewController animated:YES];
+        [warningViewController release];
     }
     
     // passcode cell
-    else*/ if ([cell.reuseIdentifier isEqualToString:@"ChangePasscodeCell"]) {
+    else if ([cell.reuseIdentifier isEqualToString:@"ChangePasscodeCell"]) {
         
         // get storyboard
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
