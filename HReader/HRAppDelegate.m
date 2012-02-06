@@ -13,7 +13,8 @@
 #import "PINCodeViewController.h"
 
 @interface HRAppDelegate ()
-- (void)presentPINCodeViewController:(BOOL)animated;
+- (void)presentPasscodeCreateController;
+- (void)presentPasscodeVerifyControllerIfNecessary;
 @end
 
 @implementation HRAppDelegate
@@ -27,19 +28,45 @@
     [__privacyViewController release];
     [super dealloc];
 }
-- (void)presentPINCodeViewController:(BOOL)animated {
+- (void)presentPasscodeCreateController {
+    if (![PINCodeViewController isPersistedPasscodeSet]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
+        UINavigationController *navigation = [storyboard instantiateInitialViewController];
+        PINCodeViewController *PIN = [navigation.viewControllers objectAtIndex:0];
+        PIN.mode = PINCodeViewControllerModeCreate;
+        PIN.title = @"Set Passcode";
+        PIN.messageText = @"Enter a passcode";
+        PIN.confirmText = @"Verify passcode";
+        PIN.errorText = @"The passcodes do not match";
+        PIN.verifyBlock = ^(NSString *code) {
+            if ([code length] == 6) {
+                [PINCodeViewController setPersistedPasscode:code];
+                return YES;
+            }
+            else {
+                return NO;
+            }
+        };
+        UIViewController *controller = self.window.rootViewController;
+        if (controller.presentedViewController) {
+            [controller dismissModalViewControllerAnimated:NO];
+        }
+        [controller presentModalViewController:navigation animated:NO];
+    }
+}
+- (void)presentPasscodeVerifyControllerIfNecessary {
     static BOOL visible = NO;
-    if (!visible) {
+    if (!visible && [PINCodeViewController isPersistedPasscodeSet]) {
         visible = YES;
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
         UINavigationController *navigation = [storyboard instantiateInitialViewController];
         PINCodeViewController *PIN = [navigation.viewControllers objectAtIndex:0];
         PIN.mode = PINCodeViewControllerModeVerify;
         PIN.title = @"Enter Passcode";
-        PIN.messageText = @"Enter passcode (it's 123456)";
+        PIN.messageText = @"Enter your passcode";
         PIN.errorText = @"Incorrect passcode";
         PIN.verifyBlock = ^(NSString *code) {
-            BOOL correct = [code isEqualToString:@"123456"];
+            BOOL correct = [PINCodeViewController isPasscodeValid:code];
             visible = !correct;
             return correct;
         };
@@ -47,7 +74,7 @@
         if (controller.presentedViewController) {
             [controller dismissModalViewControllerAnimated:NO];
         }
-        [controller presentModalViewController:navigation animated:animated];
+        [controller presentModalViewController:navigation animated:NO];
     }
 }
 
@@ -68,7 +95,20 @@
     [self.window makeKeyAndVisible];
     
     // show pin code
-    [self presentPINCodeViewController:NO];
+    if ([PINCodeViewController isPersistedPasscodeSet]) {
+        [self presentPasscodeVerifyControllerIfNecessary];
+    }
+    else {
+        [self presentPasscodeCreateController];
+        UIAlertView *alert = [[[UIAlertView alloc]
+                               initWithTitle:@"Welcome"
+                               message:@"Before you star using hReader, you must set a passcode."
+                               delegate:nil
+                               cancelButtonTitle:@"OK"
+                               otherButtonTitles:nil]
+                              autorelease];
+        [alert show];
+    }
     
 #if !defined(DEBUG) || 1
     //    [self showPrivacyWarning];
@@ -89,14 +129,7 @@
     //    [self.window.rootViewController dismissModalViewControllerAnimated:NO];
 }
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    /*
-     Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-     If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-     */
-    
-    //    [TestFlight passCheckpoint:@"Window Hidden"];
-    //    self.window.hidden = YES;
-    [self presentPINCodeViewController:NO];
+    [self presentPasscodeVerifyControllerIfNecessary];
 }
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     /*
