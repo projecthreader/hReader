@@ -196,16 +196,28 @@
 
 @implementation PINCodeViewController (HRKeychainAdditions)
 
+static NSString * const HRKeychainService = @"org.mitre.hreader";
+static NSString * const HRKeychainAccount = @"org.mitre.hreader.account.default";
+
 + (void)setPersistedPasscode:(NSString *)code {
-    
+    [SSKeychain
+     setPassword:code
+     forService:HRKeychainService
+     account:HRKeychainAccount];
 }
 
 + (BOOL)isPasscodeValid:(NSString *)code {
-    return YES;
+    NSString *keychain = [SSKeychain
+                          passwordForService:HRKeychainService
+                          account:HRKeychainAccount];
+    return [code isEqualToString:keychain];
 }
 
 + (BOOL)isPasscodeSet {
-    return NO;
+    NSString *keychain = [SSKeychain
+                          passwordForService:HRKeychainService
+                          account:HRKeychainAccount];
+    return (keychain != nil);
 }
 
 @end
