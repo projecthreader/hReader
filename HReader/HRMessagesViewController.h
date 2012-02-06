@@ -24,6 +24,8 @@
 @property (retain, nonatomic) IBOutlet UILabel *subjectLabel;
 @property (retain, nonatomic) IBOutlet UITextView *bodyLabel;
 
+@property (retain, nonatomic) IBOutlet UITableView *tableView;
+
 
 @property (retain, nonatomic) IBOutlet UIView *messageView;
 

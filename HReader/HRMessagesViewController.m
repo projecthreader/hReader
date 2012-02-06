@@ -28,6 +28,7 @@
 @synthesize messageView                 = __messageView;
 @synthesize patientView                 = __patientView;
 @synthesize dateFormatter               = __dateFormatter;
+@synthesize tableView                   = __tableView;
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -42,6 +43,7 @@
     [__subjectLabel release];
     [__bodyLabel release];
     [__messageView release];
+    [__tableView release];
     [super dealloc];
 }
 
@@ -83,7 +85,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     HRPatientSwipeViewController *patientSwipeViewController = (HRPatientSwipeViewController *)[self.childViewControllers objectAtIndex:0];
     patientSwipeViewController.selectedPatient = [HRConfig selectedPatient];
     [self.patientView addSubview:patientSwipeViewController.view];
@@ -142,6 +144,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
     }
     
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     HRMessage *message = [self.messagesArray objectAtIndex:indexPath.row];
