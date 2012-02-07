@@ -8,14 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@class HRPrivacyViewController;
+//@class HRPrivacyViewController;
 
 @interface HRAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) HRPrivacyViewController *privacyViewController;
+//@property (strong, nonatomic) HRPrivacyViewController *privacyViewController;
 
-- (void)showPrivacyWarning;
-- (void)setupPrivacyView;
+//- (void)showPrivacyWarning;
+//- (void)setupPrivacyView;
+
+// access the singleton persistent store coordinator
++ (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
 
 @end

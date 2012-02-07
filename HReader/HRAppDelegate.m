@@ -6,6 +6,8 @@
 //  Copyright (c) 2011 MITRE Corporation. All rights reserved.
 //
 
+#import <CoreData/CoreData.h>
+
 #import "HRAppDelegate.h"
 #import "HRPasscodeWarningViewController.h"
 #import "HRPrivacyViewController.h"
@@ -20,12 +22,29 @@
 @implementation HRAppDelegate
 
 @synthesize window                  = __window;
-@synthesize privacyViewController   = __privacyViewController;
+//@synthesize privacyViewController   = __privacyViewController;
+
+#pragma mark - class methods
++ (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+    static NSPersistentStoreCoordinator *coordinator = nil;
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        NSManagedObjectModel *model = [NSManagedObjectModel modelByMergingModels:nil];
+        coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
+//        [coordinator
+//         addPersistentStoreWithType:<#(NSString *)#>
+//         configuration:<#(NSString *)#>
+//         URL:<#(NSURL *)#>
+//         options:<#(NSDictionary *)#>
+//         error:<#(NSError **)#>];
+    });
+    return coordinator;
+}
 
 #pragma mark - object methods
 - (void)dealloc {
     [__window release];
-    [__privacyViewController release];
+//    [__privacyViewController release];
     [super dealloc];
 }
 - (void)presentPasscodeCreateController {
@@ -160,17 +179,17 @@
 
 #pragma mark - Privacy warning
 
-- (void)showPrivacyWarning {
-    if (![HRConfig hasLaunched]) {
-        HRPasscodeWarningViewController *warningViewController = [[HRPasscodeWarningViewController alloc] initWithNibName:nil bundle:nil];
-        [self.window.rootViewController presentModalViewController:warningViewController animated:NO];
-        [warningViewController release];
-    }
-}
-
-
-- (void)setupPrivacyView {
-    self.privacyViewController = [[[HRPrivacyViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-}
+//- (void)showPrivacyWarning {
+//    if (![HRConfig hasLaunched]) {
+//        HRPasscodeWarningViewController *warningViewController = [[HRPasscodeWarningViewController alloc] initWithNibName:nil bundle:nil];
+//        [self.window.rootViewController presentModalViewController:warningViewController animated:NO];
+//        [warningViewController release];
+//    }
+//}
+//
+//
+//- (void)setupPrivacyView {
+//    self.privacyViewController = [[[HRPrivacyViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+//}
 
 @end

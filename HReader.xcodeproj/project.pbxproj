@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B04A55214E0692600AD91F9 /* SSKeychain.m */; };
 		3B04A56914E06A3A00AD91F9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B04A56814E06A3A00AD91F9 /* Security.framework */; };
+		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; };
+		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
+		3BD16EF614E1B5EE00F2249E /* GCManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16EE514E1B5EE00F2249E /* GCManagedObject.m */; };
 		3BFE7A2714DADE2B0037738D /* PINCodeBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2114DADE2B0037738D /* PINCodeBackground.png */; };
 		3BFE7A2814DADE2B0037738D /* PINCodeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2214DADE2B0037738D /* PINCodeButton.png */; };
 		3BFE7A2914DADE2B0037738D /* PINCodeDeleteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2314DADE2B0037738D /* PINCodeDeleteButton.png */; };
@@ -96,6 +99,10 @@
 		3B04A55114E0692600AD91F9 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
 		3B04A55214E0692600AD91F9 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		3B04A56814E06A3A00AD91F9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hReader.xcdatamodel; sourceTree = "<group>"; };
+		3BD16ED514E1B32400F2249E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3BD16EE414E1B5EE00F2249E /* GCManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCManagedObject.h; sourceTree = "<group>"; };
+		3BD16EE514E1B5EE00F2249E /* GCManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCManagedObject.m; sourceTree = "<group>"; };
 		3BFE7A2114DADE2B0037738D /* PINCodeBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PINCodeBackground.png; sourceTree = "<group>"; };
 		3BFE7A2214DADE2B0037738D /* PINCodeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PINCodeButton.png; sourceTree = "<group>"; };
 		3BFE7A2314DADE2B0037738D /* PINCodeDeleteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PINCodeDeleteButton.png; sourceTree = "<group>"; };
@@ -222,6 +229,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */,
 				3B04A56914E06A3A00AD91F9 /* Security.framework in Frameworks */,
 				947FCE5914B4D7E400C716FD /* AudioToolbox.framework in Frameworks */,
 				941DB0AD1471B32D00A96B8B /* UIKit.framework in Frameworks */,
@@ -244,6 +252,16 @@
 			path = vendor/keychain;
 			sourceTree = "<group>";
 		};
+		3BD16ED714E1B5EE00F2249E /* guicocoa-common-code */ = {
+			isa = PBXGroup;
+			children = (
+				3BD16EE414E1B5EE00F2249E /* GCManagedObject.h */,
+				3BD16EE514E1B5EE00F2249E /* GCManagedObject.m */,
+			);
+			name = "guicocoa-common-code";
+			path = "vendor/guicocoa-common-code";
+			sourceTree = "<group>";
+		};
 		3BFE7A2014DADE2B0037738D /* pinview */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,7 +279,6 @@
 		941DB09D1471B32D00A96B8B = {
 			isa = PBXGroup;
 			children = (
-				3B04A56814E06A3A00AD91F9 /* Security.framework */,
 				94689ABC14964BBF00E1FCA6 /* Vendor */,
 				941DB0B21471B32D00A96B8B /* HReader */,
 				944A2F291472C5F900694816 /* Resources */,
@@ -281,6 +298,8 @@
 		941DB0AB1471B32D00A96B8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3BD16ED514E1B32400F2249E /* CoreData.framework */,
+				3B04A56814E06A3A00AD91F9 /* Security.framework */,
 				947FCE5814B4D7E400C716FD /* AudioToolbox.framework */,
 				DD7037B21490103300F58A83 /* QuartzCore.framework */,
 				941DB0AC1471B32D00A96B8B /* UIKit.framework */,
@@ -314,6 +333,7 @@
 				941DB0B51471B32D00A96B8B /* InfoPlist.strings */,
 				941DB0B81471B32D00A96B8B /* main.m */,
 				941DB0BA1471B32D00A96B8B /* HReader-Prefix.pch */,
+				3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -427,6 +447,7 @@
 		94689ABC14964BBF00E1FCA6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				3BD16ED714E1B5EE00F2249E /* guicocoa-common-code */,
 				3B04A54C14E0692600AD91F9 /* keychain */,
 				3BFE7A2014DADE2B0037738D /* pinview */,
 				945560BF14BB891500A3DC43 /* KissXML */,
@@ -835,6 +856,8 @@
 				947EF75E14D059AF00A2AF97 /* HRCondition.m in Sources */,
 				3BFE7A2B14DADE2B0037738D /* PINCodeViewController.m in Sources */,
 				3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */,
+				3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */,
+				3BD16EF614E1B5EE00F2249E /* GCManagedObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1014,6 +1037,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */,
+			);
+			currentVersion = 3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */;
+			path = hReader.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 941DB09F1471B32D00A96B8B /* Project object */;
 }
