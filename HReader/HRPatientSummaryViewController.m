@@ -125,7 +125,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.labelsArray = [NSArray arrayWithObjects:self.patientName, self.dobLabel, self.allergiesLabel, self.recentConditionsDateLabel, self.recentConditionsLabel, self.chronicConditionsLabel, self.upcomingEventsLabel, self.planOfCareLabel, self.followUpAppointmentLabel, self.medicationRefillLabel, self.recentEncountersDateLabel, self.recentEncountersTypeLabel, self.recentEncountersDescriptionLabel, self.immunizationsUpToDateLabel, self.currentMedicationsLabel, self.currentMedicationsDosageLabel, self.functionalStatusDateLabel, self.functionalStatusTypeLabel, self.functionalStatusProblemLabel, self.functionalStatusStatusLabel, self.heightTitleLabel, self.heightLabel, self.heightDateLabel, self.heightNormalLabel, self.weightLabel, self.weightDateLabel, self.weightNormalLabel, self.bmiLabel, self.bmiDateLabel, self.bmiNormalLabel, self.pulseLabel, self.pulseDateLabel, self.pulseNormalLabel, self.advanceDirectivesLabel, self.diagnosisLabel, self.diagnosisDateLabel, self.heightImageView, self.bmiImageView, self.pulseImageView, self.weightImageView, nil];
+    self.labelsArray = 
+    [NSArray arrayWithObjects:
+     self.patientName, 
+     self.dobLabel,
+     self.allergiesLabel, 
+     self.recentConditionsDateLabel, 
+     self.recentConditionsLabel, 
+     self.chronicConditionsLabel, 
+     self.upcomingEventsLabel, 
+     self.planOfCareLabel, 
+     self.followUpAppointmentLabel, 
+     self.medicationRefillLabel, 
+     self.recentEncountersDateLabel, 
+     self.recentEncountersTypeLabel, 
+     self.recentEncountersDescriptionLabel, 
+     self.immunizationsUpToDateLabel, 
+     self.currentMedicationsLabel,
+     self.currentMedicationsDosageLabel, 
+     self.functionalStatusDateLabel, 
+     self.functionalStatusTypeLabel, 
+     self.functionalStatusProblemLabel, 
+     self.functionalStatusStatusLabel, 
+     self.pulseLabel, 
+     self.pulseDateLabel, 
+     self.pulseNormalLabel, 
+     self.advanceDirectivesLabel, 
+     self.diagnosisLabel, 
+     self.diagnosisDateLabel, 
+     self.pulseImageView,
+     self.vital1View,
+     self.vital2View,
+     self.vital3View,
+     nil];
     
 //    [self.labelsArray setValue:[NSNumber numberWithDouble:0.0] forKeyPath:@"alpha"];
     
@@ -150,6 +182,7 @@
     UINib *nib = [UINib nibWithNibName:@"HRVitalView" bundle:nil];
     self.vitalsViewsArray = [NSArray arrayWithObjects:self.vital1View, self.vital2View, self.vital3View, nil];
     [self.vitalsViewsArray enumerateObjectsUsingBlock:^(HRVitalView *view, NSUInteger idx, BOOL *stop) {
+        view.backgroundColor = [UIColor clearColor];
         HRVitalView *vitalView = [[nib instantiateWithOwner:self options:nil] lastObject];
         vitalView.frame = self.vital1View.bounds;
         [view addSubview:vitalView]; 

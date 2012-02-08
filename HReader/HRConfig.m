@@ -510,9 +510,6 @@ static HRPatient *selectedPatient = nil;
         tom.info = info;
         [info release];
 
-        
-        
-        
         array = [[NSArray alloc] initWithObjects:sarah, tom, henry, johnny, molly, nil];
     });
     
