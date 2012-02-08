@@ -3,12 +3,6 @@
     <entity name="GCManagedObject" representedClassName="GCManagedObject" isAbstract="YES" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
-    <entity name="HRCondition" parentEntity="GCManagedObject" syncable="YES">
-        <attribute name="codes" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="HRMPatient" inverseName="conditions" inverseEntity="HRMPatient" syncable="YES"/>
-    </entity>
     <entity name="HRMAddress" representedClassName="HRMAddress" parentEntity="GCManagedObject" syncable="YES">
         <attribute name="attribute" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
@@ -17,11 +11,29 @@
         <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="HRMPatient" inverseName="address" inverseEntity="HRMPatient" syncable="YES"/>
     </entity>
-    <entity name="HRMEncounter" representedClassName="HRMEncounter" parentEntity="GCManagedObject" syncable="YES">
+    <entity name="HRMAllergies" representedClassName="HRMAllergies" parentEntity="HRMEntry" syncable="YES">
+        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="HRMPatient" inverseName="allergies" inverseEntity="HRMPatient" syncable="YES"/>
+    </entity>
+    <entity name="HRMCondition" representedClassName="HRMCondition" parentEntity="HRMEntry" syncable="YES">
+        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="HRMPatient" inverseName="conditions" inverseEntity="HRMPatient" syncable="YES"/>
+    </entity>
+    <entity name="HRMEncounter" representedClassName="HRMEncounter" parentEntity="HRMEntry" syncable="YES">
+        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="HRMPatient" inverseName="encounters" inverseEntity="HRMPatient" syncable="YES"/>
+    </entity>
+    <entity name="HRMEntry" representedClassName="HRMEntry" isAbstract="YES" parentEntity="GCManagedObject" syncable="YES">
         <attribute name="codes" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="HRMPatient" inverseName="encounters" inverseEntity="HRMPatient" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Transformable" syncable="YES"/>
+    </entity>
+    <entity name="HRMImmunization" representedClassName="HRMImmunization" parentEntity="HRMEntry" syncable="YES">
+        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="HRMPatient" inverseName="immunizations" inverseEntity="HRMPatient" syncable="YES"/>
+    </entity>
+    <entity name="HRMMedications" representedClassName="HRMMedications" parentEntity="HRMEntry" syncable="YES">
+        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="HRMPatient" inverseName="medications" inverseEntity="HRMPatient" syncable="YES"/>
     </entity>
     <entity name="HRMPatient" representedClassName="HRMPatient" parentEntity="GCManagedObject" syncable="YES">
         <attribute name="compositeName" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
@@ -34,14 +46,36 @@
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="race" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="address" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="HRMAddress" inverseName="patient" inverseEntity="HRMAddress" syncable="YES"/>
-        <relationship name="conditions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HRCondition" inverseName="patient" inverseEntity="HRCondition" syncable="YES"/>
-        <relationship name="encounters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HRMEncounter" inverseName="patient" inverseEntity="HRMEncounter" syncable="YES"/>
+        <relationship name="allergies" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HRMAllergies" inverseName="patient" inverseEntity="HRMAllergies" syncable="YES"/>
+        <relationship name="conditions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HRMCondition" inverseName="patient" inverseEntity="HRMCondition" syncable="YES"/>
+        <relationship name="encounters" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HRMEncounter" inverseName="patient" inverseEntity="HRMEncounter" syncable="YES"/>
+        <relationship name="immunizations" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HRMImmunization" inverseName="patient" inverseEntity="HRMImmunization" syncable="YES"/>
+        <relationship name="medications" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HRMMedications" inverseName="patient" inverseEntity="HRMMedications" syncable="YES"/>
+        <relationship name="procedures" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HRMProcedure" inverseName="patient" inverseEntity="HRMProcedure" syncable="YES"/>
+        <relationship name="results" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HRMResult" inverseName="patient" inverseEntity="HRMResult" syncable="YES"/>
+        <relationship name="vitalSigns" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HRMVitalSign" inverseName="patient" inverseEntity="HRMVitalSign" syncable="YES"/>
+    </entity>
+    <entity name="HRMProcedure" representedClassName="HRMProcedure" parentEntity="HRMEntry" syncable="YES">
+        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="HRMPatient" inverseName="procedures" inverseEntity="HRMPatient" syncable="YES"/>
+    </entity>
+    <entity name="HRMResult" representedClassName="HRMResult" parentEntity="HRMEntry" syncable="YES">
+        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="HRMPatient" inverseName="results" inverseEntity="HRMPatient" syncable="YES"/>
+    </entity>
+    <entity name="HRMVitalSign" representedClassName="HRMVitalSign" parentEntity="HRMEntry" syncable="YES">
+        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="HRMPatient" inverseName="vitalSigns" inverseEntity="HRMPatient" syncable="YES"/>
     </entity>
     <elements>
         <element name="GCManagedObject" positionX="72" positionY="72" width="128" height="60"/>
         <element name="HRMAddress" positionX="279" positionY="207" width="128" height="135"/>
-        <element name="HRMEncounter" positionX="-243" positionY="54" width="128" height="105"/>
-        <element name="HRMPatient" positionX="70" positionY="207" width="128" height="225"/>
-        <element name="HRCondition" positionX="-227" positionY="237" width="128" height="105"/>
+        <element name="HRMPatient" positionX="70" positionY="207" width="128" height="315"/>
+        <element name="HRMEntry" positionX="-533" positionY="-159" width="128" height="150"/>
+        <element name="HRMEncounter" positionX="-1107" positionY="81" width="128" height="60"/>
+        <element name="HRMCondition" positionX="-963" positionY="81" width="128" height="60"/>
+        <element name="HRMImmunization" positionX="-821" positionY="81" width="128" height="60"/>
+        <element name="HRMMedications" positionX="-533" positionY="81" width="128" height="60"/>
+        <element name="HRMVitalSign" positionX="-101" positionY="81" width="128" height="60"/>
+        <element name="HRMProcedure" positionX="-245" positionY="81" width="128" height="60"/>
+        <element name="HRMResult" positionX="-389" positionY="81" width="128" height="60"/>
+        <element name="HRMAllergies" positionX="-675" positionY="81" width="128" height="60"/>
     </elements>
 </model>
