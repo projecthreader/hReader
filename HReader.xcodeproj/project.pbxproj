@@ -12,6 +12,9 @@
 		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; };
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
 		3BD16EF614E1B5EE00F2249E /* GCManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16EE514E1B5EE00F2249E /* GCManagedObject.m */; };
+		3BD16EFF14E1C5B700F2249E /* HRMEncounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16EFE14E1C5B700F2249E /* HRMEncounter.m */; };
+		3BD16F0214E1C5B700F2249E /* HRMAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16F0114E1C5B700F2249E /* HRMAddress.m */; };
+		3BD16F0514E1C5B700F2249E /* HRMPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16F0414E1C5B700F2249E /* HRMPatient.m */; };
 		3BFE7A2714DADE2B0037738D /* PINCodeBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2114DADE2B0037738D /* PINCodeBackground.png */; };
 		3BFE7A2814DADE2B0037738D /* PINCodeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2214DADE2B0037738D /* PINCodeButton.png */; };
 		3BFE7A2914DADE2B0037738D /* PINCodeDeleteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2314DADE2B0037738D /* PINCodeDeleteButton.png */; };
@@ -103,6 +106,12 @@
 		3BD16ED514E1B32400F2249E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3BD16EE414E1B5EE00F2249E /* GCManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCManagedObject.h; sourceTree = "<group>"; };
 		3BD16EE514E1B5EE00F2249E /* GCManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCManagedObject.m; sourceTree = "<group>"; };
+		3BD16EFD14E1C5B700F2249E /* HRMEncounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMEncounter.h; sourceTree = "<group>"; };
+		3BD16EFE14E1C5B700F2249E /* HRMEncounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMEncounter.m; sourceTree = "<group>"; };
+		3BD16F0014E1C5B700F2249E /* HRMAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMAddress.h; sourceTree = "<group>"; };
+		3BD16F0114E1C5B700F2249E /* HRMAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMAddress.m; sourceTree = "<group>"; };
+		3BD16F0314E1C5B700F2249E /* HRMPatient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMPatient.h; sourceTree = "<group>"; };
+		3BD16F0414E1C5B700F2249E /* HRMPatient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMPatient.m; sourceTree = "<group>"; };
 		3BFE7A2114DADE2B0037738D /* PINCodeBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PINCodeBackground.png; sourceTree = "<group>"; };
 		3BFE7A2214DADE2B0037738D /* PINCodeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PINCodeButton.png; sourceTree = "<group>"; };
 		3BFE7A2314DADE2B0037738D /* PINCodeDeleteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PINCodeDeleteButton.png; sourceTree = "<group>"; };
@@ -252,6 +261,19 @@
 			path = vendor/keychain;
 			sourceTree = "<group>";
 		};
+		3B5ADF6314E1C5D50025E069 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				3BD16F0314E1C5B700F2249E /* HRMPatient.h */,
+				3BD16F0414E1C5B700F2249E /* HRMPatient.m */,
+				3BD16F0014E1C5B700F2249E /* HRMAddress.h */,
+				3BD16F0114E1C5B700F2249E /* HRMAddress.m */,
+				3BD16EFD14E1C5B700F2249E /* HRMEncounter.h */,
+				3BD16EFE14E1C5B700F2249E /* HRMEncounter.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
 		3BD16ED714E1B5EE00F2249E /* guicocoa-common-code */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +334,7 @@
 		941DB0B21471B32D00A96B8B /* HReader */ = {
 			isa = PBXGroup;
 			children = (
+				3B5ADF6314E1C5D50025E069 /* Core Data */,
 				94E3BB581472E0DE00E05D4D /* HRConfig.h */,
 				DD8BD9F1148D2BDC0090F729 /* HRConfig.m */,
 				9424C156147A9C95008BF5CE /* Categories */,
@@ -858,6 +881,9 @@
 				3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */,
 				3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */,
 				3BD16EF614E1B5EE00F2249E /* GCManagedObject.m in Sources */,
+				3BD16EFF14E1C5B700F2249E /* HRMEncounter.m in Sources */,
+				3BD16F0214E1C5B700F2249E /* HRMAddress.m in Sources */,
+				3BD16F0514E1C5B700F2249E /* HRMPatient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

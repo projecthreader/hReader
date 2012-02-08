@@ -8,14 +8,26 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum {
+    HRPatientGenderMale = 0,
+    HRPatientGenderFemale
+} HRPatientGender;
+
 @class HRAddress;
 
 @interface HRPatient : NSObject
 
-typedef enum {
-    HRPatientGenderMale = 0,
-    HRPatientGenderFemale = 1
-} HRPatientGender;
+//@property (nonatomic, retain) NSString *firstName;
+//@property (nonatomic, retain) NSString *lastName;
+//@property (nonatomic, retain) NSString *compositeName;
+//@property (nonatomic, retain) NSString *ethnicity;
+//@property (nonatomic, retain) NSDate *dateOfBirth;
+//@property (nonatomic, retain) NSString *race;
+//@property (nonatomic, retain) NSNumber *gender;
+//@property (nonatomic, retain) NSString *genderDescription;
+
+
+
 
 @property (copy, nonatomic) NSString *name;
 @property (strong, nonatomic) UIImage *image;

@@ -10,6 +10,9 @@
 
 @implementation HRPatient
 
+
+
+
 @synthesize name            = __name;
 @synthesize image           = __image;;
 @synthesize address         = __address;

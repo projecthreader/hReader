@@ -3,7 +3,37 @@
     <entity name="GCManagedObject" representedClassName="GCManagedObject" isAbstract="YES" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
+    <entity name="HRMAddress" representedClassName="HRMAddress" parentEntity="GCManagedObject" syncable="YES">
+        <attribute name="attribute" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="streetOne" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="streetTwo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="HRMPatient" inverseName="address" inverseEntity="HRMPatient" syncable="YES"/>
+    </entity>
+    <entity name="HRMEncounter" representedClassName="HRMEncounter" parentEntity="GCManagedObject" syncable="YES">
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="HRMPatient" inverseName="encounters" inverseEntity="HRMPatient" syncable="YES"/>
+    </entity>
+    <entity name="HRMPatient" representedClassName="HRMPatient" parentEntity="GCManagedObject" syncable="YES">
+        <attribute name="compositeName" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateOfBirth" optional="YES" attributeType="Date" minDateTimeInterval="0" minValueString="2001-01-01 00:00:00 +0000" syncable="YES"/>
+        <attribute name="dateOfBirthString" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ethnicity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="genderString" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="race" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="HRMAddress" inverseName="patient" inverseEntity="HRMAddress" syncable="YES"/>
+        <relationship name="encounters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HRMEncounter" inverseName="patient" inverseEntity="HRMEncounter" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="GCManagedObject" positionX="160" positionY="192" width="128" height="60"/>
+        <element name="GCManagedObject" positionX="72" positionY="72" width="128" height="60"/>
+        <element name="HRMAddress" positionX="385" positionY="216" width="128" height="135"/>
+        <element name="HRMEncounter" positionX="-290" positionY="219" width="128" height="105"/>
+        <element name="HRMPatient" positionX="79" positionY="207" width="128" height="210"/>
     </elements>
 </model>
