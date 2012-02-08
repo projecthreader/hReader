@@ -13,6 +13,8 @@
 #import "HRRootViewController.h"
 #import "HRPatient.h"
 #import "HRAddress.h"
+#import "HRVitalView.h"
+#import "HRVital.h"
 
 @interface HRPatientSummaryViewController ()
 - (void)reloadDataAnimated;
@@ -30,6 +32,8 @@
 @synthesize dobLabel                            = __dobLabel;
 
 @synthesize labelsArray                         = __labelsArray;
+@synthesize vitalsViewsArray                    = __vitalsViewsArray;
+
 @synthesize allergiesLabel                      = __allergiesLabel;
 @synthesize recentConditionsDateLabel           = __rececentConditionsDateLabel;
 @synthesize recentConditionsLabel               = __recentConditionsLabel;
@@ -48,26 +52,16 @@
 @synthesize functionalStatusTypeLabel           = __functionalStatusTypeLabel;
 @synthesize functionalStatusProblemLabel        = __functionalStatusProblemLabel;
 @synthesize functionalStatusStatusLabel         = __functionalStatusStatusLabel;
-@synthesize heightTitleLabel                    = __heightTitleLabel;
-@synthesize heightLabel                         = __heightLabel;
-@synthesize heightDateLabel                     = __heightDateLabel;
-@synthesize heightNormalLabel                   = __heightNormalLabel;
-@synthesize weightLabel                         = __weightLabel;
-@synthesize weightDateLabel                     = __weightDateLabel;
-@synthesize weightNormalLabel                   = __weightNormalLabel;
-@synthesize bmiLabel                            = __bmiLabel;
-@synthesize bmiDateLabel                        = __bmiDateLabel;
-@synthesize bmiNormalLabel                      = __bmiNormalLabel;
 @synthesize pulseLabel                          = __pulseLabel;
 @synthesize pulseDateLabel                      = __pulseDate;
 @synthesize pulseNormalLabel                    = __pulseNormalLabel;
 @synthesize advanceDirectivesLabel              = __advanceDirectivesLabel;
 @synthesize diagnosisLabel                      = __diagnosisLabel;
 @synthesize diagnosisDateLabel                  = __diagnosisDateLabel;
-@synthesize heightImageView                     = __heightImageView;
-@synthesize weightImageView                     = __weightImageView;
-@synthesize bmiImageView                        = __bmiImageView;
 @synthesize pulseImageView                      = __pulseImageView;
+@synthesize vital1View                          = __vital1View;
+@synthesize vital2View                          = __vital2View;
+@synthesize vital3View                          = __vital3View;
 
 
 - (void)dealloc {
@@ -80,7 +74,8 @@
     [__dobLabel release];
     
     [__labelsArray release];
-
+    [__vitalsViewsArray release];
+    
     [__allergiesLabel release];
     [__rececentConditionsDateLabel release];
     [__recentConditionsLabel release];
@@ -99,26 +94,16 @@
     [__functionalStatusTypeLabel release];
     [__functionalStatusProblemLabel release];
     [__functionalStatusStatusLabel release];
-    [__heightLabel release];
-    [__heightDateLabel release];
-    [__heightNormalLabel release];
-    [__weightLabel release];
-    [__weightDateLabel release];
-    [__weightNormalLabel release];
-    [__bmiLabel release];
-    [__bmiDateLabel release];
-    [__bmiNormalLabel release];
     [__pulseLabel release];
     [__pulseDate release];
     [__pulseNormalLabel release];
     [__advanceDirectivesLabel release];
     [__diagnosisLabel release];
     [__diagnosisDateLabel release];
-    [__heightTitleLabel release];
-    [__heightImageView release];
-    [__weightImageView release];
-    [__bmiImageView release];
     [__pulseImageView release];
+    [__vital1View release];
+    [__vital2View release];
+    [__vital3View release];
     [super dealloc];
 }
 
@@ -140,7 +125,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.labelsArray = [NSArray arrayWithObjects:self.patientName, self.dobLabel, self.allergiesLabel, self.recentConditionsDateLabel, self.recentConditionsLabel, self.chronicConditionsLabel, self.upcomingEventsLabel, self.planOfCareLabel, self.followUpAppointmentLabel, self.medicationRefillLabel, self.recentEncountersDateLabel, self.recentEncountersTypeLabel, self.recentEncountersDescriptionLabel, self.immunizationsUpToDateLabel, self.currentMedicationsLabel, self.currentMedicationsDosageLabel, self.functionalStatusDateLabel, self.functionalStatusTypeLabel, self.functionalStatusProblemLabel, self.functionalStatusStatusLabel, self.heightTitleLabel, self.heightLabel, self.heightDateLabel, self.heightNormalLabel, self.weightLabel, self.weightDateLabel, self.weightNormalLabel, self.bmiLabel, self.bmiDateLabel, self.bmiNormalLabel, self.pulseLabel, self.pulseDateLabel, self.pulseNormalLabel, self.advanceDirectivesLabel, self.diagnosisLabel, self.diagnosisDateLabel, self.heightImageView, self.bmiImageView, self.pulseImageView, self.weightImageView, nil];
+//    self.labelsArray = [NSArray arrayWithObjects:self.patientName, self.dobLabel, self.allergiesLabel, self.recentConditionsDateLabel, self.recentConditionsLabel, self.chronicConditionsLabel, self.upcomingEventsLabel, self.planOfCareLabel, self.followUpAppointmentLabel, self.medicationRefillLabel, self.recentEncountersDateLabel, self.recentEncountersTypeLabel, self.recentEncountersDescriptionLabel, self.immunizationsUpToDateLabel, self.currentMedicationsLabel, self.currentMedicationsDosageLabel, self.functionalStatusDateLabel, self.functionalStatusTypeLabel, self.functionalStatusProblemLabel, self.functionalStatusStatusLabel, self.heightTitleLabel, self.heightLabel, self.heightDateLabel, self.heightNormalLabel, self.weightLabel, self.weightDateLabel, self.weightNormalLabel, self.bmiLabel, self.bmiDateLabel, self.bmiNormalLabel, self.pulseLabel, self.pulseDateLabel, self.pulseNormalLabel, self.advanceDirectivesLabel, self.diagnosisLabel, self.diagnosisDateLabel, self.heightImageView, self.bmiImageView, self.pulseImageView, self.weightImageView, nil];
     
 //    [self.labelsArray setValue:[NSNumber numberWithDouble:0.0] forKeyPath:@"alpha"];
     
@@ -161,6 +146,15 @@
     [self.patientScrollView addSubview:self.patientSummaryView];
 
     [self toggleViewShadow:YES];
+    
+    UINib *nib = [UINib nibWithNibName:@"HRVitalView" bundle:nil];
+    self.vitalsViewsArray = [NSArray arrayWithObjects:self.vital1View, self.vital2View, self.vital3View, nil];
+    [self.vitalsViewsArray enumerateObjectsUsingBlock:^(HRVitalView *view, NSUInteger idx, BOOL *stop) {
+        HRVitalView *vitalView = [[nib instantiateWithOwner:self options:nil] lastObject];
+        vitalView.frame = self.vital1View.bounds;
+        [view addSubview:vitalView]; 
+    }];
+    
 }
 
 - (void)viewDidUnload {
@@ -188,26 +182,16 @@
     [self setFunctionalStatusTypeLabel:nil];
     [self setFunctionalStatusProblemLabel:nil];
     [self setFunctionalStatusStatusLabel:nil];
-    [self setHeightLabel:nil];
-    [self setHeightDateLabel:nil];
-    [self setHeightNormalLabel:nil];
-    [self setWeightLabel:nil];
-    [self setWeightDateLabel:nil];
-    [self setWeightNormalLabel:nil];
-    [self setBmiLabel:nil];
-    [self setBmiDateLabel:nil];
-    [self setBmiNormalLabel:nil];
     [self setPulseLabel:nil];
     [self setPulseDateLabel:nil];
     [self setPulseNormalLabel:nil];
     [self setAdvanceDirectivesLabel:nil];
     [self setDiagnosisLabel:nil];
     [self setDiagnosisDateLabel:nil];
-    [self setHeightTitleLabel:nil];
-    [self setHeightImageView:nil];
-    [self setWeightImageView:nil];
-    [self setBmiImageView:nil];
     [self setPulseImageView:nil];
+    [self setVital1View:nil];
+    [self setVital2View:nil];
+    [self setVital3View:nil];
     [super viewDidUnload];
 }
 
@@ -268,16 +252,6 @@
     self.recentEncountersDescriptionLabel.text = [patient.info objectForKey:@"recent_encounters_description"];
     self.immunizationsUpToDateLabel.text = [patient.info objectForKey:@"immunizations"];
     
-    self.heightTitleLabel.text = [[patient.info objectForKey:@"height_title_label"] uppercaseString];
-    self.heightLabel.text = [patient.info objectForKey:@"height"];
-    self.heightDateLabel.text = [patient.info objectForKey:@"height_date"];
-    self.heightNormalLabel.text = [patient.info objectForKey:@"height_normal"];
-    self.weightLabel.text = [patient.info objectForKey:@"weight"];
-    self.weightDateLabel.text = [patient.info objectForKey:@"weight_date"];
-    self.weightNormalLabel.text = [patient.info objectForKey:@"weight_normal"];
-    self.bmiLabel.text = [patient.info objectForKey:@"bmi"];
-    self.bmiDateLabel.text = [patient.info objectForKey:@"bmi_date"];
-    self.bmiNormalLabel.text = [patient.info objectForKey:@"bmi_normal"];
     self.pulseLabel.text = [patient.info objectForKey:@"pulse"];
     self.pulseDateLabel.text = [patient.info objectForKey:@"pulse_date"];
     self.pulseNormalLabel.text = [patient.info objectForKey:@"pulse_normal"];
@@ -290,10 +264,17 @@
     self.diagnosisLabel.text = [patient.info objectForKey:@"diagnosis_results"];
     self.diagnosisDateLabel.text = [patient.info objectForKey:@"diagnosis_date"];
     
-    self.heightImageView.image = [patient.info objectForKey:@"height_sparklines"];
-    self.bmiImageView.image = [patient.info objectForKey:@"bmi_sparklines"];
     self.pulseImageView.image = [patient.info objectForKey:@"pulse_sparklines"];
-    self.weightImageView.image = [patient.info objectForKey:@"weight_sparklines"];    
+    
+    
+    [self.vitalsViewsArray enumerateObjectsUsingBlock:^(HRVitalView *view, NSUInteger idx, BOOL *stop) {
+        if (idx < [[patient vitals] count]) {
+            HRVital *vital = [[patient vitals] objectAtIndex:idx];
+            HRVitalView *vitalView = [view.subviews lastObject];
+            vitalView.vital = vital;            
+        }
+    }];
+
 }
 
 - (void)toggleViewShadow:(BOOL)on {

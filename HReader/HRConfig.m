@@ -192,21 +192,21 @@ static HRPatient *selectedPatient = nil;
         bloodPressure.systolic = 159;
         bloodPressure.diastolic = 95;
         bloodPressure.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
-        bloodPressure.graph = [UIImage imageNamed:@""];
+        bloodPressure.graph = [UIImage imageNamed:@"Henry_Blood_Pressure"];
         
         HRWeight *weight = [[HRWeight alloc] init];
         weight.weight = 200;
         weight.gender = henry.gender;
         weight.age = [henry.age intValue];
         weight.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
-        weight.graph = [UIImage imageNamed:@""];
+        weight.graph = [UIImage imageNamed:@"Henry_weight"];
         
         HRCholesterol *cholesterol = [[HRCholesterol alloc] init];
         cholesterol.cholesterol = 200;
         cholesterol.gender = henry.gender;
         cholesterol.age = [henry.age intValue];
         cholesterol.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
-        cholesterol.graph = [UIImage imageNamed:@""];
+        cholesterol.graph = [UIImage imageNamed:@"henry_total_cholesterol"];
         
         henry.vitals = [NSArray arrayWithObjects:bloodPressure, weight, cholesterol, nil];
         [bloodPressure release];

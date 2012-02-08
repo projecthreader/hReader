@@ -8,9 +8,14 @@
 
 #import "HRWeight.h"
 
+@interface HRWeight ()
+- (NSInteger)lowForAge;
+- (NSInteger)highForAge;
+@end
+
 @implementation HRWeight
 
-@synthesize weight  = __weight;
+@synthesize weight      = __weight;
 
 - (void)dealloc {
     [super dealloc];
@@ -27,7 +32,14 @@
 }
 
 - (BOOL)isNormal {
-    return YES;
+    NSLog(@"%i", self.weight);
+    NSLog(@"%i", [self lowForAge]);
+    NSLog(@"%i", [self highForAge]);
+    if (self.weight > [self lowForAge] && self.weight < [self highForAge]) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 - (NSString *)resultString {
@@ -35,12 +47,28 @@
 }
     
 - (NSString *)normalString {
+    return [NSString stringWithFormat:@"%i-%i", [self lowForAge], [self highForAge]];
+}
+
+#pragma mark - private methods
+
+- (NSInteger)lowForAge {
     if (self.age < 12) {
-        return @"30-60";
+        return 30;
     } else if (self.age < 25) {
-        return @"61-180";
+        return 61;
     } else {
-        return @"160-200";
+        return 160;
+    }
+}
+
+- (NSInteger)highForAge {
+    if (self.age < 12) {
+        return 60;
+    } else if (self.age < 25) {
+        return 180;
+    } else {
+        return 180;
     }
 }
 
