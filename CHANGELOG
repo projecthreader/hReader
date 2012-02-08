@@ -2,6 +2,7 @@
 
 - Refactored vitals into their own view class
 - Vitals are now specific to the metric they are measuring and can determine if the results are in range
+- Set version number to 0.2
 
 2012-02-06
 
