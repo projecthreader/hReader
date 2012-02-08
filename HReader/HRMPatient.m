@@ -22,18 +22,60 @@
 @dynamic genderString;
 @dynamic dateOfBirthString;
 //@dynamic address;
-//@dynamic encounters;
+@dynamic encounters;
 
 #pragma mark - parsers
-+ (HRMPatient *)instanceWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context {
++ (id)instanceWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context {
+    
+    // vars
+    id object = nil;
+    Class class = [NSNull class];
+    
+    // create patient
     HRMPatient *patient = [HRMPatient instanceInContext:context];
-    patient.firstName = [dictionary objectForKey:@""];
-    patient.lastName = [dictionary objectForKey:@""];
-    patient.race = [dictionary objectForKey:@""];
-    patient.ethnicity = [dictionary objectForKey:@""];
-    // DOB
-    // Genger
+    
+    // load basic data
+    object = [dictionary objectForKey:@"first"];
+    if (object && ![object isKindOfClass:class]) {
+        patient.firstName = object;
+    }
+    object = [dictionary objectForKey:@"last"];
+    if (object && ![object isKindOfClass:class]) {
+        patient.lastName = object;
+    }
+    object = [dictionary objectForKey:@"race"];
+    if (object && ![object isKindOfClass:class]) {
+        patient.race = object;
+    }
+    object = [dictionary objectForKey:@"ethnicity"];
+    if (object && ![object isKindOfClass:class]) {
+        patient.ethnicity = object;
+    }
+    object = [dictionary objectForKey:@"birthdate"];
+    if (object && ![object isKindOfClass:class]) {
+        NSTimeInterval stamp = [object doubleValue];
+        patient.dateOfBirth = [NSDate dateWithTimeIntervalSince1970:stamp];
+    }
+    object = [dictionary objectForKey:@"gender"];
+    if (object && ![object isKindOfClass:class]) {
+        if ([object isEqualToString:@"M"]) {
+            patient.gender = [NSNumber numberWithUnsignedInteger:HRPatientGenderMale];
+        }
+        else if ([object isEqualToString:@"F"]) {
+            patient.gender = [NSNumber numberWithUnsignedInteger:HRPatientGenderFemale];
+        }
+    }
+    
+    // encounters
+    object = [dictionary objectForKey:@"encounters"];
+    [object enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        HRMEncounter *encounter = [HRMEncounter instanceWithDictionary:obj inContext:context];
+        [patient addEncountersObject:encounter];
+    }];
+    
+    // return
     return patient;
+    
 }
 
 #pragma mark - attribute overrides

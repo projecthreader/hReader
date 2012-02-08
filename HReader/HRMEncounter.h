@@ -8,15 +8,15 @@
 
 #import "GCManagedObject.h"
 
+#import "HRManagedObject.h"
+
 @class HRMPatient;
 
-@interface HRMEncounter : GCManagedObject
+@interface HRMEncounter : GCManagedObject <HRManagedObject>
 
 @property (nonatomic, retain) NSDate *date;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) HRMPatient *patient;
-// codes
-
-//@property (nonatomic, retain) NSString * code;
+@property (nonatomic, retain) NSDictionary *codes;
 
 @end

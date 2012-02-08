@@ -8,6 +8,8 @@
 
 #import "GCManagedObject.h"
 
+#import "HRManagedObject.h"
+
 typedef enum {
     HRPatientGenderMale = 0,
     HRPatientGenderFemale
@@ -16,7 +18,7 @@ typedef enum {
 @class HRMAddress;
 @class HRMEncounter;
 
-@interface HRMPatient : GCManagedObject
+@interface HRMPatient : GCManagedObject <HRManagedObject>
 
 @property (nonatomic, retain) NSString *firstName;
 @property (nonatomic, retain) NSString *lastName;
@@ -27,20 +29,18 @@ typedef enum {
 @property (nonatomic, retain) NSString *genderString;
 @property (nonatomic, retain) NSDate *dateOfBirth;
 @property (nonatomic, retain) NSString *dateOfBirthString;
-
+@property (nonatomic, retain) NSSet *encounters;
 
 //@property (nonatomic, retain) HRMAddress *address;
-//@property (nonatomic, retain) NSSet *encounters;
 
-+ (HRMPatient *)instanceWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context;
 
 @end
 
 @interface HRMPatient (CoreDataGeneratedAccessors)
 
-//- (void)addEncountersObject:(HRMEncounter *)value;
-//- (void)removeEncountersObject:(HRMEncounter *)value;
-//- (void)addEncounters:(NSSet *)values;
-//- (void)removeEncounters:(NSSet *)values;
+- (void)addEncountersObject:(HRMEncounter *)value;
+- (void)removeEncountersObject:(HRMEncounter *)value;
+- (void)addEncounters:(NSSet *)values;
+- (void)removeEncounters:(NSSet *)values;
 
 @end
