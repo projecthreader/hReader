@@ -1,3 +1,8 @@
+2012-02-08
+
+- Refactored vitals into their own view class
+- Vitals are now specific to the metric they are measuring and can determine if the results are in range
+
 2012-02-06
 
 - Disable any kind of feedback on the PIN entry screen
