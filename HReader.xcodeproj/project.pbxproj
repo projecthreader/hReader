@@ -71,6 +71,10 @@
 		9464C5871476BDAE0076B991 /* Johnny_Smith_96.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */; };
 		9464C5881476BDAE0076B991 /* Johnny_Smith_96.html in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */; };
 		9464C58C1476CB4F0076B991 /* C32ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464C58B1476CB4F0076B991 /* C32ViewController.m */; };
+		9467077314E3182E00ACEA67 /* HRPeakFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077214E3182D00ACEA67 /* HRPeakFlow.m */; };
+		9467077614E318ED00ACEA67 /* HRHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077514E318ED00ACEA67 /* HRHeight.m */; };
+		9467077914E31A6200ACEA67 /* HRBMI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077814E31A6200ACEA67 /* HRBMI.m */; };
+		9467077C14E31CD400ACEA67 /* HRGlucose.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077B14E31CD300ACEA67 /* HRGlucose.m */; };
 		94689AC314964BE400E1FCA6 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94689ABF14964BE400E1FCA6 /* libTestFlight.a */; };
 		94689AC414964BE400E1FCA6 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 94689AC014964BE400E1FCA6 /* README.txt */; };
 		94689AC514964BE400E1FCA6 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 94689AC114964BE400E1FCA6 /* release_notes.txt */; };
@@ -203,6 +207,14 @@
 		9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Johnny_Smith_96.html; sourceTree = "<group>"; };
 		9464C58A1476CB4F0076B991 /* C32ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C32ViewController.h; sourceTree = "<group>"; };
 		9464C58B1476CB4F0076B991 /* C32ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = C32ViewController.m; sourceTree = "<group>"; };
+		9467077114E3182D00ACEA67 /* HRPeakFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPeakFlow.h; sourceTree = "<group>"; };
+		9467077214E3182D00ACEA67 /* HRPeakFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeakFlow.m; sourceTree = "<group>"; };
+		9467077414E318ED00ACEA67 /* HRHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRHeight.h; sourceTree = "<group>"; };
+		9467077514E318ED00ACEA67 /* HRHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRHeight.m; sourceTree = "<group>"; };
+		9467077714E31A6200ACEA67 /* HRBMI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBMI.h; sourceTree = "<group>"; };
+		9467077814E31A6200ACEA67 /* HRBMI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRBMI.m; sourceTree = "<group>"; };
+		9467077A14E31CD300ACEA67 /* HRGlucose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRGlucose.h; sourceTree = "<group>"; };
+		9467077B14E31CD300ACEA67 /* HRGlucose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRGlucose.m; sourceTree = "<group>"; };
 		94689ABF14964BE400E1FCA6 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTestFlight.a; path = vendor/TestFlight/libTestFlight.a; sourceTree = "<group>"; };
 		94689AC014964BE400E1FCA6 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.txt; path = vendor/TestFlight/README.txt; sourceTree = "<group>"; };
 		94689AC114964BE400E1FCA6 /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = release_notes.txt; path = vendor/TestFlight/release_notes.txt; sourceTree = "<group>"; };
@@ -320,6 +332,14 @@
 				940D3D4314E077A500FE41E6 /* HRBloodPressure.m */,
 				940D3D4814E07CEA00FE41E6 /* HRCholesterol.h */,
 				940D3D4914E07CEA00FE41E6 /* HRCholesterol.m */,
+				9467077114E3182D00ACEA67 /* HRPeakFlow.h */,
+				9467077214E3182D00ACEA67 /* HRPeakFlow.m */,
+				9467077414E318ED00ACEA67 /* HRHeight.h */,
+				9467077514E318ED00ACEA67 /* HRHeight.m */,
+				9467077714E31A6200ACEA67 /* HRBMI.h */,
+				9467077814E31A6200ACEA67 /* HRBMI.m */,
+				9467077A14E31CD300ACEA67 /* HRGlucose.h */,
+				9467077B14E31CD300ACEA67 /* HRGlucose.m */,
 			);
 			name = Vitals;
 			sourceTree = "<group>";
@@ -327,7 +347,6 @@
 		941DB09D1471B32D00A96B8B = {
 			isa = PBXGroup;
 			children = (
-				3B04A56814E06A3A00AD91F9 /* Security.framework */,
 				94689ABC14964BBF00E1FCA6 /* Vendor */,
 				941DB0B21471B32D00A96B8B /* HReader */,
 				944A2F291472C5F900694816 /* Resources */,
@@ -347,6 +366,7 @@
 		941DB0AB1471B32D00A96B8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B04A56814E06A3A00AD91F9 /* Security.framework */,
 				947FCE5814B4D7E400C716FD /* AudioToolbox.framework */,
 				DD7037B21490103300F58A83 /* QuartzCore.framework */,
 				941DB0AC1471B32D00A96B8B /* UIKit.framework */,
@@ -945,6 +965,10 @@
 				940D3D4A14E07CEA00FE41E6 /* HRCholesterol.m in Sources */,
 				3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */,
 				941F253F14E2EC5D0077D6D1 /* HRVitalView.m in Sources */,
+				9467077314E3182E00ACEA67 /* HRPeakFlow.m in Sources */,
+				9467077614E318ED00ACEA67 /* HRHeight.m in Sources */,
+				9467077914E31A6200ACEA67 /* HRBMI.m in Sources */,
+				9467077C14E31CD400ACEA67 /* HRGlucose.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

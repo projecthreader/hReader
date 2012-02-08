@@ -17,7 +17,6 @@
     self = [super init];
     if (self) {
         self.title = @"Blood Pressure";
-        self.label = @"";
     }
     
     return self;
@@ -29,6 +28,10 @@
 
 - (NSString *)resultString {
     return [NSString stringWithFormat:@"%i/%i", self.systolic, self.diastolic];
+}
+
+- (NSString *)labelString {
+    return @"";
 }
 
 - (NSString *)normalString {

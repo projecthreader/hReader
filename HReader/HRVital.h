@@ -12,7 +12,6 @@
 @interface HRVital : NSObject
 
 @property (copy, nonatomic) NSString *title;
-@property (copy, nonatomic) NSString *label;
 @property (strong, nonatomic) NSDate *date;
 @property (strong, nonatomic) UIImage *graph;
 
@@ -22,6 +21,9 @@
 - (BOOL)isNormal;
 - (NSString *)resultString;
 - (NSString *)normalString;
-- (NSString *)label;
+
+- (NSString *)labelString;
+- (NSString *)resultLabelString;
+- (NSString *)normalLabelString;
 
 @end

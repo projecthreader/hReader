@@ -25,29 +25,69 @@
     self = [super init];
     if (self) {
         self.title = @"Weight";
-        self.label = @"lbs";
     }
     
     return self;
 }
 
+// Is the patient in the normal range?
 - (BOOL)isNormal {
-    NSLog(@"%i", self.weight);
-    NSLog(@"%i", [self lowForAge]);
-    NSLog(@"%i", [self highForAge]);
-    if (self.weight > [self lowForAge] && self.weight < [self highForAge]) {
+    if (self.age < 13) {
         return YES;
     } else {
-        return NO;
+        if (self.weight > [self lowForAge] && self.weight < [self highForAge]) {
+            return YES;
+        } else {
+            return NO;
+        }   
     }
 }
 
+// Result
 - (NSString *)resultString {
-    return [NSString stringWithFormat:@"%d", self.weight];
-}
+    if (self.age < 13) {
+        return @"25";
+    } else {
+        return [NSString stringWithFormat:@"%d", self.weight];           
+    }
     
+}
+  
+// Normal range for the user
 - (NSString *)normalString {
-    return [NSString stringWithFormat:@"%i-%i", [self lowForAge], [self highForAge]];
+    if (self.age < 13) {
+        return [NSString stringWithFormat:@"%i", self.weight];
+    } else {
+        return [NSString stringWithFormat:@"%i-%i", [self lowForAge], [self highForAge]];
+    }
+}
+
+// Units label
+- (NSString *)labelString {
+    if (self.age < 13) {
+        return @"TH";
+    } else {
+        return @"lbs";
+    }
+}
+
+// Label for result
+- (NSString *)resultLabelString {
+    if (self.age < 13) {
+        return @"Percentile:";
+    } else {
+        return @"Result:";
+    }    
+}
+
+
+// Label for normal level
+- (NSString *)normalLabelString {
+    if (self.age < 13) {
+        return @"Recent:";
+    } else {
+        return @"Normal:";
+    }
 }
 
 #pragma mark - private methods
@@ -71,5 +111,6 @@
         return 180;
     }
 }
+
 
 @end

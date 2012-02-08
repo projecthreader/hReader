@@ -12,11 +12,14 @@
 @implementation HRVitalView
 
 @synthesize vital           = __vital;
+@synthesize leftLabel       = __leftLabel;
+@synthesize rightLabel      = __rightLabel;
 @synthesize nameLabel       = __nameLabel;
 @synthesize resultLabel     = __resultLabel;
 @synthesize dateLabel       = __dateLabel;
 @synthesize normalLabel     = __normalLabel;
 @synthesize graphImageView  = __graphImageView;
+@synthesize unitsLabel      = __unitsLabel;
 
 - (void)dealloc {
     [__vital release];
@@ -25,6 +28,9 @@
     [__dateLabel release];
     [__normalLabel release];
     [__graphImageView release];
+    [__leftLabel release];
+    [__rightLabel release];
+    [__unitsLabel release];
     [super dealloc];
 }
 
@@ -42,6 +48,11 @@
     
     self.normalLabel.text = __vital.normalString;
     self.graphImageView.image = __vital.graph;
+    
+    self.leftLabel.text = [__vital.resultLabelString uppercaseString];
+    self.rightLabel.text = [__vital.normalLabelString uppercaseString];
+    
+    self.unitsLabel.text = [__vital labelString];
 }
 
 @end

@@ -20,7 +20,6 @@
     self = [super init];
     if (self) {
         self.title = @"Total Cholesterol";
-        self.label = @"mg/dL";
     }
     
     return self;
@@ -32,6 +31,10 @@
 
 - (NSString *)resultString {
     return [NSString stringWithFormat:@"%d", self.cholesterol];
+}
+
+- (NSString *)labelString {
+    return @"mg/dL";
 }
 
 - (NSString *)normalString {

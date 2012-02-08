@@ -11,7 +11,6 @@
 @implementation HRVital
 
 @synthesize title           = __title;
-@synthesize label           = __label;
 @synthesize date            = __date;
 @synthesize graph           = __graph;
 @synthesize age             = __age;
@@ -19,7 +18,6 @@
 
 - (void)dealloc {
     [__title release];
-    [__label release];
     [__date release];
     [__graph release];
     [super dealloc];
@@ -37,8 +35,16 @@
     return @"-";
 }
 
-- (NSString *)label {
+- (NSString *)labelString {
     return @"-";
+}
+
+- (NSString *)resultLabelString {
+    return @"Result:";
+}
+
+- (NSString *)normalLabelString {
+    return @"Normal:";
 }
 
 @end
