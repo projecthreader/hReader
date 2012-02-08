@@ -27,10 +27,10 @@
 #pragma mark - parsers
 + (HRMPatient *)instanceWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context {
     HRMPatient *patient = [HRMPatient instanceInContext:context];
-    patient.firstName = @"";
-    patient.lastName = @"";
-    patient.race = @"";
-    patient.ethnicity = @"";
+    patient.firstName = [dictionary objectForKey:@""];
+    patient.lastName = [dictionary objectForKey:@""];
+    patient.race = [dictionary objectForKey:@""];
+    patient.ethnicity = [dictionary objectForKey:@""];
     // DOB
     // Genger
     return patient;

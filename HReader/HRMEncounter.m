@@ -13,7 +13,6 @@
 @implementation HRMEncounter
 
 @dynamic date;
-@dynamic code;
 @dynamic name;
 @dynamic patient;
 
