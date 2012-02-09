@@ -7,7 +7,6 @@
 //
 
 #import "HRMPatient.h"
-#import "HRMAddress.h"
 #import "HRMEntry.h"
 
 @implementation HRMPatient
@@ -129,7 +128,7 @@
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"dd MMMM YYYY"];
+        [formatter setDateStyle:NSDateFormatterLongStyle];
     });
     [self willAccessValueForKey:@"dateOfBirthString"];
     NSString *string = [formatter stringFromDate:self.dateOfBirth];
