@@ -11,29 +11,16 @@
         <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="HRMPatient" inverseName="address" inverseEntity="HRMPatient" syncable="YES"/>
     </entity>
-    <entity name="HRMAllergies" representedClassName="HRMAllergies" parentEntity="HRMEntry" syncable="YES">
-        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="HRMPatient" inverseName="allergies" inverseEntity="HRMPatient" syncable="YES"/>
-    </entity>
-    <entity name="HRMCondition" representedClassName="HRMCondition" parentEntity="HRMEntry" syncable="YES">
-        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="HRMPatient" inverseName="conditions" inverseEntity="HRMPatient" syncable="YES"/>
-    </entity>
-    <entity name="HRMEncounter" representedClassName="HRMEncounter" parentEntity="HRMEntry" syncable="YES">
-        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="HRMPatient" inverseName="encounters" inverseEntity="HRMPatient" syncable="YES"/>
-    </entity>
-    <entity name="HRMEntry" representedClassName="HRMEntry" isAbstract="YES" parentEntity="GCManagedObject" syncable="YES">
+    <entity name="HRMEntry" representedClassName="HRMEntry" parentEntity="GCManagedObject" syncable="YES">
         <attribute name="codes" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Transformable" syncable="YES"/>
-    </entity>
-    <entity name="HRMImmunization" representedClassName="HRMImmunization" parentEntity="HRMEntry" syncable="YES">
-        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="HRMPatient" inverseName="immunizations" inverseEntity="HRMPatient" syncable="YES"/>
-    </entity>
-    <entity name="HRMMedications" representedClassName="HRMMedications" parentEntity="HRMEntry" syncable="YES">
-        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="HRMPatient" inverseName="medications" inverseEntity="HRMPatient" syncable="YES"/>
+        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="HRMPatient" inverseName="entries" inverseEntity="HRMPatient" syncable="YES"/>
     </entity>
     <entity name="HRMPatient" representedClassName="HRMPatient" parentEntity="GCManagedObject" syncable="YES">
         <attribute name="compositeName" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
@@ -46,36 +33,36 @@
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="race" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="address" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="HRMAddress" inverseName="patient" inverseEntity="HRMAddress" syncable="YES"/>
-        <relationship name="allergies" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HRMAllergies" inverseName="patient" inverseEntity="HRMAllergies" syncable="YES"/>
-        <relationship name="conditions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HRMCondition" inverseName="patient" inverseEntity="HRMCondition" syncable="YES"/>
-        <relationship name="encounters" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HRMEncounter" inverseName="patient" inverseEntity="HRMEncounter" syncable="YES"/>
-        <relationship name="immunizations" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HRMImmunization" inverseName="patient" inverseEntity="HRMImmunization" syncable="YES"/>
-        <relationship name="medications" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HRMMedications" inverseName="patient" inverseEntity="HRMMedications" syncable="YES"/>
-        <relationship name="procedures" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HRMProcedure" inverseName="patient" inverseEntity="HRMProcedure" syncable="YES"/>
-        <relationship name="results" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HRMResult" inverseName="patient" inverseEntity="HRMResult" syncable="YES"/>
-        <relationship name="vitalSigns" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HRMVitalSign" inverseName="patient" inverseEntity="HRMVitalSign" syncable="YES"/>
-    </entity>
-    <entity name="HRMProcedure" representedClassName="HRMProcedure" parentEntity="HRMEntry" syncable="YES">
-        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="HRMPatient" inverseName="procedures" inverseEntity="HRMPatient" syncable="YES"/>
-    </entity>
-    <entity name="HRMResult" representedClassName="HRMResult" parentEntity="HRMEntry" syncable="YES">
-        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="HRMPatient" inverseName="results" inverseEntity="HRMPatient" syncable="YES"/>
-    </entity>
-    <entity name="HRMVitalSign" representedClassName="HRMVitalSign" parentEntity="HRMEntry" syncable="YES">
-        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="HRMPatient" inverseName="vitalSigns" inverseEntity="HRMPatient" syncable="YES"/>
+        <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HRMEntry" inverseName="patient" inverseEntity="HRMEntry" syncable="YES"/>
+        <fetchedProperty name="allergies" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMPatient" predicateString="type == 1 AND patient == $FETCH_SOURCE"/>
+        </fetchedProperty>
+        <fetchedProperty name="conditions" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 0 AND patient == $FETCH_SOURCE"/>
+        </fetchedProperty>
+        <fetchedProperty name="encounters" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMPatient" predicateString="type == 2 AND patient == $FETCH_SOURCE"/>
+        </fetchedProperty>
+        <fetchedProperty name="immunizations" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMPatient" predicateString="type == 7 AND patient == $FETCH_SOURCE"/>
+        </fetchedProperty>
+        <fetchedProperty name="medications" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMPatient" predicateString="type == 3 AND patient == $FETCH_SOURCE"/>
+        </fetchedProperty>
+        <fetchedProperty name="procedures" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMPatient" predicateString="type == 4 AND patient == $FETCH_SOURCE"/>
+        </fetchedProperty>
+        <fetchedProperty name="results" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMPatient" predicateString="type == 5 AND patient == $FETCH_SOURCE"/>
+        </fetchedProperty>
+        <fetchedProperty name="vitalSigns" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMPatient" predicateString="type == 6 AND patient == $FETCH_SOURCE"/>
+        </fetchedProperty>
     </entity>
     <elements>
         <element name="GCManagedObject" positionX="72" positionY="72" width="128" height="60"/>
         <element name="HRMAddress" positionX="279" positionY="207" width="128" height="135"/>
-        <element name="HRMPatient" positionX="70" positionY="207" width="128" height="315"/>
         <element name="HRMEntry" positionX="-533" positionY="-159" width="128" height="150"/>
-        <element name="HRMEncounter" positionX="-1107" positionY="81" width="128" height="60"/>
-        <element name="HRMCondition" positionX="-963" positionY="81" width="128" height="60"/>
-        <element name="HRMImmunization" positionX="-821" positionY="81" width="128" height="60"/>
-        <element name="HRMMedications" positionX="-533" positionY="81" width="128" height="60"/>
-        <element name="HRMVitalSign" positionX="-101" positionY="81" width="128" height="60"/>
-        <element name="HRMProcedure" positionX="-245" positionY="81" width="128" height="60"/>
-        <element name="HRMResult" positionX="-389" positionY="81" width="128" height="60"/>
-        <element name="HRMAllergies" positionX="-675" positionY="81" width="128" height="60"/>
+        <element name="HRMPatient" positionX="70" positionY="207" width="128" height="315"/>
     </elements>
 </model>
