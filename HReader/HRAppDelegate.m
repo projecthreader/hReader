@@ -23,8 +23,7 @@
 
 @implementation HRAppDelegate
 
-@synthesize window                  = __window;
-//@synthesize privacyViewController   = __privacyViewController;
+@synthesize window = __window;
 
 #pragma mark - class methods
 + (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
@@ -47,12 +46,12 @@
 
 #pragma mark - object methods
 - (void)dealloc {
-    [__window release];
-//    [__privacyViewController release];
+    self.window = nil;
     [super dealloc];
 }
 
 - (void)presentPasscodeCreateController {
+#if !defined (DEBUG)// || 1
     if (![PINCodeViewController isPersistedPasscodeSet]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
         UINavigationController *navigation = [storyboard instantiateInitialViewController];
@@ -77,6 +76,7 @@
         }
         [controller presentModalViewController:navigation animated:NO];
     }
+#endif
 }
 - (void)presentPasscodeVerifyControllerIfNecessary {
 #if !defined(DEBUG)// || 1
