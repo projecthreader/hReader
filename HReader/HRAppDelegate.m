@@ -14,6 +14,8 @@
 
 #import "PINCodeViewController.h"
 
+#import "HRMPatient.h"
+
 @interface HRAppDelegate ()
 - (void)presentPasscodeCreateController;
 - (void)presentPasscodeVerifyControllerIfNecessary;
@@ -29,14 +31,16 @@
     static NSPersistentStoreCoordinator *coordinator = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
-        NSManagedObjectModel *model = [NSManagedObjectModel modelByMergingModels:nil];
+        NSManagedObjectModel *model = [NSManagedObjectModel mergedModelFromBundles:nil];
         coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
-//        [coordinator
-//         addPersistentStoreWithType:<#(NSString *)#>
-//         configuration:<#(NSString *)#>
-//         URL:<#(NSURL *)#>
-//         options:<#(NSDictionary *)#>
-//         error:<#(NSError **)#>];
+        NSError *error = nil;
+        NSPersistentStore *store = [coordinator
+                                    addPersistentStoreWithType:NSInMemoryStoreType
+                                    configuration:nil
+                                    URL:nil
+                                    options:nil
+                                    error:&error];
+        NSAssert(store, @"Unable to add persistent store\n%@", error);
     });
     return coordinator;
 }
@@ -108,10 +112,21 @@
     [TestFlight takeOff:[HRConfig testFlightTeamToken]];
 #endif
     
-    // appearance proxies
-//    UIView *grayView = [[[UIView alloc] init] autorelease];
-//    grayView.backgroundColor = [UIColor lightGrayColor];
-//    [[UITableViewCell appearance] setSelectedBackgroundView:grayView];
+    // load patients if we don't have any yet
+    NSManagedObjectContext *context = [[[NSManagedObjectContext alloc] init] autorelease];
+    [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
+    if ([HRMPatient countInContext:context] == 0) {
+        NSArray *names = [NSArray arrayWithObjects:@"hs", @"js", @"ms", @"ss", @"ts", nil];
+        [names enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSURL *URL = [[NSBundle mainBundle] URLForResource:obj withExtension:@"json"];
+            NSData *data = [NSData dataWithContentsOfURL:URL];
+            id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSLog(@"%@", [HRMPatient instanceWithDictionary:object inContext:context]);
+        }];
+        NSError *error = nil;
+        BOOL save = [context save:&error];
+        NSAssert(save, @"Unable to import patiens\n%@", error);
+    }
     
     // show window so we can present stuff
     [self.window makeKeyAndVisible];
@@ -132,13 +147,9 @@
         [alert show];
     }
     
-#if !defined(DEBUG) || 1
-    //    [self showPrivacyWarning];
-#endif
-    
-    //    [self setupPrivacyView];
-    
+    // return
     return YES;
+    
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*

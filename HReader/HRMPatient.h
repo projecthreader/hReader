@@ -13,7 +13,6 @@ typedef enum {
     HRPatientGenderFemale
 } HRPatientGender;
 
-@class HRMAddress;
 @class HRMEntry;
 
 @interface HRMPatient : GCManagedObject
