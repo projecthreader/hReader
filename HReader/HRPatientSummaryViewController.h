@@ -20,6 +20,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *dobLabel;
 
 @property (retain, nonatomic) NSArray *labelsArray;
+@property (retain, nonatomic) NSArray *vitalsViewsArray;
 
 @property (retain, nonatomic) IBOutlet UILabel *allergiesLabel;
 @property (retain, nonatomic) IBOutlet UILabel *recentConditionsDateLabel;
@@ -44,20 +45,6 @@
 @property (retain, nonatomic) IBOutlet UILabel *functionalStatusProblemLabel;
 @property (retain, nonatomic) IBOutlet UILabel *functionalStatusStatusLabel;
 
-@property (retain, nonatomic) IBOutlet UILabel *heightTitleLabel;
-
-@property (retain, nonatomic) IBOutlet UILabel *heightLabel;
-@property (retain, nonatomic) IBOutlet UILabel *heightDateLabel;
-@property (retain, nonatomic) IBOutlet UILabel *heightNormalLabel;
-
-@property (retain, nonatomic) IBOutlet UILabel *weightLabel;
-@property (retain, nonatomic) IBOutlet UILabel *weightDateLabel;
-@property (retain, nonatomic) IBOutlet UILabel *weightNormalLabel;
-
-@property (retain, nonatomic) IBOutlet UILabel *bmiLabel;
-@property (retain, nonatomic) IBOutlet UILabel *bmiDateLabel;
-@property (retain, nonatomic) IBOutlet UILabel *bmiNormalLabel;
-
 @property (retain, nonatomic) IBOutlet UILabel *pulseLabel;
 @property (retain, nonatomic) IBOutlet UILabel *pulseDateLabel;
 @property (retain, nonatomic) IBOutlet UILabel *pulseNormalLabel;
@@ -66,10 +53,13 @@
 
 @property (retain, nonatomic) IBOutlet UILabel *diagnosisLabel;
 @property (retain, nonatomic) IBOutlet UILabel *diagnosisDateLabel;
-@property (retain, nonatomic) IBOutlet UIImageView *heightImageView;
-@property (retain, nonatomic) IBOutlet UIImageView *weightImageView;
-@property (retain, nonatomic) IBOutlet UIImageView *bmiImageView;
+
 @property (retain, nonatomic) IBOutlet UIImageView *pulseImageView;
+
+@property (retain, nonatomic) IBOutlet UIView *vital1View;
+@property (retain, nonatomic) IBOutlet UIView *vital2View;
+@property (retain, nonatomic) IBOutlet UIView *vital3View;
+
 
 
 @end

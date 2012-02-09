@@ -47,6 +47,7 @@
 //    [__privacyViewController release];
     [super dealloc];
 }
+
 - (void)presentPasscodeCreateController {
     if (![PINCodeViewController isPersistedPasscodeSet]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
@@ -74,6 +75,7 @@
     }
 }
 - (void)presentPasscodeVerifyControllerIfNecessary {
+#if !defined(DEBUG)// || 1
     static BOOL visible = NO;
     if (!visible && [PINCodeViewController isPersistedPasscodeSet]) {
         visible = YES;
@@ -95,6 +97,7 @@
         }
         [controller presentModalViewController:navigation animated:NO];
     }
+#endif
 }
 
 #pragma mark - application lifecycle

@@ -24,8 +24,8 @@
 @synthesize phoneNumber     = __phoneNumber;
 
 @synthesize encounters      = __encounters;
-
 @synthesize info            = __info;
+@synthesize vitals          = __vitals;
 
 - (void)dealloc {
     [__info release];
@@ -37,6 +37,7 @@
     [__race release];
     [__ethnicity release];
     [__phoneNumber release];
+    [__vitals release];
     
     [super dealloc];
 }

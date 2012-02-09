@@ -40,8 +40,8 @@ typedef enum {
 @property (copy, nonatomic) NSString *phoneNumber;
 
 @property (strong, nonatomic) NSMutableArray *encounters;
-
 @property (strong, nonatomic) NSMutableDictionary *info;
+@property (strong, nonatomic) NSArray *vitals;
 
 - (id)initWithName:(NSString *)aName image:(UIImage *)aImage;
 
