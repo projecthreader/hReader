@@ -32,7 +32,7 @@
 @dynamic procedures;
 
 #pragma mark - parsers
-+ (id)instanceWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context {
++ (HRMPatient *)instanceWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context {
     
     // create patient
     HRMPatient *patient = [HRMPatient instanceInContext:context];
@@ -99,6 +99,14 @@
     // return
     return patient;
     
+}
++ (NSArray *)patientsInContext:(NSManagedObjectContext *)context {
+    static NSSortDescriptor *sort = nil;
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        sort = [[NSSortDescriptor alloc] initWithKey:@"dateOfBirth" ascending:NO];
+    });
+    return [self allInContext:context sortDescriptor:sort];
 }
 
 #pragma mark - attribute overrides
