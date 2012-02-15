@@ -1,16 +1,22 @@
-2012-02-08
+# 2012-02-15
+
+- Refactored swipe control
+- Updated swipe control on doctors, messages, timeline
+- Timeline now dynamically loads greenJSON data
+
+# 2012-02-08
 
 - Refactored vitals into their own view class
 - Vitals are now specific to the metric they are measuring and can determine if the results are in range
 - Set version number to 0.2
 
-2012-02-06
+# 2012-02-06
 
 - Disable any kind of feedback on the PIN entry screen
 - Set messages table view to gray gradient selection style
 - Implement mechanism to set/change passcode
 
-2012-02-02
+# 2012-02-02
 
 - Change PIN entry screen to use new design and random digit layout
 - Present PIN entry screen every time the app goes to the background
