@@ -152,7 +152,7 @@
         [self presentPasscodeCreateController];
         UIAlertView *alert = [[[UIAlertView alloc]
                                initWithTitle:@"Welcome"
-                               message:@"Before you star using hReader, you must set a passcode."
+                               message:@"Before you start using hReader, you must set a passcode."
                                delegate:nil
                                cancelButtonTitle:@"OK"
                                otherButtonTitles:nil]
