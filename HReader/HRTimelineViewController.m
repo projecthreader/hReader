@@ -8,7 +8,8 @@
 
 #import "HRTimelineViewController.h"
 #import "HRPatientSwipeViewController.h"
-#import "HRPatient.h"
+#import "HRMPatient.h"
+#import "HRPatientSwipeControl.h"
 
 @interface HRTimelineViewController ()
 - (void)reloadData;
@@ -36,17 +37,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Timeline";
-        
-        HRPatientSwipeViewController *patientSwipeViewController = [[HRPatientSwipeViewController alloc] initWithNibName:nil bundle:nil];
-        [self addChildViewController:patientSwipeViewController];
-        patientSwipeViewController.patientsArray = [HRConfig patients];
-        [patientSwipeViewController release];
-        
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self 
-                                                 selector:@selector(patientChanged:) 
-                                                     name:HRPatientDidChangeNotification 
-                                                   object:nil];
     }
     return self;
 }
@@ -55,11 +45,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    HRPatientSwipeViewController *patientSwipeViewController = (HRPatientSwipeViewController *)[self.childViewControllers objectAtIndex:0];
-    patientSwipeViewController.selectedPatient = [HRConfig selectedPatient];
-    [self.headerView addSubview:patientSwipeViewController.view];
-    
+
+    // load patient swipe
+    HRPatientSwipeControl *swipe = [HRPatientSwipeControl
+                                    controlWithOwner:self
+                                    options:nil 
+                                    target:self
+                                    action:@selector(patientChanged:)];
+    [self.headerView addSubview:swipe];
     
     self.headerView.backgroundColor = [UIColor clearColor];    
 }
@@ -84,7 +77,7 @@
 
 #pragma mark - NSNotificationCenter
 
-- (void)patientChanged:(NSNotification *)notif {
+- (void)patientChanged:(id)sender {
     [self reloadDataAnimated];
 }
 
@@ -101,8 +94,8 @@
 }
 
 - (void)reloadData {
-    HRPatient *patient = [HRConfig selectedPatient];
-    self.nameLabel.text = [patient.name uppercaseString];
+    HRMPatient *patient = [HRMPatient selectedPatient];
+    self.nameLabel.text = [patient.compositeName uppercaseString];
     NSString *path = [[NSBundle mainBundle] pathForResource:@"hReader" 
                                                      ofType:@"html"
                                                 inDirectory:@"timeline/hReader"];
