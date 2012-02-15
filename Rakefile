@@ -5,7 +5,8 @@ RestClient.proxy = ENV['http_proxy']
 
 BetaBuilder::Tasks.new do |config|
   # your Xcode target name
-  config.target = "HReader"
+  config.target     = "HReader"
+  config.app_name   = "hReader-pds"
 
   # the Xcode configuration profile
   config.configuration = "Ad Hoc"
