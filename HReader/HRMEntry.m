@@ -67,4 +67,55 @@
     
 }
 
+- (NSString *)timelineCategory {
+    short type = [self.type shortValue];
+    if (type == HRMEntryTypeAllergy) {
+        return @"allergies";
+    }
+    else if (type == HRMEntryTypeCondition) {
+        return @"conditions";
+    }
+    else if (type == HRMEntryTypeResult) {
+        return @"results";
+    }
+    else if (type == HRMEntryTypeEncounter) {
+        return @"encounters";
+    }
+    else if (type == HRMEntryTypeVitalSign) {
+        return @"vitals";
+    }
+    else if (type == HRMEntryTypeImmunization) {
+        return @"immunizations";
+    }
+    else if (type == HRMEntryTypeMedication) {
+        return @"medications";
+    }
+    else if (type == HRMEntryTypeProcedure) {
+        return @"procedures";
+    }
+    else {
+        return nil;
+    }
+}
+- (NSString *)timelineDateAsString {
+    static NSDateFormatter *format = nil;
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        format = [[NSDateFormatter alloc] init];
+        [format setDateFormat:@"MMM w yyyy '00:00:00 GMT'"];
+    });
+    if (self.date) {
+        return [format stringFromDate:self.date];
+    }
+    else if (self.startDate) {
+        return [format stringFromDate:self.startDate];
+    }
+    else if (self.endDate) {
+        return [format stringFromDate:self.endDate];
+    }
+    else {
+        return nil;
+    }
+}
+
 @end

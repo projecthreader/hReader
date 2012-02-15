@@ -10,6 +10,8 @@
 #import "HRMEntry.h"
 #import "HRAppDelegate.h"
 
+#import "DDXML.h"
+
 static HRMPatient *selectedPatient = nil;
 
 @implementation HRMPatient
@@ -157,6 +159,26 @@ static HRMPatient *selectedPatient = nil;
 #pragma mark - object methods
 - (UIImage *)patientImage {
     return [UIImage imageNamed:[NSString stringWithFormat:@"UserImage-%@-%@", self.lastName, self.firstName]];
+}
+- (DDXMLElement *)timelineXMLDocument {
+    
+    // create root
+    DDXMLElement *data = [DDXMLElement elementWithName:@"data"];
+    [data addAttribute:[DDXMLElement attributeWithName:@"wiki-url" stringValue:@"http://simile.mit.edu/shelf/"]];
+    [data addAttribute:[DDXMLElement attributeWithName:@"wiki-section" stringValue:@"Simile Monet Timeline"]];
+    
+    // create events
+    [self.entries enumerateObjectsUsingBlock:^(HRMEntry *entry, BOOL *stop) {
+        DDXMLElement *event = [DDXMLElement elementWithName:@"event" stringValue:entry.desc];
+        [event addAttribute:[DDXMLElement attributeWithName:@"title" stringValue:@""]];
+        [event addAttribute:[DDXMLElement attributeWithName:@"category" stringValue:[entry timelineCategory]]];
+        [event addAttribute:[DDXMLElement attributeWithName:@"start" stringValue:[entry timelineDateAsString]]];
+        [data addChild:event];
+    }];
+    
+    // return
+    return data;
+    
 }
 
 @end

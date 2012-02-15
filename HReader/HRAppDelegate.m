@@ -129,7 +129,10 @@
             NSURL *URL = [[NSBundle mainBundle] URLForResource:obj withExtension:@"json"];
             NSData *data = [NSData dataWithContentsOfURL:URL];
             id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"%@", [HRMPatient instanceWithDictionary:object inContext:context]);
+            /*HRMPatient *patient = */[HRMPatient instanceWithDictionary:object inContext:context];
+//            NSLog(@"%@", );
+//            [patient timelineXMLDocument];
+            
         }];
         NSError *error = nil;
         BOOL save = [context save:&error];

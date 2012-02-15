@@ -14,6 +14,7 @@ typedef enum {
 } HRPatientGender;
 
 @class HRMEntry;
+@class DDXMLElement;
 
 @interface HRMPatient : GCManagedObject
 
@@ -46,6 +47,9 @@ typedef enum {
 // deal with current selection
 + (void)setSelectedPatient:(HRMPatient *)patient;
 + (HRMPatient *)selectedPatient;
+
+// return XML representation of relationships
+- (DDXMLElement *)timelineXMLDocument;
 
 // get patient image
 - (UIImage *)patientImage;

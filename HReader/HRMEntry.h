@@ -37,4 +37,7 @@ typedef enum {
                                 type:(HRMEntryType)type
                            inContext:(NSManagedObjectContext *)context;
 
+- (NSString *)timelineCategory;
+- (NSString *)timelineDateAsString;
+
 @end

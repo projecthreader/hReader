@@ -11,6 +11,8 @@
 #import "HRMPatient.h"
 #import "HRPatientSwipeControl.h"
 
+#import "DDXML.h"
+
 @interface HRTimelineViewController ()
 - (void)reloadData;
 - (void)reloadDataAnimated;
@@ -94,14 +96,30 @@
 }
 
 - (void)reloadData {
+    
+    // vars
+    NSURL *URL;
+    
+    // load patient
     HRMPatient *patient = [HRMPatient selectedPatient];
     self.nameLabel.text = [patient.compositeName uppercaseString];
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"hReader" 
-                                                     ofType:@"html"
-                                                inDirectory:@"timeline/hReader"];
-    NSLog(@"Path: %@", path);
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]];
+    URL = [[[NSFileManager defaultManager]
+            URLsForDirectory:NSDocumentDirectory
+            inDomains:NSUserDomainMask]
+           lastObject];
+    URL = [URL URLByAppendingPathComponent:@"hReader.xml"];
+    NSString *XMLString = [[[[patient timelineXMLDocument] XMLString] copy] autorelease];
+    BOOL write = [XMLString writeToURL:URL atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    NSAssert(write, @"The XML file could not be written");
+    
+    // load timeline
+    URL = [[NSBundle mainBundle]
+           URLForResource:@"hReader"
+           withExtension:@"html"
+           subdirectory:@"timeline/hReader"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     [self.webView loadRequest:request];
+    
 }
 
 @end
