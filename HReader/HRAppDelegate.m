@@ -123,7 +123,6 @@
     
     // load patients if we don't have any yet
     NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
-    [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
     if ([HRMPatient countInContext:context] == 0) {
         NSArray *names = [NSArray arrayWithObjects:@"hs", @"js", @"ms", @"ss", @"ts", nil];
         [names enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -134,8 +133,10 @@
         }];
         NSError *error = nil;
         BOOL save = [context save:&error];
-        NSAssert(save, @"Unable to import patiens\n%@", error);
+        NSAssert(save, @"Unable to import patients\n%@", error);
     }
+    NSArray *patients = [HRMPatient patientsInContext:context];
+    [HRMPatient setSelectedPatient:[patients objectAtIndex:0]];
     
     // show window so we can present stuff
     [self.window makeKeyAndVisible];
