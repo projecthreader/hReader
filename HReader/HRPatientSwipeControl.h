@@ -10,12 +10,13 @@
 
 @interface HRPatientSwipeControl : UIControl  <UIScrollViewDelegate>
 
-@property (copy, nonatomic) NSArray *patients;
+@property (copy, nonatomic, readonly) NSArray *patients;
+@property (assign, nonatomic, readonly) NSInteger selectedIndex;
+
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
-@property (nonatomic) NSInteger selectedIndex;
 
-+ (HRPatientSwipeControl *)controlWithOwner:(id)owner options:(NSDictionary *)options;
++ (HRPatientSwipeControl *)controlWithOwner:(id)owner options:(NSDictionary *)options target:(id)target action:(SEL)action;
 
 - (void)setSelectedIndex:(NSInteger)index animated:(BOOL)animated;
 - (IBAction)pageControlValueChanged:(UIPageControl *)sender;

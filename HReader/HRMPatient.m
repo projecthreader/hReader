@@ -8,6 +8,9 @@
 
 #import "HRMPatient.h"
 #import "HRMEntry.h"
+#import "HRAppDelegate.h"
+
+static HRMPatient *selectedPatient = nil;
 
 @implementation HRMPatient
 
@@ -31,7 +34,7 @@
 @dynamic allergies;
 @dynamic procedures;
 
-#pragma mark - parsers
+#pragma mark - class methods
 + (HRMPatient *)instanceWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context {
     
     // create patient
@@ -108,6 +111,13 @@
     });
     return [self allInContext:context sortDescriptor:sort];
 }
++ (void)setSelectedPatient:(HRMPatient *)patient {
+//    NSAssert([patient managedObjectContext] == [HRAppDelegate managedObjectContext], @"The global patient must exist in the main application context");
+    selectedPatient = patient;
+}
++ (HRMPatient *)selectedPatient {
+    return selectedPatient;
+}
 
 #pragma mark - attribute overrides
 - (NSString *)compositeName {
@@ -142,6 +152,11 @@
     NSString *string = [formatter stringFromDate:self.dateOfBirth];
     [self didAccessValueForKey:@"dateOfBirthString"];
     return string;
+}
+
+#pragma mark - object methods
+- (UIImage *)patientImage {
+    return [UIImage imageNamed:[NSString stringWithFormat:@"UserImage-%@-%@", self.lastName, self.firstName]];
 }
 
 @end

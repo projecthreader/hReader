@@ -9,10 +9,8 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "HRDoctorsViewController.h"
-#import "HRPatientSwipeViewController.h"
-#import "HRPatient.h"
-
 #import "HRPatientSwipeControl.h"
+#import "HRMPatient.h"
 
 @interface HRDoctorsViewController ()
 - (void)reloadData;
@@ -40,16 +38,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Doctors";
-        
-        HRPatientSwipeViewController *patientSwipeViewController = [[HRPatientSwipeViewController alloc] initWithNibName:nil bundle:nil];
-        [self addChildViewController:patientSwipeViewController];
-        patientSwipeViewController.patientsArray = [HRConfig patients];
-        [patientSwipeViewController release];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self 
-                                                 selector:@selector(patientChanged:) 
-                                                     name:HRPatientDidChangeNotification 
-                                                   object:nil];
     }
     return self;
 }
@@ -63,9 +51,12 @@
 //    patientSwipeViewController.selectedPatient = [HRConfig selectedPatient];
 //    [self.view addSubview:patientSwipeViewController.view];
     
-    HRPatientSwipeControl *swipe = [HRPatientSwipeControl controlWithOwner:self options:nil];
-    [swipe addTarget:self action:@selector(patientChanged:) forControlEvents:UIControlEventValueChanged];
-    swipe.frame = CGRectMake(0.0, 0.0, 175.0, 175.0);
+    // load patient swipe
+    HRPatientSwipeControl *swipe = [HRPatientSwipeControl
+                                    controlWithOwner:self
+                                    options:nil 
+                                    target:self
+                                    action:@selector(patientChanged:)];
     [self.view addSubview:swipe];
     
     // Doctor detail view
@@ -120,7 +111,8 @@
 
 #pragma mark - NSNotificationCenter
 
-- (void)patientChanged:(NSNotification *)notif {
+- (void)patientChanged:(HRPatientSwipeControl *)sender {
+    NSLog(@"Selected patient: %@", [[HRMPatient selectedPatient] compositeName]);
     [self reloadDataAnimated];
 }
 
@@ -139,8 +131,8 @@
 }
 
 - (void)reloadData {
-    HRPatient *patient = [HRConfig selectedPatient];
-    self.nameLabel.text = [patient.name uppercaseString];
+    HRMPatient *patient = [HRMPatient selectedPatient];
+    self.nameLabel.text = [patient compositeName];
 }
 
 @end
