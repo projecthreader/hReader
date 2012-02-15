@@ -171,7 +171,7 @@
 		9415152114AA3A7B009FF674 /* fail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fail.png; sourceTree = "<group>"; };
 		9415152214AA3A7B009FF674 /* win.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = win.png; sourceTree = "<group>"; };
 		9415152514AA3F9F009FF674 /* question_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question_mark.png; sourceTree = "<group>"; };
-		941DB0A81471B32D00A96B8B /* HReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		941DB0A81471B32D00A96B8B /* HReader-pds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HReader-pds.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		941DB0AC1471B32D00A96B8B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		941DB0AE1471B32D00A96B8B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		941DB0B01471B32D00A96B8B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -406,7 +406,7 @@
 		941DB0A91471B32D00A96B8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				941DB0A81471B32D00A96B8B /* HReader.app */,
+				941DB0A81471B32D00A96B8B /* HReader-pds.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -863,7 +863,7 @@
 			);
 			name = HReader;
 			productName = HReader;
-			productReference = 941DB0A81471B32D00A96B8B /* HReader.app */;
+			productReference = 941DB0A81471B32D00A96B8B /* HReader-pds.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1129,7 +1129,7 @@
 					"\"$(SRCROOT)/vendor/TestFlight\"",
 				);
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME)-pds";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1148,7 +1148,7 @@
 					"\"$(SRCROOT)/vendor/TestFlight\"",
 				);
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME)-pds";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1187,7 +1187,7 @@
 					"\"$(SRCROOT)/vendor/TestFlight\"",
 				);
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME)-pds";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
