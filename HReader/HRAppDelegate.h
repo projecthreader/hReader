@@ -12,7 +12,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-// access the singleton persistent store coordinator
+// access core data stores
 + (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
++ (NSManagedObjectContext *)managedObjectContext;
 
 @end

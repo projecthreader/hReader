@@ -38,6 +38,7 @@ typedef enum {
 @property (nonatomic, retain) NSArray *medications;
 
 + (HRMPatient *)instanceWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context;
++ (NSArray *)patientsInContext:(NSManagedObjectContext *)context;
 
 @end
 

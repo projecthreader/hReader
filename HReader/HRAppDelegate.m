@@ -43,6 +43,15 @@
     });
     return coordinator;
 }
++ (NSManagedObjectContext *)managedObjectContext {
+    static NSManagedObjectContext *context = nil;
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        [context setPersistentStoreCoordinator:[self persistentStoreCoordinator]];
+    });
+    return context;
+}
 
 #pragma mark - object methods
 - (void)dealloc {
@@ -113,7 +122,7 @@
 #endif
     
     // load patients if we don't have any yet
-    NSManagedObjectContext *context = [[[NSManagedObjectContext alloc] init] autorelease];
+    NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
     [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
     if ([HRMPatient countInContext:context] == 0) {
         NSArray *names = [NSArray arrayWithObjects:@"hs", @"js", @"ms", @"ss", @"ts", nil];
