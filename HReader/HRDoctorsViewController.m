@@ -12,6 +12,8 @@
 #import "HRPatientSwipeViewController.h"
 #import "HRPatient.h"
 
+#import "HRPatientSwipeControl.h"
+
 @interface HRDoctorsViewController ()
 - (void)reloadData;
 - (void)reloadDataAnimated;
@@ -57,9 +59,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    HRPatientSwipeViewController *patientSwipeViewController = (HRPatientSwipeViewController *)[self.childViewControllers objectAtIndex:0];
-    patientSwipeViewController.selectedPatient = [HRConfig selectedPatient];
-    [self.view addSubview:patientSwipeViewController.view];
+//    HRPatientSwipeViewController *patientSwipeViewController = (HRPatientSwipeViewController *)[self.childViewControllers objectAtIndex:0];
+//    patientSwipeViewController.selectedPatient = [HRConfig selectedPatient];
+//    [self.view addSubview:patientSwipeViewController.view];
+    
+    HRPatientSwipeControl *swipe = [HRPatientSwipeControl controlWithOwner:self options:nil];
+    [swipe addTarget:self action:@selector(patientChanged:) forControlEvents:UIControlEventValueChanged];
+    swipe.frame = CGRectMake(0.0, 0.0, 175.0, 175.0);
+    [self.view addSubview:swipe];
     
     // Doctor detail view
 

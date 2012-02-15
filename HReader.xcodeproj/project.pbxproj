@@ -30,6 +30,8 @@
 		940D3D4114E0706C00FE41E6 /* HRWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D4014E0706C00FE41E6 /* HRWeight.m */; };
 		940D3D4414E077A500FE41E6 /* HRBloodPressure.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D4314E077A500FE41E6 /* HRBloodPressure.m */; };
 		940D3D4A14E07CEA00FE41E6 /* HRCholesterol.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D4914E07CEA00FE41E6 /* HRCholesterol.m */; };
+		9413C74614EC08AA00BFA521 /* HRPatientSwipeControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9413C74514EC08AA00BFA521 /* HRPatientSwipeControl.m */; };
+		9413C74914EC0B7800BFA521 /* HRPatientSwipeControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9413C74814EC0B7800BFA521 /* HRPatientSwipeControl.xib */; };
 		9415151F14A0E8FA009FF674 /* HRMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9415151E14A0E8FA009FF674 /* HRMessage.m */; };
 		9415152314AA3A7B009FF674 /* fail.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152114AA3A7B009FF674 /* fail.png */; };
 		9415152414AA3A7B009FF674 /* win.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152214AA3A7B009FF674 /* win.png */; };
@@ -162,6 +164,9 @@
 		940D3D4314E077A500FE41E6 /* HRBloodPressure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRBloodPressure.m; sourceTree = "<group>"; };
 		940D3D4814E07CEA00FE41E6 /* HRCholesterol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCholesterol.h; sourceTree = "<group>"; };
 		940D3D4914E07CEA00FE41E6 /* HRCholesterol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCholesterol.m; sourceTree = "<group>"; };
+		9413C74414EC08AA00BFA521 /* HRPatientSwipeControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPatientSwipeControl.h; sourceTree = "<group>"; };
+		9413C74514EC08AA00BFA521 /* HRPatientSwipeControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPatientSwipeControl.m; sourceTree = "<group>"; };
+		9413C74814EC0B7800BFA521 /* HRPatientSwipeControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPatientSwipeControl.xib; sourceTree = "<group>"; };
 		9415151D14A0E8FA009FF674 /* HRMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMessage.h; sourceTree = "<group>"; };
 		9415151E14A0E8FA009FF674 /* HRMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMessage.m; sourceTree = "<group>"; };
 		9415152114AA3A7B009FF674 /* fail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fail.png; sourceTree = "<group>"; };
@@ -710,6 +715,9 @@
 				DD191739148FDDBD00B87AAF /* HRPatientSwipeViewController.h */,
 				DD19173A148FDDBD00B87AAF /* HRPatientSwipeViewController.m */,
 				DD191740148FEE8E00B87AAF /* HRPatientSwipeViewController.xib */,
+				9413C74414EC08AA00BFA521 /* HRPatientSwipeControl.h */,
+				9413C74514EC08AA00BFA521 /* HRPatientSwipeControl.m */,
+				9413C74814EC0B7800BFA521 /* HRPatientSwipeControl.xib */,
 			);
 			name = "Patient Swipe";
 			sourceTree = "<group>";
@@ -959,6 +967,7 @@
 				3BE9A42F14E42A3800F87B60 /* ms.json in Resources */,
 				3BE9A43014E42A3800F87B60 /* ss.json in Resources */,
 				3BE9A43114E42A3800F87B60 /* ts.json in Resources */,
+				9413C74914EC0B7800BFA521 /* HRPatientSwipeControl.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1032,6 +1041,7 @@
 				9467077614E318ED00ACEA67 /* HRHeight.m in Sources */,
 				9467077914E31A6200ACEA67 /* HRBMI.m in Sources */,
 				9467077C14E31CD400ACEA67 /* HRGlucose.m in Sources */,
+				9413C74614EC08AA00BFA521 /* HRPatientSwipeControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
