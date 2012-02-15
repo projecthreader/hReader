@@ -47,10 +47,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    HRPatientSwipeViewController *patientSwipeViewController = (HRPatientSwipeViewController *)[self.childViewControllers objectAtIndex:0];
-//    patientSwipeViewController.selectedPatient = [HRConfig selectedPatient];
-//    [self.view addSubview:patientSwipeViewController.view];
-    
     // load patient swipe
     HRPatientSwipeControl *swipe = [HRPatientSwipeControl
                                     controlWithOwner:self

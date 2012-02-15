@@ -11,6 +11,7 @@
 #import "HRMessagesViewController.h"
 #import "HRPatientSwipeViewController.h"
 #import "HRMessage.h"
+#import "HRPatientSwipeControl.h"
 
 @interface HRMessagesViewController ()
 - (void)setHeaderViewShadow;
@@ -67,16 +68,6 @@
         [messages release];
         
         self.title = [NSString stringWithFormat:@"Messages (%lu)", [self.messagesArray count]];
-        
-        HRPatientSwipeViewController *patientSwipeViewController = [[HRPatientSwipeViewController alloc] initWithNibName:nil bundle:nil];
-        [self addChildViewController:patientSwipeViewController];
-        patientSwipeViewController.patientsArray = [HRConfig patients];
-        [patientSwipeViewController release];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self 
-                                                 selector:@selector(patientChanged:) 
-                                                     name:HRPatientDidChangeNotification 
-                                                   object:nil];
     }
     return self;
 }
@@ -86,9 +77,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    HRPatientSwipeViewController *patientSwipeViewController = (HRPatientSwipeViewController *)[self.childViewControllers objectAtIndex:0];
-    patientSwipeViewController.selectedPatient = [HRConfig selectedPatient];
-    [self.patientView addSubview:patientSwipeViewController.view];
+    // load patient swipe
+    HRPatientSwipeControl *swipe = [HRPatientSwipeControl
+                                    controlWithOwner:self
+                                    options:nil 
+                                    target:self
+                                    action:@selector(patientChanged:)];
+    [self.patientView addSubview:swipe];
     
     self.scrollView.contentSize = self.messageContentView.bounds.size;
     [self.scrollView addSubview:self.messageContentView];
@@ -155,7 +150,7 @@
 
 #pragma mark - NSNotificationCenter
 
-- (void)patientChanged:(NSNotification *)notif {
+- (void)patientChanged:(id)sender {
 
 }
 

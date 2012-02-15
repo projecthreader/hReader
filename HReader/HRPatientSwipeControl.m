@@ -43,7 +43,7 @@
     [super awakeFromNib];
     
     // set frame
-    self.frame = CGRectMake(35.0, 15.0, 175.0, 175.0);
+    self.frame = CGRectMake(32.0, 15.0, 175.0, 175.0);
     
     // scroll view border
     self.scrollView.layer.cornerRadius = 5.0f;
