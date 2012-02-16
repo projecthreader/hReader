@@ -10,7 +10,4 @@
 
 @interface HRRootViewController : UIViewController
 
-@property (strong, nonatomic) UISegmentedControl *segmentedControl;
-
-
 @end
