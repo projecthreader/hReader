@@ -169,10 +169,7 @@ static HRMPatient *selectedPatient = nil;
     
     // create events
     [self.entries enumerateObjectsUsingBlock:^(HRMEntry *entry, BOOL *stop) {
-        DDXMLElement *event = [DDXMLElement elementWithName:@"event" stringValue:entry.desc];
-        [event addAttribute:[DDXMLElement attributeWithName:@"title" stringValue:@""]];
-        [event addAttribute:[DDXMLElement attributeWithName:@"category" stringValue:[entry timelineCategory]]];
-        [event addAttribute:[DDXMLElement attributeWithName:@"start" stringValue:[entry timelineDateAsString]]];
+        DDXMLElement *event = [entry timelineXMLElement];
         [data addChild:event];
     }];
     
