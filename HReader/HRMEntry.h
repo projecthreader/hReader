@@ -20,6 +20,7 @@ typedef enum {
 } HRMEntryType;
 
 @class HRMPatient;
+@class DDXMLElement;
 
 @interface HRMEntry : GCManagedObject
 
@@ -37,7 +38,6 @@ typedef enum {
                                 type:(HRMEntryType)type
                            inContext:(NSManagedObjectContext *)context;
 
-- (NSString *)timelineCategory;
-- (NSString *)timelineDateAsString;
+- (DDXMLElement *)timelineXMLElement;
 
 @end

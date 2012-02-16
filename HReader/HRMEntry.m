@@ -8,6 +8,8 @@
 
 #import "HRMEntry.h"
 
+#import "DDXML.h"
+
 @implementation HRMEntry
 
 @dynamic codes;
@@ -67,55 +69,43 @@
     
 }
 
-- (NSString *)timelineCategory {
-    short type = [self.type shortValue];
-    if (type == HRMEntryTypeAllergy) {
-        return @"allergies";
-    }
-    else if (type == HRMEntryTypeCondition) {
-        return @"conditions";
-    }
-    else if (type == HRMEntryTypeResult) {
-        return @"results";
-    }
-    else if (type == HRMEntryTypeEncounter) {
-        return @"encounters";
-    }
-    else if (type == HRMEntryTypeVitalSign) {
-        return @"vitals";
-    }
-    else if (type == HRMEntryTypeImmunization) {
-        return @"immunizations";
-    }
-    else if (type == HRMEntryTypeMedication) {
-        return @"medications";
-    }
-    else if (type == HRMEntryTypeProcedure) {
-        return @"procedures";
-    }
-    else {
-        return nil;
-    }
-}
-- (NSString *)timelineDateAsString {
+- (DDXMLElement *)timelineXMLElement {
+    
+    // get date formatter
     static NSDateFormatter *format = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         format = [[NSDateFormatter alloc] init];
         [format setDateFormat:@"MMM w yyyy '00:00:00 GMT'"];
     });
-    if (self.date) {
-        return [format stringFromDate:self.date];
-    }
-    else if (self.startDate) {
-        return [format stringFromDate:self.startDate];
-    }
-    else if (self.endDate) {
-        return [format stringFromDate:self.endDate];
-    }
-    else {
-        return nil;
-    }
+    
+    // get start
+    NSString *start = nil;
+    if (self.date)              { start = [format stringFromDate:self.date];        }
+    else if (self.startDate)    { start = [format stringFromDate:self.startDate];   }
+    else if (self.endDate)      { start = [format stringFromDate:self.endDate];     }
+    
+    // get type
+    short type = [self.type shortValue];
+    NSString *category = nil;
+    if (type == HRMEntryTypeAllergy)            { category = @"allergies";      }
+    else if (type == HRMEntryTypeCondition)     { category = @"conditions";     }
+    else if (type == HRMEntryTypeResult)        { category = @"results";        }
+    else if (type == HRMEntryTypeEncounter)     { category = @"encounters";     }
+    else if (type == HRMEntryTypeVitalSign)     { category = @"vitals";         }
+    else if (type == HRMEntryTypeImmunization)  { category = @"immunizations";  }
+    else if (type == HRMEntryTypeMedication)    { category = @"medications";    }
+    else if (type == HRMEntryTypeProcedure)     { category = @"procedures";     }
+    
+    // create element
+    DDXMLElement *element = [DDXMLElement elementWithName:@"event" stringValue:self.desc];
+    [element addAttribute:[DDXMLElement attributeWithName:@"title" stringValue:@""]];
+    [element addAttribute:[DDXMLElement attributeWithName:@"category" stringValue:category]];
+    [element addAttribute:[DDXMLElement attributeWithName:@"start" stringValue:start]];
+    
+    // return
+    return element;
+    
 }
 
 @end
