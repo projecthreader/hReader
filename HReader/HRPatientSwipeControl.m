@@ -56,7 +56,7 @@
     self.layer.borderWidth = 2.0f;
     self.layer.shadowColor = [[UIColor blackColor] CGColor];
     self.layer.shadowOpacity = 0.35f;
-    self.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
+    self.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
     self.layer.shadowRadius = 5.0f;
     
     // load initial patients
@@ -82,6 +82,7 @@
     self.scrollView = nil;
     self.pageControl = nil;
     self.patients = nil;
+    [super dealloc];
 }
 
 #pragma mark - custom setters
