@@ -58,7 +58,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LLO-FR-UEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="r4Y-T5-VjV" customClass="HRC32ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lms-bC-rqj">
-                        <rect key="frame" x="0.0" y="64" width="768" height="704"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="704"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" id="aCg-CL-aig">

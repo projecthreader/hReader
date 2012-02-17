@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B04A55214E0692600AD91F9 /* SSKeychain.m */; };
 		3B04A56914E06A3A00AD91F9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B04A56814E06A3A00AD91F9 /* Security.framework */; };
+		3B19651B14EEA6200045F827 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651A14EEA6200045F827 /* Logo.png */; };
 		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; };
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
 		3BD16EF614E1B5EE00F2249E /* GCManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16EE514E1B5EE00F2249E /* GCManagedObject.m */; };
@@ -65,7 +66,6 @@
 		941F253B14E2EA9F0077D6D1 /* Tom_Health_measure.png in Resources */ = {isa = PBXBuildFile; fileRef = 941F252A14E2EA9F0077D6D1 /* Tom_Health_measure.png */; };
 		941F253F14E2EC5D0077D6D1 /* HRVitalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 941F253E14E2EC5D0077D6D1 /* HRVitalView.m */; };
 		941F254114E2EC7E0077D6D1 /* HRVitalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941F254014E2EC7E0077D6D1 /* HRVitalView.xib */; };
-		9424C15C147AD9C0008BF5CE /* hReader_Logo_34x150.png in Resources */ = {isa = PBXBuildFile; fileRef = 9424C15B147AD9C0008BF5CE /* hReader_Logo_34x150.png */; };
 		942786DE14C74AD50003190F /* Sparklines_drop-to-plateau.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786D614C74AD50003190F /* Sparklines_drop-to-plateau.png */; };
 		942786DF14C74AD50003190F /* Sparklines_growing_levels.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786D714C74AD50003190F /* Sparklines_growing_levels.png */; };
 		942786E014C74AD50003190F /* Sparklines_low_levels.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786D814C74AD50003190F /* Sparklines_low_levels.png */; };
@@ -132,6 +132,7 @@
 		3B04A55114E0692600AD91F9 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
 		3B04A55214E0692600AD91F9 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		3B04A56814E06A3A00AD91F9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3B19651A14EEA6200045F827 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hReader.xcdatamodel; sourceTree = "<group>"; };
 		3BD16ED514E1B32400F2249E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3BD16EE414E1B5EE00F2249E /* GCManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCManagedObject.h; sourceTree = "<group>"; };
@@ -205,7 +206,6 @@
 		941F253D14E2EC5D0077D6D1 /* HRVitalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRVitalView.h; sourceTree = "<group>"; };
 		941F253E14E2EC5D0077D6D1 /* HRVitalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRVitalView.m; sourceTree = "<group>"; };
 		941F254014E2EC7E0077D6D1 /* HRVitalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRVitalView.xib; sourceTree = "<group>"; };
-		9424C15B147AD9C0008BF5CE /* hReader_Logo_34x150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hReader_Logo_34x150.png; sourceTree = "<group>"; };
 		942786D614C74AD50003190F /* Sparklines_drop-to-plateau.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sparklines_drop-to-plateau.png"; sourceTree = "<group>"; };
 		942786D714C74AD50003190F /* Sparklines_growing_levels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparklines_growing_levels.png; sourceTree = "<group>"; };
 		942786D814C74AD50003190F /* Sparklines_low_levels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparklines_low_levels.png; sourceTree = "<group>"; };
@@ -332,6 +332,7 @@
 		3B19651414EE9DCB0045F827 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				3BFE7A2D14DAE5910037738D /* Icon-72.png */,
 				941DB0BE1471B32D00A96B8B /* MainStoryboard_iPhone.storyboard */,
 				941DB0C11471B32D00A96B8B /* MainStoryboard_iPad.storyboard */,
 				941DB0BB1471B32D00A96B8B /* HRAppDelegate.h */,
@@ -527,8 +528,6 @@
 				DD124DAD148D3EF300E23A44 /* Doctor.png */,
 				DD8BD9DA148D13910090F729 /* chevron.png */,
 				947FCE4514B4C18600C716FD /* chevron-left.png */,
-				3BFE7A2D14DAE5910037738D /* Icon-72.png */,
-				9424C15B147AD9C0008BF5CE /* hReader_Logo_34x150.png */,
 				9415152114AA3A7B009FF674 /* fail.png */,
 				9415152214AA3A7B009FF674 /* win.png */,
 				9415152514AA3F9F009FF674 /* question_mark.png */,
@@ -736,6 +735,7 @@
 			children = (
 				94AEAE0714868BC200C005B2 /* HRRootViewController.h */,
 				94AEAE0814868BC200C005B2 /* HRRootViewController.m */,
+				3B19651A14EEA6200045F827 /* Logo.png */,
 				94689AD214967E0100E1FCA6 /* C32 */,
 				94689AD114967DF500E1FCA6 /* Support */,
 				DD8BD9ED148D2B5A0090F729 /* Patient Summary */,
@@ -846,7 +846,6 @@
 				941DB0C31471B32D00A96B8B /* MainStoryboard_iPad.storyboard in Resources */,
 				9464C5871476BDAE0076B991 /* Johnny_Smith_96.xml in Resources */,
 				9464C5881476BDAE0076B991 /* Johnny_Smith_96.html in Resources */,
-				9424C15C147AD9C0008BF5CE /* hReader_Logo_34x150.png in Resources */,
 				94AEAE0514841CEB00C005B2 /* TimelineViewController.xib in Resources */,
 				94AEAE11148690DA00C005B2 /* HRPatientSummaryViewController.xib in Resources */,
 				DD695D7D1489439100E4E2E1 /* HRTimelineViewController.xib in Resources */,
@@ -907,6 +906,7 @@
 				3BE9A43014E42A3800F87B60 /* ss.json in Resources */,
 				3BE9A43114E42A3800F87B60 /* ts.json in Resources */,
 				9413C74914EC0B7800BFA521 /* HRPatientSwipeControl.xib in Resources */,
+				3B19651B14EEA6200045F827 /* Logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

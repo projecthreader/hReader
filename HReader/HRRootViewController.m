@@ -35,6 +35,7 @@ static int HRRootViewControllerTitleContext;
 @synthesize lastUpdatedLabel = __lastUpdatedLabel;
 
 #pragma mark - object methods
+
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (self) {
@@ -106,6 +107,7 @@ static int HRRootViewControllerTitleContext;
 }
 
 #pragma mark - kvo
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if (context == &HRRootViewControllerTitleContext) {
         UIViewController *controller = (id)object;
@@ -115,6 +117,7 @@ static int HRRootViewControllerTitleContext;
 }
 
 #pragma mark - view methods
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -143,7 +146,7 @@ static int HRRootViewControllerTitleContext;
     
     // configure logo
     {
-        UIImage *logo = [UIImage imageNamed:@"hReader_Logo_34x150"];
+        UIImage *logo = [UIImage imageNamed:@"Logo"];
         UIImageView *logoView = [[[UIImageView alloc] initWithImage:logo] autorelease];
         logoView.frame = CGRectMake(5, 5, 150, 34);
         UIBarButtonItem *logoItem = [[[UIBarButtonItem alloc] initWithCustomView:logoView] autorelease];
@@ -209,6 +212,7 @@ static int HRRootViewControllerTitleContext;
 }
 
 #pragma mark - button actions
+
 - (void)showRawC32 {
     [TestFlight passCheckpoint:@"View C32 HTML"];
     UIViewController *controller = [[[HRC32ViewController alloc] initWithNibName:nil bundle:nil] autorelease];
