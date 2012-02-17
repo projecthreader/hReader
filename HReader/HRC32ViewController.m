@@ -12,69 +12,48 @@
 
 @synthesize webView = __webView;
 
-- (void)dealloc {
-    [__webView release];
-    [super dealloc];
-}
+#pragma mark - object methods
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
     if (self) {
-        // Custom initialization
+        self.title = @"C32 HTML";
     }
     return self;
 }
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+- (void)dealloc {
+    self.webView = nil;
+    [super dealloc];
 }
 
-#pragma mark - View lifecycle
+#pragma mark - view methods
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    NSURL *html = [[NSBundle mainBundle] URLForResource:@"raw" withExtension:@"html"];    
-//    NSURLRequest *request = [NSURLRequest requestWithURL:html];
-//    [self.webView loadRequest:request];
-    
-    
-    NSURL *html = [[NSBundle mainBundle] URLForResource:@"Johnny_Smith_96" withExtension:@"html"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:html];
+    NSURL *URL = [[NSBundle mainBundle] URLForResource:@"Johnny_Smith_96" withExtension:@"html"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     [self.webView loadRequest:request];   
-    
 }
-
-- (void)viewDidUnload
-{
-    [self setWebView:nil];
+- (void)viewDidUnload {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    self.webView = nil;
 }
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return YES;
 }
     
+#pragma mark - web view methods
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSURL *xml = [[NSBundle mainBundle] URLForResource:@"Johnny_Smith_96" withExtension:@"xml"];
-    NSString *xmlString = [NSString stringWithContentsOfURL:xml encoding:NSUTF8StringEncoding error:nil];    
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"replaceXml('%@');", xmlString]];
+    NSURL *URL = [[NSBundle mainBundle] URLForResource:@"Johnny_Smith_96" withExtension:@"xml"];
+    NSString *XMLString = [NSString stringWithContentsOfURL:URL encoding:NSUTF8StringEncoding error:nil];
+    NSString *replace = [NSString stringWithFormat:@"replaceXml('%@');", XMLString];
+    [webView stringByEvaluatingJavaScriptFromString:replace];
 }
 
-#pragma mark - IBActions
+#pragma mark - button actions
 
-- (IBAction)done:(id)sender {
+- (IBAction)done {
     [self dismissModalViewControllerAnimated:YES];
 }
 @end

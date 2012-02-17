@@ -10,4 +10,6 @@
 
 @interface HRRootViewController : UIViewController
 
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *C32ButtonItem;
+
 @end

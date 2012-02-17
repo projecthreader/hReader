@@ -92,7 +92,6 @@
 		94689AC514964BE400E1FCA6 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 94689AC114964BE400E1FCA6 /* release_notes.txt */; };
 		94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94689ACA1496560C00E1FCA6 /* HRAboutTableViewController.m */; };
 		94689AD714967E3600E1FCA6 /* HRC32ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94689AD514967E3600E1FCA6 /* HRC32ViewController.m */; };
-		94689AD814967E3600E1FCA6 /* HRC32ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94689AD614967E3600E1FCA6 /* HRC32ViewController.xib */; };
 		947EF75B14D058E000A2AF97 /* HRMedication.m in Sources */ = {isa = PBXBuildFile; fileRef = 947EF75A14D058E000A2AF97 /* HRMedication.m */; };
 		947EF75E14D059AF00A2AF97 /* HRCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 947EF75D14D059AF00A2AF97 /* HRCondition.m */; };
 		947FCE4614B4C18600C716FD /* chevron-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE4514B4C18600C716FD /* chevron-left.png */; };
@@ -250,7 +249,6 @@
 		94689ACA1496560C00E1FCA6 /* HRAboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAboutTableViewController.m; sourceTree = "<group>"; };
 		94689AD414967E3600E1FCA6 /* HRC32ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRC32ViewController.h; sourceTree = "<group>"; };
 		94689AD514967E3600E1FCA6 /* HRC32ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRC32ViewController.m; sourceTree = "<group>"; };
-		94689AD614967E3600E1FCA6 /* HRC32ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRC32ViewController.xib; sourceTree = "<group>"; };
 		947EF75914D058E000A2AF97 /* HRMedication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMedication.h; sourceTree = "<group>"; };
 		947EF75A14D058E000A2AF97 /* HRMedication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMedication.m; sourceTree = "<group>"; };
 		947EF75C14D059AF00A2AF97 /* HRCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCondition.h; sourceTree = "<group>"; };
@@ -612,7 +610,6 @@
 				94BB032E149BB398009B2FCC /* Passcode Warning */,
 				DD7037B014900E5900F58A83 /* Patient Swipe */,
 				94689AD314967E0600E1FCA6 /* About */,
-				94689AD214967E0100E1FCA6 /* C32 */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -622,7 +619,6 @@
 			children = (
 				94689AD414967E3600E1FCA6 /* HRC32ViewController.h */,
 				94689AD514967E3600E1FCA6 /* HRC32ViewController.m */,
-				94689AD614967E3600E1FCA6 /* HRC32ViewController.xib */,
 				94BB0319149688FA009B2FCC /* raw.html */,
 			);
 			name = C32;
@@ -784,6 +780,7 @@
 			children = (
 				94AEAE0714868BC200C005B2 /* HRRootViewController.h */,
 				94AEAE0814868BC200C005B2 /* HRRootViewController.m */,
+				94689AD214967E0100E1FCA6 /* C32 */,
 				94689AD114967DF500E1FCA6 /* Support */,
 				DD8BD9ED148D2B5A0090F729 /* Patient Summary */,
 				DD8BD9EE148D2B660090F729 /* Timeline */,
@@ -918,7 +915,6 @@
 				DD191741148FEE8E00B87AAF /* HRPatientSwipeViewController.xib in Resources */,
 				94689AC414964BE400E1FCA6 /* README.txt in Resources */,
 				94689AC514964BE400E1FCA6 /* release_notes.txt in Resources */,
-				94689AD814967E3600E1FCA6 /* HRC32ViewController.xib in Resources */,
 				94BB031A149688FA009B2FCC /* raw.html in Resources */,
 				94BB032D149BB393009B2FCC /* HRPasscodeWarningViewController.xib in Resources */,
 				9415152314AA3A7B009FF674 /* fail.png in Resources */,

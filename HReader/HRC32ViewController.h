@@ -12,6 +12,6 @@
 
 @property (retain, nonatomic) IBOutlet UIWebView *webView;
 
-- (IBAction)done:(id)sender;
+- (IBAction)done;
 
 @end

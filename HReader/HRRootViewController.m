@@ -25,11 +25,11 @@ static int HRRootViewControllerTitleContext;
 @property (nonatomic, retain) UIViewController *visibleViewController;
 @property (nonatomic, retain) UILabel *lastUpdatedLabel;
 - (void)showRawC32;
-- (void)privacyCheck;
 @end
 
 @implementation HRRootViewController
 
+@synthesize C32ButtonItem = __C32ButtonItem;
 @synthesize visibleViewController = __visibleViewController;
 @synthesize segmentedControl = __segmentedControl;
 @synthesize lastUpdatedLabel = __lastUpdatedLabel;
@@ -69,6 +69,7 @@ static int HRRootViewControllerTitleContext;
     self.segmentedControl = nil;
     self.lastUpdatedLabel = nil;
     self.visibleViewController = nil;
+    self.C32ButtonItem = nil;
     [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [obj removeObserver:self forKeyPath:@"title"];
     }];
@@ -79,11 +80,6 @@ static int HRRootViewControllerTitleContext;
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [TestFlight passCheckpoint:segue.identifier];
-}
-- (void)privacyCheck {
-//    HRPasscodeWarningViewController *warningViewController = [[HRPasscodeWarningViewController alloc] initWithNibName:nil bundle:nil];
-//    [self presentModalViewController:warningViewController animated:YES];
-//    [warningViewController release];
 }
 - (void)setVisibleViewController:(UIViewController *)controller {
     
@@ -137,13 +133,7 @@ static int HRRootViewControllerTitleContext;
         label.textColor = [UIColor grayColor];
         label.backgroundColor = [UIColor clearColor];
         UIBarButtonItem *labelItem = [[[UIBarButtonItem alloc] initWithCustomView:label] autorelease];
-        UIBarButtonItem *C32Item = [[[UIBarButtonItem alloc]
-                                     initWithTitle:@"C32 HTML"
-                                     style:UIBarButtonItemStyleBordered
-                                     target:self
-                                     action:@selector(showRawC32)]
-                                    autorelease];
-        self.toolbarItems = [NSArray arrayWithObjects:flexible, labelItem, flexible, C32Item, nil];
+        self.toolbarItems = [NSArray arrayWithObjects:flexible, labelItem, flexible, self.C32ButtonItem, nil];
         self.lastUpdatedLabel = label;
     }
     
@@ -183,6 +173,7 @@ static int HRRootViewControllerTitleContext;
     self.lastUpdatedLabel = nil;
     self.segmentedControl = nil;
     self.visibleViewController = nil;
+    self.C32ButtonItem = nil;
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
