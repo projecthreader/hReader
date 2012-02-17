@@ -201,7 +201,6 @@ static int HRRootViewControllerTitleContext;
     [self.visibleViewController viewDidDisappear:animated];
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
-//    return [self.visibleViewController shouldAutorotateToInterfaceOrientation:orientation];
     return UIInterfaceOrientationIsLandscape(orientation);
 }
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
