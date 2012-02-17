@@ -125,12 +125,16 @@ static int HRRootViewControllerTitleContext;
                                       target:nil
                                       action:nil]
                                      autorelease];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0 , 0.0, 500.0, 30.0)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0 , 0.0, 800.0, 30.0)];
         label.textAlignment = UITextAlignmentCenter;
         label.shadowColor = [UIColor whiteColor];
         label.shadowOffset = CGSizeMake(0.0, 1.0);
         label.font = [UIFont boldSystemFontOfSize:14.0];
-        label.textColor = [UIColor grayColor];
+        label.textColor = [UIColor
+                           colorWithRed:(107.0 / 255.0)
+                           green:(115.0 / 255.0)
+                           blue:(126.0 / 255.0)
+                           alpha:1.0];
         label.backgroundColor = [UIColor clearColor];
         UIBarButtonItem *labelItem = [[[UIBarButtonItem alloc] initWithCustomView:label] autorelease];
         self.toolbarItems = [NSArray arrayWithObjects:flexible, labelItem, flexible, self.C32ButtonItem, nil];
