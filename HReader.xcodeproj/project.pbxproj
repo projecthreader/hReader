@@ -82,7 +82,6 @@
 		945560D714BB89B400A3DC43 /* HREncounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560D614BB89B400A3DC43 /* HREncounter.m */; };
 		9464C5871476BDAE0076B991 /* Johnny_Smith_96.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */; };
 		9464C5881476BDAE0076B991 /* Johnny_Smith_96.html in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */; };
-		9464C58C1476CB4F0076B991 /* C32ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9464C58B1476CB4F0076B991 /* C32ViewController.m */; };
 		9467077314E3182E00ACEA67 /* HRPeakFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077214E3182D00ACEA67 /* HRPeakFlow.m */; };
 		9467077614E318ED00ACEA67 /* HRHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077514E318ED00ACEA67 /* HRHeight.m */; };
 		9467077914E31A6200ACEA67 /* HRBMI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077814E31A6200ACEA67 /* HRBMI.m */; };
@@ -231,8 +230,6 @@
 		945560D614BB89B400A3DC43 /* HREncounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HREncounter.m; sourceTree = "<group>"; };
 		9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Johnny_Smith_96.xml; sourceTree = "<group>"; };
 		9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Johnny_Smith_96.html; sourceTree = "<group>"; };
-		9464C58A1476CB4F0076B991 /* C32ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C32ViewController.h; sourceTree = "<group>"; };
-		9464C58B1476CB4F0076B991 /* C32ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = C32ViewController.m; sourceTree = "<group>"; };
 		9467077114E3182D00ACEA67 /* HRPeakFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPeakFlow.h; sourceTree = "<group>"; };
 		9467077214E3182D00ACEA67 /* HRPeakFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeakFlow.m; sourceTree = "<group>"; };
 		9467077414E318ED00ACEA67 /* HRHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRHeight.h; sourceTree = "<group>"; };
@@ -296,11 +293,11 @@
 		DD695D8414897C2200E4E2E1 /* HRMessagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRMessagesViewController.xib; sourceTree = "<group>"; };
 		DD7037B21490103300F58A83 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DD8BD9DA148D13910090F729 /* chevron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chevron.png; sourceTree = "<group>"; };
-		DD8BD9DD148D1D660090F729 /* UserImage-Smith-Henry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Henry.png"; sourceTree = "<group>"; };
-		DD8BD9DE148D1D660090F729 /* UserImage-Smith-Johnny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Johnny.png"; sourceTree = "<group>"; };
-		DD8BD9DF148D1D660090F729 /* UserImage-Smith-Molly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Molly.png"; sourceTree = "<group>"; };
-		DD8BD9E0148D1D660090F729 /* UserImage-Smith-Sarah.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Sarah.png"; sourceTree = "<group>"; };
-		DD8BD9E1148D1D660090F729 /* UserImage-Smith-Tom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Tom.png"; sourceTree = "<group>"; };
+		DD8BD9DD148D1D660090F729 /* UserImage-Smith-Henry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserImage-Smith-Henry.png"; path = "../UserImage-Smith-Henry.png"; sourceTree = "<group>"; };
+		DD8BD9DE148D1D660090F729 /* UserImage-Smith-Johnny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserImage-Smith-Johnny.png"; path = "../UserImage-Smith-Johnny.png"; sourceTree = "<group>"; };
+		DD8BD9DF148D1D660090F729 /* UserImage-Smith-Molly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserImage-Smith-Molly.png"; path = "../UserImage-Smith-Molly.png"; sourceTree = "<group>"; };
+		DD8BD9E0148D1D660090F729 /* UserImage-Smith-Sarah.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserImage-Smith-Sarah.png"; path = "../UserImage-Smith-Sarah.png"; sourceTree = "<group>"; };
+		DD8BD9E1148D1D660090F729 /* UserImage-Smith-Tom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserImage-Smith-Tom.png"; path = "../UserImage-Smith-Tom.png"; sourceTree = "<group>"; };
 		DD8BD9F1148D2BDC0090F729 /* HRConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -332,6 +329,21 @@
 			path = vendor/keychain;
 			sourceTree = "<group>";
 		};
+		3B19651414EE9DCB0045F827 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				941DB0BE1471B32D00A96B8B /* MainStoryboard_iPhone.storyboard */,
+				941DB0C11471B32D00A96B8B /* MainStoryboard_iPad.storyboard */,
+				941DB0BB1471B32D00A96B8B /* HRAppDelegate.h */,
+				941DB0BC1471B32D00A96B8B /* HRAppDelegate.m */,
+				94BB0324149BAF24009B2FCC /* HRPasscodeManager.h */,
+				94BB0325149BAF25009B2FCC /* HRPasscodeManager.m */,
+				94E3BB581472E0DE00E05D4D /* HRConfig.h */,
+				DD8BD9F1148D2BDC0090F729 /* HRConfig.m */,
+			);
+			name = Global;
+			sourceTree = "<group>";
+		};
 		3B5ADF6314E1C5D50025E069 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +351,11 @@
 				3BD16F0414E1C5B700F2249E /* HRMPatient.m */,
 				3BE9A40314E40EBB00F87B60 /* HRMEntry.h */,
 				3BE9A40414E40EBB00F87B60 /* HRMEntry.m */,
+				DD8BD9DD148D1D660090F729 /* UserImage-Smith-Henry.png */,
+				DD8BD9DE148D1D660090F729 /* UserImage-Smith-Johnny.png */,
+				DD8BD9DF148D1D660090F729 /* UserImage-Smith-Molly.png */,
+				DD8BD9E0148D1D660090F729 /* UserImage-Smith-Sarah.png */,
+				DD8BD9E1148D1D660090F729 /* UserImage-Smith-Tom.png */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -426,13 +443,10 @@
 		941DB0B21471B32D00A96B8B /* HReader */ = {
 			isa = PBXGroup;
 			children = (
+				3B19651414EE9DCB0045F827 /* Global */,
 				3B5ADF6314E1C5D50025E069 /* Core Data */,
-				94E3BB581472E0DE00E05D4D /* HRConfig.h */,
-				DD8BD9F1148D2BDC0090F729 /* HRConfig.m */,
 				9424C156147A9C95008BF5CE /* Categories */,
-				DD8BD9EC148D2B3C0090F729 /* Storyboards */,
 				DD7037B114900E8A00F58A83 /* Models */,
-				94E3BB531472C96200E05D4D /* App Delegate */,
 				947FCE4D14B4C7CB00C716FD /* Privacy Shield */,
 				DD8BD9EB148D2B270090F729 /* Root View */,
 				941DB0B31471B32D00A96B8B /* Supporting Files */,
@@ -501,7 +515,6 @@
 			isa = PBXGroup;
 			children = (
 				94026FB314B4A8A600F40185 /* timeline */,
-				94C5ECFB1472FFA2009FE38D /* C32 */,
 				944A2F2B1472C60600694816 /* Images */,
 			);
 			name = Resources;
@@ -512,9 +525,6 @@
 			children = (
 				942786D414C74AC30003190F /* Sparklines */,
 				DD124DAD148D3EF300E23A44 /* Doctor.png */,
-				DD8BD9E9148D1D8C0090F729 /* Mockups */,
-				DD8BD9E8148D1D800090F729 /* Backgrounds */,
-				DD8BD9E7148D1D6C0090F729 /* Family */,
 				DD8BD9DA148D13910090F729 /* chevron.png */,
 				947FCE4514B4C18600C716FD /* chevron-left.png */,
 				3BFE7A2D14DAE5910037738D /* Icon-72.png */,
@@ -572,15 +582,6 @@
 			path = vendor/KissXML/KissXML/Private;
 			sourceTree = "<group>";
 		};
-		9464C5891476BF250076B991 /* C32 Patient Record */ = {
-			isa = PBXGroup;
-			children = (
-				9464C58A1476CB4F0076B991 /* C32ViewController.h */,
-				9464C58B1476CB4F0076B991 /* C32ViewController.m */,
-			);
-			name = "C32 Patient Record";
-			sourceTree = "<group>";
-		};
 		94689ABC14964BBF00E1FCA6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -620,6 +621,8 @@
 				94689AD414967E3600E1FCA6 /* HRC32ViewController.h */,
 				94689AD514967E3600E1FCA6 /* HRC32ViewController.m */,
 				94BB0319149688FA009B2FCC /* raw.html */,
+				9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */,
+				9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */,
 			);
 			name = C32;
 			sourceTree = "<group>";
@@ -662,26 +665,6 @@
 			name = "Patient Summary";
 			sourceTree = "<group>";
 		};
-		94C5ECFB1472FFA2009FE38D /* C32 */ = {
-			isa = PBXGroup;
-			children = (
-				9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */,
-				9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */,
-			);
-			name = C32;
-			sourceTree = "<group>";
-		};
-		94E3BB531472C96200E05D4D /* App Delegate */ = {
-			isa = PBXGroup;
-			children = (
-				941DB0BB1471B32D00A96B8B /* HRAppDelegate.h */,
-				941DB0BC1471B32D00A96B8B /* HRAppDelegate.m */,
-				94BB0324149BAF24009B2FCC /* HRPasscodeManager.h */,
-				94BB0325149BAF25009B2FCC /* HRPasscodeManager.m */,
-			);
-			name = "App Delegate";
-			sourceTree = "<group>";
-		};
 		94E3BB541472C97600E05D4D /* Patient List */ = {
 			isa = PBXGroup;
 			children = (
@@ -698,7 +681,6 @@
 				94C5ECF31472F448009FE38D /* PatientDetailsTableViewController.h */,
 				94C5ECF41472F448009FE38D /* PatientDetailsTableViewController.m */,
 				94C5ECFA1472FF7A009FE38D /* Patient Summary */,
-				9464C5891476BF250076B991 /* C32 Patient Record */,
 			);
 			name = "Patient Details";
 			sourceTree = "<group>";
@@ -736,32 +718,6 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		DD8BD9E7148D1D6C0090F729 /* Family */ = {
-			isa = PBXGroup;
-			children = (
-				DD8BD9DD148D1D660090F729 /* UserImage-Smith-Henry.png */,
-				DD8BD9DE148D1D660090F729 /* UserImage-Smith-Johnny.png */,
-				DD8BD9DF148D1D660090F729 /* UserImage-Smith-Molly.png */,
-				DD8BD9E0148D1D660090F729 /* UserImage-Smith-Sarah.png */,
-				DD8BD9E1148D1D660090F729 /* UserImage-Smith-Tom.png */,
-			);
-			name = Family;
-			sourceTree = "<group>";
-		};
-		DD8BD9E8148D1D800090F729 /* Backgrounds */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Backgrounds;
-			sourceTree = "<group>";
-		};
-		DD8BD9E9148D1D8C0090F729 /* Mockups */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Mockups;
-			sourceTree = "<group>";
-		};
 		DD8BD9EA148D2AF00090F729 /* Old */ = {
 			isa = PBXGroup;
 			children = (
@@ -788,15 +744,6 @@
 				DD8BD9F0148D2B720090F729 /* Doctors */,
 			);
 			name = "Root View";
-			sourceTree = "<group>";
-		};
-		DD8BD9EC148D2B3C0090F729 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				941DB0BE1471B32D00A96B8B /* MainStoryboard_iPhone.storyboard */,
-				941DB0C11471B32D00A96B8B /* MainStoryboard_iPad.storyboard */,
-			);
-			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		DD8BD9ED148D2B5A0090F729 /* Patient Summary */ = {
@@ -993,7 +940,6 @@
 				941DB0C91471B32D00A96B8B /* HRDetailViewController.m in Sources */,
 				94E3BB511472C95800E05D4D /* PatientSummaryViewController.m in Sources */,
 				94C5ECF51472F448009FE38D /* PatientDetailsTableViewController.m in Sources */,
-				9464C58C1476CB4F0076B991 /* C32ViewController.m in Sources */,
 				94AEAE0414841CEB00C005B2 /* TimelineViewController.m in Sources */,
 				94AEAE0914868BC200C005B2 /* HRRootViewController.m in Sources */,
 				94AEAE10148690DA00C005B2 /* HRPatientSummaryViewController.m in Sources */,
