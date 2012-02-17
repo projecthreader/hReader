@@ -10,6 +10,10 @@
 		3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B04A55214E0692600AD91F9 /* SSKeychain.m */; };
 		3B04A56914E06A3A00AD91F9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B04A56814E06A3A00AD91F9 /* Security.framework */; };
 		3B19651B14EEA6200045F827 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651A14EEA6200045F827 /* Logo.png */; };
+		3B19652014EEAB970045F827 /* C32-Smith-Henry.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651C14EEAB970045F827 /* C32-Smith-Henry.html */; };
+		3B19652114EEAB970045F827 /* C32-Smith-Molly.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */; };
+		3B19652214EEAB970045F827 /* C32-Smith-Sarah.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */; };
+		3B19652314EEAB970045F827 /* C32-Smith-Tom.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651F14EEAB970045F827 /* C32-Smith-Tom.html */; };
 		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; };
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
 		3BD16EF614E1B5EE00F2249E /* GCManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16EE514E1B5EE00F2249E /* GCManagedObject.m */; };
@@ -80,8 +84,7 @@
 		945560D314BB892100A3DC43 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560CB14BB892100A3DC43 /* DDXMLElement.m */; };
 		945560D414BB892100A3DC43 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560CD14BB892100A3DC43 /* DDXMLNode.m */; };
 		945560D714BB89B400A3DC43 /* HREncounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560D614BB89B400A3DC43 /* HREncounter.m */; };
-		9464C5871476BDAE0076B991 /* Johnny_Smith_96.xml in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */; };
-		9464C5881476BDAE0076B991 /* Johnny_Smith_96.html in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */; };
+		9464C5881476BDAE0076B991 /* C32-Smith-Johnny.html in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5861476BDAE0076B991 /* C32-Smith-Johnny.html */; };
 		9467077314E3182E00ACEA67 /* HRPeakFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077214E3182D00ACEA67 /* HRPeakFlow.m */; };
 		9467077614E318ED00ACEA67 /* HRHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077514E318ED00ACEA67 /* HRHeight.m */; };
 		9467077914E31A6200ACEA67 /* HRBMI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077814E31A6200ACEA67 /* HRBMI.m */; };
@@ -102,7 +105,6 @@
 		94AEAE0914868BC200C005B2 /* HRRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0814868BC200C005B2 /* HRRootViewController.m */; };
 		94AEAE10148690DA00C005B2 /* HRPatientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0E148690DA00C005B2 /* HRPatientSummaryViewController.m */; };
 		94AEAE11148690DA00C005B2 /* HRPatientSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEAE0F148690DA00C005B2 /* HRPatientSummaryViewController.xib */; };
-		94BB031A149688FA009B2FCC /* raw.html in Resources */ = {isa = PBXBuildFile; fileRef = 94BB0319149688FA009B2FCC /* raw.html */; };
 		94BB031E14969675009B2FCC /* HRAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BB031D14969675009B2FCC /* HRAddress.m */; };
 		94BB0326149BAF25009B2FCC /* HRPasscodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BB0325149BAF25009B2FCC /* HRPasscodeManager.m */; };
 		94BB032C149BB393009B2FCC /* HRPasscodeWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BB032A149BB392009B2FCC /* HRPasscodeWarningViewController.m */; };
@@ -133,6 +135,10 @@
 		3B04A55214E0692600AD91F9 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		3B04A56814E06A3A00AD91F9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3B19651A14EEA6200045F827 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
+		3B19651C14EEAB970045F827 /* C32-Smith-Henry.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Henry.html"; sourceTree = "<group>"; };
+		3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Molly.html"; sourceTree = "<group>"; };
+		3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Sarah.html"; sourceTree = "<group>"; };
+		3B19651F14EEAB970045F827 /* C32-Smith-Tom.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Tom.html"; sourceTree = "<group>"; };
 		3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hReader.xcdatamodel; sourceTree = "<group>"; };
 		3BD16ED514E1B32400F2249E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3BD16EE414E1B5EE00F2249E /* GCManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCManagedObject.h; sourceTree = "<group>"; };
@@ -228,8 +234,7 @@
 		945560CF14BB892100A3DC43 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
 		945560D514BB89B400A3DC43 /* HREncounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HREncounter.h; sourceTree = "<group>"; };
 		945560D614BB89B400A3DC43 /* HREncounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HREncounter.m; sourceTree = "<group>"; };
-		9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Johnny_Smith_96.xml; sourceTree = "<group>"; };
-		9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Johnny_Smith_96.html; sourceTree = "<group>"; };
+		9464C5861476BDAE0076B991 /* C32-Smith-Johnny.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Johnny.html"; sourceTree = "<group>"; };
 		9467077114E3182D00ACEA67 /* HRPeakFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPeakFlow.h; sourceTree = "<group>"; };
 		9467077214E3182D00ACEA67 /* HRPeakFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeakFlow.m; sourceTree = "<group>"; };
 		9467077414E318ED00ACEA67 /* HRHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRHeight.h; sourceTree = "<group>"; };
@@ -263,7 +268,6 @@
 		94AEAE0D148690DA00C005B2 /* HRPatientSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPatientSummaryViewController.h; sourceTree = "<group>"; };
 		94AEAE0E148690DA00C005B2 /* HRPatientSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPatientSummaryViewController.m; sourceTree = "<group>"; };
 		94AEAE0F148690DA00C005B2 /* HRPatientSummaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPatientSummaryViewController.xib; sourceTree = "<group>"; };
-		94BB0319149688FA009B2FCC /* raw.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = raw.html; sourceTree = "<group>"; };
 		94BB031C14969675009B2FCC /* HRAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAddress.h; sourceTree = "<group>"; };
 		94BB031D14969675009B2FCC /* HRAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAddress.m; sourceTree = "<group>"; };
 		94BB0324149BAF24009B2FCC /* HRPasscodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPasscodeManager.h; sourceTree = "<group>"; };
@@ -293,11 +297,11 @@
 		DD695D8414897C2200E4E2E1 /* HRMessagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRMessagesViewController.xib; sourceTree = "<group>"; };
 		DD7037B21490103300F58A83 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DD8BD9DA148D13910090F729 /* chevron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chevron.png; sourceTree = "<group>"; };
-		DD8BD9DD148D1D660090F729 /* UserImage-Smith-Henry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserImage-Smith-Henry.png"; path = "../UserImage-Smith-Henry.png"; sourceTree = "<group>"; };
-		DD8BD9DE148D1D660090F729 /* UserImage-Smith-Johnny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserImage-Smith-Johnny.png"; path = "../UserImage-Smith-Johnny.png"; sourceTree = "<group>"; };
-		DD8BD9DF148D1D660090F729 /* UserImage-Smith-Molly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserImage-Smith-Molly.png"; path = "../UserImage-Smith-Molly.png"; sourceTree = "<group>"; };
-		DD8BD9E0148D1D660090F729 /* UserImage-Smith-Sarah.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserImage-Smith-Sarah.png"; path = "../UserImage-Smith-Sarah.png"; sourceTree = "<group>"; };
-		DD8BD9E1148D1D660090F729 /* UserImage-Smith-Tom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserImage-Smith-Tom.png"; path = "../UserImage-Smith-Tom.png"; sourceTree = "<group>"; };
+		DD8BD9DD148D1D660090F729 /* UserImage-Smith-Henry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Henry.png"; sourceTree = "<group>"; };
+		DD8BD9DE148D1D660090F729 /* UserImage-Smith-Johnny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Johnny.png"; sourceTree = "<group>"; };
+		DD8BD9DF148D1D660090F729 /* UserImage-Smith-Molly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Molly.png"; sourceTree = "<group>"; };
+		DD8BD9E0148D1D660090F729 /* UserImage-Smith-Sarah.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Sarah.png"; sourceTree = "<group>"; };
+		DD8BD9E1148D1D660090F729 /* UserImage-Smith-Tom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Tom.png"; sourceTree = "<group>"; };
 		DD8BD9F1148D2BDC0090F729 /* HRConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -357,6 +361,11 @@
 				DD8BD9DF148D1D660090F729 /* UserImage-Smith-Molly.png */,
 				DD8BD9E0148D1D660090F729 /* UserImage-Smith-Sarah.png */,
 				DD8BD9E1148D1D660090F729 /* UserImage-Smith-Tom.png */,
+				3B19651C14EEAB970045F827 /* C32-Smith-Henry.html */,
+				3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */,
+				3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */,
+				3B19651F14EEAB970045F827 /* C32-Smith-Tom.html */,
+				9464C5861476BDAE0076B991 /* C32-Smith-Johnny.html */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -619,9 +628,6 @@
 			children = (
 				94689AD414967E3600E1FCA6 /* HRC32ViewController.h */,
 				94689AD514967E3600E1FCA6 /* HRC32ViewController.m */,
-				94BB0319149688FA009B2FCC /* raw.html */,
-				9464C5851476BDAE0076B991 /* Johnny_Smith_96.xml */,
-				9464C5861476BDAE0076B991 /* Johnny_Smith_96.html */,
 			);
 			name = C32;
 			sourceTree = "<group>";
@@ -844,8 +850,7 @@
 				941DB0B71471B32D00A96B8B /* InfoPlist.strings in Resources */,
 				941DB0C01471B32D00A96B8B /* MainStoryboard_iPhone.storyboard in Resources */,
 				941DB0C31471B32D00A96B8B /* MainStoryboard_iPad.storyboard in Resources */,
-				9464C5871476BDAE0076B991 /* Johnny_Smith_96.xml in Resources */,
-				9464C5881476BDAE0076B991 /* Johnny_Smith_96.html in Resources */,
+				9464C5881476BDAE0076B991 /* C32-Smith-Johnny.html in Resources */,
 				94AEAE0514841CEB00C005B2 /* TimelineViewController.xib in Resources */,
 				94AEAE11148690DA00C005B2 /* HRPatientSummaryViewController.xib in Resources */,
 				DD695D7D1489439100E4E2E1 /* HRTimelineViewController.xib in Resources */,
@@ -861,7 +866,6 @@
 				DD191741148FEE8E00B87AAF /* HRPatientSwipeViewController.xib in Resources */,
 				94689AC414964BE400E1FCA6 /* README.txt in Resources */,
 				94689AC514964BE400E1FCA6 /* release_notes.txt in Resources */,
-				94BB031A149688FA009B2FCC /* raw.html in Resources */,
 				94BB032D149BB393009B2FCC /* HRPasscodeWarningViewController.xib in Resources */,
 				9415152314AA3A7B009FF674 /* fail.png in Resources */,
 				9415152414AA3A7B009FF674 /* win.png in Resources */,
@@ -907,6 +911,10 @@
 				3BE9A43114E42A3800F87B60 /* ts.json in Resources */,
 				9413C74914EC0B7800BFA521 /* HRPatientSwipeControl.xib in Resources */,
 				3B19651B14EEA6200045F827 /* Logo.png in Resources */,
+				3B19652014EEAB970045F827 /* C32-Smith-Henry.html in Resources */,
+				3B19652114EEAB970045F827 /* C32-Smith-Molly.html in Resources */,
+				3B19652214EEAB970045F827 /* C32-Smith-Sarah.html in Resources */,
+				3B19652314EEAB970045F827 /* C32-Smith-Tom.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

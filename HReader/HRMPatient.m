@@ -177,5 +177,9 @@ static HRMPatient *selectedPatient = nil;
     return data;
     
 }
+- (NSURL *)C32HTMLURL {
+    NSString *string = [NSString stringWithFormat:@"C32-%@-%@", self.lastName, self.firstName];
+    return [[NSBundle mainBundle] URLForResource:string withExtension:@"html"];
+}
 
 @end

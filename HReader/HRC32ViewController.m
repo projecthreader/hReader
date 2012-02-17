@@ -8,6 +8,8 @@
 
 #import "HRC32ViewController.h"
 
+#import "HRMPatient.h"
+
 @implementation HRC32ViewController
 
 @synthesize webView = __webView;
@@ -30,9 +32,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSURL *URL = [[NSBundle mainBundle] URLForResource:@"Johnny_Smith_96" withExtension:@"html"];
+    NSURL *URL = [[HRMPatient selectedPatient] C32HTMLURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    [self.webView loadRequest:request];   
+    [self.webView loadRequest:request];
 }
 - (void)viewDidUnload {
     [super viewDidUnload];
@@ -41,19 +43,11 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return YES;
 }
-    
-#pragma mark - web view methods
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSURL *URL = [[NSBundle mainBundle] URLForResource:@"Johnny_Smith_96" withExtension:@"xml"];
-    NSString *XMLString = [NSString stringWithContentsOfURL:URL encoding:NSUTF8StringEncoding error:nil];
-    NSString *replace = [NSString stringWithFormat:@"replaceXml('%@');", XMLString];
-    [webView stringByEvaluatingJavaScriptFromString:replace];
-}
 
 #pragma mark - button actions
 
 - (IBAction)done {
     [self dismissModalViewControllerAnimated:YES];
 }
+
 @end

@@ -48,11 +48,10 @@ typedef enum {
 + (void)setSelectedPatient:(HRMPatient *)patient;
 + (HRMPatient *)selectedPatient;
 
-// return XML representation of relationships
+// get fake data
 - (DDXMLElement *)timelineXMLDocument;
-
-// get patient image
 - (UIImage *)patientImage;
+- (NSURL *)C32HTMLURL;
 
 @end
 
