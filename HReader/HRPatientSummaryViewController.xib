@@ -3,12 +3,12 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1280</int>
 		<string key="IBDocument.SystemVersion">11D50b</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2177</string>
 		<string key="IBDocument.AppKitVersion">1138.32</string>
 		<string key="IBDocument.HIToolboxVersion">568.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">933</string>
+			<string key="NS.object.0">1173</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBUIScrollView</string>
@@ -37,6 +37,23 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
+					<object class="IBUIView" id="563337642">
+						<reference key="NSNextResponder" ref="766721923"/>
+						<int key="NSvFlags">266</int>
+						<string key="NSFrame">{{0, 660}, {1024, 100}}</string>
+						<reference key="NSSuperview" ref="766721923"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MQA</bytes>
+							<object class="NSColorSpace" key="NSCustomColorSpace" id="394926558">
+								<int key="NSID">2</int>
+							</object>
+						</object>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+					</object>
 					<object class="IBUIView" id="820384814">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
@@ -571,9 +588,7 @@
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
-							<object class="NSColorSpace" key="NSCustomColorSpace" id="394926558">
-								<int key="NSID">2</int>
-							</object>
+							<reference key="NSCustomColorSpace" ref="394926558"/>
 						</object>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
@@ -583,19 +598,29 @@
 						<string key="NSFrame">{{0, 200}, {1024, 460}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
+						<reference key="NSNextKeyView" ref="563337642"/>
 						<string key="NSReuseIdentifierKey">_NS:206</string>
-						<object class="NSColor" key="IBUIBackgroundColor" id="386023370">
-							<int key="NSColorSpace">10</int>
-							<object class="NSImage" key="NSImage">
-								<int key="NSImageFlags">549453824</int>
-								<string key="NSSize">{256, 256}</string>
-								<array class="NSMutableArray" key="NSReps">
-									<array>
-										<integer value="0"/>
-										<object class="NSBitmapImageRep">
-											<object class="NSData" key="NSTIFFRepresentation">
-												<bytes key="NS.bytes">TU0AKgAEAAh1eIH/cHJ5/3Bzff9vcXX/bnB3/3Byef9vcXX/bG51/2xudf9ucHf/cHN9/2dqdP9ucXv/
+						<bool key="IBUIAutoresizesSubviews">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+					</object>
+				</array>
+				<string key="NSFrame">{{0, 64}, {1024, 660}}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView" ref="820384814"/>
+				<object class="NSColor" key="IBUIBackgroundColor">
+					<int key="NSColorSpace">10</int>
+					<object class="NSImage" key="NSImage">
+						<int key="NSImageFlags">549453824</int>
+						<string key="NSSize">{256, 256}</string>
+						<array class="NSMutableArray" key="NSReps">
+							<array>
+								<integer value="0"/>
+								<object class="NSBitmapImageRep">
+									<object class="NSData" key="NSTIFFRepresentation">
+										<bytes key="NS.bytes">TU0AKgAEAAh1eIH/cHJ5/3Bzff9vcXX/bnB3/3Byef9vcXX/bG51/2xudf9ucHf/cHN9/2dqdP9ucXv/
 cHJ5/3Bzff9qbHP/b3F1/3N1fP9sbnX/am13/2ptd/9sbnX/am13/3l7gf91d33/bG95/2xudf9sb3n/
 bG95/2dqdP9qbXf/c3V8/3Bzff93eoP/bG51/3Bzff9sbnX/dXd9/2dqdP9qbHP/bG51/2psc/9sb3n/
 am13/2ptd/9sb3n/bG51/3V3ff97fYP/YmVu/25xe/9sb3n/c3Z//2psc/9zdXz/cHN9/2dqcf9qbHP/
@@ -4968,28 +4993,17 @@ cHN9/2xvef9wc33/AA0BAAADAAAAAQEAAAABAQADAAAAAQEAAAABAgADAAAABAAEAKoBAwADAAAAAQAB
 AAABBgADAAAAAQACAAABEQAEAAAAAgAEALIBEgADAAAAAQABAAABFQADAAAAAQAEAAABFgADAAAAAQCA
 AAABFwAEAAAAAgAEALoBHAADAAAAAQABAAABUgADAAAAAQABAAABUwADAAAABAAEAMIAAAAAAAgACAAI
 AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
-											</object>
-										</object>
-									</array>
-								</array>
-								<object class="NSColor" key="NSColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MCAwAA</bytes>
+									</object>
 								</object>
-							</object>
-							<string key="IBUIColorCocoaTouchKeyPath">scrollViewTexturedBackgroundColor</string>
+							</array>
+						</array>
+						<object class="NSColor" key="NSColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MCAwAA</bytes>
 						</object>
-						<bool key="IBUIAutoresizesSubviews">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<bool key="IBUIMultipleTouchEnabled">YES</bool>
-						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
-				</array>
-				<string key="NSFrame">{{0, 64}, {1024, 660}}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="820384814"/>
-				<reference key="IBUIBackgroundColor" ref="386023370"/>
+					<string key="IBUIColorCocoaTouchKeyPath">scrollViewTexturedBackgroundColor</string>
+				</object>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
 					<int key="IBUIStatusBarStyle">2</int>
@@ -6099,30 +6113,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">patientScrollView</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="865077382"/>
-					</object>
-					<int key="connectionID">185</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">patientHeaderView</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="820384814"/>
-					</object>
-					<int key="connectionID">187</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">patientSummaryView</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="185214576"/>
-					</object>
-					<int key="connectionID">186</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">patientName</string>
 						<reference key="source" ref="841351856"/>
 						<reference key="destination" ref="23078738"/>
@@ -6363,11 +6353,35 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">delegate</string>
-						<reference key="source" ref="865077382"/>
-						<reference key="destination" ref="841351856"/>
+						<string key="label">headerView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="820384814"/>
 					</object>
-					<int key="connectionID">234</int>
+					<int key="connectionID">402</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">scrollView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="865077382"/>
+					</object>
+					<int key="connectionID">403</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">contentView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="185214576"/>
+					</object>
+					<int key="connectionID">404</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">footerShadowView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="563337642"/>
+					</object>
+					<int key="connectionID">406</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -6395,6 +6409,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<array class="NSMutableArray" key="children">
 							<reference ref="865077382"/>
 							<reference ref="820384814"/>
+							<reference ref="563337642"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -6429,7 +6444,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<reference ref="801338792"/>
 						</array>
 						<reference key="parent" ref="766721923"/>
-						<string key="objectName">Patient Summary</string>
+						<string key="objectName">Header View</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">13</int>
@@ -6520,7 +6535,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<reference ref="789149610"/>
 						</array>
 						<reference key="parent" ref="0"/>
-						<string key="objectName">Patient Details</string>
+						<string key="objectName">Content View</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">199</int>
@@ -6922,6 +6937,12 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<reference key="object" ref="789149610"/>
 						<reference key="parent" ref="185214576"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">405</int>
+						<reference key="object" ref="563337642"/>
+						<reference key="parent" ref="766721923"/>
+						<string key="objectName">Footer Shadow View</string>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -7149,6 +7170,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				<string key="394.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="397.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="398.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="405.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="56.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<reference key="56.IBUserGuides" ref="0"/>
 				<string key="57.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -7157,7 +7179,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">401</int>
+			<int key="maxID">406</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -7168,22 +7190,22 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<string key="advanceDirectivesLabel">UILabel</string>
 						<string key="allergiesLabel">UILabel</string>
 						<string key="chronicConditionsLabel">UILabel</string>
+						<string key="contentView">UIView</string>
 						<string key="currentMedicationsDosageLabel">UILabel</string>
 						<string key="currentMedicationsLabel">UILabel</string>
 						<string key="diagnosisDateLabel">UILabel</string>
 						<string key="diagnosisLabel">UILabel</string>
 						<string key="dobLabel">UILabel</string>
 						<string key="followUpAppointmentLabel">UILabel</string>
+						<string key="footerShadowView">UIView</string>
 						<string key="functionalStatusDateLabel">UILabel</string>
 						<string key="functionalStatusProblemLabel">UILabel</string>
 						<string key="functionalStatusStatusLabel">UILabel</string>
 						<string key="functionalStatusTypeLabel">UILabel</string>
+						<string key="headerView">UIView</string>
 						<string key="immunizationsUpToDateLabel">UILabel</string>
 						<string key="medicationRefillLabel">UILabel</string>
-						<string key="patientHeaderView">UIView</string>
 						<string key="patientName">UILabel</string>
-						<string key="patientScrollView">UIScrollView</string>
-						<string key="patientSummaryView">UIView</string>
 						<string key="planOfCareLabel">UILabel</string>
 						<string key="pulseDateLabel">UILabel</string>
 						<string key="pulseImageView">UIImageView</string>
@@ -7194,6 +7216,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<string key="recentEncountersDateLabel">UILabel</string>
 						<string key="recentEncountersDescriptionLabel">UILabel</string>
 						<string key="recentEncountersTypeLabel">UILabel</string>
+						<string key="scrollView">UIScrollView</string>
 						<string key="upcomingEventsLabel">UILabel</string>
 						<string key="vital1View">UIView</string>
 						<string key="vital2View">UIView</string>
@@ -7211,6 +7234,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<object class="IBToOneOutletInfo" key="chronicConditionsLabel">
 							<string key="name">chronicConditionsLabel</string>
 							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="contentView">
+							<string key="name">contentView</string>
+							<string key="candidateClassName">UIView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="currentMedicationsDosageLabel">
 							<string key="name">currentMedicationsDosageLabel</string>
@@ -7236,6 +7263,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<string key="name">followUpAppointmentLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="footerShadowView">
+							<string key="name">footerShadowView</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="functionalStatusDateLabel">
 							<string key="name">functionalStatusDateLabel</string>
 							<string key="candidateClassName">UILabel</string>
@@ -7252,6 +7283,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<string key="name">functionalStatusTypeLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="headerView">
+							<string key="name">headerView</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="immunizationsUpToDateLabel">
 							<string key="name">immunizationsUpToDateLabel</string>
 							<string key="candidateClassName">UILabel</string>
@@ -7260,21 +7295,9 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<string key="name">medicationRefillLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="patientHeaderView">
-							<string key="name">patientHeaderView</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="patientName">
 							<string key="name">patientName</string>
 							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="patientScrollView">
-							<string key="name">patientScrollView</string>
-							<string key="candidateClassName">UIScrollView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="patientSummaryView">
-							<string key="name">patientSummaryView</string>
-							<string key="candidateClassName">UIView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="planOfCareLabel">
 							<string key="name">planOfCareLabel</string>
@@ -7316,6 +7339,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<string key="name">recentEncountersTypeLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="scrollView">
+							<string key="name">scrollView</string>
+							<string key="candidateClassName">UIScrollView</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="upcomingEventsLabel">
 							<string key="name">upcomingEventsLabel</string>
 							<string key="candidateClassName">UILabel</string>
@@ -7352,6 +7379,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 			<string key="NS.key.0">chevron.png</string>
 			<string key="NS.object.0">{25, 25}</string>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">933</string>
+		<string key="IBCocoaTouchPluginVersion">1173</string>
 	</data>
 </archive>

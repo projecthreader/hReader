@@ -10,11 +10,16 @@
 
 @class HRPatientSwipeViewController;
 
-@interface HRPatientSummaryViewController : UIViewController <UIScrollViewDelegate>
+@interface HRPatientSummaryViewController : UIViewController
 
-@property (retain, nonatomic) IBOutlet UIView *patientHeaderView;
-@property (retain, nonatomic) IBOutlet UIScrollView *patientScrollView;
-@property (retain, nonatomic) IBOutlet UIView *patientSummaryView;
+@property (retain, nonatomic) IBOutlet UIView *headerView;
+@property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, retain) IBOutlet UIView *contentView;
+@property (nonatomic, retain) IBOutlet UIView *footerShadowView;
+
+
+
+
 @property (retain, nonatomic) IBOutlet UILabel *patientName;
 
 @property (retain, nonatomic) IBOutlet UILabel *dobLabel;

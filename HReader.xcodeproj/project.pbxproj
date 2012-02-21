@@ -366,6 +366,11 @@
 				3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */,
 				3B19651F14EEAB970045F827 /* C32-Smith-Tom.html */,
 				9464C5861476BDAE0076B991 /* C32-Smith-Johnny.html */,
+				3BE9A42814E42A3800F87B60 /* hs.json */,
+				3BE9A42914E42A3800F87B60 /* js.json */,
+				3BE9A42A14E42A3800F87B60 /* ms.json */,
+				3BE9A42B14E42A3800F87B60 /* ss.json */,
+				3BE9A42C14E42A3800F87B60 /* ts.json */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -468,11 +473,6 @@
 		941DB0B31471B32D00A96B8B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3BE9A42814E42A3800F87B60 /* hs.json */,
-				3BE9A42914E42A3800F87B60 /* js.json */,
-				3BE9A42A14E42A3800F87B60 /* ms.json */,
-				3BE9A42B14E42A3800F87B60 /* ss.json */,
-				3BE9A42C14E42A3800F87B60 /* ts.json */,
 				941DB0B41471B32D00A96B8B /* HReader-Info.plist */,
 				941DB0B51471B32D00A96B8B /* InfoPlist.strings */,
 				941DB0B81471B32D00A96B8B /* main.m */,
