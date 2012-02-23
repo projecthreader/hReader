@@ -14,6 +14,7 @@
 		3B19652114EEAB970045F827 /* C32-Smith-Molly.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */; };
 		3B19652214EEAB970045F827 /* C32-Smith-Sarah.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */; };
 		3B19652314EEAB970045F827 /* C32-Smith-Tom.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651F14EEAB970045F827 /* C32-Smith-Tom.html */; };
+		3B3C919514F69F61005CD5C5 /* NSDate+HReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C919414F69F61005CD5C5 /* NSDate+HReaderAdditions.m */; };
 		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; };
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
 		3BD16EF614E1B5EE00F2249E /* GCManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16EE514E1B5EE00F2249E /* GCManagedObject.m */; };
@@ -139,6 +140,8 @@
 		3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Molly.html"; sourceTree = "<group>"; };
 		3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Sarah.html"; sourceTree = "<group>"; };
 		3B19651F14EEAB970045F827 /* C32-Smith-Tom.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Tom.html"; sourceTree = "<group>"; };
+		3B3C919314F69F61005CD5C5 /* NSDate+HReaderAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+HReaderAdditions.h"; sourceTree = "<group>"; };
+		3B3C919414F69F61005CD5C5 /* NSDate+HReaderAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+HReaderAdditions.m"; sourceTree = "<group>"; };
 		3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hReader.xcdatamodel; sourceTree = "<group>"; };
 		3BD16ED514E1B32400F2249E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3BD16EE414E1B5EE00F2249E /* GCManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCManagedObject.h; sourceTree = "<group>"; };
@@ -485,6 +488,8 @@
 		9424C156147A9C95008BF5CE /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				3B3C919314F69F61005CD5C5 /* NSDate+HReaderAdditions.h */,
+				3B3C919414F69F61005CD5C5 /* NSDate+HReaderAdditions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -988,6 +993,7 @@
 				9467077914E31A6200ACEA67 /* HRBMI.m in Sources */,
 				9467077C14E31CD400ACEA67 /* HRGlucose.m in Sources */,
 				9413C74614EC08AA00BFA521 /* HRPatientSwipeControl.m in Sources */,
+				3B3C919514F69F61005CD5C5 /* NSDate+HReaderAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

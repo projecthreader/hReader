@@ -24,7 +24,6 @@ static HRMPatient *selectedPatient = nil;
 @dynamic gender;
 @dynamic compositeName;
 @dynamic genderString;
-@dynamic dateOfBirthString;
 @dynamic entries;
 
 @dynamic encounters;
@@ -68,10 +67,10 @@ static HRMPatient *selectedPatient = nil;
     object = [dictionary objectForKey:@"gender"];
     if (object && [object isKindOfClass:[NSString class]]) {
         if ([object isEqualToString:@"M"]) {
-            patient.gender = [NSNumber numberWithUnsignedInteger:HRPatientGenderMale];
+            patient.gender = [NSNumber numberWithUnsignedInteger:HRMPatientGenderMale];
         }
         else if ([object isEqualToString:@"F"]) {
-            patient.gender = [NSNumber numberWithUnsignedInteger:HRPatientGenderFemale];
+            patient.gender = [NSNumber numberWithUnsignedInteger:HRMPatientGenderFemale];
         }
     }
     
@@ -134,26 +133,14 @@ static HRMPatient *selectedPatient = nil;
 - (NSString *)genderString {
     [self willAccessValueForKey:@"genderString"];
     NSString *gender = @"Unknown";
-    if ([self.gender unsignedIntegerValue] == HRPatientGenderMale) {
+    if ([self.gender unsignedIntegerValue] == HRMPatientGenderMale) {
         gender = @"Male";
     }
-    else if ([self.gender unsignedIntegerValue] == HRPatientGenderFemale) {
+    else if ([self.gender unsignedIntegerValue] == HRMPatientGenderFemale) {
         gender = @"Female";
     }
     [self didAccessValueForKey:@"genderString"];
     return gender;
-}
-- (NSString *)dateOfBirthString {
-    static NSDateFormatter *formatter = nil;
-    static dispatch_once_t token;
-    dispatch_once(&token, ^{
-        formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateStyle:NSDateFormatterLongStyle];
-    });
-    [self willAccessValueForKey:@"dateOfBirthString"];
-    NSString *string = [formatter stringFromDate:self.dateOfBirth];
-    [self didAccessValueForKey:@"dateOfBirthString"];
-    return string;
 }
 
 #pragma mark - object methods

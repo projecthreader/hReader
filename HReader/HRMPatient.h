@@ -9,9 +9,9 @@
 #import "GCManagedObject.h"
 
 typedef enum {
-    HRPatientGenderMale = 0,
-    HRPatientGenderFemale
-} HRPatientGender;
+    HRMPatientGenderMale = 0,
+    HRMPatientGenderFemale
+} HRMPatientGender;
 
 @class HRMEntry;
 @class DDXMLElement;
@@ -26,7 +26,6 @@ typedef enum {
 @property (nonatomic, retain) NSNumber *gender;
 @property (nonatomic, retain) NSString *genderString;
 @property (nonatomic, retain) NSDate *dateOfBirth;
-@property (nonatomic, retain) NSString *dateOfBirthString;
 @property (nonatomic, retain) NSSet *entries;
 
 @property (nonatomic, retain) NSArray *encounters;

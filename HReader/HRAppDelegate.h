@@ -13,7 +13,6 @@
 @property (strong, nonatomic) UIWindow *window;
 
 // access core data stores
-+ (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
 + (NSManagedObjectContext *)managedObjectContext;
 
 @end

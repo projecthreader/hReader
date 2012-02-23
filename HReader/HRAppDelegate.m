@@ -17,6 +17,7 @@
 #import "HRMPatient.h"
 
 @interface HRAppDelegate ()
++ (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
 - (void)presentPasscodeCreateController;
 - (void)presentPasscodeVerifyControllerIfNecessary;
 @end
@@ -32,12 +33,15 @@
     dispatch_once(&token, ^{
         NSManagedObjectModel *model = [NSManagedObjectModel mergedModelFromBundles:nil];
         coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
+        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 NSFileProtectionComplete, NSPersistentStoreFileProtectionKey,
+                                 nil];
         NSError *error = nil;
         NSPersistentStore *store = [coordinator
                                     addPersistentStoreWithType:NSInMemoryStoreType
                                     configuration:nil
                                     URL:nil
-                                    options:nil
+                                    options:options
                                     error:&error];
         NSAssert(store, @"Unable to add persistent store\n%@", error);
     });
@@ -129,8 +133,9 @@
             NSURL *URL = [[NSBundle mainBundle] URLForResource:obj withExtension:@"json"];
             NSData *data = [NSData dataWithContentsOfURL:URL];
             id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            /*HRMPatient *patient = */[HRMPatient instanceWithDictionary:object inContext:context];
-//            NSLog(@"%@", );
+            [HRMPatient instanceWithDictionary:object inContext:context];
+//            NSArray *a = [patient allergies];
+//            NSLog(@"%@", patient.allergies);
 //            [patient timelineXMLDocument];
             
         }];

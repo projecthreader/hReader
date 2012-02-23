@@ -9,12 +9,16 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "HRPatientSummaryViewController.h"
-#import "HRPatientSwipeViewController.h"
+#import "HRPatientSwipeControl.h"
 #import "HRRootViewController.h"
 #import "HRPatient.h"
+#import "HRMPatient.h"
 #import "HRAddress.h"
 #import "HRVitalView.h"
 #import "HRVital.h"
+#import "HRMEntry.h"
+
+#import "NSDate+HReaderAdditions.h"
 
 @interface HRPatientSummaryViewController ()
 - (void)cleanup;
@@ -72,14 +76,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Summary";
-        
-        // TODO: remove
-        HRPatientSwipeViewController *patientSwipeViewController = [[HRPatientSwipeViewController alloc] initWithNibName:nil bundle:nil];
-        [self addChildViewController:patientSwipeViewController];
-        patientSwipeViewController.patientsArray = [HRConfig patients];
-        [patientSwipeViewController release];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(patientChanged:) name:HRPatientDidChangeNotification object:nil];
     }
     return self;
 }
@@ -134,46 +130,100 @@
     self.footerShadowView = nil;
 }
 - (void)reloadData {
-    HRPatient *patient = [HRConfig selectedPatient];
-    self.patientName.text = [patient.name uppercaseString];
-    self.dobLabel.text = [patient dateOfBirthString];
-    self.allergiesLabel.text = [[patient.info objectForKey:@"allergies"] componentsJoinedByString:@"\n"];
-    self.recentConditionsLabel.text = [patient.info objectForKey:@"recent_condition"];
-    self.recentConditionsDateLabel.text = [patient.info objectForKey:@"recent_condition_date"];
-    self.chronicConditionsLabel.text = [[patient.info objectForKey:@"chronic_conditions"] componentsJoinedByString:@"\n"];
-    self.upcomingEventsLabel.text = [patient.info objectForKey:@"upcoming_events"];
-    self.planOfCareLabel.text = [patient.info objectForKey:@"plan_of_care"];
-    self.followUpAppointmentLabel.text = [patient.info objectForKey:@"follow_up_appointment"];
-    self.medicationRefillLabel.text = [patient.info objectForKey:@"medication_refill"];
-    self.recentEncountersDateLabel.text = [patient.info objectForKey:@"recent_encounters_date"];
-    self.recentEncountersTypeLabel.text = [patient.info objectForKey:@"recent_encounters_type"];
-    self.recentEncountersDescriptionLabel.text = [patient.info objectForKey:@"recent_encounters_description"];
-    self.immunizationsUpToDateLabel.text = [patient.info objectForKey:@"immunizations"];
-    self.pulseLabel.text = [patient.info objectForKey:@"pulse"];
-    self.pulseDateLabel.text = [patient.info objectForKey:@"pulse_date"];
-    self.pulseNormalLabel.text = [patient.info objectForKey:@"pulse_normal"];
-    self.currentMedicationsLabel.text = [[[patient.info objectForKey:@"medications"] allValues] componentsJoinedByString:@"\n"];
-    self.currentMedicationsDosageLabel.text = [[[patient.info objectForKey:@"medications"] allKeys] componentsJoinedByString:@"\n"];
-    self.functionalStatusDateLabel.text = [patient.info objectForKey:@"functional_status_date"];
-    self.functionalStatusProblemLabel.text = [patient.info objectForKey:@"functional_status_problem"];
-    self.functionalStatusStatusLabel.text = [patient.info objectForKey:@"functional_status_status"];
-    self.functionalStatusTypeLabel.text = [patient.info objectForKey:@"functional_status_type"];
-    self.diagnosisLabel.text = [patient.info objectForKey:@"diagnosis_results"];
-    self.diagnosisDateLabel.text = [patient.info objectForKey:@"diagnosis_date"];
-    self.pulseImageView.image = [patient.info objectForKey:@"pulse_sparklines"];
-    [self.vitalsViewsArray enumerateObjectsUsingBlock:^(HRVitalView *view, NSUInteger idx, BOOL *stop) {
-        if (idx < [[patient vitals] count]) {
-            HRVital *vital = [[patient vitals] objectAtIndex:idx];
-            HRVitalView *vitalView = [view.subviews lastObject];
-            vitalView.vital = vital;            
+    
+    {
+        
+        // these do not have meaningful data
+        self.currentMedicationsDosageLabel.text = nil;
+        self.immunizationsUpToDateLabel.text = @"Unknown";
+        
+        // these are not
+        HRMPatient *patient = [HRMPatient selectedPatient];
+        self.patientName.text = [[patient compositeName] uppercaseString];
+        self.dobLabel.text = [patient.dateOfBirth formattedDate];
+        
+        // allergies
+        NSArray *allergies = patient.allergies;
+        NSUInteger allergiesCount = [allergies count];
+        if (allergiesCount == 0) {
+            self.allergiesLabel.text = @"None";
         }
-    }];
+        else {
+            NSMutableString *allergiesString = [[[[allergies objectAtIndex:0] desc] mutableCopy] autorelease];
+            if (allergiesCount > 1) {
+                [allergiesString appendFormat:@", %lu more", (unsigned long)allergiesCount];
+            }
+            self.allergiesLabel.text = allergiesString;
+        }
+        
+        // medications
+        NSArray *medications = patient.medications;
+        NSUInteger medicationsCount = [medications count];
+        if (medicationsCount == 0) {
+            self.currentMedicationsLabel.text = @"None";
+        }
+        else {
+            medications = [medications subarrayWithRange:NSMakeRange(0, MIN(5, medicationsCount))];
+            self.currentMedicationsLabel.text = [[medications valueForKey:@"desc"] componentsJoinedByString:@"\n"];
+        }
+        
+        // encounters
+        NSSortDescriptor *encounterSort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+        NSArray *encounters = [patient.encounters sortedArrayUsingDescriptors:[NSArray arrayWithObject:encounterSort]];
+        HRMEntry *encounter = [encounters lastObject];
+        self.recentEncountersDateLabel.text = [encounter.date formattedDate];
+        self.recentEncountersDescriptionLabel.text = encounter.desc;
+        NSDictionary *codes = encounter.codes;
+        NSDictionary *codeType = [[codes allKeys] lastObject];
+        NSString *codeValues = [[codes objectForKey:codeType] componentsJoinedByString:@", "];
+        self.recentEncountersTypeLabel.text = [NSString stringWithFormat:@"%@ %@", codeType, codeValues];
+        
+    }
+    
+    {
+        HRPatient *patient = [HRConfig selectedPatient];
+        self.recentConditionsLabel.text = [patient.info objectForKey:@"recent_condition"];
+        self.recentConditionsDateLabel.text = [patient.info objectForKey:@"recent_condition_date"];
+        self.chronicConditionsLabel.text = [[patient.info objectForKey:@"chronic_conditions"] componentsJoinedByString:@"\n"];
+        self.upcomingEventsLabel.text = [patient.info objectForKey:@"upcoming_events"];
+        self.planOfCareLabel.text = [patient.info objectForKey:@"plan_of_care"];
+        self.followUpAppointmentLabel.text = [patient.info objectForKey:@"follow_up_appointment"];
+        self.medicationRefillLabel.text = [patient.info objectForKey:@"medication_refill"];
+        
+        
+        self.pulseLabel.text = [patient.info objectForKey:@"pulse"];
+        self.pulseDateLabel.text = [patient.info objectForKey:@"pulse_date"];
+        self.pulseNormalLabel.text = [patient.info objectForKey:@"pulse_normal"];
+        self.functionalStatusDateLabel.text = [patient.info objectForKey:@"functional_status_date"];
+        self.functionalStatusProblemLabel.text = [patient.info objectForKey:@"functional_status_problem"];
+        self.functionalStatusStatusLabel.text = [patient.info objectForKey:@"functional_status_status"];
+        self.functionalStatusTypeLabel.text = [patient.info objectForKey:@"functional_status_type"];
+        self.diagnosisLabel.text = [patient.info objectForKey:@"diagnosis_results"];
+        self.diagnosisDateLabel.text = [patient.info objectForKey:@"diagnosis_date"];
+        self.pulseImageView.image = [patient.info objectForKey:@"pulse_sparklines"];
+        [self.vitalsViewsArray enumerateObjectsUsingBlock:^(HRVitalView *view, NSUInteger idx, BOOL *stop) {
+            if (idx < [[patient vitals] count]) {
+                HRVital *vital = [[patient vitals] objectAtIndex:idx];
+                HRVitalView *vitalView = [view.subviews lastObject];
+                vitalView.vital = vital;            
+            }
+        }];
+    }
+    
 }
 
 #pragma mark - view methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // load patient swipe
+    HRPatientSwipeControl *swipe = [HRPatientSwipeControl
+                                    controlWithOwner:self
+                                    options:nil 
+                                    target:self
+                                    action:@selector(patientChanged:)];
+    [self.headerView addSubview:swipe];
     
     // configure scroll view
     CALayer *layer = self.contentView.layer;
@@ -237,11 +287,6 @@
      self.vital3View,
      nil];
     
-    //    [self.labelsArray setValue:[NSNumber numberWithDouble:0.0] forKeyPath:@"alpha"];
-    
-//    HRPatientSwipeViewController *patientSwipeViewController = (HRPatientSwipeViewController *)[self.childViewControllers objectAtIndex:0];
-//    patientSwipeViewController.selectedPatient = [HRConfig selectedPatient];
-//    [self.patientHeaderView addSubview:patientSwipeViewController.view];
     
     
     //    [self toggleViewShadow:YES];
@@ -303,14 +348,14 @@
 
 #pragma mark - notifications
 
-- (void)patientChanged:(NSNotification *)notif {
+- (void)patientChanged:(HRPatientSwipeControl *)control {
     [UIView
      animateWithDuration:UINavigationControllerHideShowBarDuration
      animations:^{
          [self.labelsArray setValue:[NSNumber numberWithDouble:0.0] forKey:@"alpha"];
-         [self reloadData];
      }
      completion:^(BOOL finished) {
+         [self reloadData];
          [UIView animateWithDuration:0.4 animations:^{
              [self.labelsArray setValue:[NSNumber numberWithDouble:1.0] forKey:@"alpha"];
          }];

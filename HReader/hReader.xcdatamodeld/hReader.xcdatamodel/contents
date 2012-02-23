@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="878" systemVersion="11D50b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1170" systemVersion="11D50b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="GCManagedObject" representedClassName="GCManagedObject" isAbstract="YES" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
@@ -17,7 +17,6 @@
     <entity name="HRMPatient" representedClassName="HRMPatient" parentEntity="GCManagedObject" syncable="YES">
         <attribute name="compositeName" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateOfBirth" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="dateOfBirthString" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
         <attribute name="ethnicity" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -26,33 +25,33 @@
         <attribute name="race" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HRMEntry" inverseName="patient" inverseEntity="HRMEntry" syncable="YES"/>
         <fetchedProperty name="allergies" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMPatient" predicateString="type == 1 AND patient == $FETCH_SOURCE"/>
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 1 AND patient == $FETCH_SOURCE"/>
         </fetchedProperty>
         <fetchedProperty name="conditions" optional="YES" syncable="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 0 AND patient == $FETCH_SOURCE"/>
         </fetchedProperty>
         <fetchedProperty name="encounters" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMPatient" predicateString="type == 2 AND patient == $FETCH_SOURCE"/>
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 2 AND patient == $FETCH_SOURCE"/>
         </fetchedProperty>
         <fetchedProperty name="immunizations" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMPatient" predicateString="type == 7 AND patient == $FETCH_SOURCE"/>
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 7 AND patient == $FETCH_SOURCE"/>
         </fetchedProperty>
         <fetchedProperty name="medications" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMPatient" predicateString="type == 3 AND patient == $FETCH_SOURCE"/>
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 3 AND patient == $FETCH_SOURCE"/>
         </fetchedProperty>
         <fetchedProperty name="procedures" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMPatient" predicateString="type == 4 AND patient == $FETCH_SOURCE"/>
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 4 AND patient == $FETCH_SOURCE"/>
         </fetchedProperty>
         <fetchedProperty name="results" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMPatient" predicateString="type == 5 AND patient == $FETCH_SOURCE"/>
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 5 AND patient == $FETCH_SOURCE"/>
         </fetchedProperty>
         <fetchedProperty name="vitalSigns" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMPatient" predicateString="type == 6 AND patient == $FETCH_SOURCE"/>
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 6 AND patient == $FETCH_SOURCE"/>
         </fetchedProperty>
     </entity>
     <elements>
         <element name="GCManagedObject" positionX="72" positionY="72" width="128" height="60"/>
         <element name="HRMEntry" positionX="-533" positionY="-159" width="128" height="150"/>
-        <element name="HRMPatient" positionX="70" positionY="207" width="128" height="329"/>
+        <element name="HRMPatient" positionX="70" positionY="207" width="128" height="314"/>
     </elements>
 </model>
