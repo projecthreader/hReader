@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRC32ViewController : UIViewController <UIWebViewDelegate>
+@interface HRC32ViewController : UIViewController
 
 @property (retain, nonatomic) IBOutlet UIWebView *webView;
 
