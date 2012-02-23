@@ -1,3 +1,8 @@
+# 2012-02-23
+
+- Added new swipe view to summary view
+- Started using PDS variables for summary view
+
 # 2012-02-17
 
 - Refactor C32 browser to use storyboarding
