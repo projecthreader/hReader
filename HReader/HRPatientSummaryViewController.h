@@ -18,13 +18,13 @@
 @property (nonatomic, retain) IBOutlet UIView *footerShadowView;
 
 
+@property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *labels;
 
 
 @property (retain, nonatomic) IBOutlet UILabel *patientName;
 
 @property (retain, nonatomic) IBOutlet UILabel *dobLabel;
 
-@property (retain, nonatomic) NSArray *labelsArray;
 @property (retain, nonatomic) NSArray *vitalsViewsArray;
 
 @property (retain, nonatomic) IBOutlet UILabel *allergiesLabel;

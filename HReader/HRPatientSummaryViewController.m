@@ -27,10 +27,11 @@
 
 @implementation HRPatientSummaryViewController
 
-@synthesize scrollView = __scrollView;
-@synthesize headerView = __headerView;
-@synthesize contentView = __contentView;
-@synthesize footerShadowView = __footerShadowView;
+@synthesize scrollView          = __scrollView;
+@synthesize headerView          = __headerView;
+@synthesize contentView         = __contentView;
+@synthesize footerShadowView    = __footerShadowView;
+@synthesize labels              = __labels;
 
 
 
@@ -38,7 +39,6 @@
 @synthesize patientName                         = __patientName;
 @synthesize dobLabel                            = __dobLabel;
 
-@synthesize labelsArray                         = __labelsArray;
 @synthesize vitalsViewsArray                    = __vitalsViewsArray;
 
 @synthesize allergiesLabel                      = __allergiesLabel;
@@ -84,14 +84,8 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    
-    
-    
     [__dobLabel release];
-    
-    [__labelsArray release];
     [__vitalsViewsArray release];
-    
     [__allergiesLabel release];
     [__rececentConditionsDateLabel release];
     [__recentConditionsLabel release];
@@ -120,14 +114,15 @@
     [__vital1View release];
     [__vital2View release];
     [__vital3View release];
+
     [super dealloc];
 }
 - (void)cleanup {
     self.scrollView = nil;
     self.headerView = nil;
     self.contentView = nil;
-    self.labelsArray = nil;
     self.footerShadowView = nil;
+    self.labels = nil;
 }
 - (void)reloadData {
     
@@ -252,42 +247,6 @@
     layer.shouldRasterize = YES;
     [self.view bringSubviewToFront:self.headerView];  
     
-    // save all labels in an array
-    self.labelsArray = 
-    [NSArray arrayWithObjects:
-     self.patientName, 
-     self.dobLabel,
-     self.allergiesLabel, 
-     self.recentConditionsDateLabel, 
-     self.recentConditionsLabel, 
-     self.chronicConditionsLabel, 
-     self.upcomingEventsLabel, 
-     self.planOfCareLabel, 
-     self.followUpAppointmentLabel, 
-     self.medicationRefillLabel, 
-     self.recentEncountersDateLabel, 
-     self.recentEncountersTypeLabel, 
-     self.recentEncountersDescriptionLabel, 
-     self.immunizationsUpToDateLabel, 
-     self.currentMedicationsLabel,
-     self.currentMedicationsDosageLabel, 
-     self.functionalStatusDateLabel, 
-     self.functionalStatusTypeLabel, 
-     self.functionalStatusProblemLabel, 
-     self.functionalStatusStatusLabel, 
-     self.pulseLabel, 
-     self.pulseDateLabel, 
-     self.pulseNormalLabel, 
-     self.advanceDirectivesLabel, 
-     self.diagnosisLabel, 
-     self.diagnosisDateLabel, 
-     self.pulseImageView,
-     self.vital1View,
-     self.vital2View,
-     self.vital3View,
-     nil];
-    
-    
     
     //    [self toggleViewShadow:YES];
     
@@ -304,7 +263,6 @@
 - (void)viewDidUnload {
     [super viewDidUnload];
     [self cleanup];
-    
     
     self.patientName = nil;
     [self setDobLabel:nil];
@@ -352,12 +310,12 @@
     [UIView
      animateWithDuration:UINavigationControllerHideShowBarDuration
      animations:^{
-         [self.labelsArray setValue:[NSNumber numberWithDouble:0.0] forKey:@"alpha"];
+         [self.labels setValue:[NSNumber numberWithDouble:0.0] forKey:@"alpha"];
      }
      completion:^(BOOL finished) {
          [self reloadData];
          [UIView animateWithDuration:0.4 animations:^{
-             [self.labelsArray setValue:[NSNumber numberWithDouble:1.0] forKey:@"alpha"];
+             [self.labels setValue:[NSNumber numberWithDouble:1.0] forKey:@"alpha"];
          }];
      }];
 }
