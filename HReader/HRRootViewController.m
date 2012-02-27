@@ -29,10 +29,10 @@ static int HRRootViewControllerTitleContext;
 
 @implementation HRRootViewController
 
-@synthesize C32ButtonItem = __C32ButtonItem;
-@synthesize visibleViewController = __visibleViewController;
-@synthesize segmentedControl = __segmentedControl;
-@synthesize lastUpdatedLabel = __lastUpdatedLabel;
+@synthesize C32ButtonItem           = __C32ButtonItem;
+@synthesize visibleViewController   = __visibleViewController;
+@synthesize segmentedControl        = __segmentedControl;
+@synthesize lastUpdatedLabel        = __lastUpdatedLabel;
 
 #pragma mark - object methods
 
@@ -55,6 +55,7 @@ static int HRRootViewControllerTitleContext;
         
         // register observers
         [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [obj didMoveToParentViewController:self];
             NSAssert([obj title], @"Child view controllers must have a title");
             [obj
              addObserver:self
