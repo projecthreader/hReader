@@ -1,3 +1,10 @@
+# 2012-02-27
+
+- Doctors view now setup to dynamically load providers
+- Converted doctors view to storyboard view controller
+- Ensure child view title is set on root view for when pushing onto the nav stack
+- Code cleanup and refactoring
+
 # 2012-02-23
 
 - Added new swipe view to summary view
