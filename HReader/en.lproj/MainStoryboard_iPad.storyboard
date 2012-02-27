@@ -63,34 +63,34 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="EMERGENCY ROOM" lineBreakMode="tailTruncation" minimumFontSize="10" id="lKh-Ph-BXX" userLabel="Emegency Room Label">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="EMERGENCY ROOM" lineBreakMode="tailTruncation" minimumFontSize="10" id="lKh-Ph-BXX" userLabel="Emegency Room Label">
                                 <rect key="frame" x="36" y="225" width="269" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="0KW-hb-MVm" id="lnB-gr-4WO"/>
+                                    <outletCollection property="gestureRecognizers" destination="q11-zu-Obj" id="OhK-zj-SBX"/>
                                 </connections>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Beth Israel Hospital" lineBreakMode="tailTruncation" minimumFontSize="10" id="Xh3-MG-xnw" userLabel="Emegency Room Hospital Label">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Beth Israel Hospital" lineBreakMode="tailTruncation" minimumFontSize="10" id="Xh3-MG-xnw" userLabel="Emegency Room Hospital Label">
                                 <rect key="frame" x="36" y="256" width="295" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="0KW-hb-MVm" id="jUp-Zk-rAS"/>
+                                    <outletCollection property="gestureRecognizers" destination="q11-zu-Obj" id="Z4V-Nd-YEb"/>
                                 </connections>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="148 Chestnut Street  Needham  (781) 453-3000" lineBreakMode="tailTruncation" numberOfLines="5" minimumFontSize="10" id="nxU-yG-Efi" userLabel="Emegency Room Hospital Address">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="148 Chestnut Street  Needham  (781) 453-3000" lineBreakMode="tailTruncation" numberOfLines="5" minimumFontSize="10" id="nxU-yG-Efi" userLabel="Emegency Room Hospital Address">
                                 <rect key="frame" x="36" y="282" width="295" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="0KW-hb-MVm" id="BFk-6y-3H4"/>
+                                    <outletCollection property="gestureRecognizers" destination="q11-zu-Obj" id="oJ1-nE-G9t"/>
                                 </connections>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Email" lineBreakMode="tailTruncation" minimumFontSize="10" id="RUj-zY-a6e" userLabel="Emegency Room Email">
@@ -105,7 +105,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="0KW-hb-MVm" appends="YES" id="8jy-5y-fa5"/>
+                                    <outletCollection property="gestureRecognizers" destination="q11-zu-Obj" appends="YES" id="pDE-eZ-eBv"/>
                                 </connections>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="chevron.png" id="b2h-eW-bjk" userLabel="Emegency Room Email Chevron">
@@ -333,12 +333,12 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="nameLabel" destination="cff-5F-SvT" id="4h9-4F-3bi"/>
-                        <outlet property="tapGesture" destination="0KW-hb-MVm" id="yDw-yZ-DA4"/>
+                        <outlet property="tapGesture" destination="q11-zu-Obj" id="mSB-uy-edS"/>
                     </connections>
                 </viewController>
-                <tapGestureRecognizer id="0KW-hb-MVm">
+                <tapGestureRecognizer id="q11-zu-Obj">
                     <connections>
-                        <segue destination="N5q-RQ-ax1" kind="push" id="KoT-2k-LFZ"/>
+                        <segue destination="N5q-RQ-ax1" kind="push" id="qDW-Je-D73"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
