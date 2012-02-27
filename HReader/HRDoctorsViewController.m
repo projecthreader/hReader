@@ -11,6 +11,7 @@
 #import "HRDoctorsViewController.h"
 #import "HRPatientSwipeControl.h"
 #import "HRMPatient.h"
+#import "HRProviderView.h"
 
 @interface HRDoctorsViewController ()
 - (void)reloadData;
@@ -21,6 +22,7 @@
 
 @synthesize nameLabel                   = __nameLabel;
 @synthesize tapGesture                  = __tapGesture;
+@synthesize providerViews               = __providerViews;
 
 #pragma mark - object methods
 
@@ -33,6 +35,7 @@
 }
 - (void)dealloc {
     [__nameLabel release];
+    [__providerViews release];
     [super dealloc];
 }
 
@@ -48,6 +51,14 @@
                                     target:self
                                     action:@selector(patientChanged:)];
     [self.view addSubview:swipe];
+    
+    UINib *nib = [UINib nibWithNibName:@"HRProviderView" bundle:nil];
+    [self.providerViews enumerateObjectsUsingBlock:^(HRProviderView *view, NSUInteger idx, BOOL *stop) {
+        view.backgroundColor = [UIColor clearColor];
+        HRProviderView *providerView = [[nib instantiateWithOwner:self options:nil] lastObject];
+        [view addSubview:providerView]; 
+    }];
+    
     
     // Doctor detail view
 
@@ -69,6 +80,7 @@
 }
 
 - (void)viewDidUnload {
+    [self setProviderViews:nil];
     [super viewDidUnload];
     self.nameLabel = nil;
 }

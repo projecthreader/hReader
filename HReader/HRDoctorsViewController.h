@@ -20,6 +20,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *nameLabel;
 @property (retain, nonatomic) IBOutlet UIGestureRecognizer *tapGesture;
 
+@property (retain, nonatomic) IBOutletCollection(UIView) NSArray *providerViews;
 
 //- (IBAction)showDoctor:(id)sender;
 //- (IBAction)hideDoctor:(id)sender;

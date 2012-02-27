@@ -79,6 +79,8 @@
 		942786E314C74AD50003190F /* Sparklines_normal-high_levels.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786DB14C74AD50003190F /* Sparklines_normal-high_levels.png */; };
 		942786E414C74AD50003190F /* Sparklines_varying_levels_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786DC14C74AD50003190F /* Sparklines_varying_levels_normal.png */; };
 		942786E514C74AD50003190F /* Sparklines_varying_levels.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786DD14C74AD50003190F /* Sparklines_varying_levels.png */; };
+		9452D7F414FC167200021E69 /* HRProviderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9452D7F314FC167200021E69 /* HRProviderView.xib */; };
+		9452D7F714FC16DF00021E69 /* HRProviderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9452D7F614FC16DF00021E69 /* HRProviderView.m */; };
 		945560D014BB892100A3DC43 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560C314BB892100A3DC43 /* DDXMLElementAdditions.m */; };
 		945560D114BB892100A3DC43 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560C614BB892100A3DC43 /* NSString+DDXML.m */; };
 		945560D214BB892100A3DC43 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560C914BB892100A3DC43 /* DDXMLDocument.m */; };
@@ -221,6 +223,9 @@
 		942786DB14C74AD50003190F /* Sparklines_normal-high_levels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sparklines_normal-high_levels.png"; sourceTree = "<group>"; };
 		942786DC14C74AD50003190F /* Sparklines_varying_levels_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparklines_varying_levels_normal.png; sourceTree = "<group>"; };
 		942786DD14C74AD50003190F /* Sparklines_varying_levels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparklines_varying_levels.png; sourceTree = "<group>"; };
+		9452D7F314FC167200021E69 /* HRProviderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRProviderView.xib; sourceTree = "<group>"; };
+		9452D7F514FC16DF00021E69 /* HRProviderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRProviderView.h; sourceTree = "<group>"; };
+		9452D7F614FC16DF00021E69 /* HRProviderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRProviderView.m; sourceTree = "<group>"; };
 		945560C214BB892100A3DC43 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
 		945560C314BB892100A3DC43 /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
 		945560C514BB892100A3DC43 /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
@@ -788,6 +793,9 @@
 				DD5597BE14897DE2006A0D1D /* HRDoctorsViewController.h */,
 				DD5597BF14897DE2006A0D1D /* HRDoctorsViewController.m */,
 				DD5597C014897DE2006A0D1D /* HRDoctorsViewController_old.xib */,
+				9452D7F514FC16DF00021E69 /* HRProviderView.h */,
+				9452D7F614FC16DF00021E69 /* HRProviderView.m */,
+				9452D7F314FC167200021E69 /* HRProviderView.xib */,
 			);
 			name = Doctors;
 			sourceTree = "<group>";
@@ -911,6 +919,7 @@
 				3B19652114EEAB970045F827 /* C32-Smith-Molly.html in Resources */,
 				3B19652214EEAB970045F827 /* C32-Smith-Sarah.html in Resources */,
 				3B19652314EEAB970045F827 /* C32-Smith-Tom.html in Resources */,
+				9452D7F414FC167200021E69 /* HRProviderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -984,6 +993,7 @@
 				9467077C14E31CD400ACEA67 /* HRGlucose.m in Sources */,
 				9413C74614EC08AA00BFA521 /* HRPatientSwipeControl.m in Sources */,
 				3B3C919514F69F61005CD5C5 /* NSDate+HReaderAdditions.m in Sources */,
+				9452D7F714FC16DF00021E69 /* HRProviderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
