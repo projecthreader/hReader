@@ -50,7 +50,7 @@ static int HRRootViewControllerTitleContext;
         [self addChildViewController:controller];
         controller = [[[HRMessagesViewController alloc] initWithNibName:nil bundle:nil] autorelease];
         [self addChildViewController:controller];
-        controller = [[[HRDoctorsViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+        controller = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil] instantiateViewControllerWithIdentifier:@"DoctorsViewController"];
         [self addChildViewController:controller];
         
         // register observers
@@ -86,16 +86,16 @@ static int HRRootViewControllerTitleContext;
 - (void)setVisibleViewController:(UIViewController *)controller {
 
     // tear down old view controller
-    [__visibleViewController viewWillDisappear:NO];
-    [__visibleViewController.view removeFromSuperview];
-    [__visibleViewController viewDidDisappear:NO];
-    __visibleViewController.view = nil; // not sure if this works yet
-    [__visibleViewController viewDidUnload]; // probably shouldn't call this method at all, ever
-    [__visibleViewController release];
+//    [__visibleViewController viewWillDisappear:NO];
+//    [__visibleViewController.view removeFromSuperview];
+//    [__visibleViewController viewDidDisappear:NO];
+//    __visibleViewController.view = nil; // not sure if this works yet
+//    [__visibleViewController viewDidUnload]; // probably shouldn't call this method at all, ever
+//    [__visibleViewController release];
     
     // capture new controller
     __visibleViewController = [controller retain];
-    UIView *view = __visibleViewController.view;
+    UIView *view = [__visibleViewController view];
     view.frame = self.view.bounds;
     view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     [__visibleViewController viewWillAppear:NO];
@@ -134,7 +134,7 @@ static int HRRootViewControllerTitleContext;
                                       target:nil
                                       action:nil]
                                      autorelease];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0 , 0.0, 800.0, 30.0)];
+        UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(0.0 , 0.0, 800.0, 30.0)] autorelease];
         label.textAlignment = UITextAlignmentCenter;
         label.shadowColor = [UIColor whiteColor];
         label.shadowOffset = CGSizeMake(0.0, 1.0);

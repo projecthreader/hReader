@@ -12,15 +12,17 @@
 
 @interface HRDoctorsViewController : UIViewController
 
-@property (retain, nonatomic) IBOutlet UIView *doctorDetailView;
-@property (retain, nonatomic) IBOutlet UIImageView *doctorImageView;
+//@property (retain, nonatomic) IBOutlet UIView *doctorDetailView;
+//@property (retain, nonatomic) IBOutlet UIImageView *doctorImageView;
 
-@property (retain, nonatomic) IBOutlet UIView *patientView;
+//@property (retain, nonatomic) IBOutlet UIView *patientView;
+
 @property (retain, nonatomic) IBOutlet UILabel *nameLabel;
+@property (retain, nonatomic) IBOutlet UIGestureRecognizer *tapGesture;
 
 
-- (IBAction)showDoctor:(id)sender;
-- (IBAction)hideDoctor:(id)sender;
+//- (IBAction)showDoctor:(id)sender;
+//- (IBAction)hideDoctor:(id)sender;
 
 
 @end

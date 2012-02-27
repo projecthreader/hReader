@@ -58,6 +58,7 @@
     self.layer.shadowOpacity = 0.35f;
     self.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
     self.layer.shadowRadius = 5.0f;
+    self.layer.shouldRasterize = YES;
     
     // load initial patients
     NSArray *patients = [HRMPatient patientsInContext:[HRAppDelegate managedObjectContext]];
