@@ -86,12 +86,12 @@ static int HRRootViewControllerTitleContext;
 - (void)setVisibleViewController:(UIViewController *)controller {
 
     // tear down old view controller
-//    [__visibleViewController viewWillDisappear:NO];
-//    [__visibleViewController.view removeFromSuperview];
-//    [__visibleViewController viewDidDisappear:NO];
-//    __visibleViewController.view = nil; // not sure if this works yet
-//    [__visibleViewController viewDidUnload]; // probably shouldn't call this method at all, ever
-//    [__visibleViewController release];
+    [__visibleViewController viewWillDisappear:NO];
+    [__visibleViewController.view removeFromSuperview];
+    [__visibleViewController viewDidDisappear:NO];
+    __visibleViewController.view = nil; // not sure if this works yet
+    [__visibleViewController viewDidUnload]; // probably shouldn't call this method at all, ever
+    [__visibleViewController release];
     
     // capture new controller
     __visibleViewController = [controller retain];

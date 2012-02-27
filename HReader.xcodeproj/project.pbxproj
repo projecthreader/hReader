@@ -113,9 +113,7 @@
 		94C5ECF51472F448009FE38D /* PatientDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C5ECF41472F448009FE38D /* PatientDetailsTableViewController.m */; };
 		94E3BB511472C95800E05D4D /* PatientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E3BB501472C95800E05D4D /* PatientSummaryViewController.m */; };
 		DD124DAE148D3EF300E23A44 /* Doctor.png in Resources */ = {isa = PBXBuildFile; fileRef = DD124DAD148D3EF300E23A44 /* Doctor.png */; };
-		DD19173B148FDDBD00B87AAF /* HRPatientSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD19173A148FDDBD00B87AAF /* HRPatientSwipeViewController.m */; };
 		DD19173F148FDEBB00B87AAF /* HRPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = DD19173E148FDEBB00B87AAF /* HRPatient.m */; };
-		DD191741148FEE8E00B87AAF /* HRPatientSwipeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD191740148FEE8E00B87AAF /* HRPatientSwipeViewController.xib */; };
 		DD5597C114897DE2006A0D1D /* HRDoctorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5597BF14897DE2006A0D1D /* HRDoctorsViewController.m */; };
 		DD5597C214897DE2006A0D1D /* HRDoctorsViewController_old.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5597C014897DE2006A0D1D /* HRDoctorsViewController_old.xib */; };
 		DD695D7C1489439100E4E2E1 /* HRTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD695D7A1489439100E4E2E1 /* HRTimelineViewController.m */; };
@@ -284,11 +282,8 @@
 		94E3BB501472C95800E05D4D /* PatientSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientSummaryViewController.m; sourceTree = "<group>"; };
 		94E3BB581472E0DE00E05D4D /* HRConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRConfig.h; sourceTree = "<group>"; };
 		DD124DAD148D3EF300E23A44 /* Doctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Doctor.png; sourceTree = "<group>"; };
-		DD191739148FDDBD00B87AAF /* HRPatientSwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPatientSwipeViewController.h; sourceTree = "<group>"; };
-		DD19173A148FDDBD00B87AAF /* HRPatientSwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPatientSwipeViewController.m; sourceTree = "<group>"; };
 		DD19173D148FDEBB00B87AAF /* HRPatient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPatient.h; sourceTree = "<group>"; };
 		DD19173E148FDEBB00B87AAF /* HRPatient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPatient.m; sourceTree = "<group>"; };
-		DD191740148FEE8E00B87AAF /* HRPatientSwipeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPatientSwipeViewController.xib; sourceTree = "<group>"; };
 		DD5597BE14897DE2006A0D1D /* HRDoctorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRDoctorsViewController.h; sourceTree = "<group>"; };
 		DD5597BF14897DE2006A0D1D /* HRDoctorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRDoctorsViewController.m; sourceTree = "<group>"; };
 		DD5597C014897DE2006A0D1D /* HRDoctorsViewController_old.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRDoctorsViewController_old.xib; sourceTree = "<group>"; };
@@ -698,9 +693,6 @@
 		DD7037B014900E5900F58A83 /* Patient Swipe */ = {
 			isa = PBXGroup;
 			children = (
-				DD191739148FDDBD00B87AAF /* HRPatientSwipeViewController.h */,
-				DD19173A148FDDBD00B87AAF /* HRPatientSwipeViewController.m */,
-				DD191740148FEE8E00B87AAF /* HRPatientSwipeViewController.xib */,
 				9413C74414EC08AA00BFA521 /* HRPatientSwipeControl.h */,
 				9413C74514EC08AA00BFA521 /* HRPatientSwipeControl.m */,
 				9413C74814EC0B7800BFA521 /* HRPatientSwipeControl.xib */,
@@ -868,7 +860,6 @@
 				DD8BD9E5148D1D660090F729 /* UserImage-Smith-Sarah.png in Resources */,
 				DD8BD9E6148D1D660090F729 /* UserImage-Smith-Tom.png in Resources */,
 				DD124DAE148D3EF300E23A44 /* Doctor.png in Resources */,
-				DD191741148FEE8E00B87AAF /* HRPatientSwipeViewController.xib in Resources */,
 				94689AC414964BE400E1FCA6 /* README.txt in Resources */,
 				94689AC514964BE400E1FCA6 /* release_notes.txt in Resources */,
 				94BB032D149BB393009B2FCC /* HRPasscodeWarningViewController.xib in Resources */,
@@ -960,7 +951,6 @@
 				DD695D8514897C2200E4E2E1 /* HRMessagesViewController.m in Sources */,
 				DD5597C114897DE2006A0D1D /* HRDoctorsViewController.m in Sources */,
 				DD8BD9F2148D2BDC0090F729 /* HRConfig.m in Sources */,
-				DD19173B148FDDBD00B87AAF /* HRPatientSwipeViewController.m in Sources */,
 				DD19173F148FDEBB00B87AAF /* HRPatient.m in Sources */,
 				94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */,
 				94689AD714967E3600E1FCA6 /* HRC32ViewController.m in Sources */,

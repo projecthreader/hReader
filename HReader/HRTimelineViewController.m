@@ -7,7 +7,6 @@
 //
 
 #import "HRTimelineViewController.h"
-#import "HRPatientSwipeViewController.h"
 #import "HRMPatient.h"
 #import "HRPatientSwipeControl.h"
 

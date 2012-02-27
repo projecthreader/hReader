@@ -9,7 +9,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "HRMessagesViewController.h"
-#import "HRPatientSwipeViewController.h"
 #import "HRMessage.h"
 #import "HRPatientSwipeControl.h"
 
