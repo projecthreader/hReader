@@ -66,26 +66,38 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="EMERGENCY ROOM" lineBreakMode="tailTruncation" minimumFontSize="10" id="lKh-Ph-BXX" userLabel="Emegency Room Label">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="EMERGENCY ROOM" lineBreakMode="tailTruncation" minimumFontSize="10" id="lKh-Ph-BXX" userLabel="Emegency Room Label">
                                 <rect key="frame" x="36" y="225" width="269" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="xHG-Bm-bhe" appends="YES" id="Fk3-1s-UGk"/>
+                                </connections>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Beth Israel Hospital" lineBreakMode="tailTruncation" minimumFontSize="10" id="Xh3-MG-xnw" userLabel="Emegency Room Hospital Label">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Beth Israel Hospital" lineBreakMode="tailTruncation" minimumFontSize="10" id="Xh3-MG-xnw" userLabel="Emegency Room Hospital Label">
                                 <rect key="frame" x="36" y="256" width="295" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="xHG-Bm-bhe" appends="YES" id="CwU-fW-9Ma"/>
+                                </connections>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="148 Chestnut Street  Needham  (781) 453-3000" lineBreakMode="tailTruncation" numberOfLines="5" minimumFontSize="10" id="nxU-yG-Efi" userLabel="Emegency Room Hospital Address">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="148 Chestnut Street  Needham  (781) 453-3000" lineBreakMode="tailTruncation" numberOfLines="5" minimumFontSize="10" id="nxU-yG-Efi" userLabel="Emegency Room Hospital Address">
                                 <rect key="frame" x="36" y="282" width="295" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="xHG-Bm-bhe" appends="YES" id="dFz-Yp-TUu"/>
+                                </connections>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Email" lineBreakMode="tailTruncation" minimumFontSize="10" id="RUj-zY-a6e" userLabel="Emegency Room Email">
                                 <rect key="frame" x="36" y="329" width="35" height="21"/>
@@ -94,7 +106,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="chevron.png" id="HMF-lg-bqD" userLabel="Emegency Room Chevron">
+                            <imageView opaque="NO" clipsSubviews="YES" contentMode="center" image="chevron.png" id="HMF-lg-bqD" userLabel="Emegency Room Chevron">
                                 <rect key="frame" x="313" y="225" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <gestureRecognizers/>
@@ -108,21 +120,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="RADIOLOGIST" lineBreakMode="tailTruncation" minimumFontSize="10" id="tag-6w-c9w" userLabel="Emegency Room Label">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="RADIOLOGIST" lineBreakMode="tailTruncation" minimumFontSize="10" id="tag-6w-c9w" userLabel="Emegency Room Label">
                                 <rect key="frame" x="365" y="446" width="269" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Dr. Xavier Rand, MD" lineBreakMode="tailTruncation" minimumFontSize="10" id="srf-57-lBA" userLabel="Emegency Room Hospital Label">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Dr. Xavier Rand, MD" lineBreakMode="tailTruncation" minimumFontSize="10" id="srf-57-lBA" userLabel="Emegency Room Hospital Label">
                                 <rect key="frame" x="365" y="477" width="295" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="800 Washington Street  Boston  (617) 636-5873" lineBreakMode="tailTruncation" numberOfLines="5" minimumFontSize="10" id="qcF-01-Y6n" userLabel="Emegency Room Hospital Address">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="800 Washington Street  Boston  (617) 636-5873" lineBreakMode="tailTruncation" numberOfLines="5" minimumFontSize="10" id="qcF-01-Y6n" userLabel="Emegency Room Hospital Address">
                                 <rect key="frame" x="365" y="503" width="295" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -136,7 +148,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="chevron.png" id="5uK-5X-G37" userLabel="Emegency Room Chevron">
+                            <imageView opaque="NO" clipsSubviews="YES" contentMode="center" image="chevron.png" id="5uK-5X-G37" userLabel="Emegency Room Chevron">
                                 <rect key="frame" x="642" y="446" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
@@ -149,21 +161,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ONCOLOGIST" lineBreakMode="tailTruncation" minimumFontSize="10" id="Ai0-bL-kTC" userLabel="Emegency Room Label">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="ONCOLOGIST" lineBreakMode="tailTruncation" minimumFontSize="10" id="Ai0-bL-kTC" userLabel="Emegency Room Label">
                                 <rect key="frame" x="694" y="446" width="269" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Dr. Cornelius Fields, MD" lineBreakMode="tailTruncation" minimumFontSize="10" id="IKE-Ch-cEB" userLabel="Emegency Room Hospital Label">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Dr. Cornelius Fields, MD" lineBreakMode="tailTruncation" minimumFontSize="10" id="IKE-Ch-cEB" userLabel="Emegency Room Hospital Label">
                                 <rect key="frame" x="694" y="477" width="295" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="55 Fruit Street  Boston  (617) 643-2575" lineBreakMode="tailTruncation" numberOfLines="5" minimumFontSize="10" id="xfp-Au-5u1" userLabel="Emegency Room Hospital Address">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="55 Fruit Street  Boston  (617) 643-2575" lineBreakMode="tailTruncation" numberOfLines="5" minimumFontSize="10" id="xfp-Au-5u1" userLabel="Emegency Room Hospital Address">
                                 <rect key="frame" x="694" y="503" width="295" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -177,7 +189,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="chevron.png" id="fSQ-PJ-UBO" userLabel="Emegency Room Chevron">
+                            <imageView opaque="NO" clipsSubviews="YES" contentMode="center" image="chevron.png" id="fSQ-PJ-UBO" userLabel="Emegency Room Chevron">
                                 <rect key="frame" x="971" y="446" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
@@ -190,21 +202,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PRIMARY CARE PHYSICIAN" lineBreakMode="tailTruncation" minimumFontSize="10" id="VUM-4R-EqU" userLabel="Emegency Room Label">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="PRIMARY CARE PHYSICIAN" lineBreakMode="tailTruncation" minimumFontSize="10" id="VUM-4R-EqU" userLabel="Emegency Room Label">
                                 <rect key="frame" x="365" y="225" width="270" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Dr. Crystal Johansen" lineBreakMode="tailTruncation" minimumFontSize="10" id="nlw-AV-H5E" userLabel="Emegency Room Hospital Label">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Dr. Crystal Johansen" lineBreakMode="tailTruncation" minimumFontSize="10" id="nlw-AV-H5E" userLabel="Emegency Room Hospital Label">
                                 <rect key="frame" x="365" y="256" width="295" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="44 Binney Street  Boston  (617) 632-2595" lineBreakMode="tailTruncation" numberOfLines="5" minimumFontSize="10" id="qS3-Ar-oWR" userLabel="Emegency Room Hospital Address">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="44 Binney Street  Boston  (617) 632-2595" lineBreakMode="tailTruncation" numberOfLines="5" minimumFontSize="10" id="qS3-Ar-oWR" userLabel="Emegency Room Hospital Address">
                                 <rect key="frame" x="365" y="282" width="295" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -218,7 +230,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="chevron.png" id="Sgi-Ub-r6L" userLabel="Emegency Room Chevron">
+                            <imageView opaque="NO" clipsSubviews="YES" contentMode="center" image="chevron.png" id="Sgi-Ub-r6L" userLabel="Emegency Room Chevron">
                                 <rect key="frame" x="642" y="225" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
@@ -231,21 +243,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="DERMATOLOGIST" lineBreakMode="tailTruncation" minimumFontSize="10" id="qOs-lv-ehT" userLabel="Emegency Room Label">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="DERMATOLOGIST" lineBreakMode="tailTruncation" minimumFontSize="10" id="qOs-lv-ehT" userLabel="Emegency Room Label">
                                 <rect key="frame" x="694" y="225" width="270" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Dr. Henry Fails, MD" lineBreakMode="tailTruncation" minimumFontSize="10" id="ix1-Mt-ByI" userLabel="Emegency Room Hospital Label">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Dr. Henry Fails, MD" lineBreakMode="tailTruncation" minimumFontSize="10" id="ix1-Mt-ByI" userLabel="Emegency Room Hospital Label">
                                 <rect key="frame" x="694" y="256" width="295" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="750 Washington Street  Boston, MA  (617) 636-5604" lineBreakMode="tailTruncation" numberOfLines="5" minimumFontSize="10" id="YfC-iz-FA8" userLabel="Emegency Room Hospital Address">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="750 Washington Street  Boston, MA  (617) 636-5604" lineBreakMode="tailTruncation" numberOfLines="5" minimumFontSize="10" id="YfC-iz-FA8" userLabel="Emegency Room Hospital Address">
                                 <rect key="frame" x="694" y="282" width="295" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -259,7 +271,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="chevron.png" id="tfd-t7-Di0" userLabel="Emegency Room Chevron">
+                            <imageView opaque="NO" clipsSubviews="YES" contentMode="center" image="chevron.png" id="tfd-t7-Di0" userLabel="Emegency Room Chevron">
                                 <rect key="frame" x="971" y="225" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
@@ -267,8 +279,8 @@
                                 <rect key="frame" x="725" y="327" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Patient Name Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="cff-5F-SvT">
-                                <rect key="frame" x="215" y="15" width="394" height="34"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="JOHNNY SMITH" lineBreakMode="tailTruncation" minimumFontSize="10" id="cff-5F-SvT" userLabel="Patient Name Label">
+                                <rect key="frame" x="215" y="15" width="394" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -280,21 +292,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="HEMATOLOGIST" lineBreakMode="tailTruncation" minimumFontSize="10" id="vE1-KN-a9b" userLabel="Emegency Room Label">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="HEMATOLOGIST" lineBreakMode="tailTruncation" minimumFontSize="10" id="vE1-KN-a9b" userLabel="Emegency Room Label">
                                 <rect key="frame" x="36" y="446" width="269" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Dr. Brody Hertz, MD" lineBreakMode="tailTruncation" minimumFontSize="10" id="iOr-cg-ZTg" userLabel="Emegency Room Hospital Label">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Dr. Brody Hertz, MD" lineBreakMode="tailTruncation" minimumFontSize="10" id="iOr-cg-ZTg" userLabel="Emegency Room Hospital Label">
                                 <rect key="frame" x="36" y="477" width="295" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="330 Brookline Avenue  Boston  (617) 632-8696" lineBreakMode="tailTruncation" numberOfLines="5" minimumFontSize="10" id="hMJ-aK-LZD" userLabel="Emegency Room Hospital Address">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="330 Brookline Avenue  Boston  (617) 632-8696" lineBreakMode="tailTruncation" numberOfLines="5" minimumFontSize="10" id="hMJ-aK-LZD" userLabel="Emegency Room Hospital Address">
                                 <rect key="frame" x="36" y="503" width="295" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -308,7 +320,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" image="chevron.png" id="jpQ-Np-d5U" userLabel="Emegency Room Chevron">
+                            <imageView opaque="NO" clipsSubviews="YES" contentMode="center" image="chevron.png" id="jpQ-Np-d5U" userLabel="Emegency Room Chevron">
                                 <rect key="frame" x="313" y="446" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
@@ -318,13 +330,39 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="cff-5F-SvT" id="drf-VW-nUB"/>
+                        <outlet property="tapGesture" destination="xHG-Bm-bhe" id="wtT-4a-nkI"/>
+                    </connections>
                 </viewController>
+                <tapGestureRecognizer id="xHG-Bm-bhe">
+                    <connections>
+                        <segue destination="28I-kC-fWZ" kind="push" id="lhW-SY-1aJ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-492" y="769"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="kqv-Y6-FZA">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2bV-oZ-VsM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="28I-kC-fWZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d4u-pX-sal">
+                        <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8pd-68-BJL"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="617" y="769"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Hjn-UJ-WJX">
