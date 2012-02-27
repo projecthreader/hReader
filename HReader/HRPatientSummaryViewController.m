@@ -160,6 +160,7 @@
         else {
             medications = [medications subarrayWithRange:NSMakeRange(0, MIN(5, medicationsCount))];
             self.currentMedicationsLabel.text = [[medications valueForKey:@"desc"] componentsJoinedByString:@"\n"];
+            [self.currentMedicationsLabel sizeToFit];
         }
         
         // encounters
