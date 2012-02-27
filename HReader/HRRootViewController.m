@@ -84,7 +84,7 @@ static int HRRootViewControllerTitleContext;
     [TestFlight passCheckpoint:segue.identifier];
 }
 - (void)setVisibleViewController:(UIViewController *)controller {
-    
+
     // tear down old view controller
     [__visibleViewController viewWillDisappear:NO];
     [__visibleViewController.view removeFromSuperview];
@@ -102,6 +102,8 @@ static int HRRootViewControllerTitleContext;
     [self.view addSubview:view];
     [__visibleViewController viewDidDisappear:NO];
     
+    self.title = __visibleViewController.title;
+    
     // TestFlight
     [TestFlight passCheckpoint:[NSString stringWithFormat:@"Navigation - %@", __visibleViewController.title]];
     
@@ -114,6 +116,9 @@ static int HRRootViewControllerTitleContext;
         UIViewController *controller = (id)object;
         NSUInteger index = [self.childViewControllers indexOfObject:controller];
         [self.segmentedControl setTitle:controller.title forSegmentAtIndex:index];
+        if (controller == self.visibleViewController) {
+            self.title = controller.title;
+        }
     }
 }
 
