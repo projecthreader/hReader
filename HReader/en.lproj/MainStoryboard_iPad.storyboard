@@ -276,8 +276,8 @@
                                 <rect key="frame" x="725" y="327" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="JOHNNY SMITH" lineBreakMode="tailTruncation" minimumFontSize="10" id="cff-5F-SvT">
-                                <rect key="frame" x="224" y="15" width="394" height="34"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Patient Name Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="cff-5F-SvT">
+                                <rect key="frame" x="215" y="15" width="394" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

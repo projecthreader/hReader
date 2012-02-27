@@ -20,7 +20,7 @@
 @implementation HRDoctorsViewController
 
 @synthesize nameLabel                   = __nameLabel;
-@synthesize tapGesture;
+@synthesize tapGesture                  = __tapGesture;
 
 #pragma mark - object methods
 
@@ -119,7 +119,7 @@
 
 - (void)reloadData {
     HRMPatient *patient = [HRMPatient selectedPatient];
-    self.nameLabel.text = [patient compositeName];
+    self.nameLabel.text = [[patient compositeName] uppercaseString];
 }
 
 @end
