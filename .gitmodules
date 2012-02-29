@@ -4,3 +4,6 @@
 [submodule "vendor/guicocoa-common-code"]
 	path = vendor/guicocoa-common-code
 	url = https://github.com/guicocoa/common-code-ios.git
+[submodule "vendor/Sparklines"]
+	path = vendor/Sparklines
+	url = https://github.com/abelsey/Sparklines.git
