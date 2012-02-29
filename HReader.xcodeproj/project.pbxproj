@@ -114,6 +114,7 @@
 		94BB032D149BB393009B2FCC /* HRPasscodeWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BB032B149BB393009B2FCC /* HRPasscodeWarningViewController.xib */; };
 		94C5ECF51472F448009FE38D /* PatientDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C5ECF41472F448009FE38D /* PatientDetailsTableViewController.m */; };
 		94E3BB511472C95800E05D4D /* PatientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E3BB501472C95800E05D4D /* PatientSummaryViewController.m */; };
+		94EBD55114FE7A6200A3AF66 /* ASBSparkLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EBD55014FE7A6200A3AF66 /* ASBSparkLineView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DD124DAE148D3EF300E23A44 /* Doctor.png in Resources */ = {isa = PBXBuildFile; fileRef = DD124DAD148D3EF300E23A44 /* Doctor.png */; };
 		DD19173F148FDEBB00B87AAF /* HRPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = DD19173E148FDEBB00B87AAF /* HRPatient.m */; };
 		DD5597C114897DE2006A0D1D /* HRDoctorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5597BF14897DE2006A0D1D /* HRDoctorsViewController.m */; };
@@ -286,6 +287,8 @@
 		94E3BB4F1472C95800E05D4D /* PatientSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientSummaryViewController.h; sourceTree = "<group>"; };
 		94E3BB501472C95800E05D4D /* PatientSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientSummaryViewController.m; sourceTree = "<group>"; };
 		94E3BB581472E0DE00E05D4D /* HRConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRConfig.h; sourceTree = "<group>"; };
+		94EBD54F14FE7A6200A3AF66 /* ASBSparkLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASBSparkLineView.h; path = vendor/Sparklines/Sparklines/ASBSparkLineView.h; sourceTree = "<group>"; };
+		94EBD55014FE7A6200A3AF66 /* ASBSparkLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASBSparkLineView.m; path = vendor/Sparklines/Sparklines/ASBSparkLineView.m; sourceTree = "<group>"; };
 		DD124DAD148D3EF300E23A44 /* Doctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Doctor.png; sourceTree = "<group>"; };
 		DD19173D148FDEBB00B87AAF /* HRPatient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPatient.h; sourceTree = "<group>"; };
 		DD19173E148FDEBB00B87AAF /* HRPatient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPatient.m; sourceTree = "<group>"; };
@@ -598,6 +601,7 @@
 		94689ABC14964BBF00E1FCA6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				94EBD54E14FE7A2E00A3AF66 /* Sparklines */,
 				3BD16ED714E1B5EE00F2249E /* guicocoa-common-code */,
 				3B04A54C14E0692600AD91F9 /* keychain */,
 				3BFE7A2014DADE2B0037738D /* pinview */,
@@ -693,6 +697,15 @@
 				94C5ECFA1472FF7A009FE38D /* Patient Summary */,
 			);
 			name = "Patient Details";
+			sourceTree = "<group>";
+		};
+		94EBD54E14FE7A2E00A3AF66 /* Sparklines */ = {
+			isa = PBXGroup;
+			children = (
+				94EBD54F14FE7A6200A3AF66 /* ASBSparkLineView.h */,
+				94EBD55014FE7A6200A3AF66 /* ASBSparkLineView.m */,
+			);
+			name = Sparklines;
 			sourceTree = "<group>";
 		};
 		DD7037B014900E5900F58A83 /* Patient Swipe */ = {
@@ -994,6 +1007,7 @@
 				9413C74614EC08AA00BFA521 /* HRPatientSwipeControl.m in Sources */,
 				3B3C919514F69F61005CD5C5 /* NSDate+HReaderAdditions.m in Sources */,
 				9452D7F714FC16DF00021E69 /* HRProviderView.m in Sources */,
+				94EBD55114FE7A6200A3AF66 /* ASBSparkLineView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

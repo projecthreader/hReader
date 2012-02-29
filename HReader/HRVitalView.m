@@ -8,6 +8,7 @@
 
 #import "HRVitalView.h"
 #import "HRVital.h"
+#import "ASBSparkLineView.h"
 
 @implementation HRVitalView
 
@@ -18,8 +19,8 @@
 @synthesize resultLabel     = __resultLabel;
 @synthesize dateLabel       = __dateLabel;
 @synthesize normalLabel     = __normalLabel;
-@synthesize graphImageView  = __graphImageView;
 @synthesize unitsLabel      = __unitsLabel;
+@synthesize sparkLineView   = __sparkLineView;
 
 - (void)dealloc {
     [__vital release];
@@ -27,12 +28,19 @@
     [__resultLabel release];
     [__dateLabel release];
     [__normalLabel release];
-    [__graphImageView release];
     [__leftLabel release];
     [__rightLabel release];
     [__unitsLabel release];
+    [__sparkLineView release];
     [super dealloc];
 }
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    
+    self.sparkLineView.backgroundColor = [UIColor whiteColor];    
+}
+
 
 - (void)setVital:(HRVital *)vital {
     [__vital release];
@@ -47,12 +55,30 @@
     }
     
     self.normalLabel.text = __vital.normalString;
-    self.graphImageView.image = __vital.graph;
+//    self.graphImageView.image = __vital.graph;
+    self.sparkLineView.dataValues = [self randomData];
+    self.sparkLineView.labelText = @"";
+    self.sparkLineView.showCurrentValue = NO;
+    self.sparkLineView.penWidth = 6.0;
+    self.sparkLineView.showRangeOverlay = YES;
+    self.sparkLineView.rangeOverlayLowerLimit = [NSNumber numberWithFloat:20.0];
+    self.sparkLineView.rangeOverlayUpperLimit = [NSNumber numberWithFloat:80.0];
+    self.sparkLineView.rangeOverlayColor = [UIColor colorWithWhite:0.9 alpha:1.0];
     
     self.leftLabel.text = [__vital.resultLabelString uppercaseString];
     self.rightLabel.text = [__vital.normalLabelString uppercaseString];
     
     self.unitsLabel.text = [__vital labelString];
+}
+
+- (NSArray *)randomData {
+    NSMutableArray *data = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 20; i++) {
+        u_int32_t random = arc4random() % 100;
+        [data addObject:[NSNumber numberWithInt:random]];
+    }
+
+    return (NSArray *)data;
 }
 
 @end

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class HRVital;
+@class ASBSparkLineView;
 
 @interface HRVitalView : UIView
 
@@ -20,7 +21,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *resultLabel;
 @property (retain, nonatomic) IBOutlet UILabel *dateLabel;
 @property (retain, nonatomic) IBOutlet UILabel *normalLabel;
-@property (retain, nonatomic) IBOutlet UIImageView *graphImageView;
 @property (retain, nonatomic) IBOutlet UILabel *unitsLabel;
+@property (retain, nonatomic) IBOutlet ASBSparkLineView *sparkLineView;
 
 @end
