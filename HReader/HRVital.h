@@ -7,23 +7,28 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HRPatient.h"
+#import "HRMEntry.h"
 
 @interface HRVital : NSObject
 
-@property (copy, nonatomic) NSString *title;
-@property (strong, nonatomic) NSDate *date;
-@property (strong, nonatomic) UIImage *graph;
+@property (nonatomic, readonly, copy) NSArray *entries;
 
-@property (nonatomic, assign) NSInteger age;
-@property (nonatomic, assign) HRPatientGender gender;
+@property (readonly, nonatomic) NSString *title;
+@property (readonly, nonatomic) NSDate *date;
+@property (readonly, nonatomic, getter = isNormal) BOOL normal;
 
-- (BOOL)isNormal;
-- (NSString *)resultString;
-- (NSString *)normalString;
+@property (readonly, nonatomic) NSString *leftTitle;
+@property (readonly, nonatomic) NSString *leftValue;
+@property (readonly, nonatomic) NSString *leftUnit;
 
-- (NSString *)labelString;
-- (NSString *)resultLabelString;
-- (NSString *)normalLabelString;
+@property (readonly, nonatomic) NSString *rightTitle;
+@property (readonly, nonatomic) NSString *rightValue;
+
+@property (readonly, nonatomic) float value;
+
+@property (readonly, nonatomic) float normalLow;
+@property (readonly, nonatomic) float normalHigh;
+
+- (id)initWithEntries:(NSArray *)entries;
 
 @end

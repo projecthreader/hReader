@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class HRPatientSwipeViewController;
-
 @interface HRPatientSummaryViewController : UIViewController
 
 // container and utility views
@@ -25,11 +23,12 @@
 @property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *medicationNameLabels;
 @property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *medicationDosageLabels;
 
+// vital view collection
+@property (retain, nonatomic) IBOutletCollection(UIView) NSArray *vitalViews;
+
 @property (retain, nonatomic) IBOutlet UILabel *patientName;
 
 @property (retain, nonatomic) IBOutlet UILabel *dobLabel;
-
-@property (retain, nonatomic) NSArray *vitalsViewsArray;
 
 @property (retain, nonatomic) IBOutlet UILabel *allergiesLabel;
 @property (retain, nonatomic) IBOutlet UILabel *recentConditionsDateLabel;
@@ -61,11 +60,5 @@
 @property (retain, nonatomic) IBOutlet UILabel *diagnosisDateLabel;
 
 @property (retain, nonatomic) IBOutlet UIImageView *pulseImageView;
-
-@property (retain, nonatomic) IBOutlet UIView *vital1View;
-@property (retain, nonatomic) IBOutlet UIView *vital2View;
-@property (retain, nonatomic) IBOutlet UIView *vital3View;
-
-
 
 @end

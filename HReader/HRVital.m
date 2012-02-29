@@ -8,43 +8,62 @@
 
 #import "HRVital.h"
 
+@interface HRVital ()
+@property (nonatomic, copy, readwrite) NSArray *entries;
+@end
+
 @implementation HRVital
 
-@synthesize title           = __title;
-@synthesize date            = __date;
-@synthesize graph           = __graph;
-@synthesize age             = __age;
-@synthesize gender          = __gender;
+@synthesize entries = __entries;
 
 - (void)dealloc {
-    [__title release];
-    [__date release];
-    [__graph release];
+    self.entries = nil;
     [super dealloc];
+}
+
+- (id)initWithEntries:(NSArray *)entries {
+    self = [super init];
+    if (self) {
+        self.entries = entries;
+    }
+    
+    return self;
 }
 
 - (BOOL)isNormal {
     return YES;
 }
-
-- (NSString *)resultString {
-    return @"-";
+- (NSString *)title {
+    return [[__entries lastObject] desc];
+}
+- (NSDate *)date {
+    return [[__entries lastObject] date];
+}
+- (NSString *)leftTitle {
+    return @"RESULT:";
+}
+- (NSString *)leftValue {
+    return [NSString stringWithFormat:@"%0.1f", self.value];
+}
+- (NSString *)leftUnit {
+    return nil;
+}
+- (NSString *)rightTitle {
+    return @"NORMAL:";
+}
+- (NSString *)rightValue {
+    return nil;
+}
+- (float)normalLow {
+    return 0.0;
+}
+- (float)normalHigh {
+    return 0.0;
 }
 
-- (NSString *)normalString {
-    return @"-";
-}
-
-- (NSString *)labelString {
-    return @"-";
-}
-
-- (NSString *)resultLabelString {
-    return @"Result:";
-}
-
-- (NSString *)normalLabelString {
-    return @"Normal:";
+- (float)value {
+    HRMEntry *entry = [self.entries lastObject];
+    return [[entry.value objectForKey:@"scalar"] floatValue];
 }
 
 @end

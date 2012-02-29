@@ -11,5 +11,6 @@
 @interface NSDate (HReaderAdditions)
 
 - (NSString *)formattedDate;
+- (NSString *)shortDate;
 
 @end

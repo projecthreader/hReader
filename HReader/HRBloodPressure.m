@@ -13,6 +13,7 @@
 @synthesize systolic        = __systolic;
 @synthesize diastolic       = __diastolic;
 
+/*
 - (id)init {
     self = [super init];
     if (self) {
@@ -43,6 +44,7 @@
         return @"X/X";
     }
 }
+ */
 
 
 @end

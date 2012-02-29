@@ -52,6 +52,9 @@ typedef enum {
 - (UIImage *)patientImage;
 - (NSURL *)C32HTMLURL;
 
+// vital signs
+- (NSDictionary *)vitalSignsGroupedByDescription;
+
 @end
 
 @interface HRMPatient (CoreDataGeneratedAccessors)

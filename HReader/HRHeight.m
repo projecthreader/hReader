@@ -10,6 +10,7 @@
 
 @implementation HRHeight
 
+/*
 - (id)init {
     self = [super init];
     if (self) {
@@ -34,6 +35,6 @@
 - (NSString *)normalString {
     return @"3'2\"";
 }
-
+*/
 
 @end

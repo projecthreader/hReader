@@ -20,4 +20,15 @@
     return [formatter stringFromDate:self];
 }
 
+- (NSString *)shortDate {
+    static NSDateFormatter *formatter = nil;
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterShortStyle];
+    });
+    return [formatter stringFromDate:self];
+    
+}
+
 @end

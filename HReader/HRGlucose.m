@@ -10,6 +10,7 @@
 
 @implementation HRGlucose
 
+/*
 - (id)init {
     self = [super init];
     if (self) {
@@ -34,6 +35,7 @@
 - (NSString *)normalString {
     return @"18-25";
 }
+ */
 
 
 @end

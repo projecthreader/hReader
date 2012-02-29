@@ -144,6 +144,7 @@ static HRMPatient *selectedPatient = nil;
 }
 
 #pragma mark - object methods
+
 - (UIImage *)patientImage {
     return [UIImage imageNamed:[NSString stringWithFormat:@"UserImage-%@-%@", self.lastName, self.firstName]];
 }
@@ -167,6 +168,33 @@ static HRMPatient *selectedPatient = nil;
 - (NSURL *)C32HTMLURL {
     NSString *string = [NSString stringWithFormat:@"C32-%@-%@", self.lastName, self.firstName];
     return [[NSBundle mainBundle] URLForResource:string withExtension:@"html"];
+}
+- (NSDictionary *)vitalSignsGroupedByDescription {
+    
+    // get vitals
+    NSPredicate *typePredicate = [NSPredicate predicateWithFormat:@"type == %@", [NSNumber numberWithShort:HRMEntryTypeVitalSign]];
+    NSPredicate *patientPredicate = [NSPredicate predicateWithFormat:@"patient == %@", self];
+    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithObjects:typePredicate, patientPredicate, nil]];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
+    NSArray *vitals = [HRMEntry allInContext:[HRAppDelegate managedObjectContext]
+                               withPredicate:predicate
+                              sortDescriptor:sort];
+    
+    // build grouped dictionary
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+    [vitals enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger idx, BOOL *stop) {
+        NSString *desc = entry.desc;
+        NSMutableArray *list = [dictionary objectForKey:desc];
+        if (list == nil) {
+            list = [NSMutableArray array];
+            [dictionary setObject:list forKey:desc];
+        }
+        [list addObject:entry];
+    }];
+    
+    // return
+    return [dictionary autorelease];
+    
 }
 
 @end

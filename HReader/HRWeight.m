@@ -8,19 +8,14 @@
 
 #import "HRWeight.h"
 
-@interface HRWeight ()
-- (NSInteger)lowForAge;
-- (NSInteger)highForAge;
-@end
 
 @implementation HRWeight
-
-@synthesize weight      = __weight;
 
 - (void)dealloc {
     [super dealloc];
 }
 
+/*
 - (id)init {
     self = [super init];
     if (self) {
@@ -111,6 +106,7 @@
         return 180;
     }
 }
+*/
 
 
 @end

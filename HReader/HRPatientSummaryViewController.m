@@ -17,6 +17,7 @@
 #import "HRVitalView.h"
 #import "HRVital.h"
 #import "HRMEntry.h"
+#import "HRBMI.h"
 
 #import "NSDate+HReaderAdditions.h"
 
@@ -37,15 +38,10 @@
 @synthesize medicationNameLabels                = __medicationNameLabels;
 @synthesize medicationDosageLabels              = __medicationDosageLabels;
 
-
-
+@synthesize vitalViews                          = __vitalViews;
 
 @synthesize patientName                         = __patientName;
 @synthesize dobLabel                            = __dobLabel;
-
-@synthesize vitalsViewsArray                    = __vitalsViewsArray;
-
-
 
 @synthesize allergiesLabel                      = __allergiesLabel;
 @synthesize recentConditionsDateLabel           = __rececentConditionsDateLabel;
@@ -70,9 +66,6 @@
 @synthesize diagnosisLabel                      = __diagnosisLabel;
 @synthesize diagnosisDateLabel                  = __diagnosisDateLabel;
 @synthesize pulseImageView                      = __pulseImageView;
-@synthesize vital1View                          = __vital1View;
-@synthesize vital2View                          = __vital2View;
-@synthesize vital3View                          = __vital3View;
 
 #pragma mark - object methods
 
@@ -89,7 +82,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [__dobLabel release];
-    [__vitalsViewsArray release];
     [__allergiesLabel release];
     [__rececentConditionsDateLabel release];
     [__recentConditionsLabel release];
@@ -113,9 +105,6 @@
     [__diagnosisLabel release];
     [__diagnosisDateLabel release];
     [__pulseImageView release];
-    [__vital1View release];
-    [__vital2View release];
-    [__vital3View release];
 
     [super dealloc];
 }
@@ -127,6 +116,7 @@
     self.labels = nil;
     self.medicationDosageLabels = nil;
     self.medicationNameLabels = nil;
+    self.vitalViews = nil;
 }
 - (void)reloadData {
     
@@ -179,6 +169,32 @@
         NSString *codeValues = [[codes objectForKey:codeType] componentsJoinedByString:@", "];
         self.recentEncountersTypeLabel.text = [NSString stringWithFormat:@"%@ %@", codeType, codeValues];
         
+        // vitals
+        NSDictionary *vitals = [patient vitalSignsGroupedByDescription];
+        NSArray *vitalsKeys = [vitals allKeys];
+        NSUInteger vitalsCount = [vitalsKeys count];
+        [self.vitalViews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
+            if (idx < vitalsCount) {
+                view.hidden = NO;
+                
+                NSString *vitalType = [vitalsKeys objectAtIndex:idx];
+                NSArray *entries = [vitals objectForKey:vitalType];
+                HRVital *vital;
+                if ([vitalType isEqualToString:@"BMI"]) {
+                    vital = [[HRBMI alloc] initWithEntries:entries];
+                }
+                else  {
+                    vital = [[HRVital alloc] initWithEntries:entries];
+                }
+                
+                HRVitalView *vitalView = [view.subviews lastObject];
+                vitalView.vital = vital;
+            }
+            else {
+                view.hidden = YES;
+            }
+        }];
+        
     }
     
     {
@@ -202,13 +218,7 @@
         self.diagnosisLabel.text = [patient.info objectForKey:@"diagnosis_results"];
         self.diagnosisDateLabel.text = [patient.info objectForKey:@"diagnosis_date"];
         self.pulseImageView.image = [patient.info objectForKey:@"pulse_sparklines"];
-        [self.vitalsViewsArray enumerateObjectsUsingBlock:^(HRVitalView *view, NSUInteger idx, BOOL *stop) {
-            if (idx < [[patient vitals] count]) {
-                HRVital *vital = [[patient vitals] objectAtIndex:idx];
-                HRVitalView *vitalView = [view.subviews lastObject];
-                vitalView.vital = vital;            
-            }
-        }];
+        
     }
     
 }
@@ -254,19 +264,19 @@
     [self.view bringSubviewToFront:self.headerView];  
     
     
-    //    [self toggleViewShadow:YES];
+    //    [self toggleViewShadow:YES];    
     
     UINib *nib = [UINib nibWithNibName:@"HRVitalView" bundle:nil];
-    self.vitalsViewsArray = [NSArray arrayWithObjects:self.vital1View, self.vital2View, self.vital3View, nil];
-    [self.vitalsViewsArray enumerateObjectsUsingBlock:^(HRVitalView *view, NSUInteger idx, BOOL *stop) {
+    [self.vitalViews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
         view.backgroundColor = [UIColor clearColor];
         HRVitalView *vitalView = [[nib instantiateWithOwner:self options:nil] lastObject];
-        vitalView.frame = self.vital1View.bounds;
+        vitalView.frame = view.bounds;
         [view addSubview:vitalView]; 
     }];
     
 }
 - (void)viewDidUnload {
+    [self setVitalViews:nil];
     [super viewDidUnload];
     [self cleanup];
     
@@ -295,9 +305,6 @@
     [self setDiagnosisLabel:nil];
     [self setDiagnosisDateLabel:nil];
     [self setPulseImageView:nil];
-    [self setVital1View:nil];
-    [self setVital2View:nil];
-    [self setVital3View:nil];
     
 }
 - (void)viewWillAppear:(BOOL)animated {

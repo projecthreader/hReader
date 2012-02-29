@@ -12,6 +12,5 @@
 
 @interface HRWeight : HRVital
 
-@property (nonatomic, assign) NSInteger weight;
 
 @end

@@ -162,29 +162,29 @@ static HRPatient *selectedPatient = nil;
         [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"pulse_sparklines"];
         
         // Vitals Johnny
-        HRWeight *weight = [[HRWeight alloc] init];
-        weight.weight = 26;
-        weight.gender = johnny.gender;
-        weight.age = [johnny.age intValue];
-        weight.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
-        weight.graph = [UIImage imageNamed:@"Johnny_weight"];
+//        HRWeight *weight = [[HRWeight alloc] init];
+//        weight.weight = 26;
+//        weight.gender = johnny.gender;
+//        weight.age = [johnny.age intValue];
+//        weight.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
+//        weight.graph = [UIImage imageNamed:@"Johnny_weight"];
         
-        HRPeakFlow *peakFlow = [[HRPeakFlow alloc] init];
-        peakFlow.gender = johnny.gender;
-        peakFlow.age = [johnny.age intValue];
-        peakFlow.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
-        peakFlow.graph = [UIImage imageNamed:@"Johnny_peak_flow"];
+//        HRPeakFlow *peakFlow = [[HRPeakFlow alloc] init];
+//        peakFlow.gender = johnny.gender;
+//        peakFlow.age = [johnny.age intValue];
+//        peakFlow.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
+//        peakFlow.graph = [UIImage imageNamed:@"Johnny_peak_flow"];
         
-        HRHeight *height = [[HRHeight alloc] init];
-        height.gender = johnny.gender;
-        height.age = [johnny.age intValue];
-        height.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
-        height.graph = [UIImage imageNamed:@"Johnny_height"];
+//        HRHeight *height = [[HRHeight alloc] init];
+//        height.gender = johnny.gender;
+//        height.age = [johnny.age intValue];
+//        height.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
+//        height.graph = [UIImage imageNamed:@"Johnny_height"];
         
-        johnny.vitals = [NSArray arrayWithObjects:peakFlow, weight, height, nil];
-        [weight release];
-        [height release];
-        [peakFlow release];
+//        johnny.vitals = [NSArray arrayWithObjects:peakFlow, weight, height, nil];
+//        [weight release];
+//        [height release];
+//        [peakFlow release];
         
         
         johnny.info = info;
@@ -215,32 +215,32 @@ static HRPatient *selectedPatient = nil;
         [info setObject:@"Yes" forKey:@"immunizations"];
         
         // Vitals        
-        HRBloodPressure *bloodPressure = [[HRBloodPressure alloc] init];
-        bloodPressure.age = [henry.age intValue];
-        bloodPressure.gender = henry.gender;
-        bloodPressure.systolic = 159;
-        bloodPressure.diastolic = 95;
-        bloodPressure.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
-        bloodPressure.graph = [UIImage imageNamed:@"Henry_Blood_Pressure"];
-        
-        weight = [[HRWeight alloc] init];
-        weight.weight = 200;
-        weight.gender = henry.gender;
-        weight.age = [henry.age intValue];
-        weight.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
-        weight.graph = [UIImage imageNamed:@"Henry_weight"];
-        
-        HRCholesterol *cholesterol = [[HRCholesterol alloc] init];
-        cholesterol.cholesterol = 200;
-        cholesterol.gender = henry.gender;
-        cholesterol.age = [henry.age intValue];
-        cholesterol.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
-        cholesterol.graph = [UIImage imageNamed:@"henry_total_cholesterol"];
-        
-        henry.vitals = [NSArray arrayWithObjects:bloodPressure, weight, cholesterol, nil];
-        [bloodPressure release];
-        [weight release];
-        [cholesterol release];
+//        HRBloodPressure *bloodPressure = [[HRBloodPressure alloc] init];
+//        bloodPressure.age = [henry.age intValue];
+//        bloodPressure.gender = henry.gender;
+//        bloodPressure.systolic = 159;
+//        bloodPressure.diastolic = 95;
+//        bloodPressure.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
+//        bloodPressure.graph = [UIImage imageNamed:@"Henry_Blood_Pressure"];
+//        
+//        weight = [[HRWeight alloc] init];
+//        weight.weight = 200;
+//        weight.gender = henry.gender;
+//        weight.age = [henry.age intValue];
+//        weight.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
+//        weight.graph = [UIImage imageNamed:@"Henry_weight"];
+//        
+//        HRCholesterol *cholesterol = [[HRCholesterol alloc] init];
+//        cholesterol.cholesterol = 200;
+//        cholesterol.gender = henry.gender;
+//        cholesterol.age = [henry.age intValue];
+//        cholesterol.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
+//        cholesterol.graph = [UIImage imageNamed:@"henry_total_cholesterol"];
+//        
+//        henry.vitals = [NSArray arrayWithObjects:bloodPressure, weight, cholesterol, nil];
+//        [bloodPressure release];
+//        [weight release];
+//        [cholesterol release];
         
         
         [info setObject:[NSDictionary dictionaryWithObjectsAndKeys:@"ACE Inhibitor", @"10 mg", @"Beta Blocker", @"100 mg", nil] forKey:@"medications"];
@@ -316,30 +316,30 @@ static HRPatient *selectedPatient = nil;
         [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"bmi_sparklines"];
         [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"pulse_sparklines"];
         
-        peakFlow = [[HRPeakFlow alloc] init];
-        peakFlow.gender = molly.gender;
-        peakFlow.age = [molly.age intValue];
-        peakFlow.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
-        peakFlow.graph = [UIImage imageNamed:@"Molly_peak-Flow"];
-        
-        weight = [[HRWeight alloc] init];
-        weight.weight = 102;
-        weight.gender = molly.gender;
-        weight.age = [molly.age intValue];
-        weight.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
-        weight.graph = [UIImage imageNamed:@"Molly_weight"];
-        
-        cholesterol = [[HRCholesterol alloc] init];
-        cholesterol.cholesterol = 189;
-        cholesterol.gender = molly.gender;
-        cholesterol.age = [molly.age intValue];
-        cholesterol.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
-        cholesterol.graph = [UIImage imageNamed:@"Molly_total_cholesterol 2"];
-        
-        molly.vitals = [NSArray arrayWithObjects:peakFlow, weight, cholesterol, nil];
-        [peakFlow release];
-        [weight release];
-        [cholesterol release];
+//        peakFlow = [[HRPeakFlow alloc] init];
+//        peakFlow.gender = molly.gender;
+//        peakFlow.age = [molly.age intValue];
+//        peakFlow.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
+//        peakFlow.graph = [UIImage imageNamed:@"Molly_peak-Flow"];
+//        
+//        weight = [[HRWeight alloc] init];
+//        weight.weight = 102;
+//        weight.gender = molly.gender;
+//        weight.age = [molly.age intValue];
+//        weight.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
+//        weight.graph = [UIImage imageNamed:@"Molly_weight"];
+//        
+//        cholesterol = [[HRCholesterol alloc] init];
+//        cholesterol.cholesterol = 189;
+//        cholesterol.gender = molly.gender;
+//        cholesterol.age = [molly.age intValue];
+//        cholesterol.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
+//        cholesterol.graph = [UIImage imageNamed:@"Molly_total_cholesterol 2"];
+//        
+//        molly.vitals = [NSArray arrayWithObjects:peakFlow, weight, cholesterol, nil];
+//        [peakFlow release];
+//        [weight release];
+//        [cholesterol release];
         
         molly.info = info;
         [info release];
@@ -400,28 +400,28 @@ static HRPatient *selectedPatient = nil;
         
         // Vitals
         
-        peakFlow = [[HRPeakFlow alloc] init];
-        peakFlow.gender = sarah.gender;
-        peakFlow.age = [sarah.age intValue];
-        peakFlow.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
-        peakFlow.graph = [UIImage imageNamed:@"Sarah_peak_flow"];
-        
-        bloodPressure = [[HRBloodPressure alloc] init];
-        bloodPressure.gender = sarah.gender;
-        bloodPressure.age = [sarah.age intValue];
-        bloodPressure.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
-        bloodPressure.graph = [UIImage imageNamed:@"Sarah_Blood_Pressure"];
-        
-        HRBMI *bmi = [[HRBMI alloc] init];
-        bmi.gender = sarah.gender;
-        bmi.age = [sarah.age intValue];
-        bmi.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
-        bmi.graph = [UIImage imageNamed:@"Sarah_bmi"];
-        
-        sarah.vitals = [NSArray arrayWithObjects:peakFlow, bloodPressure, bmi, nil];
-        [peakFlow release];
-        [bloodPressure release];
-        [bmi release];
+//        peakFlow = [[HRPeakFlow alloc] init];
+//        peakFlow.gender = sarah.gender;
+//        peakFlow.age = [sarah.age intValue];
+//        peakFlow.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
+//        peakFlow.graph = [UIImage imageNamed:@"Sarah_peak_flow"];
+//        
+//        bloodPressure = [[HRBloodPressure alloc] init];
+//        bloodPressure.gender = sarah.gender;
+//        bloodPressure.age = [sarah.age intValue];
+//        bloodPressure.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
+//        bloodPressure.graph = [UIImage imageNamed:@"Sarah_Blood_Pressure"];
+//        
+//        HRBMI *bmi = [[HRBMI alloc] init];
+//        bmi.gender = sarah.gender;
+//        bmi.age = [sarah.age intValue];
+//        bmi.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
+//        bmi.graph = [UIImage imageNamed:@"Sarah_bmi"];
+//        
+//        sarah.vitals = [NSArray arrayWithObjects:peakFlow, bloodPressure, bmi, nil];
+//        [peakFlow release];
+//        [bloodPressure release];
+//        [bmi release];
         
         
         sarah.info = info;
@@ -482,29 +482,29 @@ static HRPatient *selectedPatient = nil;
         [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"bmi_sparklines"];
         [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"pulse_sparklines"];
         
-        HRGlucose *glucose = [[HRGlucose alloc] init];
-        glucose.gender = tom.gender;
-        glucose.age = [tom.age intValue];
-        glucose.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
-        glucose.graph = [UIImage imageNamed:@"Sarah_bmi"];
-        
-        bloodPressure = [[HRBloodPressure alloc] init];
-        bloodPressure.gender = tom.gender;
-        bloodPressure.age = [tom.age intValue];
-        bloodPressure.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
-        bloodPressure.graph = [UIImage imageNamed:@"Sarah_Blook_Pressure"];
-        
-        cholesterol = [[HRCholesterol alloc] init];
-        cholesterol.cholesterol = 189;
-        cholesterol.gender = tom.gender;
-        cholesterol.age = [tom.age intValue];
-        cholesterol.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
-        cholesterol.graph = [UIImage imageNamed:@"Molly_total_cholesterol 2"];
-        
-        tom.vitals = [NSArray arrayWithObjects:glucose, bloodPressure, cholesterol, nil];
-        [glucose release];
-        [bloodPressure release];
-        [cholesterol release];
+//        HRGlucose *glucose = [[HRGlucose alloc] init];
+//        glucose.gender = tom.gender;
+//        glucose.age = [tom.age intValue];
+//        glucose.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
+//        glucose.graph = [UIImage imageNamed:@"Sarah_bmi"];
+//        
+//        bloodPressure = [[HRBloodPressure alloc] init];
+//        bloodPressure.gender = tom.gender;
+//        bloodPressure.age = [tom.age intValue];
+//        bloodPressure.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
+//        bloodPressure.graph = [UIImage imageNamed:@"Sarah_Blook_Pressure"];
+//        
+//        cholesterol = [[HRCholesterol alloc] init];
+//        cholesterol.cholesterol = 189;
+//        cholesterol.gender = tom.gender;
+//        cholesterol.age = [tom.age intValue];
+//        cholesterol.date = [NSDate dateWithTimeIntervalSince1970:1325772760];
+//        cholesterol.graph = [UIImage imageNamed:@"Molly_total_cholesterol 2"];
+//        
+//        tom.vitals = [NSArray arrayWithObjects:glucose, bloodPressure, cholesterol, nil];
+//        [glucose release];
+//        [bloodPressure release];
+//        [cholesterol release];
         
         
         tom.info = info;

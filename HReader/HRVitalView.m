@@ -9,6 +9,8 @@
 #import "HRVitalView.h"
 #import "HRVital.h"
 #import "ASBSparkLineView.h"
+#import "NSArray+Collect.h"
+#import "NSDate+HReaderAdditions.h"
 
 @implementation HRVitalView
 
@@ -37,7 +39,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
     self.sparkLineView.backgroundColor = [UIColor whiteColor];    
 }
 
@@ -47,28 +48,46 @@
     __vital = [vital retain];
     self.nameLabel.text = [__vital.title uppercaseString];
     
-    self.resultLabel.text = __vital.resultString;
+    self.resultLabel.text = __vital.leftValue;
     if (self.vital.isNormal) {
         self.resultLabel.textColor = [UIColor blackColor];
     } else {
         self.resultLabel.textColor = [UIColor redColor];
     }
     
-    self.normalLabel.text = __vital.normalString;
+    self.dateLabel.text = [vital.date shortDate];
+    
+    // sparklines
+    NSArray *scalarStrings = [vital.entries valueForKeyPath:@"value.scalar"];
+//    NSLog(@"%@", scalarStrings);
+    NSArray *scalars = [scalarStrings collect:^(id object, NSUInteger idx) {
+        if ([object isKindOfClass:[NSString class]]) {
+            float value = [object floatValue];
+            return [NSNumber numberWithFloat:value];
+        }
+        else {
+            return [NSNumber numberWithFloat:0.0];
+        }
+    }];
+    self.sparkLineView.dataValues = scalars;
+    
+    self.normalLabel.adjustsFontSizeToFitWidth = YES;
+    self.normalLabel.text = __vital.rightValue;
 //    self.graphImageView.image = __vital.graph;
-    self.sparkLineView.dataValues = [self randomData];
+    
+//    self.sparkLineView.dataValues = [self randomData];
     self.sparkLineView.labelText = @"";
     self.sparkLineView.showCurrentValue = NO;
     self.sparkLineView.penWidth = 6.0;
     self.sparkLineView.showRangeOverlay = YES;
-    self.sparkLineView.rangeOverlayLowerLimit = [NSNumber numberWithFloat:20.0];
-    self.sparkLineView.rangeOverlayUpperLimit = [NSNumber numberWithFloat:80.0];
+    self.sparkLineView.rangeOverlayLowerLimit = [NSNumber numberWithFloat:vital.normalLow];
+    self.sparkLineView.rangeOverlayUpperLimit = [NSNumber numberWithFloat:vital.normalHigh];
     self.sparkLineView.rangeOverlayColor = [UIColor colorWithWhite:0.9 alpha:1.0];
     
-    self.leftLabel.text = [__vital.resultLabelString uppercaseString];
-    self.rightLabel.text = [__vital.normalLabelString uppercaseString];
+    self.leftLabel.text = [__vital.leftTitle uppercaseString];
+    self.rightLabel.text = [__vital.rightTitle uppercaseString];
     
-    self.unitsLabel.text = [__vital labelString];
+    self.unitsLabel.text = __vital.leftUnit;
 }
 
 - (NSArray *)randomData {

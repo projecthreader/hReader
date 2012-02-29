@@ -8,32 +8,26 @@
 
 #import "HRBMI.h"
 
+
 @implementation HRBMI
 
-- (id)init {
-    self = [super init];
-    if (self) {
-        self.title = @"BMI";
-    }
-    
-    return self;
-}
-
 - (BOOL)isNormal {
-    return YES;
-}
+    float bmi = self.value;
+    return !(bmi < [self normalLow] || bmi > [self normalHigh]);
 
-- (NSString *)resultString {
-    return @"200";
 }
-
-- (NSString *)labelString {
-    return @"mg/dL";
+- (NSString *)leftValue {
+    
+    return [NSString stringWithFormat:@"%0.1f", self.value];
 }
-
-- (NSString *)normalString {
-    return @"180-200";
+- (NSString *)rightValue {
+    return [NSString stringWithFormat:@"%0.1f-%0.1f", self.normalLow, self.normalHigh];
 }
-
+- (float)normalLow {
+    return 18.5;
+}
+- (float)normalHigh {
+    return 22.9;
+}
 
 @end

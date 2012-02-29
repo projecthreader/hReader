@@ -16,6 +16,7 @@
     [super dealloc];
 }
 
+/*
 - (id)init {
     self = [super init];
     if (self) {
@@ -46,6 +47,7 @@
         return @"< 200";
     }
 }
+ */
 
 
 @end
