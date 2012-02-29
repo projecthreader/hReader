@@ -31,7 +31,11 @@
 @synthesize headerView          = __headerView;
 @synthesize contentView         = __contentView;
 @synthesize footerShadowView    = __footerShadowView;
+
 @synthesize labels              = __labels;
+
+@synthesize medicationNameLabels                = __medicationNameLabels;
+@synthesize medicationDosageLabels              = __medicationDosageLabels;
 
 
 
@@ -40,6 +44,8 @@
 @synthesize dobLabel                            = __dobLabel;
 
 @synthesize vitalsViewsArray                    = __vitalsViewsArray;
+
+
 
 @synthesize allergiesLabel                      = __allergiesLabel;
 @synthesize recentConditionsDateLabel           = __rececentConditionsDateLabel;
@@ -53,8 +59,6 @@
 @synthesize recentEncountersTypeLabel           = __recentEncountersTypeLabel;
 @synthesize recentEncountersDescriptionLabel    = __recentEncountersDescriptionLabel;
 @synthesize immunizationsUpToDateLabel          = __immunizationsUpToDateLabel;
-@synthesize currentMedicationsLabel             = __currentMedicationsLabel;
-@synthesize currentMedicationsDosageLabel       = __currentMedicationsDosageLabel;
 @synthesize functionalStatusDateLabel           = __functionalStatusDateLabel;
 @synthesize functionalStatusTypeLabel           = __functionalStatusTypeLabel;
 @synthesize functionalStatusProblemLabel        = __functionalStatusProblemLabel;
@@ -98,8 +102,6 @@
     [__recentEncountersTypeLabel release];
     [__recentEncountersDescriptionLabel release];
     [__immunizationsUpToDateLabel release];
-    [__currentMedicationsLabel release];
-    [__currentMedicationsDosageLabel release];
     [__functionalStatusDateLabel release];
     [__functionalStatusTypeLabel release];
     [__functionalStatusProblemLabel release];
@@ -123,13 +125,15 @@
     self.contentView = nil;
     self.footerShadowView = nil;
     self.labels = nil;
+    self.medicationDosageLabels = nil;
+    self.medicationNameLabels = nil;
 }
 - (void)reloadData {
     
     {
         
         // these do not have meaningful data
-        self.currentMedicationsDosageLabel.text = nil;
+        [self.medicationDosageLabels makeObjectsPerformSelector:@selector(setText:) withObject:nil];
         self.immunizationsUpToDateLabel.text = @"Unknown";
         
         // these are not
@@ -154,14 +158,15 @@
         // medications
         NSArray *medications = patient.medications;
         NSUInteger medicationsCount = [medications count];
-        if (medicationsCount == 0) {
-            self.currentMedicationsLabel.text = @"None";
-        }
-        else {
-            medications = [medications subarrayWithRange:NSMakeRange(0, MIN(5, medicationsCount))];
-            self.currentMedicationsLabel.text = [[medications valueForKey:@"desc"] componentsJoinedByString:@"\n"];
-            [self.currentMedicationsLabel sizeToFit];
-        }
+        [self.medicationNameLabels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
+            if (idx < medicationsCount) {
+                HRMEntry *entry = [medications objectAtIndex:idx];
+                label.text = entry.desc;
+            }
+            else {
+                label.text = nil;
+            }
+        }];
         
         // encounters
         NSSortDescriptor *encounterSort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
@@ -279,8 +284,6 @@
     [self setRecentEncountersTypeLabel:nil];
     [self setRecentEncountersDescriptionLabel:nil];
     [self setImmunizationsUpToDateLabel:nil];
-    [self setCurrentMedicationsLabel:nil];
-    [self setCurrentMedicationsDosageLabel:nil];
     [self setFunctionalStatusDateLabel:nil];
     [self setFunctionalStatusTypeLabel:nil];
     [self setFunctionalStatusProblemLabel:nil];

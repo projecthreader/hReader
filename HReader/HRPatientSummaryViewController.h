@@ -12,14 +12,18 @@
 
 @interface HRPatientSummaryViewController : UIViewController
 
+// container and utility views
 @property (retain, nonatomic) IBOutlet UIView *headerView;
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, retain) IBOutlet UIView *contentView;
 @property (nonatomic, retain) IBOutlet UIView *footerShadowView;
 
-
+// collection of all labels
 @property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *labels;
 
+// medication labels
+@property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *medicationNameLabels;
+@property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *medicationDosageLabels;
 
 @property (retain, nonatomic) IBOutlet UILabel *patientName;
 
@@ -41,9 +45,6 @@
 @property (retain, nonatomic) IBOutlet UILabel *recentEncountersDescriptionLabel;
 
 @property (retain, nonatomic) IBOutlet UILabel *immunizationsUpToDateLabel;
-
-@property (retain, nonatomic) IBOutlet UILabel *currentMedicationsLabel;
-@property (retain, nonatomic) IBOutlet UILabel *currentMedicationsDosageLabel;
 
 @property (retain, nonatomic) IBOutlet UILabel *functionalStatusDateLabel;
 @property (retain, nonatomic) IBOutlet UILabel *functionalStatusTypeLabel;
