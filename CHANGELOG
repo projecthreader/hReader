@@ -1,3 +1,10 @@
+# 2012-02-29
+
+- Fixed medications to be formatted properly (will show max of 8)
+- Refactored vitals
+- Sparklines are now generated from real data
+- BMI implemented with normal check and ranges
+
 # 2012-02-27
 
 - Doctors view now setup to dynamically load providers
