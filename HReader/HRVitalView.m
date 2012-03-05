@@ -59,17 +59,17 @@
     self.sparkLineView.showCurrentValue = NO;
     self.sparkLineView.penWidth = 6.0;
     self.sparkLineView.showRangeOverlay = YES;
-    self.sparkLineView.rangeOverlayLowerLimit = [NSNumber numberWithFloat:vital.normalLow];
-    self.sparkLineView.rangeOverlayUpperLimit = [NSNumber numberWithFloat:vital.normalHigh];
+    self.sparkLineView.rangeOverlayLowerLimit = [NSNumber numberWithDouble:vital.normalLow];
+    self.sparkLineView.rangeOverlayUpperLimit = [NSNumber numberWithDouble:vital.normalHigh];
     self.sparkLineView.rangeOverlayColor = [UIColor colorWithWhite:0.9 alpha:1.0];
     NSArray *scalarStrings = [vital.entries valueForKeyPath:@"value.scalar"];
     NSArray *scalars = [scalarStrings collect:^(id object, NSUInteger idx) {
         if ([object isKindOfClass:[NSString class]]) {
             float value = [object floatValue];
-            return [NSNumber numberWithFloat:value];
+            return [NSNumber numberWithDouble:value];
         }
         else {
-            return [NSNumber numberWithFloat:0.0];
+            return [NSNumber numberWithDouble:0.0];
         }
     }];
     self.sparkLineView.dataValues = scalars;

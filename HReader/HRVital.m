@@ -26,18 +26,19 @@
     if (self) {
         self.entries = entries;
     }
-    
     return self;
 }
 
 - (BOOL)isNormal {
     return YES;
 }
+
 - (NSString *)title {
-    return [[__entries lastObject] desc];
+    return [[self.entries lastObject] desc];
 }
+
 - (NSDate *)date {
-    return [[__entries lastObject] date];
+    return [[self.entries lastObject] date];
 }
 - (NSString *)leftTitle {
     return @"RESULT:";
@@ -54,14 +55,15 @@
 - (NSString *)rightValue {
     return nil;
 }
-- (float)normalLow {
-    return 0.0;
-}
-- (float)normalHigh {
+- (double)normalLow {
     return 0.0;
 }
 
-- (float)value {
+- (double)normalHigh {
+    return 0.0;
+}
+
+- (double)value {
     HRMEntry *entry = [self.entries lastObject];
     return [[entry.value objectForKey:@"scalar"] floatValue];
 }

@@ -24,10 +24,10 @@
 @property (readonly, nonatomic) NSString *rightTitle;
 @property (readonly, nonatomic) NSString *rightValue;
 
-@property (readonly, nonatomic) float value;
+@property (readonly, nonatomic) double value;
 
-@property (readonly, nonatomic) float normalLow;
-@property (readonly, nonatomic) float normalHigh;
+@property (readonly, nonatomic) double normalLow;
+@property (readonly, nonatomic) double normalHigh;
 
 - (id)initWithEntries:(NSArray *)entries;
 
