@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
-#import "NSDate+HReaderAdditions.h"
+#import "NSDate+FormattedDate.h"
 
-@implementation NSDate (HReaderAdditions)
+@implementation NSDate (FormattedDate)
 
-- (NSString *)formattedDate {
+- (NSString *)mediumStyleDate {
     static NSDateFormatter *formatter = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
@@ -20,7 +20,7 @@
     return [formatter stringFromDate:self];
 }
 
-- (NSString *)shortDate {
+- (NSString *)shortStyleDate {
     static NSDateFormatter *formatter = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{

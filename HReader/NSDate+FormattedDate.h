@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDate (HReaderAdditions)
+@interface NSDate (FormattedDate)
 
-- (NSString *)formattedDate;
-- (NSString *)shortDate;
+- (NSString *)mediumStyleDate;
+- (NSString *)shortStyleDate;
 
 @end

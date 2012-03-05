@@ -8,9 +8,12 @@
 
 #import "HRVitalView.h"
 #import "HRVital.h"
+
 #import "ASBSparkLineView.h"
+
 #import "NSArray+Collect.h"
-#import "NSDate+HReaderAdditions.h"
+
+#import "NSDate+FormattedDate.h"
 
 @implementation HRVitalView
 
@@ -50,7 +53,7 @@
     self.leftLabel.text = [vital.leftTitle uppercaseString];
     self.rightLabel.text = [vital.rightTitle uppercaseString];
     self.resultLabel.text = vital.leftValue;
-    self.dateLabel.text = [vital.date shortDate];
+    self.dateLabel.text = [vital.date shortStyleDate];
     self.unitsLabel.text = vital.leftUnit;
     self.normalLabel.text = vital.rightValue;
     

@@ -19,7 +19,7 @@
 #import "HRMEntry.h"
 #import "HRBMI.h"
 
-#import "NSDate+HReaderAdditions.h"
+#import "NSDate+FormattedDate.h"
 
 @interface HRPatientSummaryViewController ()
 - (void)cleanup;
@@ -129,7 +129,7 @@
         // these are not
         HRMPatient *patient = [HRMPatient selectedPatient];
         self.patientName.text = [[patient compositeName] uppercaseString];
-        self.dobLabel.text = [patient.dateOfBirth formattedDate];
+        self.dobLabel.text = [patient.dateOfBirth mediumStyleDate];
         
         // allergies
         NSArray *allergies = patient.allergies;
@@ -162,7 +162,7 @@
         NSSortDescriptor *encounterSort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
         NSArray *encounters = [patient.encounters sortedArrayUsingDescriptors:[NSArray arrayWithObject:encounterSort]];
         HRMEntry *encounter = [encounters lastObject];
-        self.recentEncountersDateLabel.text = [encounter.date formattedDate];
+        self.recentEncountersDateLabel.text = [encounter.date mediumStyleDate];
         self.recentEncountersDescriptionLabel.text = encounter.desc;
         NSDictionary *codes = encounter.codes;
         NSDictionary *codeType = [[codes allKeys] lastObject];
@@ -184,10 +184,10 @@
                 NSArray *entries = [vitals objectForKey:type];
                 HRVital *vital;
                 if ([type isEqualToString:@"BMI"]) {
-                    vital = [[HRBMI alloc] initWithEntries:entries];
+                    vital = [[[HRBMI alloc] initWithEntries:entries] autorelease];
                 }
                 else  {
-                    vital = [[HRVital alloc] initWithEntries:entries];
+                    vital = [[[HRVital alloc] initWithEntries:entries] autorelease];
                 }
                 
                 // show vital
