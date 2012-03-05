@@ -175,20 +175,24 @@
         NSUInteger vitalsCount = [vitalsKeys count];
         [self.vitalViews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
             if (idx < vitalsCount) {
+                
+                // unhide view
                 view.hidden = NO;
                 
-                NSString *vitalType = [vitalsKeys objectAtIndex:idx];
-                NSArray *entries = [vitals objectForKey:vitalType];
+                // get vital and vital view
+                NSString *type = [vitalsKeys objectAtIndex:idx];
+                NSArray *entries = [vitals objectForKey:type];
                 HRVital *vital;
-                if ([vitalType isEqualToString:@"BMI"]) {
+                if ([type isEqualToString:@"BMI"]) {
                     vital = [[HRBMI alloc] initWithEntries:entries];
                 }
                 else  {
                     vital = [[HRVital alloc] initWithEntries:entries];
                 }
                 
-                HRVitalView *vitalView = [view.subviews lastObject];
-                vitalView.vital = vital;
+                // show vital
+                [[view.subviews lastObject] showVital:vital];
+                
             }
             else {
                 view.hidden = YES;

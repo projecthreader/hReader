@@ -13,8 +13,6 @@
 
 @interface HRVitalView : UIView
 
-@property (retain, nonatomic) HRVital *vital;
-
 @property (retain, nonatomic) IBOutlet UILabel *leftLabel;
 @property (retain, nonatomic) IBOutlet UILabel *rightLabel;
 @property (retain, nonatomic) IBOutlet UILabel *nameLabel;
@@ -23,5 +21,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *normalLabel;
 @property (retain, nonatomic) IBOutlet UILabel *unitsLabel;
 @property (retain, nonatomic) IBOutlet ASBSparkLineView *sparkLineView;
+
+- (void)showVital:(HRVital *)vital;
 
 @end
