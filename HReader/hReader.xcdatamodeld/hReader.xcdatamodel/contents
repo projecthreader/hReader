@@ -36,22 +36,16 @@
         <fetchedProperty name="immunizations" optional="YES" syncable="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 7 AND patient == $FETCH_SOURCE"/>
         </fetchedProperty>
-        <fetchedProperty name="medications" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 3 AND patient == $FETCH_SOURCE"/>
-        </fetchedProperty>
         <fetchedProperty name="procedures" optional="YES" syncable="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 4 AND patient == $FETCH_SOURCE"/>
         </fetchedProperty>
         <fetchedProperty name="results" optional="YES" syncable="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 5 AND patient == $FETCH_SOURCE"/>
         </fetchedProperty>
-        <fetchedProperty name="vitalSigns" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 6 AND patient == $FETCH_SOURCE"/>
-        </fetchedProperty>
     </entity>
     <elements>
         <element name="GCManagedObject" positionX="72" positionY="72" width="128" height="60"/>
         <element name="HRMEntry" positionX="-533" positionY="-159" width="128" height="150"/>
-        <element name="HRMPatient" positionX="70" positionY="207" width="128" height="314"/>
+        <element name="HRMPatient" positionX="70" positionY="207" width="128" height="284"/>
     </elements>
 </model>

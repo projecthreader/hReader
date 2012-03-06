@@ -146,7 +146,7 @@
         }
         
         // medications
-        NSArray *medications = patient.medications;
+        NSArray *medications = [patient medications];
         NSUInteger medicationsCount = [medications count];
         [self.medicationNameLabels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
             if (idx < medicationsCount) {
