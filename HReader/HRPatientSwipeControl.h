@@ -10,15 +10,20 @@
 
 @interface HRPatientSwipeControl : UIControl  <UIScrollViewDelegate>
 
-@property (copy, nonatomic, readonly) NSArray *patients;
-@property (assign, nonatomic, readonly) NSInteger selectedIndex;
+// views
+@property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, retain) IBOutlet UIPageControl *pageControl;
 
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
+// backing store
+@property (nonatomic, copy, readonly) NSArray *patients;
 
-+ (HRPatientSwipeControl *)controlWithOwner:(id)owner options:(NSDictionary *)options target:(id)target action:(SEL)action;
+// factory method to create a swipe control
++ (instancetype)controlWithOwner:(id)owner options:(NSDictionary *)options target:(id)target action:(SEL)action;
 
-- (void)setSelectedIndex:(NSInteger)index animated:(BOOL)animated;
+// set selected with optional animation
+- (void)setPage:(NSInteger)page animated:(BOOL)animated;
+
+// page control callback
 - (IBAction)pageControlValueChanged:(UIPageControl *)sender;
 
 @end

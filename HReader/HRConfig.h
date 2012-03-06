@@ -10,7 +10,6 @@
 
 @class HRPatient;
 
-extern NSString * const HRPatientDidChangeNotification;
 extern NSString * const HRPatientKey;
 
 @interface HRConfig : NSObject

@@ -246,11 +246,9 @@
     layer.shadowOffset = CGSizeMake(0.0, 0.0);
     layer.shadowRadius = 5.0;
     layer.shouldRasterize = YES;
-    [self.view bringSubviewToFront:self.headerView];  
+    [self.view bringSubviewToFront:self.headerView];
     
-    
-    //    [self toggleViewShadow:YES];
-    
+    // load vital views
     UINib *nib = [UINib nibWithNibName:@"HRVitalView" bundle:nil];
     self.vitalsViewsArray = [NSArray arrayWithObjects:self.vital1View, self.vital2View, self.vital3View, nil];
     [self.vitalsViewsArray enumerateObjectsUsingBlock:^(HRVitalView *view, NSUInteger idx, BOOL *stop) {

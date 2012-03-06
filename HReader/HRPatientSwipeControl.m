@@ -12,33 +12,33 @@
 #import "HRAppDelegate.h"
 #import "HRMPatient.h"
 
-//static NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
+static NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
 
 @interface HRPatientSwipeControl ()
-@property (copy, nonatomic, readwrite) NSArray *patients;
-@property (assign, nonatomic, readwrite) NSInteger selectedIndex;
+@property (nonatomic, copy, readwrite) NSArray *patients;
 - (void)postChangeNotification;
 - (void)patientChanged:(NSNotification *)notif;
 @end
 
 @implementation HRPatientSwipeControl
 
-@synthesize patients        = __patients;
-@synthesize scrollView      = __scrollView;
-@synthesize pageControl     = __pageControl;
-@synthesize selectedIndex   = __selectedIndex;
+@synthesize patients = __patients;
+@synthesize scrollView = __scrollView;
+@synthesize pageControl = __pageControl;
 
 #pragma mark - class methods
-+ (HRPatientSwipeControl *)controlWithOwner:(id)owner options:(NSDictionary *)options target:(id)target action:(SEL)action {
+
++ (instancetype)controlWithOwner:(id)owner options:(NSDictionary *)options target:(id)target action:(SEL)action {
     UINib *nib = [UINib nibWithNibName:NSStringFromClass(self) bundle:nil];
     NSArray *array = [nib instantiateWithOwner:owner options:options];
-    NSAssert([array count] == 1, @"There is more than one top level object");
+    NSAssert([array count] == 1, @"There should only be one top level object");
     HRPatientSwipeControl *control = [array lastObject];
     [control addTarget:target action:action forControlEvents:UIControlEventValueChanged];
     return [array lastObject];
 }
 
-#pragma mark - object methods
+#pragma mark - object lifecycle
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     
@@ -63,9 +63,9 @@
     // load initial patients
     NSArray *patients = [HRMPatient patientsInContext:[HRAppDelegate managedObjectContext]];
     HRMPatient *patient = [HRMPatient selectedPatient];
-    NSUInteger index = [patients indexOfObject:patient];
+    NSInteger index = [patients indexOfObject:patient];
     self.patients = patients;
-    self.selectedIndex = index;
+    self.page = index;
     
     // watch for notifications
     [[NSNotificationCenter defaultCenter]
@@ -75,6 +75,7 @@
      object:nil];
     
 }
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter]
      removeObserver:self
@@ -86,75 +87,120 @@
     [super dealloc];
 }
 
-#pragma mark - custom setters
-- (void)setPatients:(NSArray *)patients {
-    [__patients release];
-    __patients = [patients copy];
-    CGSize size = self.bounds.size;
-    self.scrollView.contentSize = CGSizeMake(size.width * [__patients count], size.height);
-    [self.scrollView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [obj removeFromSuperview];
-    }];
-    [__patients enumerateObjectsUsingBlock:^(HRMPatient *patient, NSUInteger idx, BOOL *stop) {
-        UIImageView *patientImageView = [[[UIImageView alloc] initWithImage:patient.patientImage] autorelease];
-        patientImageView.frame = CGRectMake(size.width * idx, 0.0, size.width, size.height);
-        [self.scrollView addSubview:patientImageView];
-        if (idx == 0 || idx == [__patients count] - 1) {
-            patientImageView.layer.shadowColor = [[UIColor blackColor] CGColor];
-            patientImageView.layer.shadowOpacity = 0.5f;
-            patientImageView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-            patientImageView.layer.shadowRadius = 5.0f;
-        }
-        else {
-            [self.scrollView bringSubviewToFront:patientImageView];
-        }
-    }];
-    self.pageControl.numberOfPages = [__patients count];
-}
-- (void)setSelectedIndex:(NSInteger)selectedIndex {
-    [self setSelectedIndex:selectedIndex animated:NO];
-}
-- (void)setSelectedIndex:(NSInteger)index animated:(BOOL)animated {
-    __selectedIndex = index;
-    [self.scrollView
-     setContentOffset:CGPointMake(self.scrollView.bounds.size.width * __selectedIndex, 0.0)
-     animated:animated];
-    self.pageControl.currentPage = index;
+#pragma mark - UIPageControl targets
+
+- (IBAction)pageControlValueChanged:(UIPageControl *)sender {
+    [self setPage:sender.currentPage animated:YES];
 }
 
-#pragma mark - UIPageControl targets
-- (IBAction)pageControlValueChanged:(UIPageControl *)sender {
-    [self setSelectedIndex:sender.currentPage animated:YES];
+#pragma mark - custom accessors
+
+- (NSInteger)page {
+    UIScrollView *scrollView = self.scrollView;
+    return scrollView.contentOffset.x / scrollView.bounds.size.width;
+}
+
+- (void)setPage:(NSInteger)page {
+    [self setPage:page animated:NO];
+}
+
+- (void)setPage:(NSInteger)page animated:(BOOL)animated {
+    UIScrollView *scrollView = self.scrollView;
+    [scrollView
+     setContentOffset:CGPointMake(scrollView.bounds.size.width * page, 0.0)
+     animated:animated];
+    if (animated) {
+        self.userInteractionEnabled = NO;
+    }
+}
+- (void)setPatients:(NSArray *)patients {
+    
+    // get new list
+    [__patients release];
+    __patients = [patients copy];
+    
+    // calculate sizes
+    UIScrollView *scrollView = self.scrollView;
+    NSUInteger numberOfPatients = [__patients count];
+    CGSize size = self.bounds.size;
+    scrollView.contentSize = CGSizeMake(size.width * numberOfPatients, size.height);
+    self.pageControl.numberOfPages = numberOfPatients;
+    
+    // remove all views from the scroll view
+    [scrollView.subviews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger index, BOOL *stop) {
+        [view removeFromSuperview];
+    }];
+    
+    // add views for all patients
+    [__patients enumerateObjectsUsingBlock:^(HRMPatient *patient, NSUInteger index, BOOL *stop) {
+        UIImageView *imageView = [[[UIImageView alloc] initWithImage:patient.patientImage] autorelease];
+        imageView.frame = CGRectMake(size.width * index, 0.0, size.width, size.height);
+        [scrollView addSubview:imageView];
+        if (index == 0 || index == numberOfPatients - 1) {
+            imageView.layer.shadowColor = [[UIColor blackColor] CGColor];
+            imageView.layer.shadowOpacity = 0.5f;
+            imageView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+            imageView.layer.shadowRadius = 5.0f;
+        }
+        else {
+            [scrollView bringSubviewToFront:imageView];
+        }
+    }];
+    
+    // update selected page
+    HRMPatient *patient = [HRMPatient selectedPatient];
+    NSInteger index = [__patients indexOfObject:patient];
+    if (index == NSNotFound) {
+        index = 0;
+        patient = [patients objectAtIndex:0];
+        [HRMPatient setSelectedPatient:patient];
+        self.page = index;
+        [self postChangeNotification];
+    }
+    
 }
 
 #pragma mark - scroll view delegate
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self scrollViewDidEndScrollingAnimation:scrollView];
 }
+
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    NSInteger index = self.scrollView.contentOffset.x / self.scrollView.bounds.size.width;
-    if (index != self.selectedIndex) {
-        self.pageControl.currentPage = index;
-        HRMPatient *patient = [self.patients objectAtIndex:index];
+    
+    // get page
+    NSInteger page = self.page;
+    self.pageControl.currentPage = page;
+    
+    // get patient
+    HRMPatient *patient = [self.patients objectAtIndex:page];
+    if (![patient isEqual:[HRMPatient selectedPatient]]) {
         [HRMPatient setSelectedPatient:patient];
-        self.selectedIndex = index;
         [TestFlight passCheckpoint:@"Patient Swipe"];
         [self postChangeNotification];
-        [self sendActionsForControlEvents:UIControlEventValueChanged];
     }
+    
+    // enable interaction
+    self.userInteractionEnabled = YES;
+    
 }
 
 #pragma mark - notifications
+
 - (void)postChangeNotification {
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
     [[NSNotificationCenter defaultCenter]
      postNotificationName:HRPatientDidChangeNotification
      object:self
      userInfo:nil];
 }
+
 - (void)patientChanged:(NSNotification *)notif {
     if ([notif object] != self) {
         HRMPatient *patient = [HRMPatient selectedPatient];
-        self.selectedIndex = [self.patients indexOfObject:patient];
+        NSInteger index = [self.patients indexOfObject:patient];
+        self.page = index;
+        self.pageControl.currentPage = self.page;
         [self sendActionsForControlEvents:UIControlEventValueChanged];
     }
 }
