@@ -58,12 +58,13 @@
 						<string key="NSFrame">{{0, 145}, {175, 36}}</string>
 						<reference key="NSSuperview" ref="11092131"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:661</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
+						<bool key="IBUIHidesForSinglePage">YES</bool>
+						<bool key="IBUIDefersCurrentPageDisplay">YES</bool>
 						<int key="IBUINumberOfPages">6</int>
 					</object>
 				</array>

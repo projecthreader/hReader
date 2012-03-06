@@ -23,7 +23,6 @@
 
 #import "DDXML.h"
 
-NSString * const HRPatientDidChangeNotification = @"HRPatientDidChangeNotification";
 NSString * const HRPatientKey                   = @"HRPatientKey";
 NSString * const HRHasLaunched                  = @"has_launched";
 NSString * const HRPasscodeEnabled              = @"passcode_enabled";
