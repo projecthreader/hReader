@@ -1,3 +1,9 @@
+# 2012-3-6
+
+- Minor refactoring of vital views
+- Import new patient JSON files
+- Show medications sorted with most recent on top
+
 # 2012-02-29
 
 - Fixed medications to be formatted properly (will show max of 8)
