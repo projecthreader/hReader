@@ -110,11 +110,13 @@ typedef BOOL (^PINCodeVerifyBlock) (NSString *code);
 
 @interface PINCodeViewController (HRKeychainAdditions)
 
-#if defined (DEBUG) || defined (DEVELOPMENT)
-+ (void)resetPersistedPasscode;
-#endif
+// PIN code
 + (void)setPersistedPasscode:(NSString *)code;
 + (BOOL)isPasscodeValid:(NSString *)code;
 + (BOOL)isPersistedPasscodeSet;
+
+// security questions
++ (void)setAnswersForSecurityQuestions:(NSArray *)answers;
++ (BOOL)areAnswersForSecurityQuestionsValid:(NSArray *)answers;
 
 @end

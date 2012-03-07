@@ -64,7 +64,7 @@
 }
 
 - (void)presentPasscodeCreateController {
-#if !defined (DEBUG)// || 1
+#if !defined (DEBUG) || 1
     if (![PINCodeViewController isPersistedPasscodeSet]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
         UINavigationController *navigation = [storyboard instantiateInitialViewController];
@@ -92,7 +92,7 @@
 #endif
 }
 - (void)presentPasscodeVerifyControllerIfNecessary {
-#if !defined(DEBUG)// || 1
+#if !defined(DEBUG) || 1
     static BOOL visible = NO;
     if (!visible && [PINCodeViewController isPersistedPasscodeSet]) {
         visible = YES;

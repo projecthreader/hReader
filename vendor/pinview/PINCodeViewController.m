@@ -11,6 +11,8 @@
 
 #define kGCPINViewControllerDelay 0.5
 
+static NSString * const HRUUID = @"UUID";
+
 @interface PINCodeViewController ()
 @property (nonatomic, retain) NSMutableString *passcodeText;
 @property (nonatomic, copy) NSString *secondPasscodeText;
@@ -44,6 +46,26 @@
 @synthesize passcodeLabel = __passcodeLabel;
 @synthesize messageLabel = __messageLabel;
 @synthesize errorLabel = __errorLabel;
+
+#pragma mark - class methods
+
++ (void)initialize {
+    if (self == [PINCodeViewController class]) {
+        
+        // check for existing uuid
+        NSString *UUID = [[NSUserDefaults standardUserDefaults] objectForKey:HRUUID];
+        
+        // create one if none exists
+        if (UUID == nil) {
+            CFUUIDRef UUIDRef = CFUUIDCreate(kCFAllocatorDefault);
+            CFStringRef UUIDStringRef = CFUUIDCreateString(kCFAllocatorDefault, UUIDRef);
+            CFRelease(UUIDRef);
+            UUID = [(NSString *)UUIDStringRef autorelease];
+            [[NSUserDefaults standardUserDefaults] setObject:UUID forKey:HRUUID];
+        }
+        
+    }
+}
 
 #pragma mark - object methods
 - (id)initWithCoder:(NSCoder *)coder {
@@ -207,35 +229,49 @@
 @implementation PINCodeViewController (HRKeychainAdditions)
 
 static NSString * const HRKeychainService = @"org.mitre.hreader";
-static NSString * const HRKeychainAccount = @"org.mitre.hreader.account.default";
+static NSString * const HRKeychainPINAccount = @"account.pin";
+static NSString * const HRKeychainSecurityQuestionsAccount = @"account.security_questions";
 
-#if defined (DEBUG) || defined (DEVELOPMENT)
-+ (void)resetPersistedPasscode {
-    [SSKeychain
-     deletePasswordForService:HRKeychainService
-     account:HRKeychainAccount];
++ (NSString *)accountNameWithType:(NSString *)type {
+    NSString *UUID = [[NSUserDefaults standardUserDefaults] objectForKey:HRUUID];
+    return [UUID stringByAppendingPathExtension:type];
 }
-#endif
 
 + (void)setPersistedPasscode:(NSString *)code {
     [SSKeychain
      setPassword:code
      forService:HRKeychainService
-     account:HRKeychainAccount];
+     account:[self accountNameWithType:HRKeychainPINAccount]];
 }
 
 + (BOOL)isPasscodeValid:(NSString *)code {
     NSString *keychain = [SSKeychain
                           passwordForService:HRKeychainService
-                          account:HRKeychainAccount];
+                          account:[self accountNameWithType:HRKeychainPINAccount]];
     return [code isEqualToString:keychain];
 }
 
 + (BOOL)isPersistedPasscodeSet {
     NSString *keychain = [SSKeychain
                           passwordForService:HRKeychainService
-                          account:HRKeychainAccount];
+                          account:[self accountNameWithType:HRKeychainPINAccount]];
     return (keychain != nil);
+}
+
++ (void)setAnswersForSecurityQuestions:(NSArray *)answers {
+    NSString *code = [answers componentsJoinedByString:@""];
+    [SSKeychain
+     setPassword:code
+     forService:HRKeychainService
+     account:[self accountNameWithType:HRKeychainSecurityQuestionsAccount]];
+}
+
++ (BOOL)areAnswersForSecurityQuestionsValid:(NSArray *)answers {
+    NSString *code = [answers componentsJoinedByString:@""];
+    NSString *keychain = [SSKeychain
+                          passwordForService:HRKeychainService
+                          account:[self accountNameWithType:HRKeychainSecurityQuestionsAccount]];
+    return [code isEqualToString:keychain];
 }
 
 @end
