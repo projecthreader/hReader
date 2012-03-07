@@ -11,7 +11,7 @@
 
 #define kGCPINViewControllerDelay 0.5
 
-static NSString * const HRUUID = @"UUID";
+static NSString * const HRUUID = @"KeychainUUID";
 
 @interface PINCodeViewController ()
 @property (nonatomic, retain) NSMutableString *passcodeText;
@@ -271,7 +271,7 @@ static NSString * const HRKeychainSecurityQuestionsAccount = @"account.security_
     NSString *keychain = [SSKeychain
                           passwordForService:HRKeychainService
                           account:[self accountNameWithType:HRKeychainSecurityQuestionsAccount]];
-    return [code isEqualToString:keychain];
+    return ([code compare:keychain options:NSCaseInsensitiveSearch] == NSOrderedSame);
 }
 
 @end
