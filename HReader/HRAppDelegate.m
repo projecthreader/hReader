@@ -68,21 +68,21 @@
     if (![PINCodeViewController isPersistedPasscodeSet]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
         UINavigationController *navigation = [storyboard instantiateInitialViewController];
-        PINCodeViewController *PIN = [navigation.viewControllers objectAtIndex:0];
-        PIN.mode = PINCodeViewControllerModeCreate;
-        PIN.title = @"Set Passcode";
-        PIN.messageText = @"Enter a passcode";
-        PIN.confirmText = @"Verify passcode";
-        PIN.errorText = @"The passcodes do not match";
-        PIN.verifyBlock = ^(NSString *code) {
-            if ([code length] == 6) {
-                [PINCodeViewController setPersistedPasscode:code];
-                return YES;
-            }
-            else {
-                return NO;
-            }
-        };
+//        PINCodeViewController *PIN = [navigation.viewControllers objectAtIndex:0];
+//        PIN.mode = PINCodeViewControllerModeCreate;
+//        PIN.title = @"Set Passcode";
+//        PIN.messageText = @"Enter a passcode";
+//        PIN.confirmText = @"Verify passcode";
+//        PIN.errorText = @"The passcodes do not match";
+//        PIN.verifyBlock = ^(NSString *code) {
+//            if ([code length] == 6) {
+//                [PINCodeViewController setPersistedPasscode:code];
+//                return YES;
+//            }
+//            else {
+//                return NO;
+//            }
+//        };
         UIViewController *controller = self.window.rootViewController;
         if (controller.presentedViewController) {
             [controller dismissModalViewControllerAnimated:NO];
@@ -98,16 +98,16 @@
         visible = YES;
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
         UINavigationController *navigation = [storyboard instantiateInitialViewController];
-        PINCodeViewController *PIN = [navigation.viewControllers objectAtIndex:0];
-        PIN.mode = PINCodeViewControllerModeVerify;
-        PIN.title = @"Enter Passcode";
-        PIN.messageText = @"Enter your passcode";
-        PIN.errorText = @"Incorrect passcode";
-        PIN.verifyBlock = ^(NSString *code) {
-            BOOL correct = [PINCodeViewController isPasscodeValid:code];
-            visible = !correct;
-            return correct;
-        };
+//        PINCodeViewController *PIN = [navigation.viewControllers objectAtIndex:0];
+//        PIN.mode = PINCodeViewControllerModeVerify;
+//        PIN.title = @"Enter Passcode";
+//        PIN.messageText = @"Enter your passcode";
+//        PIN.errorText = @"Incorrect passcode";
+//        PIN.verifyBlock = ^(NSString *code) {
+//            BOOL correct = [PINCodeViewController isPasscodeValid:code];
+//            visible = !correct;
+//            return correct;
+//        };
         UIViewController *controller = self.window.rootViewController;
         if (controller.presentedViewController) {
             [controller dismissModalViewControllerAnimated:NO];
