@@ -8,9 +8,13 @@
 
 #import "PINCodeSecurityQuestionsViewController.h"
 #import "PINCodeTextField.h"
+#import "PINCodeViewController.h"
+
+static NSString * const PINCodeSecurityQuestionsKey = @"PINCodeSecurityQuestions";
 
 @interface PINCodeSecurityQuestionsViewController () {
     NSMutableDictionary *data;
+    PINSecurityQuestionMode __mode;
 }
 
 @end
@@ -35,6 +39,8 @@
          selector:@selector(keyboardWillHide:)
          name:UIKeyboardWillHideNotification
          object:nil];
+        __mode = PINSecurityQuestionModeUnset;
+//        NSAssertion(__mode == 0, "holly balls");
     }
     return self;
 }
@@ -45,13 +51,30 @@
     [super dealloc];
 }
 
+#pragma mark - property overrides
+
+- (void)setMode:(PINSecurityQuestionMode)mode {
+    NSAssert((mode > 0 && mode < 4), @"You must provide a valid mode");
+    if (__mode == 0) {
+        __mode = mode;
+    }
+    NSAssert(__mode == mode, @"wat");
+}
+
 #pragma mark - view lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSAssert(__mode > 0, @"The security question mode must be set");
     UIImage *backgroundImage = [UIImage imageNamed:@"PINCodeBackground"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     self.tableView.backgroundView = nil;
+    if (__mode != PINSecurityQuestionModeCreate) {
+        NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:PINCodeSecurityQuestionsKey];
+        [array enumerateObjectsUsingBlock:^(NSString *question, NSUInteger idx, BOOL *stop) {
+            [data setObject:question forKey:[NSString stringWithFormat:@"Question%lx", (unsigned long)idx]];
+        }];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
@@ -83,10 +106,30 @@
     NSLog(@"%@", data);
 }
 
+#pragma mark - button actions
+
+- (IBAction)done {
+    
+    // get data
+    NSArray *keys = [data allKeys];
+    
+    NSArray *questions = [[keys filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF LIKE 'Question*'"]]
+                          sortedArrayUsingSelector:@selector(compare:)];
+    NSArray *answers = [[keys filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF LIKE 'Answer*'"]]
+                        sortedArrayUsingSelector:@selector(compare:)];
+    
+    // store questions in user defaults
+    [[NSUserDefaults standardUserDefaults] setObject:questions forKey:PINCodeSecurityQuestionsKey];
+    
+    // store answers in keychain
+    [PINCodeViewController setAnswersForSecurityQuestions:answers];
+    
+}
+
 #pragma mark - table view
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 5;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -103,11 +146,15 @@
     NSAssert([subviews count] == 1, @"There should only be one view in the cell content view");
     PINCodeTextField *field = [subviews lastObject];
     if (indexPath.row == 0) {
+        NSLog(@"%i", PINSecurityQuestionModeVerify);
+        field.enabled = (__mode != PINCodeViewControllerModeVerify);
         field.placeholder = @"Question";
-        field.key = [NSString 
-        field.key = [NSString stringWithFormat:@"Question%ld", indexPath.section];
+        NSString *key = [NSString stringWithFormat:@"Question%ld", indexPath.section];
+        field.key = key;
+        field.text = [data objectForKey:key];
     }
     else if (indexPath.row == 1) {
+        field.enabled = YES;
         field.placeholder = @"Answer";
         field.key = [NSString stringWithFormat:@"Answer%ld", indexPath.section];
     }

@@ -13,6 +13,7 @@
 #import "HRPrivacyViewController.h"
 
 #import "PINCodeViewController.h"
+#import "PINCodeSecurityQuestionsViewController.h"
 
 #import "HRMPatient.h"
 
@@ -69,6 +70,8 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
         UINavigationController *navigation = [storyboard instantiateInitialViewController];
 //        PINCodeViewController *PIN = [navigation.viewControllers objectAtIndex:0];
+        id controller = [navigation.viewControllers objectAtIndex:0];
+        [controller setMode:PINSecurityQuestionModeCreate];
 //        PIN.mode = PINCodeViewControllerModeCreate;
 //        PIN.title = @"Set Passcode";
 //        PIN.messageText = @"Enter a passcode";
@@ -83,11 +86,11 @@
 //                return NO;
 //            }
 //        };
-        UIViewController *controller = self.window.rootViewController;
-        if (controller.presentedViewController) {
-            [controller dismissModalViewControllerAnimated:NO];
+        UIViewController *rootController = self.window.rootViewController;
+        if (rootController.presentedViewController) {
+            [rootController dismissModalViewControllerAnimated:NO];
         }
-        [controller presentModalViewController:navigation animated:NO];
+        [rootController presentModalViewController:navigation animated:NO];
     }
 #endif
 }

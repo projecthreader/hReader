@@ -258,8 +258,14 @@ static NSString * const HRKeychainSecurityQuestionsAccount = @"account.security_
     return (keychain != nil);
 }
 
-+ (void)setAnswersForSecurityQuestions:(NSArray *)answers {
++ (NSString *)sanitizeAnswersForSecurityQuestions:(NSArray *)answers {
     NSString *code = [answers componentsJoinedByString:@""];
+    // do more stuff if we want
+    return code;
+}
+
++ (void)setAnswersForSecurityQuestions:(NSArray *)answers {
+    NSString *code = [self sanitizeAnswersForSecurityQuestions:answers];
     [SSKeychain
      setPassword:code
      forService:HRKeychainService
@@ -267,7 +273,7 @@ static NSString * const HRKeychainSecurityQuestionsAccount = @"account.security_
 }
 
 + (BOOL)areAnswersForSecurityQuestionsValid:(NSArray *)answers {
-    NSString *code = [answers componentsJoinedByString:@""];
+    NSString *code = [self sanitizeAnswersForSecurityQuestions:answers];
     NSString *keychain = [SSKeychain
                           passwordForService:HRKeychainService
                           account:[self accountNameWithType:HRKeychainSecurityQuestionsAccount]];

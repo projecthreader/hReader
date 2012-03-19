@@ -8,10 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    PINSecurityQuestionModeUnset = -1,
+    PINSecurityQuestionModeCreate,
+    PINSecurityQuestionModeEdit,
+    PINSecurityQuestionModeVerify
+} PINSecurityQuestionMode;
+
 @interface PINCodeSecurityQuestionsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 
 - (IBAction)valueChanged:(id)sender;
+
+- (void)setMode:(PINSecurityQuestionMode)mode;
 
 @end
