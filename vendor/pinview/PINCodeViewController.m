@@ -13,39 +13,40 @@
 
 static NSString * const HRUUID = @"KeychainUUID";
 
-@interface PINCodeViewController ()
+@interface PINCodeViewController () {
+    BOOL clearOnNextInput;
+}
+
 @property (nonatomic, retain) NSMutableString *passcodeText;
-@property (nonatomic, copy) NSString *secondPasscodeText;
-- (void)cleanupView;
+@property (nonatomic, copy) NSString *confirmPasscodeText;
+
+- (void)clearIfNeeded;
 - (void)updatePasscodeLabel;
 - (void)passcodeTextDidChange;
-- (void)wrong;
+- (void)cleanupView;
+
+//- (void)wrong;
+
 @end
 
 @implementation PINCodeViewController
 
-@synthesize messageText = __messageText;
-@synthesize confirmText = __confirmText;
-@synthesize errorText = __errorText;
-@synthesize verifyBlock = __verifyBlock;
-@synthesize mode = __mode;
-@synthesize automaticallyDismissWhenValid = __automaticallyDismissWhenValid;
-
-@synthesize buttonOne = __buttonOne;
-@synthesize buttonTwo = __buttonTwo;
-@synthesize buttonThree = __buttonThree;
-@synthesize buttonFour = __buttonFour;
-@synthesize buttonFive = __buttonFive;
-@synthesize buttonSix = __buttonSix;
-@synthesize buttonSeven = __buttonSeven;
-@synthesize buttonEight = __buttonEight;
-@synthesize buttonNine = __buttonNine;
-@synthesize buttonTen = __buttonTen;
+@synthesize delegate = __delegate;
+@synthesize buttons = __buttons;
 @synthesize passcodeText = __passcodeText;
-@synthesize secondPasscodeText = __secondPasscodeText;
+@synthesize confirmPasscodeText = __confirmPasscodeText;
+
 @synthesize passcodeLabel = __passcodeLabel;
 @synthesize messageLabel = __messageLabel;
 @synthesize errorLabel = __errorLabel;
+
+@synthesize messageText = __messageText;
+@synthesize confirmText = __confirmText;
+@synthesize errorText = __errorText;
+@synthesize mode = __mode;
+
+
+
 
 #pragma mark - class methods
 
@@ -68,38 +69,41 @@ static NSString * const HRUUID = @"KeychainUUID";
 }
 
 #pragma mark - object methods
+
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (self) {
-        self.automaticallyDismissWhenValid = YES;
+        clearOnNextInput = NO;
     }
     return self;
 }
+
 - (void)dealloc {
     self.messageText = nil;
     self.confirmText = nil;
     self.errorText = nil;
-    self.verifyBlock = nil;
     [self cleanupView];
     [super dealloc];
 }
+
+- (void)clearIfNeeded {
+    if (clearOnNextInput) {
+        clearOnNextInput = NO;
+        self.passcodeText = nil;
+        self.confirmText = nil;
+        self.messageLabel.text = self.messageText;
+    }
+}
+
 - (void)cleanupView {
-    self.buttonOne = nil;
-    self.buttonTwo = nil;
-    self.buttonThree = nil;
-    self.buttonFour = nil;
-    self.buttonFive = nil;
-    self.buttonSix = nil;
-    self.buttonSeven = nil;
-    self.buttonEight = nil;
-    self.buttonNine = nil;
-    self.buttonTen = nil;
+    self.buttons = nil;
     self.passcodeLabel = nil;
     self.messageLabel = nil;
     self.errorLabel = nil;
     self.passcodeText = nil;
-    self.secondPasscodeText = nil;
+    self.confirmText = nil;
 }
+
 - (void)updatePasscodeLabel {
     NSMutableString *string = [NSMutableString string];
     for (NSUInteger i = 0; i < [self.passcodeText length]; i++) {
@@ -107,33 +111,36 @@ static NSString * const HRUUID = @"KeychainUUID";
     }
     self.passcodeLabel.text = string;
 }
-- (void)wrong {
-    self.errorLabel.hidden = NO;
-    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, kGCPINViewControllerDelay * NSEC_PER_SEC);
-    dispatch_after(time, dispatch_get_main_queue(), ^(void){
-        self.passcodeText = [NSMutableString string];
-        [self updatePasscodeLabel];
-        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-    });
-}
-- (void)dismiss {
-    if (self.automaticallyDismissWhenValid) {
-        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-        dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, kGCPINViewControllerDelay * NSEC_PER_SEC);
-        dispatch_after(time, dispatch_get_main_queue(), ^(void){
-            [self dismissModalViewControllerAnimated:YES];
-            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-        });
-    }
-}
+
+//- (void)wrong {
+//    self.errorLabel.hidden = NO;
+//    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+//    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, kGCPINViewControllerDelay * NSEC_PER_SEC);
+//    dispatch_after(time, dispatch_get_main_queue(), ^(void){
+//        self.passcodeText = [NSMutableString string];
+//        [self updatePasscodeLabel];
+//        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+//    });
+//}
+//
+//- (void)dismiss {
+////    if (self.automaticallyDismissWhenValid) {
+////        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+////        dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, kGCPINViewControllerDelay * NSEC_PER_SEC);
+////        dispatch_after(time, dispatch_get_main_queue(), ^(void){
+////            [self dismissModalViewControllerAnimated:YES];
+////            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+////        });
+////    }
+//}
+
 - (void)passcodeTextDidChange {
     self.errorLabel.hidden = YES;
     [self updatePasscodeLabel];
-    if ([self.passcodeText length] == 6) {
+    if ([self.passcodeText length] == [self.delegate PINCodeLength]) {
         if (self.mode == PINCodeViewControllerModeCreate) {
-            if (self.secondPasscodeText == nil) {
-                self.secondPasscodeText = self.passcodeText;
+            if (self.confirmText == nil) {
+                self.confirmText = self.passcodeText;
                 self.passcodeText = [NSMutableString string];
                 if (self.confirmText) {
                     self.messageLabel.text = self.confirmText;
@@ -141,30 +148,23 @@ static NSString * const HRUUID = @"KeychainUUID";
                 [self updatePasscodeLabel];
             }
             else {
-                if ([self.passcodeText isEqualToString:self.secondPasscodeText] &&
-                    self.verifyBlock(self.passcodeText)) {
-                    [self dismiss];
-                }
-                else {
-                    self.messageLabel.text = self.messageText;
-                    self.secondPasscodeText = nil;
-                    [self wrong];
+                if ([self.passcodeText isEqualToString:self.confirmText]) {
+                    clearOnNextInput = YES;
+                    [self.delegate pinCodeViewController:self didSubmitPIN:self.passcodeText];
                 }
             }
         }
-        else if (self.mode == PINCodeViewControllerModeVerify) {
-            if (self.verifyBlock(self.passcodeText)) {
-                [self dismiss];
-            }
-            else {
-                [self wrong];
-            }
+        else {
+            clearOnNextInput = YES;
+            [self.delegate pinCodeViewController:self didSubmitPIN:self.passcodeText];
         }
     }
 }
 
 #pragma mark - button actions
+
 - (IBAction)deleteButtonTap {
+    [self clearIfNeeded];
     NSUInteger length = [self.passcodeText length];
     if (length) {
         NSRange range = NSMakeRange(length - 1, 1);
@@ -172,13 +172,16 @@ static NSString * const HRUUID = @"KeychainUUID";
     }
     [self passcodeTextDidChange];
 }
+
 - (IBAction)numberButtonTap:(UIButton *)sender {
+    [self clearIfNeeded];
     NSAssert(sender, @"No sender was provided");
     [self.passcodeText appendString:sender.currentTitle];
     [self passcodeTextDidChange];
 }
 
 #pragma mark - view lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -190,36 +193,26 @@ static NSString * const HRUUID = @"KeychainUUID";
     self.passcodeText = [NSMutableString string];
     self.errorLabel.text = self.errorText;
     self.messageLabel.text = self.messageText;
-    NSAssert(self.verifyBlock, @"No verify block was provided");
     
     // collect buttons
-    NSMutableArray *buttons = [NSMutableArray arrayWithObjects:
-                               self.buttonOne,
-                               self.buttonTwo,
-                               self.buttonThree,
-                               self.buttonFour,
-                               self.buttonFive,
-                               self.buttonSix,
-                               self.buttonSeven,
-                               self.buttonEight,
-                               self.buttonNine,
-                               self.buttonTen,
-                               nil];
-    NSUInteger count = [buttons count];
+    NSMutableArray *array = [[self.buttons mutableCopy] autorelease];
+    NSUInteger count = [array count];
     for (NSUInteger i = 0; i < count; i++) {
         u_int32_t elements = count - i;
         u_int32_t n = (arc4random() % elements) + i;
-        [buttons exchangeObjectAtIndex:i withObjectAtIndex:n];
+        [array exchangeObjectAtIndex:i withObjectAtIndex:n];
     }
-    [buttons enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [obj setTitle:[NSString stringWithFormat:@"%lu", (long)idx] forState:UIControlStateNormal];
+    [array enumerateObjectsUsingBlock:^(UIButton *button, NSUInteger index, BOOL *stop) {
+        [button setTitle:[NSString stringWithFormat:@"%lu", (long)index] forState:UIControlStateNormal];
     }];
     
 }
+
 - (void)viewDidUnload {
     [super viewDidUnload];
     [self cleanupView];
 }
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
     return YES;
 }

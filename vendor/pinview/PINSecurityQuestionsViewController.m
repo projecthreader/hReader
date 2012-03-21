@@ -6,22 +6,23 @@
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
-#import "PINCodeSecurityQuestionsViewController.h"
+#import "PINSecurityQuestionsViewController.h"
 #import "PINCodeTextField.h"
 #import "PINCodeViewController.h"
 
 static NSString * const PINCodeSecurityQuestionsKey = @"PINCodeSecurityQuestions";
 
-@interface PINCodeSecurityQuestionsViewController () {
+@interface PINSecurityQuestionsViewController () {
     NSMutableDictionary *data;
-    PINSecurityQuestionMode __mode;
 }
 
 @end
 
-@implementation PINCodeSecurityQuestionsViewController
+@implementation PINSecurityQuestionsViewController
 
 @synthesize tableView = __tableView;
+@synthesize mode = __mode;
+@synthesize delegate = __delegate;
 
 #pragma mark - object lifecycle
 
@@ -29,16 +30,6 @@ static NSString * const PINCodeSecurityQuestionsKey = @"PINCodeSecurityQuestions
     self = [super initWithCoder:coder];
     if (self) {
         data = [[NSMutableDictionary alloc] init];
-//        [[NSNotificationCenter defaultCenter]
-//         addObserver:self
-//         selector:@selector(keyboardWillShow:)
-//         name:UIKeyboardWillShowNotification
-//         object:nil];
-//        [[NSNotificationCenter defaultCenter]
-//         addObserver:self
-//         selector:@selector(keyboardWillHide:)
-//         name:UIKeyboardWillHideNotification
-//         object:nil];
         __mode = 0;
     }
     return self;
@@ -52,23 +43,22 @@ static NSString * const PINCodeSecurityQuestionsKey = @"PINCodeSecurityQuestions
 
 #pragma mark - property overrides
 
-- (void)setMode:(PINSecurityQuestionMode)mode {
+- (void)setMode:(PINSecurityQuestionsViewControllerMode)mode {
     NSAssert((mode > 0 && mode < 4), @"You must provide a valid mode");
     if (__mode == 0) {
         __mode = mode;
     }
-    NSAssert(__mode == mode, @"wat");
 }
 
 #pragma mark - view lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSAssert(__mode > 0, @"The security mode % question mode must be set");
+    NSAssert(__mode > 0, @"The security question mode must be set");
     UIImage *backgroundImage = [UIImage imageNamed:@"PINCodeBackground"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     self.tableView.backgroundView = nil;
-    if (__mode != PINSecurityQuestionModeCreate) {
+    if (__mode != PINSecurityQuestionsViewControllerCreate) {
         NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:PINCodeSecurityQuestionsKey];
         [array enumerateObjectsUsingBlock:^(NSString *question, NSUInteger idx, BOOL *stop) {
             [data setObject:question forKey:[NSString stringWithFormat:@"Question%lx", (unsigned long)idx]];
@@ -111,23 +101,36 @@ static NSString * const PINCodeSecurityQuestionsKey = @"PINCodeSecurityQuestions
     // get data
     NSArray *keys = [data allKeys];
     
-    NSArray *questions = [[keys filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF LIKE 'Question*'"]]
-                          sortedArrayUsingSelector:@selector(compare:)];
-    NSArray *answers = [[keys filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF LIKE 'Answer*'"]]
-                        sortedArrayUsingSelector:@selector(compare:)];
+    NSArray *questionKeys = [[keys filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF LIKE 'Question*'"]] 
+                             sortedArrayUsingSelector:@selector(compare:)];
+    NSArray *answerKeys = [[keys filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF LIKE 'Answer*'"]]
+                           sortedArrayUsingSelector:@selector(compare:)];
+        
+    NSArray *questions = [data objectsForKeys:questionKeys notFoundMarker:[NSNull null]];
+    NSArray *answers = [data objectsForKeys:answerKeys notFoundMarker:[NSNull null]];
     
-    // store questions in user defaults
-    [[NSUserDefaults standardUserDefaults] setObject:questions forKey:PINCodeSecurityQuestionsKey];
-    
-    // store answers in keychain
-    [PINCodeViewController setAnswersForSecurityQuestions:answers];
-    
+    // do stuff with data
+    [self.delegate securityQuestionsController:self
+                            didSubmitQuestions:questions
+                                       answers:answers];
+//    if (__mode == PINSecurityQuestionModeVerify) {
+//        
+//        if ([PINCodeViewController areAnswersForSecurityQuestionsValid:answers]) {
+//            // correct answers
+//        }
+//        else {
+//            // incorrect answers
+//            UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"" message:@"" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] autorelease];
+//            [alert show];
+//        }
+//        
+//    }
 }
 
 #pragma mark - table view
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return [self.delegate numberOfSecurityQuestions];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -144,7 +147,7 @@ static NSString * const PINCodeSecurityQuestionsKey = @"PINCodeSecurityQuestions
     NSAssert([subviews count] == 1, @"There should only be one view in the cell content view");
     PINCodeTextField *field = [subviews lastObject];
     if (indexPath.row == 0) {
-        field.enabled = (__mode != PINSecurityQuestionModeVerify);
+        field.enabled = (__mode != PINSecurityQuestionsViewControllerVerify);
         field.placeholder = @"Question";
         NSString *key = [NSString stringWithFormat:@"Question%ld", indexPath.section];
         field.key = key;

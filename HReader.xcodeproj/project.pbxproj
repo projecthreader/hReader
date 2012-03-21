@@ -116,7 +116,7 @@
 		94E3BB511472C95800E05D4D /* PatientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E3BB501472C95800E05D4D /* PatientSummaryViewController.m */; };
 		94E84E7014FEBC390091B0A1 /* NSArray+Collect.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E84E6F14FEBC390091B0A1 /* NSArray+Collect.m */; };
 		94EBD55114FE7A6200A3AF66 /* ASBSparkLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EBD55014FE7A6200A3AF66 /* ASBSparkLineView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		94F4CB611507BD0A00EFEA43 /* PINCodeSecurityQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F4CB601507BD0A00EFEA43 /* PINCodeSecurityQuestionsViewController.m */; };
+		94F4CB611507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F4CB601507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m */; };
 		94F4CB651507E87E00EFEA43 /* PINCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F4CB641507E87E00EFEA43 /* PINCodeTextField.m */; };
 		DD124DAE148D3EF300E23A44 /* Doctor.png in Resources */ = {isa = PBXBuildFile; fileRef = DD124DAD148D3EF300E23A44 /* Doctor.png */; };
 		DD19173F148FDEBB00B87AAF /* HRPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = DD19173E148FDEBB00B87AAF /* HRPatient.m */; };
@@ -294,8 +294,8 @@
 		94E84E6F14FEBC390091B0A1 /* NSArray+Collect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Collect.m"; sourceTree = "<group>"; };
 		94EBD54F14FE7A6200A3AF66 /* ASBSparkLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASBSparkLineView.h; path = vendor/Sparklines/Sparklines/ASBSparkLineView.h; sourceTree = "<group>"; };
 		94EBD55014FE7A6200A3AF66 /* ASBSparkLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASBSparkLineView.m; path = vendor/Sparklines/Sparklines/ASBSparkLineView.m; sourceTree = "<group>"; };
-		94F4CB5F1507BD0A00EFEA43 /* PINCodeSecurityQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINCodeSecurityQuestionsViewController.h; sourceTree = "<group>"; };
-		94F4CB601507BD0A00EFEA43 /* PINCodeSecurityQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINCodeSecurityQuestionsViewController.m; sourceTree = "<group>"; };
+		94F4CB5F1507BD0A00EFEA43 /* PINSecurityQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PINSecurityQuestionsViewController.h; sourceTree = "<group>"; };
+		94F4CB601507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINSecurityQuestionsViewController.m; sourceTree = "<group>"; };
 		94F4CB631507E87E00EFEA43 /* PINCodeTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINCodeTextField.h; sourceTree = "<group>"; };
 		94F4CB641507E87E00EFEA43 /* PINCodeTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINCodeTextField.m; sourceTree = "<group>"; };
 		DD124DAD148D3EF300E23A44 /* Doctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Doctor.png; sourceTree = "<group>"; };
@@ -409,8 +409,8 @@
 				3BFE7A2414DADE2B0037738D /* PINCodeStoryboard.storyboard */,
 				3BFE7A2514DADE2B0037738D /* PINCodeViewController.h */,
 				3BFE7A2614DADE2B0037738D /* PINCodeViewController.m */,
-				94F4CB5F1507BD0A00EFEA43 /* PINCodeSecurityQuestionsViewController.h */,
-				94F4CB601507BD0A00EFEA43 /* PINCodeSecurityQuestionsViewController.m */,
+				94F4CB5F1507BD0A00EFEA43 /* PINSecurityQuestionsViewController.h */,
+				94F4CB601507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m */,
 				94F4CB631507E87E00EFEA43 /* PINCodeTextField.h */,
 				94F4CB641507E87E00EFEA43 /* PINCodeTextField.m */,
 			);
@@ -1024,7 +1024,7 @@
 				9452D7F714FC16DF00021E69 /* HRProviderView.m in Sources */,
 				94EBD55114FE7A6200A3AF66 /* ASBSparkLineView.m in Sources */,
 				94E84E7014FEBC390091B0A1 /* NSArray+Collect.m in Sources */,
-				94F4CB611507BD0A00EFEA43 /* PINCodeSecurityQuestionsViewController.m in Sources */,
+				94F4CB611507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m in Sources */,
 				94F4CB651507E87E00EFEA43 /* PINCodeTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
