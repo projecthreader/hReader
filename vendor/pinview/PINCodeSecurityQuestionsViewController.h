@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    PINSecurityQuestionModeUnset = -1,
-    PINSecurityQuestionModeCreate,
+    PINSecurityQuestionModeCreate = 1,
     PINSecurityQuestionModeEdit,
     PINSecurityQuestionModeVerify
 } PINSecurityQuestionMode;

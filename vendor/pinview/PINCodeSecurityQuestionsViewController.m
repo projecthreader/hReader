@@ -29,18 +29,17 @@ static NSString * const PINCodeSecurityQuestionsKey = @"PINCodeSecurityQuestions
     self = [super initWithCoder:coder];
     if (self) {
         data = [[NSMutableDictionary alloc] init];
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self
-         selector:@selector(keyboardWillShow:)
-         name:UIKeyboardWillShowNotification
-         object:nil];
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self
-         selector:@selector(keyboardWillHide:)
-         name:UIKeyboardWillHideNotification
-         object:nil];
-        __mode = PINSecurityQuestionModeUnset;
-//        NSAssertion(__mode == 0, "holly balls");
+//        [[NSNotificationCenter defaultCenter]
+//         addObserver:self
+//         selector:@selector(keyboardWillShow:)
+//         name:UIKeyboardWillShowNotification
+//         object:nil];
+//        [[NSNotificationCenter defaultCenter]
+//         addObserver:self
+//         selector:@selector(keyboardWillHide:)
+//         name:UIKeyboardWillHideNotification
+//         object:nil];
+        __mode = 0;
     }
     return self;
 }
@@ -65,7 +64,7 @@ static NSString * const PINCodeSecurityQuestionsKey = @"PINCodeSecurityQuestions
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSAssert(__mode > 0, @"The security question mode must be set");
+    NSAssert(__mode > 0, @"The security mode % question mode must be set");
     UIImage *backgroundImage = [UIImage imageNamed:@"PINCodeBackground"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     self.tableView.backgroundView = nil;
@@ -103,7 +102,6 @@ static NSString * const PINCodeSecurityQuestionsKey = @"PINCodeSecurityQuestions
 
 - (IBAction)valueChanged:(PINCodeTextField *)sender {
     [data setObject:sender.text forKey:sender.key];
-    NSLog(@"%@", data);
 }
 
 #pragma mark - button actions
@@ -146,8 +144,7 @@ static NSString * const PINCodeSecurityQuestionsKey = @"PINCodeSecurityQuestions
     NSAssert([subviews count] == 1, @"There should only be one view in the cell content view");
     PINCodeTextField *field = [subviews lastObject];
     if (indexPath.row == 0) {
-        NSLog(@"%i", PINSecurityQuestionModeVerify);
-        field.enabled = (__mode != PINCodeViewControllerModeVerify);
+        field.enabled = (__mode != PINSecurityQuestionModeVerify);
         field.placeholder = @"Question";
         NSString *key = [NSString stringWithFormat:@"Question%ld", indexPath.section];
         field.key = key;
