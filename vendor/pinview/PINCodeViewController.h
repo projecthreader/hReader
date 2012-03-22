@@ -25,7 +25,7 @@ typedef enum {
      imediately verify it.
      
      */
-    PINCodeViewControllerModeCreate = 0,
+    PINCodeViewControllerModeCreate = 1,
     
     /*
      

@@ -11,38 +11,34 @@
 
 #define kGCPINViewControllerDelay 0.5
 
-
-
 @interface PINCodeViewController () {
     BOOL clearOnNextInput;
 }
 
-@property (nonatomic, retain) NSMutableString *passcodeText;
-@property (nonatomic, copy) NSString *confirmPasscodeText;
+@property (nonatomic, retain) NSMutableString *mutableInputText;
+@property (nonatomic, copy) NSString *inputText;
 
 - (void)clearIfNeeded;
 - (void)updatePasscodeLabel;
 - (void)passcodeTextDidChange;
 - (void)cleanupView;
 
-//- (void)wrong;
-
 @end
 
 @implementation PINCodeViewController
 
 @synthesize delegate = __delegate;
-@synthesize buttons = __buttons;
-@synthesize passcodeText = __passcodeText;
-@synthesize confirmPasscodeText = __confirmPasscodeText;
+@synthesize mutableInputText = __inputTextOne;
+@synthesize inputText = __inputTextTwo;
+@synthesize mode = __mode;
 
+@synthesize buttons = __buttons;
 @synthesize passcodeLabel = __passcodeLabel;
 @synthesize messageLabel = __messageLabel;
 @synthesize errorLabel = __errorLabel;
 
 @synthesize messageText = __messageText;
 @synthesize confirmText = __confirmText;
-@synthesize mode = __mode;
 
 #pragma mark - object methods
 
@@ -50,6 +46,7 @@
     self = [super initWithCoder:coder];
     if (self) {
         clearOnNextInput = NO;
+        __mode = 0;
     }
     return self;
 }
@@ -64,8 +61,9 @@
 - (void)clearIfNeeded {
     if (clearOnNextInput) {
         clearOnNextInput = NO;
-        self.passcodeText = nil;
-        self.confirmText = nil;
+        self.errorLabel.hidden = YES;
+        self.mutableInputText = [NSMutableString string];
+        self.inputText = nil;
         self.messageLabel.text = self.messageText;
     }
 }
@@ -75,64 +73,48 @@
     self.passcodeLabel = nil;
     self.messageLabel = nil;
     self.errorLabel = nil;
-    self.passcodeText = nil;
-    self.confirmText = nil;
+    self.mutableInputText = nil;
+    self.inputText = nil;
 }
 
 - (void)updatePasscodeLabel {
     NSMutableString *string = [NSMutableString string];
-    for (NSUInteger i = 0; i < [self.passcodeText length]; i++) {
+    for (NSUInteger i = 0; i < [self.mutableInputText length]; i++) {
         [string appendString:@"•"];
     }
     self.passcodeLabel.text = string;
 }
 
-//- (void)wrong {
-//    self.errorLabel.hidden = NO;
-//    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-//    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, kGCPINViewControllerDelay * NSEC_PER_SEC);
-//    dispatch_after(time, dispatch_get_main_queue(), ^(void){
-//        self.passcodeText = [NSMutableString string];
-//        [self updatePasscodeLabel];
-//        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-//    });
-//}
-//
-//- (void)dismiss {
-////    if (self.automaticallyDismissWhenValid) {
-////        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-////        dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, kGCPINViewControllerDelay * NSEC_PER_SEC);
-////        dispatch_after(time, dispatch_get_main_queue(), ^(void){
-////            [self dismissModalViewControllerAnimated:YES];
-////            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-////        });
-////    }
-//}
-
 - (void)passcodeTextDidChange {
-    self.errorLabel.hidden = YES;
     [self updatePasscodeLabel];
-    if ([self.passcodeText length] == [self.delegate PINCodeLength]) {
+    if ([self.mutableInputText length] == [self.delegate PINCodeLength]) {
         if (self.mode == PINCodeViewControllerModeCreate) {
-            if (self.confirmText == nil) {
-                self.confirmText = self.passcodeText;
-                self.passcodeText = [NSMutableString string];
+            if (self.inputText == nil) {
+                self.inputText = self.mutableInputText;
+                self.mutableInputText = [NSMutableString string];
                 if (self.confirmText) {
                     self.messageLabel.text = self.confirmText;
                 }
                 [self updatePasscodeLabel];
             }
             else {
-                if ([self.passcodeText isEqualToString:self.confirmText]) {
+                if ([self.mutableInputText isEqualToString:self.inputText]) {
                     clearOnNextInput = YES;
-                    [self.delegate PINCodeViewController:self didSubmitPIN:self.passcodeText];
+                    [self.delegate PINCodeViewController:self didSubmitPIN:self.mutableInputText];
                 }
             }
         }
         else {
             clearOnNextInput = YES;
-            [self.delegate PINCodeViewController:self didSubmitPIN:self.passcodeText];
+            [self.delegate PINCodeViewController:self didSubmitPIN:self.mutableInputText];
         }
+    }
+}
+
+- (void)setMode:(PINCodeViewControllerMode)mode {
+    NSAssert((mode > 0 && mode < 3), @"%d is an invalid mode", mode);
+    if (__mode == 0) {
+        __mode = mode;
     }
 }
 
@@ -140,10 +122,10 @@
 
 - (IBAction)deleteButtonTap {
     [self clearIfNeeded];
-    NSUInteger length = [self.passcodeText length];
+    NSUInteger length = [self.mutableInputText length];
     if (length) {
         NSRange range = NSMakeRange(length - 1, 1);
-        [self.passcodeText deleteCharactersInRange:range];
+        [self.mutableInputText deleteCharactersInRange:range];
     }
     [self passcodeTextDidChange];
 }
@@ -151,7 +133,7 @@
 - (IBAction)numberButtonTap:(UIButton *)sender {
     [self clearIfNeeded];
     NSAssert(sender, @"No sender was provided");
-    [self.passcodeText appendString:sender.currentTitle];
+    [self.mutableInputText appendString:sender.currentTitle];
     [self passcodeTextDidChange];
 }
 
@@ -159,13 +141,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSAssert(__mode > 0, @"No mode has been set");
     
     // self
     UIImage *backgroundImage = [UIImage imageNamed:@"PINCodeBackground"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
-    self.errorLabel.hidden = YES;
+    clearOnNextInput = YES;
+    [self clearIfNeeded];
     [self updatePasscodeLabel];
-    self.passcodeText = [NSMutableString string];
     self.messageLabel.text = self.messageText;
     
     // collect buttons
