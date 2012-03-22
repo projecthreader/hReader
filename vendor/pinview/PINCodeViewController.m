@@ -11,7 +11,7 @@
 
 #define kGCPINViewControllerDelay 0.5
 
-static NSString * const HRUUID = @"KeychainUUID";
+
 
 @interface PINCodeViewController () {
     BOOL clearOnNextInput;
@@ -42,31 +42,7 @@ static NSString * const HRUUID = @"KeychainUUID";
 
 @synthesize messageText = __messageText;
 @synthesize confirmText = __confirmText;
-@synthesize errorText = __errorText;
 @synthesize mode = __mode;
-
-
-
-
-#pragma mark - class methods
-
-+ (void)initialize {
-    if (self == [PINCodeViewController class]) {
-        
-        // check for existing uuid
-        NSString *UUID = [[NSUserDefaults standardUserDefaults] objectForKey:HRUUID];
-        
-        // create one if none exists
-        if (UUID == nil) {
-            CFUUIDRef UUIDRef = CFUUIDCreate(kCFAllocatorDefault);
-            CFStringRef UUIDStringRef = CFUUIDCreateString(kCFAllocatorDefault, UUIDRef);
-            CFRelease(UUIDRef);
-            UUID = [(NSString *)UUIDStringRef autorelease];
-            [[NSUserDefaults standardUserDefaults] setObject:UUID forKey:HRUUID];
-        }
-        
-    }
-}
 
 #pragma mark - object methods
 
@@ -81,7 +57,6 @@ static NSString * const HRUUID = @"KeychainUUID";
 - (void)dealloc {
     self.messageText = nil;
     self.confirmText = nil;
-    self.errorText = nil;
     [self cleanupView];
     [super dealloc];
 }
@@ -150,13 +125,13 @@ static NSString * const HRUUID = @"KeychainUUID";
             else {
                 if ([self.passcodeText isEqualToString:self.confirmText]) {
                     clearOnNextInput = YES;
-                    [self.delegate pinCodeViewController:self didSubmitPIN:self.passcodeText];
+                    [self.delegate PINCodeViewController:self didSubmitPIN:self.passcodeText];
                 }
             }
         }
         else {
             clearOnNextInput = YES;
-            [self.delegate pinCodeViewController:self didSubmitPIN:self.passcodeText];
+            [self.delegate PINCodeViewController:self didSubmitPIN:self.passcodeText];
         }
     }
 }
@@ -191,7 +166,6 @@ static NSString * const HRUUID = @"KeychainUUID";
     self.errorLabel.hidden = YES;
     [self updatePasscodeLabel];
     self.passcodeText = [NSMutableString string];
-    self.errorLabel.text = self.errorText;
     self.messageLabel.text = self.messageText;
     
     // collect buttons
@@ -215,62 +189,6 @@ static NSString * const HRUUID = @"KeychainUUID";
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
     return YES;
-}
-
-@end
-
-@implementation PINCodeViewController (HRKeychainAdditions)
-
-static NSString * const HRKeychainService = @"org.mitre.hreader";
-static NSString * const HRKeychainPINAccount = @"account.pin";
-static NSString * const HRKeychainSecurityQuestionsAccount = @"account.security_questions";
-
-+ (NSString *)accountNameWithType:(NSString *)type {
-    NSString *UUID = [[NSUserDefaults standardUserDefaults] objectForKey:HRUUID];
-    return [UUID stringByAppendingPathExtension:type];
-}
-
-+ (void)setPersistedPasscode:(NSString *)code {
-    [SSKeychain
-     setPassword:code
-     forService:HRKeychainService
-     account:[self accountNameWithType:HRKeychainPINAccount]];
-}
-
-+ (BOOL)isPasscodeValid:(NSString *)code {
-    NSString *keychain = [SSKeychain
-                          passwordForService:HRKeychainService
-                          account:[self accountNameWithType:HRKeychainPINAccount]];
-    return [code isEqualToString:keychain];
-}
-
-+ (BOOL)isPersistedPasscodeSet {
-    NSString *keychain = [SSKeychain
-                          passwordForService:HRKeychainService
-                          account:[self accountNameWithType:HRKeychainPINAccount]];
-    return (keychain != nil);
-}
-
-+ (NSString *)sanitizeAnswersForSecurityQuestions:(NSArray *)answers {
-    NSString *code = [answers componentsJoinedByString:@""];
-    // do more stuff if we want
-    return code;
-}
-
-+ (void)setAnswersForSecurityQuestions:(NSArray *)answers {
-    NSString *code = [self sanitizeAnswersForSecurityQuestions:answers];
-    [SSKeychain
-     setPassword:code
-     forService:HRKeychainService
-     account:[self accountNameWithType:HRKeychainSecurityQuestionsAccount]];
-}
-
-+ (BOOL)areAnswersForSecurityQuestionsValid:(NSArray *)answers {
-    NSString *code = [self sanitizeAnswersForSecurityQuestions:answers];
-    NSString *keychain = [SSKeychain
-                          passwordForService:HRKeychainService
-                          account:[self accountNameWithType:HRKeychainSecurityQuestionsAccount]];
-    return ([code compare:keychain options:NSCaseInsensitiveSearch] == NSOrderedSame);
 }
 
 @end

@@ -77,16 +77,3 @@ typedef enum {
 - (IBAction)numberButtonTap:(UIButton *)sender;
 
 @end
-
-@interface PINCodeViewController (HRKeychainAdditions)
-
-// PIN code
-+ (void)setPersistedPasscode:(NSString *)code;
-+ (BOOL)isPasscodeValid:(NSString *)code;
-+ (BOOL)isPersistedPasscodeSet;
-
-// security questions
-+ (void)setAnswersForSecurityQuestions:(NSArray *)answers;
-+ (BOOL)areAnswersForSecurityQuestionsValid:(NSArray *)answers;
-
-@end
