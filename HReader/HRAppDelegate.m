@@ -11,13 +11,13 @@
 #import "HRAppDelegate.h"
 #import "HRPasscodeWarningViewController.h"
 #import "HRPrivacyViewController.h"
+#import "HRKeychainManager.h"
 
 #import "HRMPatient.h"
 
 @interface HRAppDelegate ()
 + (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
-- (void)presentPasscodeCreateController;
-- (void)presentPasscodeVerifyControllerIfNecessary;
+- (void)presentPasscodeVerifyControllerIfNeeded;
 @end
 
 @implementation HRAppDelegate
@@ -25,6 +25,7 @@
 @synthesize window = __window;
 
 #pragma mark - class methods
+
 + (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
     static NSPersistentStoreCoordinator *coordinator = nil;
     static dispatch_once_t token;
@@ -45,6 +46,7 @@
     });
     return coordinator;
 }
+
 + (NSManagedObjectContext *)managedObjectContext {
     static NSManagedObjectContext *context = nil;
     static dispatch_once_t token;
@@ -56,41 +58,11 @@
 }
 
 #pragma mark - object methods
-- (void)dealloc {
-    self.window = nil;
-    [super dealloc];
-}
 
-- (void)presentPasscodeCreateController {
-#if !defined (DEBUG) || 1
-    if (![PINCodeViewController isPersistedPasscodeSet]) {
-        
-        // create view
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
-        PINCodeViewController *PIN = [storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
-        PIN.mode = PINCodeViewControllerModeCreate;
-        PIN.title = @"Set Passcode";
-        PIN.messageText = @"Enter a passcode";
-        PIN.confirmText = @"Verify passcode";
-        PIN.delegate = self;
-        UINavigationController *navigation = [[[UINavigationController alloc] initWithRootViewController:PIN] autorelease];
-        navigation.navigationBar.barStyle = UIBarStyleBlack;
-        
-        // show view
-        UIViewController *rootController = self.window.rootViewController;
-        if (rootController.presentedViewController) {
-            [rootController dismissModalViewControllerAnimated:NO];
-        }
-        [rootController presentModalViewController:navigation animated:NO];
-        
-    }
-   
-#endif
-}
-- (void)presentPasscodeVerifyControllerIfNecessary {
+- (void)presentPasscodeVerifyControllerIfNeeded {
 #if !defined(DEBUG) || 1
     static BOOL visible = NO;
-    if (!visible && [PINCodeViewController isPersistedPasscodeSet]) {
+    if (!visible && [HRKeychainManager isPasscodeSet]) {
         visible = YES;
         
         // create view
@@ -100,7 +72,7 @@
         PIN.title = @"Enter Passcode";
         PIN.messageText = @"Enter your passcode";
         PIN.delegate = self;
-        UINavigationController *navigation = [[[UINavigationController alloc] initWithRootViewController:PIN] autorelease];
+        UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:PIN];
         navigation.navigationBar.barStyle = UIBarStyleBlack;
         
         // show view
@@ -118,7 +90,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // test flight
-#if !defined(DEBUG)// || 1
+#if !TARGET_IPHONE_SIMULATOR
     [TestFlight takeOff:[HRConfig testFlightTeamToken]];
 #endif
     
@@ -131,10 +103,6 @@
             NSData *data = [NSData dataWithContentsOfURL:URL];
             id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             [HRMPatient instanceWithDictionary:object inContext:context];
-//            NSArray *a = [patient allergies];
-//            NSLog(@"%@", patient.allergies);
-//            [patient timelineXMLDocument];
-            
         }];
         NSError *error = nil;
         BOOL save = [context save:&error];
@@ -146,21 +114,35 @@
     // show window so we can present stuff
     [self.window makeKeyAndVisible];
     
-    // show pin code
-//    if ([PINCodeViewController isPersistedPasscodeSet]) {
-//        [self presentPasscodeVerifyControllerIfNecessary];
-//    }
-//    else {
-        [self presentPasscodeCreateController];
-        UIAlertView *alert = [[[UIAlertView alloc]
-                               initWithTitle:@"Welcome"
-                               message:@"Before you start using hReader, you must set a passcode."
-                               delegate:nil
-                               cancelButtonTitle:@"OK"
-                               otherButtonTitles:nil]
-                              autorelease];
+    if ([HRKeychainManager isPasscodeSet]) {
+        
+    }
+    else {
+        
+        // create view
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
+        PINCodeViewController *PIN = [storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
+        PIN.mode = PINCodeViewControllerModeCreate;
+        PIN.title = @"Set Passcode";
+        PIN.messageText = @"Enter a passcode";
+        PIN.confirmText = @"Verify passcode";
+        PIN.delegate = self;
+        UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:PIN];
+        navigation.navigationBar.barStyle = UIBarStyleBlack;
+        
+        // show view
+        [self.window.rootViewController presentModalViewController:navigation animated:NO];
+        
+        // show alert
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"Welcome"
+                              message:@"Before you start using hReader, you must set a passcode and create security questions."
+                              delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
         [alert show];
-//    }
+        
+    }
     
     // return
     return YES;
@@ -177,7 +159,7 @@
     //    [self.window.rootViewController dismissModalViewControllerAnimated:NO];
 }
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    [self presentPasscodeVerifyControllerIfNecessary];
+    [self presentPasscodeVerifyControllerIfNeeded];
 }
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     /*
@@ -228,14 +210,7 @@
 }
 
 - (void)securityQuestionsController:(PINSecurityQuestionsViewController *)controller didSubmitQuestions:(NSArray *)questions answers:(NSArray *)answers {
-    
-//    // store questions in user defaults
-//    [[NSUserDefaults standardUserDefaults] setObject:questions forKey:PINCodeSecurityQuestionsKey];
-//    [[NSUserDefaults standardUserDefaults] synchronize];
-//    
-//    // store answers in keychain
-//    [PINCodeViewController setAnswersForSecurityQuestions:answers];
-    
+    [HRKeychainManager setSecurityQuestions:questions answers:answers];
 }
 
 #pragma mark - pin code
@@ -246,7 +221,7 @@
 
 - (void)PINCodeViewController:(PINCodeViewController *)controller didSubmitPIN:(NSString *)PIN {
     if (controller.mode == PINCodeViewControllerModeVerify) {
-        if ([PINCodeViewController isPasscodeValid:PIN]) {
+        if ([HRKeychainManager isPasscodeValid:PIN]) {
             [controller dismissModalViewControllerAnimated:YES];
         }
         else {
@@ -257,7 +232,7 @@
     else {
         
         // save passcode
-        [PINCodeViewController setPersistedPasscode:PIN];
+        [HRKeychainManager setPasscode:PIN];
         
         // security questions
         PINSecurityQuestionsViewController *questions = [controller.storyboard instantiateViewControllerWithIdentifier:@"SecurityQuestionsController"];

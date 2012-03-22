@@ -30,10 +30,13 @@ static NSString * const HRKeychainSecurityAnswersAccount = @"security_answers";
     if (self == [HRKeychainManager class]) {
         if ([[NSUserDefaults standardUserDefaults] objectForKey:HRKeychainUUID] == nil) {
             CFUUIDRef UUIDRef = CFUUIDCreate(kCFAllocatorDefault);
-            CFStringRef UUIDStringRef = CFUUIDCreateString(kCFAllocatorDefault, UUIDRef);
+            NSString *UUID = (__bridge_transfer NSString *)CFUUIDCreateString(kCFAllocatorDefault, UUIDRef);
             CFRelease(UUIDRef);
-            NSString *UUID = [(NSString *)UUIDStringRef autorelease];
-            [[NSUserDefaults standardUserDefaults] setObject:UUID forKey:HRKeychainUUID];
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults
+             setObject:UUID
+             forKey:HRKeychainUUID];
+            [defaults synchronize];
         }
         
     }
