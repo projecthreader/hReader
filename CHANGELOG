@@ -1,3 +1,9 @@
+# 2012-3-23
+
+- Security questions to assist in passcode reset
+- Rewritten passcode view to support security question workflow
+- There are some minor usability issues with this release but nothing that will keep the app from running properly
+
 # 2012-3-6
 
 - Minor refactoring of vital views
