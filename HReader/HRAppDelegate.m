@@ -17,7 +17,7 @@
 
 @interface HRAppDelegate ()
 + (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
-- (void)presentPasscodeVerifyControllerIfNeeded;
+- (void)presentPasscodeVerifyController;
 @end
 
 @implementation HRAppDelegate
@@ -59,11 +59,9 @@
 
 #pragma mark - object methods
 
-- (void)presentPasscodeVerifyControllerIfNeeded {
+- (void)presentPasscodeVerifyController {
 #if !defined(DEBUG) || 1
-    static BOOL visible = NO;
-    if (!visible && [HRKeychainManager isPasscodeSet]) {
-        visible = YES;
+    if ([HRKeychainManager isPasscodeSet]) {
         
         // create view
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
@@ -115,7 +113,7 @@
     [self.window makeKeyAndVisible];
     
     if ([HRKeychainManager isPasscodeSet]) {
-        
+        [self presentPasscodeVerifyController];
     }
     else {
         
@@ -159,7 +157,7 @@
     //    [self.window.rootViewController dismissModalViewControllerAnimated:NO];
 }
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    [self presentPasscodeVerifyControllerIfNeeded];
+    [self presentPasscodeVerifyController];
 }
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     /*
@@ -211,6 +209,7 @@
 
 - (void)securityQuestionsController:(PINSecurityQuestionsViewController *)controller didSubmitQuestions:(NSArray *)questions answers:(NSArray *)answers {
     [HRKeychainManager setSecurityQuestions:questions answers:answers];
+    [controller dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - pin code
@@ -225,7 +224,7 @@
             [controller dismissModalViewControllerAnimated:YES];
         }
         else {
-            controller.errorLabel.text = @"The passcodes do not match";
+            controller.errorLabel.text = @"Incorrect passcode";
             controller.errorLabel.hidden = NO;
         }
     }
@@ -239,6 +238,7 @@
         questions.navigationItem.hidesBackButton = YES;
         questions.mode = PINSecurityQuestionsViewControllerCreate;
         questions.delegate = self;
+        questions.title = @"Security Questions";
         
         // show
         [controller.navigationController pushViewController:questions animated:YES];

@@ -8,11 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+#import "PINCodeViewController.h"
+#import "PINSecurityQuestionsViewController.h"
+
 @interface HRAboutTableViewController : UITableViewController
+<
+PINCodeViewControllerDelegate,
+PINSecurityQuestionsViewControllerDelegate
+>
 
 @property (retain, nonatomic) IBOutlet UILabel *versionLabel;
-@property (retain, nonatomic) IBOutlet UILabel *aboutLabel;
 
-- (IBAction)done:(id)sender;
+- (IBAction)done;
 
 @end

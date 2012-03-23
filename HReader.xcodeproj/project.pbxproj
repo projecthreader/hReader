@@ -96,7 +96,7 @@
 		94689AC314964BE400E1FCA6 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94689ABF14964BE400E1FCA6 /* libTestFlight.a */; };
 		94689AC414964BE400E1FCA6 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 94689AC014964BE400E1FCA6 /* README.txt */; };
 		94689AC514964BE400E1FCA6 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 94689AC114964BE400E1FCA6 /* release_notes.txt */; };
-		94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94689ACA1496560C00E1FCA6 /* HRAboutTableViewController.m */; };
+		94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94689ACA1496560C00E1FCA6 /* HRAboutTableViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94689AD714967E3600E1FCA6 /* HRC32ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94689AD514967E3600E1FCA6 /* HRC32ViewController.m */; };
 		947EF75B14D058E000A2AF97 /* HRMedication.m in Sources */ = {isa = PBXBuildFile; fileRef = 947EF75A14D058E000A2AF97 /* HRMedication.m */; };
 		947EF75E14D059AF00A2AF97 /* HRCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 947EF75D14D059AF00A2AF97 /* HRCondition.m */; };

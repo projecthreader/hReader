@@ -8,142 +8,35 @@
 
 #import "HRAboutTableViewController.h"
 #import "HRPasscodeWarningViewController.h"
-
-#import "PINCodeViewController.h"
+#import "HRKeychainManager.h"
 
 @implementation HRAboutTableViewController
 
 @synthesize versionLabel = __versionLabel;
-@synthesize aboutLabel = __aboutLabel;
 
-- (void)dealloc {
-    [__versionLabel release];
-    [__aboutLabel release];
-    [super dealloc];
-}
+#pragma mark - button actions
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+- (IBAction)done {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-
     self.versionLabel.text = [HRConfig formattedVersion];
-//    self.aboutLabel.text = @"\nThe MITRE Corporation c2012\n\nhReader prototype demonstration application.\nAll data contained in this application is synthetic and fictional for research purposes.";
 }
 
-- (void)viewDidUnload
-{
-    self.versionLabel = nil;
-    self.aboutLabel = nil;
-    
+- (void)viewDidUnload {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
+    self.versionLabel = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
-}
-
-#pragma mark - Table view data source
-
-/*
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
- */
-
-/*
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
- */
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
 
 #pragma mark - Table view delegate
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -155,68 +48,165 @@
     
     // privacy demo
     else if ([cell.reuseIdentifier isEqualToString:@"PrivacyDemoCell"]) {
-        HRPasscodeWarningViewController *warningViewController = [[HRPasscodeWarningViewController alloc] initWithNibName:nil bundle:nil];
-        warningViewController.demoMode = YES;
-        [self presentModalViewController:warningViewController animated:YES];
-        [warningViewController release];
+//        HRPasscodeWarningViewController *warningViewController = [[HRPasscodeWarningViewController alloc] initWithNibName:nil bundle:nil];
+//        warningViewController.demoMode = YES;
+//        [self presentModalViewController:warningViewController animated:YES];
+//        [warningViewController release];
     }
     
     // passcode cell
     else if ([cell.reuseIdentifier isEqualToString:@"ChangePasscodeCell"]) {
-        
-        // get storyboard
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
+        PINCodeViewController *PIN = [storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
+        PIN.mode = PINCodeViewControllerModeVerify;
+        PIN.title = @"Enter Passcode";
+        PIN.messageText = @"Enter your passcode";
+        PIN.delegate = self;
+        PIN.userInfo = @"pin";
+        PIN.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+                                                initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                target:self
+                                                action:@selector(cancelModalView)];
+        UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:PIN];
+        navigation.navigationBar.barStyle = UIBarStyleBlack;
+        navigation.definesPresentationContext = YES;
+        [self presentModalViewController:navigation animated:YES];
         
-        // load up view controller
-        UINavigationController *verifyNavigation = [storyboard instantiateInitialViewController];
-        PINCodeViewController *verifyController = [verifyNavigation.viewControllers objectAtIndex:0];
-        verifyController.mode = PINCodeViewControllerModeVerify;
-        verifyController.title = @"Enter Passcode";
-        verifyController.messageText = @"Enter your passcode";
-        verifyController.errorText = @"Incorrect passcode";
-        verifyController.automaticallyDismissWhenValid = NO;
-        verifyController.verifyBlock = ^(NSString *code) {
-            if ([PINCodeViewController isPasscodeValid:code]) {
-                
-                // load up create controller
-                UINavigationController *createNavigation = [storyboard instantiateInitialViewController];
-                PINCodeViewController *createController = [createNavigation.viewControllers objectAtIndex:0];
-                createController.mode = PINCodeViewControllerModeCreate;
-                createController.title = @"Set Passcode";
-                createController.messageText = @"Enter a passcode";
-                createController.confirmText = @"Verify passcode";
-                createController.errorText = @"The passcodes do not match";
-                createController.automaticallyDismissWhenValid = NO;
-                createController.verifyBlock = ^(NSString *code) {
-                    if ([code length] == 6) {
-                        [PINCodeViewController setPersistedPasscode:code];
-                        [self dismissModalViewControllerAnimated:YES];
-                        return YES;
-                    }
-                    else {
-                        return NO;
-                    }
-                };
-                [verifyController presentModalViewController:createNavigation animated:NO];
-                
-                // return
-                return YES;
-                
-            }
-            else {
-                return NO;
-            }
-        };
-        [self presentModalViewController:verifyNavigation animated:YES];
+        
+        
+        
+        
+        
+        
+//        // get storyboard
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
+//        
+//        // load up view controller
+//        UINavigationController *verifyNavigation = [storyboard instantiateInitialViewController];
+//        PINCodeViewController *verifyController = [verifyNavigation.viewControllers objectAtIndex:0];
+//        verifyController.mode = PINCodeViewControllerModeVerify;
+//        verifyController.title = @"Enter Passcode";
+//        verifyController.messageText = @"Enter your passcode";
+//        verifyController.errorText = @"Incorrect passcode";
+//        verifyController.automaticallyDismissWhenValid = NO;
+//        verifyController.verifyBlock = ^(NSString *code) {
+//            if ([PINCodeViewController isPasscodeValid:code]) {
+//                
+//                // load up create controller
+//                UINavigationController *createNavigation = [storyboard instantiateInitialViewController];
+//                PINCodeViewController *createController = [createNavigation.viewControllers objectAtIndex:0];
+//                creatreeController.mode = PINCodeViewControllerModeCreate;
+//                createController.title = @"Set Passcode";
+//                createController.messageText = @"Enter a passcode";
+//                createController.confirmText = @"Verify passcode";
+//                createController.errorText = @"The passcodes do not match";
+//                createController.automaticallyDismissWhenValid = NO;
+//                createController.verifyBlock = ^(NSString *code) {
+//                    if ([code length] == 6) {
+//                        [PINCodeViewController setPersistedPasscode:code];
+//                        [self dismissModalViewControllerAnimated:YES];
+//                        return YES;
+//                    }
+//                    else {
+//                        return NO;
+//                    }
+//                };
+//                [verifyController presentModalViewController:createNavigation animated:NO];
+//                
+//                // return
+//                return YES;
+//                
+//            }
+//            else {
+//                return NO;
+//            }
+//        };
+//        [self presentModalViewController:verifyNavigation animated:YES];
+    }
+    else if ([cell.reuseIdentifier isEqualToString:@"ChangeQuestionsCell"]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
+        PINCodeViewController *PIN = [storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
+        PIN.mode = PINCodeViewControllerModeVerify;
+        PIN.title = @"Enter Passcode";
+        PIN.messageText = @"Enter your passcode";
+        PIN.delegate = self;
+        PIN.userInfo = @"questions";
+        PIN.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+                                                initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                target:self
+                                                action:@selector(cancelModalView)];
+        UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:PIN];
+        navigation.navigationBar.barStyle = UIBarStyleBlack;
+        navigation.definesPresentationContext = YES;
+        [self presentModalViewController:navigation animated:YES];
     }
 
 }
 
+#pragma mark - button actions
 
-#pragma mark - IBActions
-
-- (IBAction)done:(id)sender {
+- (void)cancelModalView {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - passcode view delegate
+
+- (NSUInteger)PINCodeLength {
+    return 6;
+}
+
+- (void)PINCodeViewController:(PINCodeViewController *)controller didSubmitPIN:(NSString *)PIN {
+    if (controller.mode == PINCodeViewControllerModeVerify) {
+        if ([HRKeychainManager isPasscodeValid:PIN]) {
+            
+            // if we are changing passcode
+            if ([controller.userInfo isEqualToString:@"pin"]) {
+                PINCodeViewController *create = [controller.storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
+                create.mode = PINCodeViewControllerModeCreate;
+                create.title = @"Set Passcode";
+                create.messageText = @"Enter a passcode";
+                create.confirmText = @"Verify passcode";
+                create.delegate = self;
+                create.navigationItem.leftBarButtonItem = controller.navigationItem.leftBarButtonItem;
+                [controller.navigationController pushViewController:create animated:YES];
+            }
+            
+            // if we are changing security questions
+            else {
+                PINSecurityQuestionsViewController *questions = [controller.storyboard instantiateViewControllerWithIdentifier:@"SecurityQuestionsController"];
+                questions.navigationItem.hidesBackButton = YES;
+                questions.mode = PINSecurityQuestionsViewControllerEdit;
+                questions.delegate = self;
+                questions.title = @"Security Questions";
+                questions.navigationItem.leftBarButtonItem = controller.navigationItem.leftBarButtonItem;
+                [controller.navigationController pushViewController:questions animated:YES];
+            }
+            
+        }
+        else {
+            controller.errorLabel.text = @"Incorrect passcode";
+            controller.errorLabel.hidden = NO;
+        }
+    }
+    else {
+        [HRKeychainManager setPasscode:PIN];
+        [controller dismissModalViewControllerAnimated:YES];
+    }
+}
+
+#pragma mark - questions controller delegate
+
+- (NSUInteger)numberOfSecurityQuestions {
+    return 2;
+}
+
+- (NSArray *)securityQuestions {
+    return [HRKeychainManager securityQuestions];
+}
+
+- (void)securityQuestionsController:(PINSecurityQuestionsViewController *)controller didSubmitQuestions:(NSArray *)questions answers:(NSArray *)answers {
+    [HRKeychainManager setSecurityQuestions:questions answers:answers];
+    [controller dismissModalViewControllerAnimated:YES];
 }
 
 @end

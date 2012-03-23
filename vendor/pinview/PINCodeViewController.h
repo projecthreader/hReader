@@ -15,6 +15,8 @@
 
 - (void)PINCodeViewController:(PINCodeViewController *)controller didSubmitPIN:(NSString *)PIN;
 
+- (void)PINCodeViewControllerDidCancel:(PINCodeViewController *)controller;
+
 @end
 
 typedef enum {
@@ -63,6 +65,13 @@ typedef enum {
  
  */
 @property (nonatomic, assign) IBOutlet id<PINCodeViewControllerDelegate> delegate;
+
+/*
+ 
+ User info.
+ 
+ */
+@property (nonatomic, copy) NSString *userInfo;
 
 /*
  

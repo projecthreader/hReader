@@ -10,8 +10,6 @@
 #import "PINCodeTextField.h"
 #import "PINCodeViewController.h"
 
-static NSString * const PINCodeSecurityQuestionsKey = @"PINCodeSecurityQuestions";
-
 @interface PINSecurityQuestionsViewController () {
     NSMutableDictionary *data;
 }
@@ -59,7 +57,7 @@ static NSString * const PINCodeSecurityQuestionsKey = @"PINCodeSecurityQuestions
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     self.tableView.backgroundView = nil;
     if (__mode != PINSecurityQuestionsViewControllerCreate) {
-        NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:PINCodeSecurityQuestionsKey];
+        NSArray *array = [self.delegate securityQuestions];
         [array enumerateObjectsUsingBlock:^(NSString *question, NSUInteger idx, BOOL *stop) {
             [data setObject:question forKey:[NSString stringWithFormat:@"Question%lx", (unsigned long)idx]];
         }];
@@ -113,18 +111,7 @@ static NSString * const PINCodeSecurityQuestionsKey = @"PINCodeSecurityQuestions
     [self.delegate securityQuestionsController:self
                             didSubmitQuestions:questions
                                        answers:answers];
-//    if (__mode == PINSecurityQuestionModeVerify) {
-//        
-//        if ([PINCodeViewController areAnswersForSecurityQuestionsValid:answers]) {
-//            // correct answers
-//        }
-//        else {
-//            // incorrect answers
-//            UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"" message:@"" delegate:nil cancelButtonTitle:@"Retry" otherButtonTitles:nil] autorelease];
-//            [alert show];
-//        }
-//        
-//    }
+    
 }
 
 #pragma mark - table view

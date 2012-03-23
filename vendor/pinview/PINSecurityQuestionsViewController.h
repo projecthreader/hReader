@@ -16,9 +16,13 @@
 
 - (NSUInteger)numberOfSecurityQuestions;
 
+- (NSArray *)securityQuestions;
+
 - (void)securityQuestionsController:(PINSecurityQuestionsViewController *)controller
                  didSubmitQuestions:(NSArray *)questions
                             answers:(NSArray *)answers;
+
+- (void)securityQuestionsControllerDidCancel:(PINSecurityQuestionsViewController *)controller;
 
 @end
 

@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2177" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="kql-EE-soS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="kql-EE-soS">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="GmZ-Wb-YcI">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uCZ-Al-T89" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" modalPresentationStyle="pageSheet" id="pdg-f2-Co5" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="pageSheet" id="pdg-f2-Co5" sceneMemberID="viewController">
                     <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="lro-b2-1ji">
                         <autoresizingMask key="autoresizingMask"/>
@@ -178,7 +179,7 @@
         <scene sceneID="ciq-l9-LIG">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ey-c1-DV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController storyboardIdentifier="" definesPresentationContext="YES" id="2Hp-Fe-994" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="" id="2Hp-Fe-994" sceneMemberID="viewController">
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="HN2-6Y-fEl">
@@ -205,13 +206,32 @@
                             <tableViewSection id="yRA-7f-rXB">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChangePasscodeCell" textLabel="dLF-0I-5kg" style="IBUITableViewCellStyleDefault" id="DTB-cB-HNP">
-                                        <rect key="frame" x="0.0" y="30" width="540" height="46"/>
+                                        <rect key="frame" x="0.0" y="30" width="540" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="31" y="1" width="458" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Change Passcode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="dLF-0I-5kg">
+                                                    <rect key="frame" x="10" y="0.0" width="438" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChangeQuestionsCell" textLabel="R9t-9L-21D" style="IBUITableViewCellStyleDefault" id="w7z-4U-JAU">
+                                        <rect key="frame" x="0.0" y="75" width="540" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="31" y="0.0" width="458" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Change Security Questions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="R9t-9L-21D">
                                                     <rect key="frame" x="10" y="0.0" width="438" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -232,8 +252,8 @@ The MITRE Corporation © 2012
 hReader prototype demonstration application.
 All data contained in this application is synthetic and fictional for research purposes.</string>
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedbackCell" textLabel="kpg-oL-wop" style="IBUITableViewCellStyleDefault" id="1Ge-gp-e9C">
-                                        <rect key="frame" x="0.0" y="96" width="540" height="45"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedbackCell" textLabel="kpg-oL-wop" style="IBUITableViewCellStyleDefault" id="1Ge-gp-e9C">
+                                        <rect key="frame" x="0.0" y="140" width="540" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="31" y="1" width="458" height="43"/>
@@ -251,11 +271,11 @@ All data contained in this application is synthetic and fictional for research p
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PrivacyDemoCell" textLabel="yPU-2N-h7z" style="IBUITableViewCellStyleDefault" id="p8Q-cJ-ju6">
-                                        <rect key="frame" x="0.0" y="141" width="540" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PrivacyDemoCell" textLabel="yPU-2N-h7z" style="IBUITableViewCellStyleDefault" id="p8Q-cJ-ju6">
+                                        <rect key="frame" x="0.0" y="185" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="31" y="1" width="458" height="43"/>
+                                            <rect key="frame" x="31" y="0.0" width="458" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Privacy Demo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="yPU-2N-h7z">
@@ -271,10 +291,10 @@ All data contained in this application is synthetic and fictional for research p
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Xtt-rv-9qB" detailTextLabel="vS6-de-HAa" style="IBUITableViewCellStyleValue1" id="Yg1-Ty-Tx2">
-                                        <rect key="frame" x="0.0" y="185" width="540" height="45"/>
+                                        <rect key="frame" x="0.0" y="229" width="540" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="31" y="1" width="478" height="43"/>
+                                            <rect key="frame" x="31" y="0.0" width="478" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Version" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="Xtt-rv-9qB">
@@ -303,13 +323,12 @@ All data contained in this application is synthetic and fictional for research p
                     <navigationItem key="navigationItem" title="hReader" id="I4m-HT-7v9">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="aM1-O7-TvK">
                             <connections>
-                                <action selector="done:" destination="Zdu-v2-keb" id="EBL-9O-DP2"/>
+                                <action selector="done" destination="Zdu-v2-keb" id="Ksq-Ph-yXJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="versionLabel" destination="vS6-de-HAa" id="ya1-Ln-dpI"/>
-                        <outlet property="view" destination="tQJ-99-u8h" id="HDr-gu-Gaf"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -340,8 +359,7 @@ All data contained in this application is synthetic and fictional for research p
         <class className="HRAboutTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRAboutTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="outlet" name="aboutLabel" candidateClass="UILabel"/>
+                <relationship kind="action" name="done"/>
                 <relationship kind="outlet" name="versionLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
