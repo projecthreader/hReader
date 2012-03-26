@@ -69,6 +69,7 @@
         PIN.mode = PINCodeViewControllerModeVerify;
         PIN.title = @"Enter Passcode";
         PIN.messageText = @"Enter your passcode";
+        PIN.errorText = @"Incorrect passcode";
         PIN.delegate = self;
         UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:PIN];
         navigation.navigationBar.barStyle = UIBarStyleBlack;
@@ -84,7 +85,12 @@
 #endif
 }
 
+- (void)dismissModalViewController {
+    [self.window.rootViewController.presentedViewController dismissModalViewControllerAnimated:YES];
+}
+
 #pragma mark - application lifecycle
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // test flight
@@ -124,6 +130,7 @@
         PIN.title = @"Set Passcode";
         PIN.messageText = @"Enter a passcode";
         PIN.confirmText = @"Verify passcode";
+        PIN.errorText = @"The passcodes do not match";
         PIN.delegate = self;
         UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:PIN];
         navigation.navigationBar.barStyle = UIBarStyleBlack;
@@ -212,26 +219,22 @@
     [controller dismissModalViewControllerAnimated:YES];
 }
 
+- (NSArray *)securityQuestions {
+    return [HRKeychainManager securityQuestions];
+}
+
 #pragma mark - pin code
 
 - (NSUInteger)PINCodeLength {
     return 6;
 }
 
-- (void)PINCodeViewController:(PINCodeViewController *)controller didSubmitPIN:(NSString *)PIN {
-    if (controller.mode == PINCodeViewControllerModeVerify) {
-        if ([HRKeychainManager isPasscodeValid:PIN]) {
-            [controller dismissModalViewControllerAnimated:YES];
-        }
-        else {
-            controller.errorLabel.text = @"Incorrect passcode";
-            controller.errorLabel.hidden = NO;
-        }
+- (void)PINCodeViewController:(PINCodeViewController *)controller didCreatePIN:(NSString *)PIN {
+    [HRKeychainManager setPasscode:PIN];
+    if ([controller.userInfo isEqualToString:@"change_passcode"]) {
+        [controller dismissModalViewControllerAnimated:YES];
     }
     else {
-        
-        // save passcode
-        [HRKeychainManager setPasscode:PIN];
         
         // security questions
         PINSecurityQuestionsViewController *questions = [controller.storyboard instantiateViewControllerWithIdentifier:@"SecurityQuestionsController"];
@@ -244,6 +247,35 @@
         [controller.navigationController pushViewController:questions animated:YES];
         
     }
+}
+
+- (BOOL)PINCodeViewController:(PINCodeViewController *)controller isValidPIN:(NSString *)PIN {
+    BOOL valid = [HRKeychainManager isPasscodeValid:PIN];
+    if ([controller.userInfo isEqualToString:@"change_passcode"]) {
+        PINCodeViewController *create = [controller.storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
+        create.mode = PINCodeViewControllerModeCreate;
+        create.title = @"Set Passcode";
+        create.messageText = @"Enter a passcode";
+        create.confirmText = @"Verify passcode";
+        create.errorText = @"The passcodes do not match";
+        create.userInfo = controller.userInfo;
+        create.delegate = (HRAppDelegate *)[[UIApplication sharedApplication] delegate];
+        create.navigationItem.leftBarButtonItem = controller.navigationItem.leftBarButtonItem;
+        [controller.navigationController pushViewController:create animated:YES];
+    }
+    else if ([controller.userInfo isEqualToString:@"change_questions"]) {
+        PINSecurityQuestionsViewController *questions = [controller.storyboard instantiateViewControllerWithIdentifier:@"SecurityQuestionsController"];
+        questions.navigationItem.hidesBackButton = YES;
+        questions.mode = PINSecurityQuestionsViewControllerEdit;
+        questions.delegate = (HRAppDelegate *)[[UIApplication sharedApplication] delegate];
+        questions.title = @"Security Questions";
+        questions.navigationItem.leftBarButtonItem = controller.navigationItem.leftBarButtonItem;
+        [controller.navigationController pushViewController:questions animated:YES];
+    }
+    else {
+        if (valid) { [controller dismissModalViewControllerAnimated:YES]; }
+    }
+    return valid;
 }
 
 @end

@@ -11,11 +11,13 @@
 
 @protocol PINCodeViewControllerDelegate <NSObject>
 
+@required
+
 - (NSUInteger)PINCodeLength;
 
-- (void)PINCodeViewController:(PINCodeViewController *)controller didSubmitPIN:(NSString *)PIN;
+- (void)PINCodeViewController:(PINCodeViewController *)controller didCreatePIN:(NSString *)PIN;
 
-- (void)PINCodeViewControllerDidCancel:(PINCodeViewController *)controller;
+- (BOOL)PINCodeViewController:(PINCodeViewController *)controller isValidPIN:(NSString *)PIN;
 
 @end
 
@@ -49,6 +51,13 @@ typedef enum {
  */
 @property (nonatomic, copy) NSString *messageText;
 @property (nonatomic, copy) NSString *confirmText;
+
+/*
+ 
+ The message to display if user input is invalid.
+ 
+ */
+@property (nonatomic, copy) NSString *errorText;
 
 /*
  

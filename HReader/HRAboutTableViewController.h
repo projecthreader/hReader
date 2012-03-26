@@ -12,10 +12,10 @@
 #import "PINSecurityQuestionsViewController.h"
 
 @interface HRAboutTableViewController : UITableViewController
-<
-PINCodeViewControllerDelegate,
-PINSecurityQuestionsViewControllerDelegate
->
+//<
+//PINCodeViewControllerDelegate,
+//PINSecurityQuestionsViewControllerDelegate
+//>
 
 @property (retain, nonatomic) IBOutlet UILabel *versionLabel;
 

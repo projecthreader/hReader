@@ -39,6 +39,7 @@
 
 @synthesize messageText = __messageText;
 @synthesize confirmText = __confirmText;
+@synthesize errorText = __errorText;
 @synthesize userInfo = __userInfo;
 
 #pragma mark - object methods
@@ -100,19 +101,27 @@
             }
             else {
                 clearOnNextInput = YES;
-                self.messageLabel.text = self.messageText;
                 if ([self.mutableInputText isEqualToString:self.inputText]) {
-                    [self.delegate PINCodeViewController:self didSubmitPIN:self.mutableInputText];
+                    [self.delegate PINCodeViewController:self didCreatePIN:self.inputText];
                 }
                 else {
-                    self.errorLabel.text = @"The passcodes do not match";
+                    self.messageLabel.text = self.messageText;
+                    self.mutableInputText = [NSMutableString string];
+                    self.inputText = nil;
+                    self.errorLabel.text = self.errorText;
                     self.errorLabel.hidden = NO;
+                    [self updatePasscodeLabel];
                 }
             }
         }
         else {
             clearOnNextInput = YES;
-            [self.delegate PINCodeViewController:self didSubmitPIN:self.mutableInputText];
+            if (![self.delegate PINCodeViewController:self isValidPIN:self.mutableInputText]) {
+                self.errorLabel.text = self.errorText;
+                self.errorLabel.hidden = NO;
+                self.mutableInputText = [NSMutableString string];
+                [self updatePasscodeLabel];
+            }
         }
     }
 }
