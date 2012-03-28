@@ -9,7 +9,10 @@ BetaBuilder::Tasks.new do |config|
   config.app_name   = "hReader-pds"
 
   # the Xcode configuration profile
-  config.configuration = "Ad Hoc"
+  config.configuration          = "Ad Hoc"
+  config.auto_archive           = true
+  config.xcode4_archive_mode    = true
+  # config.archive_path         = "/Users/mwhuss/Dropbox/Dev/XCode Archives"
   
   config.deploy_using(:testflight) do |tf|
     tf.api_token          = "DTtxmqCuN63znsxUo2Cjz3HO6PqettzBghSQSA4uPRQ"
