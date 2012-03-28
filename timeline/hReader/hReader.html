@@ -8,7 +8,7 @@
     <!-- (where 2.3.1 is the current release number.)                                 -->
     <script>
       Timeline_ajax_url="../ajax/simile-ajax-api.js";
-      Timeline_urlPrefix='../api/';       
+      Timeline_urlPrefix='../api/';
       Timeline_parameters='bundle=true';
     </script>
  
@@ -17,7 +17,7 @@
     <link rel='stylesheet' href='styles.css' type='text/css' />
     <script src="band-with-labels.js"></script>
     <script src="no-label-ether-painter.js"></script>
-
+    <script src="one-track.js"></script>
     <script>
         var tl;
         /* Simile and Timeline functionality overrides */
@@ -34,10 +34,10 @@
             theme.event.bubble.width = 350;
             theme.event.bubble.height = 340;
             theme.event.track.height=20;
-            theme.event.track.offset = 5;
+            theme.event.track.offset = 8;
             theme.ether.backgroundColors[1] = theme.ether.backgroundColors[0];
             theme.event.instant.icon = "red_dot.png";
-            theme.event.instant.iconWidth= 20;
+            theme.event.instant.iconWidth= 25;
             theme.event.instant.iconHeight= 20;
             
             var d = Timeline.DateTime.parseGregorianDateTime("2010")
@@ -140,7 +140,50 @@
                 }, 500);
             }
         }
+Timeline.OriginalEventPainter.prototype._onClickInstantEvent = function(icon, domEvt, evt) {
+    var c = SimileAjax.DOM.getPageCoordinates(icon);
+    var band = $(icon).parents(".timeline-band");
+    var index =$(band).attr('id').split('-')[2];
 
+    this._showBubble(
+        c.left + Math.ceil(icon.offsetWidth / 2), 
+        c.top + Math.ceil(icon.offsetHeight / 2),
+        evt,index
+    );
+    this._fireOnSelect(evt.getID());
+    
+    domEvt.cancelBubble = true;
+    SimileAjax.DOM.cancelEvent(domEvt);
+    return false;
+};
+
+
+Timeline.OriginalEventPainter.prototype._showBubble = function(x, y, evt, index) {
+    var div = document.createElement("div");
+    var themeBubble = this._params.theme.event.bubble;
+    var self = this;
+    var EventLog = function (evt) {
+
+            var Ether = tl.getBand(index).getEther();
+            console.log(index);
+
+            var date = evt.getStart();
+            var Pixel = tl.getBand(index).getEther().dateToPixelOffset(date);
+            var AboveEvents = Pixel+15;
+            var BelowEvents = Pixel-15;
+            var DateAbove = Ether.pixelOffsetToDate(AboveEvents);
+            var DateBelow = Ether.pixelOffsetToDate(BelowEvents);
+            var EventRange = tl.getBand(index).getEventSource().getEventIterator(DateBelow, DateAbove);
+            while (EventRange.hasNext()) {
+                var CurrentEvent = EventRange.next();
+                CurrentEvent.fillInfoBubble(div, self._params.theme, self._band.getLabeller());
+            }
+        }
+    EventLog(evt); 
+    SimileAjax.WindowManager.cancelPopups();
+    SimileAjax.Graphics.createBubbleForContentAndPoint(div, x, y,
+        themeBubble.width, null, themeBubble.maxHeight);
+};
     </script>
   </head>
   <body onload="onLoad();" onresize="onResize();">

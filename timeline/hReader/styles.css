@@ -6,16 +6,7 @@
 
 .tape-special_event, .small-special_event { background-color: orange; }
 
-#titles {
-    position:   absolute;
-    width:      200px;
-    height:     382px;
-    top: 		261px;
-    left: 		31px;
-    z-index: 	1000;
-    font-weight: 500;
-    background-color: white;
-}
+
 
 h2 {
 	font-size: 1.4em;
