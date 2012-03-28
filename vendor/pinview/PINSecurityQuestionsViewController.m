@@ -62,6 +62,8 @@
             [data setObject:question forKey:[NSString stringWithFormat:@"Question%lx", (unsigned long)idx]];
         }];
     }
+    
+    [self updateDoneButtonEnabledState];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
@@ -90,6 +92,7 @@
 
 - (IBAction)valueChanged:(PINCodeTextField *)sender {
     [data setObject:sender.text forKey:sender.key];
+    [self updateDoneButtonEnabledState];
 }
 
 #pragma mark - button actions
@@ -164,6 +167,17 @@
     UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, label.bounds.size.height)] autorelease];
     [view addSubview:label];
     return view;
+}
+
+#pragma mark - private
+
+- (void)updateDoneButtonEnabledState {
+    BOOL __block enabled = YES;
+    [[data allValues] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        enabled = (enabled && [obj length] > 0);
+    }];
+    enabled = enabled && [data count] == ([self.delegate numberOfSecurityQuestions] * 2);
+    self.navigationItem.rightBarButtonItem.enabled = enabled;
 }
 
 @end

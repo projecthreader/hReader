@@ -1,6 +1,7 @@
 # 2012-3-28
 
 - Fixed crash when you try to change security questions and they don't already exist
+- Security questions 'Done' button is only enabled when the questions and answers exist
 
 # 2012-3-26
 
