@@ -1,3 +1,7 @@
+# 2012-3-28
+
+- Fixed crash when you try to change security questions and they don't already exist
+
 # 2012-3-26
 
 - Fixed usability issues with PIN code and security questions

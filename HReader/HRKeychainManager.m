@@ -94,7 +94,12 @@ static NSString * const HRKeychainSecurityAnswersAccount = @"security_answers";
     NSData *data = [SSKeychain
                     passwordDataForService:HRKeychainService
                     account:[self accountNameWithType:HRKeychainSecurityQuestionsAccount]];
-    return [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    if ([data length] > 0) {
+        return [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    }
+    else {
+        return nil;
+    }
 }
 
 + (BOOL)areAnswersForSecurityQuestionsValid:(NSArray *)answers {
