@@ -3,6 +3,7 @@
 - Finished passcode reset via security questions when a user forgets their PIN
 - Fixed crash when you try to change security questions and they don't already exist
 - Security questions 'Done' button is only enabled when the questions and answers exist
+- Turned off autocomplete and autocapitalization on the security answers fields
 - Updated timeline with overlapping dots fixes
 
 # 2012-3-26

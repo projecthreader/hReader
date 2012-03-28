@@ -137,6 +137,8 @@
     NSAssert([subviews count] == 1, @"There should only be one view in the cell content view");
     PINCodeTextField *field = [subviews lastObject];
     if (indexPath.row == 0) {
+        field.autocorrectionType = UITextAutocorrectionTypeDefault;
+        field.autocapitalizationType = UITextAutocapitalizationTypeSentences;
         field.enabled = (__mode != PINSecurityQuestionsViewControllerVerify);
         field.placeholder = @"Question";
         NSString *key = [NSString stringWithFormat:@"Question%ld", indexPath.section];
@@ -144,6 +146,8 @@
         field.text = [data objectForKey:key];
     }
     else if (indexPath.row == 1) {
+        field.autocorrectionType = UITextAutocorrectionTypeNo;
+        field.autocapitalizationType = UITextAutocapitalizationTypeNone;
         field.enabled = YES;
         field.placeholder = @"Answer";
         field.key = [NSString stringWithFormat:@"Answer%ld", indexPath.section];
