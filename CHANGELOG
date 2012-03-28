@@ -1,5 +1,6 @@
 # 2012-3-28
 
+- Finished passcode reset via security questions when a user forgets their PIN
 - Fixed crash when you try to change security questions and they don't already exist
 - Security questions 'Done' button is only enabled when the questions and answers exist
 - Updated timeline with overlapping dots fixes

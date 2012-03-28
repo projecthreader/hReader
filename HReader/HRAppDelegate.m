@@ -23,6 +23,7 @@
 @implementation HRAppDelegate
 
 @synthesize window = __window;
+@synthesize passcodeAttempts = __passcodeAttempts;
 
 #pragma mark - class methods
 
@@ -61,6 +62,8 @@
 
 - (void)presentPasscodeVerifyController {
 #if !defined(DEBUG) || 1
+    self.passcodeAttempts = 0;
+    
     if ([HRKeychainManager isPasscodeSet]) {
         
         // create view
@@ -215,8 +218,34 @@
 }
 
 - (void)securityQuestionsController:(PINSecurityQuestionsViewController *)controller didSubmitQuestions:(NSArray *)questions answers:(NSArray *)answers {
-    [HRKeychainManager setSecurityQuestions:questions answers:answers];
-    [controller dismissModalViewControllerAnimated:YES];
+    if (controller.mode == PINSecurityQuestionsViewControllerVerify) {
+        if ([HRKeychainManager areAnswersForSecurityQuestionsValid:answers]) {
+            // present pincode create
+            PINCodeViewController *create = [controller.storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
+            create.mode = PINCodeViewControllerModeCreate;
+            create.title = @"Set Passcode";
+            create.messageText = @"Enter a passcode";
+            create.confirmText = @"Verify passcode";
+            create.errorText = @"The passcodes do not match";
+            create.userInfo = @"reset_passcode";
+            create.delegate = self;
+            create.navigationItem.hidesBackButton = YES;
+            [controller.navigationController pushViewController:create animated:YES];
+        } else {
+            UIAlertView *alert = [[UIAlertView alloc] 
+                                  initWithTitle:@"Invalid Answers" 
+                                  message:@"The answers you provided are not correct" 
+                                  delegate:nil 
+                                  cancelButtonTitle:@"OK" 
+                                  otherButtonTitles:nil];
+            [alert show];
+        }
+    }
+    else if (controller.mode == PINSecurityQuestionsViewControllerCreate || controller.mode == PINSecurityQuestionsViewControllerEdit) {
+        [HRKeychainManager setSecurityQuestions:questions answers:answers];
+        [controller dismissModalViewControllerAnimated:YES];
+    }
+
 }
 
 - (NSArray *)securityQuestions {
@@ -231,7 +260,7 @@
 
 - (void)PINCodeViewController:(PINCodeViewController *)controller didCreatePIN:(NSString *)PIN {
     [HRKeychainManager setPasscode:PIN];
-    if ([controller.userInfo isEqualToString:@"change_passcode"]) {
+    if ([controller.userInfo isEqualToString:@"change_passcode"] || [controller.userInfo isEqualToString:@"reset_passcode"]) {
         [controller dismissModalViewControllerAnimated:YES];
     }
     else {
@@ -273,9 +302,34 @@
         [controller.navigationController pushViewController:questions animated:YES];
     }
     else {
-        if (valid) { [controller dismissModalViewControllerAnimated:YES]; }
+        if (valid) { 
+            [controller dismissModalViewControllerAnimated:YES];
+        }
+        else {
+            self.passcodeAttempts += 1;
+            if (self.passcodeAttempts >= 3) {
+                UIBarButtonItem *resetButton = [[UIBarButtonItem alloc] 
+                                                initWithTitle:@"Reset passcode" 
+                                                style:UIBarButtonItemStyleBordered 
+                                                target:self 
+                                                action:@selector(resetPasscode:)];
+                controller.navigationItem.leftBarButtonItem = resetButton;
+                self.passcodeAttempts = 0;
+            }
+        }
     }
     return valid;
+}
+
+- (void)resetPasscode:(id)sender {
+    UINavigationController *navController = (UINavigationController *)self.window.rootViewController.presentedViewController;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
+    PINSecurityQuestionsViewController *questions = [storyboard instantiateViewControllerWithIdentifier:@"SecurityQuestionsController"];
+    questions.navigationItem.hidesBackButton = NO;
+    questions.mode = PINSecurityQuestionsViewControllerVerify;
+    questions.delegate = (HRAppDelegate *)[[UIApplication sharedApplication] delegate];
+    questions.title = @"Security Questions";
+    [navController pushViewController:questions animated:YES];
 }
 
 @end
