@@ -1171,7 +1171,7 @@
 		94231793147AFE2500268377 /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: The MITRE Corporation";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HReader/HReader-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
@@ -1182,7 +1182,7 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)-pds";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "D9D58216-E51B-4F43-85F5-9A06A83122ED";
 				WRAPPER_EXTENSION = app;
 			};
 			name = "Ad Hoc";
