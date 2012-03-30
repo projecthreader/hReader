@@ -53,33 +53,8 @@
 		941DB0C31471B32D00A96B8B /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941DB0C11471B32D00A96B8B /* MainStoryboard_iPad.storyboard */; };
 		941DB0C61471B32D00A96B8B /* HRMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DB0C51471B32D00A96B8B /* HRMasterViewController.m */; };
 		941DB0C91471B32D00A96B8B /* HRDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DB0C81471B32D00A96B8B /* HRDetailViewController.m */; };
-		941F252B14E2EA9F0077D6D1 /* Henry_Blood_Pressure.png in Resources */ = {isa = PBXBuildFile; fileRef = 941F251A14E2EA9E0077D6D1 /* Henry_Blood_Pressure.png */; };
-		941F252C14E2EA9F0077D6D1 /* henry_Health_measure.png in Resources */ = {isa = PBXBuildFile; fileRef = 941F251B14E2EA9E0077D6D1 /* henry_Health_measure.png */; };
-		941F252D14E2EA9F0077D6D1 /* henry_total_cholesterol.png in Resources */ = {isa = PBXBuildFile; fileRef = 941F251C14E2EA9E0077D6D1 /* henry_total_cholesterol.png */; };
-		941F252E14E2EA9F0077D6D1 /* Henry_weight.png in Resources */ = {isa = PBXBuildFile; fileRef = 941F251D14E2EA9E0077D6D1 /* Henry_weight.png */; };
-		941F252F14E2EA9F0077D6D1 /* Johnny_Healthmeasure.png in Resources */ = {isa = PBXBuildFile; fileRef = 941F251E14E2EA9F0077D6D1 /* Johnny_Healthmeasure.png */; };
-		941F253014E2EA9F0077D6D1 /* Johnny_height.png in Resources */ = {isa = PBXBuildFile; fileRef = 941F251F14E2EA9F0077D6D1 /* Johnny_height.png */; };
-		941F253114E2EA9F0077D6D1 /* Johnny_peak_flow.png in Resources */ = {isa = PBXBuildFile; fileRef = 941F252014E2EA9F0077D6D1 /* Johnny_peak_flow.png */; };
-		941F253214E2EA9F0077D6D1 /* Johnny_weight.png in Resources */ = {isa = PBXBuildFile; fileRef = 941F252114E2EA9F0077D6D1 /* Johnny_weight.png */; };
-		941F253314E2EA9F0077D6D1 /* Molly_Health-Measures.png in Resources */ = {isa = PBXBuildFile; fileRef = 941F252214E2EA9F0077D6D1 /* Molly_Health-Measures.png */; };
-		941F253414E2EA9F0077D6D1 /* Molly_peak-Flow.png in Resources */ = {isa = PBXBuildFile; fileRef = 941F252314E2EA9F0077D6D1 /* Molly_peak-Flow.png */; };
-		941F253514E2EA9F0077D6D1 /* Molly_total_cholesterol 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 941F252414E2EA9F0077D6D1 /* Molly_total_cholesterol 2.png */; };
-		941F253614E2EA9F0077D6D1 /* Molly_weight.png in Resources */ = {isa = PBXBuildFile; fileRef = 941F252514E2EA9F0077D6D1 /* Molly_weight.png */; };
-		941F253714E2EA9F0077D6D1 /* Sarah_Blood_Pressure.png in Resources */ = {isa = PBXBuildFile; fileRef = 941F252614E2EA9F0077D6D1 /* Sarah_Blood_Pressure.png */; };
-		941F253814E2EA9F0077D6D1 /* Sarah_bmi.png in Resources */ = {isa = PBXBuildFile; fileRef = 941F252714E2EA9F0077D6D1 /* Sarah_bmi.png */; };
-		941F253914E2EA9F0077D6D1 /* Sarah_Health_measure.png in Resources */ = {isa = PBXBuildFile; fileRef = 941F252814E2EA9F0077D6D1 /* Sarah_Health_measure.png */; };
-		941F253A14E2EA9F0077D6D1 /* Sarah_peak_flow.png in Resources */ = {isa = PBXBuildFile; fileRef = 941F252914E2EA9F0077D6D1 /* Sarah_peak_flow.png */; };
-		941F253B14E2EA9F0077D6D1 /* Tom_Health_measure.png in Resources */ = {isa = PBXBuildFile; fileRef = 941F252A14E2EA9F0077D6D1 /* Tom_Health_measure.png */; };
 		941F253F14E2EC5D0077D6D1 /* HRVitalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 941F253E14E2EC5D0077D6D1 /* HRVitalView.m */; };
 		941F254114E2EC7E0077D6D1 /* HRVitalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941F254014E2EC7E0077D6D1 /* HRVitalView.xib */; };
-		942786DE14C74AD50003190F /* Sparklines_drop-to-plateau.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786D614C74AD50003190F /* Sparklines_drop-to-plateau.png */; };
-		942786DF14C74AD50003190F /* Sparklines_growing_levels.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786D714C74AD50003190F /* Sparklines_growing_levels.png */; };
-		942786E014C74AD50003190F /* Sparklines_low_levels.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786D814C74AD50003190F /* Sparklines_low_levels.png */; };
-		942786E114C74AD50003190F /* Sparklines_low-to-high_levels.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786D914C74AD50003190F /* Sparklines_low-to-high_levels.png */; };
-		942786E214C74AD50003190F /* Sparklines_normal_levels.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786DA14C74AD50003190F /* Sparklines_normal_levels.png */; };
-		942786E314C74AD50003190F /* Sparklines_normal-high_levels.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786DB14C74AD50003190F /* Sparklines_normal-high_levels.png */; };
-		942786E414C74AD50003190F /* Sparklines_varying_levels_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786DC14C74AD50003190F /* Sparklines_varying_levels_normal.png */; };
-		942786E514C74AD50003190F /* Sparklines_varying_levels.png in Resources */ = {isa = PBXBuildFile; fileRef = 942786DD14C74AD50003190F /* Sparklines_varying_levels.png */; };
 		9452D7F414FC167200021E69 /* HRProviderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9452D7F314FC167200021E69 /* HRProviderView.xib */; };
 		9452D7F714FC16DF00021E69 /* HRProviderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9452D7F614FC16DF00021E69 /* HRProviderView.m */; };
 		945560D014BB892100A3DC43 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560C314BB892100A3DC43 /* DDXMLElementAdditions.m */; };
@@ -202,34 +177,9 @@
 		941DB0C51471B32D00A96B8B /* HRMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRMasterViewController.m; sourceTree = "<group>"; };
 		941DB0C71471B32D00A96B8B /* HRDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRDetailViewController.h; sourceTree = "<group>"; };
 		941DB0C81471B32D00A96B8B /* HRDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRDetailViewController.m; sourceTree = "<group>"; };
-		941F251A14E2EA9E0077D6D1 /* Henry_Blood_Pressure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Henry_Blood_Pressure.png; sourceTree = "<group>"; };
-		941F251B14E2EA9E0077D6D1 /* henry_Health_measure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = henry_Health_measure.png; sourceTree = "<group>"; };
-		941F251C14E2EA9E0077D6D1 /* henry_total_cholesterol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = henry_total_cholesterol.png; sourceTree = "<group>"; };
-		941F251D14E2EA9E0077D6D1 /* Henry_weight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Henry_weight.png; sourceTree = "<group>"; };
-		941F251E14E2EA9F0077D6D1 /* Johnny_Healthmeasure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Johnny_Healthmeasure.png; sourceTree = "<group>"; };
-		941F251F14E2EA9F0077D6D1 /* Johnny_height.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Johnny_height.png; sourceTree = "<group>"; };
-		941F252014E2EA9F0077D6D1 /* Johnny_peak_flow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Johnny_peak_flow.png; sourceTree = "<group>"; };
-		941F252114E2EA9F0077D6D1 /* Johnny_weight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Johnny_weight.png; sourceTree = "<group>"; };
-		941F252214E2EA9F0077D6D1 /* Molly_Health-Measures.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Molly_Health-Measures.png"; sourceTree = "<group>"; };
-		941F252314E2EA9F0077D6D1 /* Molly_peak-Flow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Molly_peak-Flow.png"; sourceTree = "<group>"; };
-		941F252414E2EA9F0077D6D1 /* Molly_total_cholesterol 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Molly_total_cholesterol 2.png"; sourceTree = "<group>"; };
-		941F252514E2EA9F0077D6D1 /* Molly_weight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Molly_weight.png; sourceTree = "<group>"; };
-		941F252614E2EA9F0077D6D1 /* Sarah_Blood_Pressure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sarah_Blood_Pressure.png; sourceTree = "<group>"; };
-		941F252714E2EA9F0077D6D1 /* Sarah_bmi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sarah_bmi.png; sourceTree = "<group>"; };
-		941F252814E2EA9F0077D6D1 /* Sarah_Health_measure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sarah_Health_measure.png; sourceTree = "<group>"; };
-		941F252914E2EA9F0077D6D1 /* Sarah_peak_flow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sarah_peak_flow.png; sourceTree = "<group>"; };
-		941F252A14E2EA9F0077D6D1 /* Tom_Health_measure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tom_Health_measure.png; sourceTree = "<group>"; };
 		941F253D14E2EC5D0077D6D1 /* HRVitalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRVitalView.h; sourceTree = "<group>"; };
 		941F253E14E2EC5D0077D6D1 /* HRVitalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRVitalView.m; sourceTree = "<group>"; };
 		941F254014E2EC7E0077D6D1 /* HRVitalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRVitalView.xib; sourceTree = "<group>"; };
-		942786D614C74AD50003190F /* Sparklines_drop-to-plateau.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sparklines_drop-to-plateau.png"; sourceTree = "<group>"; };
-		942786D714C74AD50003190F /* Sparklines_growing_levels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparklines_growing_levels.png; sourceTree = "<group>"; };
-		942786D814C74AD50003190F /* Sparklines_low_levels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparklines_low_levels.png; sourceTree = "<group>"; };
-		942786D914C74AD50003190F /* Sparklines_low-to-high_levels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sparklines_low-to-high_levels.png"; sourceTree = "<group>"; };
-		942786DA14C74AD50003190F /* Sparklines_normal_levels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparklines_normal_levels.png; sourceTree = "<group>"; };
-		942786DB14C74AD50003190F /* Sparklines_normal-high_levels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sparklines_normal-high_levels.png"; sourceTree = "<group>"; };
-		942786DC14C74AD50003190F /* Sparklines_varying_levels_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparklines_varying_levels_normal.png; sourceTree = "<group>"; };
-		942786DD14C74AD50003190F /* Sparklines_varying_levels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparklines_varying_levels.png; sourceTree = "<group>"; };
 		9452D7F314FC167200021E69 /* HRProviderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRProviderView.xib; sourceTree = "<group>"; };
 		9452D7F514FC16DF00021E69 /* HRProviderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRProviderView.h; sourceTree = "<group>"; };
 		9452D7F614FC16DF00021E69 /* HRProviderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRProviderView.m; sourceTree = "<group>"; };
@@ -517,38 +467,6 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
-		942786D414C74AC30003190F /* Sparklines */ = {
-			isa = PBXGroup;
-			children = (
-				941F251A14E2EA9E0077D6D1 /* Henry_Blood_Pressure.png */,
-				941F251B14E2EA9E0077D6D1 /* henry_Health_measure.png */,
-				941F251C14E2EA9E0077D6D1 /* henry_total_cholesterol.png */,
-				941F251D14E2EA9E0077D6D1 /* Henry_weight.png */,
-				941F251E14E2EA9F0077D6D1 /* Johnny_Healthmeasure.png */,
-				941F251F14E2EA9F0077D6D1 /* Johnny_height.png */,
-				941F252014E2EA9F0077D6D1 /* Johnny_peak_flow.png */,
-				941F252114E2EA9F0077D6D1 /* Johnny_weight.png */,
-				941F252214E2EA9F0077D6D1 /* Molly_Health-Measures.png */,
-				941F252314E2EA9F0077D6D1 /* Molly_peak-Flow.png */,
-				941F252414E2EA9F0077D6D1 /* Molly_total_cholesterol 2.png */,
-				941F252514E2EA9F0077D6D1 /* Molly_weight.png */,
-				941F252614E2EA9F0077D6D1 /* Sarah_Blood_Pressure.png */,
-				941F252714E2EA9F0077D6D1 /* Sarah_bmi.png */,
-				941F252814E2EA9F0077D6D1 /* Sarah_Health_measure.png */,
-				941F252914E2EA9F0077D6D1 /* Sarah_peak_flow.png */,
-				941F252A14E2EA9F0077D6D1 /* Tom_Health_measure.png */,
-				942786D614C74AD50003190F /* Sparklines_drop-to-plateau.png */,
-				942786D714C74AD50003190F /* Sparklines_growing_levels.png */,
-				942786D814C74AD50003190F /* Sparklines_low_levels.png */,
-				942786D914C74AD50003190F /* Sparklines_low-to-high_levels.png */,
-				942786DA14C74AD50003190F /* Sparklines_normal_levels.png */,
-				942786DB14C74AD50003190F /* Sparklines_normal-high_levels.png */,
-				942786DC14C74AD50003190F /* Sparklines_varying_levels_normal.png */,
-				942786DD14C74AD50003190F /* Sparklines_varying_levels.png */,
-			);
-			name = Sparklines;
-			sourceTree = "<group>";
-		};
 		944A2F291472C5F900694816 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -561,7 +479,6 @@
 		944A2F2B1472C60600694816 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				942786D414C74AC30003190F /* Sparklines */,
 				DD124DAD148D3EF300E23A44 /* Doctor.png */,
 				DD8BD9DA148D13910090F729 /* chevron.png */,
 				947FCE4514B4C18600C716FD /* chevron-left.png */,
@@ -910,36 +827,11 @@
 				94026FB414B4A8A600F40185 /* timeline in Resources */,
 				947FCE4614B4C18600C716FD /* chevron-left.png in Resources */,
 				947FCE4C14B4C76700C716FD /* HRPrivacyViewController.xib in Resources */,
-				942786DE14C74AD50003190F /* Sparklines_drop-to-plateau.png in Resources */,
-				942786DF14C74AD50003190F /* Sparklines_growing_levels.png in Resources */,
-				942786E014C74AD50003190F /* Sparklines_low_levels.png in Resources */,
-				942786E114C74AD50003190F /* Sparklines_low-to-high_levels.png in Resources */,
-				942786E214C74AD50003190F /* Sparklines_normal_levels.png in Resources */,
-				942786E314C74AD50003190F /* Sparklines_normal-high_levels.png in Resources */,
-				942786E414C74AD50003190F /* Sparklines_varying_levels_normal.png in Resources */,
-				942786E514C74AD50003190F /* Sparklines_varying_levels.png in Resources */,
 				3BFE7A2714DADE2B0037738D /* PINCodeBackground.png in Resources */,
 				3BFE7A2814DADE2B0037738D /* PINCodeButton.png in Resources */,
 				3BFE7A2914DADE2B0037738D /* PINCodeDeleteButton.png in Resources */,
 				3BFE7A2A14DADE2B0037738D /* PINCodeStoryboard.storyboard in Resources */,
 				3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */,
-				941F252B14E2EA9F0077D6D1 /* Henry_Blood_Pressure.png in Resources */,
-				941F252C14E2EA9F0077D6D1 /* henry_Health_measure.png in Resources */,
-				941F252D14E2EA9F0077D6D1 /* henry_total_cholesterol.png in Resources */,
-				941F252E14E2EA9F0077D6D1 /* Henry_weight.png in Resources */,
-				941F252F14E2EA9F0077D6D1 /* Johnny_Healthmeasure.png in Resources */,
-				941F253014E2EA9F0077D6D1 /* Johnny_height.png in Resources */,
-				941F253114E2EA9F0077D6D1 /* Johnny_peak_flow.png in Resources */,
-				941F253214E2EA9F0077D6D1 /* Johnny_weight.png in Resources */,
-				941F253314E2EA9F0077D6D1 /* Molly_Health-Measures.png in Resources */,
-				941F253414E2EA9F0077D6D1 /* Molly_peak-Flow.png in Resources */,
-				941F253514E2EA9F0077D6D1 /* Molly_total_cholesterol 2.png in Resources */,
-				941F253614E2EA9F0077D6D1 /* Molly_weight.png in Resources */,
-				941F253714E2EA9F0077D6D1 /* Sarah_Blood_Pressure.png in Resources */,
-				941F253814E2EA9F0077D6D1 /* Sarah_bmi.png in Resources */,
-				941F253914E2EA9F0077D6D1 /* Sarah_Health_measure.png in Resources */,
-				941F253A14E2EA9F0077D6D1 /* Sarah_peak_flow.png in Resources */,
-				941F253B14E2EA9F0077D6D1 /* Tom_Health_measure.png in Resources */,
 				941F254114E2EC7E0077D6D1 /* HRVitalView.xib in Resources */,
 				3BE9A42D14E42A3800F87B60 /* hs.json in Resources */,
 				3BE9A42E14E42A3800F87B60 /* js.json in Resources */,
