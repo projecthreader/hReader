@@ -12,6 +12,7 @@
 #import "PINCodeViewController.h"
 
 @interface HRAppDelegate : UIResponder
+
 <
 UIApplicationDelegate,
 PINSecurityQuestionsViewControllerDelegate,
@@ -19,7 +20,6 @@ PINCodeViewControllerDelegate
 >
 
 @property (strong, nonatomic) UIWindow *window;
-@property (assign, nonatomic) NSInteger passcodeAttempts;
 
 // access core data stores
 + (NSManagedObjectContext *)managedObjectContext;
