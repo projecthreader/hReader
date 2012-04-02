@@ -79,6 +79,7 @@
 		947FCE4B14B4C76700C716FD /* HRPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947FCE4914B4C76700C716FD /* HRPrivacyViewController.m */; };
 		947FCE4C14B4C76700C716FD /* HRPrivacyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE4A14B4C76700C716FD /* HRPrivacyViewController.xib */; };
 		947FCE5914B4D7E400C716FD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947FCE5814B4D7E400C716FD /* AudioToolbox.framework */; };
+		94AEA7401529F2DC00D9C67D /* GCActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEA73F1529F2DC00D9C67D /* GCActionSheet.m */; };
 		94AEAE0414841CEB00C005B2 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0214841CEB00C005B2 /* TimelineViewController.m */; };
 		94AEAE0514841CEB00C005B2 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEAE0314841CEB00C005B2 /* TimelineViewController.xib */; };
 		94AEAE0914868BC200C005B2 /* HRRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0814868BC200C005B2 /* HRRootViewController.m */; };
@@ -223,6 +224,8 @@
 		947FCE4914B4C76700C716FD /* HRPrivacyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPrivacyViewController.m; sourceTree = "<group>"; };
 		947FCE4A14B4C76700C716FD /* HRPrivacyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPrivacyViewController.xib; sourceTree = "<group>"; };
 		947FCE5814B4D7E400C716FD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		94AEA73E1529F2DC00D9C67D /* GCActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCActionSheet.h; path = "vendor/guicocoa-common-code/GCActionSheet.h"; sourceTree = SOURCE_ROOT; };
+		94AEA73F1529F2DC00D9C67D /* GCActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCActionSheet.m; path = "vendor/guicocoa-common-code/GCActionSheet.m"; sourceTree = SOURCE_ROOT; };
 		94AEAE0114841CEB00C005B2 /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
 		94AEAE0214841CEB00C005B2 /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
 		94AEAE0314841CEB00C005B2 /* TimelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineViewController.xib; sourceTree = "<group>"; };
@@ -350,6 +353,8 @@
 			children = (
 				3BD16EE414E1B5EE00F2249E /* GCManagedObject.h */,
 				3BD16EE514E1B5EE00F2249E /* GCManagedObject.m */,
+				94AEA73E1529F2DC00D9C67D /* GCActionSheet.h */,
+				94AEA73F1529F2DC00D9C67D /* GCActionSheet.m */,
 			);
 			name = "guicocoa-common-code";
 			path = "vendor/guicocoa-common-code";
@@ -924,6 +929,7 @@
 				94F4CB611507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m in Sources */,
 				94F4CB651507E87E00EFEA43 /* PINCodeTextField.m in Sources */,
 				3BB9C27F151B8AEF00527C20 /* HRKeychainManager.m in Sources */,
+				94AEA7401529F2DC00D9C67D /* GCActionSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

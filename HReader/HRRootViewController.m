@@ -17,6 +17,7 @@
 #import "HRC32ViewController.h"
 #import "HRPasscodeWarningViewController.h"
 #import "HRPasscodeManager.h"
+#import "GCActionSheet.h"
 
 static int HRRootViewControllerTitleContext;
 
@@ -244,4 +245,16 @@ static int HRRootViewControllerTitleContext;
     self.visibleViewController = [self.childViewControllers objectAtIndex:index];
 }
 
+- (IBAction)toolsButtonPressed:(id)sender {
+    GCActionSheet *actionSheet = [[GCActionSheet alloc] initWithTitle:@"Tools"];
+    [actionSheet addButtonWithTitle:@"C32 HTML" block:^{
+        [TestFlight passCheckpoint:@"View C32 HTML"];
+        UIViewController *controller = [[[HRC32ViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+        controller.modalPresentationStyle = UIModalPresentationPageSheet;
+        [self presentModalViewController:controller animated:YES];
+    }];
+    [actionSheet showFromBarButtonItem:sender animated:YES];
+    [actionSheet release];
+    
+}
 @end

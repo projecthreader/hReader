@@ -52,7 +52,11 @@
                         <segue destination="2Hp-Fe-994" kind="modal" identifier="About Button" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="hp3-q0-AaZ"/>
                     </connections>
                 </barButtonItem>
-                <barButtonItem systemItem="action" id="Yi6-gl-bFq" userLabel="Tools Bar Button"/>
+                <barButtonItem systemItem="action" id="Yi6-gl-bFq" userLabel="Tools Bar Button">
+                    <connections>
+                        <action selector="toolsButtonPressed:" destination="GW8-lK-xxa" id="slh-W0-kwZ"/>
+                    </connections>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="678" y="-379"/>
         </scene>

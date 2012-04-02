@@ -14,4 +14,6 @@
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *aboutBarButtonItem;
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *toolsBarButtonItem;
 
+- (IBAction)toolsButtonPressed:(id)sender;
+
 @end

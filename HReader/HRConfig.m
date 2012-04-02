@@ -155,10 +155,10 @@ static HRPatient *selectedPatient = nil;
         [info setObject:@"20 Jul 2010" forKey:@"diagnosis_date"];
         [info setObject:@"Peak flow/Yellow Zone" forKey:@"diagnosis_results"];
         
-        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"height_sparklines"];
-        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"weight_sparklines"];
-        [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"bmi_sparklines"];
-        [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"pulse_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"height_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"weight_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"bmi_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"pulse_sparklines"];
         
         // Vitals Johnny
 //        HRWeight *weight = [[HRWeight alloc] init];
