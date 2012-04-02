@@ -253,10 +253,10 @@ static HRPatient *selectedPatient = nil;
         [info setObject:@"20 Jul 2010" forKey:@"diagnosis_date"];
         [info setObject:@"Prostate Specific Antigen Test" forKey:@"diagnosis_results"];
         
-        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"height_sparklines"];
-        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"weight_sparklines"];
-        [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"bmi_sparklines"];
-        [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"pulse_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"height_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"weight_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"bmi_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"pulse_sparklines"];
         
         henry.info = info;
         [info release];
@@ -310,10 +310,10 @@ static HRPatient *selectedPatient = nil;
         [info setObject:@"30 Jul 2010" forKey:@"diagnosis_date"];
         [info setObject:@"Peak flow/Yellow Zon" forKey:@"diagnosis_results"];
         
-        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"height_sparklines"];
-        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"weight_sparklines"];
-        [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"bmi_sparklines"];
-        [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"pulse_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"height_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"weight_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"bmi_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"pulse_sparklines"];
         
 //        peakFlow = [[HRPeakFlow alloc] init];
 //        peakFlow.gender = molly.gender;
@@ -392,10 +392,10 @@ static HRPatient *selectedPatient = nil;
         [info setObject:@"15 Nov 2010" forKey:@"diagnosis_date"];
         [info setObject:@"Pap Test/Normal" forKey:@"diagnosis_results"];
         
-        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"height_sparklines"];
-        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"weight_sparklines"];
-        [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"bmi_sparklines"];
-        [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"pulse_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"height_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"weight_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"bmi_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"pulse_sparklines"];
         
         // Vitals
         
@@ -476,10 +476,10 @@ static HRPatient *selectedPatient = nil;
         [info setObject:@"10 Jul 2010" forKey:@"diagnosis_date"];
         [info setObject:@"Diabetes Treatment" forKey:@"diagnosis_results"];
         
-        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"height_sparklines"];
-        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"weight_sparklines"];
-        [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"bmi_sparklines"];
-        [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"pulse_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_normal_levels"] forKey:@"height_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_growing_levels"] forKey:@"weight_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_low-to-high_levels"] forKey:@"bmi_sparklines"];
+//        [info setObject:[UIImage imageNamed:@"Sparklines_low_levels"] forKey:@"pulse_sparklines"];
         
 //        HRGlucose *glucose = [[HRGlucose alloc] init];
 //        glucose.gender = tom.gender;
