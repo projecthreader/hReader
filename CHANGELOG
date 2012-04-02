@@ -1,6 +1,8 @@
 # 2012-4-02
 
-- Removed fake message in footer
+This build removes any synthetic data from the summary screen. All data being shown is parsed from PDS generated JSON.
+
+- Removed mock message in footer
 - Added tools button to nav bar
 - Removed privacy demo
 - Moved feedback button to top of about
