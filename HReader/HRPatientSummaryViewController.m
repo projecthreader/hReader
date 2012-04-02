@@ -28,6 +28,8 @@
 
 @implementation HRPatientSummaryViewController
 
+@synthesize popoverController = __popoverController;
+
 @synthesize scrollView          = __scrollView;
 @synthesize headerView          = __headerView;
 @synthesize contentView         = __contentView;
@@ -109,6 +111,12 @@
     [super dealloc];
 }
 - (void)cleanup {
+    
+    // popover
+    [self.popoverController dismissPopoverAnimated:NO];
+    self.popoverController = nil;
+    
+    // release other outlets
     self.scrollView = nil;
     self.headerView = nil;
     self.contentView = nil;
@@ -117,6 +125,7 @@
     self.medicationDosageLabels = nil;
     self.medicationNameLabels = nil;
     self.vitalViews = nil;
+    
 }
 - (void)reloadData {
     
@@ -305,19 +314,19 @@
     [self.view bringSubviewToFront:self.headerView];
     
     // load vital views
-    UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(vitalViewTapGesture:)] autorelease];
-    tap.delegate = self;
     UINib *nib = [UINib nibWithNibName:@"HRVitalView" bundle:nil];
     [self.vitalViews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
-        [view addGestureRecognizer:tap];
         view.backgroundColor = [UIColor clearColor];
         HRVitalView *vitalView = [[nib instantiateWithOwner:self options:nil] lastObject];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(vitalViewTapGesture:)];
+        [vitalView addGestureRecognizer:tap];
+        [tap release];
         vitalView.frame = view.bounds;
         [view addSubview:vitalView]; 
     }];
     
-    
 }
+
 - (void)viewDidUnload {
     [self setVitalViews:nil];
     [super viewDidUnload];
@@ -350,10 +359,12 @@
     [self setPulseImageView:nil];
     
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self reloadData];
 }
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
@@ -376,16 +387,22 @@
 
 #pragma mark - tap gestures
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-    return YES;
-}
-
 - (void)vitalViewTapGesture:(UITapGestureRecognizer *)tap {
     if (tap.state == UIGestureRecognizerStateRecognized) {
-        UIView *view = tap.view;
-        HRVitalView *vitalView = [[view subviews] lastObject];
-        HRVital *vital = vitalView.vital;
+        HRVitalView *view = (HRVitalView *)tap.view;
+        HRVital *vital = view.vital;
+        UIViewController *controller = [[[UIViewController alloc] init] autorelease];
+        if (self.popoverController == nil) {
+            self.popoverController = [[[UIPopoverController alloc] initWithContentViewController:controller] autorelease];
+        }
+        else {
+            self.popoverController.contentViewController = controller;
+        }
+        CGRect showRect = [self.view convertRect:view.frame fromView:view];
+        [self.popoverController
+         presentPopoverFromRect:showRect
+         inView:self.view
+         permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         NSLog(@"Vital: %@", vital);
     }
 

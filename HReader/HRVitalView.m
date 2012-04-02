@@ -27,7 +27,6 @@
 @synthesize unitsLabel      = __unitsLabel;
 @synthesize sparkLineView   = __sparkLineView;
 
-
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.sparkLineView.backgroundColor = [UIColor whiteColor];
@@ -37,6 +36,8 @@
 }
 
 - (void)setVital:(HRVital *)vital {
+    
+    // save
     __vital = vital;
     
     // set labels

@@ -25,5 +25,4 @@
 @property (retain, nonatomic) IBOutlet UILabel *unitsLabel;
 @property (retain, nonatomic) IBOutlet ASBSparkLineView *sparkLineView;
 
-
 @end

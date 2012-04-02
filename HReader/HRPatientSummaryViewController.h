@@ -10,6 +10,9 @@
 
 @interface HRPatientSummaryViewController : UIViewController <UIPopoverControllerDelegate, UIGestureRecognizerDelegate>
 
+// popover
+@property (nonatomic, strong) UIPopoverController *popoverController;
+
 // container and utility views
 @property (retain, nonatomic) IBOutlet UIView *headerView;
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
