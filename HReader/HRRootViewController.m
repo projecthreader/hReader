@@ -178,7 +178,7 @@ static int HRRootViewControllerTitleContext;
     self.visibleViewController = [self.childViewControllers objectAtIndex:0];
     
     // set last updated text
-    self.lastUpdatedLabel.text = @"Last Updated: 05 May by Joseph Yang, M.D. (Columbia Pediatric Associates)";
+//    self.lastUpdatedLabel.text = @"Last Updated: 05 May by Joseph Yang, M.D. (Columbia Pediatric Associates)";
     
 }
 - (void)viewDidUnload {
