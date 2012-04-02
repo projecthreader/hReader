@@ -12,5 +12,6 @@
 
 - (NSString *)mediumStyleDate;
 - (NSString *)shortStyleDate;
+- (NSString *)timeAgoInWords;
 
 @end

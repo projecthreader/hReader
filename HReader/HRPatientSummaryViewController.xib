@@ -235,7 +235,7 @@
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
-								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<array key="IBUIGestureRecognizers" id="0"/>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<string key="IBUIText">04 December 2008</string>
 								<reference key="IBUITextColor" ref="890150487"/>
@@ -7003,12 +7003,20 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					</object>
 					<int key="connectionID">485</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">dobTitleLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="822974334"/>
+					</object>
+					<int key="connectionID">490</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
 					<object class="IBObjectRecord">
 						<int key="objectID">0</int>
-						<array key="object" id="0"/>
+						<reference key="object" ref="0"/>
 						<reference key="children" ref="1000"/>
 						<nil key="parent"/>
 					</object>
@@ -7081,6 +7089,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					<object class="IBObjectRecord">
 						<int key="objectID">17</int>
 						<reference key="object" ref="352648494"/>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="820384814"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -7854,7 +7863,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">487</int>
+			<int key="maxID">490</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -7869,6 +7878,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<string key="diagnosisDateLabel">UILabel</string>
 						<string key="diagnosisLabel">UILabel</string>
 						<string key="dobLabel">UILabel</string>
+						<string key="dobTitleLabel">UILabel</string>
 						<string key="followUpAppointmentLabel">UILabel</string>
 						<string key="footerShadowView">UIView</string>
 						<string key="functionalStatusDateLabel">UILabel</string>
@@ -7919,6 +7929,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						</object>
 						<object class="IBToOneOutletInfo" key="dobLabel">
 							<string key="name">dobLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="dobTitleLabel">
+							<string key="name">dobTitleLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="followUpAppointmentLabel">

@@ -32,6 +32,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *patientName;
 
 @property (retain, nonatomic) IBOutlet UILabel *dobLabel;
+@property (retain, nonatomic) IBOutlet UILabel *dobTitleLabel;
 
 @property (retain, nonatomic) IBOutlet UILabel *allergiesLabel;
 @property (retain, nonatomic) IBOutlet UILabel *recentConditionsDateLabel;

@@ -45,6 +45,7 @@
 
 @synthesize patientName                         = __patientName;
 @synthesize dobLabel                            = __dobLabel;
+@synthesize dobTitleLabel                       = __dobTitleLabel;
 
 @synthesize allergiesLabel                      = __allergiesLabel;
 @synthesize recentConditionsDateLabel           = __rececentConditionsDateLabel;
@@ -109,6 +110,7 @@
     [__diagnosisDateLabel release];
     [__pulseImageView release];
 
+    [__dobTitleLabel release];
     [super dealloc];
 }
 - (void)cleanup {
@@ -153,7 +155,13 @@
         // these are not
         HRMPatient *patient = [HRMPatient selectedPatient];
         self.patientName.text = [[patient compositeName] uppercaseString];
-        self.dobLabel.text = [patient.dateOfBirth mediumStyleDate];
+        if ([self.dobTitleLabel.text isEqualToString:@"DOB"]) {
+            self.dobLabel.text = [patient.dateOfBirth mediumStyleDate];
+        }
+        else {
+            self.dobLabel.text = [patient.dateOfBirth timeAgoInWords];
+            
+        }
         
         // allergies
         NSArray *allergies = patient.allergies;
@@ -326,10 +334,14 @@
         [view addSubview:vitalView]; 
     }];
     
+    UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dobTapped:)] autorelease];
+    [self.dobLabel addGestureRecognizer:tap];
+    
 }
 
 - (void)viewDidUnload {
     [self setVitalViews:nil];
+    [self setDobTitleLabel:nil];
     [super viewDidUnload];
     [self cleanup];
     
@@ -409,6 +421,16 @@
         NSLog(@"Vital: %@", vital);
     }
 
+}
+
+- (void)dobTapped:(UITapGestureRecognizer *)tap {
+    if ([self.dobTitleLabel.text isEqualToString:@"DOB"]) {
+        self.dobTitleLabel.text = @"AGE";
+    }
+    else {
+        self.dobTitleLabel.text = @"DOB";
+    }
+    [self reloadData];
 }
 
 #pragma mark - popover delegate
