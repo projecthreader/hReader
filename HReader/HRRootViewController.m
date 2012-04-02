@@ -238,12 +238,19 @@ static int HRRootViewControllerTitleContext;
 }
 
 - (IBAction)toolsButtonPressed:(id)sender {
-    GCActionSheet *actionSheet = [[GCActionSheet alloc] initWithTitle:@"Tools"];
-    [actionSheet addButtonWithTitle:@"C32 HTML" block:^{
-        [self performSegueWithIdentifier:@"C32HTMLSegue" sender:self];
-    }];
-    [actionSheet showFromBarButtonItem:sender animated:YES];
-    [actionSheet release];
+    static BOOL visible = NO;
+    if (!visible) {
+        visible = YES;
+        GCActionSheet *actionSheet = [[GCActionSheet alloc] initWithTitle:@"Tools"];
+        [actionSheet addButtonWithTitle:@"C32 HTML" block:^{
+            [self performSegueWithIdentifier:@"C32HTMLSegue" sender:self];
+        }];
+        [actionSheet setDidDismissBlock:^{
+            visible = NO;
+        }];
+        [actionSheet showFromBarButtonItem:sender animated:YES];
+        [actionSheet release];
+    }
     
 }
 @end
