@@ -278,8 +278,7 @@
                             <tableViewSection headerTitle="About" id="Sn1-ug-z15">
                                 <string key="footerTitle">The MITRE Corporation © 2012
 
-hReader prototype demonstration application.
-All data contained in this application is synthetic and fictional for research purposes.</string>
+hReader allows you to gather, correct, and manage your health data. This service is not meant to replace the advice of a physician. You should not rely on any information or suggestions in hReader to replace consultations with a qualified health professional regarding your own specific health issues.</string>
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Xtt-rv-9qB" detailTextLabel="vS6-de-HAa" style="IBUITableViewCellStyleValue1" id="Yg1-Ty-Tx2">
                                         <rect key="frame" x="0.0" y="230" width="540" height="45"/>
@@ -373,6 +372,40 @@ All data contained in this application is synthetic and fictional for research p
             <point key="canvasLocation" x="-558" y="-379"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="HRAboutTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRAboutTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="done"/>
+                <relationship kind="outlet" name="buildDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="versionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="HRC32ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRC32ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="done"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="HRDoctorsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRDoctorsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tapGesture" candidateClass="UIGestureRecognizer"/>
+                <relationship kind="outletCollection" name="providerViews" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="HRRootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRRootViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="toolsButtonPressed:"/>
+                <relationship kind="outlet" name="C32ButtonItem" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="aboutBarButtonItem" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="toolsBarButtonItem" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation" orientation="landscapeRight"/>
