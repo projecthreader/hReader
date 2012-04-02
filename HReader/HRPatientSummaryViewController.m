@@ -226,7 +226,7 @@
                 }
                 
                 // show vital
-                [[view.subviews lastObject] showVital:vital];
+                [[view.subviews lastObject] setVital:vital];
                 
             }
             else {
@@ -305,13 +305,17 @@
     [self.view bringSubviewToFront:self.headerView];
     
     // load vital views
+    UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(vitalViewTapGesture:)] autorelease];
+    tap.delegate = self;
     UINib *nib = [UINib nibWithNibName:@"HRVitalView" bundle:nil];
     [self.vitalViews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
+        [view addGestureRecognizer:tap];
         view.backgroundColor = [UIColor clearColor];
         HRVitalView *vitalView = [[nib instantiateWithOwner:self options:nil] lastObject];
         vitalView.frame = view.bounds;
         [view addSubview:vitalView]; 
     }];
+    
     
 }
 - (void)viewDidUnload {
@@ -369,5 +373,25 @@
          }];
      }];
 }
+
+#pragma mark - tap gestures
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    return YES;
+}
+
+- (void)vitalViewTapGesture:(UITapGestureRecognizer *)tap {
+    if (tap.state == UIGestureRecognizerStateRecognized) {
+        UIView *view = tap.view;
+        HRVitalView *vitalView = [[view subviews] lastObject];
+        HRVital *vital = vitalView.vital;
+        NSLog(@"Vital: %@", vital);
+    }
+
+}
+
+#pragma mark - popover delegate
+
 
 @end

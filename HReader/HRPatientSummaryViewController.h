@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRPatientSummaryViewController : UIViewController
+@interface HRPatientSummaryViewController : UIViewController <UIPopoverControllerDelegate, UIGestureRecognizerDelegate>
 
 // container and utility views
 @property (retain, nonatomic) IBOutlet UIView *headerView;

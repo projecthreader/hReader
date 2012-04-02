@@ -17,6 +17,7 @@
 
 @implementation HRVitalView
 
+@synthesize vital           = __vital;
 @synthesize leftLabel       = __leftLabel;
 @synthesize rightLabel      = __rightLabel;
 @synthesize nameLabel       = __nameLabel;
@@ -26,17 +27,6 @@
 @synthesize unitsLabel      = __unitsLabel;
 @synthesize sparkLineView   = __sparkLineView;
 
-- (void)dealloc {
-    self.nameLabel = nil;
-    self.rightLabel = nil;
-    self.leftLabel = nil;
-    self.resultLabel = nil;
-    self.dateLabel = nil;
-    self.normalLabel = nil;
-    self.unitsLabel = nil;
-    self.sparkLineView = nil;
-    [super dealloc];
-}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -46,7 +36,8 @@
     self.dateLabel.adjustsFontSizeToFitWidth = YES;
 }
 
-- (void)showVital:(HRVital *)vital {
+- (void)setVital:(HRVital *)vital {
+    __vital = vital;
     
     // set labels
     self.nameLabel.text = [vital.title uppercaseString];
