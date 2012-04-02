@@ -159,7 +159,7 @@
             self.dobLabel.text = [patient.dateOfBirth mediumStyleDate];
         }
         else {
-            self.dobLabel.text = [patient.dateOfBirth timeAgoInWords];
+            self.dobLabel.text = [patient.dateOfBirth ageString];
             
         }
         

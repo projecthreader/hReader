@@ -8,6 +8,7 @@
 - Moved C32 HTML to tools
 - Removed mock data
 - Added tables for vitals when you tap on them
+- Tapping DOB changes to age. If < 6 months it shows weeks, if < 2 years, show months, else show years
 
 # 2012-3-30
 

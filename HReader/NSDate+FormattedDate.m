@@ -31,7 +31,7 @@
     
 }
 
-- (NSString *)timeAgoInWords {
+- (NSString *)ageString {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *monthComponents = [calendar components:NSMonthCalendarUnit fromDate:self toDate:[NSDate date] options:0];
     NSInteger months = [monthComponents month];
