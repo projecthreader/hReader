@@ -10,10 +10,6 @@
 
 @implementation HRBMI
 
-- (BOOL)isNormal {
-    double bmi = self.value;
-    return !(bmi < [self normalLow] || bmi > [self normalHigh]);
-}
 
 - (NSString *)leftValue {
     return [NSString stringWithFormat:@"%0.1f", self.value];

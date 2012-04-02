@@ -30,5 +30,9 @@
 @property (readonly, nonatomic) double normalHigh;
 
 - (id)initWithEntries:(NSArray *)entries;
+- (NSArray *)dataPoints;
+- (double)valueForEntry:(HRMEntry *)entry;
+- (NSString *)valueStringForValue:(double)value;
+- (BOOL)isValueNormal:(double)value;
 
 @end

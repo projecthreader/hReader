@@ -17,6 +17,7 @@
 #import "HRVital.h"
 #import "HRMEntry.h"
 #import "HRBMI.h"
+#import "HRKeyValueTableViewController.h"
 
 #import "NSDate+FormattedDate.h"
 #import "NSArray+Collect.h"
@@ -391,12 +392,14 @@
     if (tap.state == UIGestureRecognizerStateRecognized) {
         HRVitalView *view = (HRVitalView *)tap.view;
         HRVital *vital = view.vital;
-        UIViewController *controller = [[[UIViewController alloc] init] autorelease];
+        UITableViewController *controller = [[[HRKeyValueTableViewController alloc] initWithDataPoints:[vital dataPoints]] autorelease];
+        controller.title = vital.title;
+        UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:controller] autorelease];
         if (self.popoverController == nil) {
-            self.popoverController = [[[UIPopoverController alloc] initWithContentViewController:controller] autorelease];
+            self.popoverController = [[[UIPopoverController alloc] initWithContentViewController:navController] autorelease];
         }
         else {
-            self.popoverController.contentViewController = controller;
+            self.popoverController.contentViewController = navController;
         }
         CGRect showRect = [self.view convertRect:view.frame fromView:view];
         [self.popoverController

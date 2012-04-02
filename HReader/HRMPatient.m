@@ -177,7 +177,7 @@ static HRMPatient *selectedPatient = nil;
     NSPredicate *typePredicate = [NSPredicate predicateWithFormat:@"type == %@", [NSNumber numberWithShort:HRMEntryTypeVitalSign]];
     NSPredicate *patientPredicate = [NSPredicate predicateWithFormat:@"patient == %@", self];
     NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithObjects:typePredicate, patientPredicate, nil]];
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
     NSArray *vitals = [HRMEntry allInContext:[self managedObjectContext]
                                withPredicate:predicate
                               sortDescriptor:sort];
