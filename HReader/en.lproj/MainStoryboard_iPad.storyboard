@@ -44,7 +44,7 @@
                 </viewController>
                 <barButtonItem title="C32 HTML" id="Mf3-ly-weu">
                     <connections>
-                        <segue destination="pdg-f2-Co5" kind="modal" id="wZw-Jm-fuW"/>
+                        <segue destination="pdg-f2-Co5" kind="modal" identifier="C32HTMLSegue" id="wZw-Jm-fuW"/>
                     </connections>
                 </barButtonItem>
                 <barButtonItem title="About" id="yvk-UI-KfQ">
@@ -205,7 +205,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2EO-8B-C5Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Zdu-v2-keb" customClass="HRAboutTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="tQJ-99-u8h">
-                        <rect key="frame" x="0.0" y="44" width="540" height="576"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="576"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -285,7 +285,7 @@ All data contained in this application is synthetic and fictional for research p
                                         <rect key="frame" x="0.0" y="230" width="540" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="31" y="0.0" width="478" height="43"/>
+                                            <rect key="frame" x="31" y="1" width="478" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Version" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="Xtt-rv-9qB">
@@ -315,7 +315,7 @@ All data contained in this application is synthetic and fictional for research p
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="zZl-vc-Tg9">
-                                                    <rect key="frame" x="10" y="11" width="108" height="21"/>
+                                                    <rect key="frame" x="10" y="11" width="37" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

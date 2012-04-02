@@ -234,12 +234,6 @@ static int HRRootViewControllerTitleContext;
 
 #pragma mark - button actions
 
-- (void)showRawC32 {
-    [TestFlight passCheckpoint:@"View C32 HTML"];
-    UIViewController *controller = [[[HRC32ViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-    controller.modalPresentationStyle = UIModalPresentationPageSheet;
-    [self presentModalViewController:controller animated:YES];
-}
 - (void)segmentSelected {
     NSInteger index = self.segmentedControl.selectedSegmentIndex;
     self.visibleViewController = [self.childViewControllers objectAtIndex:index];
@@ -248,10 +242,7 @@ static int HRRootViewControllerTitleContext;
 - (IBAction)toolsButtonPressed:(id)sender {
     GCActionSheet *actionSheet = [[GCActionSheet alloc] initWithTitle:@"Tools"];
     [actionSheet addButtonWithTitle:@"C32 HTML" block:^{
-        [TestFlight passCheckpoint:@"View C32 HTML"];
-        UIViewController *controller = [[[HRC32ViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-        controller.modalPresentationStyle = UIModalPresentationPageSheet;
-        [self presentModalViewController:controller animated:YES];
+        [self performSegueWithIdentifier:@"C32HTMLSegue" sender:self];
     }];
     [actionSheet showFromBarButtonItem:sender animated:YES];
     [actionSheet release];
