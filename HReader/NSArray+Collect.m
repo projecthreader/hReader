@@ -24,4 +24,9 @@
     return array;
 }
 
+- (NSArray *)arraySortedByKey:(NSString *)key {
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:key ascending:YES];
+    return [self sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];
+}
+
 @end

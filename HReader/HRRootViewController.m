@@ -13,7 +13,6 @@
 #import "HRTimelineViewController.h"
 #import "HRMessagesViewController.h"
 #import "HRDoctorsViewController.h"
-#import "HRPatient.h"
 #import "HRC32ViewController.h"
 #import "HRPasscodeWarningViewController.h"
 #import "HRPasscodeManager.h"

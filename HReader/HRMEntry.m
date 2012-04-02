@@ -13,6 +13,7 @@
 @implementation HRMEntry
 
 @dynamic codes;
+@dynamic dose;
 @dynamic date;
 @dynamic desc;
 @dynamic endDate;
@@ -62,6 +63,10 @@
     object = [dictionary objectForKey:@"value"];
     if (object && [object isKindOfClass:[NSDictionary class]]) {
         entry.value = object;
+    }
+    object = [dictionary objectForKey:@"dose"];
+    if (object && [object isKindOfClass:[NSDictionary class]]) {
+        entry.dose = object;
     }
     
     // return

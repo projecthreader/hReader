@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
 
-#import "HRPatient.h"
 #import "HRAddress.h"
 #import "HREncounter.h"
 #import "HRVital.h"
@@ -28,7 +27,7 @@ NSString * const HRHasLaunched                  = @"has_launched";
 NSString * const HRPasscodeEnabled              = @"passcode_enabled";
 NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
 
-static HRPatient *selectedPatient = nil;
+//static HRPatient *selectedPatient = nil;
 
 @interface HRConfig ()
 + (void)parseEncounters;
@@ -86,6 +85,7 @@ static HRPatient *selectedPatient = nil;
 
 #pragma mark - Objects
 
+/*
 + (void)setSelectedPatient:(HRPatient *)patient {
     selectedPatient = patient;
 }
@@ -99,7 +99,6 @@ static HRPatient *selectedPatient = nil;
 }
 
 + (NSArray *)patients {
-    
     static NSArray *array = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -515,6 +514,7 @@ static HRPatient *selectedPatient = nil;
     
     return array;
 }
+ */
 
 #pragma mark - System settings
 

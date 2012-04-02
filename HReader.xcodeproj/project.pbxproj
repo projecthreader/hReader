@@ -96,7 +96,6 @@
 		94F4CB611507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F4CB601507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m */; };
 		94F4CB651507E87E00EFEA43 /* PINCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F4CB641507E87E00EFEA43 /* PINCodeTextField.m */; };
 		DD124DAE148D3EF300E23A44 /* Doctor.png in Resources */ = {isa = PBXBuildFile; fileRef = DD124DAD148D3EF300E23A44 /* Doctor.png */; };
-		DD19173F148FDEBB00B87AAF /* HRPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = DD19173E148FDEBB00B87AAF /* HRPatient.m */; };
 		DD5597C114897DE2006A0D1D /* HRDoctorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5597BF14897DE2006A0D1D /* HRDoctorsViewController.m */; };
 		DD5597C214897DE2006A0D1D /* HRDoctorsViewController_old.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5597C014897DE2006A0D1D /* HRDoctorsViewController_old.xib */; };
 		DD695D7C1489439100E4E2E1 /* HRTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD695D7A1489439100E4E2E1 /* HRTimelineViewController.m */; };
@@ -255,8 +254,6 @@
 		94F4CB631507E87E00EFEA43 /* PINCodeTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINCodeTextField.h; sourceTree = "<group>"; };
 		94F4CB641507E87E00EFEA43 /* PINCodeTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINCodeTextField.m; sourceTree = "<group>"; };
 		DD124DAD148D3EF300E23A44 /* Doctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Doctor.png; sourceTree = "<group>"; };
-		DD19173D148FDEBB00B87AAF /* HRPatient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPatient.h; sourceTree = "<group>"; };
-		DD19173E148FDEBB00B87AAF /* HRPatient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPatient.m; sourceTree = "<group>"; };
 		DD5597BE14897DE2006A0D1D /* HRDoctorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRDoctorsViewController.h; sourceTree = "<group>"; };
 		DD5597BF14897DE2006A0D1D /* HRDoctorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRDoctorsViewController.m; sourceTree = "<group>"; };
 		DD5597C014897DE2006A0D1D /* HRDoctorsViewController_old.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRDoctorsViewController_old.xib; sourceTree = "<group>"; };
@@ -661,8 +658,6 @@
 		DD7037B114900E8A00F58A83 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DD19173D148FDEBB00B87AAF /* HRPatient.h */,
-				DD19173E148FDEBB00B87AAF /* HRPatient.m */,
 				94BB031C14969675009B2FCC /* HRAddress.h */,
 				94BB031D14969675009B2FCC /* HRAddress.m */,
 				9415151D14A0E8FA009FF674 /* HRMessage.h */,
@@ -890,7 +885,6 @@
 				DD695D8514897C2200E4E2E1 /* HRMessagesViewController.m in Sources */,
 				DD5597C114897DE2006A0D1D /* HRDoctorsViewController.m in Sources */,
 				DD8BD9F2148D2BDC0090F729 /* HRConfig.m in Sources */,
-				DD19173F148FDEBB00B87AAF /* HRPatient.m in Sources */,
 				94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */,
 				94689AD714967E3600E1FCA6 /* HRC32ViewController.m in Sources */,
 				94BB031E14969675009B2FCC /* HRAddress.m in Sources */,

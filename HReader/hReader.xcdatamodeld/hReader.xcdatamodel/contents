@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1170" systemVersion="11D50b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="GCManagedObject" representedClassName="GCManagedObject" isAbstract="YES" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
@@ -7,6 +7,7 @@
         <attribute name="codes" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dose" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
@@ -45,7 +46,7 @@
     </entity>
     <elements>
         <element name="GCManagedObject" positionX="72" positionY="72" width="128" height="60"/>
-        <element name="HRMEntry" positionX="-533" positionY="-159" width="128" height="150"/>
+        <element name="HRMEntry" positionX="-533" positionY="-159" width="128" height="195"/>
         <element name="HRMPatient" positionX="70" positionY="207" width="128" height="284"/>
     </elements>
 </model>

@@ -31,6 +31,7 @@ typedef enum {
 @property (nonatomic, retain) NSString *status;
 @property (nonatomic, retain) NSDictionary *value;
 @property (nonatomic, retain) NSDictionary *codes;
+@property (nonatomic, retain) NSDictionary *dose;
 @property (nonatomic, retain) NSNumber *type;
 @property (nonatomic, retain) HRMPatient *patient;
 

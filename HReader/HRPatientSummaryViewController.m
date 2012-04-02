@@ -11,7 +11,6 @@
 #import "HRPatientSummaryViewController.h"
 #import "HRPatientSwipeControl.h"
 #import "HRRootViewController.h"
-#import "HRPatient.h"
 #import "HRMPatient.h"
 #import "HRAddress.h"
 #import "HRVitalView.h"
@@ -20,6 +19,7 @@
 #import "HRBMI.h"
 
 #import "NSDate+FormattedDate.h"
+#import "NSArray+Collect.h"
 
 @interface HRPatientSummaryViewController ()
 - (void)cleanup;
@@ -123,8 +123,22 @@
     {
         
         // these do not have meaningful data
-        [self.medicationDosageLabels makeObjectsPerformSelector:@selector(setText:) withObject:nil];
-        self.immunizationsUpToDateLabel.text = @"Unknown";
+        NSString *noData = @"Not in PDS";
+        self.immunizationsUpToDateLabel.text = noData;
+        self.recentConditionsLabel.text = noData;
+        self.recentConditionsDateLabel.text = noData;
+        self.chronicConditionsLabel.text = noData;
+        self.upcomingEventsLabel.text = noData;
+        self.planOfCareLabel.text = noData;
+        self.followUpAppointmentLabel.text = noData;
+        self.medicationRefillLabel.text = noData;
+        self.functionalStatusDateLabel.text = noData;
+        self.functionalStatusProblemLabel.text = noData;
+        self.functionalStatusStatusLabel.text = noData;
+        self.functionalStatusTypeLabel.text = noData;
+        self.advanceDirectivesLabel.text = noData;
+        self.diagnosisDateLabel.text = noData;
+        self.diagnosisLabel.text = noData;
         
         // these are not
         HRMPatient *patient = [HRMPatient selectedPatient];
@@ -142,16 +156,37 @@
             if (allergiesCount > 1) {
                 [allergiesString appendFormat:@", %lu more", (unsigned long)allergiesCount];
             }
-            self.allergiesLabel.text = allergiesString;
+            if ([allergiesString length] > 0) {
+                self.allergiesLabel.text = allergiesString;
+            }
+            else {
+                self.allergiesLabel.text = @"PDS Blank String";
+            }
         }
+        
         
         // medications
         NSArray *medications = [patient medications];
         NSUInteger medicationsCount = [medications count];
-        [self.medicationNameLabels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
+        [[self.medicationNameLabels arraySortedByKey:@"tag"] enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
             if (idx < medicationsCount) {
                 HRMEntry *entry = [medications objectAtIndex:idx];
                 label.text = entry.desc;
+            }
+            else {
+                label.text = nil;
+            }
+        }];
+        [[self.medicationDosageLabels arraySortedByKey:@"tag"] enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
+            if (idx < medicationsCount) {
+                HRMEntry *entry = [medications objectAtIndex:idx];
+                NSDictionary *dose = entry.dose;
+                if ([dose count] > 0) {
+                    label.text = [dose description];   
+                }
+                else {
+                    label.text = @"No Data in PDS";
+                }
             }
             else {
                 label.text = nil;
@@ -201,6 +236,7 @@
         
     }
     
+    /*
     {
         HRPatient *patient = [HRConfig selectedPatient];
         self.recentConditionsLabel.text = [patient.info objectForKey:@"recent_condition"];
@@ -224,6 +260,7 @@
         self.pulseImageView.image = [patient.info objectForKey:@"pulse_sparklines"];
         
     }
+    */
     
 }
 

@@ -11,5 +11,6 @@
 @interface NSArray (Collect)
 
 - (NSArray *)collect:(id (^) (id object, NSUInteger idx))block;
+- (NSArray *)arraySortedByKey:(NSString *)key;
 
 @end
