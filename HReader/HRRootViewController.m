@@ -25,7 +25,6 @@ static int HRRootViewControllerTitleContext;
 @property (nonatomic, retain) UISegmentedControl *segmentedControl;
 @property (nonatomic, retain) UIViewController *visibleViewController;
 @property (nonatomic, retain) UILabel *lastUpdatedLabel;
-- (void)showRawC32;
 @end
 
 @implementation HRRootViewController
