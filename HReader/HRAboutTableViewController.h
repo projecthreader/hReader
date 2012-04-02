@@ -18,6 +18,7 @@
 //>
 
 @property (retain, nonatomic) IBOutlet UILabel *versionLabel;
+@property (retain, nonatomic) IBOutlet UILabel *buildDateLabel;
 
 - (IBAction)done;
 

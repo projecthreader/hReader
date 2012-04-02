@@ -30,6 +30,8 @@ static int HRRootViewControllerTitleContext;
 @implementation HRRootViewController
 
 @synthesize C32ButtonItem           = __C32ButtonItem;
+@synthesize aboutBarButtonItem      = __aboutBarButtonItem;
+@synthesize toolsBarButtonItem      = __toolsBarButtonItem;
 @synthesize visibleViewController   = __visibleViewController;
 @synthesize segmentedControl        = __segmentedControl;
 @synthesize lastUpdatedLabel        = __lastUpdatedLabel;
@@ -75,6 +77,8 @@ static int HRRootViewControllerTitleContext;
     [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [obj removeObserver:self forKeyPath:@"title"];
     }];
+    [__aboutBarButtonItem release];
+    [__toolsBarButtonItem release];
     [super dealloc];
 }
 - (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers {
@@ -127,6 +131,7 @@ static int HRRootViewControllerTitleContext;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    /*
     // configure toolbar
     {
         UIBarButtonItem *flexible = [[[UIBarButtonItem alloc]
@@ -149,6 +154,8 @@ static int HRRootViewControllerTitleContext;
         self.toolbarItems = [NSArray arrayWithObjects:flexible, labelItem, flexible, self.C32ButtonItem, nil];
         self.lastUpdatedLabel = label;
     }
+     */
+//    self.navigationController.toolbarHidden = YES;
     
     // configure logo
     {
@@ -174,6 +181,11 @@ static int HRRootViewControllerTitleContext;
         self.segmentedControl = control;
     }
     
+    // add bar button items to right
+    {
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:self.aboutBarButtonItem, self.toolsBarButtonItem, nil];
+    }
+    
     // configure first view
     self.visibleViewController = [self.childViewControllers objectAtIndex:0];
     
@@ -182,6 +194,8 @@ static int HRRootViewControllerTitleContext;
     
 }
 - (void)viewDidUnload {
+    [self setAboutBarButtonItem:nil];
+    [self setToolsBarButtonItem:nil];
     [super viewDidUnload];
     self.lastUpdatedLabel = nil;
     self.segmentedControl = nil;

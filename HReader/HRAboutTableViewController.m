@@ -14,6 +14,7 @@
 @implementation HRAboutTableViewController
 
 @synthesize versionLabel = __versionLabel;
+@synthesize buildDateLabel = _buildDateLabel;
 
 #pragma mark - button actions
 
@@ -26,11 +27,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.versionLabel.text = [HRConfig formattedVersion];
+    
+    // set build date
+    self.buildDateLabel.text = [NSString stringWithFormat:@"%s, %s", __DATE__, __TIME__];
 }
 
 - (void)viewDidUnload {
-    [super viewDidUnload];
+    [self setBuildDateLabel:nil];
     self.versionLabel = nil;
+    [super viewDidUnload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -102,5 +107,6 @@
     }
 
 }
+
 
 @end
