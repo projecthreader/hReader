@@ -1,3 +1,8 @@
+# 2012-3-30
+
+- Fixed bugs in passcode handling
+- Code and file cleanup
+
 # 2012-3-28
 
 - Finished passcode reset via security questions when a user forgets their PIN
