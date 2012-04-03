@@ -12,6 +12,7 @@
 #import "HRPatientSwipeControl.h"
 #import "HRMPatient.h"
 #import "HRProviderView.h"
+#import "NSArray+Collect.h"
 
 @interface HRDoctorsViewController ()
 - (void)reloadData;
@@ -132,6 +133,21 @@
 - (void)reloadData {
     HRMPatient *patient = [HRMPatient selectedPatient];
     self.nameLabel.text = [[patient compositeName] uppercaseString];
+    
+    NSArray *providers = [[HRMPatient selectedPatient] valueForKeyPath:@"syntheticInfo.providers"];
+    NSArray *providerViews = [self.providerViews arraySortedByKey:@"tag"];
+    [providerViews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
+        HRProviderView *providerView = [[view subviews] lastObject];
+        if (idx < [providers count]) {
+            providerView.hidden = NO;
+            NSDictionary *provider = [providers objectAtIndex:idx];
+            providerView.specialityLabel = [provider objectForKey:@"specialty"];
+        }
+        else {
+            providerView.hidden = YES;
+        }
+    }];
+    
 }
 
 @end

@@ -77,32 +77,32 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
-                            <view contentMode="scaleToFill" id="svo-Er-YTf">
+                            <view tag="1" contentMode="scaleToFill" id="svo-Er-YTf">
                                 <rect key="frame" x="36" y="225" width="295" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" id="Sww-5H-Q1f">
+                            <view tag="4" contentMode="scaleToFill" id="Sww-5H-Q1f">
                                 <rect key="frame" x="36" y="446" width="295" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" id="jq2-9H-WtR">
+                            <view tag="2" contentMode="scaleToFill" id="jq2-9H-WtR">
                                 <rect key="frame" x="365" y="225" width="295" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" id="DfL-o8-25H">
+                            <view tag="3" contentMode="scaleToFill" id="DfL-o8-25H">
                                 <rect key="frame" x="694" y="225" width="295" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" id="Nq2-Ai-b5C">
+                            <view tag="5" contentMode="scaleToFill" id="Nq2-Ai-b5C">
                                 <rect key="frame" x="365" y="446" width="295" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" id="PRu-9t-2Ke">
+                            <view tag="6" contentMode="scaleToFill" id="PRu-9t-2Ke">
                                 <rect key="frame" x="694" y="446" width="295" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

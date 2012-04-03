@@ -5,6 +5,7 @@
 - Internal refactoring for custom view handling
 - Load synthetic data from JSON files
 - Messages now uses synthetic data
+- Providers now uses synthetic data
 
 # 2012-4-02
 
