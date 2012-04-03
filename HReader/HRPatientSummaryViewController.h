@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRPatientSummaryViewController : UIViewController <UIPopoverControllerDelegate, UIGestureRecognizerDelegate>
+@interface HRPatientSummaryViewController : UIViewController <UIGestureRecognizerDelegate>
 
 // popover
 @property (nonatomic, strong) UIPopoverController *popoverController;

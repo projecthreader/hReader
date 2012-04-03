@@ -20,10 +20,14 @@
 
 static int HRRootViewControllerTitleContext;
 
-@interface HRRootViewController ()
-@property (nonatomic, retain) UISegmentedControl *segmentedControl;
-@property (nonatomic, retain) UIViewController *visibleViewController;
-@property (nonatomic, retain) UILabel *lastUpdatedLabel;
+@interface HRRootViewController () {
+    GCActionSheet *__actionSheet;
+}
+
+@property (nonatomic, strong) UISegmentedControl *segmentedControl;
+@property (nonatomic, strong) UIViewController *visibleViewController;
+@property (nonatomic, strong) UILabel *lastUpdatedLabel;
+
 @end
 
 @implementation HRRootViewController
@@ -45,18 +49,18 @@ static int HRRootViewControllerTitleContext;
         id controller;
         
         // create child view controllers
-        controller = [[[HRPatientSummaryViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+        controller = [[HRPatientSummaryViewController alloc] initWithNibName:nil bundle:nil];
         [self addChildViewController:controller];
-        controller = [[[HRTimelineViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+        controller = [[HRTimelineViewController alloc] initWithNibName:nil bundle:nil];
         [self addChildViewController:controller];
-        controller = [[[HRMessagesViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+        controller = [[HRMessagesViewController alloc] initWithNibName:nil bundle:nil];
         [self addChildViewController:controller];
         controller = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil] instantiateViewControllerWithIdentifier:@"DoctorsViewController"];
         [self addChildViewController:controller];
         
         // register observers
         [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            [obj didMoveToParentViewController:self];
+//            [obj didMoveToParentViewController:self];
             NSAssert([obj title], @"Child view controllers must have a title");
             [obj
              addObserver:self
@@ -69,47 +73,35 @@ static int HRRootViewControllerTitleContext;
     return self;
 }
 - (void)dealloc {
-    self.segmentedControl = nil;
-    self.lastUpdatedLabel = nil;
-    self.visibleViewController = nil;
-    self.C32ButtonItem = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [obj removeObserver:self forKeyPath:@"title"];
     }];
-    [__aboutBarButtonItem release];
-    [__toolsBarButtonItem release];
-    [super dealloc];
 }
-- (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers {
-    return NO;
-}
+//- (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers {
+//    return NO;
+//}
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [__actionSheet dismissWithClickedButtonIndex:__actionSheet.cancelButtonIndex animated:NO];
     [TestFlight passCheckpoint:segue.identifier];
 }
 - (void)setVisibleViewController:(UIViewController *)controller {
 
-    // tear down old view controller
-    [__visibleViewController viewWillDisappear:NO];
-    [__visibleViewController.view removeFromSuperview];
-    [__visibleViewController viewDidDisappear:NO];
-    __visibleViewController.view = nil; // not sure if this works yet
-    [__visibleViewController viewDidUnload]; // probably shouldn't call this method at all, ever
-    [__visibleViewController release];
-    
-    // capture new controller
-    __visibleViewController = [controller retain];
-    UIView *view = [__visibleViewController view];
-    view.frame = self.view.bounds;
-    view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    [__visibleViewController viewWillAppear:NO];
-    [self.view addSubview:view];
-    [__visibleViewController viewDidDisappear:NO];
-    
-    self.title = __visibleViewController.title;
-    
-    // TestFlight
-    [TestFlight passCheckpoint:[NSString stringWithFormat:@"Navigation - %@", __visibleViewController.title]];
-    
+    controller.view.frame = self.view.bounds;
+    controller.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    [self
+     transitionFromViewController:__visibleViewController
+     toViewController:controller
+     duration:0.0
+     options:0
+     animations:^{}
+     completion:^(BOOL finished) {
+         __visibleViewController = controller;
+         self.title = __visibleViewController.title;
+         [TestFlight passCheckpoint:[NSString stringWithFormat:@"Navigation - %@", __visibleViewController.title]];
+         [__visibleViewController didMoveToParentViewController:self];
+     }];
+
 }
 
 #pragma mark - kvo
@@ -159,23 +151,24 @@ static int HRRootViewControllerTitleContext;
     // configure logo
     {
         UIImage *logo = [UIImage imageNamed:@"Logo"];
-        UIImageView *logoView = [[[UIImageView alloc] initWithImage:logo] autorelease];
+        UIImageView *logoView = [[UIImageView alloc] initWithImage:logo];
         logoView.frame = CGRectMake(5, 5, 150, 34);
-        UIBarButtonItem *logoItem = [[[UIBarButtonItem alloc] initWithCustomView:logoView] autorelease];
+        UIBarButtonItem *logoItem = [[UIBarButtonItem alloc] initWithCustomView:logoView];
         self.navigationItem.leftBarButtonItem = logoItem;
     }
     
     // configure segmented control
     {
         NSArray *titles = [self.childViewControllers valueForKey:@"title"];
-        UISegmentedControl *control = [[[UISegmentedControl alloc] initWithItems:titles] autorelease];
+        UISegmentedControl *control = [[UISegmentedControl alloc] initWithItems:titles];
         control.segmentedControlStyle = UISegmentedControlStyleBar;
         control.selectedSegmentIndex = 0;
         NSUInteger count = [titles count];
         for (NSUInteger i = 0; i < count; i++) {
             [control setWidth:(600.0 / count) forSegmentAtIndex:i];
         }
-        [control addTarget:self action:@selector(segmentSelected) forControlEvents:UIControlEventValueChanged];    
+        [control addTarget:self action:@selector(segmentSelected) forControlEvents:UIControlEventValueChanged];  
+        [control addTarget:self action:@selector(hideToolbarSheet) forControlEvents:UIControlEventValueChanged];
         self.navigationItem.titleView = control;
         self.segmentedControl = control;
     }
@@ -186,7 +179,14 @@ static int HRRootViewControllerTitleContext;
     }
     
     // configure first view
-    self.visibleViewController = [self.childViewControllers objectAtIndex:0];
+    {
+        id controller = [self.childViewControllers objectAtIndex:0];
+        __visibleViewController = controller;
+        [controller view].frame = self.view.bounds;
+        [controller view].autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+        [self.view addSubview:[controller view]];
+        [controller didMoveToParentViewController:self];
+    }
     
     // set last updated text
 //    self.lastUpdatedLabel.text = @"Last Updated: 05 May by Joseph Yang, M.D. (Columbia Pediatric Associates)";
@@ -201,33 +201,9 @@ static int HRRootViewControllerTitleContext;
     self.visibleViewController = nil;
     self.C32ButtonItem = nil;
 }
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.visibleViewController viewWillAppear:animated];
-}
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self.visibleViewController viewDidAppear:animated];
-}
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self.visibleViewController viewWillDisappear:animated];
-}
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [self.visibleViewController viewDidDisappear:animated];
-}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
     return UIInterfaceOrientationIsLandscape(orientation);
-}
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
-    [self.visibleViewController willRotateToInterfaceOrientation:orientation duration:duration];
-}
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
-    [self.visibleViewController willAnimateRotationToInterfaceOrientation:orientation duration:duration];
-}
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)orientation {
-    [self.visibleViewController didRotateFromInterfaceOrientation:orientation];
 }
 
 #pragma mark - button actions
@@ -238,19 +214,23 @@ static int HRRootViewControllerTitleContext;
 }
 
 - (IBAction)toolsButtonPressed:(id)sender {
-    static BOOL visible = NO;
-    if (!visible) {
-        visible = YES;
-        GCActionSheet *actionSheet = [[GCActionSheet alloc] initWithTitle:@"Tools"];
-        [actionSheet addButtonWithTitle:@"C32 HTML" block:^{
-            [self performSegueWithIdentifier:@"C32HTMLSegue" sender:self];
+    if (__actionSheet == nil) {
+        __actionSheet = [[GCActionSheet alloc] initWithTitle:@"Tools"];
+        id __weak weakSelf = self;
+        [__actionSheet addButtonWithTitle:@"C32 HTML" block:^{
+            id __strong strongSelf = weakSelf;
+            [strongSelf performSegueWithIdentifier:@"C32HTMLSegue" sender:strongSelf];
         }];
-        [actionSheet setDidDismissBlock:^{
-            visible = NO;
+        [__actionSheet setDidDismissBlock:^{
+            HRRootViewController * __strong strongSelf = weakSelf;
+            strongSelf->__actionSheet = nil;
         }];
-        [actionSheet showFromBarButtonItem:sender animated:YES];
-        [actionSheet release];
+        [__actionSheet showFromBarButtonItem:sender animated:YES];
     }
-    
 }
+
+- (void)hideToolbarSheet {
+    [__actionSheet dismissWithClickedButtonIndex:__actionSheet.cancelButtonIndex animated:NO];
+}
+     
 @end

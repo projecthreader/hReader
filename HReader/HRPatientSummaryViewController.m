@@ -77,6 +77,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Summary";
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(didEnterBackground:) 
+                                                     name:UIApplicationDidEnterBackgroundNotification 
+                                                   object:nil];
     }
     return self;
 }
@@ -433,7 +437,10 @@
     [self reloadData];
 }
 
-#pragma mark - popover delegate
+#pragma mark - notifs
 
+- (void)didEnterBackground:(NSNotification *)notif {
+    [self.popoverController dismissPopoverAnimated:NO];
+}
 
 @end

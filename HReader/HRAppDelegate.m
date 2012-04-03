@@ -12,6 +12,8 @@
 #import "HRPasscodeWarningViewController.h"
 #import "HRPrivacyViewController.h"
 #import "HRKeychainManager.h"
+#import "TestFlight.h"
+#import "HRConfig.h"
 
 #import "HRMPatient.h"
 
@@ -66,7 +68,7 @@
 #pragma mark - object methods
 
 - (void)presentPasscodeVerifyController {
-#if !defined(DEBUG) || 1
+#if !defined(DEBUG)// || 1
     passcodeAttempts = 0;
     if ([HRKeychainManager isPasscodeSet]) {
         

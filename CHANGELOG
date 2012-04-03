@@ -1,3 +1,9 @@
+# 2012-4-03
+
+- Fixed issue with vitals popover staying on the screen after the app goes to background
+- Fixed issue with tools popover staying on screen when selecting about or navigation segmented control
+- Internal refactoring for custom view handling
+
 # 2012-4-02
 
 This build removes any synthetic data from the summary screen. All data being shown is parsed from PDS generated JSON.

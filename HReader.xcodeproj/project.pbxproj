@@ -83,7 +83,7 @@
 		94AEA7401529F2DC00D9C67D /* GCActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEA73F1529F2DC00D9C67D /* GCActionSheet.m */; };
 		94AEAE0414841CEB00C005B2 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0214841CEB00C005B2 /* TimelineViewController.m */; };
 		94AEAE0514841CEB00C005B2 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEAE0314841CEB00C005B2 /* TimelineViewController.xib */; };
-		94AEAE0914868BC200C005B2 /* HRRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0814868BC200C005B2 /* HRRootViewController.m */; };
+		94AEAE0914868BC200C005B2 /* HRRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0814868BC200C005B2 /* HRRootViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94AEAE10148690DA00C005B2 /* HRPatientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0E148690DA00C005B2 /* HRPatientSummaryViewController.m */; };
 		94AEAE11148690DA00C005B2 /* HRPatientSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEAE0F148690DA00C005B2 /* HRPatientSummaryViewController.xib */; };
 		94BB031E14969675009B2FCC /* HRAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BB031D14969675009B2FCC /* HRAddress.m */; };
