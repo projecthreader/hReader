@@ -11,6 +11,9 @@
 #import "HRMessagesViewController.h"
 #import "HRMessage.h"
 #import "HRPatientSwipeControl.h"
+#import "HRMPatient.h"
+#import "NSDate+FormattedDate.h"
+#import "NSArray+Collect.h"
 
 @interface HRMessagesViewController ()
 - (void)setHeaderViewShadow;
@@ -32,41 +35,15 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
-    [__patientImageShadowView release];
-    [__patientImageView release];
-    [__messagesArray release];
-    [__scrollView release];
-    [__messageContentView release];
-    [__patientView release];
-    [__dateFormatter release];
-    [__subjectLabel release];
-    [__bodyLabel release];
-    [__messageView release];
-    [__tableView release];
-    [super dealloc];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-        self.dateFormatter.dateFormat = @"M LLL. YYYY";
-        
-        NSMutableArray *messages = [[NSMutableArray alloc] init];
-        [messages addObject:[HRMessage messageWithSubject:@"Johnny Smith's Health Record" body:@"Johnny Smith's Health Record was updated on 07 July, 2011 by Candy Remandy, M.D. at Columbia Pediatric Associates.\n\n\tThe following sections of the Health Record were changed in this update:\n\n\tMedications\n\n\tVital Signs\n\n\tProblems\n\nIf you have any questions or concerns, please contact Columbia Pediatrics Associates at 410.555.8752" date:[HRConfig dateForString:@"20110407"]]];
-        [messages addObject:[HRMessage messageWithSubject:@"Appointment Reminder" body:@"Dear Valued Patient,\n\n\nThis messages is to remind you that you have an appointment scheduled for Monday, March 21, 2011.  Please call 508-555-1212 to confirm appointment.\n\nThank You" date:[HRConfig dateForString:@"20110328"]]];
-        [messages addObject:[HRMessage messageWithSubject:@"Appointment Confirmed" body:@"Dear Valued Patient,\n\n\nThis messages is to confim your appointment scheduled for Monday, March 21, 2011.\n\nThank You" date:[HRConfig dateForString:@"20110327"]]];
-        [messages addObject:[HRMessage messageWithSubject:@"Yearly Checkup Reminder" body:@"Dear Valued Patient,\n\n\nThis messages is to remind you that it is that time of the year again for your yearly physical. \n\nPlease email or call 508-555-1212 to schedule an appointment.\n\nThank You" date:[HRConfig dateForString:@"20110117"]]];
-        [messages addObject:[HRMessage messageWithSubject:@"Lab Results" body:@"Dear Valued Patient,\n\n\nYour lab results are complete, please connect to this <LINK> to download and view. \n\nPlease email or call 508-555-1212 with any questions or issues with download.\n\nThank You" date:[HRConfig dateForString:@"20111213"]]];
-        [messages addObject:[HRMessage messageWithSubject:@"Johnny Smith's Message 6" body:@"Message 6 body here" date:[HRConfig dateForString:@"20111205"]]];
-        [messages addObject:[HRMessage messageWithSubject:@"Johnny Smith's Message 7" body:@"Message 7 body here" date:[HRConfig dateForString:@"20101028"]]];
-        
-
-        self.messagesArray = messages;
-        [messages release];
-        
-        self.title = [NSString stringWithFormat:@"Messages (%lu)", [self.messagesArray count]];
+        self.title = @"Messages";
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
+            [self reloadData];
+        });
     }
     return self;
 }
@@ -88,7 +65,8 @@
     [self.scrollView addSubview:self.messageContentView];
     
     [self setHeaderViewShadow];   
-
+    
+    [self reloadData];
 }
 
 - (void)viewDidUnload {
@@ -116,12 +94,12 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    HRMessage *message = [self.messagesArray objectAtIndex:indexPath.row];
+    NSDictionary *message = [self.messagesArray objectAtIndex:indexPath.row];
     
-    [TestFlight passCheckpoint:[NSString stringWithFormat:@"View Message (%@)", message.subject]];
+    [TestFlight passCheckpoint:[NSString stringWithFormat:@"View Message"]];
     
-    self.subjectLabel.text = message.subject;
-    self.bodyLabel.text = message.body;
+    self.subjectLabel.text = [message objectForKey:@"subject"];
+    self.bodyLabel.text = [message objectForKey:@"body"];
 }
 
 #pragma mark - UITableViewDataSource
@@ -135,14 +113,15 @@
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    HRMessage *message = [self.messagesArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = [self.dateFormatter stringFromDate:message.received];
+    NSDictionary *message = [self.messagesArray objectAtIndex:indexPath.row];
+    NSTimeInterval interval = [[message objectForKey:@"date"] doubleValue];
+    cell.textLabel.text = [[NSDate dateWithTimeIntervalSince1970:interval] mediumStyleDate];
 
     return cell;
 }
@@ -150,10 +129,19 @@
 #pragma mark - NSNotificationCenter
 
 - (void)patientChanged:(id)sender {
-
+    [self reloadData];
+    [self.tableView reloadData];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
 }
 
 #pragma mark - Private methods
+
+- (void)reloadData {
+    self.messagesArray = [[[HRMPatient selectedPatient] valueForKeyPath:@"syntheticInfo.messages"] arraySortedByKey:@"date" ascending:NO];
+    self.title = [NSString stringWithFormat:@"Messages (%lu)", [self.messagesArray count]];
+}
 
 - (void)setHeaderViewShadow {
     CALayer *layer = self.patientView.layer;

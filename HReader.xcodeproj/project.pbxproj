@@ -33,6 +33,11 @@
 		3BFE7A2B14DADE2B0037738D /* PINCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2614DADE2B0037738D /* PINCodeViewController.m */; };
 		3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2D14DAE5910037738D /* Icon-72.png */; };
 		94026FB414B4A8A600F40185 /* timeline in Resources */ = {isa = PBXBuildFile; fileRef = 94026FB314B4A8A600F40185 /* timeline */; };
+		940C046C152B6ADF00834416 /* hs-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C0467152B6ADF00834416 /* hs-synthetic.json */; };
+		940C046D152B6ADF00834416 /* js-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C0468152B6ADF00834416 /* js-synthetic.json */; };
+		940C046E152B6ADF00834416 /* ms-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C0469152B6ADF00834416 /* ms-synthetic.json */; };
+		940C046F152B6ADF00834416 /* ss-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C046A152B6ADF00834416 /* ss-synthetic.json */; };
+		940C0470152B6ADF00834416 /* ts-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C046B152B6ADF00834416 /* ts-synthetic.json */; };
 		940D3D3C14E056B800FE41E6 /* HRVital.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D3B14E056B800FE41E6 /* HRVital.m */; };
 		940D3D4114E0706C00FE41E6 /* HRWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D4014E0706C00FE41E6 /* HRWeight.m */; };
 		940D3D4414E077A500FE41E6 /* HRBloodPressure.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D4314E077A500FE41E6 /* HRBloodPressure.m */; };
@@ -101,7 +106,7 @@
 		DD5597C214897DE2006A0D1D /* HRDoctorsViewController_old.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5597C014897DE2006A0D1D /* HRDoctorsViewController_old.xib */; };
 		DD695D7C1489439100E4E2E1 /* HRTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD695D7A1489439100E4E2E1 /* HRTimelineViewController.m */; };
 		DD695D7D1489439100E4E2E1 /* HRTimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD695D7B1489439100E4E2E1 /* HRTimelineViewController.xib */; };
-		DD695D8514897C2200E4E2E1 /* HRMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD695D8314897C2200E4E2E1 /* HRMessagesViewController.m */; };
+		DD695D8514897C2200E4E2E1 /* HRMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD695D8314897C2200E4E2E1 /* HRMessagesViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DD695D8614897C2200E4E2E1 /* HRMessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD695D8414897C2200E4E2E1 /* HRMessagesViewController.xib */; };
 		DD8BD9DB148D13910090F729 /* chevron.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8BD9DA148D13910090F729 /* chevron.png */; };
 		DD8BD9E2148D1D660090F729 /* UserImage-Smith44-Henry.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8BD9DD148D1D660090F729 /* UserImage-Smith44-Henry.png */; };
@@ -146,6 +151,11 @@
 		3BFE7A2614DADE2B0037738D /* PINCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINCodeViewController.m; sourceTree = "<group>"; };
 		3BFE7A2D14DAE5910037738D /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		94026FB314B4A8A600F40185 /* timeline */ = {isa = PBXFileReference; lastKnownFileType = folder; path = timeline; sourceTree = "<group>"; };
+		940C0467152B6ADF00834416 /* hs-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "hs-synthetic.json"; sourceTree = "<group>"; };
+		940C0468152B6ADF00834416 /* js-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "js-synthetic.json"; sourceTree = "<group>"; };
+		940C0469152B6ADF00834416 /* ms-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ms-synthetic.json"; sourceTree = "<group>"; };
+		940C046A152B6ADF00834416 /* ss-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ss-synthetic.json"; sourceTree = "<group>"; };
+		940C046B152B6ADF00834416 /* ts-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ts-synthetic.json"; sourceTree = "<group>"; };
 		940D3D3A14E056B800FE41E6 /* HRVital.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRVital.h; sourceTree = "<group>"; };
 		940D3D3B14E056B800FE41E6 /* HRVital.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRVital.m; sourceTree = "<group>"; };
 		940D3D3F14E0706C00FE41E6 /* HRWeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRWeight.h; sourceTree = "<group>"; };
@@ -340,10 +350,15 @@
 				3B19651F14EEAB970045F827 /* C32-Smith59-Tom.html */,
 				9464C5861476BDAE0076B991 /* C32-Smith96-Johnny.html */,
 				3BE9A42814E42A3800F87B60 /* hs.json */,
+				940C0467152B6ADF00834416 /* hs-synthetic.json */,
 				3BE9A42914E42A3800F87B60 /* js.json */,
+				940C0468152B6ADF00834416 /* js-synthetic.json */,
 				3BE9A42A14E42A3800F87B60 /* ms.json */,
+				940C0469152B6ADF00834416 /* ms-synthetic.json */,
 				3BE9A42B14E42A3800F87B60 /* ss.json */,
+				940C046A152B6ADF00834416 /* ss-synthetic.json */,
 				3BE9A42C14E42A3800F87B60 /* ts.json */,
+				940C046B152B6ADF00834416 /* ts-synthetic.json */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -850,6 +865,11 @@
 				3B19652214EEAB970045F827 /* C32-Smith75-Sarah.html in Resources */,
 				3B19652314EEAB970045F827 /* C32-Smith59-Tom.html in Resources */,
 				9452D7F414FC167200021E69 /* HRProviderView.xib in Resources */,
+				940C046C152B6ADF00834416 /* hs-synthetic.json in Resources */,
+				940C046D152B6ADF00834416 /* js-synthetic.json in Resources */,
+				940C046E152B6ADF00834416 /* ms-synthetic.json in Resources */,
+				940C046F152B6ADF00834416 /* ss-synthetic.json in Resources */,
+				940C0470152B6ADF00834416 /* ts-synthetic.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

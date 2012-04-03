@@ -34,6 +34,8 @@ static HRMPatient *selectedPatient = nil;
 @dynamic allergies;
 @dynamic procedures;
 
+@synthesize syntheticInfo;
+
 #pragma mark - class methods
 + (HRMPatient *)instanceWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context {
     

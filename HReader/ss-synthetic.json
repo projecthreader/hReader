@@ -1,0 +1,42 @@
+{
+    "messages": [
+        {
+            "date": 1333578938,
+            "subject": "Sarah Smith's Health Record",
+            "from": "Dr. Crystal Johansen <drj@fakeemail.com>",
+            "body": "..."
+        },
+        {
+            "date": 1333978938,
+            "subject": "Sarah Smith's Health Record",
+            "from": "Dr. Crystal Johansen <drj@fakeemail.com>",
+            "body": "..."
+        }
+    ],
+    "providers": [
+        {
+            "speciality": "Emergency Room",
+            "title": "Dr.",
+            "first_name": "Crystal",
+            "last_name": "Johansen",
+            "organization": "Beth Israel Hospital",
+            "street": "148 Chestnut Street",
+            "city": "Needham",
+            "zip": "12345",
+            "phone_number": "(781) 453-3000",
+            "email": "drj@fakeemail.com"
+        },
+        {
+            "speciality": "Emergency Room",
+            "title": "Dr.",
+            "first_name": "Crystal",
+            "last_name": "Johansen",
+            "organization": "Beth Israel Hospital",
+            "street": "148 Chestnut Street",
+            "city": "Needham",
+            "zip": "12345",
+            "phone_number": "(781) 453-3000",
+            "email": "drj@fakeemail.com"
+        }
+    ]
+}

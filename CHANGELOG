@@ -3,6 +3,8 @@
 - Fixed issue with vitals popover staying on the screen after the app goes to background
 - Fixed issue with tools popover staying on screen when selecting about or navigation segmented control
 - Internal refactoring for custom view handling
+- Load synthetic data from JSON files
+- Messages now uses synthetic data
 
 # 2012-4-02
 

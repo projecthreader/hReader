@@ -12,5 +12,6 @@
 
 - (NSArray *)collect:(id (^) (id object, NSUInteger idx))block;
 - (NSArray *)arraySortedByKey:(NSString *)key;
+- (NSArray *)arraySortedByKey:(NSString *)key ascending:(BOOL)ascending;
 
 @end
