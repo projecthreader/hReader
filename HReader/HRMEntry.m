@@ -102,8 +102,14 @@
     else if (type == HRMEntryTypeMedication)    { category = @"medications";    }
     else if (type == HRMEntryTypeProcedure)     { category = @"procedures";     }
     
+    NSMutableString *eventDesc = [NSMutableString string];
+    [eventDesc appendFormat:@"%@", self.desc];
+    if (type == HRMEntryTypeVitalSign) {
+        [eventDesc appendFormat:@" - %.2f", [[self.value objectForKey:@"scalar"] doubleValue]];
+    }
+    
     // create element
-    DDXMLElement *element = [DDXMLElement elementWithName:@"event" stringValue:self.desc];
+    DDXMLElement *element = [DDXMLElement elementWithName:@"event" stringValue:eventDesc];
     [element addAttribute:[DDXMLElement attributeWithName:@"title" stringValue:@""]];
     [element addAttribute:[DDXMLElement attributeWithName:@"category" stringValue:category]];
     [element addAttribute:[DDXMLElement attributeWithName:@"start" stringValue:start]];
