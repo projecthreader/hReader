@@ -1,14 +1,44 @@
 {
+    "immunizations": true,
+    "chronic_conditions": [
+      "asthma"
+    ],
+    "conditions": [
+      {
+        "title": "recent condition title",
+        "description": "recent condition description"
+      }
+    ],
+    "upcoming_events": [
+      {
+        "title": "upcoming event title",
+        "plan_of_care": "plan of care",
+        "follow_up_appointment_date": 133347325,
+        "medication_refill": "medication refill"
+      }
+    ],
+  
+    "functional_status": {
+      "date": 133347325,
+      "problem": "problem",
+      "type": "type",
+      "status": "status"
+    },
+    "advanced_directives": "advanced directives",
+    "diagnosis": {
+      "date": 133347325,
+      "results": "results"
+    },
     "messages": [
         {
-            "date": 1336478938,
-            "subject": "Molly Smith's Health Record",
+            "date": 133347325,
+            "subject": "Johnny Smith's Health Record",
             "from": "Dr. Crystal Johansen <drj@fakeemail.com>",
             "body": "..."
         },
         {
-            "date": 1333378938,
-            "subject": "Molly Smith's Health Record",
+            "date": 133347325,
+            "subject": "Johnny Smith's Health Record",
             "from": "Dr. Crystal Johansen <drj@fakeemail.com>",
             "body": "..."
         }
