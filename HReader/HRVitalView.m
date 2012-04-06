@@ -73,7 +73,7 @@
     if (vital.isNormal) {
         self.resultLabel.textColor = [UIColor blackColor];
     } else {
-        self.resultLabel.textColor = [UIColor redColor];
+        self.resultLabel.textColor = [HRConfig redColor];
     }
     
 }

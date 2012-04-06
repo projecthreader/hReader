@@ -36,7 +36,7 @@
     [self.entries enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
         double value = [self valueForEntry:entry];
         BOOL isNormal = [self isValueNormal:value];
-        UIColor *color = isNormal ? [UIColor blackColor] : [UIColor redColor];
+        UIColor *color = isNormal ? [UIColor blackColor] : [HRConfig redColor];
         NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [self valueStringForValue:value], @"detail",
                                     [entry.date mediumStyleDate], @"title",
