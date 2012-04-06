@@ -276,9 +276,9 @@
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="About" id="Sn1-ug-z15">
-                                <string key="footerTitle">The MITRE Corporation © 2012
+                                <mutableString key="footerTitle">The MITRE Corporation © 2012
 
-hReader allows you to gather, correct, and manage your health data. This service is not meant to replace the advice of a physician. You should not rely on any information or suggestions in hReader to replace consultations with a qualified health professional regarding your own specific health issues.</string>
+hReader allows you to gather, correct, and manage your health data. This service is not meant to replace the advice of a physician. You should not rely on any information or suggestions in hReader to replace consultations with a qualified health professional regarding your own specific health issues.    All patient data appearing in hReader is purely synthetic and fictitious. Any resemblance to real persons, living or dead, is purely coincidental.</mutableString>
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Xtt-rv-9qB" detailTextLabel="vS6-de-HAa" style="IBUITableViewCellStyleValue1" id="Yg1-Ty-Tx2">
                                         <rect key="frame" x="0.0" y="230" width="540" height="45"/>
