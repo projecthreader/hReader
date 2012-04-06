@@ -122,30 +122,28 @@ static int HRRootViewControllerTitleContext;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    /*
     // configure toolbar
     {
-        UIBarButtonItem *flexible = [[[UIBarButtonItem alloc]
+        UIBarButtonItem *flexible = [[UIBarButtonItem alloc]
                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                       target:nil
-                                      action:nil]
-                                     autorelease];
-        UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(0.0 , 0.0, 800.0, 30.0)] autorelease];
-        label.textAlignment = UITextAlignmentCenter;
-        label.shadowColor = [UIColor whiteColor];
-        label.shadowOffset = CGSizeMake(0.0, 1.0);
-        label.font = [UIFont boldSystemFontOfSize:14.0];
-        label.textColor = [UIColor
-                           colorWithRed:(107.0 / 255.0)
-                           green:(115.0 / 255.0)
-                           blue:(126.0 / 255.0)
-                           alpha:1.0];
-        label.backgroundColor = [UIColor clearColor];
-        UIBarButtonItem *labelItem = [[[UIBarButtonItem alloc] initWithCustomView:label] autorelease];
-        self.toolbarItems = [NSArray arrayWithObjects:flexible, labelItem, flexible, self.C32ButtonItem, nil];
-        self.lastUpdatedLabel = label;
+                                      action:nil];
+//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0 , 0.0, 800.0, 30.0)];
+//        label.textAlignment = UITextAlignmentCenter;
+//        label.shadowColor = [UIColor whiteColor];
+//        label.shadowOffset = CGSizeMake(0.0, 1.0);
+//        label.font = [UIFont boldSystemFontOfSize:14.0];
+//        label.textColor = [UIColor
+//                           colorWithRed:(107.0 / 255.0)
+//                           green:(115.0 / 255.0)
+//                           blue:(126.0 / 255.0)
+//                           alpha:1.0];
+//        label.backgroundColor = [UIColor clearColor];
+//        UIBarButtonItem *labelItem = [[UIBarButtonItem alloc] initWithCustomView:label];
+        self.toolbarItems = [NSArray arrayWithObjects:flexible, self.toolsBarButtonItem, self.aboutBarButtonItem, nil];
+//        self.lastUpdatedLabel = label;
     }
-     */
+    
 //    self.navigationController.toolbarHidden = YES;
     
     // configure logo
@@ -174,9 +172,11 @@ static int HRRootViewControllerTitleContext;
     }
     
     // add bar button items to right
+    /*
     {
         self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:self.aboutBarButtonItem, self.toolsBarButtonItem, nil];
     }
+     */
     
     // configure first view
     {

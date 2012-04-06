@@ -38,6 +38,7 @@
 		940C046E152B6ADF00834416 /* ms-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C0469152B6ADF00834416 /* ms-synthetic.json */; };
 		940C046F152B6ADF00834416 /* ss-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C046A152B6ADF00834416 /* ss-synthetic.json */; };
 		940C0470152B6ADF00834416 /* ts-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C046B152B6ADF00834416 /* ts-synthetic.json */; };
+		940C0472152F3C4800834416 /* 157-wrench.png in Resources */ = {isa = PBXBuildFile; fileRef = 940C0471152F3C4800834416 /* 157-wrench.png */; };
 		940D3D3C14E056B800FE41E6 /* HRVital.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D3B14E056B800FE41E6 /* HRVital.m */; };
 		940D3D4114E0706C00FE41E6 /* HRWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D4014E0706C00FE41E6 /* HRWeight.m */; };
 		940D3D4414E077A500FE41E6 /* HRBloodPressure.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D4314E077A500FE41E6 /* HRBloodPressure.m */; };
@@ -156,6 +157,7 @@
 		940C0469152B6ADF00834416 /* ms-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ms-synthetic.json"; sourceTree = "<group>"; };
 		940C046A152B6ADF00834416 /* ss-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ss-synthetic.json"; sourceTree = "<group>"; };
 		940C046B152B6ADF00834416 /* ts-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ts-synthetic.json"; sourceTree = "<group>"; };
+		940C0471152F3C4800834416 /* 157-wrench.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "157-wrench.png"; sourceTree = "<group>"; };
 		940D3D3A14E056B800FE41E6 /* HRVital.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRVital.h; sourceTree = "<group>"; };
 		940D3D3B14E056B800FE41E6 /* HRVital.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRVital.m; sourceTree = "<group>"; };
 		940D3D3F14E0706C00FE41E6 /* HRWeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRWeight.h; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 		944A2F2B1472C60600694816 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				940C0471152F3C4800834416 /* 157-wrench.png */,
 				DD124DAD148D3EF300E23A44 /* Doctor.png */,
 				DD8BD9DA148D13910090F729 /* chevron.png */,
 				947FCE4514B4C18600C716FD /* chevron-left.png */,
@@ -870,6 +873,7 @@
 				940C046E152B6ADF00834416 /* ms-synthetic.json in Resources */,
 				940C046F152B6ADF00834416 /* ss-synthetic.json in Resources */,
 				940C0470152B6ADF00834416 /* ts-synthetic.json in Resources */,
+				940C0472152F3C4800834416 /* 157-wrench.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
