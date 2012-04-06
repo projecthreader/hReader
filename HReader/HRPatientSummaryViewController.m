@@ -137,27 +137,53 @@
 - (void)reloadData {
     
     {
-        
-        // these do not have meaningful data
-        NSString *noData = @"Not in PDS";
-        self.immunizationsUpToDateLabel.text = noData;
-        self.recentConditionsLabel.text = noData;
-        self.recentConditionsDateLabel.text = noData;
-        self.chronicConditionsLabel.text = noData;
-        self.upcomingEventsLabel.text = noData;
-        self.planOfCareLabel.text = noData;
-        self.followUpAppointmentLabel.text = noData;
-        self.medicationRefillLabel.text = noData;
-        self.functionalStatusDateLabel.text = noData;
-        self.functionalStatusProblemLabel.text = noData;
-        self.functionalStatusStatusLabel.text = noData;
-        self.functionalStatusTypeLabel.text = noData;
-        self.advanceDirectivesLabel.text = noData;
-        self.diagnosisDateLabel.text = noData;
-        self.diagnosisLabel.text = noData;
-        
-        // these are not
+//        NSArray *providers = [[HRMPatient selectedPatient] valueForKeyPath:@"syntheticInfo.providers"];
         HRMPatient *patient = [HRMPatient selectedPatient];
+        NSDictionary *syntheticInfo = patient.syntheticInfo;
+        NSString *noData = @"Not in PDS";        
+
+        // synthetic info
+        
+        // immunizations
+        if ([[syntheticInfo objectForKey:@"immunizations"] boolValue]) {
+            self.immunizationsUpToDateLabel.text = @"Yes";
+            self.immunizationsUpToDateLabel.textColor = [HRConfig greenColor];
+        }
+        else {
+            self.immunizationsUpToDateLabel.text = @"No";
+            self.immunizationsUpToDateLabel.textColor = [HRConfig redColor];
+        }
+        
+        // recents conditions
+        NSDictionary *recentCondition = [[syntheticInfo objectForKey:@"conditions"] lastObject];
+        self.recentConditionsLabel.text = [recentCondition objectForKey:@"title"];
+        self.recentConditionsDateLabel.text = [recentCondition objectForKey:@"description"];
+        self.chronicConditionsLabel.text = [[syntheticInfo objectForKey:@"chronic_conditions"] componentsJoinedByString:@", "];
+        
+        // upcoming events
+        NSDictionary *upcomingEvent = [[syntheticInfo objectForKey:@"upcoming_events"] lastObject];
+        self.upcomingEventsLabel.text = [upcomingEvent objectForKey:@"title"];
+        self.planOfCareLabel.text = [upcomingEvent objectForKey:@"plan_of_care"];
+        self.followUpAppointmentLabel.text = [self formattedDate:[[upcomingEvent objectForKey:@"follow_up_appointment_date"] doubleValue]];
+        self.medicationRefillLabel.text = [upcomingEvent objectForKey:@"medication_refill"];
+        
+        // functional status
+        NSDictionary *functionalStatus = [syntheticInfo objectForKey:@"functional_status"];
+        self.functionalStatusDateLabel.text = [self formattedDate:[[functionalStatus objectForKey:@"date"] doubleValue]];
+        self.functionalStatusProblemLabel.text = [functionalStatus objectForKey:@"problem"];
+        self.functionalStatusStatusLabel.text = [functionalStatus objectForKey:@"status"];
+        self.functionalStatusTypeLabel.text = [functionalStatus objectForKey:@"type"];;
+        
+        // advanced directives
+        self.advanceDirectivesLabel.text = [syntheticInfo objectForKey:@"advanced_directives"];
+        
+        // diagnosis
+        NSDictionary *diagnosis = [syntheticInfo objectForKey:@"diagnosis"];
+        self.diagnosisDateLabel.text = [self formattedDate:[[diagnosis objectForKey:@"results"] doubleValue]];
+        self.diagnosisLabel.text = [diagnosis objectForKey:@"results"];
+        
+        
+        // PDS data
         self.patientName.text = [[patient compositeName] uppercaseString];
         if ([self.dobTitleLabel.text isEqualToString:@"DOB"]) {
             self.dobLabel.text = [patient.dateOfBirth mediumStyleDate];
@@ -182,7 +208,7 @@
                 self.allergiesLabel.text = allergiesString;
             }
             else {
-                self.allergiesLabel.text = @"PDS Blank String";
+                self.allergiesLabel.text = @"None";
             }
         }
         
@@ -207,7 +233,7 @@
                     label.text = [dose description];   
                 }
                 else {
-                    label.text = @"No Data in PDS";
+                    label.text = @"";
                 }
             }
             else {
@@ -441,6 +467,13 @@
 
 - (void)didEnterBackground:(NSNotification *)notif {
     [self.popoverController dismissPopoverAnimated:NO];
+}
+
+#pragma mark - private
+
+- (NSString *)formattedDate:(double)interval {
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
+    return [date mediumStyleDate];
 }
 
 @end
