@@ -1,6 +1,9 @@
 # 2012-4-07
 
 - Removed #'s after patient names and replaced with *
+- Changed display name back to hReader
+- Changed bundle identifier back to org.mitre.HReader (this will install as a fresh app)
+- Minor version bump to 0.3
 
 # 2012-4-06
 
