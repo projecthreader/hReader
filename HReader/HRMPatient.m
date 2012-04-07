@@ -125,7 +125,7 @@ static HRMPatient *selectedPatient = nil;
 - (NSString *)compositeName {
     [self willAccessValueForKey:@"compositeName"];
     NSString *name = [NSString
-                      stringWithFormat:@"%@ %@",
+                      stringWithFormat:@"%@ %@*",
                       self.firstName,
                       self.lastName];
     [self didAccessValueForKey:@"compositeName"];
