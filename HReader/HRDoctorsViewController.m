@@ -102,10 +102,12 @@
 - (void)reloadDataAnimated {
     [UIView animateWithDuration:0.4 animations:^{
         self.nameLabel.alpha = 0.0;
+        self.gridTableView.alpha = 0.0;
     } completion:^(BOOL finished) {
         [self reloadData];
         [UIView animateWithDuration:0.4 animations:^{
             self.nameLabel.alpha = 1.0;
+            self.gridTableView.alpha = 1.0;
         }];
     }];       
 }
