@@ -77,36 +77,14 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
-                            <view tag="1" contentMode="scaleToFill" id="svo-Er-YTf">
-                                <rect key="frame" x="36" y="225" width="295" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view tag="4" contentMode="scaleToFill" id="Sww-5H-Q1f">
-                                <rect key="frame" x="36" y="446" width="295" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view tag="2" contentMode="scaleToFill" id="jq2-9H-WtR">
-                                <rect key="frame" x="365" y="225" width="295" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view tag="3" contentMode="scaleToFill" id="DfL-o8-25H">
-                                <rect key="frame" x="694" y="225" width="295" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view tag="5" contentMode="scaleToFill" id="Nq2-Ai-b5C">
-                                <rect key="frame" x="365" y="446" width="295" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view tag="6" contentMode="scaleToFill" id="PRu-9t-2Ke">
-                                <rect key="frame" x="694" y="446" width="295" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" id="lyN-IB-0Xf" customClass="HRGridTableView">
+                                <rect key="frame" x="0.0" y="202" width="1024" height="458"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="gridViewDelegate" destination="hnH-bE-dJJ" id="zzc-Dx-VNr"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -115,14 +93,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="gridTableView" destination="lyN-IB-0Xf" id="Rlk-f3-Du3"/>
                         <outlet property="nameLabel" destination="cff-5F-SvT" id="drf-VW-nUB"/>
-                        <outlet property="tapGesture" destination="xHG-Bm-bhe" id="wtT-4a-nkI"/>
-                        <outletCollection property="providerViews" destination="DfL-o8-25H" id="wXB-Ab-l85"/>
-                        <outletCollection property="providerViews" destination="jq2-9H-WtR" id="GVT-VE-Mcq"/>
-                        <outletCollection property="providerViews" destination="svo-Er-YTf" id="Q5p-hV-e0l"/>
-                        <outletCollection property="providerViews" destination="PRu-9t-2Ke" id="jnr-oO-0xP"/>
-                        <outletCollection property="providerViews" destination="Nq2-Ai-b5C" id="u0k-0D-yfC"/>
-                        <outletCollection property="providerViews" destination="Sww-5H-Q1f" id="WA7-cz-8MW"/>
                     </connections>
                 </viewController>
                 <tapGestureRecognizer id="xHG-Bm-bhe">
@@ -276,9 +248,9 @@
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="About" id="Sn1-ug-z15">
-                                <mutableString key="footerTitle">The MITRE Corporation © 2012
+                                <string key="footerTitle">The MITRE Corporation © 2012
 
-hReader allows you to gather, correct, and manage your health data. This service is not meant to replace the advice of a physician. You should not rely on any information or suggestions in hReader to replace consultations with a qualified health professional regarding your own specific health issues.    All patient data appearing in hReader is purely synthetic and fictitious. Any resemblance to real persons, living or dead, is purely coincidental.</mutableString>
+hReader allows you to gather, correct, and manage your health data. This service is not meant to replace the advice of a physician. You should not rely on any information or suggestions in hReader to replace consultations with a qualified health professional regarding your own specific health issues.    All patient data appearing in hReader is purely synthetic and fictitious. Any resemblance to real persons, living or dead, is purely coincidental.</string>
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Xtt-rv-9qB" detailTextLabel="vS6-de-HAa" style="IBUITableViewCellStyleValue1" id="Yg1-Ty-Tx2">
                                         <rect key="frame" x="0.0" y="230" width="540" height="45"/>
@@ -391,9 +363,14 @@ hReader allows you to gather, correct, and manage your health data. This service
         <class className="HRDoctorsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRDoctorsViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="gridTableView" candidateClass="HRGridTableView"/>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tapGesture" candidateClass="UIGestureRecognizer"/>
-                <relationship kind="outletCollection" name="providerViews" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="HRGridTableView" superclassName="UITableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRGridTableView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="gridViewDelegate"/>
             </relationships>
         </class>
         <class className="HRRootViewController" superclassName="UIViewController">

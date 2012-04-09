@@ -19,11 +19,12 @@
 - (void)reloadDataAnimated;
 @end
 
-@implementation HRDoctorsViewController
+@implementation HRDoctorsViewController {
+    NSArray * __strong __providerViews;
+}
 
 @synthesize nameLabel                   = __nameLabel;
-@synthesize tapGesture                  = __tapGesture;
-@synthesize providerViews               = __providerViews;
+@synthesize gridTableView               = __gridTableView;
 
 #pragma mark - object methods
 
@@ -34,16 +35,14 @@
     }
     return self;
 }
-- (void)dealloc {
-    [__nameLabel release];
-    [__providerViews release];
-    [super dealloc];
-}
 
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // grid view
+    self.gridTableView.gridViewPadding = 34.0;
     
     // load patient swipe
     HRPatientSwipeControl *swipe = [HRPatientSwipeControl
@@ -53,37 +52,19 @@
                                     action:@selector(patientChanged:)];
     [self.view addSubview:swipe];
     
-    UINib *nib = [UINib nibWithNibName:@"HRProviderView" bundle:nil];
-    [self.providerViews enumerateObjectsUsingBlock:^(HRProviderView *view, NSUInteger idx, BOOL *stop) {
-        view.backgroundColor = [UIColor clearColor];
-        HRProviderView *providerView = [[nib instantiateWithOwner:self options:nil] lastObject];
-        [view addSubview:providerView]; 
-    }];
-    
-    
-    // Doctor detail view
-
-//    [self.view addSubview:self.doctorDetailView];
-//    self.doctorDetailView.alpha = 0.0;
-//    
-//    // Border
-//    self.doctorImageView.layer.borderColor = [[UIColor whiteColor] CGColor];
-//    self.doctorImageView.layer.borderWidth = 3.0f;
-//    
-//    // Shadow
-//    self.doctorImageView.layer.shadowColor = [[UIColor blackColor] CGColor];
-//    self.doctorImageView.layer.shadowOpacity = 0.5f;
-//    self.doctorImageView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
-//    self.doctorImageView.layer.shadowRadius = 5.0f;
-//    self.doctorImageView.layer.shouldRasterize = YES;
-    
+//    UINib *nib = [UINib nibWithNibName:@"HRProviderView" bundle:nil];
+//    [self.providerViews enumerateObjectsUsingBlock:^(HRProviderView *view, NSUInteger idx, BOOL *stop) {
+//        view.backgroundColor = [UIColor clearColor];
+//        HRProviderView *providerView = [[nib instantiateWithOwner:self options:nil] lastObject];
+//        [view addSubview:providerView]; 
+//    }];
+        
     [self reloadData];
 }
 
 - (void)viewDidUnload {
-    [self setProviderViews:nil];
-    [super viewDidUnload];
     self.nameLabel = nil;
+    [super viewDidUnload];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -94,27 +75,24 @@
 	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
-//- (IBAction)showDoctor:(id)sender {
-//    [TestFlight passCheckpoint:@"Show Doctor"];
-////    [UIView animateWithDuration:1.0 animations:^{
-////        self.doctorDetailView.alpha = 1.0;
-////    }];
-//    UIViewController *vc = [[UIViewController alloc] init];
-//    [self.navigationController pushViewController:vc animated:YES];
-//    [vc release];
-//}
-//
-//- (IBAction)hideDoctor:(id)sender {
-//    [TestFlight passCheckpoint:@"Hide Doctor"];
-//    [UIView animateWithDuration:1.0 animations:^{
-//        self.doctorDetailView.alpha = 0.0;
-//    }];    
-//}
-
 #pragma mark - NSNotificationCenter
 
 - (void)patientChanged:(HRPatientSwipeControl *)sender {
     [self reloadDataAnimated];
+}
+
+#pragma mark - grid table view delegate
+
+- (NSInteger)numberOfViewsInGridView:(HRGridTableView *)gridView {
+    return [__providerViews count];
+}
+
+- (NSArray *)gridView:(HRGridTableView *)gridView viewsInRange:(NSRange)range {
+    return [__providerViews subarrayWithRange:range];
+}
+
+- (void)gridView:(HRGridTableView *)gridView didSelectViewAtIndex:(NSInteger)index {
+    // selected doctor
 }
 
 #pragma mark - private methods
@@ -135,19 +113,27 @@
     self.nameLabel.text = [[patient compositeName] uppercaseString];
     
     NSArray *providers = [[HRMPatient selectedPatient] valueForKeyPath:@"syntheticInfo.providers"];
-    NSArray *providerViews = [self.providerViews arraySortedByKey:@"tag"];
-    [providerViews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
-        HRProviderView *providerView = [[view subviews] lastObject];
-        if (idx < [providers count]) {
-            providerView.hidden = NO;
-            NSDictionary *provider = [providers objectAtIndex:idx];
-            providerView.specialityLabel = [provider objectForKey:@"specialty"];
-        }
-        else {
-            providerView.hidden = YES;
-        }
-    }];
+    NSMutableArray *providerViews = [[NSMutableArray alloc] initWithCapacity:[providers count]];
+    UINib *nib = [UINib nibWithNibName:@"HRProviderView" bundle:nil];
     
+    [providers enumerateObjectsUsingBlock:^(NSDictionary *provider, NSUInteger idx, BOOL *stop) {
+        HRProviderView *providerView = [[nib instantiateWithOwner:self options:nil] lastObject];
+        providerView.specialityLabel = [provider objectForKey:@"specialty"];
+        providerView.nameLabel = [provider objectForKey:@"name"];
+//        "speciality": "Emergency Room",
+//        "title": "Dr.",
+//        "first_name": "Crystal",
+//        "last_name": "Johansen",
+//        "organization": "Beth Israel Hospital",
+//        "street": "148 Chestnut Street",
+//        "city": "Needham",
+//        "zip": "12345",
+//        "phone_number": "(781) 453-3000",
+//        "email": "drj@fakeemail.com"
+        [providerViews addObject:providerView]; 
+    }];
+    __providerViews = providerViews;
+    [self.gridTableView reloadData];
 }
 
 @end

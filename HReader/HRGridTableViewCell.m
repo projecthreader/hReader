@@ -13,6 +13,19 @@
 @synthesize numberOfColums      = __numberOfColums;
 @synthesize paddingSize         = __paddingSize;
 
+#pragma mark - class methods
+
++ (HRGridTableViewCell *)cellForTableView:(UITableView *)tableView {
+    NSString *identifier = NSStringFromClass([self class]);
+    HRGridTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (cell == nil) {
+        cell = [[HRGridTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    return cell;
+}
+
+#pragma object methods
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -24,27 +37,21 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
-    CGFloat totalPaddingWidth = self.contentView.bounds.size.width - ((self.numberOfColums + 1) * self.paddingSize);
-    CGFloat totalColumnWidth = self.contentView.bounds.size.width - totalPaddingWidth;
+    CGFloat totalColumnWidth = self.contentView.bounds.size.width - ((self.numberOfColums + 1) * self.paddingSize);
     CGFloat columnWidth = totalColumnWidth / self.numberOfColums;
     CGFloat rowHeight = self.contentView.bounds.size.height - self.paddingSize;
-    
+    NSLog(@"%@", NSStringFromCGRect(self.contentView.frame));
     [self.contentView.subviews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
         view.frame = CGRectMake(self.paddingSize + ((self.paddingSize + columnWidth) * idx), 0, columnWidth, rowHeight);
     }];
 }
 
 - (void)setViews:(NSArray *)views {
-    // remove all content view subviews
     [self.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
-    // add views to content view
     UIView *contentView = self.contentView;
     [views enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
         [contentView addSubview:view];
-    }];
-    
+    }];    
     [self setNeedsLayout];
 }
 

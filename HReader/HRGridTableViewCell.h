@@ -13,6 +13,8 @@
 @property (nonatomic, assign) NSUInteger numberOfColums;
 @property (nonatomic, assign) CGFloat paddingSize;
 
++ (HRGridTableViewCell *)cellForTableView:(UITableView *)tableView;
+
 - (void)setViews:(NSArray *)views;
 
 @end

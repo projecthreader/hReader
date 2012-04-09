@@ -7,23 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HRGridTableView.h"
 
 @class HRPatientSwipeViewController;
 
-@interface HRDoctorsViewController : UIViewController
-
-//@property (retain, nonatomic) IBOutlet UIView *doctorDetailView;
-//@property (retain, nonatomic) IBOutlet UIImageView *doctorImageView;
-
-//@property (retain, nonatomic) IBOutlet UIView *patientView;
+@interface HRDoctorsViewController : UIViewController <HRGridTableViewDelegate>
 
 @property (retain, nonatomic) IBOutlet UILabel *nameLabel;
-@property (retain, nonatomic) IBOutlet UIGestureRecognizer *tapGesture;
-
-@property (retain, nonatomic) IBOutletCollection(UIView) NSArray *providerViews;
-
-//- (IBAction)showDoctor:(id)sender;
-//- (IBAction)hideDoctor:(id)sender;
-
+@property (retain, nonatomic) IBOutlet HRGridTableView *gridTableView;
 
 @end
