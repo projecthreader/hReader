@@ -196,6 +196,7 @@
         // allergies
         NSArray *allergies = patient.allergies;
         NSUInteger allergiesCount = [allergies count];
+        self.allergiesLabel.textColor = [HRConfig redColor];
         if (allergiesCount == 0) {
             self.allergiesLabel.text = @"None";
         }

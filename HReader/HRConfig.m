@@ -62,8 +62,10 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
     return [UIColor colorWithPatternImage:[UIImage imageNamed:@"handmadepaper"]];
 }
 
+// RGB (217 16 55)
 + (UIColor *)redColor {
-    return [UIColor colorWithRed:148/255.0 green:17/255.0 blue:0/255.0 alpha:1.0];
+//    return [UIColor colorWithRed:148/255.0 green:17/255.0 blue:0/255.0 alpha:1.0];
+    return [UIColor colorWithRed:217/255.0 green:16/255.0 blue:55/255.0 alpha:1.0];
 }
 
 + (UIColor *)greenColor {
