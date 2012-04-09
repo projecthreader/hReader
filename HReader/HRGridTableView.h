@@ -25,6 +25,7 @@
 
 @property (nonatomic, assign) IBOutlet id<HRGridTableViewDelegate> gridViewDelegate;
 @property (nonatomic, assign) NSInteger numberOfColumns;
-@property (nonatomic, assign) CGFloat gridViewPadding;
+@property (nonatomic, assign) CGFloat horizontalPadding;
+@property (nonatomic, assign) CGFloat verticalPadding;
 
 @end

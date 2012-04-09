@@ -10,8 +10,9 @@
 
 @implementation HRGridTableViewCell
 
-@synthesize numberOfColums      = __numberOfColums;
-@synthesize paddingSize         = __paddingSize;
+@synthesize numberOfColumns         = __numberOfColumns;
+@synthesize horizontalPadding       = __horizontalPadding;
+@synthesize verticalPadding         = __verticalPadding;
 
 #pragma mark - class methods
 
@@ -29,20 +30,21 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        __paddingSize = 30;
-        __numberOfColums = 3;
+        __horizontalPadding = 30;
+        __verticalPadding = 30;
+        __numberOfColumns = 3;
     }
     return self;
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    CGFloat totalColumnWidth = self.contentView.bounds.size.width - ((self.numberOfColums + 1) * self.paddingSize);
-    CGFloat columnWidth = totalColumnWidth / self.numberOfColums;
-    CGFloat rowHeight = self.contentView.bounds.size.height - self.paddingSize;
+    CGFloat totalColumnWidth = self.contentView.bounds.size.width - ((self.numberOfColumns + 1) * self.horizontalPadding);
+    CGFloat columnWidth = totalColumnWidth / self.numberOfColumns;
+    CGFloat rowHeight = self.contentView.bounds.size.height - self.verticalPadding;
     NSLog(@"%@", NSStringFromCGRect(self.contentView.frame));
     [self.contentView.subviews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
-        view.frame = CGRectMake(self.paddingSize + ((self.paddingSize + columnWidth) * idx), 0, columnWidth, rowHeight);
+        view.frame = CGRectMake(self.horizontalPadding + ((self.horizontalPadding + columnWidth) * idx), 0, columnWidth, rowHeight);
     }];
 }
 

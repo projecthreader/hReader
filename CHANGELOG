@@ -2,6 +2,7 @@
 
 - Change red color in the app
 - Creating custom grid table view to be used for display infinite number of doctors and applets on the summary view.
+- Added custom set horizontal and vertical padding to the custom grid table view.
 
 # 2012-4-07
 

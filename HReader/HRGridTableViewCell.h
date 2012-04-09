@@ -10,8 +10,10 @@
 
 @interface HRGridTableViewCell : UITableViewCell
 
-@property (nonatomic, assign) NSUInteger numberOfColums;
-@property (nonatomic, assign) CGFloat paddingSize;
+@property (nonatomic, assign) NSUInteger numberOfColumns;
+@property (nonatomic, assign) CGFloat horizontalPadding;
+@property (nonatomic, assign) CGFloat verticalPadding;
+
 
 + (HRGridTableViewCell *)cellForTableView:(UITableView *)tableView;
 

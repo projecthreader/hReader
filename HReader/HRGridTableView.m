@@ -19,8 +19,9 @@
 @implementation HRGridTableView
 
 @synthesize gridViewDelegate    = __gridViewDelegate;
-@synthesize numberOfColumns = __numberOfColumns;
-@synthesize gridViewPadding = __gridViewPadding;
+@synthesize numberOfColumns     = __numberOfColumns;
+@synthesize horizontalPadding   = __horizontalPadding;
+@synthesize verticalPadding     = __verticalPadding;
 
 #pragma mark - object methods
 
@@ -30,7 +31,8 @@
     [self addGestureRecognizer:tapGesture];
     self.delegate = self;
     self.dataSource = self;
-    self.gridViewPadding = 30.0;
+    self.horizontalPadding = 30.0;
+    self.allowsSelection = NO;
 }
 
 - (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
@@ -49,9 +51,9 @@
     return self;
 }
 
-- (void)setGridViewPadding:(CGFloat)padding {
-    self.contentInset = UIEdgeInsetsMake(padding, 0.0, 0.0, 0.0);
-    __gridViewPadding = padding;
+- (void)setVerticalPadding:(CGFloat)verticalPadding {
+    self.contentInset = UIEdgeInsetsMake(verticalPadding, 0.0, 0.0, 0.0);
+    __verticalPadding = verticalPadding;
 }
 
 #pragma mark - table view methods
@@ -67,9 +69,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HRGridTableViewCell *cell = [HRGridTableViewCell cellForTableView:tableView];
-    cell.numberOfColums = self.numberOfColumns;
-    cell.paddingSize = self.gridViewPadding;
-    NSRange range = NSMakeRange(indexPath.row * self.numberOfColumns, __numberOfViews % (self.numberOfColumns + 1));
+    cell.numberOfColumns = self.numberOfColumns;
+    cell.horizontalPadding = self.horizontalPadding;
+    NSUInteger start = indexPath.row * self.numberOfColumns;
+    NSUInteger length = MIN(__numberOfViews - start, self.numberOfColumns);
+    NSRange range = NSMakeRange(start, length);
     [cell setViews:[self.gridViewDelegate gridView:self viewsInRange:range]];
     return cell;
 }

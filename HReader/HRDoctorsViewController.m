@@ -42,7 +42,9 @@
     [super viewDidLoad];
     
     // grid view
-    self.gridTableView.gridViewPadding = 34.0;
+    self.gridTableView.horizontalPadding = 34.0;
+    self.gridTableView.verticalPadding = 42.0;
+    self.gridTableView.rowHeight = 150.0 + 42.0;
     
     // load patient swipe
     HRPatientSwipeControl *swipe = [HRPatientSwipeControl
