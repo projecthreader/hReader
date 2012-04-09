@@ -85,6 +85,7 @@
 		947FCE4B14B4C76700C716FD /* HRPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947FCE4914B4C76700C716FD /* HRPrivacyViewController.m */; };
 		947FCE4C14B4C76700C716FD /* HRPrivacyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE4A14B4C76700C716FD /* HRPrivacyViewController.xib */; };
 		947FCE5914B4D7E400C716FD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947FCE5814B4D7E400C716FD /* AudioToolbox.framework */; };
+		94AACF96153330A2005E3851 /* HRGridTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AACF95153330A2005E3851 /* HRGridTableViewCell.m */; };
 		94AEA7401529F2DC00D9C67D /* GCActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEA73F1529F2DC00D9C67D /* GCActionSheet.m */; };
 		94AEAE0414841CEB00C005B2 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0214841CEB00C005B2 /* TimelineViewController.m */; };
 		94AEAE0514841CEB00C005B2 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEAE0314841CEB00C005B2 /* TimelineViewController.xib */; };
@@ -236,6 +237,8 @@
 		947FCE4914B4C76700C716FD /* HRPrivacyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPrivacyViewController.m; sourceTree = "<group>"; };
 		947FCE4A14B4C76700C716FD /* HRPrivacyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPrivacyViewController.xib; sourceTree = "<group>"; };
 		947FCE5814B4D7E400C716FD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		94AACF94153330A2005E3851 /* HRGridTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRGridTableViewCell.h; sourceTree = "<group>"; };
+		94AACF95153330A2005E3851 /* HRGridTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRGridTableViewCell.m; sourceTree = "<group>"; };
 		94AEA73E1529F2DC00D9C67D /* GCActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCActionSheet.h; path = "vendor/guicocoa-common-code/GCActionSheet.h"; sourceTree = SOURCE_ROOT; };
 		94AEA73F1529F2DC00D9C67D /* GCActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCActionSheet.m; path = "vendor/guicocoa-common-code/GCActionSheet.m"; sourceTree = SOURCE_ROOT; };
 		94AEAE0114841CEB00C005B2 /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
@@ -328,6 +331,8 @@
 				DD8BD9F1148D2BDC0090F729 /* HRConfig.m */,
 				3BB9C27D151B8AEF00527C20 /* HRKeychainManager.h */,
 				3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */,
+				94AACF94153330A2005E3851 /* HRGridTableViewCell.h */,
+				94AACF95153330A2005E3851 /* HRGridTableViewCell.m */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -950,6 +955,7 @@
 				3BB9C27F151B8AEF00527C20 /* HRKeychainManager.m in Sources */,
 				94AEA7401529F2DC00D9C67D /* GCActionSheet.m in Sources */,
 				94334ACC152A249F00B4C904 /* HRKeyValueTableViewController.m in Sources */,
+				94AACF96153330A2005E3851 /* HRGridTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
