@@ -71,6 +71,7 @@
     HRGridTableViewCell *cell = [HRGridTableViewCell cellForTableView:tableView];
     cell.numberOfColumns = self.numberOfColumns;
     cell.horizontalPadding = self.horizontalPadding;
+    cell.verticalPadding = self.verticalPadding;
     NSUInteger start = indexPath.row * self.numberOfColumns;
     NSUInteger length = MIN(__numberOfViews - start, self.numberOfColumns);
     NSRange range = NSMakeRange(start, length);

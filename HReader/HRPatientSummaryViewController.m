@@ -22,19 +22,34 @@
 #import "NSDate+FormattedDate.h"
 #import "NSArray+Collect.h"
 
-@interface HRPatientSummaryViewController ()
-- (void)cleanup;
+@interface HRPatientSummaryViewController () {
+@private
+    NSArray * __strong __gridViews;
+}
+
 - (void)reloadData;
+
 @end
 
 @implementation HRPatientSummaryViewController
 
 @synthesize popoverController = __popoverController;
 
-@synthesize scrollView          = __scrollView;
-@synthesize headerView          = __headerView;
-@synthesize contentView         = __contentView;
-@synthesize footerShadowView    = __footerShadowView;
+@synthesize gridView = __gridView;
+@synthesize headerView = __headerView;
+
+@synthesize patientNameLabel                    = __patientNameLabel;
+@synthesize dateOfBirthLabel                    = __dateOfBirthLabel;
+@synthesize dateOfBirthTitleLabel               = __dateOfBirthTitleLabel;
+@synthesize allergiesLabel                      = __allergiesLabel;
+@synthesize recentConditionsDateLabel           = __rececentConditionsDateLabel;
+@synthesize recentConditionsLabel               = __recentConditionsLabel;
+@synthesize chronicConditionsLabel              = __chronicConditionsLabel;
+@synthesize followUpAppointmentLabel            = __followUpAppointmentLabel;
+@synthesize medicationRefillLabel               = __medicationRefillLabel;
+@synthesize upcomingEventsLabel                 = __upcomingEventsLabel;
+@synthesize planOfCareLabel                     = __planOfCareLabel;
+
 
 @synthesize labels              = __labels;
 
@@ -43,18 +58,11 @@
 
 @synthesize vitalViews                          = __vitalViews;
 
-@synthesize patientName                         = __patientName;
-@synthesize dobLabel                            = __dobLabel;
-@synthesize dobTitleLabel                       = __dobTitleLabel;
 
-@synthesize allergiesLabel                      = __allergiesLabel;
-@synthesize recentConditionsDateLabel           = __rececentConditionsDateLabel;
-@synthesize recentConditionsLabel               = __recentConditionsLabel;
-@synthesize chronicConditionsLabel              = __chronicConditionsLabel;
-@synthesize upcomingEventsLabel                 = __upcomingEventsLabel;
-@synthesize planOfCareLabel                     = __planOfCareLabel;
-@synthesize followUpAppointmentLabel            = __followUpAppointmentLabel;
-@synthesize medicationRefillLabel               = __medicationRefillLabel;
+
+
+
+
 @synthesize recentEncountersDateLabel           = __recentEncountersDateLabel;
 @synthesize recentEncountersTypeLabel           = __recentEncountersTypeLabel;
 @synthesize recentEncountersDescriptionLabel    = __recentEncountersDescriptionLabel;
@@ -73,72 +81,59 @@
 
 #pragma mark - object methods
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
     if (self) {
         self.title = @"Summary";
-        [[NSNotificationCenter defaultCenter] addObserver:self 
-                                                 selector:@selector(didEnterBackground:) 
-                                                     name:UIApplicationDidEnterBackgroundNotification 
-                                                   object:nil];
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(didEnterBackground:)
+         name:UIApplicationDidEnterBackgroundNotification
+         object:nil];
     }
     return self;
 }
-- (void)dealloc {
-    [self cleanup];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
-    [__dobLabel release];
-    [__allergiesLabel release];
-    [__rececentConditionsDateLabel release];
-    [__recentConditionsLabel release];
-    [__chronicConditionsLabel release];
-    [__upcomingEventsLabel release];
-    [__planOfCareLabel release];
-    [__followUpAppointmentLabel release];
-    [__medicationRefillLabel release];
-    [__recentEncountersDateLabel release];
-    [__recentEncountersTypeLabel release];
-    [__recentEncountersDescriptionLabel release];
-    [__immunizationsUpToDateLabel release];
-    [__functionalStatusDateLabel release];
-    [__functionalStatusTypeLabel release];
-    [__functionalStatusProblemLabel release];
-    [__functionalStatusStatusLabel release];
-    [__pulseLabel release];
-    [__pulseDate release];
-    [__pulseNormalLabel release];
-    [__advanceDirectivesLabel release];
-    [__diagnosisLabel release];
-    [__diagnosisDateLabel release];
-    [__pulseImageView release];
 
-    [__dobTitleLabel release];
-    [super dealloc];
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-- (void)cleanup {
-    
-    // popover
-    [self.popoverController dismissPopoverAnimated:NO];
-    self.popoverController = nil;
-    
-    // release other outlets
-    self.scrollView = nil;
-    self.headerView = nil;
-    self.contentView = nil;
-    self.footerShadowView = nil;
-    self.labels = nil;
-    self.medicationDosageLabels = nil;
-    self.medicationNameLabels = nil;
-    self.vitalViews = nil;
-    
-}
+
 - (void)reloadData {
+    
+    // get patient
+    HRMPatient *patient = [HRMPatient selectedPatient];
+    
+    // grid view
+    {
+        
+        // create container
+        NSMutableArray *views = [NSMutableArray array];
+        
+        // vitals
+        {
+            UINib *nib = [UINib nibWithNibName:@"HRVitalView" bundle:nil];
+            NSDictionary *vitals = [patient vitalSignsGroupedByDescription];
+            [vitals enumerateKeysAndObjectsUsingBlock:^(NSString *type, NSArray *entries, BOOL *stop) {
+                HRVitalView *view = [[nib instantiateWithOwner:self options:nil] lastObject];
+                if ([type isEqualToString:@"BMI"]) {
+                    view.vital = [[HRBMI alloc] initWithEntries:entries];
+                }
+                else  {
+                    view.vital = [[HRVital alloc] initWithEntries:entries];
+                }
+                [views addObject:view];
+            }];
+        }
+        
+        // save and reload
+        __gridViews = views;
+        [self.gridView reloadData];
+        
+    }
     
     {
 //        NSArray *providers = [[HRMPatient selectedPatient] valueForKeyPath:@"syntheticInfo.providers"];
-        HRMPatient *patient = [HRMPatient selectedPatient];
+        
         NSDictionary *syntheticInfo = patient.syntheticInfo;
         NSString *noData = @"Not in PDS";        
 
@@ -184,34 +179,33 @@
         
         
         // PDS data
-        self.patientName.text = [[patient compositeName] uppercaseString];
-        if ([self.dobTitleLabel.text isEqualToString:@"DOB"]) {
-            self.dobLabel.text = [patient.dateOfBirth mediumStyleDate];
+        self.patientNameLabel.text = [[patient compositeName] uppercaseString];
+        if ([self.dateOfBirthTitleLabel.text isEqualToString:@"DOB"]) {
+            self.dateOfBirthLabel.text = [patient.dateOfBirth mediumStyleDate];
         }
         else {
-            self.dobLabel.text = [patient.dateOfBirth ageString];
-            
+            self.dateOfBirthLabel.text = [patient.dateOfBirth ageString];
         }
         
         // allergies
-        NSArray *allergies = patient.allergies;
-        NSUInteger allergiesCount = [allergies count];
-        self.allergiesLabel.textColor = [HRConfig redColor];
-        if (allergiesCount == 0) {
-            self.allergiesLabel.text = @"None";
-        }
-        else {
-            NSMutableString *allergiesString = [[[[allergies objectAtIndex:0] desc] mutableCopy] autorelease];
-            if (allergiesCount > 1) {
-                [allergiesString appendFormat:@", %lu more", (unsigned long)allergiesCount];
-            }
-            if ([allergiesString length] > 0) {
-                self.allergiesLabel.text = allergiesString;
-            }
-            else {
-                self.allergiesLabel.text = @"None";
-            }
-        }
+//        NSArray *allergies = patient.allergies;
+//        NSUInteger allergiesCount = [allergies count];
+//        self.allergiesLabel.textColor = [HRConfig redColor];
+//        if (allergiesCount == 0) {
+//            self.allergiesLabel.text = @"None";
+//        }
+//        else {
+//            NSMutableString *allergiesString = [[[[allergies objectAtIndex:0] desc] mutableCopy] autorelease];
+//            if (allergiesCount > 1) {
+//                [allergiesString appendFormat:@", %lu more", (unsigned long)allergiesCount];
+//            }
+//            if ([allergiesString length] > 0) {
+//                self.allergiesLabel.text = allergiesString;
+//            }
+//            else {
+//                self.allergiesLabel.text = @"None";
+//            }
+//        }
         
         
         // medications
@@ -253,35 +247,7 @@
         NSString *codeValues = [[codes objectForKey:codeType] componentsJoinedByString:@", "];
         self.recentEncountersTypeLabel.text = [NSString stringWithFormat:@"%@ %@", codeType, codeValues];
         
-        // vitals
-        NSDictionary *vitals = [patient vitalSignsGroupedByDescription];
-        NSArray *vitalsKeys = [vitals allKeys];
-        NSUInteger vitalsCount = [vitalsKeys count];
-        [self.vitalViews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
-            if (idx < vitalsCount) {
-                
-                // unhide view
-                view.hidden = NO;
-                
-                // get vital and vital view
-                NSString *type = [vitalsKeys objectAtIndex:idx];
-                NSArray *entries = [vitals objectForKey:type];
-                HRVital *vital;
-                if ([type isEqualToString:@"BMI"]) {
-                    vital = [[[HRBMI alloc] initWithEntries:entries] autorelease];
-                }
-                else  {
-                    vital = [[[HRVital alloc] initWithEntries:entries] autorelease];
-                }
-                
-                // show vital
-                [[view.subviews lastObject] setVital:vital];
-                
-            }
-            else {
-                view.hidden = YES;
-            }
-        }];
+
         
     }
     
@@ -326,26 +292,13 @@
                                     action:@selector(patientChanged:)];
     [self.headerView addSubview:swipe];
     
-    // configure scroll view
-    CALayer *layer = self.contentView.layer;
-    layer.shadowColor = [[UIColor blackColor] CGColor];
-    layer.shadowOpacity = 0.5;
-    layer.shadowRadius = 5.0;
-    layer.shadowOffset = CGSizeMake(0.0, 0.0);
-    layer.shouldRasterize = YES;
-    self.scrollView.contentSize = self.contentView.frame.size;
-    [self.scrollView addSubview:self.contentView];
+    // configure grid view
+    self.gridView.numberOfColumns = 3;
+    self.gridView.horizontalPadding = 34.0;
+    self.gridView.verticalPadding = 42.0;
     
-    // configure footer shadow
-    layer = self.footerShadowView.layer;
-    layer.shadowColor = [[UIColor blackColor] CGColor];
-    layer.shadowOpacity = 0.5;
-    layer.shadowRadius = 5.0;
-    layer.shadowOffset = CGSizeMake(0.0, 0.0);
-    layer.shouldRasterize = YES;
-    
-    // header shadow
-    layer = self.headerView.layer;
+    // header shadow view
+    CALayer *layer = self.headerView.layer;
     layer.shadowColor = [[UIColor blackColor] CGColor];
     layer.shadowOpacity = 0.5;
     layer.shadowOffset = CGSizeMake(0.0, 0.0);
@@ -353,31 +306,47 @@
     layer.shouldRasterize = YES;
     [self.view bringSubviewToFront:self.headerView];
     
-    // load vital views
-    UINib *nib = [UINib nibWithNibName:@"HRVitalView" bundle:nil];
-    [self.vitalViews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
-        view.backgroundColor = [UIColor clearColor];
-        HRVitalView *vitalView = [[nib instantiateWithOwner:self options:nil] lastObject];
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(vitalViewTapGesture:)];
-        [vitalView addGestureRecognizer:tap];
-        [tap release];
-        vitalView.frame = view.bounds;
-        [view addSubview:vitalView]; 
+    // date of birth tap
+    NSArray *array = [NSArray arrayWithObjects:self.dateOfBirthLabel, self.dateOfBirthTitleLabel, nil];
+    [array enumerateObjectsUsingBlock:^(UIView *view, NSUInteger index, BOOL *stop) {
+        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(toggleDateOfBirth:)];
+        [view addGestureRecognizer:gesture];
     }];
-    
-    UITapGestureRecognizer *tap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dobTapped:)] autorelease];
-    [self.dobLabel addGestureRecognizer:tap];
     
 }
 
 - (void)viewDidUnload {
-    [self setVitalViews:nil];
-    [self setDobTitleLabel:nil];
-    [super viewDidUnload];
-    [self cleanup];
     
-    self.patientName = nil;
-    [self setDobLabel:nil];
+    // popover
+    [self.popoverController dismissPopoverAnimated:NO];
+    self.popoverController = nil;
+    
+    // release other outlets
+    self.headerView = nil;
+    self.gridView = nil;
+    self.headerView = nil;
+    self.patientNameLabel = nil;
+    self.dateOfBirthTitleLabel = nil;
+    self.dateOfBirthLabel = nil;
+    self.recentConditionsLabel = nil;
+    self.recentConditionsDateLabel = nil;
+    self.chronicConditionsLabel = nil;
+    self.allergiesLabel = nil;
+    self.followUpAppointmentLabel = nil;
+    self.medicationRefillLabel = nil;
+    self.planOfCareLabel = nil;
+    self.upcomingEventsLabel = nil;
+    
+    
+    
+    
+    self.labels = nil;
+    self.medicationDosageLabels = nil;
+    self.medicationNameLabels = nil;
+    self.vitalViews = nil;
+    
     [self setAllergiesLabel:nil];
     [self setRecentConditionsDateLabel:nil];
     [self setRecentConditionsLabel:nil];
@@ -402,6 +371,9 @@
     [self setDiagnosisDateLabel:nil];
     [self setPulseImageView:nil];
     
+    // super
+    [super viewDidUnload];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -411,6 +383,16 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+}
+
+#pragma mark - grid view delegate
+
+- (NSInteger)numberOfViewsInGridView:(HRGridTableView *)gridView {
+    return [__gridViews count];
+}
+
+- (NSArray *)gridView:(HRGridTableView *)gridView viewsInRange:(NSRange)range {
+    return [__gridViews subarrayWithRange:range];
 }
 
 #pragma mark - notifications
@@ -431,37 +413,39 @@
 
 #pragma mark - tap gestures
 
-- (void)vitalViewTapGesture:(UITapGestureRecognizer *)tap {
-    if (tap.state == UIGestureRecognizerStateRecognized) {
-        HRVitalView *view = (HRVitalView *)tap.view;
-        HRVital *vital = view.vital;
-        UITableViewController *controller = [[[HRKeyValueTableViewController alloc] initWithDataPoints:[vital dataPoints]] autorelease];
-        controller.title = vital.title;
-        UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:controller] autorelease];
-        if (self.popoverController == nil) {
-            self.popoverController = [[[UIPopoverController alloc] initWithContentViewController:navController] autorelease];
+//- (void)vitalViewTapGesture:(UITapGestureRecognizer *)tap {
+//    if (tap.state == UIGestureRecognizerStateRecognized) {
+//        HRVitalView *view = (HRVitalView *)tap.view;
+//        HRVital *vital = view.vital;
+//        UITableViewController *controller = [[[HRKeyValueTableViewController alloc] initWithDataPoints:[vital dataPoints]] autorelease];
+//        controller.title = vital.title;
+//        UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:controller] autorelease];
+//        if (self.popoverController == nil) {
+//            self.popoverController = [[[UIPopoverController alloc] initWithContentViewController:navController] autorelease];
+//        }
+//        else {
+//            self.popoverController.contentViewController = navController;
+//        }
+//        CGRect showRect = [self.view convertRect:view.frame fromView:view];
+//        [self.popoverController
+//         presentPopoverFromRect:showRect
+//         inView:self.view
+//         permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+//        NSLog(@"Vital: %@", vital);
+//    }
+//
+//}
+
+- (void)toggleDateOfBirth:(UITapGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateRecognized) {
+        if ([self.dateOfBirthTitleLabel.text isEqualToString:@"DOB"]) {
+            self.dateOfBirthTitleLabel.text = @"AGE";
         }
         else {
-            self.popoverController.contentViewController = navController;
+            self.dateOfBirthTitleLabel.text = @"DOB";
         }
-        CGRect showRect = [self.view convertRect:view.frame fromView:view];
-        [self.popoverController
-         presentPopoverFromRect:showRect
-         inView:self.view
-         permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-        NSLog(@"Vital: %@", vital);
+        [self reloadData];
     }
-
-}
-
-- (void)dobTapped:(UITapGestureRecognizer *)tap {
-    if ([self.dobTitleLabel.text isEqualToString:@"DOB"]) {
-        self.dobTitleLabel.text = @"AGE";
-    }
-    else {
-        self.dobTitleLabel.text = @"DOB";
-    }
-    [self reloadData];
 }
 
 #pragma mark - notifs

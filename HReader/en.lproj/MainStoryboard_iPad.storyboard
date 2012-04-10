@@ -6,22 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="GmZ-Wb-YcI">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uCZ-Al-T89" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController modalPresentationStyle="pageSheet" id="pdg-f2-Co5" sceneMemberID="viewController">
-                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="lro-b2-1ji">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="r4Y-T5-VjV" kind="relationship" relationship="rootViewController" id="jpp-1f-L8Q"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="2078" y="-956"/>
-        </scene>
         <!--Root View Controller-->
         <scene sceneID="2Ki-i2-Rgl">
             <objects>
@@ -33,32 +17,21 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="XO8-go-ylK"/>
+                        <barButtonItem title="About" id="yvk-UI-KfQ">
+                            <connections>
+                                <segue destination="2Hp-Fe-994" kind="modal" identifier="About Button" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="hp3-q0-AaZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="0H1-3e-CAx">
                         <nil key="title"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="C32ButtonItem" destination="Mf3-ly-weu" id="IBm-eK-JJS"/>
-                        <outlet property="aboutBarButtonItem" destination="yvk-UI-KfQ" id="7Dq-Hi-RIE"/>
-                        <outlet property="toolsBarButtonItem" destination="Yi6-gl-bFq" id="IPp-H1-5j2"/>
-                    </connections>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
-                <barButtonItem title="C32 HTML" id="Mf3-ly-weu">
-                    <connections>
-                        <segue destination="pdg-f2-Co5" kind="modal" identifier="C32HTMLSegue" id="wZw-Jm-fuW"/>
-                    </connections>
-                </barButtonItem>
-                <barButtonItem title="About" id="yvk-UI-KfQ">
-                    <connections>
-                        <segue destination="2Hp-Fe-994" kind="modal" identifier="About Button" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="hp3-q0-AaZ"/>
-                    </connections>
-                </barButtonItem>
-                <barButtonItem systemItem="add" id="Yi6-gl-bFq" userLabel="Tools Bar Button">
-                    <connections>
-                        <action selector="toolsButtonPressed:" destination="GW8-lK-xxa" id="slh-W0-kwZ"/>
-                    </connections>
-                </barButtonItem>
             </objects>
-            <point key="canvasLocation" x="678" y="-379"/>
+            <point key="canvasLocation" x="746" y="-379"/>
         </scene>
         <!--Doctors View Controller-->
         <scene sceneID="f0N-jg-Oi1">
@@ -92,92 +65,251 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="gridTableView" destination="lyN-IB-0Xf" id="Rlk-f3-Du3"/>
                         <outlet property="nameLabel" destination="cff-5F-SvT" id="drf-VW-nUB"/>
                     </connections>
                 </viewController>
-                <tapGestureRecognizer id="xHG-Bm-bhe">
-                    <connections>
-                        <segue destination="28I-kC-fWZ" kind="push" id="lhW-SY-1aJ"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-492" y="769"/>
+            <point key="canvasLocation" x="746" y="545"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="kqv-Y6-FZA">
+        <!--Patient Summary View Controller-->
+        <scene sceneID="Upp-8A-4Fx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2bV-oZ-VsM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="28I-kC-fWZ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="d4u-pX-sal">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="748"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="8pd-68-BJL"/>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="617" y="769"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Hjn-UJ-WJX">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LLO-FR-UEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="r4Y-T5-VjV" customClass="HRC32ViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Lms-bC-rqj">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="704"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uev-ki-5WF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="SummaryViewController" id="6U1-hI-wo6" customClass="HRPatientSummaryViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xuw-Vt-WTG">
+                        <rect key="frame" x="0.0" y="64" width="1024" height="660"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" id="aCg-CL-aig">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="704"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="242" sectionHeaderHeight="22" sectionFooterHeight="22" id="zCg-6d-9p7" customClass="HRGridTableView">
+                                <rect key="frame" x="-6" y="220" width="1030" height="440"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                            </webView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="gridViewDelegate" destination="6U1-hI-wo6" id="QhL-Fj-JxV"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" id="cBw-FY-Dtr">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="220"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="INFO" lineBreakMode="tailTruncation" minimumFontSize="10" id="6i5-aP-dHZ" userLabel="Info Label">
+                                        <rect key="frame" x="224" y="50" width="79" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" id="QK9-tP-baS" userLabel="Info Line">
+                                        <rect key="frame" x="224" y="81" width="106" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="MOST RECENT CONDITION" lineBreakMode="tailTruncation" minimumFontSize="10" id="c7I-KU-gXP" userLabel="Conditions Label">
+                                        <rect key="frame" x="370" y="50" width="269" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" id="M42-9v-2u9" userLabel="Conditions Line">
+                                        <rect key="frame" x="370" y="81" width="295" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="UPCOMING EVENTS" lineBreakMode="tailTruncation" minimumFontSize="10" id="lWJ-Bn-qtb" userLabel="Events Label">
+                                        <rect key="frame" x="702" y="50" width="269" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" id="gFH-1X-QIE" userLabel="Events Line">
+                                        <rect key="frame" x="702" y="81" width="295" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="JOHNNY SMITH" lineBreakMode="tailTruncation" minimumFontSize="10" id="7yZ-tu-F7Q" userLabel="Name Label">
+                                        <rect key="frame" x="224" y="17" width="773" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="1"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ALLERGIES" lineBreakMode="tailTruncation" minimumFontSize="10" id="U14-FZ-xRG" userLabel="Allergies Label">
+                                        <rect key="frame" x="224" y="142" width="106" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" contentMode="left" text="04 December 2008" lineBreakMode="tailTruncation" minimumFontSize="10" id="mjD-Rw-QEx">
+                                        <rect key="frame" x="224" y="106" width="106" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="DOB" lineBreakMode="tailTruncation" minimumFontSize="10" id="4hz-oK-TZm">
+                                        <rect key="frame" x="224" y="87" width="106" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="chevron.png" id="y2x-dX-fuA">
+                                        <rect key="frame" x="311" y="53" width="25" height="25"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Peanuts (severe)" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="f0w-8v-VBn">
+                                        <rect key="frame" x="224" y="158" width="112" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" red="0.58039215690000001" green="0.066666666669999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="CHRONIC CONDITONS:" lineBreakMode="tailTruncation" minimumFontSize="10" id="7bI-qE-RQA">
+                                        <rect key="frame" x="370" y="142" width="295" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Asthma" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="OKD-dT-8TW">
+                                        <rect key="frame" x="370" y="158" width="295" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="05 MAY 2011" lineBreakMode="tailTruncation" minimumFontSize="10" id="5CY-id-h98">
+                                        <rect key="frame" x="370" y="87" width="295" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Patient reported child has a cold with coughing, shortness of breath, wheezing, and retraction of the ribs." lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" id="8yT-VH-XoC">
+                                        <rect key="frame" x="370" y="106" width="295" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="chevron.png" id="szi-ao-Noo">
+                                        <rect key="frame" x="647" y="53" width="25" height="25"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PLAN OF CARE:" lineBreakMode="tailTruncation" minimumFontSize="10" id="k4S-i1-eOo">
+                                        <rect key="frame" x="702" y="104" width="295" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="FOLLOW UP APPOINTMENT:" lineBreakMode="tailTruncation" minimumFontSize="10" id="m2M-DN-oeq">
+                                        <rect key="frame" x="702" y="135" width="165" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="None" lineBreakMode="tailTruncation" minimumFontSize="10" id="jJ7-6f-56O">
+                                        <rect key="frame" x="702" y="181" width="295" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="None" lineBreakMode="tailTruncation" minimumFontSize="10" id="dBY-8S-dOU">
+                                        <rect key="frame" x="702" y="119" width="295" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Herpes B Booster within 3 weeks" lineBreakMode="tailTruncation" minimumFontSize="10" id="vgA-yX-i31">
+                                        <rect key="frame" x="702" y="87" width="295" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="chevron.png" id="198-z5-gUO">
+                                        <rect key="frame" x="979" y="53" width="25" height="25"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="MEDICATION REFILL:" lineBreakMode="tailTruncation" minimumFontSize="10" id="Xgf-2p-vFh">
+                                        <rect key="frame" x="702" y="167" width="142" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="30 Mar. 2012" lineBreakMode="tailTruncation" minimumFontSize="10" id="yYa-CB-H9F">
+                                        <rect key="frame" x="702" y="151" width="295" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" red="0.30980392159999998" green="0.5568627451" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xZg-be-Uez">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="XMy-1U-6IK">
-                            <connections>
-                                <action selector="done" destination="r4Y-T5-VjV" id="rqG-ws-TF1"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="webView" destination="aCg-CL-aig" id="j1l-Vs-Md3"/>
+                        <outlet property="allergiesLabel" destination="f0w-8v-VBn" id="tLZ-ev-WYC"/>
+                        <outlet property="chronicConditionsLabel" destination="OKD-dT-8TW" id="RJd-xh-5s6"/>
+                        <outlet property="dateOfBirthLabel" destination="mjD-Rw-QEx" id="zws-Dd-DXi"/>
+                        <outlet property="dateOfBirthTitleLabel" destination="4hz-oK-TZm" id="3EN-Yr-qDn"/>
+                        <outlet property="followUpAppointmentLabel" destination="yYa-CB-H9F" id="A4L-dC-fd8"/>
+                        <outlet property="gridView" destination="zCg-6d-9p7" id="7Gh-TF-23V"/>
+                        <outlet property="headerView" destination="cBw-FY-Dtr" id="hSs-j6-zZP"/>
+                        <outlet property="medicationRefillLabel" destination="jJ7-6f-56O" id="Vx0-6h-LFm"/>
+                        <outlet property="patientNameLabel" destination="7yZ-tu-F7Q" id="WbD-F3-Aa8"/>
+                        <outlet property="pulseDateLabel" destination="dBY-8S-dOU" id="pae-gc-m3M"/>
+                        <outlet property="recentConditionsDateLabel" destination="5CY-id-h98" id="g7S-2I-nlD"/>
+                        <outlet property="recentConditionsLabel" destination="8yT-VH-XoC" id="Akk-2K-CGj"/>
+                        <outlet property="upcomingEventsLabel" destination="vgA-yX-i31" id="3x1-pA-M50"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="3116" y="-956"/>
+            <point key="canvasLocation" x="746" y="1486"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ciq-l9-LIG">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ey-c1-DV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController storyboardIdentifier="" id="2Hp-Fe-994" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="" modalPresentationStyle="formSheet" id="2Hp-Fe-994" sceneMemberID="viewController">
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="HN2-6Y-fEl">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Zdu-v2-keb" kind="relationship" relationship="rootViewController" id="v4z-gb-MF9"/>
+                        <segue destination="Zdu-v2-keb" kind="relationship" relationship="rootViewController" id="yUk-7o-e3i"/>
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="2064" y="259"/>
+            <point key="canvasLocation" x="2048" y="-305"/>
         </scene>
         <!--About Table View Controller - hReader-->
         <scene sceneID="Rgz-3j-5cf">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2EO-8B-C5Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="Zdu-v2-keb" customClass="HRAboutTableViewController" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="formSheet" id="Zdu-v2-keb" customClass="HRAboutTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="tQJ-99-u8h">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="576"/>
+                        <rect key="frame" x="0.0" y="44" width="540" height="576"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -315,13 +447,16 @@ hReader allows you to gather, correct, and manage your health data. This service
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="buildDateLabel" destination="lcE-Ls-XNx" id="4U1-mg-MNW"/>
                         <outlet property="versionLabel" destination="vS6-de-HAa" id="ya1-Ln-dpI"/>
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2868" y="259"/>
+            <point key="canvasLocation" x="2850" y="-305"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="n49-W3-7C3">
@@ -344,6 +479,9 @@ hReader allows you to gather, correct, and manage your health data. This service
             <point key="canvasLocation" x="-558" y="-379"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="chevron.png" width="25" height="25"/>
+    </resources>
     <classes>
         <class className="HRAboutTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRAboutTableViewController.h"/>
@@ -351,13 +489,6 @@ hReader allows you to gather, correct, and manage your health data. This service
                 <relationship kind="action" name="done"/>
                 <relationship kind="outlet" name="buildDateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="versionLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="HRC32ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRC32ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="done"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>
         <class className="HRDoctorsViewController" superclassName="UIViewController">
@@ -373,14 +504,45 @@ hReader allows you to gather, correct, and manage your health data. This service
                 <relationship kind="outlet" name="gridViewDelegate"/>
             </relationships>
         </class>
+        <class className="HRPatientSummaryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRPatientSummaryViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="advanceDirectivesLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="allergiesLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="chronicConditionsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dateOfBirthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dateOfBirthTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="diagnosisDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="diagnosisLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="followUpAppointmentLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="functionalStatusDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="functionalStatusProblemLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="functionalStatusStatusLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="functionalStatusTypeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="gridView" candidateClass="HRGridTableView"/>
+                <relationship kind="outlet" name="headerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="immunizationsUpToDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="medicationRefillLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="patientNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="planOfCareLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pulseDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pulseImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="pulseLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pulseNormalLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="recentConditionsDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="recentConditionsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="recentEncountersDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="recentEncountersDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="recentEncountersTypeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="upcomingEventsLabel" candidateClass="UILabel"/>
+                <relationship kind="outletCollection" name="labels" candidateClass="UILabel"/>
+                <relationship kind="outletCollection" name="medicationDosageLabels" candidateClass="UILabel"/>
+                <relationship kind="outletCollection" name="medicationNameLabels" candidateClass="UILabel"/>
+                <relationship kind="outletCollection" name="vitalViews" candidateClass="UIView"/>
+            </relationships>
+        </class>
         <class className="HRRootViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRRootViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="toolsButtonPressed:"/>
-                <relationship kind="outlet" name="C32ButtonItem" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="aboutBarButtonItem" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="toolsBarButtonItem" candidateClass="UIBarButtonItem"/>
-            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

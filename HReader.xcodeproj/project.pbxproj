@@ -26,6 +26,8 @@
 		3BE9A42F14E42A3800F87B60 /* ms.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9A42A14E42A3800F87B60 /* ms.json */; };
 		3BE9A43014E42A3800F87B60 /* ss.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9A42B14E42A3800F87B60 /* ss.json */; };
 		3BE9A43114E42A3800F87B60 /* ts.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9A42C14E42A3800F87B60 /* ts.json */; };
+		3BFBEE1A1534BEAA009EBA2D /* HRAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */; };
+		3BFBEE1C1534BF32009EBA2D /* HReaderApplets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */; };
 		3BFE7A2714DADE2B0037738D /* PINCodeBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2114DADE2B0037738D /* PINCodeBackground.png */; };
 		3BFE7A2814DADE2B0037738D /* PINCodeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2214DADE2B0037738D /* PINCodeButton.png */; };
 		3BFE7A2914DADE2B0037738D /* PINCodeDeleteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2314DADE2B0037738D /* PINCodeDeleteButton.png */; };
@@ -52,7 +54,7 @@
 		941DB0AF1471B32D00A96B8B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941DB0AE1471B32D00A96B8B /* Foundation.framework */; };
 		941DB0B11471B32D00A96B8B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 941DB0B01471B32D00A96B8B /* CoreGraphics.framework */; };
 		941DB0B71471B32D00A96B8B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 941DB0B51471B32D00A96B8B /* InfoPlist.strings */; };
-		941DB0B91471B32D00A96B8B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DB0B81471B32D00A96B8B /* main.m */; };
+		941DB0B91471B32D00A96B8B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DB0B81471B32D00A96B8B /* main.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		941DB0BD1471B32D00A96B8B /* HRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DB0BC1471B32D00A96B8B /* HRAppDelegate.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		941DB0C01471B32D00A96B8B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941DB0BE1471B32D00A96B8B /* MainStoryboard_iPhone.storyboard */; };
 		941DB0C31471B32D00A96B8B /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941DB0C11471B32D00A96B8B /* MainStoryboard_iPad.storyboard */; };
@@ -87,7 +89,7 @@
 		94AACF9D15334A1D005E3851 /* HRGridTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AACF9C15334A1D005E3851 /* HRGridTableView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94AEA7401529F2DC00D9C67D /* GCActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEA73F1529F2DC00D9C67D /* GCActionSheet.m */; };
 		94AEAE0914868BC200C005B2 /* HRRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0814868BC200C005B2 /* HRRootViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		94AEAE10148690DA00C005B2 /* HRPatientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0E148690DA00C005B2 /* HRPatientSummaryViewController.m */; };
+		94AEAE10148690DA00C005B2 /* HRPatientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0E148690DA00C005B2 /* HRPatientSummaryViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94AEAE11148690DA00C005B2 /* HRPatientSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEAE0F148690DA00C005B2 /* HRPatientSummaryViewController.xib */; };
 		94BB031E14969675009B2FCC /* HRAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BB031D14969675009B2FCC /* HRAddress.m */; };
 		94BB0326149BAF25009B2FCC /* HRPasscodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BB0325149BAF25009B2FCC /* HRPasscodeManager.m */; };
@@ -140,6 +142,9 @@
 		3BE9A42B14E42A3800F87B60 /* ss.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ss.json; sourceTree = "<group>"; };
 		3BE9A42C14E42A3800F87B60 /* ts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ts.json; sourceTree = "<group>"; };
 		3BFBEE161534BD33009EBA2D /* HReader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HReader.entitlements; sourceTree = "<group>"; };
+		3BFBEE181534BEAA009EBA2D /* HRAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAppletTile.h; sourceTree = "<group>"; };
+		3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAppletTile.m; sourceTree = "<group>"; };
+		3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HReaderApplets.plist; sourceTree = "<group>"; };
 		3BFE7A2114DADE2B0037738D /* PINCodeBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PINCodeBackground.png; sourceTree = "<group>"; };
 		3BFE7A2214DADE2B0037738D /* PINCodeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PINCodeButton.png; sourceTree = "<group>"; };
 		3BFE7A2314DADE2B0037738D /* PINCodeDeleteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PINCodeDeleteButton.png; sourceTree = "<group>"; };
@@ -315,6 +320,8 @@
 				DD8BD9F1148D2BDC0090F729 /* HRConfig.m */,
 				3BB9C27D151B8AEF00527C20 /* HRKeychainManager.h */,
 				3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */,
+				3BFBEE181534BEAA009EBA2D /* HRAppletTile.h */,
+				3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -326,26 +333,6 @@
 				3BD16F0414E1C5B700F2249E /* HRMPatient.m */,
 				3BE9A40314E40EBB00F87B60 /* HRMEntry.h */,
 				3BE9A40414E40EBB00F87B60 /* HRMEntry.m */,
-				DD8BD9DD148D1D660090F729 /* UserImage-Smith-Henry.png */,
-				DD8BD9DE148D1D660090F729 /* UserImage-Smith-Johnny.png */,
-				DD8BD9DF148D1D660090F729 /* UserImage-Smith-Molly.png */,
-				DD8BD9E0148D1D660090F729 /* UserImage-Smith-Sarah.png */,
-				DD8BD9E1148D1D660090F729 /* UserImage-Smith-Tom.png */,
-				3B19651C14EEAB970045F827 /* C32-Smith-Henry.html */,
-				3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */,
-				3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */,
-				3B19651F14EEAB970045F827 /* C32-Smith-Tom.html */,
-				9464C5861476BDAE0076B991 /* C32-Smith-Johnny.html */,
-				3BE9A42814E42A3800F87B60 /* hs.json */,
-				940C0467152B6ADF00834416 /* hs-synthetic.json */,
-				3BE9A42914E42A3800F87B60 /* js.json */,
-				940C0468152B6ADF00834416 /* js-synthetic.json */,
-				3BE9A42A14E42A3800F87B60 /* ms.json */,
-				940C0469152B6ADF00834416 /* ms-synthetic.json */,
-				3BE9A42B14E42A3800F87B60 /* ss.json */,
-				940C046A152B6ADF00834416 /* ss-synthetic.json */,
-				3BE9A42C14E42A3800F87B60 /* ts.json */,
-				940C046B152B6ADF00834416 /* ts-synthetic.json */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -371,6 +358,33 @@
 				94AACF95153330A2005E3851 /* HRGridTableViewCell.m */,
 			);
 			name = "Grid View";
+			sourceTree = "<group>";
+		};
+		3BFBEE1D1534C0AE009EBA2D /* Patient Data */ = {
+			isa = PBXGroup;
+			children = (
+				DD8BD9DD148D1D660090F729 /* UserImage-Smith-Henry.png */,
+				DD8BD9DE148D1D660090F729 /* UserImage-Smith-Johnny.png */,
+				DD8BD9DF148D1D660090F729 /* UserImage-Smith-Molly.png */,
+				DD8BD9E0148D1D660090F729 /* UserImage-Smith-Sarah.png */,
+				DD8BD9E1148D1D660090F729 /* UserImage-Smith-Tom.png */,
+				3B19651C14EEAB970045F827 /* C32-Smith-Henry.html */,
+				3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */,
+				3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */,
+				3B19651F14EEAB970045F827 /* C32-Smith-Tom.html */,
+				9464C5861476BDAE0076B991 /* C32-Smith-Johnny.html */,
+				3BE9A42814E42A3800F87B60 /* hs.json */,
+				940C0467152B6ADF00834416 /* hs-synthetic.json */,
+				3BE9A42914E42A3800F87B60 /* js.json */,
+				940C0468152B6ADF00834416 /* js-synthetic.json */,
+				3BE9A42A14E42A3800F87B60 /* ms.json */,
+				940C0469152B6ADF00834416 /* ms-synthetic.json */,
+				3BE9A42B14E42A3800F87B60 /* ss.json */,
+				940C046A152B6ADF00834416 /* ss-synthetic.json */,
+				3BE9A42C14E42A3800F87B60 /* ts.json */,
+				940C046B152B6ADF00834416 /* ts-synthetic.json */,
+			);
+			name = "Patient Data";
 			sourceTree = "<group>";
 		};
 		3BFE7A2014DADE2B0037738D /* pinview */ = {
@@ -452,13 +466,13 @@
 			children = (
 				3B19651414EE9DCB0045F827 /* Global */,
 				3B5ADF6314E1C5D50025E069 /* Core Data */,
-				9424C156147A9C95008BF5CE /* Categories */,
 				DD7037B114900E8A00F58A83 /* Models */,
 				947FCE4D14B4C7CB00C716FD /* Privacy Shield */,
 				DD8BD9EB148D2B270090F729 /* Root View */,
 				941DB0B31471B32D00A96B8B /* Supporting Files */,
 				944A2F2B1472C60600694816 /* Images */,
 				3BFBEE171534BD5A009EBA2D /* Grid View */,
+				9424C156147A9C95008BF5CE /* Categories */,
 			);
 			path = HReader;
 			sourceTree = "<group>";
@@ -466,6 +480,8 @@
 		941DB0B31471B32D00A96B8B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3BFBEE1D1534C0AE009EBA2D /* Patient Data */,
+				3B19651A14EEA6200045F827 /* Logo.png */,
 				3BFE7A2D14DAE5910037738D /* Icon-72.png */,
 				941DB0BE1471B32D00A96B8B /* MainStoryboard_iPhone.storyboard */,
 				941DB0C11471B32D00A96B8B /* MainStoryboard_iPad.storyboard */,
@@ -475,6 +491,7 @@
 				941DB0B81471B32D00A96B8B /* main.m */,
 				941DB0BA1471B32D00A96B8B /* HReader-Prefix.pch */,
 				3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */,
+				3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -661,7 +678,6 @@
 			children = (
 				94AEAE0714868BC200C005B2 /* HRRootViewController.h */,
 				94AEAE0814868BC200C005B2 /* HRRootViewController.m */,
-				3B19651A14EEA6200045F827 /* Logo.png */,
 				94689AD214967E0100E1FCA6 /* C32 */,
 				DD7037B014900E5900F58A83 /* Patient Swipe */,
 				94689AD314967E0600E1FCA6 /* About */,
@@ -822,6 +838,7 @@
 				940C046E152B6ADF00834416 /* ms-synthetic.json in Resources */,
 				940C046F152B6ADF00834416 /* ss-synthetic.json in Resources */,
 				940C0470152B6ADF00834416 /* ts-synthetic.json in Resources */,
+				3BFBEE1C1534BF32009EBA2D /* HReaderApplets.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -899,6 +916,7 @@
 				94334ACC152A249F00B4C904 /* HRKeyValueTableViewController.m in Sources */,
 				94AACF96153330A2005E3851 /* HRGridTableViewCell.m in Sources */,
 				94AACF9D15334A1D005E3851 /* HRGridTableView.m in Sources */,
+				3BFBEE1A1534BEAA009EBA2D /* HRAppletTile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

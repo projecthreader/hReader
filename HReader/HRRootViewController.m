@@ -32,9 +32,6 @@ static int HRRootViewControllerTitleContext;
 
 @implementation HRRootViewController
 
-@synthesize C32ButtonItem           = __C32ButtonItem;
-@synthesize aboutBarButtonItem      = __aboutBarButtonItem;
-@synthesize toolsBarButtonItem      = __toolsBarButtonItem;
 @synthesize visibleViewController   = __visibleViewController;
 @synthesize segmentedControl        = __segmentedControl;
 @synthesize lastUpdatedLabel        = __lastUpdatedLabel;
@@ -47,20 +44,20 @@ static int HRRootViewControllerTitleContext;
         
         // vars
         id controller;
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
         
         // create child view controllers
-        controller = [[HRPatientSummaryViewController alloc] initWithNibName:nil bundle:nil];
+        controller = [storyboard instantiateViewControllerWithIdentifier:@"SummaryViewController"];
         [self addChildViewController:controller];
         controller = [[HRTimelineViewController alloc] initWithNibName:nil bundle:nil];
         [self addChildViewController:controller];
         controller = [[HRMessagesViewController alloc] initWithNibName:nil bundle:nil];
         [self addChildViewController:controller];
-        controller = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil] instantiateViewControllerWithIdentifier:@"DoctorsViewController"];
+        controller = [storyboard instantiateViewControllerWithIdentifier:@"DoctorsViewController"];
         [self addChildViewController:controller];
         
         // register observers
         [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//            [obj didMoveToParentViewController:self];
             NSAssert([obj title], @"Child view controllers must have a title");
             [obj
              addObserver:self
@@ -72,19 +69,19 @@ static int HRRootViewControllerTitleContext;
     }
     return self;
 }
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [obj removeObserver:self forKeyPath:@"title"];
     }];
 }
-//- (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers {
-//    return NO;
-//}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [__actionSheet dismissWithClickedButtonIndex:__actionSheet.cancelButtonIndex animated:NO];
     [TestFlight passCheckpoint:segue.identifier];
 }
+
 - (void)setVisibleViewController:(UIViewController *)controller {
 
     controller.view.frame = self.view.bounds;
@@ -124,10 +121,10 @@ static int HRRootViewControllerTitleContext;
     
     // configure toolbar
     {
-        UIBarButtonItem *flexible = [[UIBarButtonItem alloc]
-                                      initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                      target:nil
-                                      action:nil];
+//        UIBarButtonItem *flexible = [[UIBarButtonItem alloc]
+//                                      initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+//                                      target:nil
+//                                      action:nil];
 //        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0 , 0.0, 800.0, 30.0)];
 //        label.textAlignment = UITextAlignmentCenter;
 //        label.shadowColor = [UIColor whiteColor];
@@ -140,7 +137,7 @@ static int HRRootViewControllerTitleContext;
 //                           alpha:1.0];
 //        label.backgroundColor = [UIColor clearColor];
 //        UIBarButtonItem *labelItem = [[UIBarButtonItem alloc] initWithCustomView:label];
-        self.toolbarItems = [NSArray arrayWithObjects:flexible, self.toolsBarButtonItem, self.aboutBarButtonItem, nil];
+//        self.toolbarItems = [NSArray arrayWithObjects:flexible, self.toolsBarButtonItem, self.aboutBarButtonItem, nil];
 //        self.lastUpdatedLabel = label;
     }
     
@@ -193,13 +190,10 @@ static int HRRootViewControllerTitleContext;
     
 }
 - (void)viewDidUnload {
-    [self setAboutBarButtonItem:nil];
-    [self setToolsBarButtonItem:nil];
-    [super viewDidUnload];
     self.lastUpdatedLabel = nil;
     self.segmentedControl = nil;
     self.visibleViewController = nil;
-    self.C32ButtonItem = nil;
+    [super viewDidUnload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
@@ -213,21 +207,21 @@ static int HRRootViewControllerTitleContext;
     self.visibleViewController = [self.childViewControllers objectAtIndex:index];
 }
 
-- (IBAction)toolsButtonPressed:(id)sender {
-    if (__actionSheet == nil) {
-        __actionSheet = [[GCActionSheet alloc] initWithTitle:@"Tools"];
-        id __weak weakSelf = self;
-        [__actionSheet addButtonWithTitle:@"C32 HTML" block:^{
-            id __strong strongSelf = weakSelf;
-            [strongSelf performSegueWithIdentifier:@"C32HTMLSegue" sender:strongSelf];
-        }];
-        [__actionSheet setDidDismissBlock:^{
-            HRRootViewController * __strong strongSelf = weakSelf;
-            strongSelf->__actionSheet = nil;
-        }];
-        [__actionSheet showFromBarButtonItem:sender animated:YES];
-    }
-}
+//- (IBAction)toolsButtonPressed:(id)sender {
+//    if (__actionSheet == nil) {
+//        __actionSheet = [[GCActionSheet alloc] initWithTitle:@"Tools"];
+//        id __weak weakSelf = self;
+//        [__actionSheet addButtonWithTitle:@"C32 HTML" block:^{
+//            id __strong strongSelf = weakSelf;
+//            [strongSelf performSegueWithIdentifier:@"C32HTMLSegue" sender:strongSelf];
+//        }];
+//        [__actionSheet setDidDismissBlock:^{
+//            HRRootViewController * __strong strongSelf = weakSelf;
+//            strongSelf->__actionSheet = nil;
+//        }];
+//        [__actionSheet showFromBarButtonItem:sender animated:YES];
+//    }
+//}
 
 - (void)hideToolbarSheet {
     [__actionSheet dismissWithClickedButtonIndex:__actionSheet.cancelButtonIndex animated:NO];

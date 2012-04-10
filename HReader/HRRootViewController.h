@@ -10,10 +10,4 @@
 
 @interface HRRootViewController : UIViewController
 
-@property (nonatomic, strong) IBOutlet UIBarButtonItem *C32ButtonItem;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *aboutBarButtonItem;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *toolsBarButtonItem;
-
-- (IBAction)toolsButtonPressed:(id)sender;
-
 @end

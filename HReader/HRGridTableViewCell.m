@@ -42,7 +42,6 @@
     CGFloat totalColumnWidth = self.contentView.bounds.size.width - ((self.numberOfColumns + 1) * self.horizontalPadding);
     CGFloat columnWidth = totalColumnWidth / self.numberOfColumns;
     CGFloat rowHeight = self.contentView.bounds.size.height - self.verticalPadding;
-    NSLog(@"%@", NSStringFromCGRect(self.contentView.frame));
     [self.contentView.subviews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
         view.frame = CGRectMake(self.horizontalPadding + ((self.horizontalPadding + columnWidth) * idx), 0, columnWidth, rowHeight);
     }];

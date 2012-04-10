@@ -8,16 +8,30 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRPatientSummaryViewController : UIViewController <UIGestureRecognizerDelegate>
+#import "HRGridTableView.h"
+
+@interface HRPatientSummaryViewController : UIViewController <HRGridTableViewDelegate>
 
 // popover
 @property (nonatomic, strong) UIPopoverController *popoverController;
 
-// container and utility views
+// container views
+@property (nonatomic, strong) IBOutlet HRGridTableView *gridView;
 @property (retain, nonatomic) IBOutlet UIView *headerView;
-@property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, retain) IBOutlet UIView *contentView;
-@property (nonatomic, retain) IBOutlet UIView *footerShadowView;
+
+// key labels
+@property (retain, nonatomic) IBOutlet UILabel *patientNameLabel;
+@property (retain, nonatomic) IBOutlet UILabel *dateOfBirthLabel;
+@property (retain, nonatomic) IBOutlet UILabel *dateOfBirthTitleLabel;
+@property (retain, nonatomic) IBOutlet UILabel *recentConditionsDateLabel;
+@property (retain, nonatomic) IBOutlet UILabel *recentConditionsLabel;
+@property (retain, nonatomic) IBOutlet UILabel *chronicConditionsLabel;
+@property (retain, nonatomic) IBOutlet UILabel *allergiesLabel;
+@property (retain, nonatomic) IBOutlet UILabel *followUpAppointmentLabel;
+@property (retain, nonatomic) IBOutlet UILabel *medicationRefillLabel;
+@property (retain, nonatomic) IBOutlet UILabel *upcomingEventsLabel;
+@property (retain, nonatomic) IBOutlet UILabel *planOfCareLabel;
+
 
 // collection of all labels
 @property (retain, nonatomic) IBOutletCollection(UILabel) NSArray *labels;
@@ -29,19 +43,13 @@
 // vital view collection
 @property (retain, nonatomic) IBOutletCollection(UIView) NSArray *vitalViews;
 
-@property (retain, nonatomic) IBOutlet UILabel *patientName;
 
-@property (retain, nonatomic) IBOutlet UILabel *dobLabel;
-@property (retain, nonatomic) IBOutlet UILabel *dobTitleLabel;
 
-@property (retain, nonatomic) IBOutlet UILabel *allergiesLabel;
-@property (retain, nonatomic) IBOutlet UILabel *recentConditionsDateLabel;
-@property (retain, nonatomic) IBOutlet UILabel *recentConditionsLabel;
-@property (retain, nonatomic) IBOutlet UILabel *chronicConditionsLabel;
-@property (retain, nonatomic) IBOutlet UILabel *upcomingEventsLabel;
-@property (retain, nonatomic) IBOutlet UILabel *planOfCareLabel;
-@property (retain, nonatomic) IBOutlet UILabel *followUpAppointmentLabel;
-@property (retain, nonatomic) IBOutlet UILabel *medicationRefillLabel;
+
+
+
+
+
 
 @property (retain, nonatomic) IBOutlet UILabel *recentEncountersDateLabel;
 @property (retain, nonatomic) IBOutlet UILabel *recentEncountersTypeLabel;
