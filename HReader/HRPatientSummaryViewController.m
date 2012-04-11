@@ -17,7 +17,6 @@
 #import "HRVital.h"
 #import "HRMEntry.h"
 #import "HRBMI.h"
-#import "HRKeyValueTableViewController.h"
 
 #import "NSDate+FormattedDate.h"
 #import "NSArray+Collect.h"
@@ -32,8 +31,6 @@
 @end
 
 @implementation HRPatientSummaryViewController
-
-@synthesize popoverController = __popoverController;
 
 @synthesize gridView = __gridView;
 @synthesize headerView = __headerView;
@@ -135,7 +132,7 @@
 //        NSArray *providers = [[HRMPatient selectedPatient] valueForKeyPath:@"syntheticInfo.providers"];
         
         NSDictionary *syntheticInfo = patient.syntheticInfo;
-        NSString *noData = @"Not in PDS";        
+//        NSString *noData = @"Not in PDS";        
 
         // synthetic info
         
@@ -319,10 +316,6 @@
 
 - (void)viewDidUnload {
     
-    // popover
-    [self.popoverController dismissPopoverAnimated:NO];
-    self.popoverController = nil;
-    
     // release other outlets
     self.headerView = nil;
     self.gridView = nil;
@@ -395,6 +388,12 @@
     return [__gridViews subarrayWithRange:range];
 }
 
+- (void)gridView:(HRGridTableView *)gridView didSelectViewAtIndex:(NSInteger)index {
+    HRAppletTile *tile = [__gridViews objectAtIndex:index];
+    CGRect rect = [self.view convertRect:tile.bounds fromView:tile];
+    [tile didReceiveTap:self inRect:rect];
+}
+
 #pragma mark - notifications
 
 - (void)patientChanged:(HRPatientSwipeControl *)control {
@@ -413,29 +412,6 @@
 
 #pragma mark - tap gestures
 
-//- (void)vitalViewTapGesture:(UITapGestureRecognizer *)tap {
-//    if (tap.state == UIGestureRecognizerStateRecognized) {
-//        HRVitalView *view = (HRVitalView *)tap.view;
-//        HRVital *vital = view.vital;
-//        UITableViewController *controller = [[[HRKeyValueTableViewController alloc] initWithDataPoints:[vital dataPoints]] autorelease];
-//        controller.title = vital.title;
-//        UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:controller] autorelease];
-//        if (self.popoverController == nil) {
-//            self.popoverController = [[[UIPopoverController alloc] initWithContentViewController:navController] autorelease];
-//        }
-//        else {
-//            self.popoverController.contentViewController = navController;
-//        }
-//        CGRect showRect = [self.view convertRect:view.frame fromView:view];
-//        [self.popoverController
-//         presentPopoverFromRect:showRect
-//         inView:self.view
-//         permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-//        NSLog(@"Vital: %@", vital);
-//    }
-//
-//}
-
 - (void)toggleDateOfBirth:(UITapGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateRecognized) {
         if ([self.dateOfBirthTitleLabel.text isEqualToString:@"DOB"]) {
@@ -451,7 +427,7 @@
 #pragma mark - notifs
 
 - (void)didEnterBackground:(NSNotification *)notif {
-    [self.popoverController dismissPopoverAnimated:NO];
+//    [self.popoverController dismissPopoverAnimated:NO];
 }
 
 #pragma mark - private

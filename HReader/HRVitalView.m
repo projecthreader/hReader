@@ -8,6 +8,7 @@
 
 #import "HRVitalView.h"
 #import "HRVital.h"
+#import "HRKeyValueTableViewController.h"
 
 #import "ASBSparkLineView.h"
 
@@ -15,7 +16,10 @@
 
 #import "NSDate+FormattedDate.h"
 
-@implementation HRVitalView
+@implementation HRVitalView {
+@private
+    UIPopoverController * __strong __popoverController;
+}
 
 @synthesize vital           = __vital;
 @synthesize leftLabel       = __leftLabel;
@@ -76,6 +80,31 @@
         self.resultLabel.textColor = [HRConfig redColor];
     }
     
+}
+
+#pragma mark - gestures
+
+- (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect {
+    UITableViewController *controller = [[HRKeyValueTableViewController alloc] initWithDataPoints:[self.vital dataPoints]];
+    controller.title = self.vital.title;
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+    if (__popoverController == nil) {
+        __popoverController = [[UIPopoverController alloc] initWithContentViewController:navController];
+    }
+    else {
+        __popoverController.contentViewController = navController;
+    }
+    [__popoverController
+     presentPopoverFromRect:rect
+     inView:sender.view
+     permittedArrowDirections:UIPopoverArrowDirectionAny
+     animated:YES];
+}
+
+#pragma mark - notifs
+
+- (void)didEnterBackground:(NSNotification *)notif {
+    [__popoverController dismissPopoverAnimated:NO];
 }
 
 @end

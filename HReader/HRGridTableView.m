@@ -27,7 +27,7 @@
 
 - (void)commonInit {
     __numberOfColumns = 3;
-    UIGestureRecognizer *tapGesture = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveTap:)];
+    UIGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveTap:)];
     [self addGestureRecognizer:tapGesture];
     self.delegate = self;
     self.dataSource = self;

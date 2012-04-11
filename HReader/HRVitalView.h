@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HRAppletTile.h"
 
 @class HRVital;
 @class ASBSparkLineView;
 @class HRVital;
 
-@interface HRVitalView : UIView
+@interface HRVitalView : HRAppletTile
 
 @property (retain, nonatomic) HRVital *vital;
 

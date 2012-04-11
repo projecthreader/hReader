@@ -10,22 +10,35 @@
 
 @implementation HRAppletTile
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
+#pragma mark - view lifecycle
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        // Initialization code
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(didEnterBackground:)
+         name:UIApplicationDidEnterBackgroundNotification
+         object:nil];
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-*/
+
+
+#pragma mark - gestures
+
+- (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect {
+    NSLog(@"%@: Should be implemented", _cmd);
+}
+
+#pragma mark - notifs
+
+- (void)didEnterBackground:(NSNotification *)notif {
+    NSLog(@"%@: Should be implemented", _cmd);
+}
 
 @end

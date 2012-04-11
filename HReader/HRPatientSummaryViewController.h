@@ -12,9 +12,6 @@
 
 @interface HRPatientSummaryViewController : UIViewController <HRGridTableViewDelegate>
 
-// popover
-@property (nonatomic, strong) UIPopoverController *popoverController;
-
 // container views
 @property (nonatomic, strong) IBOutlet HRGridTableView *gridView;
 @property (retain, nonatomic) IBOutlet UIView *headerView;

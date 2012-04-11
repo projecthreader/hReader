@@ -26,7 +26,7 @@
 		3BE9A42F14E42A3800F87B60 /* ms.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9A42A14E42A3800F87B60 /* ms.json */; };
 		3BE9A43014E42A3800F87B60 /* ss.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9A42B14E42A3800F87B60 /* ss.json */; };
 		3BE9A43114E42A3800F87B60 /* ts.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9A42C14E42A3800F87B60 /* ts.json */; };
-		3BFBEE1A1534BEAA009EBA2D /* HRAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */; };
+		3BFBEE1A1534BEAA009EBA2D /* HRAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BFBEE1C1534BF32009EBA2D /* HReaderApplets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */; };
 		3BFE7A2714DADE2B0037738D /* PINCodeBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2114DADE2B0037738D /* PINCodeBackground.png */; };
 		3BFE7A2814DADE2B0037738D /* PINCodeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2214DADE2B0037738D /* PINCodeButton.png */; };

@@ -1,3 +1,12 @@
+# 2012-4-11
+
+- Moved vital views to applet tiles
+- Setup api to pass in tap events to applet tiles
+
+# 2012-4-10
+
+- Started implementation of applet loading
+
 # 2012-4-09
 
 - Change red color in the app
