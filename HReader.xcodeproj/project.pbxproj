@@ -85,9 +85,12 @@
 		947FCE4B14B4C76700C716FD /* HRPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947FCE4914B4C76700C716FD /* HRPrivacyViewController.m */; };
 		947FCE4C14B4C76700C716FD /* HRPrivacyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE4A14B4C76700C716FD /* HRPrivacyViewController.xib */; };
 		947FCE5914B4D7E400C716FD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947FCE5814B4D7E400C716FD /* AudioToolbox.framework */; };
+		9492CA531535F90E009DE7F2 /* tbi-fullscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 9492CA511535F90E009DE7F2 /* tbi-fullscreen.png */; };
+		9492CA541535F90E009DE7F2 /* tbi-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 9492CA521535F90E009DE7F2 /* tbi-tile.png */; };
+		94A6B8C51535F6940012E2B6 /* HRImageAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A6B8C41535F6940012E2B6 /* HRImageAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94AACF96153330A2005E3851 /* HRGridTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AACF95153330A2005E3851 /* HRGridTableViewCell.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94AACF9D15334A1D005E3851 /* HRGridTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AACF9C15334A1D005E3851 /* HRGridTableView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		94AACFAE1535D05E005E3851 /* HRMedicationsAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AACFAD1535D05E005E3851 /* HRMedicationsAppletTile.m */; };
+		94AACFAE1535D05E005E3851 /* HRMedicationsAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AACFAD1535D05E005E3851 /* HRMedicationsAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94AACFB01535D080005E3851 /* HRMedicationsAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AACFAF1535D080005E3851 /* HRMedicationsAppletTile.xib */; };
 		94AEA7401529F2DC00D9C67D /* GCActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEA73F1529F2DC00D9C67D /* GCActionSheet.m */; };
 		94AEAE0914868BC200C005B2 /* HRRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0814868BC200C005B2 /* HRRootViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -237,6 +240,10 @@
 		947FCE4914B4C76700C716FD /* HRPrivacyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPrivacyViewController.m; sourceTree = "<group>"; };
 		947FCE4A14B4C76700C716FD /* HRPrivacyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPrivacyViewController.xib; sourceTree = "<group>"; };
 		947FCE5814B4D7E400C716FD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		9492CA511535F90E009DE7F2 /* tbi-fullscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tbi-fullscreen.png"; sourceTree = "<group>"; };
+		9492CA521535F90E009DE7F2 /* tbi-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tbi-tile.png"; sourceTree = "<group>"; };
+		94A6B8C31535F6940012E2B6 /* HRImageAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRImageAppletTile.h; sourceTree = "<group>"; };
+		94A6B8C41535F6940012E2B6 /* HRImageAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRImageAppletTile.m; sourceTree = "<group>"; };
 		94AACF94153330A2005E3851 /* HRGridTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRGridTableViewCell.h; sourceTree = "<group>"; };
 		94AACF95153330A2005E3851 /* HRGridTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRGridTableViewCell.m; sourceTree = "<group>"; };
 		94AACF9B15334A1C005E3851 /* HRGridTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRGridTableView.h; sourceTree = "<group>"; };
@@ -477,7 +484,7 @@
 				3B5ADF6314E1C5D50025E069 /* Core Data */,
 				DD7037B114900E8A00F58A83 /* Models */,
 				947FCE4D14B4C7CB00C716FD /* Privacy Shield */,
-				94AACFAB1535CFEE005E3851 /* System Applets */,
+				9492CA4F1535F8EC009DE7F2 /* System Applets */,
 				DD8BD9EB148D2B270090F729 /* Root View */,
 				941DB0B31471B32D00A96B8B /* Supporting Files */,
 				944A2F2B1472C60600694816 /* Images */,
@@ -637,7 +644,7 @@
 			name = "Privacy Shield";
 			sourceTree = "<group>";
 		};
-		94AACFAB1535CFEE005E3851 /* System Applets */ = {
+		9492CA4F1535F8EC009DE7F2 /* System Applets */ = {
 			isa = PBXGroup;
 			children = (
 				941F253D14E2EC5D0077D6D1 /* HRVitalView.h */,
@@ -646,8 +653,20 @@
 				94AACFAC1535D05E005E3851 /* HRMedicationsAppletTile.h */,
 				94AACFAD1535D05E005E3851 /* HRMedicationsAppletTile.m */,
 				94AACFAF1535D080005E3851 /* HRMedicationsAppletTile.xib */,
+				94A6B8C31535F6940012E2B6 /* HRImageAppletTile.h */,
+				94A6B8C41535F6940012E2B6 /* HRImageAppletTile.m */,
+				94AACFAB1535CFEE005E3851 /* Images */,
 			);
 			name = "System Applets";
+			sourceTree = "<group>";
+		};
+		94AACFAB1535CFEE005E3851 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				9492CA511535F90E009DE7F2 /* tbi-fullscreen.png */,
+				9492CA521535F90E009DE7F2 /* tbi-tile.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		94BB032E149BB398009B2FCC /* Passcode Warning */ = {
@@ -860,6 +879,8 @@
 				940C0470152B6ADF00834416 /* ts-synthetic.json in Resources */,
 				3BFBEE1C1534BF32009EBA2D /* HReaderApplets.plist in Resources */,
 				94AACFB01535D080005E3851 /* HRMedicationsAppletTile.xib in Resources */,
+				9492CA531535F90E009DE7F2 /* tbi-fullscreen.png in Resources */,
+				9492CA541535F90E009DE7F2 /* tbi-tile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,6 +960,7 @@
 				94AACF9D15334A1D005E3851 /* HRGridTableView.m in Sources */,
 				3BFBEE1A1534BEAA009EBA2D /* HRAppletTile.m in Sources */,
 				94AACFAE1535D05E005E3851 /* HRMedicationsAppletTile.m in Sources */,
+				94A6B8C51535F6940012E2B6 /* HRImageAppletTile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

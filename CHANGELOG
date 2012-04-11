@@ -3,6 +3,8 @@
 - Setup api to pass in tap events to applet tiles
 - Moved vital views to be an applet
 - Moved medications to be an applet
+- Added mockup of TBI tracker
+- Fixed enterprise profile issue
 
 # 2012-4-10
 

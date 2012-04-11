@@ -179,6 +179,7 @@ static int HRRootViewControllerTitleContext;
     {
         id controller = [self.childViewControllers objectAtIndex:0];
         __visibleViewController = controller;
+        self.title = __visibleViewController.title;
         [controller view].frame = self.view.bounds;
         [controller view].autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
         [self.view addSubview:[controller view]];

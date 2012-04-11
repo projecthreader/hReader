@@ -18,6 +18,7 @@
 #import "HRMEntry.h"
 #import "HRBMI.h"
 #import "HRMedicationsAppletTile.h"
+#import "HRImageAppletTile.h"
 
 #import "NSDate+FormattedDate.h"
 #import "NSArray+Collect.h"
@@ -128,6 +129,13 @@
             medicationsTile.medications = [patient medications];
             [views addObject:medicationsTile];
 
+        }
+        
+        // tbi
+        {
+            HRImageAppletTile *tbiTile = [HRImageAppletTile tile];
+            [tbiTile setTitle:@"TBI Tracker" tileImage:[UIImage imageNamed:@"tbi-tile"] fullScreenImage:[UIImage imageNamed:@"tbi-fullscreen"]];
+            [views addObject:tbiTile];
         }
         
         // save and reload
