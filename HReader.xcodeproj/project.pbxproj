@@ -101,6 +101,7 @@
 		94EBD55114FE7A6200A3AF66 /* ASBSparkLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EBD55014FE7A6200A3AF66 /* ASBSparkLineView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94F4CB611507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F4CB601507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m */; };
 		94F4CB651507E87E00EFEA43 /* PINCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F4CB641507E87E00EFEA43 /* PINCodeTextField.m */; };
+		94F871F41535D9F60018AF13 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F871F31535D9F60018AF13 /* libz.dylib */; };
 		DD124DAE148D3EF300E23A44 /* Doctor.png in Resources */ = {isa = PBXBuildFile; fileRef = DD124DAD148D3EF300E23A44 /* Doctor.png */; };
 		DD5597C114897DE2006A0D1D /* HRDoctorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5597BF14897DE2006A0D1D /* HRDoctorsViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DD5597C214897DE2006A0D1D /* HRDoctorsViewController_old.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5597C014897DE2006A0D1D /* HRDoctorsViewController_old.xib */; };
@@ -266,6 +267,7 @@
 		94F4CB601507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINSecurityQuestionsViewController.m; sourceTree = "<group>"; };
 		94F4CB631507E87E00EFEA43 /* PINCodeTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINCodeTextField.h; sourceTree = "<group>"; };
 		94F4CB641507E87E00EFEA43 /* PINCodeTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINCodeTextField.m; sourceTree = "<group>"; };
+		94F871F31535D9F60018AF13 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DD124DAD148D3EF300E23A44 /* Doctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Doctor.png; sourceTree = "<group>"; };
 		DD5597BE14897DE2006A0D1D /* HRDoctorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRDoctorsViewController.h; sourceTree = "<group>"; };
 		DD5597BF14897DE2006A0D1D /* HRDoctorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRDoctorsViewController.m; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94F871F41535D9F60018AF13 /* libz.dylib in Frameworks */,
 				3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */,
 				3B04A56914E06A3A00AD91F9 /* Security.framework in Frameworks */,
 				947FCE5914B4D7E400C716FD /* AudioToolbox.framework in Frameworks */,
@@ -436,6 +439,7 @@
 		941DB09D1471B32D00A96B8B = {
 			isa = PBXGroup;
 			children = (
+				94F871F31535D9F60018AF13 /* libz.dylib */,
 				94689ABC14964BBF00E1FCA6 /* Vendor */,
 				94026FB314B4A8A600F40185 /* timeline */,
 				941DB0B21471B32D00A96B8B /* HReader */,
@@ -997,7 +1001,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
@@ -1092,7 +1095,7 @@
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D9D58216-E51B-4F43-85F5-9A06A83122ED";
+				PROVISIONING_PROFILE = "DE9B5164-7944-4EFB-AD16-72F85179D1B9";
 				STRIP_INSTALLED_PRODUCT = NO;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
