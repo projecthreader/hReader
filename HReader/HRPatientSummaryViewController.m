@@ -272,11 +272,6 @@
                                     action:@selector(patientChanged:)];
     [self.headerView addSubview:swipe];
     
-    // configure grid view
-    self.gridView.numberOfColumns = 3;
-    self.gridView.horizontalPadding = 34.0;
-    self.gridView.verticalPadding = 42.0;
-    
     // header shadow view
     CALayer *layer = self.headerView.layer;
     layer.shadowColor = [[UIColor blackColor] CGColor];
