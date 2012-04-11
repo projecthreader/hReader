@@ -8,28 +8,16 @@
 
 #import "HRImageAppletTile.h"
 
-@implementation HRImageAppletTile {
-    NSString * __strong __title;
-    UIImage * __strong __tileImage;
-    UIImage * __strong __fullScreenImage;
-}
-
-#pragma mark - class methods
-
-+ (HRAppletTile *)tile {
-    return [[self alloc] init];
-}
+@implementation HRImageAppletTile
 
 #pragma mark object methods
 
-- (void)setTitle:(NSString *)title tileImage:(UIImage *)tileImage fullScreenImage:(UIImage *)fullScreenImage {
-    __title = [title copy];
-    __tileImage = tileImage;
-    __fullScreenImage = fullScreenImage;
+- (void)tileDidLoad {
+    [super tileDidLoad];
     
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:__tileImage];
+    UIImage *tileImage = [UIImage imageNamed:[self.userInfo objectForKey:@"tile_image"]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:tileImage];
     imageView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
     imageView.frame = self.bounds;
     [self addSubview:imageView];
@@ -39,8 +27,9 @@
 
 - (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect {
     UIViewController *controller = [[UIViewController alloc] init];
-    controller.title = __title;
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:__fullScreenImage];
+    controller.title = [self.userInfo objectForKey:@"display_name"];
+    UIImage *fullScreenImage = [UIImage imageNamed:[self.userInfo objectForKey:@"fullscreen_image"]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:fullScreenImage];
     imageView.frame = controller.view.bounds;
     imageView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
     [controller.view addSubview:imageView];

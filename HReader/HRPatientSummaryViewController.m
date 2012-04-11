@@ -17,7 +17,6 @@
 #import "HRVital.h"
 #import "HRMEntry.h"
 #import "HRBMI.h"
-#import "HRMedicationsAppletTile.h"
 #import "HRImageAppletTile.h"
 
 #import "NSDate+FormattedDate.h"
@@ -108,35 +107,36 @@
         // create container
         NSMutableArray *views = [NSMutableArray array];
         
-        // vitals
-        {
-            NSDictionary *vitals = [patient vitalSignsGroupedByDescription];
-            [vitals enumerateKeysAndObjectsUsingBlock:^(NSString *type, NSArray *entries, BOOL *stop) {
-                HRVitalView *view = [HRVitalView tile];
-                if ([type isEqualToString:@"BMI"]) {
-                    view.vital = [[HRBMI alloc] initWithEntries:entries];
-                }
-                else  {
-                    view.vital = [[HRVital alloc] initWithEntries:entries];
-                }
-                [views addObject:view];
-            }];
-        }
-        
-        // medications
-        {
-            HRMedicationsAppletTile *medicationsTile = [HRMedicationsAppletTile tile];
-            medicationsTile.medications = [patient medications];
-            [views addObject:medicationsTile];
-
-        }
-        
-        // tbi
-        {
-            HRImageAppletTile *tbiTile = [HRImageAppletTile tile];
-            [tbiTile setTitle:@"TBI Tracker" tileImage:[UIImage imageNamed:@"tbi-tile"] fullScreenImage:[UIImage imageNamed:@"tbi-fullscreen"]];
-            [views addObject:tbiTile];
-        }
+        // load from plist -- in the future load from the patient
+        NSURL *URL = [[NSBundle mainBundle] URLForResource:@"HReaderApplets" withExtension:@"plist"];
+        NSArray *applets = [NSArray arrayWithContentsOfURL:URL];
+        [applets enumerateObjectsUsingBlock:^(NSDictionary *dictionary, NSUInteger index, BOOL *stop) {
+            NSString *identifier = [dictionary objectForKey:@"identifier"];
+            
+            // vitals
+            if ([identifier isEqualToString:@"org.mitre.hreader.vitals"]) {
+                NSDictionary *vitals = [patient vitalSignsGroupedByDescription];
+                [vitals enumerateKeysAndObjectsUsingBlock:^(NSString *type, NSArray *entries, BOOL *stop) {
+                    HRVitalView *view = [HRVitalView tileWithPatient:patient userInfo:dictionary];
+                    if ([type isEqualToString:@"BMI"]) {
+                        view.vital = [[HRBMI alloc] initWithEntries:entries];
+                    }
+                    else  {
+                        view.vital = [[HRVital alloc] initWithEntries:entries];
+                    }
+                    [views addObject:view];
+                }];
+            }
+            
+            // others
+            else {
+                Class c = NSClassFromString([dictionary objectForKey:@"class_name"]);
+                HRAppletTile *tile = [c tileWithPatient:patient userInfo:dictionary];
+                tile.patient = patient;
+                [views addObject:tile];
+            }
+            
+        }];
         
         // save and reload
         __gridViews = views;
@@ -225,15 +225,15 @@
         
         
         // encounters
-        NSSortDescriptor *encounterSort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-        NSArray *encounters = [patient.encounters sortedArrayUsingDescriptors:[NSArray arrayWithObject:encounterSort]];
-        HRMEntry *encounter = [encounters lastObject];
-        self.recentEncountersDateLabel.text = [encounter.date mediumStyleDate];
-        self.recentEncountersDescriptionLabel.text = encounter.desc;
-        NSDictionary *codes = encounter.codes;
-        NSDictionary *codeType = [[codes allKeys] lastObject];
-        NSString *codeValues = [[codes objectForKey:codeType] componentsJoinedByString:@", "];
-        self.recentEncountersTypeLabel.text = [NSString stringWithFormat:@"%@ %@", codeType, codeValues];
+//        NSSortDescriptor *encounterSort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+//        NSArray *encounters = [patient.encounters sortedArrayUsingDescriptors:[NSArray arrayWithObject:encounterSort]];
+//        HRMEntry *encounter = [encounters lastObject];
+//        self.recentEncountersDateLabel.text = [encounter.date mediumStyleDate];
+//        self.recentEncountersDescriptionLabel.text = encounter.desc;
+//        NSDictionary *codes = encounter.codes;
+//        NSDictionary *codeType = [[codes allKeys] lastObject];
+//        NSString *codeValues = [[codes objectForKey:codeType] componentsJoinedByString:@", "];
+//        self.recentEncountersTypeLabel.text = [NSString stringWithFormat:@"%@ %@", codeType, codeValues];
         
 
         

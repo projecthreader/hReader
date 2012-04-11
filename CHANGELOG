@@ -3,8 +3,15 @@
 - Setup api to pass in tap events to applet tiles
 - Moved vital views to be an applet
 - Moved medications to be an applet
-- Added mockup of TBI tracker
+- Added mockup of TBI tracker tile
+- TBI Tracker tap pushes full screen view onto the stack
 - Fixed enterprise profile issue
+- Applets are now loaded dynamically from a plist file
+- Applet API automatically sets patient and user info dictionary for user defined values
+- Added immunizations applet
+- Added vitals applet
+- Added medications applet
+- Added recent encounters applet
 
 # 2012-4-10
 

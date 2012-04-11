@@ -7,6 +7,7 @@
 //
 
 #import "HRAppletTile.h"
+#import "HRMPatient.h"
 
 @interface HRAppletTile ()
 
@@ -16,10 +17,38 @@
 
 @implementation HRAppletTile
 
+@synthesize patient     = __patient;
+@synthesize userInfo    = __userInfo;
+
 #pragma mark - class methods
 
-+ (instancetype)tile {
-    return [[self alloc] init];
++ (instancetype)tileWithPatient:(HRMPatient *)patient userInfo:(NSDictionary *)userInfo {
+    HRAppletTile *tile = nil;
+    
+    // load the tile
+    NSString *nibName = [userInfo objectForKey:@"nib_name"];
+    if (nibName == nil) {
+        nibName = NSStringFromClass(self);
+    }
+    NSURL *nibURL = [[NSBundle mainBundle] URLForResource:nibName withExtension:@"nib"];
+    NSData *nibData = [NSData dataWithContentsOfURL:nibURL];
+    if (nibData) {
+        NSLog(@"Loading %@.nib for %@", nibName, NSStringFromClass(self));
+        UINib *nib = [UINib nibWithData:nibData bundle:nil];
+        tile = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
+    }
+    else {
+        NSLog(@"Loading %@ with no nib", NSStringFromClass(self));
+        tile = [[self alloc] init];
+    }
+    
+    // configure
+    tile.patient = patient;
+    tile.userInfo = userInfo;
+    
+    [tile tileDidLoad];
+    
+    return tile;
 }
 
 #pragma mark - object methods
@@ -53,6 +82,11 @@
      selector:@selector(didEnterBackground:)
      name:UIApplicationDidEnterBackgroundNotification
      object:nil];
+}
+
+# pragma mark - tile lifecycle
+
+- (void)tileDidLoad {
 }
 
 #pragma mark - gestures

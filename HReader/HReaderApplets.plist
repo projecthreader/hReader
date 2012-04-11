@@ -1,5 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+<array>
+	<dict>
+		<key>identifier</key>
+		<string>org.mitre.hreader.encounters</string>
+		<key>class_name</key>
+		<string>HREncountersAppletTile</string>
+		<key>display_name</key>
+		<string>Encounters</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>org.mitre.hreader.vitals</string>
+		<key>class_name</key>
+		<string>HRVitalView</string>
+		<key>display_name</key>
+		<string>Vital Signs</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>org.mitre.hreader.medications</string>
+		<key>class_name</key>
+		<string>HRMedicationsAppletTile</string>
+		<key>display_name</key>
+		<string>Medications</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>org.mitre.hreader.immunizations</string>
+		<key>class_name</key>
+		<string>HRImmunizationsAppletTile</string>
+		<key>display_name</key>
+		<string>Immunizations</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>org.mitre.hreader.image_applet.tbi</string>
+		<key>class_name</key>
+		<string>HRImageAppletTile</string>
+		<key>display_name</key>
+		<string>TBI Tracker</string>
+		<key>tile_image</key>
+		<string>tbi-tile</string>
+		<key>fullscreen_image</key>
+		<string>tbi-fullscreen</string>
+	</dict>
+</array>
 </plist>

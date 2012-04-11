@@ -8,32 +8,22 @@
 
 #import "HRMedicationsAppletTile.h"
 #import "HRMEntry.h"
+#import "HRMPatient.h"
 
 #import "NSArray+Collect.h"
 
 @implementation HRMedicationsAppletTile
 
-@synthesize medications         = __medications;
 @synthesize medicationLabels    = __medicationLabels;
 @synthesize dosageLabels        = __dosageLabels;
 
-#pragma mark - class methods
-
-
-+ (HRAppletTile *)tile {
-    UINib *nib = [UINib nibWithNibName:NSStringFromClass(self) bundle:nil];
-    return [[nib instantiateWithOwner:self options:nil] lastObject];
-}
 
 #pragma mark object methods
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-}
-
-- (void)setMedications:(NSArray *)medications {
-    __medications = medications;
+- (void)tileDidLoad {
+    [super tileDidLoad];
     
+    NSArray *medications = [self.patient medications];
     NSUInteger medicationsCount = [medications count];
     [[self.medicationLabels arraySortedByKey:@"tag"] enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
         if (idx < medicationsCount) {

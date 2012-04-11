@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class HRMPatient;
 /*
  
  
@@ -15,12 +17,25 @@
  */
 @interface HRAppletTile : UIView
 
+
+/*
+ 
+ 
+ */
+@property (strong, nonatomic) HRMPatient *patient;
+
+/*
+ 
+ 
+ */
+@property (strong, nonatomic) NSDictionary *userInfo;
+
 /*
  
  
  
  */
-+ (instancetype)tile;
++ (instancetype)tileWithPatient:(HRMPatient *)patient userInfo:(NSDictionary *)userInfo;
 
 /*
  
@@ -28,5 +43,13 @@
  
  */
 - (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect;
+
+
+/*
+ 
+ 
+ 
+ */
+- (void)tileDidLoad;
 
 @end

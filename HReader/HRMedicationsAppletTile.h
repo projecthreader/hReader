@@ -10,8 +10,6 @@
 
 @interface HRMedicationsAppletTile : HRAppletTile
 
-@property (strong, nonatomic) NSArray *medications;
-
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *medicationLabels;
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *dosageLabels;
 

@@ -1,5 +1,5 @@
 //
-//  HRImageAppletTile.h
+//  HRImmunizationsAppletTile.h
 //  HReader
 //
 //  Created by Marshall Huss on 4/11/12.
@@ -8,6 +8,8 @@
 
 #import "HRAppletTile.h"
 
-@interface HRImageAppletTile : HRAppletTile
+@interface HRImmunizationsAppletTile : HRAppletTile
+
+@property (retain, nonatomic) IBOutlet UILabel *upToDateLabel;
 
 @end

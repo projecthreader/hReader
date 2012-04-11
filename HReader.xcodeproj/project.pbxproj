@@ -87,6 +87,10 @@
 		947FCE5914B4D7E400C716FD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947FCE5814B4D7E400C716FD /* AudioToolbox.framework */; };
 		9492CA531535F90E009DE7F2 /* tbi-fullscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 9492CA511535F90E009DE7F2 /* tbi-fullscreen.png */; };
 		9492CA541535F90E009DE7F2 /* tbi-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 9492CA521535F90E009DE7F2 /* tbi-tile.png */; };
+		9492CA5715360527009DE7F2 /* HREncountersAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9492CA5615360526009DE7F2 /* HREncountersAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		9492CA591536053D009DE7F2 /* HREncountersAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9492CA581536053D009DE7F2 /* HREncountersAppletTile.xib */; };
+		9492CA5B15360D10009DE7F2 /* HRImmunizationsAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9492CA5A15360D10009DE7F2 /* HRImmunizationsAppletTile.xib */; };
+		9492CA5E15360D4C009DE7F2 /* HRImmunizationsAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9492CA5D15360D4B009DE7F2 /* HRImmunizationsAppletTile.m */; };
 		94A6B8C51535F6940012E2B6 /* HRImageAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A6B8C41535F6940012E2B6 /* HRImageAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94AACF96153330A2005E3851 /* HRGridTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AACF95153330A2005E3851 /* HRGridTableViewCell.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94AACF9D15334A1D005E3851 /* HRGridTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AACF9C15334A1D005E3851 /* HRGridTableView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -242,6 +246,12 @@
 		947FCE5814B4D7E400C716FD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9492CA511535F90E009DE7F2 /* tbi-fullscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tbi-fullscreen.png"; sourceTree = "<group>"; };
 		9492CA521535F90E009DE7F2 /* tbi-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tbi-tile.png"; sourceTree = "<group>"; };
+		9492CA5515360526009DE7F2 /* HREncountersAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HREncountersAppletTile.h; sourceTree = "<group>"; };
+		9492CA5615360526009DE7F2 /* HREncountersAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HREncountersAppletTile.m; sourceTree = "<group>"; };
+		9492CA581536053D009DE7F2 /* HREncountersAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HREncountersAppletTile.xib; sourceTree = "<group>"; };
+		9492CA5A15360D10009DE7F2 /* HRImmunizationsAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRImmunizationsAppletTile.xib; sourceTree = "<group>"; };
+		9492CA5C15360D4B009DE7F2 /* HRImmunizationsAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRImmunizationsAppletTile.h; sourceTree = "<group>"; };
+		9492CA5D15360D4B009DE7F2 /* HRImmunizationsAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRImmunizationsAppletTile.m; sourceTree = "<group>"; };
 		94A6B8C31535F6940012E2B6 /* HRImageAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRImageAppletTile.h; sourceTree = "<group>"; };
 		94A6B8C41535F6940012E2B6 /* HRImageAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRImageAppletTile.m; sourceTree = "<group>"; };
 		94AACF94153330A2005E3851 /* HRGridTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRGridTableViewCell.h; sourceTree = "<group>"; };
@@ -647,6 +657,7 @@
 		9492CA4F1535F8EC009DE7F2 /* System Applets */ = {
 			isa = PBXGroup;
 			children = (
+				94AACFAB1535CFEE005E3851 /* Images */,
 				941F253D14E2EC5D0077D6D1 /* HRVitalView.h */,
 				941F253E14E2EC5D0077D6D1 /* HRVitalView.m */,
 				941F254014E2EC7E0077D6D1 /* HRVitalView.xib */,
@@ -655,7 +666,12 @@
 				94AACFAF1535D080005E3851 /* HRMedicationsAppletTile.xib */,
 				94A6B8C31535F6940012E2B6 /* HRImageAppletTile.h */,
 				94A6B8C41535F6940012E2B6 /* HRImageAppletTile.m */,
-				94AACFAB1535CFEE005E3851 /* Images */,
+				9492CA5515360526009DE7F2 /* HREncountersAppletTile.h */,
+				9492CA5615360526009DE7F2 /* HREncountersAppletTile.m */,
+				9492CA581536053D009DE7F2 /* HREncountersAppletTile.xib */,
+				9492CA5C15360D4B009DE7F2 /* HRImmunizationsAppletTile.h */,
+				9492CA5D15360D4B009DE7F2 /* HRImmunizationsAppletTile.m */,
+				9492CA5A15360D10009DE7F2 /* HRImmunizationsAppletTile.xib */,
 			);
 			name = "System Applets";
 			sourceTree = "<group>";
@@ -881,6 +897,8 @@
 				94AACFB01535D080005E3851 /* HRMedicationsAppletTile.xib in Resources */,
 				9492CA531535F90E009DE7F2 /* tbi-fullscreen.png in Resources */,
 				9492CA541535F90E009DE7F2 /* tbi-tile.png in Resources */,
+				9492CA591536053D009DE7F2 /* HREncountersAppletTile.xib in Resources */,
+				9492CA5B15360D10009DE7F2 /* HRImmunizationsAppletTile.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -961,6 +979,8 @@
 				3BFBEE1A1534BEAA009EBA2D /* HRAppletTile.m in Sources */,
 				94AACFAE1535D05E005E3851 /* HRMedicationsAppletTile.m in Sources */,
 				94A6B8C51535F6940012E2B6 /* HRImageAppletTile.m in Sources */,
+				9492CA5715360527009DE7F2 /* HREncountersAppletTile.m in Sources */,
+				9492CA5E15360D4C009DE7F2 /* HRImmunizationsAppletTile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
