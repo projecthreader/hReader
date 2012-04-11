@@ -1,7 +1,8 @@
 # 2012-4-11
 
-- Moved vital views to applet tiles
 - Setup api to pass in tap events to applet tiles
+- Moved vital views to be an applet
+- Moved medications to be an applet
 
 # 2012-4-10
 

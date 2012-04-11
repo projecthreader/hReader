@@ -20,6 +20,13 @@
  
  
  */
++ (instancetype)tile;
+
+/*
+ 
+ 
+ 
+ */
 - (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect;
 
 @end

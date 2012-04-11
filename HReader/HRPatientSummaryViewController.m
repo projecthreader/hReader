@@ -17,6 +17,7 @@
 #import "HRVital.h"
 #import "HRMEntry.h"
 #import "HRBMI.h"
+#import "HRMedicationsAppletTile.h"
 
 #import "NSDate+FormattedDate.h"
 #import "NSArray+Collect.h"
@@ -108,10 +109,9 @@
         
         // vitals
         {
-            UINib *nib = [UINib nibWithNibName:@"HRVitalView" bundle:nil];
             NSDictionary *vitals = [patient vitalSignsGroupedByDescription];
             [vitals enumerateKeysAndObjectsUsingBlock:^(NSString *type, NSArray *entries, BOOL *stop) {
-                HRVitalView *view = [[nib instantiateWithOwner:self options:nil] lastObject];
+                HRVitalView *view = [HRVitalView tile];
                 if ([type isEqualToString:@"BMI"]) {
                     view.vital = [[HRBMI alloc] initWithEntries:entries];
                 }
@@ -120,6 +120,14 @@
                 }
                 [views addObject:view];
             }];
+        }
+        
+        // medications
+        {
+            HRMedicationsAppletTile *medicationsTile = [HRMedicationsAppletTile tile];
+            medicationsTile.medications = [patient medications];
+            [views addObject:medicationsTile];
+
         }
         
         // save and reload
@@ -206,32 +214,7 @@
         
         
         // medications
-        NSArray *medications = [patient medications];
-        NSUInteger medicationsCount = [medications count];
-        [[self.medicationNameLabels arraySortedByKey:@"tag"] enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
-            if (idx < medicationsCount) {
-                HRMEntry *entry = [medications objectAtIndex:idx];
-                label.text = entry.desc;
-            }
-            else {
-                label.text = nil;
-            }
-        }];
-        [[self.medicationDosageLabels arraySortedByKey:@"tag"] enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
-            if (idx < medicationsCount) {
-                HRMEntry *entry = [medications objectAtIndex:idx];
-                NSDictionary *dose = entry.dose;
-                if ([dose count] > 0) {
-                    label.text = [dose description];   
-                }
-                else {
-                    label.text = @"";
-                }
-            }
-            else {
-                label.text = nil;
-            }
-        }];
+        
         
         // encounters
         NSSortDescriptor *encounterSort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];

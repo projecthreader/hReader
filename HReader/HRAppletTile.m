@@ -8,26 +8,52 @@
 
 #import "HRAppletTile.h"
 
+@interface HRAppletTile ()
+
+- (void)commonInit;
+
+@end
+
 @implementation HRAppletTile
 
-#pragma mark - view lifecycle
+#pragma mark - class methods
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
++ (instancetype)tile {
+    return [[self alloc] init];
+}
+
+#pragma mark - object methods
+
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
     if (self) {
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self
-         selector:@selector(didEnterBackground:)
-         name:UIApplicationDidEnterBackgroundNotification
-         object:nil];
+        [self commonInit];
+    }
+    return self;
+}
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        [self commonInit];
     }
     return self;
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:UIApplicationDidEnterBackgroundNotification
+     object:nil];
 }
 
+- (void)commonInit {
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(didEnterBackground:)
+     name:UIApplicationDidEnterBackgroundNotification
+     object:nil];
+}
 
 #pragma mark - gestures
 

@@ -31,6 +31,15 @@
 @synthesize unitsLabel      = __unitsLabel;
 @synthesize sparkLineView   = __sparkLineView;
 
+#pragma mark - class methods
+
++ (HRAppletTile *)tile {
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass(self) bundle:nil];
+    return [[nib instantiateWithOwner:self options:nil] lastObject];
+}
+
+#pragma mark object methods
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.sparkLineView.backgroundColor = [UIColor whiteColor];

@@ -87,6 +87,8 @@
 		947FCE5914B4D7E400C716FD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947FCE5814B4D7E400C716FD /* AudioToolbox.framework */; };
 		94AACF96153330A2005E3851 /* HRGridTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AACF95153330A2005E3851 /* HRGridTableViewCell.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94AACF9D15334A1D005E3851 /* HRGridTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AACF9C15334A1D005E3851 /* HRGridTableView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		94AACFAE1535D05E005E3851 /* HRMedicationsAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AACFAD1535D05E005E3851 /* HRMedicationsAppletTile.m */; };
+		94AACFB01535D080005E3851 /* HRMedicationsAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AACFAF1535D080005E3851 /* HRMedicationsAppletTile.xib */; };
 		94AEA7401529F2DC00D9C67D /* GCActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEA73F1529F2DC00D9C67D /* GCActionSheet.m */; };
 		94AEAE0914868BC200C005B2 /* HRRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0814868BC200C005B2 /* HRRootViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94AEAE10148690DA00C005B2 /* HRPatientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0E148690DA00C005B2 /* HRPatientSummaryViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -238,6 +240,9 @@
 		94AACF95153330A2005E3851 /* HRGridTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRGridTableViewCell.m; sourceTree = "<group>"; };
 		94AACF9B15334A1C005E3851 /* HRGridTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRGridTableView.h; sourceTree = "<group>"; };
 		94AACF9C15334A1D005E3851 /* HRGridTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRGridTableView.m; sourceTree = "<group>"; };
+		94AACFAC1535D05E005E3851 /* HRMedicationsAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMedicationsAppletTile.h; sourceTree = "<group>"; };
+		94AACFAD1535D05E005E3851 /* HRMedicationsAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMedicationsAppletTile.m; sourceTree = "<group>"; };
+		94AACFAF1535D080005E3851 /* HRMedicationsAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRMedicationsAppletTile.xib; sourceTree = "<group>"; };
 		94AEA73E1529F2DC00D9C67D /* GCActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCActionSheet.h; path = "vendor/guicocoa-common-code/GCActionSheet.h"; sourceTree = SOURCE_ROOT; };
 		94AEA73F1529F2DC00D9C67D /* GCActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCActionSheet.m; path = "vendor/guicocoa-common-code/GCActionSheet.m"; sourceTree = SOURCE_ROOT; };
 		94AEAE0714868BC200C005B2 /* HRRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRRootViewController.h; sourceTree = "<group>"; };
@@ -468,6 +473,7 @@
 				3B5ADF6314E1C5D50025E069 /* Core Data */,
 				DD7037B114900E8A00F58A83 /* Models */,
 				947FCE4D14B4C7CB00C716FD /* Privacy Shield */,
+				94AACFAB1535CFEE005E3851 /* System Applets */,
 				DD8BD9EB148D2B270090F729 /* Root View */,
 				941DB0B31471B32D00A96B8B /* Supporting Files */,
 				944A2F2B1472C60600694816 /* Images */,
@@ -627,6 +633,19 @@
 			name = "Privacy Shield";
 			sourceTree = "<group>";
 		};
+		94AACFAB1535CFEE005E3851 /* System Applets */ = {
+			isa = PBXGroup;
+			children = (
+				941F253D14E2EC5D0077D6D1 /* HRVitalView.h */,
+				941F253E14E2EC5D0077D6D1 /* HRVitalView.m */,
+				941F254014E2EC7E0077D6D1 /* HRVitalView.xib */,
+				94AACFAC1535D05E005E3851 /* HRMedicationsAppletTile.h */,
+				94AACFAD1535D05E005E3851 /* HRMedicationsAppletTile.m */,
+				94AACFAF1535D080005E3851 /* HRMedicationsAppletTile.xib */,
+			);
+			name = "System Applets";
+			sourceTree = "<group>";
+		};
 		94BB032E149BB398009B2FCC /* Passcode Warning */ = {
 			isa = PBXGroup;
 			children = (
@@ -696,9 +715,6 @@
 				94AEAE0D148690DA00C005B2 /* HRPatientSummaryViewController.h */,
 				94AEAE0E148690DA00C005B2 /* HRPatientSummaryViewController.m */,
 				94AEAE0F148690DA00C005B2 /* HRPatientSummaryViewController.xib */,
-				941F253D14E2EC5D0077D6D1 /* HRVitalView.h */,
-				941F253E14E2EC5D0077D6D1 /* HRVitalView.m */,
-				941F254014E2EC7E0077D6D1 /* HRVitalView.xib */,
 				94334ACA152A249F00B4C904 /* HRKeyValueTableViewController.h */,
 				94334ACB152A249F00B4C904 /* HRKeyValueTableViewController.m */,
 				940D3D3E14E0704E00FE41E6 /* Vitals */,
@@ -839,6 +855,7 @@
 				940C046F152B6ADF00834416 /* ss-synthetic.json in Resources */,
 				940C0470152B6ADF00834416 /* ts-synthetic.json in Resources */,
 				3BFBEE1C1534BF32009EBA2D /* HReaderApplets.plist in Resources */,
+				94AACFB01535D080005E3851 /* HRMedicationsAppletTile.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -917,6 +934,7 @@
 				94AACF96153330A2005E3851 /* HRGridTableViewCell.m in Sources */,
 				94AACF9D15334A1D005E3851 /* HRGridTableView.m in Sources */,
 				3BFBEE1A1534BEAA009EBA2D /* HRAppletTile.m in Sources */,
+				94AACFAE1535D05E005E3851 /* HRMedicationsAppletTile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
