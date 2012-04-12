@@ -37,7 +37,7 @@
  Access the patient that is being displayed.
  
  */
-- (HRMPatient *)patient;
+@property (nonatomic, readonly) HRMPatient *patient;
 
 /*
  
@@ -45,7 +45,7 @@
  HReaderApplets.plist
  
  */
-- (NSDictionary *)userInfo;
+@property (nonatomic, readonly) NSDictionary *userInfo;
 
 /*
  
