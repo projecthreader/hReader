@@ -9,16 +9,17 @@
 #import "HRAppletTile.h"
 #import "HRMPatient.h"
 
-@interface HRAppletTile ()
+@interface HRAppletTile () {
+@private
+    HRMPatient * __strong __patient;
+    NSDictionary * __strong __userInfo;
+}
 
 - (void)commonInit;
 
 @end
 
 @implementation HRAppletTile
-
-@synthesize patient     = __patient;
-@synthesize userInfo    = __userInfo;
 
 #pragma mark - class methods
 
@@ -43,9 +44,8 @@
     }
     
     // configure
-    tile.patient = patient;
-    tile.userInfo = userInfo;
-    
+    tile->__patient = patient;
+    tile->__userInfo = userInfo;
     [tile tileDidLoad];
     
     return tile;
@@ -79,26 +79,35 @@
 - (void)commonInit {
     [[NSNotificationCenter defaultCenter]
      addObserver:self
-     selector:@selector(didEnterBackground:)
+     selector:@selector(applicationDidEnterBackground)
      name:UIApplicationDidEnterBackgroundNotification
      object:nil];
+}
+
+- (HRMPatient *)patient {
+    return __patient;
+}
+
+- (NSDictionary *)userInfo {
+    return __userInfo;
 }
 
 # pragma mark - tile lifecycle
 
 - (void)tileDidLoad {
+    
 }
 
 #pragma mark - gestures
 
 - (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect {
-    NSLog(@"%@: Should be implemented", _cmd);
+    
 }
 
 #pragma mark - notifs
 
 - (void)didEnterBackground:(NSNotification *)notif {
-    NSLog(@"%@: Should be implemented", _cmd);
+    
 }
 
 @end
