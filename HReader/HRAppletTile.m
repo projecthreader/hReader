@@ -104,9 +104,9 @@
     
 }
 
-#pragma mark - notifs
+#pragma mark - notifications
 
-- (void)didEnterBackground:(NSNotification *)notif {
+- (void)applicationDidEnterBackground {
     
 }
 
