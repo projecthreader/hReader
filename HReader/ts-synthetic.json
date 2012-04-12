@@ -38,6 +38,7 @@
             "date": 1336050000,
             "medication": "Insulin Lispro"
           }
+        ]
       }
     ],
     
@@ -58,7 +59,7 @@
             "subject": "Blood work preparation",
             "from": "Dr. Sam Standings <sstandings@fakeemail.com>",
             "body": "Please make sure you fast for 8 hours before arriving for your blood work appointment."
-        },
+        }
     ],
     "providers": [
         {

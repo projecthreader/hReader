@@ -78,17 +78,8 @@
     self = [super initWithCoder:coder];
     if (self) {
         self.title = @"Summary";
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self
-         selector:@selector(didEnterBackground:)
-         name:UIApplicationDidEnterBackgroundNotification
-         object:nil];
     }
     return self;
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)reloadData {
@@ -107,22 +98,73 @@
     }
     
     // allergies
-    NSArray *allergies = patient.allergies;
-    NSUInteger allergiesCount = [allergies count];
-    self.allergiesLabel.textColor = [HRConfig redColor];
-    if (allergiesCount) {
-        NSMutableString *string = [[[allergies objectAtIndex:0] desc] mutableCopy];
-        if (allergiesCount > 1) {
-            [string appendFormat:@", %lu more", (unsigned long)allergiesCount];
+    {
+        NSArray *allergies = patient.allergies;
+        NSUInteger count = [allergies count];
+        //    self.allergiesLabel.textColor = [HRConfig redColor];
+        if (count) {
+            NSMutableString *string = [[[allergies objectAtIndex:0] desc] mutableCopy];
+            if (count > 1) {
+                [string appendFormat:@", %lu more", (unsigned long)(count - 1)];
+            }
+            if ([string length] > 0) {
+                self.allergiesLabel.text = string;
+            }
+            else {
+                self.allergiesLabel.text = @"None";
+            }
         }
-        if ([string length] > 0) {
-            self.allergiesLabel.text = string;
+        else { self.allergiesLabel.text = @"None"; }
+    }
+    
+    // chronic conditions
+    {
+        NSArray *conditions = [syntheticInfo objectForKey:@"chronic_conditions"];
+        NSUInteger count = [conditions count];
+        if (count) {
+            NSMutableString *string = [[conditions objectAtIndex:0] mutableCopy];
+            if (count > 1) {
+                [string appendFormat:@", %lu more", (unsigned long)(count - 1)];
+            }
+            if ([string length] > 0) {
+                self.chronicConditionsLabel.text = string;
+            }
+            else {
+                self.chronicConditionsLabel.text = @"None";
+            }
+        }
+        else { self.chronicConditionsLabel.text = @"None"; }
+    }
+    
+    // recent conditions
+    {
+        NSArray *conditions = patient.conditions;
+        if ([conditions count]) {
+            HRMEntry *condition = [conditions lastObject];
+            self.recentConditionsDateLabel.text = [condition.startDate mediumStyleDate];
+            self.recentConditionsLabel.text = condition.desc;
         }
         else {
-            self.allergiesLabel.text = @"None";
+            self.recentConditionsDateLabel.text = @"None";
+            self.recentConditionsLabel.text = nil;
         }
     }
-    else { self.allergiesLabel.text = @"None"; }
+    
+    // upcoming events
+    {
+        NSDictionary *event = [[syntheticInfo objectForKey:@"upcoming_events"] lastObject];
+        self.upcomingEventsLabel.text = [event objectForKey:@"title"];
+        self.planOfCareLabel.text = [event objectForKey:@"plan_of_care"];
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"follow_up_appointment_date"] doubleValue]];
+        self.followUpAppointmentLabel.text = [date mediumStyleDate];
+        NSDictionary *medication = [[event objectForKey:@"medication_refill"] lastObject];
+        if (medication) {
+            self.medicationRefillLabel.text = [medication objectForKey:@"medication"];
+        }
+        else {
+            self.medicationRefillLabel.text = @"None";
+        }
+    }
     
     // grid view
     {
@@ -173,18 +215,9 @@
     {
         
         /*
-        // recents conditions
-        NSDictionary *recentCondition = [[syntheticInfo objectForKey:@"conditions"] lastObject];
-        self.recentConditionsLabel.text = [recentCondition objectForKey:@"title"];
-        self.recentConditionsDateLabel.text = [recentCondition objectForKey:@"description"];
-        self.chronicConditionsLabel.text = [[syntheticInfo objectForKey:@"chronic_conditions"] componentsJoinedByString:@", "];
         
         // upcoming events
-        NSDictionary *upcomingEvent = [[syntheticInfo objectForKey:@"upcoming_events"] lastObject];
-        self.upcomingEventsLabel.text = [upcomingEvent objectForKey:@"title"];
-        self.planOfCareLabel.text = [upcomingEvent objectForKey:@"plan_of_care"];
-        self.followUpAppointmentLabel.text = [self formattedDate:[[upcomingEvent objectForKey:@"follow_up_appointment_date"] doubleValue]];
-        self.medicationRefillLabel.text = [upcomingEvent objectForKey:@"medication_refill"];
+        
         
         // functional status
         NSDictionary *functionalStatus = [syntheticInfo objectForKey:@"functional_status"];
@@ -297,14 +330,10 @@
     self.medicationNameLabels = nil;
     self.vitalViews = nil;
     
-    [self setAllergiesLabel:nil];
     [self setRecentConditionsDateLabel:nil];
     [self setRecentConditionsLabel:nil];
     [self setChronicConditionsLabel:nil];
     [self setUpcomingEventsLabel:nil];
-    [self setPlanOfCareLabel:nil];
-    [self setFollowUpAppointmentLabel:nil];
-    [self setMedicationRefillLabel:nil];
     [self setFunctionalStatusDateLabel:nil];
     [self setFunctionalStatusTypeLabel:nil];
     [self setFunctionalStatusProblemLabel:nil];
@@ -375,12 +404,6 @@
         }
         [self reloadData];
     }
-}
-
-#pragma mark - notifs
-
-- (void)didEnterBackground:(NSNotification *)notif {
-//    [self.popoverController dismissPopoverAnimated:NO];
 }
 
 #pragma mark - private
