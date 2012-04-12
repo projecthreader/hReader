@@ -104,38 +104,41 @@
     // grid view
     {
         
-        // create container
+        // get list of applets for this patient
         NSMutableArray *views = [NSMutableArray array];
-        
-        // load from plist -- in the future load from the patient
         NSURL *URL = [[NSBundle mainBundle] URLForResource:@"HReaderApplets" withExtension:@"plist"];
         NSArray *applets = [NSArray arrayWithContentsOfURL:URL];
-        [applets enumerateObjectsUsingBlock:^(NSDictionary *dictionary, NSUInteger index, BOOL *stop) {
-            NSString *identifier = [dictionary objectForKey:@"identifier"];
-            
-            // vitals
-            if ([identifier isEqualToString:@"org.mitre.hreader.vitals"]) {
-                NSDictionary *vitals = [patient vitalSignsGroupedByDescription];
-                [vitals enumerateKeysAndObjectsUsingBlock:^(NSString *type, NSArray *entries, BOOL *stop) {
-                    HRVitalView *view = [HRVitalView tileWithPatient:patient userInfo:dictionary];
-                    if ([type isEqualToString:@"BMI"]) {
-                        view.vital = [[HRBMI alloc] initWithEntries:entries];
-                    }
-                    else  {
-                        view.vital = [[HRVital alloc] initWithEntries:entries];
-                    }
-                    [views addObject:view];
-                }];
+        NSArray *identifiers = [patient.syntheticInfo objectForKey:@"applets"];
+        
+        // load applets
+        [identifiers enumerateObjectsUsingBlock:^(NSString *identifier, NSUInteger index, BOOL *stop) {
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier like %@", identifier];
+            NSDictionary *dictionary = [[applets filteredArrayUsingPredicate:predicate] lastObject];
+            if (dictionary) {
+                
+                // vitals
+                if ([identifier isEqualToString:@"org.mitre.hreader.vitals"]) {
+                    NSDictionary *vitals = [patient vitalSignsGroupedByDescription];
+                    [vitals enumerateKeysAndObjectsUsingBlock:^(NSString *type, NSArray *entries, BOOL *stop) {
+                        HRVitalView *view = [HRVitalView tileWithPatient:patient userInfo:dictionary];
+                        if ([type isEqualToString:@"BMI"]) {
+                            view.vital = [[HRBMI alloc] initWithEntries:entries];
+                        }
+                        else  {
+                            view.vital = [[HRVital alloc] initWithEntries:entries];
+                        }
+                        [views addObject:view];
+                    }];
+                }
+                
+                // others
+                else {
+                    Class c = NSClassFromString([dictionary objectForKey:@"class_name"]);
+                    [views addObject:[c tileWithPatient:patient userInfo:dictionary]];
+                }
+                
             }
-            
-            // others
-            else {
-                Class c = NSClassFromString([dictionary objectForKey:@"class_name"]);
-                HRAppletTile *tile = [c tileWithPatient:patient userInfo:dictionary];
-                tile.patient = patient;
-                [views addObject:tile];
-            }
-            
+            else { NSLog(@"Unable to find applet with identifier %@", identifier); }
         }];
         
         // save and reload
