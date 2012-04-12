@@ -109,7 +109,6 @@
     // initial setup
     HRMPatient *patient = [HRMPatient selectedPatient];
     NSArray *providers = [[HRMPatient selectedPatient] valueForKeyPath:@"syntheticInfo.providers"];
-    NSLog(@"%@", patient.syntheticInfo);
     NSMutableArray *views = [[NSMutableArray alloc] initWithCapacity:[providers count]];
     UINib *nib = [UINib nibWithNibName:@"HRProviderView" bundle:nil];
     self.nameLabel.text = [[patient compositeName] uppercaseString];
