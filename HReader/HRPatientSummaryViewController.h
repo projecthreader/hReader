@@ -47,13 +47,6 @@
 
 
 
-
-@property (retain, nonatomic) IBOutlet UILabel *recentEncountersDateLabel;
-@property (retain, nonatomic) IBOutlet UILabel *recentEncountersTypeLabel;
-@property (retain, nonatomic) IBOutlet UILabel *recentEncountersDescriptionLabel;
-
-@property (retain, nonatomic) IBOutlet UILabel *immunizationsUpToDateLabel;
-
 @property (retain, nonatomic) IBOutlet UILabel *functionalStatusDateLabel;
 @property (retain, nonatomic) IBOutlet UILabel *functionalStatusTypeLabel;
 @property (retain, nonatomic) IBOutlet UILabel *functionalStatusProblemLabel;

@@ -60,11 +60,6 @@
 
 
 
-
-@synthesize recentEncountersDateLabel           = __recentEncountersDateLabel;
-@synthesize recentEncountersTypeLabel           = __recentEncountersTypeLabel;
-@synthesize recentEncountersDescriptionLabel    = __recentEncountersDescriptionLabel;
-@synthesize immunizationsUpToDateLabel          = __immunizationsUpToDateLabel;
 @synthesize functionalStatusDateLabel           = __functionalStatusDateLabel;
 @synthesize functionalStatusTypeLabel           = __functionalStatusTypeLabel;
 @synthesize functionalStatusProblemLabel        = __functionalStatusProblemLabel;
@@ -100,6 +95,34 @@
     
     // get patient
     HRMPatient *patient = [HRMPatient selectedPatient];
+    NSDictionary *syntheticInfo = patient.syntheticInfo;
+    
+    // date of birth
+    self.patientNameLabel.text = [[patient compositeName] uppercaseString];
+    if ([self.dateOfBirthTitleLabel.text isEqualToString:@"DOB"]) {
+        self.dateOfBirthLabel.text = [patient.dateOfBirth mediumStyleDate];
+    }
+    else {
+        self.dateOfBirthLabel.text = [patient.dateOfBirth ageString];
+    }
+    
+    // allergies
+    NSArray *allergies = patient.allergies;
+    NSUInteger allergiesCount = [allergies count];
+    self.allergiesLabel.textColor = [HRConfig redColor];
+    if (allergiesCount) {
+        NSMutableString *string = [[[allergies objectAtIndex:0] desc] mutableCopy];
+        if (allergiesCount > 1) {
+            [string appendFormat:@", %lu more", (unsigned long)allergiesCount];
+        }
+        if ([string length] > 0) {
+            self.allergiesLabel.text = string;
+        }
+        else {
+            self.allergiesLabel.text = @"None";
+        }
+    }
+    else { self.allergiesLabel.text = @"None"; }
     
     // grid view
     {
@@ -108,7 +131,7 @@
         NSMutableArray *views = [NSMutableArray array];
         NSURL *URL = [[NSBundle mainBundle] URLForResource:@"HReaderApplets" withExtension:@"plist"];
         NSArray *applets = [NSArray arrayWithContentsOfURL:URL];
-        NSArray *identifiers = [patient.syntheticInfo objectForKey:@"applets"];
+        NSArray *identifiers = [syntheticInfo objectForKey:@"applets"];
         
         // load applets
         [identifiers enumerateObjectsUsingBlock:^(NSString *identifier, NSUInteger index, BOOL *stop) {
@@ -148,23 +171,8 @@
     }
     
     {
-//        NSArray *providers = [[HRMPatient selectedPatient] valueForKeyPath:@"syntheticInfo.providers"];
         
-        NSDictionary *syntheticInfo = patient.syntheticInfo;
-//        NSString *noData = @"Not in PDS";        
-
-        // synthetic info
-        
-        // immunizations
-        if ([[syntheticInfo objectForKey:@"immunizations"] boolValue]) {
-            self.immunizationsUpToDateLabel.text = @"Yes";
-            self.immunizationsUpToDateLabel.textColor = [HRConfig greenColor];
-        }
-        else {
-            self.immunizationsUpToDateLabel.text = @"No";
-            self.immunizationsUpToDateLabel.textColor = [HRConfig redColor];
-        }
-        
+        /*
         // recents conditions
         NSDictionary *recentCondition = [[syntheticInfo objectForKey:@"conditions"] lastObject];
         self.recentConditionsLabel.text = [recentCondition objectForKey:@"title"];
@@ -193,52 +201,12 @@
         self.diagnosisDateLabel.text = [self formattedDate:[[diagnosis objectForKey:@"results"] doubleValue]];
         self.diagnosisLabel.text = [diagnosis objectForKey:@"results"];
         
+        */
         
-        // PDS data
-        self.patientNameLabel.text = [[patient compositeName] uppercaseString];
-        if ([self.dateOfBirthTitleLabel.text isEqualToString:@"DOB"]) {
-            self.dateOfBirthLabel.text = [patient.dateOfBirth mediumStyleDate];
-        }
-        else {
-            self.dateOfBirthLabel.text = [patient.dateOfBirth ageString];
-        }
-        
-        // allergies
-//        NSArray *allergies = patient.allergies;
-//        NSUInteger allergiesCount = [allergies count];
-//        self.allergiesLabel.textColor = [HRConfig redColor];
-//        if (allergiesCount == 0) {
-//            self.allergiesLabel.text = @"None";
-//        }
-//        else {
-//            NSMutableString *allergiesString = [[[[allergies objectAtIndex:0] desc] mutableCopy] autorelease];
-//            if (allergiesCount > 1) {
-//                [allergiesString appendFormat:@", %lu more", (unsigned long)allergiesCount];
-//            }
-//            if ([allergiesString length] > 0) {
-//                self.allergiesLabel.text = allergiesString;
-//            }
-//            else {
-//                self.allergiesLabel.text = @"None";
-//            }
-//        }
-        
-        
-        // medications
-        
-        
-        // encounters
-//        NSSortDescriptor *encounterSort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-//        NSArray *encounters = [patient.encounters sortedArrayUsingDescriptors:[NSArray arrayWithObject:encounterSort]];
-//        HRMEntry *encounter = [encounters lastObject];
-//        self.recentEncountersDateLabel.text = [encounter.date mediumStyleDate];
-//        self.recentEncountersDescriptionLabel.text = encounter.desc;
-//        NSDictionary *codes = encounter.codes;
-//        NSDictionary *codeType = [[codes allKeys] lastObject];
-//        NSString *codeValues = [[codes objectForKey:codeType] componentsJoinedByString:@", "];
-//        self.recentEncountersTypeLabel.text = [NSString stringWithFormat:@"%@ %@", codeType, codeValues];
         
 
+        
+        
         
     }
     
@@ -337,10 +305,6 @@
     [self setPlanOfCareLabel:nil];
     [self setFollowUpAppointmentLabel:nil];
     [self setMedicationRefillLabel:nil];
-    [self setRecentEncountersDateLabel:nil];
-    [self setRecentEncountersTypeLabel:nil];
-    [self setRecentEncountersDescriptionLabel:nil];
-    [self setImmunizationsUpToDateLabel:nil];
     [self setFunctionalStatusDateLabel:nil];
     [self setFunctionalStatusTypeLabel:nil];
     [self setFunctionalStatusProblemLabel:nil];

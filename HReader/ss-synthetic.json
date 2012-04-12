@@ -1,7 +1,16 @@
 {
+  "applets": [
+    "org.mitre.hreader.encounters",
+    "org.mitre.hreader.vitals",
+    "org.mitre.hreader.encounters",
+    "org.mitre.hreader.medications",
+    "org.mitre.hreader.immunizations",
+    "org.mitre.hreader.placeholder.tbi"
+  ],
     "immunizations": true,
     "chronic_conditions": [
-      "asthma"
+      "Asthma",
+      "Hypertension"
     ],
     "conditions": [
       {
@@ -11,9 +20,9 @@
     ],
     "upcoming_events": [
       {
-        "title": "upcoming event title",
+        "title": "Annual checkup",
         "plan_of_care": "plan of care",
-        "follow_up_appointment_date": 133347325,
+        "follow_up_appointment_date": 1342357200,
         "medication_refill": "medication refill"
       }
     ],
@@ -31,42 +40,36 @@
     },
     "messages": [
         {
-            "date": 133347325,
-            "subject": "Johnny Smith's Health Record",
-            "from": "Dr. Crystal Johansen <drj@fakeemail.com>",
-            "body": "..."
+            "date": 1333976400,
+            "subject": "Annual exam time",
+            "from": "Dr. Susan Johnson <sjohnson@fakeemail.com>",
+            "body": "Just a reminder to schedule your annual exam."
         },
-        {
-            "date": 133347325,
-            "subject": "Johnny Smith's Health Record",
-            "from": "Dr. Crystal Johansen <drj@fakeemail.com>",
-            "body": "..."
-        }
     ],
     "providers": [
         {
-            "speciality": "Emergency Room",
+            "speciality": "Primary Care",
             "title": "Dr.",
-            "first_name": "Crystal",
-            "last_name": "Johansen",
-            "organization": "Beth Israel Hospital",
+            "first_name": "Susan",
+            "last_name": "Johnson",
+            "organization": "Patient Medical Center",
             "street": "148 Chestnut Street",
             "city": "Needham",
             "zip": "12345",
             "phone_number": "(781) 453-3000",
-            "email": "drj@fakeemail.com"
+            "email": "sjohnson@fakeemail.com"
         },
         {
-            "speciality": "Emergency Room",
+            "speciality": "Gynecologist",
             "title": "Dr.",
-            "first_name": "Crystal",
-            "last_name": "Johansen",
-            "organization": "Beth Israel Hospital",
+            "first_name": "Marsha",
+            "last_name": "Moore",
+            "organization": "Patient Medical Center",
             "street": "148 Chestnut Street",
             "city": "Needham",
             "zip": "12345",
-            "phone_number": "(781) 453-3000",
-            "email": "drj@fakeemail.com"
+            "phone_number": "(781) 453-4000",
+            "email": "mmoore@fakeemail.com"
         }
     ]
 }

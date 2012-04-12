@@ -125,7 +125,7 @@
             NSError *error = nil;
             patient.syntheticInfo = [NSJSONSerialization JSONObjectWithData:syntheticData options:0 error:&error];
             if (error) {
-                NSLog(@"Unable to load synthetic patient information\n%@", error);
+                NSLog(@"Unable to load synthetic patient file %@\n%@", name, error);
             }
             
         }];

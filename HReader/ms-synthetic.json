@@ -1,4 +1,11 @@
 {
+  "applets": [
+    "org.mitre.hreader.encounters",
+    "org.mitre.hreader.vitals",
+    "org.mitre.hreader.encounters",
+    "org.mitre.hreader.medications",
+    "org.mitre.hreader.immunizations"
+  ],
     "immunizations": true,
     "chronic_conditions": [
       "asthma"
@@ -13,7 +20,7 @@
       {
         "title": "upcoming event title",
         "plan_of_care": "plan of care",
-        "follow_up_appointment_date": 133347325,
+        "follow_up_appointment_date": 1340629200,
         "medication_refill": "medication refill"
       }
     ],
@@ -30,38 +37,20 @@
       "results": "results"
     },
     "messages": [
-        {
-            "date": 133347325,
-            "subject": "Johnny Smith's Health Record",
-            "from": "Dr. Crystal Johansen <drj@fakeemail.com>",
-            "body": "..."
-        },
-        {
-            "date": 133347325,
-            "subject": "Johnny Smith's Health Record",
-            "from": "Dr. Crystal Johansen <drj@fakeemail.com>",
-            "body": "..."
-        }
+    {
+        "date": 1333630800,
+        "subject": "Molly Smith's Health Record",
+        "from": "Dr. Crystal Johansen <drj@fakeemail.com>",
+        "body": "I have updated Molly's records."
+    }
     ],
     "providers": [
         {
-            "speciality": "Emergency Room",
+            "speciality": "Pediatrician",
             "title": "Dr.",
             "first_name": "Crystal",
             "last_name": "Johansen",
-            "organization": "Beth Israel Hospital",
-            "street": "148 Chestnut Street",
-            "city": "Needham",
-            "zip": "12345",
-            "phone_number": "(781) 453-3000",
-            "email": "drj@fakeemail.com"
-        },
-        {
-            "speciality": "Emergency Room",
-            "title": "Dr.",
-            "first_name": "Crystal",
-            "last_name": "Johansen",
-            "organization": "Beth Israel Hospital",
+            "organization": "Pediatric Assoc.",
             "street": "148 Chestnut Street",
             "city": "Needham",
             "zip": "12345",

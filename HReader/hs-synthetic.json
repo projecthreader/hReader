@@ -1,20 +1,38 @@
 {
+  "applets": [
+    "org.mitre.hreader.encounters",
+    "org.mitre.hreader.vitals",
+    "org.mitre.hreader.encounters",
+    "org.mitre.hreader.medications",
+    "org.mitre.hreader.immunizations"
+  ],
     "immunizations": true,
     "chronic_conditions": [
-      "asthma"
+      "Hypertension", "Primary Open Angle Glaucoma", "Heart Failure"
     ],
     "conditions": [
       {
-        "title": "recent condition title",
-        "description": "recent condition description"
+        "title": "7 May 2010",
+        "description": "Prostate Cancer"
       }
     ],
     "upcoming_events": [
       {
-        "title": "upcoming event title",
-        "plan_of_care": "plan of care",
-        "follow_up_appointment_date": 133347325,
-        "medication_refill": "medication refill"
+        "title": "Follow up on Prostate Treatment",
+        "plan_of_care": [
+          "Improve Nutrition", "Improve physical activity"
+        ],
+        "follow_up_appointment_date": 1340629200,
+        "medication_refill": [
+          {
+            "date": 1336050000,
+            "medication": "Beta Blocker Therapy"
+          },
+          {
+            "date": 1336827600,
+            "medication": "Ace Inhibitors"
+          }
+        ]
       }
     ],
 
@@ -31,42 +49,66 @@
     },
     "messages": [
         {
-            "date": 133347325,
-            "subject": "Johnny Smith's Health Record",
-            "from": "Dr. Crystal Johansen <drj@fakeemail.com>",
-            "body": "..."
+            "date": 1333458000,
+            "subject": "Exercise",
+            "from": "Dr. Henry Frost <hfrost@fakeemail.com>",
+            "body": "Have you exercised today?"
         },
         {
-            "date": 133347325,
-            "subject": "Johnny Smith's Health Record",
-            "from": "Dr. Crystal Johansen <drj@fakeemail.com>",
-            "body": "..."
+            "date": 1332248400,
+            "subject": "Blood work",
+            "from": "Dr. Cornelius Fields <cfields@fakeemail.org>",
+            "body": "Just a friendly reminder to make sure that you have your blood work done before our next appointment."
         }
     ],
     "providers": [
         {
-            "speciality": "Emergency Room",
+            "speciality": "Primary Care",
             "title": "Dr.",
-            "first_name": "Crystal",
-            "last_name": "Johansen",
-            "organization": "Beth Israel Hospital",
-            "street": "148 Chestnut Street",
-            "city": "Needham",
+            "first_name": "Henry",
+            "last_name": "Frost",
+            "organization": "Greater Heart Care",
+            "street": "750 Washington St",
+            "city": "Boston",
             "zip": "12345",
             "phone_number": "(781) 453-3000",
-            "email": "drj@fakeemail.com"
+            "email": "hfrost@fakeemail.com"
         },
         {
-            "speciality": "Emergency Room",
+            "speciality": "Oncologist",
             "title": "Dr.",
-            "first_name": "Crystal",
-            "last_name": "Johansen",
-            "organization": "Beth Israel Hospital",
+            "first_name": "Cornelius",
+            "last_name": "Fields",
+            "organization": "Oncology Med.",
             "street": "148 Chestnut Street",
             "city": "Needham",
             "zip": "12345",
-            "phone_number": "(781) 453-3000",
-            "email": "drj@fakeemail.com"
+            "phone_number": "(781) 345-2000",
+            "email": "cfields@fakeemail.com"
+        },
+        {
+            "speciality": "Dermatologist",
+            "title": "Dr.",
+            "first_name": "Thomas",
+            "last_name": "Dorms",
+            "organization": "Dermatology Assoc.",
+            "street": "44 Binney St",
+            "city": "Boston",
+            "zip": "12345",
+            "phone_number": "(781) 678-1000",
+            "email": "tdorms@fakeemail.com"
+        },
+        {
+            "speciality": "Radiologist",
+            "title": "Dr.",
+            "first_name": "Caldwell",
+            "last_name": "Jones",
+            "organization": "Radiology Assoc.",
+            "street": "23 Piedmont St",
+            "city": "Boston",
+            "zip": "12345",
+            "phone_number": "(781) 743-8000",
+            "email": "cjones@fakeemail.com"
         }
     ]
 }

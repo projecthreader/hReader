@@ -1,20 +1,43 @@
 {
+  "applets": [
+    "org.mitre.hreader.encounters",
+    "org.mitre.hreader.vitals",
+    "org.mitre.hreader.encounters",
+    "org.mitre.hreader.medications",
+    "org.mitre.hreader.immunizations"
+  ],
     "immunizations": true,
     "chronic_conditions": [
-      "asthma"
+      "Diabetes"
     ],
     "conditions": [
       {
-        "title": "recent condition title",
-        "description": "recent condition description"
+        "title": "05 May 2011",
+        "description": ""
       }
     ],
     "upcoming_events": [
       {
-        "title": "upcoming event title",
+        "title": "Blood work",
         "plan_of_care": "plan of care",
-        "follow_up_appointment_date": 133347325,
-        "medication_refill": "medication refill"
+        "follow_up_appointment_date": 1339333200,
+        "medication_refill": [
+          {
+            "date": 1336050000,
+            "medication": "Insulin Regular"
+          },
+          {
+            "date": 1336050000,
+            "medication": "Insulin Aspart"
+          },
+          {
+            "date": 1336050000,
+            "medication": "Insulin NPH"
+          },
+          {
+            "date": 1336050000,
+            "medication": "Insulin Lispro"
+          }
       }
     ],
     
@@ -31,42 +54,48 @@
     },
     "messages": [
         {
-            "date": 133347325,
-            "subject": "Johnny Smith's Health Record",
-            "from": "Dr. Crystal Johansen <drj@fakeemail.com>",
-            "body": "..."
+            "date": 1332939600,
+            "subject": "Blood work preparation",
+            "from": "Dr. Sam Standings <sstandings@fakeemail.com>",
+            "body": "Please make sure you fast for 8 hours before arriving for your blood work appointment."
         },
-        {
-            "date": 133347325,
-            "subject": "Johnny Smith's Health Record",
-            "from": "Dr. Crystal Johansen <drj@fakeemail.com>",
-            "body": "..."
-        }
     ],
     "providers": [
         {
-            "speciality": "Emergency Room",
+            "speciality": "Primary Care",
             "title": "Dr.",
-            "first_name": "Crystal",
-            "last_name": "Johansen",
-            "organization": "Beth Israel Hospital",
-            "street": "148 Chestnut Street",
-            "city": "Needham",
+            "first_name": "Sam",
+            "last_name": "Standings",
+            "organization": "Medical West",
+            "street": "265 Chestnut Street",
+            "city": "Dedham",
             "zip": "12345",
             "phone_number": "(781) 453-3000",
-            "email": "drj@fakeemail.com"
+            "email": "sstandings@fakeemail.com"
         },
         {
-            "speciality": "Emergency Room",
+            "speciality": "Endocrinologist",
             "title": "Dr.",
-            "first_name": "Crystal",
-            "last_name": "Johansen",
-            "organization": "Beth Israel Hospital",
-            "street": "148 Chestnut Street",
-            "city": "Needham",
+            "first_name": "Franklin",
+            "last_name": "Purch",
+            "organization": "Medical West",
+            "street": "265 Chestnut Street",
+            "city": "Dedham",
             "zip": "12345",
             "phone_number": "(781) 453-3000",
-            "email": "drj@fakeemail.com"
+            "email": "fpurch@fakeemail.com"
+        },
+        {
+            "speciality": "Dietician",
+            "title": "Dr.",
+            "first_name": "Mary",
+            "last_name": "Jackson",
+            "organization": "Medical West",
+            "street": "265 Chestnut Street",
+            "city": "Dedham",
+            "zip": "12345",
+            "phone_number": "(781) 453-3000",
+            "email": "mjackson@fakeemail.com"
         }
     ]
 }
