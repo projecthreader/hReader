@@ -7,18 +7,13 @@
 //
 
 #import "HRImmunizationsAppletTile.h"
-#import "HRMPatient.h"
 
 @implementation HRImmunizationsAppletTile
 
 @synthesize upToDateLabel = __upToDateLabel;
 
-#pragma mark object methods
-
 - (void)tileDidLoad {
     [super tileDidLoad];
-    
-    // immunizations
     if ([[self.patient.syntheticInfo objectForKey:@"immunizations"] boolValue]) {
         self.upToDateLabel.text = @"Yes";
         self.upToDateLabel.textColor = [HRConfig greenColor];
@@ -27,11 +22,6 @@
         self.upToDateLabel.text = @"No";
         self.upToDateLabel.textColor = [HRConfig redColor];
     }
-}
-
-#pragma mark - gestures
-
-- (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect {
 }
 
 @end

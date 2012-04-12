@@ -8,22 +8,17 @@
 
 #import "HRMedicationsAppletTile.h"
 #import "HRMEntry.h"
-#import "HRMPatient.h"
 
 #import "NSArray+Collect.h"
 
 @implementation HRMedicationsAppletTile
 
-@synthesize medicationLabels    = __medicationLabels;
-@synthesize dosageLabels        = __dosageLabels;
-
-
-#pragma mark object methods
+@synthesize medicationLabels = __medicationLabels;
+@synthesize dosageLabels = __dosageLabels;
 
 - (void)tileDidLoad {
     [super tileDidLoad];
-    
-    NSArray *medications = [self.patient medications];
+    NSArray *medications = [[self patient] medications];
     NSUInteger medicationsCount = [medications count];
     [[self.medicationLabels arraySortedByKey:@"tag"] enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
         if (idx < medicationsCount) {
@@ -49,11 +44,6 @@
             label.text = nil;
         }
     }];
-}
-
-#pragma mark - gestures
-
-- (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect {
 }
 
 @end

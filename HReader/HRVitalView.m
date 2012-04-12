@@ -31,17 +31,10 @@
 @synthesize unitsLabel      = __unitsLabel;
 @synthesize sparkLineView   = __sparkLineView;
 
-#pragma mark - class methods
-
-+ (HRAppletTile *)tile {
-    UINib *nib = [UINib nibWithNibName:NSStringFromClass(self) bundle:nil];
-    return [[nib instantiateWithOwner:self options:nil] lastObject];
-}
-
 #pragma mark object methods
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
+- (void)tileDidLoad {
+    [super tileDidLoad];
     self.sparkLineView.backgroundColor = [UIColor whiteColor];
     self.resultLabel.adjustsFontSizeToFitWidth = YES;
     self.normalLabel.adjustsFontSizeToFitWidth = YES;
@@ -110,9 +103,9 @@
      animated:YES];
 }
 
-#pragma mark - notifs
+#pragma mark - notifications
 
-- (void)didEnterBackground:(NSNotification *)notif {
+- (void)applicationDidEnterBackground {
     [__popoverController dismissPopoverAnimated:NO];
 }
 

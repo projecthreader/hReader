@@ -10,11 +10,8 @@
 
 @implementation HRImageAppletTile
 
-#pragma mark object methods
-
 - (void)tileDidLoad {
     [super tileDidLoad];
-    
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     UIImage *tileImage = [UIImage imageNamed:[self.userInfo objectForKey:@"tile_image"]];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:tileImage];
@@ -22,8 +19,6 @@
     imageView.frame = self.bounds;
     [self addSubview:imageView];
 }
-
-#pragma mark - gestures
 
 - (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect {
     UIViewController *controller = [[UIViewController alloc] init];

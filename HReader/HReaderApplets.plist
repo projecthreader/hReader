@@ -36,7 +36,7 @@
 	</dict>
 	<dict>
 		<key>identifier</key>
-		<string>org.mitre.hreader.image_applet.tbi</string>
+		<string>org.mitre.hreader.placeholder.tbi</string>
 		<key>class_name</key>
 		<string>HRImageAppletTile</string>
 		<key>display_name</key>
