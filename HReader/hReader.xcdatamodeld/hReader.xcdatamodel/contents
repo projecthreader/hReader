@@ -28,9 +28,6 @@
         <fetchedProperty name="allergies" optional="YES" syncable="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 1 AND patient == $FETCH_SOURCE"/>
         </fetchedProperty>
-        <fetchedProperty name="conditions" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 0 AND patient == $FETCH_SOURCE"/>
-        </fetchedProperty>
         <fetchedProperty name="immunizations" optional="YES" syncable="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 7 AND patient == $FETCH_SOURCE"/>
         </fetchedProperty>
@@ -44,6 +41,6 @@
     <elements>
         <element name="GCManagedObject" positionX="72" positionY="72" width="128" height="60"/>
         <element name="HRMEntry" positionX="-533" positionY="-159" width="128" height="195"/>
-        <element name="HRMPatient" positionX="70" positionY="207" width="128" height="269"/>
+        <element name="HRMPatient" positionX="70" positionY="207" width="128" height="254"/>
     </elements>
 </model>

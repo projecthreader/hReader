@@ -30,12 +30,14 @@ typedef enum {
 
 @property (nonatomic, retain) NSArray *allergies;
 @property (nonatomic, retain) NSArray *immunizations;
-@property (nonatomic, retain) NSArray *conditions;
 @property (nonatomic, retain) NSArray *procedures;
 @property (nonatomic, retain) NSArray *results;
-@property (nonatomic, retain) NSArray *vitalSigns;
 
 @property (nonatomic, retain) NSDictionary *syntheticInfo;
+
+@property (nonatomic, readonly) NSArray *conditions;
+@property (nonatomic, readonly) NSArray *encounters;
+@property (nonatomic, readonly) NSArray *medications;
 
 // get a new patient with json dictionary
 + (HRMPatient *)instanceWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context;
@@ -54,8 +56,6 @@ typedef enum {
 
 // fetched property accessors
 - (NSDictionary *)vitalSignsGroupedByDescription;
-- (NSArray *)medications;
-- (NSArray *)encounters;
 
 @end
 

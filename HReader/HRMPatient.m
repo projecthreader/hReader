@@ -32,10 +32,8 @@ static HRMPatient *selectedPatient = nil;
 @dynamic genderString;
 @dynamic entries;
 
-@dynamic conditions;
 @dynamic immunizations;
 @dynamic results;
-@dynamic vitalSigns;
 @dynamic allergies;
 @dynamic procedures;
 
@@ -226,6 +224,12 @@ static HRMPatient *selectedPatient = nil;
 - (NSArray *)encounters {
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
     return [self entriesWithType:HRMEntryTypeEncounter
+                 sortDescriptors:[NSArray arrayWithObject:sort]];
+}
+
+- (NSArray *)conditions {
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    return [self entriesWithType:HRMEntryTypeCondition
                  sortDescriptors:[NSArray arrayWithObject:sort]];
 }
 
