@@ -28,7 +28,6 @@ typedef enum {
 @property (nonatomic, retain) NSDate *dateOfBirth;
 @property (nonatomic, retain) NSSet *entries;
 
-@property (nonatomic, retain) NSArray *encounters;
 @property (nonatomic, retain) NSArray *allergies;
 @property (nonatomic, retain) NSArray *immunizations;
 @property (nonatomic, retain) NSArray *conditions;
@@ -53,9 +52,10 @@ typedef enum {
 - (UIImage *)patientImage;
 - (NSURL *)C32HTMLURL;
 
-// vital signs
+// fetched property accessors
 - (NSDictionary *)vitalSignsGroupedByDescription;
 - (NSArray *)medications;
+- (NSArray *)encounters;
 
 @end
 

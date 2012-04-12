@@ -14,6 +14,12 @@
 
 static HRMPatient *selectedPatient = nil;
 
+@interface HRMPatient ()
+
+- (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptors:(NSArray *)sortDescriptors;
+
+@end
+
 @implementation HRMPatient
 
 @dynamic dateOfBirth;
@@ -26,7 +32,6 @@ static HRMPatient *selectedPatient = nil;
 @dynamic genderString;
 @dynamic entries;
 
-@dynamic encounters;
 @dynamic conditions;
 @dynamic immunizations;
 @dynamic results;
@@ -37,6 +42,7 @@ static HRMPatient *selectedPatient = nil;
 @synthesize syntheticInfo;
 
 #pragma mark - class methods
+
 + (HRMPatient *)instanceWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context {
     
     // create patient
@@ -105,6 +111,7 @@ static HRMPatient *selectedPatient = nil;
     return patient;
     
 }
+
 + (NSArray *)patientsInContext:(NSManagedObjectContext *)context {
     static NSSortDescriptor *sort = nil;
     static dispatch_once_t token;
@@ -113,15 +120,18 @@ static HRMPatient *selectedPatient = nil;
     });
     return [self allInContext:context sortDescriptor:sort];
 }
+
 + (void)setSelectedPatient:(HRMPatient *)patient {
 //    NSAssert([patient managedObjectContext] == [HRAppDelegate managedObjectContext], @"The global patient must exist in the main application context");
     selectedPatient = patient;
 }
+
 + (HRMPatient *)selectedPatient {
     return selectedPatient;
 }
 
 #pragma mark - attribute overrides
+
 - (NSString *)compositeName {
     [self willAccessValueForKey:@"compositeName"];
     NSString *name = [NSString
@@ -131,6 +141,7 @@ static HRMPatient *selectedPatient = nil;
     [self didAccessValueForKey:@"compositeName"];
     return name;
 }
+
 - (NSString *)genderString {
     [self willAccessValueForKey:@"genderString"];
     NSString *gender = @"Unknown";
@@ -173,16 +184,21 @@ static HRMPatient *selectedPatient = nil;
     return [[NSBundle mainBundle] URLForResource:string withExtension:@"html"];
 }
 
+- (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptors:(NSArray *)sortDescriptors {
+    NSPredicate *typePredicate = [NSPredicate predicateWithFormat:@"type == %@", [NSNumber numberWithShort:type]];
+    NSPredicate *patientPredicate = [NSPredicate predicateWithFormat:@"patient == %@", self];
+    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithObjects:typePredicate, patientPredicate, nil]];
+    return [HRMEntry allInContext:[self managedObjectContext]
+                    withPredicate:predicate
+                  sortDescriptors:sortDescriptors];
+}
+
 - (NSDictionary *)vitalSignsGroupedByDescription {
     
     // get vitals
-    NSPredicate *typePredicate = [NSPredicate predicateWithFormat:@"type == %@", [NSNumber numberWithShort:HRMEntryTypeVitalSign]];
-    NSPredicate *patientPredicate = [NSPredicate predicateWithFormat:@"patient == %@", self];
-    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithObjects:typePredicate, patientPredicate, nil]];
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-    NSArray *vitals = [HRMEntry allInContext:[self managedObjectContext]
-                               withPredicate:predicate
-                              sortDescriptor:sort];
+    NSArray *vitals = [self entriesWithType:HRMEntryTypeVitalSign
+                            sortDescriptors:[NSArray arrayWithObject:sort]];
     
     // build grouped dictionary
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
@@ -202,13 +218,15 @@ static HRMPatient *selectedPatient = nil;
 }
 
 - (NSArray *)medications {
-    NSPredicate *typePredicate = [NSPredicate predicateWithFormat:@"type == %@", [NSNumber numberWithShort:HRMEntryTypeMedication]];
-    NSPredicate *patientPredicate = [NSPredicate predicateWithFormat:@"patient == %@", self];
-    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithObjects:typePredicate, patientPredicate, nil]];
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
-    return [HRMEntry allInContext:[self managedObjectContext]
-                    withPredicate:predicate
-                   sortDescriptor:sort];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    return [self entriesWithType:HRMEntryTypeMedication
+                 sortDescriptors:[NSArray arrayWithObject:sort]];
+}
+
+- (NSArray *)encounters {
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    return [self entriesWithType:HRMEntryTypeEncounter
+                 sortDescriptors:[NSArray arrayWithObject:sort]];
 }
 
 @end
