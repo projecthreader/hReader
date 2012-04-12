@@ -111,18 +111,22 @@
     NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
     if ([HRMPatient countInContext:context] == 0) {
         NSArray *names = [NSArray arrayWithObjects:@"hs", @"js", @"ms", @"ss", @"ts", nil];
-        [names enumerateObjectsUsingBlock:^(NSString *initials, NSUInteger idx, BOOL *stop) {
+        [names enumerateObjectsUsingBlock:^(NSString *name, NSUInteger idx, BOOL *stop) {
             
             // load real data
-            NSURL *URL = [[NSBundle mainBundle] URLForResource:initials withExtension:@"json"];
+            NSURL *URL = [[NSBundle mainBundle] URLForResource:name withExtension:@"json"];
             NSData *data = [NSData dataWithContentsOfURL:URL];
             id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             HRMPatient *patient = [HRMPatient instanceWithDictionary:object inContext:context];
             
             // load synthetic data
-            NSURL *syntheticURL = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@-synthetic", initials] withExtension:@"json"];
+            NSURL *syntheticURL = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@-synthetic", name] withExtension:@"json"];
             NSData *syntheticData = [NSData dataWithContentsOfURL:syntheticURL];
-            patient.syntheticInfo = [NSJSONSerialization JSONObjectWithData:syntheticData options:0 error:nil];
+            NSError *error = nil;
+            patient.syntheticInfo = [NSJSONSerialization JSONObjectWithData:syntheticData options:0 error:&error];
+            if (error) {
+                NSLog(@"Unable to load synthetic patient information\n%@", error);
+            }
             
         }];
         NSError *error = nil;
