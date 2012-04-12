@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1280</int>
+		<int key="IBDocument.SystemTarget">1296</int>
 		<string key="IBDocument.SystemVersion">11D50b</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2177</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2182</string>
 		<string key="IBDocument.AppKitVersion">1138.32</string>
 		<string key="IBDocument.HIToolboxVersion">568.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1173</string>
+			<string key="NS.object.0">1181</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBUIImageView</string>
@@ -142,7 +142,7 @@
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">1316</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrame">{{0, 76}, {108, 30}}</string>
+						<string key="NSFrame">{{0, 76}, {295, 30}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="4999929"/>
@@ -151,12 +151,12 @@
 						<int key="IBUIContentMode">7</int>
 						<reference key="IBUIGestureRecognizers" ref="0"/>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
-						<string key="IBUIText">148 Chestnut Street  Needham</string>
+						<string type="base64-UTF8" key="IBUIText">MTQ4IENoZXN0bnV0IFN0cmVldApDZW50cmV2aWxsZSwgVkEgMjAxMjA</string>
 						<reference key="IBUITextColor" ref="883148785"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
-						<int key="IBUINumberOfLines">5</int>
+						<int key="IBUINumberOfLines">2</int>
 						<reference key="IBUIFontDescription" ref="237251542"/>
 						<reference key="IBUIFont" ref="13735885"/>
 					</object>
@@ -227,6 +227,7 @@
 						<string key="NSFrame">{{31, 124}, {25, 25}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">4</int>
@@ -257,11 +258,11 @@
 			<array class="NSMutableArray" key="connectionRecords">
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">specialityLabel</string>
+						<string key="label">addressLabel</string>
 						<reference key="source" ref="191373211"/>
-						<reference key="destination" ref="488344632"/>
+						<reference key="destination" ref="262518626"/>
 					</object>
-					<int key="connectionID">12</int>
+					<int key="connectionID">19</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -269,7 +270,7 @@
 						<reference key="source" ref="191373211"/>
 						<reference key="destination" ref="315824670"/>
 					</object>
-					<int key="connectionID">13</int>
+					<int key="connectionID">20</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -277,7 +278,7 @@
 						<reference key="source" ref="191373211"/>
 						<reference key="destination" ref="775326047"/>
 					</object>
-					<int key="connectionID">14</int>
+					<int key="connectionID">21</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -285,15 +286,15 @@
 						<reference key="source" ref="191373211"/>
 						<reference key="destination" ref="4999929"/>
 					</object>
-					<int key="connectionID">16</int>
+					<int key="connectionID">22</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">addressLabel</string>
+						<string key="label">specialityLabel</string>
 						<reference key="source" ref="191373211"/>
-						<reference key="destination" ref="262518626"/>
+						<reference key="destination" ref="488344632"/>
 					</object>
-					<int key="connectionID">18</int>
+					<int key="connectionID">23</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -335,55 +336,49 @@
 						<int key="objectID">3</int>
 						<reference key="object" ref="472309123"/>
 						<reference key="parent" ref="191373211"/>
-						<string key="objectName">Emergency Room Line</string>
+						<string key="objectName">Line</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">4</int>
 						<reference key="object" ref="488344632"/>
 						<reference key="parent" ref="191373211"/>
-						<string key="objectName">Emegency Room Label</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">5</int>
 						<reference key="object" ref="315824670"/>
 						<reference key="parent" ref="191373211"/>
-						<string key="objectName">Emegency Room Hospital Label</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">6</int>
 						<reference key="object" ref="262518626"/>
 						<reference key="parent" ref="191373211"/>
-						<string key="objectName">Emegency Room Hospital Address</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">7</int>
 						<reference key="object" ref="876712711"/>
 						<reference key="parent" ref="191373211"/>
-						<string key="objectName">Emegency Room Email</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">8</int>
 						<reference key="object" ref="273196273"/>
 						<reference key="parent" ref="191373211"/>
-						<string key="objectName">Emegency Room Chevron</string>
+						<string key="objectName">Title Chevron</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">9</int>
 						<reference key="object" ref="1009696519"/>
 						<reference key="parent" ref="191373211"/>
-						<string key="objectName">Emegency Room Email Chevron</string>
+						<string key="objectName">Email Chevron</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">11</int>
 						<reference key="object" ref="775326047"/>
 						<reference key="parent" ref="191373211"/>
-						<string key="objectName">Emegency Room Hospital Label</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">15</int>
 						<reference key="object" ref="4999929"/>
 						<reference key="parent" ref="191373211"/>
-						<string key="objectName">Emegency Room Hospital Label</string>
 					</object>
 				</array>
 			</object>
@@ -425,7 +420,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">18</int>
+			<int key="maxID">23</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -470,12 +465,16 @@
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBIPadFramework</string>
+		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaTouchPlugin.iPhoneOS</string>
+			<real value="1296" key="NS.object.0"/>
+		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="NS.key.0">chevron.png</string>
 			<string key="NS.object.0">{25, 25}</string>
 		</object>
-		<string key="IBCocoaTouchPluginVersion">1173</string>
+		<string key="IBCocoaTouchPluginVersion">1181</string>
 	</data>
 </archive>

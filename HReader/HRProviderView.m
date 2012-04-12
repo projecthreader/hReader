@@ -10,29 +10,16 @@
 
 @implementation HRProviderView
 
-@synthesize provider                = __provider;
+@synthesize provider = __provider;
 
-@synthesize specialityLabel         = __specialityLabel;
-@synthesize nameLabel               = __nameLabel;
-@synthesize organizationLabel       = __organizationLabel;
-@synthesize addressLabel            = __addressLabel;
-@synthesize phoneNumberLabel        = __phoneNumberLabel;
-
-
-- (void)dealloc {
-    self.provider = nil;
-    self.specialityLabel = nil;
-    self.nameLabel = nil;
-    self.organizationLabel = nil;
-    self.addressLabel = nil;
-    self.phoneNumberLabel = nil;
-    
-    [super dealloc];
-}
+@synthesize specialityLabel = __specialityLabel;
+@synthesize nameLabel = __nameLabel;
+@synthesize organizationLabel = __organizationLabel;
+@synthesize addressLabel = __addressLabel;
+@synthesize phoneNumberLabel = __phoneNumberLabel;
 
 - (void)setProvider:(HRMProvider *)provider {
-    [__provider release];
-    __provider = [provider retain];
+    __provider = provider;
     
 //    self.specialityLabel.text = __provider.speciality;
 //    self.nameLabel.text = [__provider compositeName];

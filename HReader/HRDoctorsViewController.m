@@ -23,8 +23,8 @@
     NSArray * __strong __providerViews;
 }
 
-@synthesize nameLabel                   = __nameLabel;
-@synthesize gridTableView               = __gridTableView;
+@synthesize nameLabel = __nameLabel;
+@synthesize gridTableView = __gridTableView;
 
 #pragma mark - object methods
 
@@ -54,23 +54,15 @@
                                     action:@selector(patientChanged:)];
     [self.view addSubview:swipe];
     
-//    UINib *nib = [UINib nibWithNibName:@"HRProviderView" bundle:nil];
-//    [self.providerViews enumerateObjectsUsingBlock:^(HRProviderView *view, NSUInteger idx, BOOL *stop) {
-//        view.backgroundColor = [UIColor clearColor];
-//        HRProviderView *providerView = [[nib instantiateWithOwner:self options:nil] lastObject];
-//        [view addSubview:providerView]; 
-//    }];
-        
+    // reload
     [self reloadData];
+    
 }
 
 - (void)viewDidUnload {
     self.nameLabel = nil;
+    self.gridTableView = nil;
     [super viewDidUnload];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -113,31 +105,47 @@
 }
 
 - (void)reloadData {
+    
+    // initial setup
     HRMPatient *patient = [HRMPatient selectedPatient];
+    NSArray *providers = [[HRMPatient selectedPatient] valueForKeyPath:@"syntheticInfo.providers"];
+    NSLog(@"%@", patient.syntheticInfo);
+    NSMutableArray *views = [[NSMutableArray alloc] initWithCapacity:[providers count]];
+    UINib *nib = [UINib nibWithNibName:@"HRProviderView" bundle:nil];
     self.nameLabel.text = [[patient compositeName] uppercaseString];
     
-    NSArray *providers = [[HRMPatient selectedPatient] valueForKeyPath:@"syntheticInfo.providers"];
-    NSMutableArray *providerViews = [[NSMutableArray alloc] initWithCapacity:[providers count]];
-    UINib *nib = [UINib nibWithNibName:@"HRProviderView" bundle:nil];
-    
+    // configure views
     [providers enumerateObjectsUsingBlock:^(NSDictionary *provider, NSUInteger idx, BOOL *stop) {
-        HRProviderView *providerView = [[nib instantiateWithOwner:self options:nil] lastObject];
-        providerView.specialityLabel = [provider objectForKey:@"specialty"];
-        providerView.nameLabel = [provider objectForKey:@"name"];
-//        "speciality": "Emergency Room",
-//        "title": "Dr.",
-//        "first_name": "Crystal",
-//        "last_name": "Johansen",
-//        "organization": "Beth Israel Hospital",
-//        "street": "148 Chestnut Street",
-//        "city": "Needham",
-//        "zip": "12345",
-//        "phone_number": "(781) 453-3000",
-//        "email": "drj@fakeemail.com"
-        [providerViews addObject:providerView]; 
+        HRProviderView *view = [[nib instantiateWithOwner:self options:nil] lastObject];
+        view.specialityLabel.text = [provider objectForKey:@"speciality"];
+        view.nameLabel.text = [NSString stringWithFormat:@"%@ %@ %@",
+                               [provider objectForKey:@"title"],
+                               [provider objectForKey:@"first_name"],
+                               [provider objectForKey:@"last_name"]];
+        view.organizationLabel.text = [provider objectForKey:@"organization"];
+        view.phoneNumberLabel.text = [provider objectForKey:@"phone_number"];
+        view.addressLabel.text = [NSString stringWithFormat:@"%@\n%@ %@",
+                                  [provider objectForKey:@"street"],
+                                  [provider objectForKey:@"city"],
+//                                  [provider objectForKey:@"state"],
+                                  [provider objectForKey:@"zip"]];
+//                          "speciality": "Endocrinologist",
+//                          "title": "Dr.",
+//                          "first_name": "Franklin",
+//                          "last_name": "Purch",
+//                          "organization": "Medical West",
+//                          "street": "265 Chestnut Street",
+//                          "city": "Dedham",
+//                          "zip": "12345",
+//                          "phone_number": "(781) 453-3000",
+//                          "email": "fpurch@fakeemail.com"
+        [views addObject:view];
     }];
-    __providerViews = providerViews;
+    
+    // save and reload
+    __providerViews = views;
     [self.gridTableView reloadData];
+    
 }
 
 @end
