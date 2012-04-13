@@ -9,7 +9,7 @@
   ],
     "immunizations": true,
     "chronic_conditions": [
-      "Hypertension", "Primary Open Angle Glaucoma", "Heart Failure"
+      "Hypertension", "Primary Open Angle Glaucoma"
     ],
     "conditions": [
       {
