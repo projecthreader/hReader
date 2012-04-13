@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B04A55214E0692600AD91F9 /* SSKeychain.m */; };
 		3B04A56914E06A3A00AD91F9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B04A56814E06A3A00AD91F9 /* Security.framework */; };
+		3B0FE3FD15386B7000BEC21C /* fitbit-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3F515386B7000BEC21C /* fitbit-overview.png */; };
+		3B0FE3FE15386B7000BEC21C /* fitbit-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3F615386B7000BEC21C /* fitbit-summary.png */; };
+		3B0FE3FF15386B7000BEC21C /* nikeplus-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3F715386B7000BEC21C /* nikeplus-overview.png */; };
+		3B0FE40015386B7000BEC21C /* nikeplus-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3F815386B7000BEC21C /* nikeplus-summary.png */; };
+		3B0FE40115386B7000BEC21C /* withings-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3F915386B7000BEC21C /* withings-overview.png */; };
+		3B0FE40215386B7000BEC21C /* withings-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3FA15386B7000BEC21C /* withings-summary.png */; };
+		3B0FE40315386B7000BEC21C /* wakemate-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3FB15386B7000BEC21C /* wakemate-overview.png */; };
+		3B0FE40415386B7000BEC21C /* wakemate-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3FC15386B7000BEC21C /* wakemate-summary.png */; };
 		3B19651B14EEA6200045F827 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651A14EEA6200045F827 /* Logo.png */; };
 		3B19652014EEAB970045F827 /* C32-Smith-Henry.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651C14EEAB970045F827 /* C32-Smith-Henry.html */; };
 		3B19652114EEAB970045F827 /* C32-Smith-Molly.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */; };
@@ -129,6 +137,14 @@
 		3B04A55114E0692600AD91F9 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
 		3B04A55214E0692600AD91F9 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		3B04A56814E06A3A00AD91F9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3B0FE3F515386B7000BEC21C /* fitbit-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitbit-overview.png"; sourceTree = "<group>"; };
+		3B0FE3F615386B7000BEC21C /* fitbit-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitbit-summary.png"; sourceTree = "<group>"; };
+		3B0FE3F715386B7000BEC21C /* nikeplus-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nikeplus-overview.png"; sourceTree = "<group>"; };
+		3B0FE3F815386B7000BEC21C /* nikeplus-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nikeplus-summary.png"; sourceTree = "<group>"; };
+		3B0FE3F915386B7000BEC21C /* withings-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "withings-overview.png"; sourceTree = "<group>"; };
+		3B0FE3FA15386B7000BEC21C /* withings-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "withings-summary.png"; sourceTree = "<group>"; };
+		3B0FE3FB15386B7000BEC21C /* wakemate-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wakemate-overview.png"; sourceTree = "<group>"; };
+		3B0FE3FC15386B7000BEC21C /* wakemate-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wakemate-summary.png"; sourceTree = "<group>"; };
 		3B19651A14EEA6200045F827 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		3B19651C14EEAB970045F827 /* C32-Smith-Henry.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Henry.html"; sourceTree = "<group>"; };
 		3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Molly.html"; sourceTree = "<group>"; };
@@ -681,6 +697,14 @@
 		94AACFAB1535CFEE005E3851 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3B0FE3F515386B7000BEC21C /* fitbit-overview.png */,
+				3B0FE3F615386B7000BEC21C /* fitbit-summary.png */,
+				3B0FE3F715386B7000BEC21C /* nikeplus-overview.png */,
+				3B0FE3F815386B7000BEC21C /* nikeplus-summary.png */,
+				3B0FE3F915386B7000BEC21C /* withings-overview.png */,
+				3B0FE3FA15386B7000BEC21C /* withings-summary.png */,
+				3B0FE3FB15386B7000BEC21C /* wakemate-overview.png */,
+				3B0FE3FC15386B7000BEC21C /* wakemate-summary.png */,
 				9492CA511535F90E009DE7F2 /* tbi-fullscreen.png */,
 				9492CA521535F90E009DE7F2 /* tbi-tile.png */,
 			);
@@ -899,6 +923,14 @@
 				9492CA541535F90E009DE7F2 /* tbi-tile.png in Resources */,
 				9492CA591536053D009DE7F2 /* HREncountersAppletTile.xib in Resources */,
 				9492CA5B15360D10009DE7F2 /* HRImmunizationsAppletTile.xib in Resources */,
+				3B0FE3FD15386B7000BEC21C /* fitbit-overview.png in Resources */,
+				3B0FE3FE15386B7000BEC21C /* fitbit-summary.png in Resources */,
+				3B0FE3FF15386B7000BEC21C /* nikeplus-overview.png in Resources */,
+				3B0FE40015386B7000BEC21C /* nikeplus-summary.png in Resources */,
+				3B0FE40115386B7000BEC21C /* withings-overview.png in Resources */,
+				3B0FE40215386B7000BEC21C /* withings-summary.png in Resources */,
+				3B0FE40315386B7000BEC21C /* wakemate-overview.png in Resources */,
+				3B0FE40415386B7000BEC21C /* wakemate-summary.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

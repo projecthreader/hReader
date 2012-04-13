@@ -46,5 +46,53 @@
 		<key>fullscreen_image</key>
 		<string>tbi-fullscreen</string>
 	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>org.mitre.hreader.placeholder.fitbit</string>
+		<key>class_name</key>
+		<string>HRImageAppletTile</string>
+		<key>display_name</key>
+		<string>TBI Tracker</string>
+		<key>tile_image</key>
+		<string>fitbit-summary</string>
+		<key>fullscreen_image</key>
+		<string>fitbit-overview</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>org.mitre.hreader.placeholder.nikeplus</string>
+		<key>class_name</key>
+		<string>HRImageAppletTile</string>
+		<key>display_name</key>
+		<string>TBI Tracker</string>
+		<key>tile_image</key>
+		<string>nikeplus-summary</string>
+		<key>fullscreen_image</key>
+		<string>nikeplus-overview</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>org.mitre.hreader.placeholder.withings</string>
+		<key>class_name</key>
+		<string>HRImageAppletTile</string>
+		<key>display_name</key>
+		<string>TBI Tracker</string>
+		<key>tile_image</key>
+		<string>withings-summary</string>
+		<key>fullscreen_image</key>
+		<string>withings-overview</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>org.mitre.hreader.placeholder.wakemate</string>
+		<key>class_name</key>
+		<string>HRImageAppletTile</string>
+		<key>display_name</key>
+		<string>TBI Tracker</string>
+		<key>tile_image</key>
+		<string>wakemate-summary</string>
+		<key>fullscreen_image</key>
+		<string>wakemate-overview</string>
+	</dict>
 </array>
 </plist>
