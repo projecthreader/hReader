@@ -1,5 +1,11 @@
 # 2012-4-13
 
+- Add ability to reorder installed applets
+- Fix bugs with data display
+- Update simulated applets
+
+# 2012-4-13
+
 - Added new applets provided by Dave
 - Added allergies to synthetic data
 - Medication refill now shows refill date
