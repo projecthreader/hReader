@@ -22,6 +22,8 @@
 @dynamic value;
 @dynamic type;
 @dynamic patient;
+@dynamic reaction;
+@dynamic severity;
 
 + (HRMEntry *)instanceWithDictionary:(NSDictionary *)dictionary
                                 type:(HRMEntryType)type
@@ -67,6 +69,14 @@
     object = [dictionary objectForKey:@"dose"];
     if (object && [object isKindOfClass:[NSDictionary class]]) {
         entry.dose = object;
+    }
+    object = [dictionary objectForKey:@"reaction"];
+    if (object && [object isKindOfClass:[NSDictionary class]]) {
+        entry.reaction = object;
+    }
+    object = [dictionary objectForKey:@"severity"];
+    if (object && [object isKindOfClass:[NSDictionary class]]) {
+        entry.severity = object;
     }
     
     // return

@@ -25,10 +25,12 @@ typedef enum {
 @interface HRMEntry : GCManagedObject
 
 @property (nonatomic, retain) NSString *desc;
+@property (nonatomic, retain) NSString *status;
+@property (nonatomic, retain) NSString *reaction;
+@property (nonatomic, retain) NSString *severity;
 @property (nonatomic, retain) NSDate *date;
 @property (nonatomic, retain) NSDate *endDate;
 @property (nonatomic, retain) NSDate *startDate;
-@property (nonatomic, retain) NSString *status;
 @property (nonatomic, retain) NSDictionary *value;
 @property (nonatomic, retain) NSDictionary *codes;
 @property (nonatomic, retain) NSDictionary *dose;
