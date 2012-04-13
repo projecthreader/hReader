@@ -37,7 +37,7 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="XVa-Lg-kgT"/>
-                    <value key="contentSizeForViewInPopover" type="size" width="320" height="400"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="600"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="2041" y="-1407"/>

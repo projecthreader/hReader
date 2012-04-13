@@ -16,6 +16,8 @@
     NSArray * __strong __patientApplets;
 }
 
+- (void)reloadApplets;
+
 @end
 
 @implementation HRAppletConfigurationViewController
@@ -33,6 +35,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.editing = YES;
+    [self reloadApplets];
+}
+
+- (void)viewDidUnload {
+    __allApplets = nil;
+    [super viewDidUnload];
+}
+
+- (void)setPatient:(HRMPatient *)patient {
+    if (!__patient || !patient) {
+        __patient = patient;
+    }
+}
+
+- (void)reloadApplets {
     
     // load system applets
     NSURL *URL = [[NSBundle mainBundle] URLForResource:@"HReaderApplets" withExtension:@"plist"];
@@ -52,18 +69,7 @@
     [(NSMutableArray *)__allApplets sortUsingComparator:^NSComparisonResult(NSDictionary *one, NSDictionary *two) {
         return [[one objectForKey:@"display_name"] caseInsensitiveCompare:[two objectForKey:@"display_name"]];
     }];
-
-}
-
-- (void)viewDidUnload {
-    __allApplets = nil;
-    [super viewDidUnload];
-}
-
-- (void)setPatient:(HRMPatient *)patient {
-    if (!__patient || !patient) {
-        __patient = patient;
-    }
+    
 }
 
 #pragma mark - table view
@@ -80,7 +86,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BasicCell"];
     if (indexPath.section == 0) {
-        cell.textLabel.text = [__patientApplets objectAtIndex:indexPath.row];
+        NSDictionary *applet = [__patientApplets objectAtIndex:indexPath.row];
+        cell.textLabel.text = [applet objectForKey:@"display_name"];
     }
     else {
         NSDictionary *applet = [__allApplets objectAtIndex:indexPath.row];
@@ -89,61 +96,34 @@
     return cell;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"Installed Applets";
+    }
+    else {
+        return @"Available Applets";
+    }
+}
+
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     return (indexPath.section == 0) ? UITableViewCellEditingStyleDelete : UITableViewCellEditingStyleInsert;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleInsert) {
+        
+    }
+    else {
+        
+    }
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 @end
