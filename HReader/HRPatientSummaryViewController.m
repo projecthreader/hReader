@@ -98,26 +98,6 @@
     }
     
     // allergies
-    /*
-    {
-        NSArray *allergies = patient.allergies;
-        NSUInteger count = [allergies count];
-        //    self.allergiesLabel.textColor = [HRConfig redColor];
-        if (count) {
-            NSMutableString *string = [[[allergies objectAtIndex:0] desc] mutableCopy];
-            if (count > 1) {
-                [string appendFormat:@", %lu more", (unsigned long)(count - 1)];
-            }
-            if ([string length] > 0) {
-                self.allergiesLabel.text = string;
-            }
-            else {
-                self.allergiesLabel.text = @"None";
-            }
-        }
-        else { self.allergiesLabel.text = @"None"; }
-    }
-     */
     {
         NSArray *allergies = [patient.syntheticInfo objectForKey:@"allergies"];
         NSUInteger count = [allergies count];
@@ -138,18 +118,35 @@
         }
         else { self.allergiesLabel.text = @"None"; }
     }
+    /*
+     {
+     NSArray *allergies = patient.allergies;
+     NSUInteger count = [allergies count];
+     //    self.allergiesLabel.textColor = [HRConfig redColor];
+     if (count) {
+     NSMutableString *string = [[[allergies objectAtIndex:0] desc] mutableCopy];
+     if (count > 1) {
+     [string appendFormat:@", %lu more", (unsigned long)(count - 1)];
+     }
+     if ([string length] > 0) {
+     self.allergiesLabel.text = string;
+     }
+     else {
+     self.allergiesLabel.text = @"None";
+     }
+     }
+     else { self.allergiesLabel.text = @"None"; }
+     }
+     */
     
     // chronic conditions
     {
         NSArray *conditions = [syntheticInfo objectForKey:@"chronic_conditions"];
         NSUInteger count = [conditions count];
         if (count) {
-            NSMutableString *string = [[conditions objectAtIndex:0] mutableCopy];
-            if (count > 1) {
-                [string appendFormat:@", %lu more", (unsigned long)(count - 1)];
-            }
-            if ([string length] > 0) {
-                self.chronicConditionsLabel.text = string;
+            NSString *condition = [conditions objectAtIndex:0];
+            if ([condition length] > 0) {
+                self.chronicConditionsLabel.text = condition;
             }
             else {
                 self.chronicConditionsLabel.text = @"None";
@@ -157,6 +154,25 @@
         }
         else { self.chronicConditionsLabel.text = @"None"; }
     }
+    /*
+     {
+     NSArray *conditions = [syntheticInfo objectForKey:@"chronic_conditions"];
+     NSUInteger count = [conditions count];
+     if (count) {
+     NSMutableString *string = [[conditions objectAtIndex:0] mutableCopy];
+     if (count > 1) {
+     [string appendFormat:@", %lu more", (unsigned long)(count - 1)];
+     }
+     if ([string length] > 0) {
+     self.chronicConditionsLabel.text = string;
+     }
+     else {
+     self.chronicConditionsLabel.text = @"None";
+     }
+     }
+     else { self.chronicConditionsLabel.text = @"None"; }
+     }
+     */
     
     // recent conditions
     {
