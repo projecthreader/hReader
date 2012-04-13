@@ -70,6 +70,18 @@
             "zip": "12345",
             "phone_number": "(781) 453-4000",
             "email": "mmoore@fakeemail.com"
-        }
+        },
+        {
+            "speciality": "Neurologist",
+            "title": "Dr.",
+            "first_name": "Rebecca",
+            "last_name": "Bling",
+            "organization": "Patient Medical Center",
+            "street": "148 Chestnut Street",
+            "city": "Needham",
+            "zip": "12345",
+            "phone_number": "(781) 453-3000",
+            "email": "rbling@fakeemail.com"
+          }
     ]
 }
