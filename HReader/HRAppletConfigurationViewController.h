@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString * const HRAppletConfigurationDidChangeNotification;
+
 @class HRMPatient;
 
 @interface HRAppletConfigurationViewController : UITableViewController

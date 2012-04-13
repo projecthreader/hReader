@@ -10,6 +10,8 @@
 
 #import "HRMPatient.h"
 
+NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigurationDidChange";
+
 @interface HRAppletConfigurationViewController () {
 @private
     NSArray * __strong __availableApplets;
@@ -139,6 +141,11 @@
     [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     [tableView endUpdates];
+    
+    // post notification
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:HRAppletConfigurationDidChangeNotification
+     object:self];
     
 }
 

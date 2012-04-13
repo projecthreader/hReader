@@ -19,6 +19,8 @@
 #import "HRBMI.h"
 #import "HRImageAppletTile.h"
 
+#import "HRAppletConfigurationViewController.h"
+
 #import "NSDate+FormattedDate.h"
 #import "NSArray+Collect.h"
 
@@ -78,239 +80,257 @@
     self = [super initWithCoder:coder];
     if (self) {
         self.title = @"Summary";
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(appletConfigurationDidChange)
+         name:HRAppletConfigurationDidChangeNotification
+         object:nil];
     }
     return self;
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:HRAppletConfigurationDidChangeNotification
+     object:nil];
+}
+
 - (void)reloadData {
-    
-    // get patient
-    HRMPatient *patient = [HRMPatient selectedPatient];
-    NSDictionary *syntheticInfo = patient.syntheticInfo;
-    
-    // date of birth
-    self.patientNameLabel.text = [[patient compositeName] uppercaseString];
-    if ([self.dateOfBirthTitleLabel.text isEqualToString:@"DOB"]) {
-        self.dateOfBirthLabel.text = [patient.dateOfBirth mediumStyleDate];
-    }
-    else {
-        self.dateOfBirthLabel.text = [patient.dateOfBirth ageString];
-    }
-    
-    // allergies
-    {
-        NSArray *allergies = [patient.syntheticInfo objectForKey:@"allergies"];
-        NSUInteger count = [allergies count];
-        self.allergiesLabel.textColor = [UIColor blackColor];
-        if (count) {
-            NSMutableString *string = [[allergies objectAtIndex:0] mutableCopy];
-            if (count > 1) {
-                self.allergiesLabel.textColor = [HRConfig redColor];
-                [string appendFormat:@", %lu more", (unsigned long)(count - 1)];
-            }
-            if ([string length] > 0) {
-                self.allergiesLabel.textColor = [HRConfig redColor];
-                self.allergiesLabel.text = string;
-            }
-            else {
-                self.allergiesLabel.text = @"None";
-            }
-        }
-        else { self.allergiesLabel.text = @"None"; }
-    }
-    /*
-     {
-     NSArray *allergies = patient.allergies;
-     NSUInteger count = [allergies count];
-     //    self.allergiesLabel.textColor = [HRConfig redColor];
-     if (count) {
-     NSMutableString *string = [[[allergies objectAtIndex:0] desc] mutableCopy];
-     if (count > 1) {
-     [string appendFormat:@", %lu more", (unsigned long)(count - 1)];
-     }
-     if ([string length] > 0) {
-     self.allergiesLabel.text = string;
-     }
-     else {
-     self.allergiesLabel.text = @"None";
-     }
-     }
-     else { self.allergiesLabel.text = @"None"; }
-     }
-     */
-    
-    // chronic conditions
-    {
-        NSArray *conditions = [syntheticInfo objectForKey:@"chronic_conditions"];
-        NSUInteger count = [conditions count];
-        if (count) {
-            NSString *condition = [conditions objectAtIndex:0];
-            if ([condition length] > 0) {
-                self.chronicConditionsLabel.text = condition;
-            }
-            else {
-                self.chronicConditionsLabel.text = @"None";
-            }
-        }
-        else { self.chronicConditionsLabel.text = @"None"; }
-    }
-    /*
-     {
-     NSArray *conditions = [syntheticInfo objectForKey:@"chronic_conditions"];
-     NSUInteger count = [conditions count];
-     if (count) {
-     NSMutableString *string = [[conditions objectAtIndex:0] mutableCopy];
-     if (count > 1) {
-     [string appendFormat:@", %lu more", (unsigned long)(count - 1)];
-     }
-     if ([string length] > 0) {
-     self.chronicConditionsLabel.text = string;
-     }
-     else {
-     self.chronicConditionsLabel.text = @"None";
-     }
-     }
-     else { self.chronicConditionsLabel.text = @"None"; }
-     }
-     */
-    
-    // recent conditions
-    {
-        NSArray *conditions = patient.conditions;
-        if ([conditions count]) {
-            HRMEntry *condition = [conditions lastObject];
-            self.recentConditionsDateLabel.text = [condition.startDate mediumStyleDate];
-            self.recentConditionsLabel.text = condition.desc;
+    if ([self isViewLoaded]) {
+        
+        // get patient
+        HRMPatient *patient = [HRMPatient selectedPatient];
+        NSDictionary *syntheticInfo = patient.syntheticInfo;
+        
+        // date of birth
+        self.patientNameLabel.text = [[patient compositeName] uppercaseString];
+        if ([self.dateOfBirthTitleLabel.text isEqualToString:@"DOB"]) {
+            self.dateOfBirthLabel.text = [patient.dateOfBirth mediumStyleDate];
         }
         else {
-            self.recentConditionsDateLabel.text = @"None";
-            self.recentConditionsLabel.text = nil;
+            self.dateOfBirthLabel.text = [patient.dateOfBirth ageString];
         }
-    }
-    
-    // upcoming events
-    {
-        NSDictionary *event = [[syntheticInfo objectForKey:@"upcoming_events"] lastObject];
-        self.upcomingEventsLabel.text = [event objectForKey:@"title"];
-        self.planOfCareLabel.text = [event objectForKey:@"plan_of_care"];
-        NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"follow_up_appointment_date"] doubleValue]];
-        self.followUpAppointmentLabel.text = [date mediumStyleDate];
-        NSDictionary *medication = [[event objectForKey:@"medication_refill"] lastObject];
-        if (medication) {
-            NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[medication objectForKey:@"date"] doubleValue]];
-            self.medicationRefillLabel.text = 
-            [NSString stringWithFormat:@"%@ on %@",
-             [medication objectForKey:@"medication"],
-             [date mediumStyleDate]];
-        }
-        else {
-            self.medicationRefillLabel.text = @"None";
-        }
-    }
-    
-    // grid view
-    {
         
-        // get list of applets for this patient
-        NSMutableArray *views = [NSMutableArray array];
-        NSURL *URL = [[NSBundle mainBundle] URLForResource:@"HReaderApplets" withExtension:@"plist"];
-        NSArray *applets = [NSArray arrayWithContentsOfURL:URL];
-        NSArray *identifiers = patient.applets;
-        
-        // load applets
-        [identifiers enumerateObjectsUsingBlock:^(NSString *identifier, NSUInteger index, BOOL *stop) {
-            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier like %@", identifier];
-            NSDictionary *dictionary = [[applets filteredArrayUsingPredicate:predicate] lastObject];
-            if (dictionary) {
-                
-                // vitals
-                if ([identifier isEqualToString:@"org.mitre.hreader.vitals"]) {
-                    NSDictionary *vitals = [patient vitalSignsGroupedByDescription];
-                    [vitals enumerateKeysAndObjectsUsingBlock:^(NSString *type, NSArray *entries, BOOL *stop) {
-                        HRVitalView *view = [HRVitalView tileWithPatient:patient userInfo:dictionary];
-                        if ([type isEqualToString:@"BMI"]) {
-                            view.vital = [[HRBMI alloc] initWithEntries:entries];
-                        }
-                        else  {
-                            view.vital = [[HRVital alloc] initWithEntries:entries];
-                        }
-                        [views addObject:view];
-                    }];
+        // allergies
+        {
+            NSArray *allergies = [patient.syntheticInfo objectForKey:@"allergies"];
+            NSUInteger count = [allergies count];
+            self.allergiesLabel.textColor = [UIColor blackColor];
+            if (count) {
+                NSMutableString *string = [[allergies objectAtIndex:0] mutableCopy];
+                if (count > 1) {
+                    self.allergiesLabel.textColor = [HRConfig redColor];
+                    [string appendFormat:@", %lu more", (unsigned long)(count - 1)];
                 }
-                
-                // others
+                if ([string length] > 0) {
+                    self.allergiesLabel.textColor = [HRConfig redColor];
+                    self.allergiesLabel.text = string;
+                }
                 else {
-                    Class c = NSClassFromString([dictionary objectForKey:@"class_name"]);
-                    [views addObject:[c tileWithPatient:patient userInfo:dictionary]];
+                    self.allergiesLabel.text = @"None";
                 }
-                
             }
-            else { NSLog(@"Unable to find applet with identifier %@", identifier); }
-        }];
-        
-        // save and reload
-        __gridViews = views;
-        [self.gridView reloadData];
-        
-    }
-    
-    {
-        
+            else { self.allergiesLabel.text = @"None"; }
+        }
         /*
+         {
+         NSArray *allergies = patient.allergies;
+         NSUInteger count = [allergies count];
+         //    self.allergiesLabel.textColor = [HRConfig redColor];
+         if (count) {
+         NSMutableString *string = [[[allergies objectAtIndex:0] desc] mutableCopy];
+         if (count > 1) {
+         [string appendFormat:@", %lu more", (unsigned long)(count - 1)];
+         }
+         if ([string length] > 0) {
+         self.allergiesLabel.text = string;
+         }
+         else {
+         self.allergiesLabel.text = @"None";
+         }
+         }
+         else { self.allergiesLabel.text = @"None"; }
+         }
+         */
+        
+        // chronic conditions
+        {
+            NSArray *conditions = [syntheticInfo objectForKey:@"chronic_conditions"];
+            NSUInteger count = [conditions count];
+            if (count) {
+                NSString *condition = [conditions objectAtIndex:0];
+                if ([condition length] > 0) {
+                    self.chronicConditionsLabel.text = condition;
+                }
+                else {
+                    self.chronicConditionsLabel.text = @"None";
+                }
+            }
+            else { self.chronicConditionsLabel.text = @"None"; }
+        }
+        /*
+         {
+         NSArray *conditions = [syntheticInfo objectForKey:@"chronic_conditions"];
+         NSUInteger count = [conditions count];
+         if (count) {
+         NSMutableString *string = [[conditions objectAtIndex:0] mutableCopy];
+         if (count > 1) {
+         [string appendFormat:@", %lu more", (unsigned long)(count - 1)];
+         }
+         if ([string length] > 0) {
+         self.chronicConditionsLabel.text = string;
+         }
+         else {
+         self.chronicConditionsLabel.text = @"None";
+         }
+         }
+         else { self.chronicConditionsLabel.text = @"None"; }
+         }
+         */
+        
+        // recent conditions
+        {
+            NSArray *conditions = patient.conditions;
+            if ([conditions count]) {
+                HRMEntry *condition = [conditions lastObject];
+                self.recentConditionsDateLabel.text = [condition.startDate mediumStyleDate];
+                self.recentConditionsLabel.text = condition.desc;
+            }
+            else {
+                self.recentConditionsDateLabel.text = @"None";
+                self.recentConditionsLabel.text = nil;
+            }
+        }
         
         // upcoming events
+        {
+            NSDictionary *event = [[syntheticInfo objectForKey:@"upcoming_events"] lastObject];
+            self.upcomingEventsLabel.text = [event objectForKey:@"title"];
+            self.planOfCareLabel.text = [event objectForKey:@"plan_of_care"];
+            NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"follow_up_appointment_date"] doubleValue]];
+            self.followUpAppointmentLabel.text = [date mediumStyleDate];
+            NSDictionary *medication = [[event objectForKey:@"medication_refill"] lastObject];
+            if (medication) {
+                NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[medication objectForKey:@"date"] doubleValue]];
+                self.medicationRefillLabel.text = 
+                [NSString stringWithFormat:@"%@ on %@",
+                 [medication objectForKey:@"medication"],
+                 [date mediumStyleDate]];
+            }
+            else {
+                self.medicationRefillLabel.text = @"None";
+            }
+        }
         
+        // grid view
+        {
+            
+            // get list of applets for this patient
+            NSMutableArray *views = [NSMutableArray array];
+            NSURL *URL = [[NSBundle mainBundle] URLForResource:@"HReaderApplets" withExtension:@"plist"];
+            NSArray *applets = [NSArray arrayWithContentsOfURL:URL];
+            NSArray *identifiers = patient.applets;
+            
+            // load applets
+            [identifiers enumerateObjectsUsingBlock:^(NSString *identifier, NSUInteger index, BOOL *stop) {
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier like %@", identifier];
+                NSDictionary *dictionary = [[applets filteredArrayUsingPredicate:predicate] lastObject];
+                if (dictionary) {
+                    
+                    // vitals
+                    if ([identifier isEqualToString:@"org.mitre.hreader.vitals"]) {
+                        NSDictionary *vitals = [patient vitalSignsGroupedByDescription];
+                        [vitals enumerateKeysAndObjectsUsingBlock:^(NSString *type, NSArray *entries, BOOL *stop) {
+                            HRVitalView *view = [HRVitalView tileWithPatient:patient userInfo:dictionary];
+                            if ([type isEqualToString:@"BMI"]) {
+                                view.vital = [[HRBMI alloc] initWithEntries:entries];
+                            }
+                            else  {
+                                view.vital = [[HRVital alloc] initWithEntries:entries];
+                            }
+                            [views addObject:view];
+                        }];
+                    }
+                    
+                    // others
+                    else {
+                        Class c = NSClassFromString([dictionary objectForKey:@"class_name"]);
+                        [views addObject:[c tileWithPatient:patient userInfo:dictionary]];
+                    }
+                    
+                }
+                else { NSLog(@"Unable to find applet with identifier %@", identifier); }
+            }];
+            
+            // save and reload
+            __gridViews = views;
+            [self.gridView reloadData];
+            
+        }
         
-        // functional status
-        NSDictionary *functionalStatus = [syntheticInfo objectForKey:@"functional_status"];
-        self.functionalStatusDateLabel.text = [self formattedDate:[[functionalStatus objectForKey:@"date"] doubleValue]];
-        self.functionalStatusProblemLabel.text = [functionalStatus objectForKey:@"problem"];
-        self.functionalStatusStatusLabel.text = [functionalStatus objectForKey:@"status"];
-        self.functionalStatusTypeLabel.text = [functionalStatus objectForKey:@"type"];;
+        {
+            
+            /*
+             
+             // upcoming events
+             
+             
+             // functional status
+             NSDictionary *functionalStatus = [syntheticInfo objectForKey:@"functional_status"];
+             self.functionalStatusDateLabel.text = [self formattedDate:[[functionalStatus objectForKey:@"date"] doubleValue]];
+             self.functionalStatusProblemLabel.text = [functionalStatus objectForKey:@"problem"];
+             self.functionalStatusStatusLabel.text = [functionalStatus objectForKey:@"status"];
+             self.functionalStatusTypeLabel.text = [functionalStatus objectForKey:@"type"];;
+             
+             // advanced directives
+             self.advanceDirectivesLabel.text = [syntheticInfo objectForKey:@"advanced_directives"];
+             
+             // diagnosis
+             NSDictionary *diagnosis = [syntheticInfo objectForKey:@"diagnosis"];
+             self.diagnosisDateLabel.text = [self formattedDate:[[diagnosis objectForKey:@"results"] doubleValue]];
+             self.diagnosisLabel.text = [diagnosis objectForKey:@"results"];
+             
+             */
+            
+            
+            
+            
+            
+            
+        }
         
-        // advanced directives
-        self.advanceDirectivesLabel.text = [syntheticInfo objectForKey:@"advanced_directives"];
+        /*
+         {
+         HRPatient *patient = [HRConfig selectedPatient];
+         self.recentConditionsLabel.text = [patient.info objectForKey:@"recent_condition"];
+         self.recentConditionsDateLabel.text = [patient.info objectForKey:@"recent_condition_date"];
+         self.chronicConditionsLabel.text = [[patient.info objectForKey:@"chronic_conditions"] componentsJoinedByString:@"\n"];
+         self.upcomingEventsLabel.text = [patient.info objectForKey:@"upcoming_events"];
+         self.planOfCareLabel.text = [patient.info objectForKey:@"plan_of_care"];
+         self.followUpAppointmentLabel.text = [patient.info objectForKey:@"follow_up_appointment"];
+         self.medicationRefillLabel.text = [patient.info objectForKey:@"medication_refill"];
+         
+         
+         self.pulseLabel.text = [patient.info objectForKey:@"pulse"];
+         self.pulseDateLabel.text = [patient.info objectForKey:@"pulse_date"];
+         self.pulseNormalLabel.text = [patient.info objectForKey:@"pulse_normal"];
+         self.functionalStatusDateLabel.text = [patient.info objectForKey:@"functional_status_date"];
+         self.functionalStatusProblemLabel.text = [patient.info objectForKey:@"functional_status_problem"];
+         self.functionalStatusStatusLabel.text = [patient.info objectForKey:@"functional_status_status"];
+         self.functionalStatusTypeLabel.text = [patient.info objectForKey:@"functional_status_type"];
+         self.diagnosisLabel.text = [patient.info objectForKey:@"diagnosis_results"];
+         self.diagnosisDateLabel.text = [patient.info objectForKey:@"diagnosis_date"];
+         self.pulseImageView.image = [patient.info objectForKey:@"pulse_sparklines"];
+         
+         }
+         */
         
-        // diagnosis
-        NSDictionary *diagnosis = [syntheticInfo objectForKey:@"diagnosis"];
-        self.diagnosisDateLabel.text = [self formattedDate:[[diagnosis objectForKey:@"results"] doubleValue]];
-        self.diagnosisLabel.text = [diagnosis objectForKey:@"results"];
-        
-        */
-        
-        
+    }
+}
 
-        
-        
-        
-    }
-    
-    /*
-    {
-        HRPatient *patient = [HRConfig selectedPatient];
-        self.recentConditionsLabel.text = [patient.info objectForKey:@"recent_condition"];
-        self.recentConditionsDateLabel.text = [patient.info objectForKey:@"recent_condition_date"];
-        self.chronicConditionsLabel.text = [[patient.info objectForKey:@"chronic_conditions"] componentsJoinedByString:@"\n"];
-        self.upcomingEventsLabel.text = [patient.info objectForKey:@"upcoming_events"];
-        self.planOfCareLabel.text = [patient.info objectForKey:@"plan_of_care"];
-        self.followUpAppointmentLabel.text = [patient.info objectForKey:@"follow_up_appointment"];
-        self.medicationRefillLabel.text = [patient.info objectForKey:@"medication_refill"];
-        
-        
-        self.pulseLabel.text = [patient.info objectForKey:@"pulse"];
-        self.pulseDateLabel.text = [patient.info objectForKey:@"pulse_date"];
-        self.pulseNormalLabel.text = [patient.info objectForKey:@"pulse_normal"];
-        self.functionalStatusDateLabel.text = [patient.info objectForKey:@"functional_status_date"];
-        self.functionalStatusProblemLabel.text = [patient.info objectForKey:@"functional_status_problem"];
-        self.functionalStatusStatusLabel.text = [patient.info objectForKey:@"functional_status_status"];
-        self.functionalStatusTypeLabel.text = [patient.info objectForKey:@"functional_status_type"];
-        self.diagnosisLabel.text = [patient.info objectForKey:@"diagnosis_results"];
-        self.diagnosisDateLabel.text = [patient.info objectForKey:@"diagnosis_date"];
-        self.pulseImageView.image = [patient.info objectForKey:@"pulse_sparklines"];
-        
-    }
-    */
-    
+- (void)appletConfigurationDidChange {
+    [self reloadData];
 }
 
 #pragma mark - view methods
