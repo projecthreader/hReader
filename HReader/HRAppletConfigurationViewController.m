@@ -15,7 +15,7 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
 @interface HRAppletConfigurationViewController () {
 @private
     NSArray * __strong __availableApplets;
-    NSArray * __strong __installedApplets;
+    NSMutableArray * __strong __installedApplets;
 }
 
 - (void)reloadApplets;
@@ -147,6 +147,30 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
      postNotificationName:HRAppletConfigurationDidChangeNotification
      object:self];
     
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return (indexPath.section == 0);
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
+    if (proposedDestinationIndexPath.section > 0) {
+        return [NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] inSection:0];
+    }
+    else {
+        return proposedDestinationIndexPath;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    NSMutableArray *array = self.patient.applets;
+    NSString *identifier = [array objectAtIndex:sourceIndexPath.row];
+    [array removeObjectAtIndex:sourceIndexPath.row];
+    [array insertObject:identifier atIndex:destinationIndexPath.row];
+    [self reloadApplets];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:HRAppletConfigurationDidChangeNotification
+     object:self];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
