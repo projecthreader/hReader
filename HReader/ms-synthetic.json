@@ -1,6 +1,5 @@
 {
   "applets": [
-    "org.mitre.hreader.encounters",
     "org.mitre.hreader.vitals",
     "org.mitre.hreader.encounters",
     "org.mitre.hreader.medications",

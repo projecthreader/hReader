@@ -6,6 +6,58 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
+        <!--Applet Configuration View Controller - Root View Controller-->
+        <scene sceneID="kAw-h1-rrL">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xS4-fS-c6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="F8b-ON-fhx" customClass="HRAppletConfigurationViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="qhy-1z-2SZ">
+                        <rect key="frame" x="0.0" y="44" width="1024" height="724"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BasicCell" textLabel="CWf-K7-5Rb" style="IBUITableViewCellStyleDefault" id="nom-Gb-lNU">
+                                <rect key="frame" x="0.0" y="54" width="1024" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="45" y="1" width="934" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CWf-K7-5Rb">
+                                            <rect key="frame" x="10" y="0.0" width="914" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="XVa-Lg-kgT"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="400"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="2041" y="-1407"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GzL-zJ-odk">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uu1-gj-kHC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="u1V-0C-h3X" sceneMemberID="viewController">
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="T3d-kw-ovT">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="F8b-ON-fhx" kind="relationship" relationship="rootViewController" id="sfI-WV-wDA"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="746" y="-1407"/>
+        </scene>
         <!--Root View Controller-->
         <scene sceneID="2Ki-i2-Rgl">
             <objects>
@@ -19,6 +71,13 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="XO8-go-ylK"/>
+                        <barButtonItem title="Item" id="vZi-os-nZL">
+                            <connections>
+                                <segue destination="u1V-0C-h3X" kind="popover" identifier="ToolsPopover" popoverAnchorBarButtonItem="vZi-os-nZL" id="F5H-PG-5xV">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem title="About" id="yvk-UI-KfQ">
                             <connections>
                                 <segue destination="2Hp-Fe-994" kind="modal" identifier="About Button" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="hp3-q0-AaZ"/>
@@ -103,7 +162,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" id="cBw-FY-Dtr">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="220"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="INFO" lineBreakMode="tailTruncation" minimumFontSize="10" id="6i5-aP-dHZ" userLabel="Info Label">
@@ -500,6 +559,9 @@ hReader allows you to gather, correct, and manage your health data. This service
                 <relationship kind="outlet" name="buildDateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="versionLabel" candidateClass="UILabel"/>
             </relationships>
+        </class>
+        <class className="HRAppletConfigurationViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRAppletConfigurationViewController.h"/>
         </class>
         <class className="HRDoctorsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRDoctorsViewController.h"/>
