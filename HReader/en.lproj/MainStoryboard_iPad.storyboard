@@ -162,7 +162,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" id="cBw-FY-Dtr">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="220"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="INFO" lineBreakMode="tailTruncation" minimumFontSize="10" id="6i5-aP-dHZ" userLabel="Info Label">
