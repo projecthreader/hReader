@@ -181,7 +181,11 @@
         self.followUpAppointmentLabel.text = [date mediumStyleDate];
         NSDictionary *medication = [[event objectForKey:@"medication_refill"] lastObject];
         if (medication) {
-            self.medicationRefillLabel.text = [medication objectForKey:@"medication"];
+            NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[medication objectForKey:@"date"] doubleValue]];
+            self.medicationRefillLabel.text = 
+            [NSString stringWithFormat:@"%@ on %@",
+             [medication objectForKey:@"medication"],
+             [date mediumStyleDate]];
         }
         else {
             self.medicationRefillLabel.text = @"None";
