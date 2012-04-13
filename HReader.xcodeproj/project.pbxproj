@@ -112,6 +112,8 @@
 		94BB0326149BAF25009B2FCC /* HRPasscodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BB0325149BAF25009B2FCC /* HRPasscodeManager.m */; };
 		94BB032C149BB393009B2FCC /* HRPasscodeWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BB032A149BB392009B2FCC /* HRPasscodeWarningViewController.m */; };
 		94BB032D149BB393009B2FCC /* HRPasscodeWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BB032B149BB393009B2FCC /* HRPasscodeWarningViewController.xib */; };
+		94E078B2153885C40051DC01 /* wahoo-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078B0153885C40051DC01 /* wahoo-overview.png */; };
+		94E078B3153885C40051DC01 /* wahoo-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078B1153885C40051DC01 /* wahoo-summary.png */; };
 		94E84E7014FEBC390091B0A1 /* NSArray+Collect.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E84E6F14FEBC390091B0A1 /* NSArray+Collect.m */; };
 		94EBD55114FE7A6200A3AF66 /* ASBSparkLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EBD55014FE7A6200A3AF66 /* ASBSparkLineView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94F4CB611507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F4CB601507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m */; };
@@ -291,6 +293,8 @@
 		94BB0329149BB392009B2FCC /* HRPasscodeWarningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPasscodeWarningViewController.h; sourceTree = "<group>"; };
 		94BB032A149BB392009B2FCC /* HRPasscodeWarningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPasscodeWarningViewController.m; sourceTree = "<group>"; };
 		94BB032B149BB393009B2FCC /* HRPasscodeWarningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPasscodeWarningViewController.xib; sourceTree = "<group>"; };
+		94E078B0153885C40051DC01 /* wahoo-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wahoo-overview.png"; sourceTree = "<group>"; };
+		94E078B1153885C40051DC01 /* wahoo-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wahoo-summary.png"; sourceTree = "<group>"; };
 		94E3BB581472E0DE00E05D4D /* HRConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRConfig.h; sourceTree = "<group>"; };
 		94E84E6E14FEBC390091B0A1 /* NSArray+Collect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Collect.h"; sourceTree = "<group>"; };
 		94E84E6F14FEBC390091B0A1 /* NSArray+Collect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Collect.m"; sourceTree = "<group>"; };
@@ -707,6 +711,8 @@
 				3B0FE3FC15386B7000BEC21C /* wakemate-summary.png */,
 				9492CA511535F90E009DE7F2 /* tbi-fullscreen.png */,
 				9492CA521535F90E009DE7F2 /* tbi-tile.png */,
+				94E078B0153885C40051DC01 /* wahoo-overview.png */,
+				94E078B1153885C40051DC01 /* wahoo-summary.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -931,6 +937,8 @@
 				3B0FE40215386B7000BEC21C /* withings-summary.png in Resources */,
 				3B0FE40315386B7000BEC21C /* wakemate-overview.png in Resources */,
 				3B0FE40415386B7000BEC21C /* wakemate-summary.png in Resources */,
+				94E078B2153885C40051DC01 /* wahoo-overview.png in Resources */,
+				94E078B3153885C40051DC01 /* wahoo-summary.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

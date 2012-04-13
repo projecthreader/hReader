@@ -4,6 +4,12 @@
 - Added allergies to synthetic data
 - Medication refill now shows refill date
 - Set grid vertical padding to allow showing 2 full rows of applets
+- Set appropriate applets for each user
+- Added wahoo applet
+- Added nikeplus applet
+- Added withings applet
+- Added fitbit applet
+- Added wakemate applet
 
 # 2012-4-12
 

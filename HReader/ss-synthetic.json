@@ -1,11 +1,11 @@
 {
   "applets": [
-    "org.mitre.hreader.encounters",
     "org.mitre.hreader.vitals",
     "org.mitre.hreader.encounters",
     "org.mitre.hreader.medications",
     "org.mitre.hreader.immunizations",
-    "org.mitre.hreader.placeholder.tbi"
+    "org.mitre.hreader.placeholder.nikeplus",
+    "org.mitre.hreader.placeholder.wakemate"
   ],
     "immunizations": true,
     "chronic_conditions": [
