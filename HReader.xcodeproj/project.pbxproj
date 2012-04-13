@@ -114,8 +114,15 @@
 		94BB032D149BB393009B2FCC /* HRPasscodeWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BB032B149BB393009B2FCC /* HRPasscodeWarningViewController.xib */; };
 		94E078B2153885C40051DC01 /* wahoo-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078B0153885C40051DC01 /* wahoo-overview.png */; };
 		94E078B3153885C40051DC01 /* wahoo-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078B1153885C40051DC01 /* wahoo-summary.png */; };
-		94E078B715389ED50051DC01 /* HRFunctionalStatusAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E078B615389ED50051DC01 /* HRFunctionalStatusAppletTile.m */; };
+		94E078B715389ED50051DC01 /* HRFunctionalStatusAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E078B615389ED50051DC01 /* HRFunctionalStatusAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94E078B915389EE90051DC01 /* HRFunctionalStatusAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E078B815389EE90051DC01 /* HRFunctionalStatusAppletTile.xib */; };
+		94E078C11538A4570051DC01 /* chronic_fatigue_overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078BA1538A4570051DC01 /* chronic_fatigue_overview.png */; };
+		94E078C21538A4570051DC01 /* chronic_fatigue_summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078BB1538A4570051DC01 /* chronic_fatigue_summary.png */; };
+		94E078C31538A4570051DC01 /* lyme_disease_summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078BC1538A4570051DC01 /* lyme_disease_summary.png */; };
+		94E078C41538A4570051DC01 /* lyme_disease_overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078BD1538A4570051DC01 /* lyme_disease_overview.png */; };
+		94E078C51538A4570051DC01 /* multiple_sclerosis_overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078BE1538A4570051DC01 /* multiple_sclerosis_overview.png */; };
+		94E078C61538A4570051DC01 /* multiple_sclerosis_summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078BF1538A4570051DC01 /* multiple_sclerosis_summary.png */; };
+		94E078C71538A4570051DC01 /* pophealth-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078C01538A4570051DC01 /* pophealth-summary.png */; };
 		94E84E7014FEBC390091B0A1 /* NSArray+Collect.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E84E6F14FEBC390091B0A1 /* NSArray+Collect.m */; };
 		94EBD55114FE7A6200A3AF66 /* ASBSparkLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EBD55014FE7A6200A3AF66 /* ASBSparkLineView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94F4CB611507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F4CB601507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m */; };
@@ -300,6 +307,13 @@
 		94E078B515389ED50051DC01 /* HRFunctionalStatusAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRFunctionalStatusAppletTile.h; sourceTree = "<group>"; };
 		94E078B615389ED50051DC01 /* HRFunctionalStatusAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRFunctionalStatusAppletTile.m; sourceTree = "<group>"; };
 		94E078B815389EE90051DC01 /* HRFunctionalStatusAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRFunctionalStatusAppletTile.xib; sourceTree = "<group>"; };
+		94E078BA1538A4570051DC01 /* chronic_fatigue_overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chronic_fatigue_overview.png; sourceTree = "<group>"; };
+		94E078BB1538A4570051DC01 /* chronic_fatigue_summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chronic_fatigue_summary.png; sourceTree = "<group>"; };
+		94E078BC1538A4570051DC01 /* lyme_disease_summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lyme_disease_summary.png; sourceTree = "<group>"; };
+		94E078BD1538A4570051DC01 /* lyme_disease_overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lyme_disease_overview.png; sourceTree = "<group>"; };
+		94E078BE1538A4570051DC01 /* multiple_sclerosis_overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multiple_sclerosis_overview.png; sourceTree = "<group>"; };
+		94E078BF1538A4570051DC01 /* multiple_sclerosis_summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multiple_sclerosis_summary.png; sourceTree = "<group>"; };
+		94E078C01538A4570051DC01 /* pophealth-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pophealth-summary.png"; sourceTree = "<group>"; };
 		94E3BB581472E0DE00E05D4D /* HRConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRConfig.h; sourceTree = "<group>"; };
 		94E84E6E14FEBC390091B0A1 /* NSArray+Collect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Collect.h"; sourceTree = "<group>"; };
 		94E84E6F14FEBC390091B0A1 /* NSArray+Collect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Collect.m"; sourceTree = "<group>"; };
@@ -721,6 +735,13 @@
 				9492CA521535F90E009DE7F2 /* tbi-tile.png */,
 				94E078B0153885C40051DC01 /* wahoo-overview.png */,
 				94E078B1153885C40051DC01 /* wahoo-summary.png */,
+				94E078BA1538A4570051DC01 /* chronic_fatigue_overview.png */,
+				94E078BB1538A4570051DC01 /* chronic_fatigue_summary.png */,
+				94E078BC1538A4570051DC01 /* lyme_disease_summary.png */,
+				94E078BD1538A4570051DC01 /* lyme_disease_overview.png */,
+				94E078BE1538A4570051DC01 /* multiple_sclerosis_overview.png */,
+				94E078BF1538A4570051DC01 /* multiple_sclerosis_summary.png */,
+				94E078C01538A4570051DC01 /* pophealth-summary.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -948,6 +969,13 @@
 				94E078B2153885C40051DC01 /* wahoo-overview.png in Resources */,
 				94E078B3153885C40051DC01 /* wahoo-summary.png in Resources */,
 				94E078B915389EE90051DC01 /* HRFunctionalStatusAppletTile.xib in Resources */,
+				94E078C11538A4570051DC01 /* chronic_fatigue_overview.png in Resources */,
+				94E078C21538A4570051DC01 /* chronic_fatigue_summary.png in Resources */,
+				94E078C31538A4570051DC01 /* lyme_disease_summary.png in Resources */,
+				94E078C41538A4570051DC01 /* lyme_disease_overview.png in Resources */,
+				94E078C51538A4570051DC01 /* multiple_sclerosis_overview.png in Resources */,
+				94E078C61538A4570051DC01 /* multiple_sclerosis_summary.png in Resources */,
+				94E078C71538A4570051DC01 /* pophealth-summary.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
