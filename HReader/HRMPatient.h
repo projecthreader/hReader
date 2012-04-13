@@ -33,7 +33,8 @@ typedef enum {
 @property (nonatomic, retain) NSArray *procedures;
 @property (nonatomic, retain) NSArray *results;
 
-@property (nonatomic, retain) NSDictionary *syntheticInfo;
+@property (nonatomic, copy) NSDictionary *syntheticInfo;
+@property (nonatomic, retain) NSMutableArray *applets;
 
 @property (nonatomic, readonly) NSArray *conditions;
 @property (nonatomic, readonly) NSArray *encounters;

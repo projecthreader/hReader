@@ -5,7 +5,6 @@
     "org.mitre.hreader.medications",
     "org.mitre.hreader.immunizations",
     "org.mitre.hreader.functionalstatus",
-    "org.mitre.hreader.immunizations"
   ],
     
     "allergies": [

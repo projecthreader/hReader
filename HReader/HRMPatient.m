@@ -37,7 +37,8 @@ static HRMPatient *selectedPatient = nil;
 @dynamic allergies;
 @dynamic procedures;
 
-@synthesize syntheticInfo;
+@synthesize syntheticInfo = __syntheticInfo;
+@synthesize applets = __applets;
 
 #pragma mark - class methods
 
@@ -151,6 +152,11 @@ static HRMPatient *selectedPatient = nil;
     }
     [self didAccessValueForKey:@"genderString"];
     return gender;
+}
+
+- (void)setSyntheticInfo:(NSDictionary *)dictionary {
+    __syntheticInfo = [dictionary copy];
+    self.applets = [[dictionary objectForKey:@"applets"] mutableCopy];
 }
 
 #pragma mark - object methods

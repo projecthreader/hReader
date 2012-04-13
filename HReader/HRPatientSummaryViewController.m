@@ -215,7 +215,7 @@
         NSMutableArray *views = [NSMutableArray array];
         NSURL *URL = [[NSBundle mainBundle] URLForResource:@"HReaderApplets" withExtension:@"plist"];
         NSArray *applets = [NSArray arrayWithContentsOfURL:URL];
-        NSArray *identifiers = [syntheticInfo objectForKey:@"applets"];
+        NSArray *identifiers = patient.applets;
         
         // load applets
         [identifiers enumerateObjectsUsingBlock:^(NSString *identifier, NSUInteger index, BOOL *stop) {
