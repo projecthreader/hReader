@@ -17,6 +17,7 @@
 		3B0FE40215386B7000BEC21C /* withings-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3FA15386B7000BEC21C /* withings-summary.png */; };
 		3B0FE40315386B7000BEC21C /* wakemate-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3FB15386B7000BEC21C /* wakemate-overview.png */; };
 		3B0FE40415386B7000BEC21C /* wakemate-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3FC15386B7000BEC21C /* wakemate-summary.png */; };
+		3B0FE4081538755300BEC21C /* HRAppletConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0FE4071538755300BEC21C /* HRAppletConfigurationViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B19651B14EEA6200045F827 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651A14EEA6200045F827 /* Logo.png */; };
 		3B19652014EEAB970045F827 /* C32-Smith-Henry.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651C14EEAB970045F827 /* C32-Smith-Henry.html */; };
 		3B19652114EEAB970045F827 /* C32-Smith-Molly.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */; };
@@ -156,6 +157,8 @@
 		3B0FE3FA15386B7000BEC21C /* withings-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "withings-summary.png"; sourceTree = "<group>"; };
 		3B0FE3FB15386B7000BEC21C /* wakemate-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wakemate-overview.png"; sourceTree = "<group>"; };
 		3B0FE3FC15386B7000BEC21C /* wakemate-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wakemate-summary.png"; sourceTree = "<group>"; };
+		3B0FE4061538755300BEC21C /* HRAppletConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAppletConfigurationViewController.h; sourceTree = "<group>"; };
+		3B0FE4071538755300BEC21C /* HRAppletConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAppletConfigurationViewController.m; sourceTree = "<group>"; };
 		3B19651A14EEA6200045F827 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		3B19651C14EEAB970045F827 /* C32-Smith-Henry.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Henry.html"; sourceTree = "<group>"; };
 		3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Molly.html"; sourceTree = "<group>"; };
@@ -797,6 +800,8 @@
 			children = (
 				94AEAE0714868BC200C005B2 /* HRRootViewController.h */,
 				94AEAE0814868BC200C005B2 /* HRRootViewController.m */,
+				3B0FE4061538755300BEC21C /* HRAppletConfigurationViewController.h */,
+				3B0FE4071538755300BEC21C /* HRAppletConfigurationViewController.m */,
 				94689AD214967E0100E1FCA6 /* C32 */,
 				DD7037B014900E5900F58A83 /* Patient Swipe */,
 				94689AD314967E0600E1FCA6 /* About */,
@@ -1058,6 +1063,7 @@
 				94A6B8C51535F6940012E2B6 /* HRImageAppletTile.m in Sources */,
 				9492CA5715360527009DE7F2 /* HREncountersAppletTile.m in Sources */,
 				9492CA5E15360D4C009DE7F2 /* HRImmunizationsAppletTile.m in Sources */,
+				3B0FE4081538755300BEC21C /* HRAppletConfigurationViewController.m in Sources */,
 				94E078B715389ED50051DC01 /* HRFunctionalStatusAppletTile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

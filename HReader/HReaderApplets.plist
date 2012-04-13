@@ -96,7 +96,7 @@
 		<key>class_name</key>
 		<string>HRImageAppletTile</string>
 		<key>display_name</key>
-		<string>TBI Tracker</string>
+		<string>wakemate</string>
 		<key>tile_image</key>
 		<string>wakemate-summary</string>
 		<key>fullscreen_image</key>

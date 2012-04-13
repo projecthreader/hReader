@@ -6,7 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--Applet Configuration View Controller - Root View Controller-->
+        <!--Applet Configuration View Controller - Applets-->
         <scene sceneID="kAw-h1-rrL">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xS4-fS-c6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -36,8 +36,8 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="XVa-Lg-kgT"/>
-                    <value key="contentSizeForViewInPopover" type="size" width="320" height="400"/>
+                    <navigationItem key="navigationItem" title="Applets" id="XVa-Lg-kgT"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="600"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="2041" y="-1407"/>
