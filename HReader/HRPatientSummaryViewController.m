@@ -159,13 +159,7 @@
             NSArray *conditions = [syntheticInfo objectForKey:@"chronic_conditions"];
             NSUInteger count = [conditions count];
             if (count) {
-                NSString *condition = [conditions objectAtIndex:0];
-                if ([condition length] > 0) {
-                    self.chronicConditionsLabel.text = condition;
-                }
-                else {
-                    self.chronicConditionsLabel.text = @"None";
-                }
+                self.chronicConditionsLabel.text = [conditions componentsJoinedByString:@", "];
             }
             else { self.chronicConditionsLabel.text = @"None"; }
         }
