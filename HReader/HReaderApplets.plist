@@ -52,7 +52,7 @@
 		<key>class_name</key>
 		<string>HRImageAppletTile</string>
 		<key>display_name</key>
-		<string>TBI Tracker</string>
+		<string>fitbit</string>
 		<key>tile_image</key>
 		<string>fitbit-summary</string>
 		<key>fullscreen_image</key>
@@ -64,7 +64,7 @@
 		<key>class_name</key>
 		<string>HRImageAppletTile</string>
 		<key>display_name</key>
-		<string>TBI Tracker</string>
+		<string>Nike+</string>
 		<key>tile_image</key>
 		<string>nikeplus-summary</string>
 		<key>fullscreen_image</key>
@@ -76,7 +76,7 @@
 		<key>class_name</key>
 		<string>HRImageAppletTile</string>
 		<key>display_name</key>
-		<string>TBI Tracker</string>
+		<string>Withings</string>
 		<key>tile_image</key>
 		<string>withings-summary</string>
 		<key>fullscreen_image</key>
