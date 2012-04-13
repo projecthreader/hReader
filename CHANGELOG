@@ -3,6 +3,7 @@
 - Added new applets provided by Dave
 - Added allergies to synthetic data
 - Medication refill now shows refill date
+- Set grid vertical padding to allow showing 2 full rows of applets
 
 # 2012-4-12
 
