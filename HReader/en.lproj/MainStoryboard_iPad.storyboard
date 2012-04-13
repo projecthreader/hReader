@@ -71,7 +71,7 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="XO8-go-ylK"/>
-                        <barButtonItem title="Item" id="vZi-os-nZL">
+                        <barButtonItem title="Applets" id="vZi-os-nZL">
                             <connections>
                                 <segue destination="u1V-0C-h3X" kind="popover" identifier="ToolsPopover" popoverAnchorBarButtonItem="vZi-os-nZL" id="F5H-PG-5xV">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
