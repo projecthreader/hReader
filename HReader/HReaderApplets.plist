@@ -102,5 +102,51 @@
 		<key>fullscreen_image</key>
 		<string>wakemate-overview</string>
 	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>org.mitre.hreader.placeholder.chronicfatigue</string>
+		<key>class_name</key>
+		<string>HRImageAppletTile</string>
+		<key>display_name</key>
+		<string>Chronic Fatigue</string>
+		<key>tile_image</key>
+		<string>chronic_fatigue_summary</string>
+		<key>fullscreen_image</key>
+		<string>chronic_fatigue_overview</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>org.mitre.hreader.placeholder.lymedisease</string>
+		<key>class_name</key>
+		<string>HRImageAppletTile</string>
+		<key>display_name</key>
+		<string>Lyme Disease</string>
+		<key>tile_image</key>
+		<string>lyme_disease_summary</string>
+		<key>fullscreen_image</key>
+		<string>lyme_disease_overview</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>org.mitre.hreader.placeholder.multiplesclerosis</string>
+		<key>class_name</key>
+		<string>HRImageAppletTile</string>
+		<key>display_name</key>
+		<string>Multiple Sclerosis</string>
+		<key>tile_image</key>
+		<string>multiple_sclerosis_summary</string>
+		<key>fullscreen_image</key>
+		<string>multiple_sclerosis_overview</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>org.mitre.hreader.placeholder.pophealth</string>
+		<key>class_name</key>
+		<string>HRImageAppletTile</string>
+		<key>display_name</key>
+		<string>popHealth</string>
+		<key>tile_image</key>
+		<string>pophealth-summary</string>
+	</dict>
 </array>
 </plist>

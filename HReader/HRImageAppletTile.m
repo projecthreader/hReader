@@ -21,14 +21,17 @@
 }
 
 - (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect {
-    UIViewController *controller = [[UIViewController alloc] init];
-    controller.title = [self.userInfo objectForKey:@"display_name"];
-    UIImage *fullScreenImage = [UIImage imageNamed:[self.userInfo objectForKey:@"fullscreen_image"]];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:fullScreenImage];
-    imageView.frame = controller.view.bounds;
-    imageView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
-    [controller.view addSubview:imageView];
-    [sender.navigationController pushViewController:controller animated:YES];
+    NSString *fullScreenName = [self.userInfo objectForKey:@"fullscreen_image"];
+    if (fullScreenName) {
+        UIViewController *controller = [[UIViewController alloc] init];
+        controller.title = [self.userInfo objectForKey:@"display_name"];
+        UIImage *fullScreenImage = [UIImage imageNamed:fullScreenName];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:fullScreenImage];
+        imageView.frame = controller.view.bounds;
+        imageView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+        [controller.view addSubview:imageView];
+        [sender.navigationController pushViewController:controller animated:YES];   
+    }
 }
 
 @end
