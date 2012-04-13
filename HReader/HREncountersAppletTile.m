@@ -13,9 +13,9 @@
 
 @implementation HREncountersAppletTile
 
-@synthesize dateLabel = __dateLabel;
-@synthesize typeLabel = __typeLabel;
-@synthesize descriptionLabel = __descriptionLabel;
+@synthesize dateLabel           = __dateLabel;
+@synthesize typeLabel           = __typeLabel;
+@synthesize descriptionLabel    = __descriptionLabel;
 
 - (void)tileDidLoad {
     [super tileDidLoad];

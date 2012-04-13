@@ -115,6 +115,8 @@
 		94BB032D149BB393009B2FCC /* HRPasscodeWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BB032B149BB393009B2FCC /* HRPasscodeWarningViewController.xib */; };
 		94E078B2153885C40051DC01 /* wahoo-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078B0153885C40051DC01 /* wahoo-overview.png */; };
 		94E078B3153885C40051DC01 /* wahoo-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078B1153885C40051DC01 /* wahoo-summary.png */; };
+		94E078B715389ED50051DC01 /* HRFunctionalStatusAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E078B615389ED50051DC01 /* HRFunctionalStatusAppletTile.m */; };
+		94E078B915389EE90051DC01 /* HRFunctionalStatusAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94E078B815389EE90051DC01 /* HRFunctionalStatusAppletTile.xib */; };
 		94E84E7014FEBC390091B0A1 /* NSArray+Collect.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E84E6F14FEBC390091B0A1 /* NSArray+Collect.m */; };
 		94EBD55114FE7A6200A3AF66 /* ASBSparkLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EBD55014FE7A6200A3AF66 /* ASBSparkLineView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94F4CB611507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F4CB601507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m */; };
@@ -298,6 +300,9 @@
 		94BB032B149BB393009B2FCC /* HRPasscodeWarningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPasscodeWarningViewController.xib; sourceTree = "<group>"; };
 		94E078B0153885C40051DC01 /* wahoo-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wahoo-overview.png"; sourceTree = "<group>"; };
 		94E078B1153885C40051DC01 /* wahoo-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wahoo-summary.png"; sourceTree = "<group>"; };
+		94E078B515389ED50051DC01 /* HRFunctionalStatusAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRFunctionalStatusAppletTile.h; sourceTree = "<group>"; };
+		94E078B615389ED50051DC01 /* HRFunctionalStatusAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRFunctionalStatusAppletTile.m; sourceTree = "<group>"; };
+		94E078B815389EE90051DC01 /* HRFunctionalStatusAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRFunctionalStatusAppletTile.xib; sourceTree = "<group>"; };
 		94E3BB581472E0DE00E05D4D /* HRConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRConfig.h; sourceTree = "<group>"; };
 		94E84E6E14FEBC390091B0A1 /* NSArray+Collect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Collect.h"; sourceTree = "<group>"; };
 		94E84E6F14FEBC390091B0A1 /* NSArray+Collect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Collect.m"; sourceTree = "<group>"; };
@@ -697,6 +702,9 @@
 				9492CA5C15360D4B009DE7F2 /* HRImmunizationsAppletTile.h */,
 				9492CA5D15360D4B009DE7F2 /* HRImmunizationsAppletTile.m */,
 				9492CA5A15360D10009DE7F2 /* HRImmunizationsAppletTile.xib */,
+				94E078B515389ED50051DC01 /* HRFunctionalStatusAppletTile.h */,
+				94E078B615389ED50051DC01 /* HRFunctionalStatusAppletTile.m */,
+				94E078B815389EE90051DC01 /* HRFunctionalStatusAppletTile.xib */,
 			);
 			name = "System Applets";
 			sourceTree = "<group>";
@@ -944,6 +952,7 @@
 				3B0FE40415386B7000BEC21C /* wakemate-summary.png in Resources */,
 				94E078B2153885C40051DC01 /* wahoo-overview.png in Resources */,
 				94E078B3153885C40051DC01 /* wahoo-summary.png in Resources */,
+				94E078B915389EE90051DC01 /* HRFunctionalStatusAppletTile.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1027,6 +1036,7 @@
 				9492CA5715360527009DE7F2 /* HREncountersAppletTile.m in Sources */,
 				9492CA5E15360D4C009DE7F2 /* HRImmunizationsAppletTile.m in Sources */,
 				3B0FE4081538755300BEC21C /* HRAppletConfigurationViewController.m in Sources */,
+				94E078B715389ED50051DC01 /* HRFunctionalStatusAppletTile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

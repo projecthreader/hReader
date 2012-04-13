@@ -3,6 +3,8 @@
     "org.mitre.hreader.vitals",    
     "org.mitre.hreader.encounters",
     "org.mitre.hreader.medications",
+    "org.mitre.hreader.immunizations",
+    "org.mitre.hreader.functionalstatus",
     "org.mitre.hreader.immunizations"
   ],
     
@@ -29,7 +31,7 @@
     ],
     
     "functional_status": {
-      "date": 133347325,
+      "date": 1338182800,
       "problem": "problem",
       "type": "type",
       "status": "status"

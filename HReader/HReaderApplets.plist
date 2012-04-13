@@ -36,6 +36,14 @@
 	</dict>
 	<dict>
 		<key>identifier</key>
+		<string>org.mitre.hreader.functionalstatus</string>
+		<key>class_name</key>
+		<string>HRFunctionalStatusAppletTile</string>
+		<key>display_name</key>
+		<string>Functional Status</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
 		<string>org.mitre.hreader.placeholder.tbi</string>
 		<key>class_name</key>
 		<string>HRImageAppletTile</string>
