@@ -35,8 +35,8 @@
 
 @implementation HRPatientSummaryViewController
 
-@synthesize gridView = __gridView;
-@synthesize headerView = __headerView;
+@synthesize gridView                            = __gridView;
+@synthesize headerView                          = __headerView;
 
 @synthesize patientNameLabel                    = __patientNameLabel;
 @synthesize dateOfBirthLabel                    = __dateOfBirthLabel;
@@ -50,17 +50,12 @@
 @synthesize upcomingEventsLabel                 = __upcomingEventsLabel;
 @synthesize planOfCareLabel                     = __planOfCareLabel;
 
-
-@synthesize labels              = __labels;
+@synthesize labels                              = __labels;
 
 @synthesize medicationNameLabels                = __medicationNameLabels;
 @synthesize medicationDosageLabels              = __medicationDosageLabels;
 
 @synthesize vitalViews                          = __vitalViews;
-
-
-
-
 
 @synthesize functionalStatusDateLabel           = __functionalStatusDateLabel;
 @synthesize functionalStatusTypeLabel           = __functionalStatusTypeLabel;
