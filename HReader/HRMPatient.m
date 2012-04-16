@@ -17,6 +17,7 @@ static HRMPatient *selectedPatient = nil;
 @interface HRMPatient ()
 
 - (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptors:(NSArray *)sortDescriptors;
+- (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate;
 
 @end
 
@@ -189,12 +190,24 @@ static HRMPatient *selectedPatient = nil;
 }
 
 - (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptors:(NSArray *)sortDescriptors {
+    return [self entriesWithType:type sortDescriptors:sortDescriptors predicate:nil];
+}
+
+- (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate {
     NSPredicate *typePredicate = [NSPredicate predicateWithFormat:@"type == %@", [NSNumber numberWithShort:type]];
     NSPredicate *patientPredicate = [NSPredicate predicateWithFormat:@"patient == %@", self];
-    NSPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithObjects:typePredicate, patientPredicate, nil]];
-    return [HRMEntry allInContext:[self managedObjectContext]
-                    withPredicate:predicate
-                  sortDescriptors:sortDescriptors];
+    NSPredicate *basePredicate = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithObjects:typePredicate, patientPredicate, nil]];
+    if (predicate) {
+        NSArray *subPredicates = [NSArray arrayWithObjects:basePredicate, predicate, nil];
+        return [HRMEntry allInContext:[self managedObjectContext] 
+                        withPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:subPredicates]
+                      sortDescriptors:sortDescriptors];
+    }
+    else {
+        return [HRMEntry allInContext:[self managedObjectContext] 
+                        withPredicate:basePredicate
+                      sortDescriptors:sortDescriptors];
+    }
 }
 
 - (NSDictionary *)vitalSignsGroupedByDescription {
@@ -219,6 +232,14 @@ static HRMPatient *selectedPatient = nil;
     // return
     return [dictionary autorelease];
     
+}
+
+- (NSArray *)vitalSignsWithEntryType:(NSString *)type {
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"desc LIKE[c] %@", type];
+    return [self entriesWithType:HRMEntryTypeVitalSign 
+                 sortDescriptors:[NSArray arrayWithObject:sort] 
+                       predicate:predicate];
 }
 
 - (NSArray *)medications {

@@ -57,6 +57,7 @@ typedef enum {
 
 // fetched property accessors
 - (NSDictionary *)vitalSignsGroupedByDescription;
+- (NSArray *)vitalSignsWithEntryType:(NSString *)type;
 
 @end
 

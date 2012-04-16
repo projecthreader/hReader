@@ -228,7 +228,9 @@
                 if (dictionary) {
                     
                     // vitals
+                    
                     if ([identifier isEqualToString:@"org.mitre.hreader.vitals"]) {
+//                        NSLog(@"%@", [patient vitalSignsGroupedByDescription]);
                         NSDictionary *vitals = [patient vitalSignsGroupedByDescription];
                         [vitals enumerateKeysAndObjectsUsingBlock:^(NSString *type, NSArray *entries, BOOL *stop) {
                             HRVitalView *view = [HRVitalView tileWithPatient:patient userInfo:dictionary];
@@ -240,10 +242,8 @@
                             }
                             [views addObject:view];
                         }];
-                    }
-                    
-                    // others
-                    else {
+                    } else {
+                        // others
                         Class c = NSClassFromString([dictionary objectForKey:@"class_name"]);
                         [views addObject:[c tileWithPatient:patient userInfo:dictionary]];
                     }

@@ -20,6 +20,14 @@
 	</dict>
 	<dict>
 		<key>identifier</key>
+		<string>org.mitre.hreader.bmi</string>
+		<key>class_name</key>
+		<string>HRBMIVitalAppletTile</string>
+		<key>display_name</key>
+		<string>BMI</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
 		<string>org.mitre.hreader.medications</string>
 		<key>class_name</key>
 		<string>HRMedicationsAppletTile</string>
