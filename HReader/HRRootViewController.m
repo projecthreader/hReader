@@ -9,20 +9,21 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "HRRootViewController.h"
+
 #import "HRPatientSummaryViewController.h"
 #import "HRTimelineViewController.h"
 #import "HRMessagesViewController.h"
 #import "HRDoctorsViewController.h"
-#import "HRC32ViewController.h"
-#import "HRPasscodeWarningViewController.h"
-#import "HRPasscodeManager.h"
-#import "GCActionSheet.h"
+#import "HRAppletConfigurationViewController.h"
+#import "HRMPatient.h"
+
+#import "SVPanelViewController.h"
+
+#import "UIViewController+SVPanelViewControllerAdditions.h"
 
 static int HRRootViewControllerTitleContext;
 
-@interface HRRootViewController () {
-    GCActionSheet *__actionSheet;
-}
+@interface HRRootViewController ()
 
 @property (nonatomic, strong) UISegmentedControl *segmentedControl;
 @property (nonatomic, strong) UIViewController *visibleViewController;
@@ -78,7 +79,6 @@ static int HRRootViewControllerTitleContext;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [__actionSheet dismissWithClickedButtonIndex:__actionSheet.cancelButtonIndex animated:NO];
     [TestFlight passCheckpoint:segue.identifier];
 }
 
@@ -144,13 +144,13 @@ static int HRRootViewControllerTitleContext;
 //    self.navigationController.toolbarHidden = YES;
     
     // configure logo
-    {
-        UIImage *logo = [UIImage imageNamed:@"Logo"];
-        UIImageView *logoView = [[UIImageView alloc] initWithImage:logo];
-        logoView.frame = CGRectMake(5, 5, 150, 34);
-        UIBarButtonItem *logoItem = [[UIBarButtonItem alloc] initWithCustomView:logoView];
-        self.navigationItem.leftBarButtonItem = logoItem;
-    }
+//    {
+//        UIImage *logo = [UIImage imageNamed:@"Logo"];
+//        UIImageView *logoView = [[UIImageView alloc] initWithImage:logo];
+//        logoView.frame = CGRectMake(5, 5, 150, 34);
+//        UIBarButtonItem *logoItem = [[UIBarButtonItem alloc] initWithCustomView:logoView];
+//        self.navigationItem.leftBarButtonItem = logoItem;
+//    }
     
     // configure segmented control
     {
@@ -163,7 +163,6 @@ static int HRRootViewControllerTitleContext;
             [control setWidth:(600.0 / count) forSegmentAtIndex:i];
         }
         [control addTarget:self action:@selector(segmentSelected) forControlEvents:UIControlEventValueChanged];  
-        [control addTarget:self action:@selector(hideToolbarSheet) forControlEvents:UIControlEventValueChanged];
         self.navigationItem.titleView = control;
         self.segmentedControl = control;
     }
@@ -208,24 +207,16 @@ static int HRRootViewControllerTitleContext;
     self.visibleViewController = [self.childViewControllers objectAtIndex:index];
 }
 
-//- (IBAction)toolsButtonPressed:(id)sender {
-//    if (__actionSheet == nil) {
-//        __actionSheet = [[GCActionSheet alloc] initWithTitle:@"Tools"];
-//        id __weak weakSelf = self;
-//        [__actionSheet addButtonWithTitle:@"C32 HTML" block:^{
-//            id __strong strongSelf = weakSelf;
-//            [strongSelf performSegueWithIdentifier:@"C32HTMLSegue" sender:strongSelf];
-//        }];
-//        [__actionSheet setDidDismissBlock:^{
-//            HRRootViewController * __strong strongSelf = weakSelf;
-//            strongSelf->__actionSheet = nil;
-//        }];
-//        [__actionSheet showFromBarButtonItem:sender animated:YES];
-//    }
-//}
+- (IBAction)applets:(id)sender {
+    UINavigationController *navigation = (id)self.panelViewController.rightAccessoryViewController;
+    HRAppletConfigurationViewController *applets = [navigation.viewControllers objectAtIndex:0];
+    applets.patient = [HRMPatient selectedPatient];
+    applets.tableView.contentOffset = CGPointZero;
+    [self.panelViewController exposeRightAccessoryViewController:YES];
+}
 
-- (void)hideToolbarSheet {
-    [__actionSheet dismissWithClickedButtonIndex:__actionSheet.cancelButtonIndex animated:NO];
+- (IBAction)people:(id)sender {
+//    [self.panelViewController exposeLeftAccessoryViewController:YES];
 }
      
 @end

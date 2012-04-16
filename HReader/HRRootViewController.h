@@ -10,4 +10,7 @@
 
 @interface HRRootViewController : UIViewController
 
+- (IBAction)applets:(id)sender;
+- (IBAction)people:(id)sender;
+
 @end

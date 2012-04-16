@@ -26,18 +26,9 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
 
 @synthesize patient = __patient;
 
-- (id)initWithCoder:(NSCoder *)coder {
-    self = [super initWithCoder:coder];
-    if (self) {
-        self.patient = [HRMPatient selectedPatient];
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.editing = YES;
-    [self reloadApplets];
 }
 
 - (void)viewDidUnload {
@@ -46,9 +37,9 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
 }
 
 - (void)setPatient:(HRMPatient *)patient {
-    if (!__patient || !patient) {
-        __patient = patient;
-    }
+    __patient = patient;
+    [self reloadApplets];
+    [self.tableView reloadData];
 }
 
 - (void)reloadApplets {

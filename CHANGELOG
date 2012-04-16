@@ -3,6 +3,7 @@
 - Fixed 'ghost' messages
 - Converted BMI to standalone applet
 - Converted blood pressure to standalone applet (still needs to account for diastolic)
+- Add "slid out" view for applets. In the future the patient picker will work the same way
 
 # 2012-4-13
 

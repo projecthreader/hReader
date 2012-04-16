@@ -12,10 +12,13 @@
 #import "HRPasscodeWarningViewController.h"
 #import "HRPrivacyViewController.h"
 #import "HRKeychainManager.h"
+#import "HRAppletConfigurationViewController.h"
+
 #import "TestFlight.h"
-#import "HRConfig.h"
 
 #import "HRMPatient.h"
+
+#import "SVPanelViewController.h"
 
 @interface HRAppDelegate () {
 @private
@@ -136,7 +139,11 @@
     NSArray *patients = [HRMPatient patientsInContext:context];
     [HRMPatient setSelectedPatient:[patients objectAtIndex:0]];
     
-    // show window so we can present stuff
+    // configure the user interface
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    SVPanelViewController *panel = (id)self.window.rootViewController;
+    panel.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"RootViewController"];
+    panel.rightAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"AppletsConfigurationViewController"];
     [self.window makeKeyAndVisible];
     
     if ([HRKeychainManager isPasscodeSet]) {
