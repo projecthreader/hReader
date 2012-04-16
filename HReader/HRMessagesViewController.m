@@ -66,7 +66,7 @@
     
     [self setHeaderViewShadow];   
     
-    [self reloadData];
+    [self patientChanged:self];
 }
 
 - (void)viewDidUnload {
