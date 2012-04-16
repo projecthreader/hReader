@@ -81,7 +81,9 @@
 		945560D714BB89B400A3DC43 /* HREncounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560D614BB89B400A3DC43 /* HREncounter.m */; };
 		9464C5881476BDAE0076B991 /* C32-Smith-Johnny.html in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5861476BDAE0076B991 /* C32-Smith-Johnny.html */; };
 		9465002F153C89E5003255AF /* HRBMIVitalAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9465002E153C89E5003255AF /* HRBMIVitalAppletTile.xib */; };
-		94650033153C8F7D003255AF /* HRSparkLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94650032153C8F7D003255AF /* HRSparkLineView.m */; };
+		94650033153C8F7D003255AF /* HRSparkLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94650032153C8F7D003255AF /* HRSparkLineView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		9465003E153CA369003255AF /* HRBloodPressureAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9465003D153CA369003255AF /* HRBloodPressureAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		94650043153CA3AA003255AF /* HRBloodPressureAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94650042153CA3AA003255AF /* HRBloodPressureAppletTile.xib */; };
 		9467077314E3182E00ACEA67 /* HRPeakFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077214E3182D00ACEA67 /* HRPeakFlow.m */; };
 		9467077614E318ED00ACEA67 /* HRHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077514E318ED00ACEA67 /* HRHeight.m */; };
 		9467077914E31A6200ACEA67 /* HRBMI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077814E31A6200ACEA67 /* HRBMI.m */; };
@@ -257,6 +259,9 @@
 		9465002E153C89E5003255AF /* HRBMIVitalAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRBMIVitalAppletTile.xib; sourceTree = "<group>"; };
 		94650031153C8F7D003255AF /* HRSparkLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSparkLineView.h; sourceTree = "<group>"; };
 		94650032153C8F7D003255AF /* HRSparkLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSparkLineView.m; sourceTree = "<group>"; };
+		9465003C153CA369003255AF /* HRBloodPressureAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBloodPressureAppletTile.h; sourceTree = "<group>"; };
+		9465003D153CA369003255AF /* HRBloodPressureAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRBloodPressureAppletTile.m; sourceTree = "<group>"; };
+		94650042153CA3AA003255AF /* HRBloodPressureAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRBloodPressureAppletTile.xib; sourceTree = "<group>"; };
 		9467077114E3182D00ACEA67 /* HRPeakFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPeakFlow.h; sourceTree = "<group>"; };
 		9467077214E3182D00ACEA67 /* HRPeakFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeakFlow.m; sourceTree = "<group>"; };
 		9467077414E318ED00ACEA67 /* HRHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRHeight.h; sourceTree = "<group>"; };
@@ -732,6 +737,9 @@
 				9439A9D2153C7303007FE401 /* HRBMIVitalAppletTile.h */,
 				9439A9D3153C7303007FE401 /* HRBMIVitalAppletTile.m */,
 				9465002E153C89E5003255AF /* HRBMIVitalAppletTile.xib */,
+				9465003C153CA369003255AF /* HRBloodPressureAppletTile.h */,
+				9465003D153CA369003255AF /* HRBloodPressureAppletTile.m */,
+				94650042153CA3AA003255AF /* HRBloodPressureAppletTile.xib */,
 			);
 			name = "System Applets";
 			sourceTree = "<group>";
@@ -995,6 +1003,7 @@
 				94E078C61538A4570051DC01 /* multiple_sclerosis_summary.png in Resources */,
 				94E078C71538A4570051DC01 /* pophealth-summary.png in Resources */,
 				9465002F153C89E5003255AF /* HRBMIVitalAppletTile.xib in Resources */,
+				94650043153CA3AA003255AF /* HRBloodPressureAppletTile.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1081,6 +1090,7 @@
 				94E078B715389ED50051DC01 /* HRFunctionalStatusAppletTile.m in Sources */,
 				9439A9D4153C7303007FE401 /* HRBMIVitalAppletTile.m in Sources */,
 				94650033153C8F7D003255AF /* HRSparkLineView.m in Sources */,
+				9465003E153CA369003255AF /* HRBloodPressureAppletTile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

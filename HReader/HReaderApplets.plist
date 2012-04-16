@@ -28,6 +28,14 @@
 	</dict>
 	<dict>
 		<key>identifier</key>
+		<string>org.mitre.hreader.bloodpressure</string>
+		<key>class_name</key>
+		<string>HRBloodPressureAppletTile</string>
+		<key>display_name</key>
+		<string>Blood Pressure</string>
+	</dict>
+	<dict>
+		<key>identifier</key>
 		<string>org.mitre.hreader.medications</string>
 		<key>class_name</key>
 		<string>HRMedicationsAppletTile</string>
