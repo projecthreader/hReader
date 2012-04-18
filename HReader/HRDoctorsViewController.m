@@ -115,7 +115,7 @@
     // configure views
     
     // health gateway
-    NSArray *imagePrefixes = [NSArray arrayWithObjects:@"fitbit", nil];
+    NSArray *imagePrefixes = [NSArray arrayWithObjects:@"dentist", @"insurance", @"pharmacy", nil];
     NSMutableArray *imageApplets = [[NSMutableArray alloc] initWithCapacity:[imagePrefixes count]];
     [imagePrefixes enumerateObjectsUsingBlock:^(NSString *imagePrefix, NSUInteger idx, BOOL *stop) {
         NSDictionary *userInfo = 
