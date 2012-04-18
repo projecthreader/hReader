@@ -169,10 +169,14 @@ NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
         selectedPatientIndex = patientIndexPath.row;
         [self updateTableViewSelection];
     }
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:HRPatientDidChangeNotification
-     object:self];
-    [self.panelViewController hideAccessoryViewControllers:YES];
+    double delay = 0.15;
+    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
+    dispatch_after(time, dispatch_get_main_queue(), ^(void){
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:HRPatientDidChangeNotification
+         object:self];
+        [self.panelViewController hideAccessoryViewControllers:YES];
+    });
 }
 
 #pragma mark - fetched results controller
