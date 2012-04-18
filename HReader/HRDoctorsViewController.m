@@ -12,6 +12,8 @@
 #import "HRPatientSwipeControl.h"
 #import "HRMPatient.h"
 #import "HRProviderView.h"
+#import "HRImageAppletTile.h"
+
 #import "NSArray+Collect.h"
 
 @interface HRDoctorsViewController ()
@@ -23,8 +25,8 @@
     NSArray * __strong __providerViews;
 }
 
-@synthesize nameLabel = __nameLabel;
-@synthesize gridTableView = __gridTableView;
+@synthesize nameLabel       = __nameLabel;
+@synthesize gridTableView   = __gridTableView;
 
 #pragma mark - object methods
 
@@ -40,11 +42,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // grid view
-    self.gridTableView.horizontalPadding = 34.0;
-    self.gridTableView.verticalPadding = 42.0;
-    self.gridTableView.rowHeight = 150.0 + 42.0;
     
     // load patient swipe
     HRPatientSwipeControl *swipe = [HRPatientSwipeControl
@@ -86,7 +83,9 @@
 }
 
 - (void)gridView:(HRGridTableView *)gridView didSelectViewAtIndex:(NSInteger)index {
-    // selected doctor
+    HRAppletTile *tile = [__providerViews objectAtIndex:index];
+    CGRect rect = [self.view convertRect:tile.bounds fromView:tile];
+    [tile didReceiveTap:self inRect:rect];
 }
 
 #pragma mark - private methods
@@ -108,12 +107,31 @@
     
     // initial setup
     HRMPatient *patient = [HRMPatient selectedPatient];
-    NSArray *providers = [[HRMPatient selectedPatient] valueForKeyPath:@"syntheticInfo.providers"];
-    NSMutableArray *views = [[NSMutableArray alloc] initWithCapacity:[providers count]];
-    UINib *nib = [UINib nibWithNibName:@"HRProviderView" bundle:nil];
+//    NSArray *providers = [[HRMPatient selectedPatient] valueForKeyPath:@"syntheticInfo.providers"];
+//    NSMutableArray *views = [[NSMutableArray alloc] initWithCapacity:[providers count]];
+//    UINib *nib = [UINib nibWithNibName:@"HRProviderView" bundle:nil];
     self.nameLabel.text = [[patient compositeName] uppercaseString];
     
     // configure views
+    
+    // health gateway
+    NSArray *imagePrefixes = [NSArray arrayWithObjects:@"dentist", @"insurance", @"pharmacy", nil];
+    NSMutableArray *imageApplets = [[NSMutableArray alloc] initWithCapacity:[imagePrefixes count]];
+    [imagePrefixes enumerateObjectsUsingBlock:^(NSString *imagePrefix, NSUInteger idx, BOOL *stop) {
+        NSDictionary *userInfo = 
+        [NSDictionary dictionaryWithObjectsAndKeys:
+         [NSString stringWithFormat:@"%@-summary", imagePrefix], @"tile_image", 
+         [NSString stringWithFormat:@"%@-overview", imagePrefix], @"fullscreen_image",
+         nil];
+        HRImageAppletTile *tile = [HRImageAppletTile tileWithPatient:patient userInfo:userInfo];
+        [imageApplets addObject:tile];
+    }];
+    
+    __providerViews = imageApplets;
+    [self.gridTableView reloadData];
+    
+    // providers
+    /*
     [providers enumerateObjectsUsingBlock:^(NSDictionary *provider, NSUInteger idx, BOOL *stop) {
         HRProviderView *view = [[nib instantiateWithOwner:self options:nil] lastObject];
         view.specialityLabel.text = [provider objectForKey:@"speciality"];
@@ -128,22 +146,13 @@
                                   [provider objectForKey:@"city"],
 //                                  [provider objectForKey:@"state"],
                                   [provider objectForKey:@"zip"]];
-//                          "speciality": "Endocrinologist",
-//                          "title": "Dr.",
-//                          "first_name": "Franklin",
-//                          "last_name": "Purch",
-//                          "organization": "Medical West",
-//                          "street": "265 Chestnut Street",
-//                          "city": "Dedham",
-//                          "zip": "12345",
-//                          "phone_number": "(781) 453-3000",
-//                          "email": "fpurch@fakeemail.com"
         [views addObject:view];
     }];
+     */
     
     // save and reload
-    __providerViews = views;
-    [self.gridTableView reloadData];
+//    __providerViews = views;
+//    [self.gridTableView reloadData];
     
 }
 
