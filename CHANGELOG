@@ -6,6 +6,7 @@
 - Added normal ranges to BMI applet
 - Removed old vital applets and added blood pressure and/or BMI to the patients
 - Moved "upcoming events" to align with grid
+- Setup doctors view to use new health gateway views
 
 # 2012-4-16
 
