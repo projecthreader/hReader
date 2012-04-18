@@ -115,6 +115,20 @@
     // configure views
     
     // health gateway
+    // Loading mockups by file name convention
+    NSMutableArray *views = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 6; i++) {
+        NSString *imagePrefix = [NSString stringWithFormat:@"%@-%d", [patient initials], i];
+        NSDictionary *userInfo = 
+        [NSDictionary dictionaryWithObjectsAndKeys:
+         [NSString stringWithFormat:@"%@-tile", imagePrefix], @"tile_image", 
+         [NSString stringWithFormat:@"%@-overview", imagePrefix], @"fullscreen_image",
+         nil];
+        HRImageAppletTile *tile = [HRImageAppletTile tileWithPatient:patient userInfo:userInfo];
+        [views addObject:tile];
+    }
+
+    /*
     NSArray *imagePrefixes = [NSArray arrayWithObjects:@"dentist", @"insurance", @"pharmacy", nil];
     NSMutableArray *imageApplets = [[NSMutableArray alloc] initWithCapacity:[imagePrefixes count]];
     [imagePrefixes enumerateObjectsUsingBlock:^(NSString *imagePrefix, NSUInteger idx, BOOL *stop) {
@@ -126,9 +140,8 @@
         HRImageAppletTile *tile = [HRImageAppletTile tileWithPatient:patient userInfo:userInfo];
         [imageApplets addObject:tile];
     }];
-    
-    __providerViews = imageApplets;
-    [self.gridTableView reloadData];
+     */
+
     
     // providers
     /*
@@ -151,8 +164,8 @@
      */
     
     // save and reload
-//    __providerViews = views;
-//    [self.gridTableView reloadData];
+    __providerViews = views;
+    [self.gridTableView reloadData];
     
 }
 

@@ -260,4 +260,10 @@ static HRMPatient *selectedPatient = nil;
                  sortDescriptors:[NSArray arrayWithObject:sort]];
 }
 
+- (NSString *)initials {
+    NSString *first = [[self.firstName substringToIndex:1] lowercaseString];
+    NSString *last = [[self.lastName substringToIndex:1] lowercaseString];
+    return [NSString stringWithFormat:@"%@%@", first, last];
+}
+
 @end

@@ -59,6 +59,8 @@ typedef enum {
 - (NSDictionary *)vitalSignsGroupedByDescription;
 - (NSArray *)vitalSignsWithEntryType:(NSString *)type;
 
+- (NSString *)initials;
+
 @end
 
 @interface HRMPatient (CoreDataGeneratedAccessors)
