@@ -34,12 +34,12 @@
     NSURL *nibURL = [[NSBundle mainBundle] URLForResource:nibName withExtension:@"nib"];
     NSData *nibData = [NSData dataWithContentsOfURL:nibURL];
     if (nibData) {
-        NSLog(@"Loading %@.nib for %@", nibName, NSStringFromClass(self));
+//        NSLog(@"Loading %@.nib for %@", nibName, NSStringFromClass(self));
         UINib *nib = [UINib nibWithData:nibData bundle:nil];
         tile = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
     }
     else {
-        NSLog(@"Loading %@ with no nib", NSStringFromClass(self));
+//        NSLog(@"Loading %@ with no nib", NSStringFromClass(self));
         tile = [[self alloc] init];
     }
     

@@ -14,11 +14,33 @@
 
 #define kAccessoryViewWidth 335.0
 
-@interface SVPanelViewController ()
+@interface SVPanelViewController () {
+@private
+    NSInteger state;
+}
 
-- (void)showViewShadow;
+/*
+ 
+ Configures state so that the main view can transition out to expose an
+ accessory view. This adds a mask view, shadow, and gesture handler to the main
+ view.
+ 
+ */
+- (void)prepareMainViewForTransition;
 
-- (void)addMaskView;
+/*
+ 
+ Resets the view layout to the default with both accessory views hidden.
+ 
+ */
+- (void)configureSubviews;
+
+/*
+ 
+ Gets the accessory controller that is currently visible based on the state.
+ 
+ */
+- (UIViewController *)visibleAccessoryViewController;
 
 @end
 
@@ -32,81 +54,145 @@
 
 - (void)setMainViewController:(UIViewController *)controller {
     [__mainViewController removeFromParentViewController];
+    if ([__mainViewController isViewLoaded]) {
+        [__mainViewController viewWillDisappear:NO];
+        [__mainViewController.view removeFromSuperview];
+        [__mainViewController viewDidDisappear:NO];
+    }
     [self addChildViewController:controller];
     [controller didMoveToParentViewController:self];
     __mainViewController = controller;
+    if ([self isViewLoaded]) {
+        [self.view addSubview:__mainViewController.view];
+    }
+    [self configureSubviews];
 }
 
 - (void)setLeftAccessoryViewController:(UIViewController *)controller {
     [__leftViewController removeFromParentViewController];
+    if ([__leftViewController isViewLoaded]) {
+        if (state < 0) {
+            [__leftViewController viewWillDisappear:NO];
+        }
+        [__leftViewController.view removeFromSuperview];
+        if (state < 0) {
+            [__leftViewController viewDidDisappear:NO];
+        }
+        state = 0;
+    }
     [self addChildViewController:controller];
     [controller didMoveToParentViewController:self];
     __leftViewController = controller;
+    if ([self isViewLoaded]) {
+        [self.view addSubview:__leftViewController.view];
+    }
+    [self configureSubviews];
 }
 
 - (void)setRightAccessoryViewController:(UIViewController *)controller {
     [__rightViewController removeFromParentViewController];
+    if ([__rightViewController isViewLoaded]) {
+        if (state > 0) {
+            [__rightViewController viewWillDisappear:NO];
+        }
+        [__rightViewController.view removeFromSuperview];
+        if (state > 0) {
+            [__rightViewController viewDidDisappear:NO];
+        }
+        state = 0;
+    }
     [self addChildViewController:controller];
     [controller didMoveToParentViewController:self];
     __rightViewController = controller;
+    if ([self isViewLoaded]) {
+        [self.view addSubview:__rightViewController.view];
+    }
+    [self configureSubviews];
 }
 
 #pragma mark - view lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // self
     self.view.backgroundColor = [UIColor colorWithRed:(121.0 / 255.0)
                                                 green:(127.0 / 255.0)
                                                  blue:(144.0 / 255.0)
                                                 alpha:1.0];
-    
-    // vars
-    UIView *view;
-    CGRect bounds = self.view.bounds;
-    
-    // left view
-    view = self.leftAccessoryViewController.view;
-    if (view) {
-        view.frame = CGRectMake(0.0, 0.0, kAccessoryViewWidth, bounds.size.height);
-        view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-        [self.view addSubview:view];
+    if (self.leftAccessoryViewController) {
+        [self.view addSubview:self.leftAccessoryViewController.view];
     }
-    
-    // right view
-    view = self.rightAccessoryViewController.view;
-    if (view) {
-        view.frame = CGRectMake(bounds.size.width - kAccessoryViewWidth, 0.0, kAccessoryViewWidth, bounds.size.height);
-        view.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin);
-        [self.view addSubview:view];
+    if (self.rightAccessoryViewController) {
+        [self.view addSubview:self.rightAccessoryViewController.view];
     }
-    
-    // main view
-    view = self.mainViewController.view;
-    view.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
-    view.frame = bounds;
-    [self.view addSubview:view];
-    
+    if (self.mainViewController) {
+        [self.view addSubview:self.mainViewController.view];
+    }
+    [self configureSubviews];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.mainViewController viewWillDisappear:animated];
+    [self.visibleAccessoryViewController viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.mainViewController viewDidDisappear:animated];
+    [self.visibleAccessoryViewController viewDidDisappear:animated];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.mainViewController viewWillAppear:animated];
+    [self.visibleAccessoryViewController viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.mainViewController viewDidAppear:animated];
+    [self.visibleAccessoryViewController viewDidAppear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
     return [self.mainViewController shouldAutorotateToInterfaceOrientation:orientation];
 }
 
+- (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers {
+    return NO;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
+    [super willRotateToInterfaceOrientation:orientation duration:duration];
+    [self.mainViewController willRotateToInterfaceOrientation:orientation duration:duration];
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
+    [super willAnimateRotationToInterfaceOrientation:orientation duration:duration];
+    [self.mainViewController willAnimateRotationToInterfaceOrientation:orientation duration:duration];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)orientation {
+    [super didRotateFromInterfaceOrientation:orientation];
+    [self.mainViewController didRotateFromInterfaceOrientation:orientation];
+}
+
 #pragma mark - object methods
 
-- (void)showViewShadow {
-    CALayer *layer = self.mainViewController.view.layer;
+- (void)prepareMainViewForTransition {
+    
+    // get view
+    UIView *view = self.mainViewController.view;
+    
+    // shadow
+    CALayer *layer = view.layer;
     layer.shouldRasterize = YES;
     layer.shadowColor = [[UIColor blackColor] CGColor];
     layer.shadowOpacity = 0.25;
     layer.shadowOffset = CGSizeMake(0.0, 0.0);
     layer.shadowRadius = 10.0;
-}
-
-- (void)addMaskView {
-    UIView *view = self.mainViewController.view;
+    
+    // gesture
     UIView *mask = [[UIView alloc] initWithFrame:view.bounds];
     mask.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
@@ -114,56 +200,129 @@
                                    action:@selector(hideAccessoryViewControllers:)];
     [mask addGestureRecognizer:tap];
     [view addSubview:mask];
+    
+}
+
+- (void)configureSubviews {
+    
+    // reset view ordering
+    [self.view bringSubviewToFront:self.mainViewController.view];
+    
+    // vars
+    UIViewController *controller = [self visibleAccessoryViewController];
+    UIView *view = nil;
+    CGRect bounds = self.view.bounds;
+    state = 0;
+    
+    // start transition
+    [controller viewWillDisappear:NO];
+    
+    // left view
+    view = self.leftAccessoryViewController.view;
+    if (view) {
+        view.frame = CGRectMake(0.0, 0.0, kAccessoryViewWidth, bounds.size.height);
+        view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    }
+    
+    // right view
+    view = self.rightAccessoryViewController.view;
+    if (view) {
+        view.frame = CGRectMake(bounds.size.width - kAccessoryViewWidth, 0.0, kAccessoryViewWidth, bounds.size.height);
+        view.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin);
+    }
+    
+    // main view
+    view = self.mainViewController.view;
+    view.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+    view.frame = bounds;
+    
+    // finish transition
+    [controller viewDidDisappear:NO];
+    
+}
+
+- (UIViewController *)visibleAccessoryViewController {
+    if (state < 0) {
+        return self.leftAccessoryViewController;
+    }
+    else if (state > 0) {
+        return self.rightAccessoryViewController;
+    }
+    else {
+        return nil;
+    }
 }
 
 - (void)exposeLeftAccessoryViewController:(BOOL)animated {
     NSAssert(self.leftAccessoryViewController, @"There is no left view controller");
-    [self showViewShadow];
+    [self prepareMainViewForTransition];
+    state = -1;
     CGRect rect = CGRectOffset(self.view.bounds,
                                (self.rightAccessoryViewController.view.bounds.size.width + 1.0),
                                0.0);
     if (animated) {
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:UINavigationControllerHideShowBarDuration];
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [self.leftAccessoryViewController viewWillAppear:animated];
+        [UIView
+         animateWithDuration:UINavigationControllerHideShowBarDuration
+         delay:0.0
+         options:UIViewAnimationCurveEaseInOut
+         animations:^{
+             self.mainViewController.view.frame = rect;
+         }
+         completion:^(BOOL finished) {
+             [self.leftAccessoryViewController viewDidAppear:animated];
+         }];
     }
-    self.mainViewController.view.frame = rect;
-    if (animated) {
-        [UIView commitAnimations];
+    else {
+        [self.leftAccessoryViewController viewWillAppear:animated];
+        self.mainViewController.view.frame = rect;
+        [self.leftAccessoryViewController viewDidAppear:animated];
     }
-    [self addMaskView];
 }
 
 - (void)exposeRightAccessoryViewController:(BOOL)animated {
     NSAssert(self.rightAccessoryViewController, @"There is no right view controller");
-    [self showViewShadow];
+    [self prepareMainViewForTransition];
+    state = 1;
     CGRect rect = CGRectOffset(self.view.bounds,
                                (self.rightAccessoryViewController.view.bounds.size.width + 1.0) * -1.0,
                                0.0);
     if (animated) {
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:UINavigationControllerHideShowBarDuration];
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [self.rightAccessoryViewController viewWillAppear:animated];
+        [UIView
+         animateWithDuration:UINavigationControllerHideShowBarDuration
+         delay:0.0
+         options:UIViewAnimationCurveEaseInOut
+         animations:^{
+             self.mainViewController.view.frame = rect;
+         }
+         completion:^(BOOL finished) {
+             [self.rightAccessoryViewController viewDidAppear:animated];
+         }];
     }
-    self.mainViewController.view.frame = rect;
-    if (animated) {
-        [UIView commitAnimations];
+    else {
+        [self.rightAccessoryViewController viewWillAppear:animated];
+        self.mainViewController.view.frame = rect;
+        [self.rightAccessoryViewController viewDidAppear:animated];
     }
-    [self addMaskView];
 }
 
 #pragma mark - gestures
 
 - (void)hideAccessoryViewControllers:(UITapGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateRecognized) {
+        UIViewController *controller = [self visibleAccessoryViewController];
+        
+        [controller viewWillDisappear:YES];
         [UIView
          animateWithDuration:UINavigationControllerHideShowBarDuration
          delay:0.0
          options:UIViewAnimationCurveEaseInOut
          animations:^{
-             self.mainViewController.view.frame = self.view.bounds;
+             [self configureSubviews];
          }
          completion:^(BOOL finished) {
+             [controller viewDidDisappear:YES];
              CALayer *layer = self.mainViewController.view.layer;
              layer.shouldRasterize = NO;
              layer.shadowColor = [[UIColor blackColor] CGColor];
