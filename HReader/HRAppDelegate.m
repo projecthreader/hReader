@@ -144,6 +144,7 @@
     SVPanelViewController *panel = (id)self.window.rootViewController;
     panel.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"RootViewController"];
     panel.rightAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"AppletsConfigurationViewController"];
+    panel.leftAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"PeoplePickerViewController"];
     [self.window makeKeyAndVisible];
     
     if ([HRKeychainManager isPasscodeSet]) {

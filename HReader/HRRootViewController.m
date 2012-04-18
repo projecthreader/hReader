@@ -216,7 +216,7 @@ static int HRRootViewControllerTitleContext;
 }
 
 - (IBAction)people:(id)sender {
-//    [self.panelViewController exposeLeftAccessoryViewController:YES];
+    [self.panelViewController exposeLeftAccessoryViewController:YES];
 }
      
 @end
