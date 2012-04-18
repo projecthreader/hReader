@@ -51,6 +51,8 @@
     self.normalLabel.adjustsFontSizeToFitWidth = YES;
     
     // sparkline
+    self.sparkLineView.rangeOverlayLowerLimit = [NSNumber numberWithDouble:[self normalLow]];
+    self.sparkLineView.rangeOverlayUpperLimit = [NSNumber numberWithDouble:[self normalHigh]];
     self.sparkLineView.dataValues = [self scalarValuesForEntries:__dataPoints];
 
     // display normal value
@@ -127,15 +129,8 @@
     return 22.9;
 }
 
-- (BOOL)isValueNormal:(double)value {
-    double normalLow = [self normalLow];
-    double normalHigh = [self normalHigh];
-    if (normalLow == normalHigh) {
-        return YES;
-    }
-    else {
-        return !(value < normalLow || value > normalHigh);    
-    }
+- (BOOL)isValueNormal:(double)bmi {
+    return (bmi >= [self normalLow] && bmi <= [self normalHigh]);
 }
 
 @end

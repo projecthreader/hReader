@@ -3,6 +3,8 @@
 - Fixed normal ranges on blood pressure applet
 - Added diastolic values to BP popover table
 - Normal range is now checked for systolic values
+- Added normal ranges to BMI applet
+- Removed old vital applets and added blood pressure and/or BMI to the patients
 
 # 2012-4-16
 

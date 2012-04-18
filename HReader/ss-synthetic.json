@@ -1,5 +1,6 @@
 {
   "applets": [
+    "org.mitre.hreader.bmi",
     "org.mitre.hreader.bloodpressure",
     "org.mitre.hreader.encounters",
     "org.mitre.hreader.medications",
