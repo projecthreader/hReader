@@ -12,12 +12,12 @@
 
 #import "UIViewController+SVPanelViewControllerAdditions.h"
 
-@interface SVPanelViewController () {
-@private
-    CGPoint lastDragLocation;
-}
+#define kAccessoryViewWidth 335.0
 
-- (void)showViewShadowWithOffset:(CGSize)offset;
+@interface SVPanelViewController ()
+
+- (void)showViewShadow;
+
 - (void)addMaskView;
 
 @end
@@ -57,10 +57,10 @@
     [super viewDidLoad];
     
     // self
-//    self.view.backgroundColor = [UIColor colorWithRed:(121.0 / 255.0)
-//                                                green:(127.0 / 255.0)
-//                                                 blue:(144.0 / 255.0)
-//                                                alpha:1.0];
+    self.view.backgroundColor = [UIColor colorWithRed:(121.0 / 255.0)
+                                                green:(127.0 / 255.0)
+                                                 blue:(144.0 / 255.0)
+                                                alpha:1.0];
     
     // vars
     UIView *view;
@@ -69,7 +69,7 @@
     // left view
     view = self.leftAccessoryViewController.view;
     if (view) {
-        view.frame = CGRectMake(0.0, 0.0, 320.0, bounds.size.height);
+        view.frame = CGRectMake(0.0, 0.0, kAccessoryViewWidth, bounds.size.height);
         view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         [self.view addSubview:view];
     }
@@ -77,7 +77,7 @@
     // right view
     view = self.rightAccessoryViewController.view;
     if (view) {
-        view.frame = CGRectMake(bounds.size.width - 320.0, 0.0, 320.0, bounds.size.height);
+        view.frame = CGRectMake(bounds.size.width - kAccessoryViewWidth, 0.0, kAccessoryViewWidth, bounds.size.height);
         view.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin);
         [self.view addSubview:view];
     }
@@ -96,12 +96,12 @@
 
 #pragma mark - object methods
 
-- (void)showViewShadowWithOffset:(CGSize)offset {
+- (void)showViewShadow {
     CALayer *layer = self.mainViewController.view.layer;
     layer.shouldRasterize = YES;
     layer.shadowColor = [[UIColor blackColor] CGColor];
     layer.shadowOpacity = 0.25;
-    layer.shadowOffset = offset;
+    layer.shadowOffset = CGSizeMake(0.0, 0.0);
     layer.shadowRadius = 10.0;
 }
 
@@ -114,19 +114,13 @@
                                    action:@selector(hideAccessoryViewControllers:)];
     [mask addGestureRecognizer:tap];
     [view addSubview:mask];
-//    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]
-//                                   initWithTarget:self
-//                                   action:@selector(panMainView:)];
-//    pan.maximumNumberOfTouches = 1;
-//    pan.minimumNumberOfTouches = 1;
-//    [mask addGestureRecognizer:pan];
 }
 
 - (void)exposeLeftAccessoryViewController:(BOOL)animated {
     NSAssert(self.leftAccessoryViewController, @"There is no left view controller");
-    [self showViewShadowWithOffset:CGSizeMake(-10.0, 0.0)];
+    [self showViewShadow];
     CGRect rect = CGRectOffset(self.view.bounds,
-                               (self.rightAccessoryViewController.view.bounds.size.width/* + 1.0*/),
+                               (self.rightAccessoryViewController.view.bounds.size.width + 1.0),
                                0.0);
     if (animated) {
         [UIView beginAnimations:nil context:nil];
@@ -142,9 +136,9 @@
 
 - (void)exposeRightAccessoryViewController:(BOOL)animated {
     NSAssert(self.rightAccessoryViewController, @"There is no right view controller");
-    [self showViewShadowWithOffset:CGSizeMake(10.0, 0.0)];
+    [self showViewShadow];
     CGRect rect = CGRectOffset(self.view.bounds,
-                               (self.rightAccessoryViewController.view.bounds.size.width/* + 1.0*/) * -1.0,
+                               (self.rightAccessoryViewController.view.bounds.size.width + 1.0) * -1.0,
                                0.0);
     if (animated) {
         [UIView beginAnimations:nil context:nil];
@@ -178,29 +172,6 @@
              layer.shadowRadius = 0.0;
              [gesture.view removeFromSuperview];
          }];
-    }
-}
-
-- (void)panMainView:(UIPanGestureRecognizer *)gesture {
-    CGPoint location = [gesture locationInView:self.view];
-    if (gesture.state == UIGestureRecognizerStateBegan) {
-        lastDragLocation = location;
-    }
-    CGPoint offset = CGPointMake(location.x - lastDragLocation.x, location.y - lastDragLocation.y);
-    CGRect rect = CGRectOffset(self.mainViewController.view.frame, offset.x, 0.0);
-    self.mainViewController.view.frame = rect;
-    lastDragLocation = location;
-    if (gesture.state == UIGestureRecognizerStateRecognized) {
-//        if (mode == 1) {
-//            if ([gesture velocityInView:self.view].x > 0.0) {
-//                [self exposeLeftViewController:YES];
-//            }
-//            else {
-//                [self hideAccessoryViewControllers:(id)gesture];
-//            }
-//        }
-//        [self hideAccessoryViewControllers:(id)gesture];
-        lastDragLocation = CGPointZero;
     }
 }
 
