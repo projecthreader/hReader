@@ -130,6 +130,12 @@
     [self configureSubviews];
 }
 
+- (void)viewDidUnload {
+    [self.childViewControllers setNilValueForKey:@"view"];
+    [self.childViewControllers makeObjectsPerformSelector:@selector(viewDidUnload)];
+    [super viewDidUnload];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.mainViewController viewWillDisappear:animated];
