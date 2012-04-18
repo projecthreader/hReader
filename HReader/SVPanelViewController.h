@@ -16,5 +16,6 @@
 
 - (void)exposeLeftAccessoryViewController:(BOOL)animated;
 - (void)exposeRightAccessoryViewController:(BOOL)animated;
+- (void)hideAccessoryViewControllers:(BOOL)animated;
 
 @end

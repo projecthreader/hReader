@@ -9,7 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "HRPatientSummaryViewController.h"
-#import "HRPatientSwipeControl.h"
+
 #import "HRRootViewController.h"
 #import "HRMPatient.h"
 #import "HRAddress.h"
@@ -18,11 +18,14 @@
 #import "HRMEntry.h"
 #import "HRBMI.h"
 #import "HRImageAppletTile.h"
-
 #import "HRAppletConfigurationViewController.h"
+#import "HRPeoplePickerViewController.h"
 
 #import "NSDate+FormattedDate.h"
 #import "NSArray+Collect.h"
+#import "UIViewController+SVPanelViewControllerAdditions.h"
+
+#import "SVPanelViewController.h"
 
 @interface HRPatientSummaryViewController () {
 @private
@@ -49,6 +52,7 @@
 @synthesize medicationRefillLabel               = __medicationRefillLabel;
 @synthesize upcomingEventsLabel                 = __upcomingEventsLabel;
 @synthesize planOfCareLabel                     = __planOfCareLabel;
+@synthesize patientImageView = __patientImageView;
 
 @synthesize labels                              = __labels;
 
@@ -80,6 +84,11 @@
          selector:@selector(appletConfigurationDidChange)
          name:HRAppletConfigurationDidChangeNotification
          object:nil];
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(patientDidChange:)
+         name:HRPatientDidChangeNotification
+         object:nil];
     }
     return self;
 }
@@ -89,14 +98,19 @@
      removeObserver:self
      name:HRAppletConfigurationDidChangeNotification
      object:nil];
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:HRPatientDidChangeNotification
+     object:nil];
 }
 
 - (void)reloadData {
     if ([self isViewLoaded]) {
         
         // get patient
-        HRMPatient *patient = [HRMPatient selectedPatient];
+        HRMPatient *patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
         NSDictionary *syntheticInfo = patient.syntheticInfo;
+        self.patientImageView.image = [patient patientImage];
         
         // date of birth
         self.patientNameLabel.text = [[patient compositeName] uppercaseString];
@@ -327,22 +341,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // load patient swipe
-    HRPatientSwipeControl *swipe = [HRPatientSwipeControl
-                                    controlWithOwner:self
-                                    options:nil 
-                                    target:self
-                                    action:@selector(patientChanged:)];
-    [self.headerView addSubview:swipe];
-    
     // header shadow view
     CALayer *layer = self.headerView.layer;
     layer.shadowColor = [[UIColor blackColor] CGColor];
-    layer.shadowOpacity = 0.5;
+    layer.shadowOpacity = 0.35;
     layer.shadowOffset = CGSizeMake(0.0, 0.0);
     layer.shadowRadius = 5.0;
     layer.shouldRasterize = YES;
     [self.view bringSubviewToFront:self.headerView];
+    
+    // image shadow
+    layer = self.patientImageView.layer;
+    layer.shadowColor = [[UIColor blackColor] CGColor];
+    layer.shadowOpacity = 0.35;
+    layer.shadowOffset = CGSizeMake(0.0, 1.0);
+    layer.shadowRadius = 5.0;
     
     // date of birth tap
     NSArray *array = [NSArray arrayWithObjects:self.dateOfBirthLabel, self.dateOfBirthTitleLabel, nil];
@@ -429,19 +442,23 @@
 
 #pragma mark - notifications
 
-- (void)patientChanged:(HRPatientSwipeControl *)control {
-    [UIView
-     animateWithDuration:UINavigationControllerHideShowBarDuration
-     animations:^{
-         [self.labels setValue:[NSNumber numberWithDouble:0.0] forKey:@"alpha"];
-     }
-     completion:^(BOOL finished) {
-         [self reloadData];
-         [UIView animateWithDuration:0.4 animations:^{
-             [self.labels setValue:[NSNumber numberWithDouble:1.0] forKey:@"alpha"];
-         }];
-     }];
+- (void)patientDidChange:(NSNotification *)notification {
+    [self reloadData];
 }
+
+//- (void)patientChanged:(HRPatientSwipeControl *)control {
+//    [UIView
+//     animateWithDuration:UINavigationControllerHideShowBarDuration
+//     animations:^{
+//         [self.labels setValue:[NSNumber numberWithDouble:0.0] forKey:@"alpha"];
+//     }
+//     completion:^(BOOL finished) {
+//         [self reloadData];
+//         [UIView animateWithDuration:0.4 animations:^{
+//             [self.labels setValue:[NSNumber numberWithDouble:1.0] forKey:@"alpha"];
+//         }];
+//     }];
+//}
 
 #pragma mark - tap gestures
 

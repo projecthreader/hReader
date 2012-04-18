@@ -17,6 +17,7 @@
 @interface SVPanelViewController () {
 @private
     NSInteger state;
+    UIView * __strong mask;
 }
 
 /*
@@ -133,6 +134,7 @@
 - (void)viewDidUnload {
     [self.childViewControllers setNilValueForKey:@"view"];
     [self.childViewControllers makeObjectsPerformSelector:@selector(viewDidUnload)];
+    mask = nil;
     [super viewDidUnload];
 }
 
@@ -199,11 +201,11 @@
     layer.shadowRadius = 10.0;
     
     // gesture
-    UIView *mask = [[UIView alloc] initWithFrame:view.bounds];
+    mask = [[UIView alloc] initWithFrame:view.bounds];
     mask.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
-                                   action:@selector(hideAccessoryViewControllers:)];
+                                   action:@selector(maskViewDidReceiveTap:)];
     [mask addGestureRecognizer:tap];
     [view addSubview:mask];
     
@@ -313,13 +315,11 @@
     }
 }
 
-#pragma mark - gestures
-
-- (void)hideAccessoryViewControllers:(UITapGestureRecognizer *)gesture {
-    if (gesture.state == UIGestureRecognizerStateRecognized) {
+- (void)hideAccessoryViewControllers:(BOOL)animated {
+    if (animated) {
         UIViewController *controller = [self visibleAccessoryViewController];
-        
-        [controller viewWillDisappear:YES];
+        [controller viewWillDisappear:animated];
+        state = 0;
         [UIView
          animateWithDuration:UINavigationControllerHideShowBarDuration
          delay:0.0
@@ -328,15 +328,23 @@
              [self configureSubviews];
          }
          completion:^(BOOL finished) {
-             [controller viewDidDisappear:YES];
-             CALayer *layer = self.mainViewController.view.layer;
-             layer.shouldRasterize = NO;
-             layer.shadowColor = [[UIColor blackColor] CGColor];
-             layer.shadowOpacity = 0.0;
-             layer.shadowOffset = CGSizeMake(0.0, 0.0);
-             layer.shadowRadius = 0.0;
-             [gesture.view removeFromSuperview];
+             [mask removeFromSuperview];
+             mask = nil;
+             [controller viewDidAppear:animated];
          }];
+    }
+    else {
+        [self configureSubviews];
+        [mask removeFromSuperview];
+        mask = nil;
+    }
+}
+
+#pragma mark - gestures
+
+- (void)maskViewDidReceiveTap:(UITapGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateRecognized) {
+        [self hideAccessoryViewControllers:YES];
     }
 }
 
