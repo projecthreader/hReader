@@ -5,6 +5,7 @@
 - Normal range is now checked for systolic values
 - Added normal ranges to BMI applet
 - Removed old vital applets and added blood pressure and/or BMI to the patients
+- Moved "upcoming events" to align with grid
 
 # 2012-4-16
 

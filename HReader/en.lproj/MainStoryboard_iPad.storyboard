@@ -193,14 +193,14 @@
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="UPCOMING EVENTS" lineBreakMode="tailTruncation" minimumFontSize="10" id="lWJ-Bn-qtb" userLabel="Events Label">
-                                        <rect key="frame" x="702" y="50" width="269" height="31"/>
+                                        <rect key="frame" x="692" y="50" width="269" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" id="gFH-1X-QIE" userLabel="Events Line">
-                                        <rect key="frame" x="702" y="81" width="295" height="1"/>
+                                        <rect key="frame" x="692" y="81" width="295" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -277,53 +277,53 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PLAN OF CARE:" lineBreakMode="tailTruncation" minimumFontSize="10" id="k4S-i1-eOo">
-                                        <rect key="frame" x="702" y="104" width="295" height="21"/>
+                                        <rect key="frame" x="692" y="104" width="295" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="FOLLOW UP APPOINTMENT:" lineBreakMode="tailTruncation" minimumFontSize="10" id="m2M-DN-oeq">
-                                        <rect key="frame" x="702" y="135" width="165" height="21"/>
+                                        <rect key="frame" x="692" y="135" width="165" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="None" lineBreakMode="tailTruncation" minimumFontSize="10" id="jJ7-6f-56O">
-                                        <rect key="frame" x="702" y="181" width="295" height="21"/>
+                                        <rect key="frame" x="692" y="181" width="295" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="None" lineBreakMode="tailTruncation" minimumFontSize="10" id="dBY-8S-dOU">
-                                        <rect key="frame" x="702" y="119" width="295" height="21"/>
+                                        <rect key="frame" x="692" y="119" width="295" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Herpes B Booster within 3 weeks" lineBreakMode="tailTruncation" minimumFontSize="10" id="vgA-yX-i31">
-                                        <rect key="frame" x="702" y="87" width="295" height="21"/>
+                                        <rect key="frame" x="692" y="87" width="295" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="chevron.png" id="198-z5-gUO">
-                                        <rect key="frame" x="979" y="53" width="25" height="25"/>
+                                        <rect key="frame" x="969" y="53" width="25" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="MEDICATION REFILL:" lineBreakMode="tailTruncation" minimumFontSize="10" id="Xgf-2p-vFh">
-                                        <rect key="frame" x="702" y="167" width="142" height="21"/>
+                                        <rect key="frame" x="692" y="167" width="142" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="30 Mar. 2012" lineBreakMode="tailTruncation" minimumFontSize="10" id="yYa-CB-H9F">
-                                        <rect key="frame" x="702" y="151" width="295" height="21"/>
+                                        <rect key="frame" x="692" y="151" width="295" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" red="0.30980392159999998" green="0.5568627451" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
