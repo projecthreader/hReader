@@ -32,13 +32,13 @@ static HRMPatient *selectedPatient = nil;
 @dynamic compositeName;
 @dynamic genderString;
 @dynamic entries;
+@dynamic syntheticInfo;
 
 @dynamic immunizations;
 @dynamic results;
 @dynamic allergies;
 @dynamic procedures;
 
-@synthesize syntheticInfo = __syntheticInfo;
 @synthesize applets = __applets;
 
 #pragma mark - class methods
@@ -155,12 +155,11 @@ static HRMPatient *selectedPatient = nil;
     return gender;
 }
 
-- (void)setSyntheticInfo:(NSDictionary *)dictionary {
-    __syntheticInfo = [dictionary copy];
-    self.applets = [[dictionary objectForKey:@"applets"] mutableCopy];
-}
-
 #pragma mark - object methods
+
+- (void)awakeFromFetch {
+    self.applets = [[self.syntheticInfo objectForKey:@"applets"] mutableCopy];
+}
 
 - (UIImage *)patientImage {
     return [UIImage imageNamed:[NSString stringWithFormat:@"UserImage-%@-%@", self.lastName, self.firstName]];
