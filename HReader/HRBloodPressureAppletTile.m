@@ -45,14 +45,18 @@
     self.resultLabel.text = [NSString stringWithFormat:@"%.0f/%.0f", lastestSystolicValue, lastestDiastolicValue];
     self.dateLabel.text = [lastestSystolic.date shortStyleDate];
     self.dateLabel.adjustsFontSizeToFitWidth = YES;
+    
     self.normalLabel.adjustsFontSizeToFitWidth = YES;
+    self.normalLabel.text = [NSString stringWithFormat:@"%.0f-%.0f/%.0f-%.0f", [self normalSystolicLow], [self normalSystolicHigh], [self normalDiastolicLow], [self normalDiastolicHigh]];
     
     // sparkline
+    self.sparkLineView.rangeOverlayLowerLimit = [NSNumber numberWithDouble:[self normalSystolicLow]];
+    self.sparkLineView.rangeOverlayUpperLimit = [NSNumber numberWithDouble:[self normalSystolicHigh]];
     self.sparkLineView.dataValues = [self scalarValuesForEntries:__systolicDataPoints];
     
     // display normal value
-    float val = [[lastestSystolic valueForKeyPath:@"value.scalar"] floatValue];
-    if ([self isValueNormal:val]) {
+    float systolicValue = [[lastestSystolic valueForKeyPath:@"value.scalar"] floatValue];
+    if ([self isSystolicNormal:systolicValue]) {
         self.resultLabel.textColor = [UIColor blackColor];
     } else {
         self.resultLabel.textColor = [HRConfig redColor];
@@ -62,7 +66,7 @@
 
 - (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect {
     UITableViewController *controller = [[HRKeyValueTableViewController alloc] initWithDataPoints:[self dataPoints]];
-    controller.title = @"BMI";
+    controller.title = @"Blood Pressure";
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
     if (__popoverController == nil) {
         __popoverController = [[UIPopoverController alloc] initWithContentViewController:navController];
@@ -89,11 +93,18 @@
 - (NSArray *)dataPoints {
     NSMutableArray *points = [NSMutableArray arrayWithCapacity:[__systolicDataPoints count]];
     [__systolicDataPoints enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
-        double value = [[entry.value objectForKey:@"scalar"] doubleValue];
-        BOOL isNormal = [self isValueNormal:value];
+        
+        double systolicValue = [[entry.value objectForKey:@"scalar"] doubleValue];
+        double diastolicValue = 0;
+        if (index < [__diastolicDataPoints count]) {
+            HRMEntry *diastolicEntry = [__diastolicDataPoints objectAtIndex:index];
+            diastolicValue = [[diastolicEntry.value objectForKey:@"scalar"] doubleValue];
+        }
+        
+        BOOL isNormal = [self isSystolicNormal:systolicValue];
         UIColor *color = isNormal ? [UIColor blackColor] : [HRConfig redColor];
         NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [NSString stringWithFormat:@"%0.1f", value], @"detail",
+                                    [NSString stringWithFormat:@"%.0f/%.0f", systolicValue, diastolicValue], @"detail",
                                     [entry.date mediumStyleDate], @"title",
                                     color, @"detail_color",
                                     nil];
@@ -116,23 +127,29 @@
     return scalars;
 }
 
-- (double)normalLow {
+
+- (double)normalSystolicLow {
     return 90.0;
 }
-
-- (double)normalHigh {
-    return 119.0;
+- (double)normalSystolicHigh {
+    return 120.0;
 }
 
-- (BOOL)isValueNormal:(double)value {
-    double normalLow = [self normalLow];
-    double normalHigh = [self normalHigh];
-    if (normalLow == normalHigh) {
-        return YES;
-    }
-    else {
-        return !(value < normalLow || value > normalHigh);    
-    }
+- (double)normalDiastolicLow {
+    return 60.0;
+}
+
+- (double)normalDiastolicHigh {
+    return 80.0;
+}
+
+- (BOOL)isSystolicNormal:(double)systolic {
+    return (systolic >= [self normalSystolicLow] && systolic <= [self normalSystolicHigh]);
+}
+
+- (BOOL)isDiastolicNormal:(double)diastolic {
+//    return (diastolic >= [self normalDiastolicLow] && systolic <= [self normalDiastolicHigh]);
+    return YES;
 }
 
 @end
