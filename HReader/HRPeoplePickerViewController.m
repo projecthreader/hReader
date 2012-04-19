@@ -14,8 +14,6 @@
 
 #import "HRMPatient.h"
 
-#import "UIViewController+SVPanelViewControllerAdditions.h"
-
 #import "SVPanelViewController.h"
 
 NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";

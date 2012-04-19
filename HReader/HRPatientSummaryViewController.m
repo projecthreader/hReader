@@ -23,7 +23,6 @@
 
 #import "NSDate+FormattedDate.h"
 #import "NSArray+Collect.h"
-#import "UIViewController+SVPanelViewControllerAdditions.h"
 
 #import "SVPanelViewController.h"
 

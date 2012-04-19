@@ -413,10 +413,10 @@
 		3B19651414EE9DCB0045F827 /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				3BF3220F153CA32400757060 /* SVPanelViewController.h */,
-				3BF32210153CA32400757060 /* SVPanelViewController.m */,
-				3BF32211153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.h */,
-				3BF32212153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.m */,
+				94AACF9B15334A1C005E3851 /* HRGridTableView.h */,
+				94AACF9C15334A1D005E3851 /* HRGridTableView.m */,
+				94AACF94153330A2005E3851 /* HRGridTableViewCell.h */,
+				94AACF95153330A2005E3851 /* HRGridTableViewCell.m */,
 				941DB0BB1471B32D00A96B8B /* HRAppDelegate.h */,
 				941DB0BC1471B32D00A96B8B /* HRAppDelegate.m */,
 				94BB0324149BAF24009B2FCC /* HRPasscodeManager.h */,
@@ -444,6 +444,22 @@
 			name = "Core Data";
 			sourceTree = "<group>";
 		};
+		3BCAC50415404AC8007C874B /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DD8BD9EB148D2B270090F729 /* Root View */,
+				94BB032E149BB398009B2FCC /* Passcode Warning */,
+				DD8BD9ED148D2B5A0090F729 /* Patient Summary */,
+				DD8BD9F0148D2B720090F729 /* Doctors */,
+				94689AD214967E0100E1FCA6 /* C32 */,
+				94689AD314967E0600E1FCA6 /* About */,
+				DD8BD9EE148D2B660090F729 /* Timeline */,
+				947FCE4D14B4C7CB00C716FD /* Privacy Shield */,
+				DD8BD9EF148D2B6C0090F729 /* Messages */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		3BD16ED714E1B5EE00F2249E /* guicocoa-common-code */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,17 +470,6 @@
 			);
 			name = "guicocoa-common-code";
 			path = "vendor/guicocoa-common-code";
-			sourceTree = "<group>";
-		};
-		3BFBEE171534BD5A009EBA2D /* Grid View */ = {
-			isa = PBXGroup;
-			children = (
-				94AACF9B15334A1C005E3851 /* HRGridTableView.h */,
-				94AACF9C15334A1D005E3851 /* HRGridTableView.m */,
-				94AACF94153330A2005E3851 /* HRGridTableViewCell.h */,
-				94AACF95153330A2005E3851 /* HRGridTableViewCell.m */,
-			);
-			name = "Grid View";
 			sourceTree = "<group>";
 		};
 		3BFBEE1D1534C0AE009EBA2D /* Patient Data */ = {
@@ -572,17 +577,13 @@
 		941DB0B21471B32D00A96B8B /* HReader */ = {
 			isa = PBXGroup;
 			children = (
+				3BCAC50415404AC8007C874B /* View Controllers */,
 				3B19651414EE9DCB0045F827 /* Global */,
 				3B5ADF6314E1C5D50025E069 /* Core Data */,
-				DD8BD9EB148D2B270090F729 /* Root View */,
 				DD7037B114900E8A00F58A83 /* Models */,
-				947FCE4D14B4C7CB00C716FD /* Privacy Shield */,
 				9492CA4F1535F8EC009DE7F2 /* System Applets */,
-				DD8BD9F0148D2B720090F729 /* Doctors */,
-				DD8BD9ED148D2B5A0090F729 /* Patient Summary */,
 				941DB0B31471B32D00A96B8B /* Supporting Files */,
 				944A2F2B1472C60600694816 /* Images */,
-				3BFBEE171534BD5A009EBA2D /* Grid View */,
 				9424C156147A9C95008BF5CE /* Categories */,
 			);
 			path = HReader;
@@ -713,14 +714,6 @@
 				94689AC214964BE400E1FCA6 /* TestFlight.h */,
 			);
 			name = "TestFlight-0.8.4";
-			sourceTree = "<group>";
-		};
-		94689AD114967DF500E1FCA6 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				94BB032E149BB398009B2FCC /* Passcode Warning */,
-			);
-			name = Support;
 			sourceTree = "<group>";
 		};
 		94689AD214967E0100E1FCA6 /* C32 */ = {
@@ -857,18 +850,17 @@
 		DD8BD9EB148D2B270090F729 /* Root View */ = {
 			isa = PBXGroup;
 			children = (
+				3BF3220F153CA32400757060 /* SVPanelViewController.h */,
+				3BF32210153CA32400757060 /* SVPanelViewController.m */,
+				3BF32211153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.h */,
+				3BF32212153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.m */,
 				94AEAE0714868BC200C005B2 /* HRRootViewController.h */,
 				94AEAE0814868BC200C005B2 /* HRRootViewController.m */,
 				3B0FE4061538755300BEC21C /* HRAppletConfigurationViewController.h */,
 				3B0FE4071538755300BEC21C /* HRAppletConfigurationViewController.m */,
 				3B6FAF8D153F259E002C9EF5 /* HRPeoplePickerViewController.h */,
 				3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */,
-				94689AD214967E0100E1FCA6 /* C32 */,
 				DD7037B014900E5900F58A83 /* Patient Swipe */,
-				94689AD314967E0600E1FCA6 /* About */,
-				94689AD114967DF500E1FCA6 /* Support */,
-				DD8BD9EE148D2B660090F729 /* Timeline */,
-				DD8BD9EF148D2B6C0090F729 /* Messages */,
 			);
 			name = "Root View";
 			sourceTree = "<group>";

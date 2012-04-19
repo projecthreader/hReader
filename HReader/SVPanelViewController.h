@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "UIViewController+SVPanelViewControllerAdditions.h"
+
 @interface SVPanelViewController : UIViewController
 
 @property (nonatomic, strong) IBOutlet UIViewController *mainViewController;

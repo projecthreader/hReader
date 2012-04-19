@@ -21,8 +21,6 @@
 
 #import "SVPanelViewController.h"
 
-#import "UIViewController+SVPanelViewControllerAdditions.h"
-
 static int HRRootViewControllerTitleContext;
 
 @interface HRRootViewController ()
