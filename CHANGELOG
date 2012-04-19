@@ -1,3 +1,11 @@
+# 2012-4-19
+
+- Implement new "people picker" view
+- Implement name search on people picker view
+- Transition "Summary" screen to new people picker view
+- Add two-finger swipe left and right on the summary screen to go to previous / next patient respectively
+- Show new tiles and associated full screen views on doctors tab
+
 # 2012-4-18
 
 - Fixed normal ranges on blood pressure applet
