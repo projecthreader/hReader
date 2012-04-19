@@ -356,6 +356,8 @@
     layer.shadowOpacity = 0.35;
     layer.shadowOffset = CGSizeMake(0.0, 1.0);
     layer.shadowRadius = 5.0;
+    layer.shouldRasterize = YES;
+    layer.rasterizationScale = [[UIScreen mainScreen] scale];
     
     // date of birth tap
     NSArray *array = [NSArray arrayWithObjects:self.dateOfBirthLabel, self.dateOfBirthTitleLabel, nil];
