@@ -14,13 +14,20 @@
 
 #import "HRMPatient.h"
 
+#import "SVPanelViewController.h"
+
+NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
+
 @interface HRPeoplePickerViewController () {
 @private
     NSFetchedResultsController * __strong controller;
     NSManagedObjectContext * __strong context;
     NSArray * __strong searchResults;
     NSArray * __strong sortDescriptors;
+    NSUInteger selectedPatientIndex;
 }
+
+- (void)updateTableViewSelection;
 
 @end
 
@@ -28,35 +35,67 @@
 
 @synthesize tableView = __tableView;
 
+#pragma mark - public methods
+
+- (HRMPatient *)selectedPatient {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selectedPatientIndex inSection:0];
+    return [controller objectAtIndexPath:indexPath];
+}
+
+- (void)selectNextPatient {
+    id<NSFetchedResultsSectionInfo> info = [[controller sections] objectAtIndex:0];
+    selectedPatientIndex = MIN(selectedPatientIndex + 1, [info numberOfObjects] - 1);
+    [self updateTableViewSelection];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:HRPatientDidChangeNotification
+     object:self];
+}
+
+- (void)selectPreviousPatient {
+    if (selectedPatientIndex > 0) { selectedPatientIndex--; }
+    [self updateTableViewSelection];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:HRPatientDidChangeNotification
+     object:self];
+}
+
+#pragma mark - object methods
+
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        selectedPatientIndex = 0;
+        context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        [context setParentContext:[HRAppDelegate managedObjectContext]];
+        NSFetchRequest *request = [HRMPatient fetchRequestInContext:context];
+        NSSortDescriptor *sortOne = [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES];
+        NSSortDescriptor *sortTwo = [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES];
+        sortDescriptors = [NSArray arrayWithObjects:sortOne, sortTwo, nil];
+        [request setSortDescriptors:sortDescriptors];
+        controller = [[NSFetchedResultsController alloc]
+                      initWithFetchRequest:request
+                      managedObjectContext:context
+                      sectionNameKeyPath:nil
+                      cacheName:nil];
+        controller.delegate = self;
+        NSError *error = nil;
+        BOOL fetch = [controller performFetch:&error];
+        NSAssert(fetch, @"Unable to fetch patients\n%@", error);
+    }
+    return self;
+}
+
+- (void)updateTableViewSelection {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selectedPatientIndex inSection:0];
+    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+}
+
 #pragma mark - view lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // load data
-    context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-    [context setParentContext:[HRAppDelegate managedObjectContext]];
-    NSFetchRequest *request = [HRMPatient fetchRequestInContext:context];
-    NSSortDescriptor *sortOne = [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES];
-    NSSortDescriptor *sortTwo = [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES];
-    sortDescriptors = [NSArray arrayWithObjects:sortOne, sortTwo, nil];
-    [request setSortDescriptors:sortDescriptors];
-    controller = [[NSFetchedResultsController alloc]
-                  initWithFetchRequest:request
-                  managedObjectContext:context
-                  sectionNameKeyPath:nil
-                  cacheName:nil];
-    controller.delegate = self;
-    NSError *error = nil;
-    BOOL fetch = [controller performFetch:&error];
-    NSAssert(fetch, @"Unable to fetch patients\n%@", error);
-    
-}
-
-- (void)viewDidUnload {
-    controller = nil;
-    context = nil;
-    [super viewDidUnload];
+    [self.tableView reloadData];
+    [self updateTableViewSelection];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -70,24 +109,9 @@
     tableView.rowHeight = self.tableView.rowHeight;
 }
 
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-    if ([searchResults count]) {
-        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(performSearch) object:nil];
-        [self performSelector:@selector(performSearch) withObject:nil afterDelay:0.25];
-        return NO;
-    }
-    else {
-        [self performSearch];
-        return YES;
-    }
-}
-
-#pragma mark - perform search
-
-- (void)performSearch {
-    NSString *text = self.searchDisplayController.searchBar.text;
-    NSPredicate *predicateOne = [NSPredicate predicateWithFormat:@"firstName contains[cd] %@", text];
-    NSPredicate *predicateTwo = [NSPredicate predicateWithFormat:@"lastName contains[cd] %@", text];
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    NSPredicate *predicateOne = [NSPredicate predicateWithFormat:@"firstName contains[cd] %@", searchText];
+    NSPredicate *predicateTwo = [NSPredicate predicateWithFormat:@"lastName contains[cd] %@", searchText];
     NSPredicate *predicate = [NSCompoundPredicate orPredicateWithSubpredicates:
                               [NSArray arrayWithObjects:predicateOne, predicateTwo, nil]];
     searchResults = [HRMPatient allInContext:context withPredicate:predicate sortDescriptors:sortDescriptors];
@@ -131,6 +155,26 @@
     cell.textLabel.text = [patient compositeName];
     cell.imageView.image = [patient patientImage];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView == self.tableView) {
+        selectedPatientIndex = indexPath.row;
+    }
+    else {
+        HRMPatient *patient = [searchResults objectAtIndex:indexPath.row];
+        NSIndexPath *patientIndexPath = [controller indexPathForObject:patient];
+        selectedPatientIndex = patientIndexPath.row;
+        [self updateTableViewSelection];
+    }
+    double delay = 0.15;
+    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
+    dispatch_after(time, dispatch_get_main_queue(), ^(void){
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:HRPatientDidChangeNotification
+         object:self];
+        [self.panelViewController hideAccessoryViewControllers:YES];
+    });
 }
 
 #pragma mark - fetched results controller

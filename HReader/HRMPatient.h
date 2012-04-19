@@ -27,13 +27,13 @@ typedef enum {
 @property (nonatomic, retain) NSString *genderString;
 @property (nonatomic, retain) NSDate *dateOfBirth;
 @property (nonatomic, retain) NSSet *entries;
+@property (nonatomic, retain) NSDictionary *syntheticInfo;
 
 @property (nonatomic, retain) NSArray *allergies;
 @property (nonatomic, retain) NSArray *immunizations;
 @property (nonatomic, retain) NSArray *procedures;
 @property (nonatomic, retain) NSArray *results;
 
-@property (nonatomic, copy) NSDictionary *syntheticInfo;
 @property (nonatomic, retain) NSMutableArray *applets;
 
 @property (nonatomic, readonly) NSArray *conditions;

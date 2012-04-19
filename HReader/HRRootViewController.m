@@ -15,11 +15,11 @@
 #import "HRMessagesViewController.h"
 #import "HRDoctorsViewController.h"
 #import "HRAppletConfigurationViewController.h"
+#import "HRPeoplePickerViewController.h"
+
 #import "HRMPatient.h"
 
 #import "SVPanelViewController.h"
-
-#import "UIViewController+SVPanelViewControllerAdditions.h"
 
 static int HRRootViewControllerTitleContext;
 
@@ -222,7 +222,7 @@ static int HRRootViewControllerTitleContext;
 - (IBAction)applets:(id)sender {
     UINavigationController *navigation = (id)self.panelViewController.rightAccessoryViewController;
     HRAppletConfigurationViewController *applets = [navigation.viewControllers objectAtIndex:0];
-    applets.patient = [HRMPatient selectedPatient];
+    applets.patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
     applets.tableView.contentOffset = CGPointZero;
     [self.panelViewController exposeRightAccessoryViewController:YES];
 }
@@ -235,12 +235,12 @@ static int HRRootViewControllerTitleContext;
 
 - (void)didReceiveLeftSwipe:(UISwipeGestureRecognizer *)swipe {
     if (swipe.state == UIGestureRecognizerStateRecognized) {
-//        [self.panelViewController.leftAccessoryViewController selectPreviousPatient];
+        [(id)self.panelViewController.leftAccessoryViewController selectNextPatient];
     }
 }
 - (void)didReceiveRightSwipe:(UISwipeGestureRecognizer *)swipe {
     if (swipe.state == UIGestureRecognizerStateRecognized) {
-//        [self.panelViewController.leftAccessoryViewController selectNextPatient];
+        [(id)self.panelViewController.leftAccessoryViewController selectPreviousPatient];
     }
 }
      

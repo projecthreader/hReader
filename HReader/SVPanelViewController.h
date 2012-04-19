@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "UIViewController+SVPanelViewControllerAdditions.h"
+
 @interface SVPanelViewController : UIViewController
 
 @property (nonatomic, strong) IBOutlet UIViewController *mainViewController;
@@ -16,5 +18,6 @@
 
 - (void)exposeLeftAccessoryViewController:(BOOL)animated;
 - (void)exposeRightAccessoryViewController:(BOOL)animated;
+- (void)hideAccessoryViewControllers:(BOOL)animated;
 
 @end

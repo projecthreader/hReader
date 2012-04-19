@@ -28,6 +28,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *medicationRefillLabel;
 @property (retain, nonatomic) IBOutlet UILabel *upcomingEventsLabel;
 @property (retain, nonatomic) IBOutlet UILabel *planOfCareLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *patientImageView;
 
 
 // collection of all labels

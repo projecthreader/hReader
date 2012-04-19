@@ -407,6 +407,10 @@
                                         <color key="textColor" red="0.30980392159999998" green="0.5568627451" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="CfE-Xb-Pt1">
+                                        <rect key="frame" x="21" y="21" width="182" height="178"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -426,6 +430,7 @@
                         <outlet property="gridView" destination="zCg-6d-9p7" id="7Gh-TF-23V"/>
                         <outlet property="headerView" destination="cBw-FY-Dtr" id="hSs-j6-zZP"/>
                         <outlet property="medicationRefillLabel" destination="jJ7-6f-56O" id="Vx0-6h-LFm"/>
+                        <outlet property="patientImageView" destination="CfE-Xb-Pt1" id="vRY-wg-sFR"/>
                         <outlet property="patientNameLabel" destination="7yZ-tu-F7Q" id="WbD-F3-Aa8"/>
                         <outlet property="pulseDateLabel" destination="dBY-8S-dOU" id="pae-gc-m3M"/>
                         <outlet property="recentConditionsDateLabel" destination="5CY-id-h98" id="g7S-2I-nlD"/>
@@ -690,6 +695,7 @@ hReader allows you to gather, correct, and manage your health data. This service
                 <relationship kind="outlet" name="gridView" candidateClass="HRGridTableView"/>
                 <relationship kind="outlet" name="headerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="medicationRefillLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="patientImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="patientNameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="planOfCareLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="pulseDateLabel" candidateClass="UILabel"/>

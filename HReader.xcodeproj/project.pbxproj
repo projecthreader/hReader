@@ -25,6 +25,7 @@
 		3B19652314EEAB970045F827 /* C32-Smith-Tom.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651F14EEAB970045F827 /* C32-Smith-Tom.html */; };
 		3B3C919514F69F61005CD5C5 /* NSDate+FormattedDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C919414F69F61005CD5C5 /* NSDate+FormattedDate.m */; };
 		3B6FAF8F153F259E002C9EF5 /* HRPeoplePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		3B6FAF95153F4796002C9EF5 /* HRConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8BD9F1148D2BDC0090F729 /* HRConfig.m */; };
 		3BB9C27F151B8AEF00527C20 /* HRKeychainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; };
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
@@ -156,7 +157,6 @@
 		DD8BD9E4148D1D660090F729 /* UserImage-Smith-Molly.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8BD9DF148D1D660090F729 /* UserImage-Smith-Molly.png */; };
 		DD8BD9E5148D1D660090F729 /* UserImage-Smith-Sarah.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8BD9E0148D1D660090F729 /* UserImage-Smith-Sarah.png */; };
 		DD8BD9E6148D1D660090F729 /* UserImage-Smith-Tom.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8BD9E1148D1D660090F729 /* UserImage-Smith-Tom.png */; };
-		DD8BD9F2148D2BDC0090F729 /* HRConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8BD9F1148D2BDC0090F729 /* HRConfig.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -413,10 +413,10 @@
 		3B19651414EE9DCB0045F827 /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				3BF3220F153CA32400757060 /* SVPanelViewController.h */,
-				3BF32210153CA32400757060 /* SVPanelViewController.m */,
-				3BF32211153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.h */,
-				3BF32212153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.m */,
+				94AACF9B15334A1C005E3851 /* HRGridTableView.h */,
+				94AACF9C15334A1D005E3851 /* HRGridTableView.m */,
+				94AACF94153330A2005E3851 /* HRGridTableViewCell.h */,
+				94AACF95153330A2005E3851 /* HRGridTableViewCell.m */,
 				941DB0BB1471B32D00A96B8B /* HRAppDelegate.h */,
 				941DB0BC1471B32D00A96B8B /* HRAppDelegate.m */,
 				94BB0324149BAF24009B2FCC /* HRPasscodeManager.h */,
@@ -444,6 +444,22 @@
 			name = "Core Data";
 			sourceTree = "<group>";
 		};
+		3BCAC50415404AC8007C874B /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DD8BD9EB148D2B270090F729 /* Root View */,
+				94BB032E149BB398009B2FCC /* Passcode Warning */,
+				DD8BD9ED148D2B5A0090F729 /* Patient Summary */,
+				DD8BD9F0148D2B720090F729 /* Doctors */,
+				94689AD214967E0100E1FCA6 /* C32 */,
+				94689AD314967E0600E1FCA6 /* About */,
+				DD8BD9EE148D2B660090F729 /* Timeline */,
+				947FCE4D14B4C7CB00C716FD /* Privacy Shield */,
+				DD8BD9EF148D2B6C0090F729 /* Messages */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		3BD16ED714E1B5EE00F2249E /* guicocoa-common-code */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,17 +470,6 @@
 			);
 			name = "guicocoa-common-code";
 			path = "vendor/guicocoa-common-code";
-			sourceTree = "<group>";
-		};
-		3BFBEE171534BD5A009EBA2D /* Grid View */ = {
-			isa = PBXGroup;
-			children = (
-				94AACF9B15334A1C005E3851 /* HRGridTableView.h */,
-				94AACF9C15334A1D005E3851 /* HRGridTableView.m */,
-				94AACF94153330A2005E3851 /* HRGridTableViewCell.h */,
-				94AACF95153330A2005E3851 /* HRGridTableViewCell.m */,
-			);
-			name = "Grid View";
 			sourceTree = "<group>";
 		};
 		3BFBEE1D1534C0AE009EBA2D /* Patient Data */ = {
@@ -572,17 +577,13 @@
 		941DB0B21471B32D00A96B8B /* HReader */ = {
 			isa = PBXGroup;
 			children = (
+				3BCAC50415404AC8007C874B /* View Controllers */,
 				3B19651414EE9DCB0045F827 /* Global */,
 				3B5ADF6314E1C5D50025E069 /* Core Data */,
-				DD8BD9EB148D2B270090F729 /* Root View */,
 				DD7037B114900E8A00F58A83 /* Models */,
-				947FCE4D14B4C7CB00C716FD /* Privacy Shield */,
 				9492CA4F1535F8EC009DE7F2 /* System Applets */,
-				DD8BD9F0148D2B720090F729 /* Doctors */,
-				DD8BD9ED148D2B5A0090F729 /* Patient Summary */,
 				941DB0B31471B32D00A96B8B /* Supporting Files */,
 				944A2F2B1472C60600694816 /* Images */,
-				3BFBEE171534BD5A009EBA2D /* Grid View */,
 				9424C156147A9C95008BF5CE /* Categories */,
 			);
 			path = HReader;
@@ -713,14 +714,6 @@
 				94689AC214964BE400E1FCA6 /* TestFlight.h */,
 			);
 			name = "TestFlight-0.8.4";
-			sourceTree = "<group>";
-		};
-		94689AD114967DF500E1FCA6 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				94BB032E149BB398009B2FCC /* Passcode Warning */,
-			);
-			name = Support;
 			sourceTree = "<group>";
 		};
 		94689AD214967E0100E1FCA6 /* C32 */ = {
@@ -857,18 +850,17 @@
 		DD8BD9EB148D2B270090F729 /* Root View */ = {
 			isa = PBXGroup;
 			children = (
+				3BF3220F153CA32400757060 /* SVPanelViewController.h */,
+				3BF32210153CA32400757060 /* SVPanelViewController.m */,
+				3BF32211153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.h */,
+				3BF32212153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.m */,
 				94AEAE0714868BC200C005B2 /* HRRootViewController.h */,
 				94AEAE0814868BC200C005B2 /* HRRootViewController.m */,
 				3B0FE4061538755300BEC21C /* HRAppletConfigurationViewController.h */,
 				3B0FE4071538755300BEC21C /* HRAppletConfigurationViewController.m */,
 				3B6FAF8D153F259E002C9EF5 /* HRPeoplePickerViewController.h */,
 				3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */,
-				94689AD214967E0100E1FCA6 /* C32 */,
 				DD7037B014900E5900F58A83 /* Patient Swipe */,
-				94689AD314967E0600E1FCA6 /* About */,
-				94689AD114967DF500E1FCA6 /* Support */,
-				DD8BD9EE148D2B660090F729 /* Timeline */,
-				DD8BD9EF148D2B6C0090F729 /* Messages */,
 			);
 			name = "Root View";
 			sourceTree = "<group>";
@@ -1085,7 +1077,6 @@
 				DD695D7C1489439100E4E2E1 /* HRTimelineViewController.m in Sources */,
 				DD695D8514897C2200E4E2E1 /* HRMessagesViewController.m in Sources */,
 				DD5597C114897DE2006A0D1D /* HRDoctorsViewController.m in Sources */,
-				DD8BD9F2148D2BDC0090F729 /* HRConfig.m in Sources */,
 				94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */,
 				94689AD714967E3600E1FCA6 /* HRC32ViewController.m in Sources */,
 				94BB031E14969675009B2FCC /* HRAddress.m in Sources */,
@@ -1141,6 +1132,7 @@
 				3BF32213153CA32400757060 /* SVPanelViewController.m in Sources */,
 				3BF32214153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.m in Sources */,
 				3B6FAF8F153F259E002C9EF5 /* HRPeoplePickerViewController.m in Sources */,
+				3B6FAF95153F4796002C9EF5 /* HRConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

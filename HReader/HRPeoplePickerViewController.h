@@ -9,10 +9,37 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
+extern NSString * const HRPatientDidChangeNotification;
+
+@class HRMPatient;
+
 @interface HRPeoplePickerViewController : UIViewController
 
-<UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UISearchDisplayDelegate>
+<UITableViewDelegate, UITableViewDataSource,
+NSFetchedResultsControllerDelegate,
+UISearchDisplayDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+
+/*
+ 
+ 
+ 
+ */
+- (HRMPatient *)selectedPatient;
+
+/*
+ 
+ 
+ 
+ */
+- (void)selectNextPatient;
+
+/*
+ 
+ 
+ 
+ */
+- (void)selectPreviousPatient;
 
 @end

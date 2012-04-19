@@ -12,7 +12,7 @@
 #import "HRAppDelegate.h"
 #import "HRMPatient.h"
 
-static NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
+#import "HRPeoplePickerViewController.h"
 
 @interface HRPatientSwipeControl ()
 @property (nonatomic, copy, readwrite) NSArray *patients;
