@@ -134,6 +134,7 @@
 		945560D314BB892100A3DC43 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560CB14BB892100A3DC43 /* DDXMLElement.m */; };
 		945560D414BB892100A3DC43 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560CD14BB892100A3DC43 /* DDXMLNode.m */; };
 		945560D714BB89B400A3DC43 /* HREncounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560D614BB89B400A3DC43 /* HREncounter.m */; };
+		94622A921541E5E300CFC592 /* HRPatientImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94622A911541E5E300CFC592 /* HRPatientImageView.m */; };
 		9464C5881476BDAE0076B991 /* C32-Smith-Johnny.html in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5861476BDAE0076B991 /* C32-Smith-Johnny.html */; };
 		9465002F153C89E5003255AF /* HRBMIVitalAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9465002E153C89E5003255AF /* HRBMIVitalAppletTile.xib */; };
 		94650033153C8F7D003255AF /* HRSparkLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94650032153C8F7D003255AF /* HRSparkLineView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -366,6 +367,8 @@
 		945560CF14BB892100A3DC43 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
 		945560D514BB89B400A3DC43 /* HREncounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HREncounter.h; sourceTree = "<group>"; };
 		945560D614BB89B400A3DC43 /* HREncounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HREncounter.m; sourceTree = "<group>"; };
+		94622A901541E5E300CFC592 /* HRPatientImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPatientImageView.h; sourceTree = "<group>"; };
+		94622A911541E5E300CFC592 /* HRPatientImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPatientImageView.m; sourceTree = "<group>"; };
 		9464C5861476BDAE0076B991 /* C32-Smith-Johnny.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Johnny.html"; sourceTree = "<group>"; };
 		9465002E153C89E5003255AF /* HRBMIVitalAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRBMIVitalAppletTile.xib; sourceTree = "<group>"; };
 		94650031153C8F7D003255AF /* HRSparkLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSparkLineView.h; sourceTree = "<group>"; };
@@ -519,6 +522,8 @@
 				3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */,
 				94650031153C8F7D003255AF /* HRSparkLineView.h */,
 				94650032153C8F7D003255AF /* HRSparkLineView.m */,
+				94622A901541E5E300CFC592 /* HRPatientImageView.h */,
+				94622A911541E5E300CFC592 /* HRPatientImageView.m */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -1313,6 +1318,7 @@
 				3BF32214153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.m in Sources */,
 				3B6FAF8F153F259E002C9EF5 /* HRPeoplePickerViewController.m in Sources */,
 				3B6FAF95153F4796002C9EF5 /* HRConfig.m in Sources */,
+				94622A921541E5E300CFC592 /* HRPatientImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

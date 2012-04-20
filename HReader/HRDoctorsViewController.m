@@ -13,8 +13,11 @@
 #import "HRMPatient.h"
 #import "HRProviderView.h"
 #import "HRImageAppletTile.h"
+#import "HRPeoplePickerViewController.h"
 
 #import "NSArray+Collect.h"
+
+#import "SVPanelViewController.h"
 
 @interface HRDoctorsViewController ()
 - (void)reloadData;
@@ -27,6 +30,7 @@
 
 @synthesize nameLabel       = __nameLabel;
 @synthesize gridTableView   = __gridTableView;
+@synthesize patientImageView = __patientImageView;
 
 #pragma mark - object methods
 
@@ -34,8 +38,20 @@
     self = [super initWithCoder:coder];
     if (self) {
         self.title = @"Providers";
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(patientDidChange:)
+         name:HRPatientDidChangeNotification
+         object:nil];
     }
     return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:HRPatientDidChangeNotification
+     object:nil];
 }
 
 #pragma mark - View lifecycle
@@ -44,21 +60,44 @@
     [super viewDidLoad];
     
     // load patient swipe
-    HRPatientSwipeControl *swipe = [HRPatientSwipeControl
-                                    controlWithOwner:self
-                                    options:nil 
-                                    target:self
-                                    action:@selector(patientChanged:)];
-    [self.view addSubview:swipe];
+//    HRPatientSwipeControl *swipe = [HRPatientSwipeControl
+//                                    controlWithOwner:self
+//                                    options:nil 
+//                                    target:self
+//                                    action:@selector(patientChanged:)];
+//    [self.view addSubview:swipe];
+    
+    CALayer *layer = self.patientImageView.layer;
+    layer.shadowColor = [[UIColor blackColor] CGColor];
+    layer.shadowOpacity = 0.35;
+    layer.shadowOffset = CGSizeMake(0.0, 1.0);
+    layer.shadowRadius = 5.0;
+    layer.shouldRasterize = YES;
+    layer.rasterizationScale = [[UIScreen mainScreen] scale];
     
     // reload
     [self reloadData];
+    
+    // swipe gesture
+    {
+        UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveRightSwipe:)];
+        swipeGesture.numberOfTouchesRequired = 1;
+        swipeGesture.direction = UISwipeGestureRecognizerDirectionRight;
+        [self.patientImageView addGestureRecognizer:swipeGesture];
+    }
+    {
+        UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveLeftSwipe:)];
+        swipeGesture.numberOfTouchesRequired = 1;
+        swipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+        [self.patientImageView addGestureRecognizer:swipeGesture];
+    }
     
 }
 
 - (void)viewDidUnload {
     self.nameLabel = nil;
     self.gridTableView = nil;
+    self.patientImageView = nil;
     [super viewDidUnload];
 }
 
@@ -68,7 +107,7 @@
 
 #pragma mark - NSNotificationCenter
 
-- (void)patientChanged:(HRPatientSwipeControl *)sender {
+- (void)patientDidChange:(NSNotification *)sender {
     [self reloadDataAnimated];
 }
 
@@ -106,11 +145,12 @@
 - (void)reloadData {
     
     // initial setup
-    HRMPatient *patient = [HRMPatient selectedPatient];
+    HRMPatient *patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
 //    NSArray *providers = [[HRMPatient selectedPatient] valueForKeyPath:@"syntheticInfo.providers"];
 //    NSMutableArray *views = [[NSMutableArray alloc] initWithCapacity:[providers count]];
 //    UINib *nib = [UINib nibWithNibName:@"HRProviderView" bundle:nil];
     self.nameLabel.text = [[patient compositeName] uppercaseString];
+    self.patientImageView.image = [patient patientImage];
     
     // configure views
     
@@ -167,6 +207,19 @@
     __providerViews = views;
     [self.gridTableView reloadData];
     
+}
+
+#pragma mark - gestures
+
+- (void)didReceiveLeftSwipe:(UISwipeGestureRecognizer *)swipe {
+    if (swipe.state == UIGestureRecognizerStateRecognized) {
+        [(id)self.panelViewController.leftAccessoryViewController selectNextPatient];
+    }
+}
+- (void)didReceiveRightSwipe:(UISwipeGestureRecognizer *)swipe {
+    if (swipe.state == UIGestureRecognizerStateRecognized) {
+        [(id)self.panelViewController.leftAccessoryViewController selectPreviousPatient];
+    }
 }
 
 @end
