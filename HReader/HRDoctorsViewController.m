@@ -1,4 +1,3 @@
-gst
 //
 //  HRDoctorsViewController.m
 //  HReader

@@ -84,12 +84,14 @@
         swipeGesture.numberOfTouchesRequired = 1;
         swipeGesture.direction = UISwipeGestureRecognizerDirectionRight;
         [self.patientImageView addGestureRecognizer:swipeGesture];
+        [swipeGesture release];
     }
     {
         UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveLeftSwipe:)];
         swipeGesture.numberOfTouchesRequired = 1;
         swipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
         [self.patientImageView addGestureRecognizer:swipeGesture];
+        [swipeGesture release];
     }
 }
 

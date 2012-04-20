@@ -134,7 +134,7 @@
 		945560D314BB892100A3DC43 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560CB14BB892100A3DC43 /* DDXMLElement.m */; };
 		945560D414BB892100A3DC43 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560CD14BB892100A3DC43 /* DDXMLNode.m */; };
 		945560D714BB89B400A3DC43 /* HREncounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560D614BB89B400A3DC43 /* HREncounter.m */; };
-		94622A921541E5E300CFC592 /* HRPatientImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94622A911541E5E300CFC592 /* HRPatientImageView.m */; };
+		94622A921541E5E300CFC592 /* HRPatientImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94622A911541E5E300CFC592 /* HRPatientImageView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9464C5881476BDAE0076B991 /* C32-Smith-Johnny.html in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5861476BDAE0076B991 /* C32-Smith-Johnny.html */; };
 		9465002F153C89E5003255AF /* HRBMIVitalAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9465002E153C89E5003255AF /* HRBMIVitalAppletTile.xib */; };
 		94650033153C8F7D003255AF /* HRSparkLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94650032153C8F7D003255AF /* HRSparkLineView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };

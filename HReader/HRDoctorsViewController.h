@@ -17,6 +17,6 @@
 @property (retain, nonatomic) IBOutlet HRGridTableView *gridTableView;
 @property (nonatomic, strong) IBOutlet UIImageView *patientImageView;
 
-- (IBAction)patientImageViewSwipe:(HRPatientImageView *)sender;
+//- (IBAction)patientImageViewSwipe:(HRPatientImageView *)sender;
 
 @end
