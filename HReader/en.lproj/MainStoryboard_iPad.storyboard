@@ -458,6 +458,32 @@
             </objects>
             <point key="canvasLocation" x="3352" y="-1254"/>
         </scene>
+        <!--Table View Controller - Legal-->
+        <scene sceneID="6qZ-8m-Zcg">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u2N-dy-lf7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="HLh-gj-VNw" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="oPi-Zc-OJb">
+                        <rect key="frame" x="0.0" y="44" width="540" height="576"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <sections>
+                            <tableViewSection id="xQB-mH-yr2">
+                                <mutableString key="headerTitle">hReader allows you to gather, correct, and manage all of your health data. hReader is not meant to replace the advice of a physician.     You should not rely on any information or suggestions in hReader to replace consultations with a qualified health professional regarding your own specific health issues.     All patient names with an asterisk (such as Smith*) indicate a patient constructed from purely synthetic and fictitious data. Any resemblance of a synthetic patient to real persons, living or dead, is purely coincidental.</mutableString>
+                                <cells/>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="HLh-gj-VNw" id="CdB-gm-u4P"/>
+                            <outlet property="delegate" destination="HLh-gj-VNw" id="zYi-4c-nbZ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Legal" id="pVA-OL-Yl7"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="4815" y="-1254"/>
+        </scene>
         <!--About Table View Controller - hReader-->
         <scene sceneID="Rgz-3j-5cf">
             <objects>
@@ -534,10 +560,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="About" id="Sn1-ug-z15">
-                                <string key="footerTitle">The MITRE Corporation © 2012
-
-hReader allows you to gather, correct, and manage your health data. This service is not meant to replace the advice of a physician. You should not rely on any information or suggestions in hReader to replace consultations with a qualified health professional regarding your own specific health issues.    All patient data appearing in hReader is purely synthetic and fictitious. Any resemblance to real persons, living or dead, is purely coincidental.</string>
+                            <tableViewSection headerTitle="About" footerTitle="The MITRE Corporation © 2012" id="Sn1-ug-z15">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Xtt-rv-9qB" detailTextLabel="vS6-de-HAa" style="IBUITableViewCellStyleValue1" id="Yg1-Ty-Tx2">
                                         <rect key="frame" x="0.0" y="230" width="540" height="45"/>
@@ -566,7 +589,7 @@ hReader allows you to gather, correct, and manage your health data. This service
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DateCell" textLabel="zZl-vc-Tg9" detailTextLabel="lcE-Ls-XNx" style="IBUITableViewCellStyleValue1" id="Zgo-be-pNd">
-                                        <rect key="frame" x="0.0" y="275" width="540" height="45"/>
+                                        <rect key="frame" x="0.0" y="275" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="31" y="0.0" width="478" height="43"/>
@@ -590,6 +613,28 @@ hReader allows you to gather, correct, and manage your health data. This service
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DateCell" textLabel="69W-P4-5gF" style="IBUITableViewCellStyleDefault" id="MQO-PX-DoE">
+                                        <rect key="frame" x="0.0" y="319" width="540" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="31" y="0.0" width="458" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Legal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="69W-P4-5gF">
+                                                    <rect key="frame" x="10" y="0.0" width="438" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="HLh-gj-VNw" kind="push" id="Kjp-8z-6kw"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
