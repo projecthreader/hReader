@@ -224,7 +224,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="215" sectionHeaderHeight="22" sectionFooterHeight="22" id="zCg-6d-9p7" customClass="HRGridTableView">
-                                <rect key="frame" x="-6" y="220" width="1030" height="440"/>
+                                <rect key="frame" x="0.0" y="220" width="1024" height="440"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -407,8 +407,8 @@
                                         <color key="textColor" red="0.30980392159999998" green="0.5568627451" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="CfE-Xb-Pt1">
-                                        <rect key="frame" x="21" y="21" width="182" height="178"/>
+                                    <imageView contentMode="scaleToFill" id="CfE-Xb-Pt1">
+                                        <rect key="frame" x="34" y="21" width="169" height="178"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
