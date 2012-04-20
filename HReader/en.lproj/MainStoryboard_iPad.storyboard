@@ -180,7 +180,7 @@
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="215" sectionHeaderHeight="22" sectionFooterHeight="22" id="lyN-IB-0Xf" customClass="HRGridTableView">
-                                <rect key="frame" x="0.0" y="220" width="1024" height="440"/>
+                                <rect key="frame" x="0.0" y="221" width="1024" height="440"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -213,7 +213,6 @@
                     <connections>
                         <outlet property="gridTableView" destination="lyN-IB-0Xf" id="Rlk-f3-Du3"/>
                         <outlet property="nameLabel" destination="cff-5F-SvT" id="drf-VW-nUB"/>
-                        <outlet property="patientImageView" destination="1lp-c8-a9W" id="dRb-qG-42o"/>
                     </connections>
                 </viewController>
             </objects>

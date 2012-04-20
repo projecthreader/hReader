@@ -5,10 +5,13 @@
 //  Created by Marshall Huss on 12/2/11.
 //  Copyright (c) 2011 MITRE Corporation. All rights reserved.
 //
+#import <QuartzCore/QuartzCore.h>
 
 #import "HRTimelineViewController.h"
 #import "HRMPatient.h"
 #import "HRPatientSwipeControl.h"
+#import "SVPanelViewController.h"
+#import "HRPeoplePickerViewController.h"
 
 #import "DDXML.h"
 
@@ -23,9 +26,14 @@
 @synthesize webView     = __webView;
 @synthesize headerView  = __headerView;
 @synthesize nameLabel   = __nameLabel;
+@synthesize patientImageView = __patientImageView;
+
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:HRPatientDidChangeNotification
+     object:nil];
     
     [__scrollView release];
     [__headerView release];
@@ -38,6 +46,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Timeline";
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(patientDidChange:)
+         name:HRPatientDidChangeNotification
+         object:nil];
     }
     return self;
 }
@@ -46,16 +59,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    CALayer *layer = self.patientImageView.layer;
+    layer.shadowColor = [[UIColor blackColor] CGColor];
+    layer.shadowOpacity = 0.35;
+    layer.shadowOffset = CGSizeMake(0.0, 1.0);
+    layer.shadowRadius = 5.0;
+    layer.shouldRasterize = YES;
+    layer.rasterizationScale = [[UIScreen mainScreen] scale];
 
     // load patient swipe
-    HRPatientSwipeControl *swipe = [HRPatientSwipeControl
-                                    controlWithOwner:self
-                                    options:nil 
-                                    target:self
-                                    action:@selector(patientChanged:)];
-    [self.headerView addSubview:swipe];
+//    HRPatientSwipeControl *swipe = [HRPatientSwipeControl
+//                                    controlWithOwner:self
+//                                    options:nil 
+//                                    target:self
+//                                    action:@selector(patientChanged:)];
+//    [self.headerView addSubview:swipe];
     
     self.headerView.backgroundColor = [UIColor clearColor];    
+    
+    // swipe gesture
+    {
+        UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveRightSwipe:)];
+        swipeGesture.numberOfTouchesRequired = 1;
+        swipeGesture.direction = UISwipeGestureRecognizerDirectionRight;
+        [self.patientImageView addGestureRecognizer:swipeGesture];
+    }
+    {
+        UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveLeftSwipe:)];
+        swipeGesture.numberOfTouchesRequired = 1;
+        swipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+        [self.patientImageView addGestureRecognizer:swipeGesture];
+    }
 }
 
 - (void)viewDidUnload {
@@ -78,7 +113,7 @@
 
 #pragma mark - NSNotificationCenter
 
-- (void)patientChanged:(id)sender {
+- (void)patientDidChange:(NSNotification *)sender {
     [self reloadDataAnimated];
 }
 
@@ -96,11 +131,14 @@
 
 - (void)reloadData {
     
+
     // vars
     NSURL *URL;
     
     // load patient
-    HRMPatient *patient = [HRMPatient selectedPatient];
+    HRMPatient *patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
+    self.patientImageView.image = [patient patientImage];
+
     self.nameLabel.text = [patient.compositeName uppercaseString];
     URL = [[[NSFileManager defaultManager]
             URLsForDirectory:NSDocumentDirectory
@@ -119,6 +157,20 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     [self.webView loadRequest:request];
     
+}
+
+
+#pragma mark - gestures
+
+- (void)didReceiveLeftSwipe:(UISwipeGestureRecognizer *)swipe {
+    if (swipe.state == UIGestureRecognizerStateRecognized) {
+        [(id)self.panelViewController.leftAccessoryViewController selectNextPatient];
+    }
+}
+- (void)didReceiveRightSwipe:(UISwipeGestureRecognizer *)swipe {
+    if (swipe.state == UIGestureRecognizerStateRecognized) {
+        [(id)self.panelViewController.leftAccessoryViewController selectPreviousPatient];
+    }
 }
 
 @end

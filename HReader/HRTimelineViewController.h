@@ -15,4 +15,6 @@
 @property (retain, nonatomic) IBOutlet UIView *headerView;
 @property (retain, nonatomic) IBOutlet UILabel *nameLabel;
 
+@property (nonatomic, strong) IBOutlet UIImageView *patientImageView;
+
 @end
