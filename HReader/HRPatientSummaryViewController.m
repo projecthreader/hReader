@@ -367,6 +367,21 @@
         [view addGestureRecognizer:gesture];
     }];
     
+    
+    // swipe gesture
+    {
+        UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveRightSwipe:)];
+        swipeGesture.numberOfTouchesRequired = 1;
+        swipeGesture.direction = UISwipeGestureRecognizerDirectionRight;
+        [self.patientImageView addGestureRecognizer:swipeGesture];
+    }
+    {
+        UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveLeftSwipe:)];
+        swipeGesture.numberOfTouchesRequired = 1;
+        swipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+        [self.patientImageView addGestureRecognizer:swipeGesture];
+    }
+    
 }
 
 - (void)viewDidUnload {
@@ -480,6 +495,19 @@
 - (NSString *)formattedDate:(double)interval {
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
     return [date mediumStyleDate];
+}
+
+#pragma mark - gestures
+
+- (void)didReceiveLeftSwipe:(UISwipeGestureRecognizer *)swipe {
+    if (swipe.state == UIGestureRecognizerStateRecognized) {
+        [(id)self.panelViewController.leftAccessoryViewController selectNextPatient];
+    }
+}
+- (void)didReceiveRightSwipe:(UISwipeGestureRecognizer *)swipe {
+    if (swipe.state == UIGestureRecognizerStateRecognized) {
+        [(id)self.panelViewController.leftAccessoryViewController selectPreviousPatient];
+    }
 }
 
 @end

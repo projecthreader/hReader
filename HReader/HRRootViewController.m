@@ -187,19 +187,7 @@ static int HRRootViewControllerTitleContext;
     
     // set last updated text
 //    self.lastUpdatedLabel.text = @"Last Updated: 05 May by Joseph Yang, M.D. (Columbia Pediatric Associates)";
-    
-    {
-        UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveRightSwipe:)];
-        swipeGesture.numberOfTouchesRequired = 2;
-        swipeGesture.direction = UISwipeGestureRecognizerDirectionRight;
-        [self.view addGestureRecognizer:swipeGesture];
-    }
-    {
-        UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveLeftSwipe:)];
-        swipeGesture.numberOfTouchesRequired = 2;
-        swipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
-        [self.view addGestureRecognizer:swipeGesture];
-    }
+
 }
 - (void)viewDidUnload {
     self.lastUpdatedLabel = nil;
@@ -229,19 +217,6 @@ static int HRRootViewControllerTitleContext;
 
 - (IBAction)people:(id)sender {
     [self.panelViewController exposeLeftAccessoryViewController:YES];
-}
-
-#pragma mark - gestures
-
-- (void)didReceiveLeftSwipe:(UISwipeGestureRecognizer *)swipe {
-    if (swipe.state == UIGestureRecognizerStateRecognized) {
-        [(id)self.panelViewController.leftAccessoryViewController selectNextPatient];
-    }
-}
-- (void)didReceiveRightSwipe:(UISwipeGestureRecognizer *)swipe {
-    if (swipe.state == UIGestureRecognizerStateRecognized) {
-        [(id)self.panelViewController.leftAccessoryViewController selectPreviousPatient];
-    }
 }
      
 @end
