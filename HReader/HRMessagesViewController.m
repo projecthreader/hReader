@@ -14,6 +14,8 @@
 #import "HRMPatient.h"
 #import "NSDate+FormattedDate.h"
 #import "NSArray+Collect.h"
+#import "SVPanelViewController.h"
+#import "HRPeoplePickerViewController.h"
 
 @interface HRMessagesViewController ()
 - (void)setHeaderViewShadow;
@@ -34,13 +36,21 @@
 @synthesize tableView                   = __tableView;
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:HRPatientDidChangeNotification
+     object:nil];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Messages";
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(patientDidChange:)
+         name:HRPatientDidChangeNotification
+         object:nil];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
             [self reloadData];
         });
@@ -54,19 +64,41 @@
     [super viewDidLoad];
     
     // load patient swipe
-    HRPatientSwipeControl *swipe = [HRPatientSwipeControl
-                                    controlWithOwner:self
-                                    options:nil 
-                                    target:self
-                                    action:@selector(patientChanged:)];
-    [self.patientView addSubview:swipe];
+//    HRPatientSwipeControl *swipe = [HRPatientSwipeControl
+//                                    controlWithOwner:self
+//                                    options:nil 
+//                                    target:self
+//                                    action:@selector(patientChanged:)];
+//    [self.patientView addSubview:swipe];
     
     self.scrollView.contentSize = self.messageContentView.bounds.size;
     [self.scrollView addSubview:self.messageContentView];
     
     [self setHeaderViewShadow];   
     
-    [self patientChanged:self];
+    [self patientDidChange:nil];
+    
+    CALayer *layer = self.patientImageView.layer;
+    layer.shadowColor = [[UIColor blackColor] CGColor];
+    layer.shadowOpacity = 0.35;
+    layer.shadowOffset = CGSizeMake(0.0, 1.0);
+    layer.shadowRadius = 5.0;
+    layer.shouldRasterize = YES;
+    layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    
+    // swipe gesture
+    {
+        UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveRightSwipe:)];
+        swipeGesture.numberOfTouchesRequired = 1;
+        swipeGesture.direction = UISwipeGestureRecognizerDirectionRight;
+        [self.patientImageView addGestureRecognizer:swipeGesture];
+    }
+    {
+        UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveLeftSwipe:)];
+        swipeGesture.numberOfTouchesRequired = 1;
+        swipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+        [self.patientImageView addGestureRecognizer:swipeGesture];
+    }
 }
 
 - (void)viewDidUnload {
@@ -128,7 +160,7 @@
 
 #pragma mark - NSNotificationCenter
 
-- (void)patientChanged:(id)sender {
+- (void)patientDidChange:(NSNotification *)sender {
     [self reloadData];
     [self.tableView reloadData];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -139,7 +171,11 @@
 #pragma mark - Private methods
 
 - (void)reloadData {
-    self.messagesArray = [[[HRMPatient selectedPatient] valueForKeyPath:@"syntheticInfo.messages"] arraySortedByKey:@"date" ascending:NO];
+    
+    HRMPatient *patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
+    self.patientImageView.image = [patient patientImage];
+    
+    self.messagesArray = [[patient valueForKeyPath:@"syntheticInfo.messages"] arraySortedByKey:@"date" ascending:NO];
     self.title = [NSString stringWithFormat:@"Messages (%lu)", [self.messagesArray count]];
 }
 
@@ -150,6 +186,19 @@
     layer.shadowOffset = CGSizeMake(0, 3);
     layer.masksToBounds = NO;
     [self.view bringSubviewToFront:self.patientView];    
+}
+
+#pragma mark - gestures
+
+- (void)didReceiveLeftSwipe:(UISwipeGestureRecognizer *)swipe {
+    if (swipe.state == UIGestureRecognizerStateRecognized) {
+        [(id)self.panelViewController.leftAccessoryViewController selectNextPatient];
+    }
+}
+- (void)didReceiveRightSwipe:(UISwipeGestureRecognizer *)swipe {
+    if (swipe.state == UIGestureRecognizerStateRecognized) {
+        [(id)self.panelViewController.leftAccessoryViewController selectPreviousPatient];
+    }
 }
 
 @end

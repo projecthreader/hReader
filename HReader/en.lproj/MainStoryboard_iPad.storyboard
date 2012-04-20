@@ -213,6 +213,7 @@
                     <connections>
                         <outlet property="gridTableView" destination="lyN-IB-0Xf" id="Rlk-f3-Du3"/>
                         <outlet property="nameLabel" destination="cff-5F-SvT" id="drf-VW-nUB"/>
+                        <outlet property="patientImageView" destination="1lp-c8-a9W" id="CPQ-mz-tEU"/>
                     </connections>
                 </viewController>
             </objects>
