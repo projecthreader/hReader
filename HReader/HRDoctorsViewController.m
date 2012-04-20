@@ -33,7 +33,7 @@
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (self) {
-        self.title = @"Doctors";
+        self.title = @"Providers";
     }
     return self;
 }
