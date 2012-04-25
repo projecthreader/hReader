@@ -5,9 +5,7 @@
     "org.mitre.hreader.encounters",
     "org.mitre.hreader.medications",
     "org.mitre.hreader.immunizations",
-    "org.mitre.hreader.placeholder.tbi",
-    "org.mitre.hreader.placeholder.nikeplus",
-    "org.mitre.hreader.placeholder.wakemate"
+    "org.mitre.hreader.placeholder.tbi"
   ],
     "immunizations": true,
     "chronic_conditions": [

@@ -1,11 +1,10 @@
 {
   "applets": [
-    "org.mitre.hreader.bmi",
     "org.mitre.hreader.bloodpressure",
+    "org.mitre.hreader.bmi",
     "org.mitre.hreader.encounters",
     "org.mitre.hreader.medications",
     "org.mitre.hreader.immunizations",
-    "org.mitre.hreader.placeholder.fitbit",
     "org.mitre.hreader.placeholder.withings"
   ],
     "immunizations": true,
