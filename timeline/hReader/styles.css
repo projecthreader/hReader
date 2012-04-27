@@ -15,7 +15,6 @@ h2 {
 	margin-top: 0;
 	margin-bottom: 0;
 	padding: 5px 10px 6px 20px;
-    background: #EFEEEE;
     border-right: 1px solid #ccc;
 }
 
@@ -47,8 +46,13 @@ h2.last {
 .timeline-band-layer-inner { overflow:hidden}
 .timeline-ether-bg{width:100%; height:100%;}
 .timeline-band-0 .timeline-ether-bg{background-color:#fff}
-.timeline-band-1 .timeline-ether-bg{background-color:#EFEEEE}
-.timeline-band-2 .timeline-ether-bg{background-color:#fff}
+.timeline-band-1 .timeline-ether-bg{background-color:#fff}
+.timeline-band-2 .timeline-ether-bg{
+	background-color:#EFEEEE;
+	border-top: 2px solid #888;
+    -webkit-box-shadow: inset 0 -5px -1px rgba(255, 255, 255, .50);
+    box-shadow: inset 2px 2px 1px rgba(255, 255, 255, .10);
+}
 .timeline-band-3 .timeline-ether-bg{background-color:#EFEEEE}
 .timeline-band-4 .timeline-ether-bg{background-color:#fff}
 .timeline-band-5 .timeline-ether-bg{background-color:#EFEEEE}
@@ -62,7 +66,7 @@ h2.last {
 
 .timeline-default .timeline-band-0 {
     color: #EFEEEE;
-    font-size:24px;
+    font-size:14px;
 }
 .timeline-event-tape,
 .timeline-small-event-tape,
@@ -70,38 +74,21 @@ h2.last {
   background-color:#f56768;
   width:2px;
 }
-.timeline-ether-highlight{position:absolute; background-color:#CCC;}
+
+.timeline-ether-highlight{
+	position:absolute; 
+	background-color:#ffffff;
+	opacity: 1;
+	box-shadow: inset 2px 2px 2px #888;
+}
 .timeline-horizontal .timeline-date-label-em{height:6em;line-height:10em}
 #content {
     height: 440px;
     margin:200px 0px 0px 0;
 }
 
-		
-	.timeline-band-label-layer {
-			position : absolute;
-			z-index : 200;
-			left : 0;
-			opacity: 1.0;
-			background-color : #fff;
-			width : 150px;
-			height: 21px;
-			cursor:pointer;
-			border-right : 1px solid #eee;
-			border-bottom : 1px solid #eee;
 
-		}
-    .timeline-band-label-layer:nth-child(2n+1) {
-        background-color:#EFEEEE;
-    }
-		.timeline-band-label-layer div {
-			margin:3px 0 0 3px;
-            padding-left: 15px;
-            padding-top: 6px;
-			line-height:1.2em;
-			font-size:9pt;
-		}
 div.simileAjax-bubble-contentContainer {
-    background: mone repeat scroll 0 0 black;
+    background: none repeat scroll 0 0 #fff;
 }
 

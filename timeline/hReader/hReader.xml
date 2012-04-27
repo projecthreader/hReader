@@ -7,49 +7,60 @@
     -->
     <event start="Nov 14 2010 00:00:00 GMT"
         title=""
-        category="allergies">
+        category="allergies"
+        icon="observation.png">
         Johnny Smith is has developed a peanut allergy.
         &lt;p&gt;
             The patient has had no prior allergies reported prior to this incident but has since developed a severe reaction to peanuts and other legumes.
         &lt;/p&gt;
+        
     </event>
 
     <event start="Jun 14 2010 00:00:00 GMT"
         title=""
-        category="conditions">
+        category="conditions"
+        icon="condition.png">
         Asthma 
         &lt;p&gt;
             Minor asthma.
         &lt;/p&gt;
+
     </event>
 
     <event start="Aug 14 2010 00:00:00 GMT"
         title=""
-        category="results">
+        category="results"
+        icon="observation.png">
         Blood test 
         &lt;p&gt;
             Negative for infection.
+
         &lt;/p&gt;
     </event>
     <event start="Jul 14 2011 00:00:00 GMT"
         title=""
-        category="care">
+        category="care"
+        icon="treatment.png">
         Plan of Care for the next year 
         &lt;p&gt;
             Get more exercise and don't eat peanuts.
+
         &lt;/p&gt;
     </event>
       <event start="Dec 14 2009 00:00:00 GMT"
         title=""
-        category="encounters">
+        category="encounters"
+        icon="encounter.png">
         Physical Checkup
         &lt;p&gt;
             The patient is in perfect health.
+
         &lt;/p&gt;
     </event>
       <event start="Jul 14 2010 00:00:00 GMT"
         title=""
-        category="vitals">
+        category="vitals"
+        icon="observation.png">
         Blood pressure
         &lt;p&gt;
         BP 25
@@ -58,7 +69,8 @@
 
     <event start="Dec 14 2010 00:00:00 GMT"
         title=""
-        category="medications">
+        category="medications"
+        icon="medication.png">
         Epipen
         &lt;p&gt;
             Use in case of an allergy reaction after ingesting peanuts.
@@ -68,7 +80,8 @@
         
     <event start="Jan 28 2010 00:00:00 GMT"
         title=""
-        category="procedures">
+        category="procedures"
+        icon="treatment.png">
         
         Tested for Allergies.
         </event>
@@ -76,55 +89,65 @@
 
     <event start="Jun 27 2010 00:00:00 GMT"
         title=""
-        category="immunizations">
+        category="immunizations"
+        icon="treatment.png">
         Hepatitis A Vaccine
     </event>   
     <event start="Sep 10 2010 00:00:00 GMT"
         title=""
-        category="immunizations">
+        category="immunizations"
+        icon="treatment.png">
         MMR Vaccine
     </event>    
     <event start="Mar 26 2010 00:00:00 GMT"
         title=""
-        category="immunizations">
+        category="immunizations"
+        icon="treatment.png">
         VZV Vaccine
     </event>    
     <event start="Sep 26 2010 00:00:00 GMT"
         title=""
-        category="immunizations">
+        category="immunizations"
+        icon="treatment.png">
         Hepatitis A Vaccine
     </event>
         <event start="Mar 8 2010 00:00:00 GMT"
         title=""
-        category="immunizations">
+        category="immunizations"
+        icon="treatment.png">
         Pneumococcal Vaccine
         </event>
 
     <event start="Dec 26 2009 00:00:00 GMT"
         title=""
-        category="immunizations">
+        category="immunizations"
+        icon="treatment.png">
         Influenza Vaccine
     </event>
 
     <event start="Oct 24 2008 00:00:00 GMT"
         title=""
-        category="immunizations">
+        category="immunizations"
+        icon="treatment.png">
         DTAP Vaccine    
     </event>     
     <event start="Oct 24 2009 00:00:00 GMT"
         title=""
-        category="immunizations">
+        category="immunizations"
+        icon="treatment.png">
         Pneumococcal Vaccine
     </event>    
 
     <event start="Aug 22 2009 00:00:00 GMT"
         title=""
-        category="immunizations">
+        category="immunizations"
+        icon="treatment.png">
         Rotavirus Vaccine
     </event>  
     <event start="Jul 20 2009 00:00:00 GMT"
         title=""
-        category="immunizations">
+        category="immunizations"
+        icon="treatment.png">
         Hepatitis B Vaccine
     </event>    
 </data>
