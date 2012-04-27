@@ -103,14 +103,36 @@
     // get type
     short type = [self.type shortValue];
     NSString *category = nil;
-    if (type == HRMEntryTypeAllergy)            { category = @"allergies";      }
-    else if (type == HRMEntryTypeCondition)     { category = @"conditions";     }
-    else if (type == HRMEntryTypeResult)        { category = @"results";        }
-    else if (type == HRMEntryTypeEncounter)     { category = @"encounters";     }
-    else if (type == HRMEntryTypeVitalSign)     { category = @"vitals";         }
-    else if (type == HRMEntryTypeImmunization)  { category = @"immunizations";  }
-    else if (type == HRMEntryTypeMedication)    { category = @"medications";    }
-    else if (type == HRMEntryTypeProcedure)     { category = @"procedures";     }
+    NSString *image = nil;
+    if (type == HRMEntryTypeAllergy) {
+        category = @"allergies";
+    }
+    else if (type == HRMEntryTypeCondition) {
+        category = @"conditions";
+    }
+    else if (type == HRMEntryTypeResult) {
+        category = @"results";
+        image = @"observation.png";
+    }
+    else if (type == HRMEntryTypeEncounter) {
+        category = @"encounters";
+        image = @"encounter.png";
+    }
+    else if (type == HRMEntryTypeVitalSign) {
+        category = @"vitals";
+    }
+    else if (type == HRMEntryTypeImmunization) {
+        category = @"immunizations";
+        image = @"treatment.png";
+    }
+    else if (type == HRMEntryTypeMedication) {
+        category = @"medications";
+        image = @"medication.png";
+    }
+    else if (type == HRMEntryTypeProcedure) {
+        category = @"procedures";
+        image = @"treatment.png";
+    }
     
     NSMutableString *eventDesc = [NSMutableString string];
     [eventDesc appendFormat:@"%@", self.desc];
@@ -123,6 +145,7 @@
     [element addAttribute:[DDXMLElement attributeWithName:@"title" stringValue:@""]];
     [element addAttribute:[DDXMLElement attributeWithName:@"category" stringValue:category]];
     [element addAttribute:[DDXMLElement attributeWithName:@"start" stringValue:start]];
+    [element addAttribute:[DDXMLElement attributeWithName:@"icon" stringValue:image]];
     
     // return
     return element;
