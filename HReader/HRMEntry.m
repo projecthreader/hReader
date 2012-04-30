@@ -106,13 +106,15 @@
     NSString *image = nil;
     if (type == HRMEntryTypeAllergy) {
         category = @"allergies";
+//        image = @"observation.png";
     }
     else if (type == HRMEntryTypeCondition) {
         category = @"conditions";
+//        image = @"condition.png";
     }
     else if (type == HRMEntryTypeResult) {
         category = @"results";
-        image = @"observation.png";
+//        image = @"observation.png";
     }
     else if (type == HRMEntryTypeEncounter) {
         category = @"encounters";
@@ -120,6 +122,7 @@
     }
     else if (type == HRMEntryTypeVitalSign) {
         category = @"vitals";
+        image = @"observation.png";
     }
     else if (type == HRMEntryTypeImmunization) {
         category = @"immunizations";
