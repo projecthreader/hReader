@@ -50,9 +50,23 @@
     self.normalLabel.text = [NSString stringWithFormat:@"%.0f-%.0f/%.0f-%.0f", [self normalSystolicLow], [self normalSystolicHigh], [self normalDiastolicLow], [self normalDiastolicHigh]];
     
     // sparkline
-    self.sparkLineView.rangeOverlayLowerLimit = [NSNumber numberWithDouble:[self normalSystolicLow]];
-    self.sparkLineView.rangeOverlayUpperLimit = [NSNumber numberWithDouble:[self normalSystolicHigh]];
-    self.sparkLineView.dataValues = [self scalarValuesForEntries:__systolicDataPoints];
+    HRSparkLineRange systolicRange = HRMakeRange([self normalSystolicLow], [self normalSystolicHigh] - [self normalSystolicLow]);
+    HRSparkLineLine *systolicLine = [[HRSparkLineLine alloc] init];
+    systolicLine.outOfRangeDotColor = [HRConfig redColor];
+    systolicLine.weight = 4.0;
+    systolicLine.points = [self sparkLinePointsForDataSet:__systolicDataPoints];
+    systolicLine.range = systolicRange;
+    
+    HRSparkLineRange diastolicRange = HRMakeRange([self normalDiastolicLow], [self normalDiastolicHigh] - [self normalDiastolicLow]);
+    HRSparkLineLine *diastolicLine = [[HRSparkLineLine alloc] init];
+    diastolicLine.outOfRangeDotColor = [HRConfig redColor];
+    diastolicLine.weight = 4.0;
+    diastolicLine.points = [self sparkLinePointsForDataSet:__diastolicDataPoints];
+    diastolicLine.range = diastolicRange;
+    
+    
+    self.sparkLineView.lines = [NSArray arrayWithObjects:systolicLine, diastolicLine, nil];
+    self.sparkLineView.visibleRange = HRMakeRange([self normalDiastolicLow], [self normalSystolicHigh] - [self normalDiastolicLow]);
     
     // display normal value
     float systolicValue = [[lastestSystolic valueForKeyPath:@"value.scalar"] floatValue];
@@ -113,19 +127,36 @@
     return [points copy];
 }
 
-- (NSArray *)scalarValuesForEntries:(NSArray *)entries {
-    NSArray *scalarStrings = [__systolicDataPoints valueForKeyPath:@"value.scalar"];
-    NSArray *scalars = [scalarStrings collect:^(id object, NSUInteger idx) {
-        if ([object isKindOfClass:[NSString class]]) {
-            float value = [object floatValue];
-            return [NSNumber numberWithDouble:value];
+//- (NSArray *)scalarValuesForEntries:(NSArray *)entries {
+//    NSArray *scalarStrings = [__systolicDataPoints valueForKeyPath:@"value.scalar"];
+//    NSArray *scalars = [scalarStrings collect:^(id object, NSUInteger idx) {
+//        if ([object isKindOfClass:[NSString class]]) {
+//            float value = [object floatValue];
+//            return [NSNumber numberWithDouble:value];
+//        }
+//        else {
+//            return [NSNumber numberWithDouble:0.0];
+//        }
+//    }];
+//    return scalars;
+//}
+
+- (NSArray *)sparkLinePointsForDataSet:(NSArray *)dataSet {
+    NSMutableArray *points = [[NSMutableArray alloc] initWithCapacity:[dataSet count]];
+    [dataSet enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
+        NSTimeInterval timeInterval = [entry.date timeIntervalSince1970];
+        NSString *scalarString = [entry.value objectForKey:@"scalar"];
+        CGFloat value = 0.0;
+        if ([scalarString isKindOfClass:[NSString class]]) {
+            value = [scalarString floatValue];
         }
-        else {
-            return [NSNumber numberWithDouble:0.0];
-        }
+        HRSparkLinePoint *point = [HRSparkLinePoint pointWithX:timeInterval y:value];
+        [points addObject:point];
     }];
-    return scalars;
+    
+    return points;
 }
+
 
 
 - (double)normalSystolicLow {

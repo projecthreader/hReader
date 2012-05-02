@@ -13,6 +13,7 @@
 #import "HRPrivacyViewController.h"
 #import "HRKeychainManager.h"
 #import "HRAppletConfigurationViewController.h"
+#import "HRSparkLineView.h"
 
 #import "TestFlight.h"
 
@@ -109,6 +110,13 @@
 #if !TARGET_IPHONE_SIMULATOR
     [TestFlight takeOff:[HRConfig testFlightTeamToken]];
 #endif
+    
+    // appearance proxies
+//    [HRSparkLineLine p .
+//    [[UIBarButtonItem appearance] something];
+//    [[HRSparkLineLine appearance] setLineColor:[UIColor blackColor]];
+//    [[HRSparkLineLine appearance] setLineWidth:4.0];
+//    [[HRSparkLineLine appearance] setOutOfRangeDotColor:[HRConfig redColor]];
     
     // load patients if we don't have any yet
     NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];

@@ -17,7 +17,6 @@
 
 @interface HRBMIVitalAppletTile ()
 - (NSArray *)dataPoints;
-- (NSArray *)scalarValuesForEntries:(NSArray *)entries;
 - (double)normalLow;
 - (double)normalHigh;
 - (BOOL)isValueNormal:(double)value;
@@ -50,10 +49,15 @@
     self.dateLabel.adjustsFontSizeToFitWidth = YES;
     self.normalLabel.adjustsFontSizeToFitWidth = YES;
     
-    // sparkline
-    self.sparkLineView.rangeOverlayLowerLimit = [NSNumber numberWithDouble:[self normalLow]];
-    self.sparkLineView.rangeOverlayUpperLimit = [NSNumber numberWithDouble:[self normalHigh]];
-    self.sparkLineView.dataValues = [self scalarValuesForEntries:__dataPoints];
+    // sparkline    
+    HRSparkLineRange range = HRMakeRange([self normalLow], [self normalHigh] - [self normalLow]);
+    HRSparkLineLine *line = [[HRSparkLineLine alloc] init];
+    line.outOfRangeDotColor = [HRConfig redColor];
+    line.weight = 4.0;
+    line.points = [self sparkLinePoints];
+    line.range = range;
+    self.sparkLineView.lines = [NSArray arrayWithObject:line];
+    self.sparkLineView.visibleRange = range;
 
     // display normal value
     float val = [[lastest valueForKeyPath:@"value.scalar"] floatValue];
@@ -107,18 +111,20 @@
     return [points copy];
 }
 
-- (NSArray *)scalarValuesForEntries:(NSArray *)entries {
-    NSArray *scalarStrings = [__dataPoints valueForKeyPath:@"value.scalar"];
-    NSArray *scalars = [scalarStrings collect:^(id object, NSUInteger idx) {
-        if ([object isKindOfClass:[NSString class]]) {
-            float value = [object floatValue];
-            return [NSNumber numberWithDouble:value];
+- (NSArray *)sparkLinePoints {
+    NSMutableArray *points = [[NSMutableArray alloc] initWithCapacity:[__dataPoints count]];
+    [__dataPoints enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
+        NSTimeInterval timeInterval = [entry.date timeIntervalSince1970];
+        NSString *scalarString = [entry.value objectForKey:@"scalar"];
+        CGFloat value = 0.0;
+        if ([scalarString isKindOfClass:[NSString class]]) {
+            value = [scalarString floatValue];
         }
-        else {
-            return [NSNumber numberWithDouble:0.0];
-        }
+        HRSparkLinePoint *point = [HRSparkLinePoint pointWithX:timeInterval y:value];
+        [points addObject:point];
     }];
-    return scalars;
+    
+    return points;
 }
 
 - (double)normalLow {

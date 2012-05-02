@@ -128,6 +128,8 @@
 		9439A9D4153C7303007FE401 /* HRBMIVitalAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9439A9D3153C7303007FE401 /* HRBMIVitalAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9452D7F414FC167200021E69 /* HRProviderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9452D7F314FC167200021E69 /* HRProviderView.xib */; };
 		9452D7F714FC16DF00021E69 /* HRProviderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9452D7F614FC16DF00021E69 /* HRProviderView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		9454C36F1551797A0024C2EF /* HRSparkLineLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9454C36B1551797A0024C2EF /* HRSparkLineLine.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		9454C3701551797A0024C2EF /* HRSparkLinePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9454C36D1551797A0024C2EF /* HRSparkLinePoint.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		945560D014BB892100A3DC43 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560C314BB892100A3DC43 /* DDXMLElementAdditions.m */; };
 		945560D114BB892100A3DC43 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560C614BB892100A3DC43 /* NSString+DDXML.m */; };
 		945560D214BB892100A3DC43 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560C914BB892100A3DC43 /* DDXMLDocument.m */; };
@@ -353,6 +355,11 @@
 		9452D7F314FC167200021E69 /* HRProviderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRProviderView.xib; sourceTree = "<group>"; };
 		9452D7F514FC16DF00021E69 /* HRProviderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRProviderView.h; sourceTree = "<group>"; };
 		9452D7F614FC16DF00021E69 /* HRProviderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRProviderView.m; sourceTree = "<group>"; };
+		9454C36A1551797A0024C2EF /* HRSparkLineRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSparkLineRange.h; sourceTree = "<group>"; };
+		9454C36B1551797A0024C2EF /* HRSparkLineLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSparkLineLine.m; sourceTree = "<group>"; };
+		9454C36C1551797A0024C2EF /* HRSparkLineLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSparkLineLine.h; sourceTree = "<group>"; };
+		9454C36D1551797A0024C2EF /* HRSparkLinePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSparkLinePoint.m; sourceTree = "<group>"; };
+		9454C36E1551797A0024C2EF /* HRSparkLinePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSparkLinePoint.h; sourceTree = "<group>"; };
 		945560C214BB892100A3DC43 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
 		945560C314BB892100A3DC43 /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
 		945560C514BB892100A3DC43 /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
@@ -506,6 +513,7 @@
 		3B19651414EE9DCB0045F827 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				9454C35E1551789B0024C2EF /* Sparklines */,
 				94AACF9B15334A1C005E3851 /* HRGridTableView.h */,
 				94AACF9C15334A1D005E3851 /* HRGridTableView.m */,
 				94AACF94153330A2005E3851 /* HRGridTableViewCell.h */,
@@ -520,8 +528,6 @@
 				3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */,
 				3BFBEE181534BEAA009EBA2D /* HRAppletTile.h */,
 				3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */,
-				94650031153C8F7D003255AF /* HRSparkLineView.h */,
-				94650032153C8F7D003255AF /* HRSparkLineView.m */,
 				94622A901541E5E300CFC592 /* HRPatientImageView.h */,
 				94622A911541E5E300CFC592 /* HRPatientImageView.m */,
 			);
@@ -784,6 +790,20 @@
 			);
 			name = Images;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		9454C35E1551789B0024C2EF /* Sparklines */ = {
+			isa = PBXGroup;
+			children = (
+				94650031153C8F7D003255AF /* HRSparkLineView.h */,
+				94650032153C8F7D003255AF /* HRSparkLineView.m */,
+				9454C36A1551797A0024C2EF /* HRSparkLineRange.h */,
+				9454C36C1551797A0024C2EF /* HRSparkLineLine.h */,
+				9454C36B1551797A0024C2EF /* HRSparkLineLine.m */,
+				9454C36E1551797A0024C2EF /* HRSparkLinePoint.h */,
+				9454C36D1551797A0024C2EF /* HRSparkLinePoint.m */,
+			);
+			name = Sparklines;
 			sourceTree = "<group>";
 		};
 		945560BF14BB891500A3DC43 /* KissXML */ = {
@@ -1319,6 +1339,8 @@
 				3B6FAF8F153F259E002C9EF5 /* HRPeoplePickerViewController.m in Sources */,
 				3B6FAF95153F4796002C9EF5 /* HRConfig.m in Sources */,
 				94622A921541E5E300CFC592 /* HRPatientImageView.m in Sources */,
+				9454C36F1551797A0024C2EF /* HRSparkLineLine.m in Sources */,
+				9454C3701551797A0024C2EF /* HRSparkLinePoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
