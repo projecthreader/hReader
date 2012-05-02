@@ -2,6 +2,7 @@
 
 - Fixed timeline issues
 - Finished HRSparkLine lib
+- Fixed bug in date formatter parsing in timeline
 
 # 2012-4-30
 

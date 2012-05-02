@@ -91,7 +91,7 @@
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         format = [[NSDateFormatter alloc] init];
-        [format setDateFormat:@"MMM w yyyy '00:00:00 GMT'"];
+        [format setDateFormat:@"MMM d yyyy '00:00:00 GMT'"];
     });
     
     // get start
@@ -148,7 +148,7 @@
     [element addAttribute:[DDXMLElement attributeWithName:@"title" stringValue:@""]];
     [element addAttribute:[DDXMLElement attributeWithName:@"category" stringValue:category]];
     [element addAttribute:[DDXMLElement attributeWithName:@"start" stringValue:start]];
-    [element addAttribute:[DDXMLElement attributeWithName:@"icon" stringValue:image]];
+    [element addAttribute:[DDXMLElement attributeWithName:@"icon" stringValue:[NSString stringWithFormat:@"../hReader.app/timeline/hReader/%@", image]]];
     
     // return
     return element;

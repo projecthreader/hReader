@@ -21,6 +21,8 @@
 
 #import "SVPanelViewController.h"
 
+#import <objc/message.h>
+
 @interface HRAppDelegate () {
 @private
     NSUInteger passcodeAttempts;
@@ -117,6 +119,16 @@
 //    [[HRSparkLineLine appearance] setLineColor:[UIColor blackColor]];
 //    [[HRSparkLineLine appearance] setLineWidth:4.0];
 //    [[HRSparkLineLine appearance] setOutOfRangeDotColor:[HRConfig redColor]];
+    
+#if DEBUG
+    @try {
+        objc_msgSend(NSClassFromString(@"WebView"), @selector(_enableRemoteInspector));
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Could not turn on remote web inspector\n%@", exception);
+    }
+#endif
+    
     
     // load patients if we don't have any yet
     NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
