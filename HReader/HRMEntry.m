@@ -86,6 +86,7 @@
 
 - (DDXMLElement *)timelineXMLElement {
     
+    
     // get date formatter
     static NSDateFormatter *format = nil;
     static dispatch_once_t token;
@@ -148,7 +149,7 @@
     [element addAttribute:[DDXMLElement attributeWithName:@"title" stringValue:@""]];
     [element addAttribute:[DDXMLElement attributeWithName:@"category" stringValue:category]];
     [element addAttribute:[DDXMLElement attributeWithName:@"start" stringValue:start]];
-    [element addAttribute:[DDXMLElement attributeWithName:@"icon" stringValue:[NSString stringWithFormat:@"../hReader.app/timeline/hReader/%@", image]]];
+    [element addAttribute:[DDXMLElement attributeWithName:@"icon" stringValue:[NSString stringWithFormat:@"../HReader.app/timeline/hReader/%@", image]]];
     
     // return
     return element;
