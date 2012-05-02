@@ -78,8 +78,7 @@ h2.last {
 .timeline-ether-highlight{
 	position:absolute; 
 	background-color:#ffffff;
-	opacity: 1;
-	box-shadow: inset 2px 2px 2px #888;
+
 }
 .timeline-horizontal .timeline-date-label-em{height:6em;line-height:10em}
 #content {

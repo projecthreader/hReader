@@ -8,7 +8,7 @@
     <!-- (where 2.3.1 is the current release number.)                                 -->
     <script>
       Timeline_ajax_url="../ajax/simile-ajax-api.js";
-      Timeline_urlPrefix='../api/';       
+      Timeline_urlPrefix='../api/'; 
       Timeline_parameters='bundle=true';
     </script>
  
@@ -34,19 +34,19 @@
             theme.timeline_stop = new Date("Jan 01 2020 00:00:00 GMT")
             theme.event.bubble.width = 350;
             theme.event.bubble.height = 340;
-            theme.event.track.height=52;
+            theme.event.track.height=40;
             theme.event.track.offset = 8;
             theme.ether.backgroundColors[1] = theme.ether.backgroundColors[0];
             theme.event.instant.icon = "treatment.png";
-            theme.event.instant.iconWidth= 48;
-            theme.event.instant.iconHeight= 52;
+            theme.event.instant.iconWidth= 40;
+            theme.event.instant.iconHeight= 40;
             
             var d = Timeline.DateTime.parseGregorianDateTime(new Date());
             var bandInfos = [
                 Timeline.createBandInfo({
                     width:          "15%", 
                     intervalUnit:   Timeline.DateTime.MONTH, 
-                    intervalPixels: 50,
+                    intervalPixels: 40,
                     date:           d,
                     showEventText:  false,
                     theme:          theme,
@@ -61,7 +61,7 @@
                 var bandInfo= new Timeline.createBandInfo({ 
                     width:          "75%", 
                     intervalUnit:   Timeline.DateTime.MONTH, 
-                    intervalPixels: 50,
+                    intervalPixels: 40,
                     eventSource:    eventSource_all,
                     date:           d,
                     theme:          theme,
@@ -107,13 +107,13 @@
                   showLine: false, 
                   date:             d,
                   unit:             Timeline.DateTime.YEAR, 
-                  intervalPixels:   50,
+                  intervalPixels:   40,
                   theme:            theme
               });
             }
             //Links to the xml doc
             tl = Timeline.create(document.getElementById("tl"), bandInfos, Timeline.HORIZONTAL);
-            tl.loadXML("../../../Documents/hReader.xml", function(xml, url) {
+            tl.loadXML("hReader.xml", function(xml, url) {
                 eventSource_all.loadXML(xml, url);
                 var iterator=eventSource_all.getAllEventIterator();
                 while (iterator.hasNext()){
