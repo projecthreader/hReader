@@ -147,7 +147,10 @@
             
             // calculate screen points
             CGPoint screenPoint = [self screenPointWithDataPoint:point];
-            static CGFloat const dotScale = 1.5;
+            static CGFloat const HRSparkLineViewDotScale = 1.5;
+            CGFloat dotScale = HRSparkLineViewDotScale;
+            if (pointIndex == pointCount - 1) { dotScale = 2.2; }
+            
             CGRect dotRect = CGRectMake(floorf(screenPoint.x - line.weight * dotScale * 0.5),
                                         floorf(screenPoint.y - line.weight * dotScale * 0.5),
                                         ceilf(line.weight * dotScale),
@@ -157,7 +160,7 @@
             if (!HRIsZeroRange(line.range) && !HRLocationInRange(point.y, line.range)) {
                 CGPathAddEllipseInRect(outOfRangeDotPath, NULL, dotRect);
             }
-            else if (pointIndex == 0 || pointIndex == pointCount - 1 || pointCount < 4) {
+            else if (pointIndex == pointCount - 1 || pointCount < 4) {
                 CGPathAddEllipseInRect(inRangeDotPath, NULL, dotRect);
             }
             
@@ -176,16 +179,16 @@
         CGContextStrokePath(context);
         
         // get ready to draw points
-        CGContextSetStrokeColorWithColor(context, [line.lineColor CGColor]);
-        CGContextSetLineWidth(context, MAX(1.0, floorf(line.weight / 4.0)));
+        CGContextSetLineWidth(context, MAX(1.0, floorf(line.weight / 2.0)));
+        CGContextSetFillColorWithColor(context, [self.backgroundColor CGColor]);
         
         // draw in range points
-        CGContextSetFillColorWithColor(context, [self.backgroundColor CGColor]);
+        CGContextSetStrokeColorWithColor(context, [line.lineColor CGColor]);
         CGContextAddPath(context, inRangeDotPath);
         CGContextDrawPath(context, kCGPathFillStroke);
         
         // draw out of range points
-        CGContextSetFillColorWithColor(context, [line.outOfRangeDotColor CGColor]);
+        CGContextSetStrokeColorWithColor(context, [line.outOfRangeDotColor CGColor]);
         CGContextAddPath(context, outOfRangeDotPath);
         CGContextDrawPath(context, kCGPathFillStroke);
         
