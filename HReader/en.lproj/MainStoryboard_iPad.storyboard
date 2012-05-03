@@ -146,7 +146,7 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="0H1-3e-CAx">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="People" id="uMw-9y-VTV">
+                        <barButtonItem key="leftBarButtonItem" image="people-picker.png" id="uMw-9y-VTV">
                             <connections>
                                 <action selector="people:" destination="GW8-lK-xxa" id="Kdw-D2-2zV"/>
                             </connections>
@@ -808,6 +808,7 @@
     </scenes>
     <resources>
         <image name="chevron.png" width="25" height="25"/>
+        <image name="people-picker.png" width="24" height="17"/>
     </resources>
     <classes>
         <class className="HRAboutTableViewController" superclassName="UITableViewController">
