@@ -140,7 +140,7 @@
         // create paths for this line
         CGMutablePathRef inRangeDotPath = CGPathCreateMutable();
         CGMutablePathRef outOfRangeDotPath = CGPathCreateMutable();
-        NSUInteger pointCount = [line.points count];
+//        NSUInteger pointCount = [line.points count];
         
         // add points to the current path
         [line.points enumerateObjectsUsingBlock:^(HRSparkLinePoint *point, NSUInteger pointIndex, BOOL *stop) {
@@ -149,8 +149,7 @@
             CGPoint screenPoint = [self screenPointWithDataPoint:point];
             static CGFloat const HRSparkLineViewDotScale = 1.5;
             CGFloat dotScale = HRSparkLineViewDotScale;
-            if (pointIndex == pointCount - 1) { dotScale = 2.2; }
-            
+//            if (pointIndex == pointCount - 1) { dotScale = 2.2; }
             CGRect dotRect = CGRectMake(floorf(screenPoint.x - line.weight * dotScale * 0.5),
                                         floorf(screenPoint.y - line.weight * dotScale * 0.5),
                                         ceilf(line.weight * dotScale),
@@ -160,7 +159,7 @@
             if (!HRIsZeroRange(line.range) && !HRLocationInRange(point.y, line.range)) {
                 CGPathAddEllipseInRect(outOfRangeDotPath, NULL, dotRect);
             }
-            else if (pointIndex == pointCount - 1 || pointCount < 4) {
+            else /*if (pointIndex == pointCount - 1 || pointCount < 4)*/ {
                 CGPathAddEllipseInRect(inRangeDotPath, NULL, dotRect);
             }
             
