@@ -375,7 +375,7 @@
     [self.view bringSubviewToFront:self.headerView];
     
     // image shadow
-    layer = self.patientImageView.layer;
+    layer = self.patientImageView.superview.layer;
     layer.shadowColor = [[UIColor blackColor] CGColor];
     layer.shadowOpacity = 0.35;
     layer.shadowOffset = CGSizeMake(0.0, 1.0);
