@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B04A55214E0692600AD91F9 /* SSKeychain.m */; };
 		3B04A56914E06A3A00AD91F9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B04A56814E06A3A00AD91F9 /* Security.framework */; };
+		3B0977E41552D1F2006392E2 /* UserImage-Smith-Henry.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0977E31552D1F2006392E2 /* UserImage-Smith-Henry.png */; };
 		3B0FE3FD15386B7000BEC21C /* fitbit-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3F515386B7000BEC21C /* fitbit-overview.png */; };
 		3B0FE3FE15386B7000BEC21C /* fitbit-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3F615386B7000BEC21C /* fitbit-summary.png */; };
 		3B0FE3FF15386B7000BEC21C /* nikeplus-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3F715386B7000BEC21C /* nikeplus-overview.png */; };
@@ -200,7 +201,6 @@
 		DD695D8514897C2200E4E2E1 /* HRMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD695D8314897C2200E4E2E1 /* HRMessagesViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DD695D8614897C2200E4E2E1 /* HRMessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD695D8414897C2200E4E2E1 /* HRMessagesViewController.xib */; };
 		DD8BD9DB148D13910090F729 /* chevron.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8BD9DA148D13910090F729 /* chevron.png */; };
-		DD8BD9E2148D1D660090F729 /* UserImage-Smith-Henry.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8BD9DD148D1D660090F729 /* UserImage-Smith-Henry.png */; };
 		DD8BD9E3148D1D660090F729 /* UserImage-Smith-Johnny.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8BD9DE148D1D660090F729 /* UserImage-Smith-Johnny.png */; };
 		DD8BD9E4148D1D660090F729 /* UserImage-Smith-Molly.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8BD9DF148D1D660090F729 /* UserImage-Smith-Molly.png */; };
 		DD8BD9E5148D1D660090F729 /* UserImage-Smith-Sarah.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8BD9E0148D1D660090F729 /* UserImage-Smith-Sarah.png */; };
@@ -211,6 +211,7 @@
 		3B04A55114E0692600AD91F9 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
 		3B04A55214E0692600AD91F9 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		3B04A56814E06A3A00AD91F9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3B0977E31552D1F2006392E2 /* UserImage-Smith-Henry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Henry.png"; sourceTree = "<group>"; };
 		3B0FE3F515386B7000BEC21C /* fitbit-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitbit-overview.png"; sourceTree = "<group>"; };
 		3B0FE3F615386B7000BEC21C /* fitbit-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitbit-summary.png"; sourceTree = "<group>"; };
 		3B0FE3F715386B7000BEC21C /* nikeplus-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nikeplus-overview.png"; sourceTree = "<group>"; };
@@ -473,7 +474,6 @@
 		DD695D8414897C2200E4E2E1 /* HRMessagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRMessagesViewController.xib; sourceTree = "<group>"; };
 		DD7037B21490103300F58A83 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DD8BD9DA148D13910090F729 /* chevron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chevron.png; sourceTree = "<group>"; };
-		DD8BD9DD148D1D660090F729 /* UserImage-Smith-Henry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Henry.png"; sourceTree = "<group>"; };
 		DD8BD9DE148D1D660090F729 /* UserImage-Smith-Johnny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Johnny.png"; sourceTree = "<group>"; };
 		DD8BD9DF148D1D660090F729 /* UserImage-Smith-Molly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Molly.png"; sourceTree = "<group>"; };
 		DD8BD9E0148D1D660090F729 /* UserImage-Smith-Sarah.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Sarah.png"; sourceTree = "<group>"; };
@@ -576,7 +576,7 @@
 		3BFBEE1D1534C0AE009EBA2D /* Patient Data */ = {
 			isa = PBXGroup;
 			children = (
-				DD8BD9DD148D1D660090F729 /* UserImage-Smith-Henry.png */,
+				3B0977E31552D1F2006392E2 /* UserImage-Smith-Henry.png */,
 				DD8BD9DE148D1D660090F729 /* UserImage-Smith-Johnny.png */,
 				DD8BD9DF148D1D660090F729 /* UserImage-Smith-Molly.png */,
 				DD8BD9E0148D1D660090F729 /* UserImage-Smith-Sarah.png */,
@@ -1133,7 +1133,6 @@
 				DD695D8614897C2200E4E2E1 /* HRMessagesViewController.xib in Resources */,
 				DD5597C214897DE2006A0D1D /* HRDoctorsViewController_old.xib in Resources */,
 				DD8BD9DB148D13910090F729 /* chevron.png in Resources */,
-				DD8BD9E2148D1D660090F729 /* UserImage-Smith-Henry.png in Resources */,
 				DD8BD9E3148D1D660090F729 /* UserImage-Smith-Johnny.png in Resources */,
 				DD8BD9E4148D1D660090F729 /* UserImage-Smith-Molly.png in Resources */,
 				DD8BD9E5148D1D660090F729 /* UserImage-Smith-Sarah.png in Resources */,
@@ -1248,6 +1247,7 @@
 				3B4366061540A2890009F892 /* ts-4-tile.png in Resources */,
 				3B4366071540A2890009F892 /* ts-5-overview.png in Resources */,
 				3B4366081540A2890009F892 /* ts-5-tile.png in Resources */,
+				3B0977E41552D1F2006392E2 /* UserImage-Smith-Henry.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
