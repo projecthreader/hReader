@@ -201,13 +201,6 @@
                 self.medicationRefillNameLabel.text = @"None";
                 self.medicationRefillDateLabel.text = nil;
             }
-            
-            
-//            
-//
-
-//            
-
         }
         
         

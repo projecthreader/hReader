@@ -21,7 +21,7 @@
     "upcoming_events": [
       {
         "title": "upcoming event title",
-        "plan_of_care": "plan of care",
+        "plan_of_care": [],
         "follow_up_appointment_date": 1340629200,
         "medication_refill": []
       }
