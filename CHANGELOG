@@ -1,3 +1,10 @@
+# 2012-4-03
+
+- update henry smith user image
+- show dots for every point on sparklines, white for in range red for out
+- refactor summary view header to reflect new layout
+- add new people picker icon
+
 # 2012-4-02
 
 - Fixed timeline issues
