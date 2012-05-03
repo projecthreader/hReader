@@ -158,7 +158,13 @@ static HRMPatient *selectedPatient = nil;
 #pragma mark - object methods
 
 - (void)awakeFromFetch {
-    self.applets = [[self.syntheticInfo objectForKey:@"applets"] mutableCopy];
+    NSArray *applets = [self.syntheticInfo objectForKey:@"applets"];
+    if (applets) {
+        self.applets = [applets mutableCopy];
+    }
+    else {
+        self.applets = [NSMutableArray array];
+    }
 }
 
 - (UIImage *)patientImage {

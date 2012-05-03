@@ -10,6 +10,7 @@
 		3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B04A55214E0692600AD91F9 /* SSKeychain.m */; };
 		3B04A56914E06A3A00AD91F9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B04A56814E06A3A00AD91F9 /* Security.framework */; };
 		3B0977E41552D1F2006392E2 /* UserImage-Smith-Henry.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0977E31552D1F2006392E2 /* UserImage-Smith-Henry.png */; };
+		3B0977E71553199E006392E2 /* ns.json in Resources */ = {isa = PBXBuildFile; fileRef = 3B0977E61553199E006392E2 /* ns.json */; };
 		3B0FE3FD15386B7000BEC21C /* fitbit-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3F515386B7000BEC21C /* fitbit-overview.png */; };
 		3B0FE3FE15386B7000BEC21C /* fitbit-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3F615386B7000BEC21C /* fitbit-summary.png */; };
 		3B0FE3FF15386B7000BEC21C /* nikeplus-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3F715386B7000BEC21C /* nikeplus-overview.png */; };
@@ -212,6 +213,7 @@
 		3B04A55214E0692600AD91F9 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		3B04A56814E06A3A00AD91F9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3B0977E31552D1F2006392E2 /* UserImage-Smith-Henry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Henry.png"; sourceTree = "<group>"; };
+		3B0977E61553199E006392E2 /* ns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ns.json; sourceTree = "<group>"; };
 		3B0FE3F515386B7000BEC21C /* fitbit-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitbit-overview.png"; sourceTree = "<group>"; };
 		3B0FE3F615386B7000BEC21C /* fitbit-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitbit-summary.png"; sourceTree = "<group>"; };
 		3B0FE3F715386B7000BEC21C /* nikeplus-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nikeplus-overview.png"; sourceTree = "<group>"; };
@@ -586,6 +588,7 @@
 				3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */,
 				3B19651F14EEAB970045F827 /* C32-Smith-Tom.html */,
 				9464C5861476BDAE0076B991 /* C32-Smith-Johnny.html */,
+				3B0977E61553199E006392E2 /* ns.json */,
 				3BE9A42814E42A3800F87B60 /* hs.json */,
 				940C0467152B6ADF00834416 /* hs-synthetic.json */,
 				3BE9A42914E42A3800F87B60 /* js.json */,
@@ -1248,6 +1251,7 @@
 				3B4366071540A2890009F892 /* ts-5-overview.png in Resources */,
 				3B4366081540A2890009F892 /* ts-5-tile.png in Resources */,
 				3B0977E41552D1F2006392E2 /* UserImage-Smith-Henry.png in Resources */,
+				3B0977E71553199E006392E2 /* ns.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

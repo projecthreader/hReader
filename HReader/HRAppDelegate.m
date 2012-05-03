@@ -133,7 +133,7 @@
     // load patients if we don't have any yet
     NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
     if ([HRMPatient countInContext:context] == 0) {
-        NSArray *names = [NSArray arrayWithObjects:@"hs", @"js", @"ms", @"ss", @"ts", nil];
+        NSArray *names = [NSArray arrayWithObjects:@"hs", @"js", @"ms", @"ss", @"ts",/* @"ns",*/ nil];
         [names enumerateObjectsUsingBlock:^(NSString *name, NSUInteger idx, BOOL *stop) {
             
             // load real data
@@ -145,10 +145,12 @@
             // load synthetic data
             NSURL *syntheticURL = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@-synthetic", name] withExtension:@"json"];
             NSData *syntheticData = [NSData dataWithContentsOfURL:syntheticURL];
-            NSError *error = nil;
-            patient.syntheticInfo = [NSJSONSerialization JSONObjectWithData:syntheticData options:0 error:&error];
-            if (error) {
-                NSLog(@"Unable to load synthetic patient file %@\n%@", name, error);
+            if (syntheticData) {
+                NSError *error = nil;
+                patient.syntheticInfo = [NSJSONSerialization JSONObjectWithData:syntheticData options:0 error:&error];
+                if (error) {
+                    NSLog(@"Unable to load synthetic patient file %@\n%@", name, error);
+                }
             }
             
         }];

@@ -188,7 +188,9 @@
         {
             NSDictionary *event = [[syntheticInfo objectForKey:@"upcoming_events"] lastObject];
             self.followUpAppointmentNameLabel.text = [event objectForKey:@"title"];
-            self.planOfCareLabel.text = [[event objectForKey:@"plan_of_care"] lastObject];
+            id care = [[event objectForKey:@"plan_of_care"] lastObject];
+            if (care) { self.planOfCareLabel.text = care; }
+            else { self.planOfCareLabel.text = @"None"; }
             NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"follow_up_appointment_date"] doubleValue]];
             self.followUpAppointmentDateLabel.text = [date mediumStyleDate];
             NSDictionary *medication = [[event objectForKey:@"medication_refill"] lastObject];
