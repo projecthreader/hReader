@@ -24,11 +24,7 @@
     return array;
 }
 
-- (NSArray *)arraySortedByKey:(NSString *)key {
-    return [self arraySortedByKey:key ascending:YES];
-}
-
-- (NSArray *)arraySortedByKey:(NSString *)key ascending:(BOOL)ascending {
+- (NSArray *)sortedArrayUsingKey:(NSString *)key ascending:(BOOL)ascending {
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:key ascending:ascending];
     return [self sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];    
 }
