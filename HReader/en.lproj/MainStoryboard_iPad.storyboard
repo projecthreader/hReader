@@ -151,7 +151,7 @@
                                 <action selector="people:" destination="GW8-lK-xxa" id="Kdw-D2-2zV"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Applets" id="vZi-os-nZL">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vZi-os-nZL">
                             <connections>
                                 <action selector="applets:" destination="GW8-lK-xxa" id="bpo-QU-04y"/>
                             </connections>
@@ -475,7 +475,7 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <sections>
                             <tableViewSection id="xQB-mH-yr2">
-                                <mutableString key="headerTitle">hReader allows you to gather, correct, and manage all of your health data. hReader is not meant to replace the advice of a physician.     You should not rely on any information or suggestions in hReader to replace consultations with a qualified health professional regarding your own specific health issues.     All patient names with an asterisk (such as Smith*) indicate a patient constructed from purely synthetic and fictitious data. Any resemblance of a synthetic patient to real persons, living or dead, is purely coincidental.</mutableString>
+                                <string key="headerTitle">hReader allows you to gather, correct, and manage all of your health data. hReader is not meant to replace the advice of a physician.     You should not rely on any information or suggestions in hReader to replace consultations with a qualified health professional regarding your own specific health issues.     All patient names with an asterisk (such as Smith*) indicate a patient constructed from purely synthetic and fictitious data. Any resemblance of a synthetic patient to real persons, living or dead, is purely coincidental.</string>
                                 <cells/>
                             </tableViewSection>
                         </sections>
@@ -717,7 +717,6 @@
         <class className="HRDoctorsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRDoctorsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="patientImageViewSwipe:" candidateClass="HRPatientImageView"/>
                 <relationship kind="outlet" name="gridTableView" candidateClass="HRGridTableView"/>
                 <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="patientImageView" candidateClass="UIImageView"/>
@@ -728,9 +727,6 @@
             <relationships>
                 <relationship kind="outlet" name="gridViewDelegate"/>
             </relationships>
-        </class>
-        <class className="HRPatientImageView" superclassName="UIControl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRPatientImageView.h"/>
         </class>
         <class className="HRPatientSummaryViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRPatientSummaryViewController.h"/>
