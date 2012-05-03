@@ -44,21 +44,23 @@
 @synthesize dateOfBirthLabel                    = __dateOfBirthLabel;
 @synthesize dateOfBirthTitleLabel               = __dateOfBirthTitleLabel;
 @synthesize allergiesLabel                      = __allergiesLabel;
-@synthesize recentConditionsDateLabel           = __rececentConditionsDateLabel;
-@synthesize recentConditionsLabel               = __recentConditionsLabel;
-@synthesize chronicConditionsLabel              = __chronicConditionsLabel;
-@synthesize followUpAppointmentLabel            = __followUpAppointmentLabel;
-@synthesize medicationRefillLabel               = __medicationRefillLabel;
-@synthesize upcomingEventsLabel                 = __upcomingEventsLabel;
+@synthesize patientImageView                    = __patientImageView;
+
+@synthesize conditionDateLabels = __conditionDateLabels;
+@synthesize conditionNameLabels = __conditionNameLabels;
+
+@synthesize followUpAppointmentNameLabel        = __followUpAppointmentNameLabel;
+@synthesize followUpAppointmentDateLabel        = __followUpAppointmentDateLabel;
+@synthesize medicationRefillNameLabel           = __medicationRefillNameLabel;
+@synthesize medicationRefillDateLabel           = __medicationRefillDateLabel;
 @synthesize planOfCareLabel                     = __planOfCareLabel;
-@synthesize patientImageView = __patientImageView;
 
-@synthesize labels                              = __labels;
 
-@synthesize medicationNameLabels                = __medicationNameLabels;
-@synthesize medicationDosageLabels              = __medicationDosageLabels;
 
-@synthesize vitalViews                          = __vitalViews;
+
+
+
+
 
 @synthesize functionalStatusDateLabel           = __functionalStatusDateLabel;
 @synthesize functionalStatusTypeLabel           = __functionalStatusTypeLabel;
@@ -141,6 +143,74 @@
             }
             else { self.allergiesLabel.text = @"None"; }
         }
+        
+        // conditions
+        {
+            NSArray *conditions = [patient conditions];
+            NSUInteger conditionsCount = [conditions count];
+            [[self.conditionNameLabels sortedArrayUsingKey:@"tag" ascending:YES] enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger index, BOOL *stop) {
+                if (index < conditionsCount) {
+                    HRMEntry *condition = [conditions objectAtIndex:index];
+                    label.text = condition.desc;
+                }
+                else { label.text = nil; }
+            }];
+            [[self.conditionDateLabels sortedArrayUsingKey:@"tag" ascending:YES] enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger index, BOOL *stop) {
+                if (index < conditionsCount) {
+                    HRMEntry *condition = [conditions objectAtIndex:index];
+                    label.text = [condition.startDate mediumStyleDate];
+                }
+                else { label.text = nil; }
+            }];
+        }
+//        {
+//            NSArray *conditions = [syntheticInfo objectForKey:@"chronic_conditions"];
+//            NSUInteger count = [conditions count];
+//            if (count) {
+//                self.chronicConditionsLabel.text = [conditions componentsJoinedByString:@", "];
+//            }
+//            else { self.chronicConditionsLabel.text = @"None"; }
+//        }
+//        {
+//            NSArray *conditions = patient.conditions;
+//            if ([conditions count]) {
+//                HRMEntry *condition = [conditions lastObject];
+//                self.recentConditionsDateLabel.text = [condition.startDate mediumStyleDate];
+//                self.recentConditionsLabel.text = condition.desc;
+//            }
+//            else {
+//                self.recentConditionsDateLabel.text = @"None";
+//                self.recentConditionsLabel.text = nil;
+//            }
+//        }
+        
+        // events
+        {
+            NSDictionary *event = [[syntheticInfo objectForKey:@"upcoming_events"] lastObject];
+            self.followUpAppointmentNameLabel.text = [event objectForKey:@"title"];
+            self.planOfCareLabel.text = [[event objectForKey:@"plan_of_care"] lastObject];
+            NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"follow_up_appointment_date"] doubleValue]];
+            self.followUpAppointmentDateLabel.text = [date mediumStyleDate];
+            NSDictionary *medication = [[event objectForKey:@"medication_refill"] lastObject];
+            if (medication) {
+                NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[medication objectForKey:@"date"] doubleValue]];
+                self.medicationRefillDateLabel.text = [date mediumStyleDate];
+                self.medicationRefillNameLabel.text = [medication objectForKey:@"medication"];
+            }
+            else {
+                self.medicationRefillNameLabel.text = @"None";
+                self.medicationRefillDateLabel.text = nil;
+            }
+            
+            
+//            
+//
+
+//            
+
+        }
+        
+        
         /*
          {
          NSArray *allergies = patient.allergies;
@@ -162,15 +232,8 @@
          }
          */
         
-        // chronic conditions
-        {
-            NSArray *conditions = [syntheticInfo objectForKey:@"chronic_conditions"];
-            NSUInteger count = [conditions count];
-            if (count) {
-                self.chronicConditionsLabel.text = [conditions componentsJoinedByString:@", "];
-            }
-            else { self.chronicConditionsLabel.text = @"None"; }
-        }
+
+
         /*
          {
          NSArray *conditions = [syntheticInfo objectForKey:@"chronic_conditions"];
@@ -190,40 +253,7 @@
          else { self.chronicConditionsLabel.text = @"None"; }
          }
          */
-        
-        // recent conditions
-        {
-            NSArray *conditions = patient.conditions;
-            if ([conditions count]) {
-                HRMEntry *condition = [conditions lastObject];
-                self.recentConditionsDateLabel.text = [condition.startDate mediumStyleDate];
-                self.recentConditionsLabel.text = condition.desc;
-            }
-            else {
-                self.recentConditionsDateLabel.text = @"None";
-                self.recentConditionsLabel.text = nil;
-            }
-        }
-        
-        // upcoming events
-        {
-            NSDictionary *event = [[syntheticInfo objectForKey:@"upcoming_events"] lastObject];
-            self.upcomingEventsLabel.text = [event objectForKey:@"title"];
-            self.planOfCareLabel.text = [event objectForKey:@"plan_of_care"];
-            NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"follow_up_appointment_date"] doubleValue]];
-            self.followUpAppointmentLabel.text = [date mediumStyleDate];
-            NSDictionary *medication = [[event objectForKey:@"medication_refill"] lastObject];
-            if (medication) {
-                NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[medication objectForKey:@"date"] doubleValue]];
-                self.medicationRefillLabel.text = 
-                [NSString stringWithFormat:@"%@ on %@",
-                 [medication objectForKey:@"medication"],
-                 [date mediumStyleDate]];
-            }
-            else {
-                self.medicationRefillLabel.text = @"None";
-            }
-        }
+
         
         // grid view
         {
@@ -386,47 +416,24 @@
 
 - (void)viewDidUnload {
     
-    // release other outlets
     self.headerView = nil;
     self.gridView = nil;
-    self.headerView = nil;
+
     self.patientNameLabel = nil;
     self.dateOfBirthTitleLabel = nil;
     self.dateOfBirthLabel = nil;
-    self.recentConditionsLabel = nil;
-    self.recentConditionsDateLabel = nil;
-    self.chronicConditionsLabel = nil;
     self.allergiesLabel = nil;
-    self.followUpAppointmentLabel = nil;
-    self.medicationRefillLabel = nil;
+    self.patientImageView = nil;
+    
+    self.conditionDateLabels = nil;
+    self.conditionNameLabels = nil;
+    
+    self.followUpAppointmentDateLabel = nil;
+    self.followUpAppointmentNameLabel = nil;
     self.planOfCareLabel = nil;
-    self.upcomingEventsLabel = nil;
+    self.medicationRefillNameLabel = nil;
+    self.medicationRefillDateLabel = nil;
     
-    
-    
-    
-    self.labels = nil;
-    self.medicationDosageLabels = nil;
-    self.medicationNameLabels = nil;
-    self.vitalViews = nil;
-    
-    [self setRecentConditionsDateLabel:nil];
-    [self setRecentConditionsLabel:nil];
-    [self setChronicConditionsLabel:nil];
-    [self setUpcomingEventsLabel:nil];
-    [self setFunctionalStatusDateLabel:nil];
-    [self setFunctionalStatusTypeLabel:nil];
-    [self setFunctionalStatusProblemLabel:nil];
-    [self setFunctionalStatusStatusLabel:nil];
-    [self setPulseLabel:nil];
-    [self setPulseDateLabel:nil];
-    [self setPulseNormalLabel:nil];
-    [self setAdvanceDirectivesLabel:nil];
-    [self setDiagnosisLabel:nil];
-    [self setDiagnosisDateLabel:nil];
-    [self setPulseImageView:nil];
-    
-    // super
     [super viewDidUnload];
     
 }
