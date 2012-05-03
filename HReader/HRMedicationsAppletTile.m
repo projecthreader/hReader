@@ -20,7 +20,7 @@
     [super tileDidLoad];
     NSArray *medications = [[self patient] medications];
     NSUInteger medicationsCount = [medications count];
-    [[self.medicationLabels arraySortedByKey:@"tag"] enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
+    [[self.medicationLabels sortedArrayUsingKey:@"tag" ascending:YES] enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
         if (idx < medicationsCount) {
             HRMEntry *entry = [medications objectAtIndex:idx];
             label.text = entry.desc;
@@ -29,7 +29,7 @@
             label.text = nil;
         }
     }];
-    [[self.dosageLabels arraySortedByKey:@"tag"] enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
+    [[self.dosageLabels sortedArrayUsingKey:@"tag" ascending:YES] enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
         if (idx < medicationsCount) {
             HRMEntry *entry = [medications objectAtIndex:idx];
             NSDictionary *dose = entry.dose;

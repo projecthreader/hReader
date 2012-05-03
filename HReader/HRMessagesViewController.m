@@ -175,7 +175,7 @@
     HRMPatient *patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
     self.patientImageView.image = [patient patientImage];
     
-    self.messagesArray = [[patient valueForKeyPath:@"syntheticInfo.messages"] arraySortedByKey:@"date" ascending:NO];
+    self.messagesArray = [[patient valueForKeyPath:@"syntheticInfo.messages"] sortedArrayUsingKey:@"date" ascending:NO];
     self.title = [NSString stringWithFormat:@"Messages (%lu)", [self.messagesArray count]];
 }
 
