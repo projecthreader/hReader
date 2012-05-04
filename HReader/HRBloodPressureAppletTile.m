@@ -31,10 +31,9 @@
 - (void)tileDidLoad {
     [super tileDidLoad];
     
+    // save points
     __systolicDataPoints = [self.patient vitalSignsWithEntryType:@"systolic blood pressure"];
     __diastolicDataPoints = [self.patient vitalSignsWithEntryType:@"diastolic blood pressure"];
-
-    
     HRMEntry *lastestSystolic = [__systolicDataPoints lastObject];
     HRMEntry *lastestDiastolic = [__diastolicDataPoints lastObject];
     
@@ -45,36 +44,35 @@
     self.resultLabel.text = [NSString stringWithFormat:@"%.0f/%.0f", lastestSystolicValue, lastestDiastolicValue];
     self.dateLabel.text = [lastestSystolic.date shortStyleDate];
     self.dateLabel.adjustsFontSizeToFitWidth = YES;
-    
     self.normalLabel.adjustsFontSizeToFitWidth = YES;
-    self.normalLabel.text = [NSString stringWithFormat:@"%.0f-%.0f/%.0f-%.0f", [self normalSystolicLow], [self normalSystolicHigh], [self normalDiastolicLow], [self normalDiastolicHigh]];
+    self.normalLabel.text = [NSString stringWithFormat:
+                             @"%.0f-%.0f/%.0f-%.0f",
+                             [self normalSystolicLow],
+                             [self normalSystolicHigh],
+                             [self normalDiastolicLow],
+                             [self normalDiastolicHigh]];
     
-    // sparkline
-    HRSparkLineRange systolicRange = HRMakeRange([self normalSystolicLow], [self normalSystolicHigh] - [self normalSystolicLow]);
+    // systolic line
     HRSparkLineLine *systolicLine = [[HRSparkLineLine alloc] init];
     systolicLine.outOfRangeDotColor = [HRConfig redColor];
     systolicLine.weight = 4.0;
     systolicLine.points = [self sparkLinePointsForDataSet:__systolicDataPoints];
-    systolicLine.range = systolicRange;
+    systolicLine.range = HRMakeRange([self normalSystolicLow], [self normalSystolicHigh] - [self normalSystolicLow]);
     
-    HRSparkLineRange diastolicRange = HRMakeRange([self normalDiastolicLow], [self normalDiastolicHigh] - [self normalDiastolicLow]);
+    // diastolic range
     HRSparkLineLine *diastolicLine = [[HRSparkLineLine alloc] init];
     diastolicLine.outOfRangeDotColor = [HRConfig redColor];
     diastolicLine.weight = 4.0;
     diastolicLine.points = [self sparkLinePointsForDataSet:__diastolicDataPoints];
-    diastolicLine.range = diastolicRange;
+    diastolicLine.range = HRMakeRange([self normalDiastolicLow], [self normalDiastolicHigh] - [self normalDiastolicLow]);
     
-    
+    // sparkline
     self.sparkLineView.lines = [NSArray arrayWithObjects:systolicLine, diastolicLine, nil];
-    self.sparkLineView.visibleRange = HRMakeRange([self normalDiastolicLow], [self normalSystolicHigh] - [self normalDiastolicLow]);
     
     // display normal value
     float systolicValue = [[lastestSystolic valueForKeyPath:@"value.scalar"] floatValue];
-    if ([self isSystolicNormal:systolicValue]) {
-        self.resultLabel.textColor = [UIColor blackColor];
-    } else {
-        self.resultLabel.textColor = [HRConfig redColor];
-    }
+    if ([self isSystolicNormal:systolicValue]) { self.resultLabel.textColor = [UIColor blackColor]; }
+    else { self.resultLabel.textColor = [HRConfig redColor]; }
     
 }
 

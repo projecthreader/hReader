@@ -38,6 +38,7 @@
 - (void)tileDidLoad {
     [super tileDidLoad];
     
+    // save points
     __dataPoints = [self.patient vitalSignsWithEntryType:@"BMI"];
     HRMEntry *lastest = [__dataPoints lastObject];
     
@@ -57,15 +58,11 @@
     line.points = [self sparkLinePoints];
     line.range = range;
     self.sparkLineView.lines = [NSArray arrayWithObject:line];
-    self.sparkLineView.visibleRange = range;
 
     // display normal value
     float val = [[lastest valueForKeyPath:@"value.scalar"] floatValue];
-    if ([self isValueNormal:val]) {
-        self.resultLabel.textColor = [UIColor blackColor];
-    } else {
-        self.resultLabel.textColor = [HRConfig redColor];
-    }
+    if ([self isValueNormal:val]) { self.resultLabel.textColor = [UIColor blackColor]; }
+    else { self.resultLabel.textColor = [HRConfig redColor]; }
     
 }
 

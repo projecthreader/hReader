@@ -129,8 +129,8 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
         newIndexPath = [NSIndexPath indexPathForRow:[__availableApplets indexOfObject:applet] inSection:1];
     }
     [tableView beginUpdates];
-    [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
     [tableView endUpdates];
     
     // post notification
