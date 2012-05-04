@@ -74,9 +74,10 @@ NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
         context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [context setParentContext:[HRAppDelegate managedObjectContext]];
         NSFetchRequest *request = [HRMPatient fetchRequestInContext:context];
-        NSSortDescriptor *sortOne = [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES];
-        NSSortDescriptor *sortTwo = [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES];
-        sortDescriptors = [NSArray arrayWithObjects:sortOne, sortTwo, nil];
+        NSString *sort = [NSSortDescriptor sortDescriptorWithKey:@"dateOfBirth" ascending:YES];
+//        NSSortDescriptor *sortOne = [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES];
+//        NSSortDescriptor *sortTwo = [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES];
+        sortDescriptors = [NSArray arrayWithObjects:/*sortOne, sortTwo,*/ sort, nil];
         [request setSortDescriptors:sortDescriptors];
         controller = [[NSFetchedResultsController alloc]
                       initWithFetchRequest:request
