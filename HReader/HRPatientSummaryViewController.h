@@ -24,10 +24,12 @@
 @property (strong, nonatomic) IBOutlet UIImageView *patientImageView;
 
 // conditions
+@property (nonatomic, strong) IBOutlet UIView *conditionsContainerView;
 @property (nonatomic, strong) IBOutletCollection(UILabel) NSArray *conditionNameLabels;
 @property (nonatomic, strong) IBOutletCollection(UILabel) NSArray *conditionDateLabels;
 
 // events
+@property (nonatomic, strong) IBOutlet UIView *eventsContainerView;
 @property (strong, nonatomic) IBOutlet UILabel *followUpAppointmentNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *followUpAppointmentDateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *planOfCareLabel;

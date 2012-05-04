@@ -47,9 +47,11 @@
 @synthesize allergiesLabel                      = __allergiesLabel;
 @synthesize patientImageView                    = __patientImageView;
 
-@synthesize conditionDateLabels = __conditionDateLabels;
-@synthesize conditionNameLabels = __conditionNameLabels;
+@synthesize conditionsContainerView             = __conditionsContainerView;
+@synthesize conditionDateLabels                 = __conditionDateLabels;
+@synthesize conditionNameLabels                 = __conditionNameLabels;
 
+@synthesize eventsContainerView                 = __eventsContainerView;
 @synthesize followUpAppointmentNameLabel        = __followUpAppointmentNameLabel;
 @synthesize followUpAppointmentDateLabel        = __followUpAppointmentDateLabel;
 @synthesize medicationRefillNameLabel           = __medicationRefillNameLabel;
@@ -400,18 +402,33 @@
     }];
     
     
-    // swipe gesture
+    // gestures
     {
-        UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveRightSwipe:)];
-        swipeGesture.numberOfTouchesRequired = 1;
-        swipeGesture.direction = UISwipeGestureRecognizerDirectionRight;
-        [self.patientImageView addGestureRecognizer:swipeGesture];
+        UISwipeGestureRecognizer *gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveRightSwipe:)];
+        gesture.numberOfTouchesRequired = 1;
+        gesture.direction = UISwipeGestureRecognizerDirectionRight;
+        [self.patientImageView addGestureRecognizer:gesture];
     }
+    
     {
-        UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveLeftSwipe:)];
-        swipeGesture.numberOfTouchesRequired = 1;
-        swipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
-        [self.patientImageView addGestureRecognizer:swipeGesture];
+        UISwipeGestureRecognizer *gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveLeftSwipe:)];
+        gesture.numberOfTouchesRequired = 1;
+        gesture.direction = UISwipeGestureRecognizerDirectionLeft;
+        [self.patientImageView addGestureRecognizer:gesture];
+    }
+    
+    {
+        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(conditionsContainerViewTap:)];
+        gesture.numberOfTapsRequired = 1;
+        gesture.numberOfTouchesRequired = 1;
+        [self.conditionsContainerView addGestureRecognizer:gesture];
+    }
+    
+    {
+        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(eventsContainerViewTap:)];
+        gesture.numberOfTapsRequired = 1;
+        gesture.numberOfTouchesRequired = 1;
+        [self.eventsContainerView addGestureRecognizer:gesture];
     }
     
 }
@@ -427,9 +444,11 @@
     self.allergiesLabel = nil;
     self.patientImageView = nil;
     
+    self.conditionsContainerView = nil;
     self.conditionDateLabels = nil;
     self.conditionNameLabels = nil;
     
+    self.eventsContainerView = nil;
     self.followUpAppointmentDateLabel = nil;
     self.followUpAppointmentNameLabel = nil;
     self.planOfCareLabel = nil;
@@ -485,7 +504,7 @@
 //     }];
 //}
 
-#pragma mark - tap gestures
+#pragma mark - gestures
 
 - (void)toggleDateOfBirth:(UITapGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateRecognized) {
@@ -496,6 +515,40 @@
             self.dateOfBirthTitleLabel.text = @"DOB";
         }
         [self reloadData];
+    }
+}
+
+- (void)conditionsContainerViewTap:(UITapGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateRecognized) {
+        HRMPatient *patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
+        NSString *imageName = [NSString stringWithFormat:@"%@-condition-full", [patient initials]];
+        UIImage *image = [UIImage imageNamed:imageName];
+        if (image) {
+            UIViewController *controller = [[UIViewController alloc] init];
+            controller.title = @"Conditions";
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+            imageView.frame = controller.view.bounds;
+            imageView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+            [controller.view addSubview:imageView];
+            [self.navigationController pushViewController:controller animated:YES];   
+        }
+    }
+}
+
+- (void)eventsContainerViewTap:(UITapGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateRecognized) {
+        HRMPatient *patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
+        NSString *imageName = [NSString stringWithFormat:@"%@-events-full", [patient initials]];
+        UIImage *image = [UIImage imageNamed:imageName];
+        if (image) {
+            UIViewController *controller = [[UIViewController alloc] init];
+            controller.title = @"Recent Events";
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+            imageView.frame = controller.view.bounds;
+            imageView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+            [controller.view addSubview:imageView];
+            [self.navigationController pushViewController:controller animated:YES];   
+        }
     }
 }
 

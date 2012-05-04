@@ -82,6 +82,16 @@
 		3B6FAF95153F4796002C9EF5 /* HRConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8BD9F1148D2BDC0090F729 /* HRConfig.m */; };
 		3B74E5C5155477C400593ECF /* HROxygenSaturationAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5C4155477C400593ECF /* HROxygenSaturationAppletTile.xib */; };
 		3B74E5C815547DA200593ECF /* HRRespiratoryRateAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5C715547DA200593ECF /* HRRespiratoryRateAppletTile.xib */; };
+		3B74E5D3155482E700593ECF /* hs-condition-full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5C9155482E700593ECF /* hs-condition-full.png */; };
+		3B74E5D4155482E700593ECF /* hs-events-full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5CA155482E700593ECF /* hs-events-full.png */; };
+		3B74E5D5155482E700593ECF /* js-condition_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5CB155482E700593ECF /* js-condition_full.png */; };
+		3B74E5D6155482E700593ECF /* js-events-full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5CC155482E700593ECF /* js-events-full.png */; };
+		3B74E5D7155482E700593ECF /* ms-condition_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5CD155482E700593ECF /* ms-condition_full.png */; };
+		3B74E5D8155482E700593ECF /* ms-events-full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5CE155482E700593ECF /* ms-events-full.png */; };
+		3B74E5D9155482E700593ECF /* ss-condition_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5CF155482E700593ECF /* ss-condition_full.png */; };
+		3B74E5DA155482E700593ECF /* ss-events-full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5D0155482E700593ECF /* ss-events-full.png */; };
+		3B74E5DB155482E700593ECF /* ts-condition_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5D1155482E700593ECF /* ts-condition_full.png */; };
+		3B74E5DC155482E700593ECF /* ts-events-full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5D2155482E700593ECF /* ts-events-full.png */; };
 		3B77F03A15544F18003C2DBD /* UserImage-Smith-Nancy.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03915544F18003C2DBD /* UserImage-Smith-Nancy.png */; };
 		3B77F03D15545452003C2DBD /* Glaucoma_Overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03B15545452003C2DBD /* Glaucoma_Overview.png */; };
 		3B77F03E15545452003C2DBD /* Glaucoma_Summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03C15545452003C2DBD /* Glaucoma_Summary.png */; };
@@ -297,6 +307,16 @@
 		3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeoplePickerViewController.m; sourceTree = "<group>"; };
 		3B74E5C4155477C400593ECF /* HROxygenSaturationAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HROxygenSaturationAppletTile.xib; sourceTree = "<group>"; };
 		3B74E5C715547DA200593ECF /* HRRespiratoryRateAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRRespiratoryRateAppletTile.xib; sourceTree = "<group>"; };
+		3B74E5C9155482E700593ECF /* hs-condition-full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hs-condition-full.png"; sourceTree = "<group>"; };
+		3B74E5CA155482E700593ECF /* hs-events-full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hs-events-full.png"; sourceTree = "<group>"; };
+		3B74E5CB155482E700593ECF /* js-condition_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "js-condition_full.png"; sourceTree = "<group>"; };
+		3B74E5CC155482E700593ECF /* js-events-full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "js-events-full.png"; sourceTree = "<group>"; };
+		3B74E5CD155482E700593ECF /* ms-condition_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ms-condition_full.png"; sourceTree = "<group>"; };
+		3B74E5CE155482E700593ECF /* ms-events-full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ms-events-full.png"; sourceTree = "<group>"; };
+		3B74E5CF155482E700593ECF /* ss-condition_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ss-condition_full.png"; sourceTree = "<group>"; };
+		3B74E5D0155482E700593ECF /* ss-events-full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ss-events-full.png"; sourceTree = "<group>"; };
+		3B74E5D1155482E700593ECF /* ts-condition_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-condition_full.png"; sourceTree = "<group>"; };
+		3B74E5D2155482E700593ECF /* ts-events-full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-events-full.png"; sourceTree = "<group>"; };
 		3B77F03915544F18003C2DBD /* UserImage-Smith-Nancy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Nancy.png"; sourceTree = "<group>"; };
 		3B77F03B15545452003C2DBD /* Glaucoma_Overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Glaucoma_Overview.png; sourceTree = "<group>"; };
 		3B77F03C15545452003C2DBD /* Glaucoma_Summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Glaucoma_Summary.png; sourceTree = "<group>"; };
@@ -607,6 +627,16 @@
 		3BFBEE1D1534C0AE009EBA2D /* Patient Data */ = {
 			isa = PBXGroup;
 			children = (
+				3B74E5C9155482E700593ECF /* hs-condition-full.png */,
+				3B74E5CA155482E700593ECF /* hs-events-full.png */,
+				3B74E5CB155482E700593ECF /* js-condition_full.png */,
+				3B74E5CC155482E700593ECF /* js-events-full.png */,
+				3B74E5CD155482E700593ECF /* ms-condition_full.png */,
+				3B74E5CE155482E700593ECF /* ms-events-full.png */,
+				3B74E5CF155482E700593ECF /* ss-condition_full.png */,
+				3B74E5D0155482E700593ECF /* ss-events-full.png */,
+				3B74E5D1155482E700593ECF /* ts-condition_full.png */,
+				3B74E5D2155482E700593ECF /* ts-events-full.png */,
 				3B77F03915544F18003C2DBD /* UserImage-Smith-Nancy.png */,
 				3B0977E31552D1F2006392E2 /* UserImage-Smith-Henry.png */,
 				DD8BD9DE148D1D660090F729 /* UserImage-Smith-Johnny.png */,
@@ -1303,6 +1333,16 @@
 				3B77F054155474DE003C2DBD /* HRBMIVitalAppletTile.xib in Resources */,
 				3B74E5C5155477C400593ECF /* HROxygenSaturationAppletTile.xib in Resources */,
 				3B74E5C815547DA200593ECF /* HRRespiratoryRateAppletTile.xib in Resources */,
+				3B74E5D3155482E700593ECF /* hs-condition-full.png in Resources */,
+				3B74E5D4155482E700593ECF /* hs-events-full.png in Resources */,
+				3B74E5D5155482E700593ECF /* js-condition_full.png in Resources */,
+				3B74E5D6155482E700593ECF /* js-events-full.png in Resources */,
+				3B74E5D7155482E700593ECF /* ms-condition_full.png in Resources */,
+				3B74E5D8155482E700593ECF /* ms-events-full.png in Resources */,
+				3B74E5D9155482E700593ECF /* ss-condition_full.png in Resources */,
+				3B74E5DA155482E700593ECF /* ss-events-full.png in Resources */,
+				3B74E5DB155482E700593ECF /* ts-condition_full.png in Resources */,
+				3B74E5DC155482E700593ECF /* ts-events-full.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
