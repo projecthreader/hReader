@@ -81,6 +81,9 @@
 		3B6FAF8F153F259E002C9EF5 /* HRPeoplePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B6FAF95153F4796002C9EF5 /* HRConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8BD9F1148D2BDC0090F729 /* HRConfig.m */; };
 		3B77F03A15544F18003C2DBD /* UserImage-Smith-Nancy.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03915544F18003C2DBD /* UserImage-Smith-Nancy.png */; };
+		3B77F03D15545452003C2DBD /* Glaucoma_Overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03B15545452003C2DBD /* Glaucoma_Overview.png */; };
+		3B77F03E15545452003C2DBD /* Glaucoma_Summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03C15545452003C2DBD /* Glaucoma_Summary.png */; };
+		3B77F0401554545D003C2DBD /* popHealth_FULL.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03F1554545D003C2DBD /* popHealth_FULL.png */; };
 		3BB9C27F151B8AEF00527C20 /* HRKeychainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; };
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
@@ -288,6 +291,9 @@
 		3B6FAF8D153F259E002C9EF5 /* HRPeoplePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPeoplePickerViewController.h; sourceTree = "<group>"; };
 		3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeoplePickerViewController.m; sourceTree = "<group>"; };
 		3B77F03915544F18003C2DBD /* UserImage-Smith-Nancy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Nancy.png"; sourceTree = "<group>"; };
+		3B77F03B15545452003C2DBD /* Glaucoma_Overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Glaucoma_Overview.png; sourceTree = "<group>"; };
+		3B77F03C15545452003C2DBD /* Glaucoma_Summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Glaucoma_Summary.png; sourceTree = "<group>"; };
+		3B77F03F1554545D003C2DBD /* popHealth_FULL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popHealth_FULL.png; sourceTree = "<group>"; };
 		3BB9C27D151B8AEF00527C20 /* HRKeychainManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRKeychainManager.h; sourceTree = "<group>"; };
 		3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRKeychainManager.m; sourceTree = "<group>"; };
 		3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hReader.xcdatamodel; sourceTree = "<group>"; };
@@ -947,6 +953,8 @@
 		94AACFAB1535CFEE005E3851 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3B77F03B15545452003C2DBD /* Glaucoma_Overview.png */,
+				3B77F03C15545452003C2DBD /* Glaucoma_Summary.png */,
 				3B0FE3F515386B7000BEC21C /* fitbit-overview.png */,
 				3B0FE3F615386B7000BEC21C /* fitbit-summary.png */,
 				3B0FE3F715386B7000BEC21C /* nikeplus-overview.png */,
@@ -966,6 +974,7 @@
 				94E078BE1538A4570051DC01 /* multiple_sclerosis_overview.png */,
 				94E078BF1538A4570051DC01 /* multiple_sclerosis_summary.png */,
 				94E078C01538A4570051DC01 /* pophealth-summary.png */,
+				3B77F03F1554545D003C2DBD /* popHealth_FULL.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -1260,6 +1269,9 @@
 				3B0977E71553199E006392E2 /* ns.json in Resources */,
 				3B0977ED1553217F006392E2 /* people-picker.png in Resources */,
 				3B77F03A15544F18003C2DBD /* UserImage-Smith-Nancy.png in Resources */,
+				3B77F03D15545452003C2DBD /* Glaucoma_Overview.png in Resources */,
+				3B77F03E15545452003C2DBD /* Glaucoma_Summary.png in Resources */,
+				3B77F0401554545D003C2DBD /* popHealth_FULL.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
