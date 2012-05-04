@@ -59,10 +59,6 @@
     line.range = range;
     self.sparkLineView.lines = [NSArray arrayWithObject:line];
     
-    // display normal value
-    float val = [[latest valueForKeyPath:@"value.scalar"] floatValue];
-    self.rightValueLabel.textColor = ([self isValueNormal:val]) ? [UIColor blackColor] : [HRConfig redColor];
-    
 }
 
 - (NSArray *)dataForKeyValueTable {
@@ -108,7 +104,5 @@
 - (BOOL)isValueNormal:(double)value {
     return (value >= [self normalLow] && value <= [self normalHigh]);
 }
-
-
 
 @end

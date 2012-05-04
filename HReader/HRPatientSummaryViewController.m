@@ -13,7 +13,7 @@
 #import "HRRootViewController.h"
 #import "HRMPatient.h"
 #import "HRAddress.h"
-#import "HRVitalView.h"
+#import "HRVitalAppletTile.h"
 #import "HRVital.h"
 #import "HRMEntry.h"
 #import "HRBMI.h"
@@ -274,24 +274,24 @@
                     
                     // vitals
                     
-                    if ([identifier isEqualToString:@"org.mitre.hreader.vitals"]) {
+//                    if ([identifier isEqualToString:@"org.mitre.hreader.vitals"]) {
 //                        NSLog(@"%@", [patient vitalSignsGroupedByDescription]);
-                        NSDictionary *vitals = [patient vitalSignsGroupedByDescription];
-                        [vitals enumerateKeysAndObjectsUsingBlock:^(NSString *type, NSArray *entries, BOOL *stop) {
-                            HRVitalView *view = [HRVitalView tileWithPatient:patient userInfo:dictionary];
-                            if ([type isEqualToString:@"BMI"]) {
-                                view.vital = [[HRBMI alloc] initWithEntries:entries];
-                            }
-                            else  {
-                                view.vital = [[HRVital alloc] initWithEntries:entries];
-                            }
-                            [views addObject:view];
-                        }];
-                    } else {
+//                        NSDictionary *vitals = [patient vitalSignsGroupedByDescription];
+//                        [vitals enumerateKeysAndObjectsUsingBlock:^(NSString *type, NSArray *entries, BOOL *stop) {
+//                            HRVitalAppletTile *view = [HRVitalAppletTile tileWithPatient:patient userInfo:dictionary];
+//                            if ([type isEqualToString:@"BMI"]) {
+//                                view.vital = [[HRBMI alloc] initWithEntries:entries];
+//                            }
+//                            else  {
+//                                view.vital = [[HRVital alloc] initWithEntries:entries];
+//                            }
+//                            [views addObject:view];
+//                        }];
+//                    } else {
                         // others
                         Class c = NSClassFromString([dictionary objectForKey:@"class_name"]);
                         [views addObject:[c tileWithPatient:patient userInfo:dictionary]];
-                    }
+//                    }
                     
                 }
                 else { NSLog(@"Unable to find applet with identifier %@", identifier); }

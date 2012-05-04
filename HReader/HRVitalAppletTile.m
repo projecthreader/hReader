@@ -89,6 +89,10 @@
     return [self.titleLabel.text capitalizedString];
 }
 
+- (NSArray *)dataForSparkLineView {
+    return nil;
+}
+
 #pragma mark - gestures
 
 - (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect {

@@ -9,8 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "HRAppletTile.h"
-
-@class HRSparkLineView;
+#import "HRSparkLineView.h"
 
 @interface HRVitalAppletTile : HRAppletTile
 
@@ -25,5 +24,6 @@
 
 - (NSArray *)dataForKeyValueTable;
 - (NSString *)titleForKeyValueTable;
+- (NSArray *)dataForSparkLineView;
 
 @end

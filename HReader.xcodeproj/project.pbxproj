@@ -80,11 +80,16 @@
 		3B4366081540A2890009F892 /* ts-5-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365D51540A2890009F892 /* ts-5-tile.png */; };
 		3B6FAF8F153F259E002C9EF5 /* HRPeoplePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B6FAF95153F4796002C9EF5 /* HRConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8BD9F1148D2BDC0090F729 /* HRConfig.m */; };
+		3B74E5C5155477C400593ECF /* HROxygenSaturationAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5C4155477C400593ECF /* HROxygenSaturationAppletTile.xib */; };
+		3B74E5C815547DA200593ECF /* HRRespiratoryRateAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5C715547DA200593ECF /* HRRespiratoryRateAppletTile.xib */; };
 		3B77F03A15544F18003C2DBD /* UserImage-Smith-Nancy.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03915544F18003C2DBD /* UserImage-Smith-Nancy.png */; };
 		3B77F03D15545452003C2DBD /* Glaucoma_Overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03B15545452003C2DBD /* Glaucoma_Overview.png */; };
 		3B77F03E15545452003C2DBD /* Glaucoma_Summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03C15545452003C2DBD /* Glaucoma_Summary.png */; };
 		3B77F0401554545D003C2DBD /* popHealth_FULL.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03F1554545D003C2DBD /* popHealth_FULL.png */; };
-		3B77F04715546051003C2DBD /* NSString+SentenceCapitalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F04615546051003C2DBD /* NSString+SentenceCapitalization.m */; };
+		3B77F04715546051003C2DBD /* NSString+SentenceCapitalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F04615546051003C2DBD /* NSString+SentenceCapitalization.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		3B77F04E15546ABD003C2DBD /* HROxygenSaturationAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F04D15546ABD003C2DBD /* HROxygenSaturationAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		3B77F05215546AD2003C2DBD /* HRRespiratoryRateAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		3B77F054155474DE003C2DBD /* HRBMIVitalAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */; };
 		3BB9C27F151B8AEF00527C20 /* HRKeychainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; };
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
@@ -130,8 +135,8 @@
 		941DB0BD1471B32D00A96B8B /* HRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 941DB0BC1471B32D00A96B8B /* HRAppDelegate.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		941DB0C01471B32D00A96B8B /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941DB0BE1471B32D00A96B8B /* MainStoryboard_iPhone.storyboard */; };
 		941DB0C31471B32D00A96B8B /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941DB0C11471B32D00A96B8B /* MainStoryboard_iPad.storyboard */; };
-		941F253F14E2EC5D0077D6D1 /* HRVitalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 941F253E14E2EC5D0077D6D1 /* HRVitalView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		941F254114E2EC7E0077D6D1 /* HRVitalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941F254014E2EC7E0077D6D1 /* HRVitalView.xib */; };
+		941F253F14E2EC5D0077D6D1 /* HRVitalAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 941F253E14E2EC5D0077D6D1 /* HRVitalAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		941F254114E2EC7E0077D6D1 /* HRVitalAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 941F254014E2EC7E0077D6D1 /* HRVitalAppletTile.xib */; };
 		94334ACC152A249F00B4C904 /* HRKeyValueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94334ACB152A249F00B4C904 /* HRKeyValueTableViewController.m */; };
 		9439A9D4153C7303007FE401 /* HRBMIVitalAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9439A9D3153C7303007FE401 /* HRBMIVitalAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9452D7F414FC167200021E69 /* HRProviderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9452D7F314FC167200021E69 /* HRProviderView.xib */; };
@@ -146,7 +151,6 @@
 		945560D714BB89B400A3DC43 /* HREncounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560D614BB89B400A3DC43 /* HREncounter.m */; };
 		94622A921541E5E300CFC592 /* HRPatientImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94622A911541E5E300CFC592 /* HRPatientImageView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9464C5881476BDAE0076B991 /* C32-Smith-Johnny.html in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5861476BDAE0076B991 /* C32-Smith-Johnny.html */; };
-		9465002F153C89E5003255AF /* HRBMIVitalAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9465002E153C89E5003255AF /* HRBMIVitalAppletTile.xib */; };
 		94650033153C8F7D003255AF /* HRSparkLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94650032153C8F7D003255AF /* HRSparkLineView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9465003E153CA369003255AF /* HRBloodPressureAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9465003D153CA369003255AF /* HRBloodPressureAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94650043153CA3AA003255AF /* HRBloodPressureAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94650042153CA3AA003255AF /* HRBloodPressureAppletTile.xib */; };
@@ -291,12 +295,19 @@
 		3B4365D51540A2890009F892 /* ts-5-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-5-tile.png"; sourceTree = "<group>"; };
 		3B6FAF8D153F259E002C9EF5 /* HRPeoplePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPeoplePickerViewController.h; sourceTree = "<group>"; };
 		3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeoplePickerViewController.m; sourceTree = "<group>"; };
+		3B74E5C4155477C400593ECF /* HROxygenSaturationAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HROxygenSaturationAppletTile.xib; sourceTree = "<group>"; };
+		3B74E5C715547DA200593ECF /* HRRespiratoryRateAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRRespiratoryRateAppletTile.xib; sourceTree = "<group>"; };
 		3B77F03915544F18003C2DBD /* UserImage-Smith-Nancy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Nancy.png"; sourceTree = "<group>"; };
 		3B77F03B15545452003C2DBD /* Glaucoma_Overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Glaucoma_Overview.png; sourceTree = "<group>"; };
 		3B77F03C15545452003C2DBD /* Glaucoma_Summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Glaucoma_Summary.png; sourceTree = "<group>"; };
 		3B77F03F1554545D003C2DBD /* popHealth_FULL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popHealth_FULL.png; sourceTree = "<group>"; };
 		3B77F04515546051003C2DBD /* NSString+SentenceCapitalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SentenceCapitalization.h"; sourceTree = "<group>"; };
 		3B77F04615546051003C2DBD /* NSString+SentenceCapitalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SentenceCapitalization.m"; sourceTree = "<group>"; };
+		3B77F04C15546ABD003C2DBD /* HROxygenSaturationAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HROxygenSaturationAppletTile.h; sourceTree = "<group>"; };
+		3B77F04D15546ABD003C2DBD /* HROxygenSaturationAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HROxygenSaturationAppletTile.m; sourceTree = "<group>"; };
+		3B77F05015546AD2003C2DBD /* HRRespiratoryRateAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRRespiratoryRateAppletTile.h; sourceTree = "<group>"; };
+		3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRRespiratoryRateAppletTile.m; sourceTree = "<group>"; };
+		3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRBMIVitalAppletTile.xib; sourceTree = "<group>"; };
 		3BB9C27D151B8AEF00527C20 /* HRKeychainManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRKeychainManager.h; sourceTree = "<group>"; };
 		3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRKeychainManager.m; sourceTree = "<group>"; };
 		3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hReader.xcdatamodel; sourceTree = "<group>"; };
@@ -361,9 +372,9 @@
 		941DB0BC1471B32D00A96B8B /* HRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRAppDelegate.m; sourceTree = "<group>"; };
 		941DB0BF1471B32D00A96B8B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		941DB0C21471B32D00A96B8B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		941F253D14E2EC5D0077D6D1 /* HRVitalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRVitalView.h; sourceTree = "<group>"; };
-		941F253E14E2EC5D0077D6D1 /* HRVitalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRVitalView.m; sourceTree = "<group>"; };
-		941F254014E2EC7E0077D6D1 /* HRVitalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRVitalView.xib; sourceTree = "<group>"; };
+		941F253D14E2EC5D0077D6D1 /* HRVitalAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRVitalAppletTile.h; sourceTree = "<group>"; };
+		941F253E14E2EC5D0077D6D1 /* HRVitalAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRVitalAppletTile.m; sourceTree = "<group>"; };
+		941F254014E2EC7E0077D6D1 /* HRVitalAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRVitalAppletTile.xib; sourceTree = "<group>"; };
 		94334ACA152A249F00B4C904 /* HRKeyValueTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRKeyValueTableViewController.h; sourceTree = "<group>"; };
 		94334ACB152A249F00B4C904 /* HRKeyValueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRKeyValueTableViewController.m; sourceTree = "<group>"; };
 		9439A9D2153C7303007FE401 /* HRBMIVitalAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBMIVitalAppletTile.h; sourceTree = "<group>"; };
@@ -393,7 +404,6 @@
 		94622A901541E5E300CFC592 /* HRPatientImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPatientImageView.h; sourceTree = "<group>"; };
 		94622A911541E5E300CFC592 /* HRPatientImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPatientImageView.m; sourceTree = "<group>"; };
 		9464C5861476BDAE0076B991 /* C32-Smith-Johnny.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Johnny.html"; sourceTree = "<group>"; };
-		9465002E153C89E5003255AF /* HRBMIVitalAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRBMIVitalAppletTile.xib; sourceTree = "<group>"; };
 		94650031153C8F7D003255AF /* HRSparkLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSparkLineView.h; sourceTree = "<group>"; };
 		94650032153C8F7D003255AF /* HRSparkLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSparkLineView.m; sourceTree = "<group>"; };
 		9465003C153CA369003255AF /* HRBloodPressureAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBloodPressureAppletTile.h; sourceTree = "<group>"; };
@@ -936,9 +946,9 @@
 			isa = PBXGroup;
 			children = (
 				94AACFAB1535CFEE005E3851 /* Images */,
-				941F253D14E2EC5D0077D6D1 /* HRVitalView.h */,
-				941F253E14E2EC5D0077D6D1 /* HRVitalView.m */,
-				941F254014E2EC7E0077D6D1 /* HRVitalView.xib */,
+				941F253D14E2EC5D0077D6D1 /* HRVitalAppletTile.h */,
+				941F253E14E2EC5D0077D6D1 /* HRVitalAppletTile.m */,
+				941F254014E2EC7E0077D6D1 /* HRVitalAppletTile.xib */,
 				94AACFAC1535D05E005E3851 /* HRMedicationsAppletTile.h */,
 				94AACFAD1535D05E005E3851 /* HRMedicationsAppletTile.m */,
 				94AACFAF1535D080005E3851 /* HRMedicationsAppletTile.xib */,
@@ -955,10 +965,16 @@
 				94E078B815389EE90051DC01 /* HRFunctionalStatusAppletTile.xib */,
 				9439A9D2153C7303007FE401 /* HRBMIVitalAppletTile.h */,
 				9439A9D3153C7303007FE401 /* HRBMIVitalAppletTile.m */,
-				9465002E153C89E5003255AF /* HRBMIVitalAppletTile.xib */,
+				3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */,
 				9465003C153CA369003255AF /* HRBloodPressureAppletTile.h */,
 				9465003D153CA369003255AF /* HRBloodPressureAppletTile.m */,
 				94650042153CA3AA003255AF /* HRBloodPressureAppletTile.xib */,
+				3B77F04C15546ABD003C2DBD /* HROxygenSaturationAppletTile.h */,
+				3B77F04D15546ABD003C2DBD /* HROxygenSaturationAppletTile.m */,
+				3B74E5C4155477C400593ECF /* HROxygenSaturationAppletTile.xib */,
+				3B77F05015546AD2003C2DBD /* HRRespiratoryRateAppletTile.h */,
+				3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */,
+				3B74E5C715547DA200593ECF /* HRRespiratoryRateAppletTile.xib */,
 			);
 			name = "System Applets";
 			sourceTree = "<group>";
@@ -1183,7 +1199,7 @@
 				3BFE7A2914DADE2B0037738D /* PINCodeDeleteButton.png in Resources */,
 				3BFE7A2A14DADE2B0037738D /* PINCodeStoryboard.storyboard in Resources */,
 				3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */,
-				941F254114E2EC7E0077D6D1 /* HRVitalView.xib in Resources */,
+				941F254114E2EC7E0077D6D1 /* HRVitalAppletTile.xib in Resources */,
 				3BE9A42D14E42A3800F87B60 /* hs.json in Resources */,
 				3BE9A42E14E42A3800F87B60 /* js.json in Resources */,
 				3BE9A42F14E42A3800F87B60 /* ms.json in Resources */,
@@ -1225,7 +1241,6 @@
 				94E078C51538A4570051DC01 /* multiple_sclerosis_overview.png in Resources */,
 				94E078C61538A4570051DC01 /* multiple_sclerosis_summary.png in Resources */,
 				94E078C71538A4570051DC01 /* pophealth-summary.png in Resources */,
-				9465002F153C89E5003255AF /* HRBMIVitalAppletTile.xib in Resources */,
 				94650043153CA3AA003255AF /* HRBloodPressureAppletTile.xib in Resources */,
 				3B4365D61540A2890009F892 /* hs-0-tile.png in Resources */,
 				3B4365D71540A2890009F892 /* hs-1-overview.png in Resources */,
@@ -1285,6 +1300,9 @@
 				3B77F03D15545452003C2DBD /* Glaucoma_Overview.png in Resources */,
 				3B77F03E15545452003C2DBD /* Glaucoma_Summary.png in Resources */,
 				3B77F0401554545D003C2DBD /* popHealth_FULL.png in Resources */,
+				3B77F054155474DE003C2DBD /* HRBMIVitalAppletTile.xib in Resources */,
+				3B74E5C5155477C400593ECF /* HROxygenSaturationAppletTile.xib in Resources */,
+				3B74E5C815547DA200593ECF /* HRRespiratoryRateAppletTile.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1344,7 +1362,7 @@
 				3BD16EF614E1B5EE00F2249E /* GCManagedObject.m in Sources */,
 				3BD16F0514E1C5B700F2249E /* HRMPatient.m in Sources */,
 				3BE9A40514E40EBB00F87B60 /* HRMEntry.m in Sources */,
-				941F253F14E2EC5D0077D6D1 /* HRVitalView.m in Sources */,
+				941F253F14E2EC5D0077D6D1 /* HRVitalAppletTile.m in Sources */,
 				9467077314E3182E00ACEA67 /* HRPeakFlow.m in Sources */,
 				9467077614E318ED00ACEA67 /* HRHeight.m in Sources */,
 				9467077914E31A6200ACEA67 /* HRBMI.m in Sources */,
@@ -1379,6 +1397,8 @@
 				9454C36F1551797A0024C2EF /* HRSparkLineLine.m in Sources */,
 				9454C3701551797A0024C2EF /* HRSparkLinePoint.m in Sources */,
 				3B77F04715546051003C2DBD /* NSString+SentenceCapitalization.m in Sources */,
+				3B77F04E15546ABD003C2DBD /* HROxygenSaturationAppletTile.m in Sources */,
+				3B77F05215546AD2003C2DBD /* HRRespiratoryRateAppletTile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

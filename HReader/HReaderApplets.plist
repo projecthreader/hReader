@@ -10,14 +10,14 @@
 		<key>display_name</key>
 		<string>Encounters</string>
 	</dict>
-	<dict>
-		<key>identifier</key>
-		<string>org.mitre.hreader.vitals</string>
-		<key>class_name</key>
-		<string>HRVitalView</string>
-		<key>display_name</key>
-		<string>Vital Signs</string>
-	</dict>
+  <!-- <dict>
+    <key>identifier</key>
+    <string>org.mitre.hreader.vitals</string>
+    <key>class_name</key>
+    <string>HRVitalView</string>
+    <key>display_name</key>
+    <string>Vital Signs</string>
+  </dict> -->
 	<dict>
 		<key>identifier</key>
 		<string>org.mitre.hreader.bmi</string>
@@ -26,6 +26,24 @@
 		<key>display_name</key>
 		<string>BMI</string>
 	</dict>
+	<dict>
+		<key>identifier</key>
+		<string>org.mitre.hreader.vital_sign.oxygen_saturation</string>
+		<key>class_name</key>
+		<string>HROxygenSaturationAppletTile</string>
+		<key>display_name</key>
+		<string>Oxygen Saturation</string>
+	</dict>
+	
+	<dict>
+		<key>identifier</key>
+		<string>org.mitre.hreader.vital_sign.respiratory_rate</string>
+		<key>class_name</key>
+		<string>HRRespiratoryRateAppletTile</string>
+		<key>display_name</key>
+		<string>Respiratory Rate</string>
+	</dict>
+	
 	<dict>
 		<key>identifier</key>
 		<string>org.mitre.hreader.bloodpressure</string>
