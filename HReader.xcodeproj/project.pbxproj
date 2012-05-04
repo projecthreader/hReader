@@ -80,6 +80,7 @@
 		3B4366081540A2890009F892 /* ts-5-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365D51540A2890009F892 /* ts-5-tile.png */; };
 		3B6FAF8F153F259E002C9EF5 /* HRPeoplePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B6FAF95153F4796002C9EF5 /* HRConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8BD9F1148D2BDC0090F729 /* HRConfig.m */; };
+		3B77F03A15544F18003C2DBD /* UserImage-Smith-Nancy.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03915544F18003C2DBD /* UserImage-Smith-Nancy.png */; };
 		3BB9C27F151B8AEF00527C20 /* HRKeychainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; };
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
@@ -286,6 +287,7 @@
 		3B4365D51540A2890009F892 /* ts-5-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-5-tile.png"; sourceTree = "<group>"; };
 		3B6FAF8D153F259E002C9EF5 /* HRPeoplePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPeoplePickerViewController.h; sourceTree = "<group>"; };
 		3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeoplePickerViewController.m; sourceTree = "<group>"; };
+		3B77F03915544F18003C2DBD /* UserImage-Smith-Nancy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Nancy.png"; sourceTree = "<group>"; };
 		3BB9C27D151B8AEF00527C20 /* HRKeychainManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRKeychainManager.h; sourceTree = "<group>"; };
 		3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRKeychainManager.m; sourceTree = "<group>"; };
 		3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hReader.xcdatamodel; sourceTree = "<group>"; };
@@ -580,6 +582,7 @@
 		3BFBEE1D1534C0AE009EBA2D /* Patient Data */ = {
 			isa = PBXGroup;
 			children = (
+				3B77F03915544F18003C2DBD /* UserImage-Smith-Nancy.png */,
 				3B0977E31552D1F2006392E2 /* UserImage-Smith-Henry.png */,
 				DD8BD9DE148D1D660090F729 /* UserImage-Smith-Johnny.png */,
 				DD8BD9DF148D1D660090F729 /* UserImage-Smith-Molly.png */,
@@ -688,6 +691,7 @@
 				3B5ADF6314E1C5D50025E069 /* Core Data */,
 				DD7037B114900E8A00F58A83 /* Models */,
 				9492CA4F1535F8EC009DE7F2 /* System Applets */,
+				3BFBEE1D1534C0AE009EBA2D /* Patient Data */,
 				941DB0B31471B32D00A96B8B /* Supporting Files */,
 				944A2F2B1472C60600694816 /* Images */,
 				9424C156147A9C95008BF5CE /* Categories */,
@@ -698,7 +702,6 @@
 		941DB0B31471B32D00A96B8B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3BFBEE1D1534C0AE009EBA2D /* Patient Data */,
 				3B19651A14EEA6200045F827 /* Logo.png */,
 				3BFE7A2D14DAE5910037738D /* Icon-72.png */,
 				941DB0BE1471B32D00A96B8B /* MainStoryboard_iPhone.storyboard */,
@@ -1256,6 +1259,7 @@
 				3B0977E41552D1F2006392E2 /* UserImage-Smith-Henry.png in Resources */,
 				3B0977E71553199E006392E2 /* ns.json in Resources */,
 				3B0977ED1553217F006392E2 /* people-picker.png in Resources */,
+				3B77F03A15544F18003C2DBD /* UserImage-Smith-Nancy.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
