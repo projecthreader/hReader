@@ -1,5 +1,14 @@
 # 2012-4-4
 
+- immunizations applet shows black when up to date and red otherwise
+- adjusted column width of condition dates to allow for more of the condition name to be shown
+- remove date label from events > medication refills
+- use sentence capitalization from all labels (not including rasterized images)
+- patients are now sorted by age, oldest on top in the people picker
+- update image assets for providers and simulated applets for almost every patient
+
+# 2012-4-4
+
 - minor ui bug fixes and changes
 - sparklines now show unique visible range per-line instead of for the whole graph
 
