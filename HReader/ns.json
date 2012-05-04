@@ -2389,7 +2389,7 @@
     ], 
     "test_id": null, 
     "updated_at": "2012-05-02T17:37:44-04:00", 
-    "version": 1
+    "version": 1,
     "vital_signs": [
         {
             "_id": "4f4e9fcdb615219f0a0000ef", 
