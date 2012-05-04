@@ -113,13 +113,6 @@
     [TestFlight takeOff:[HRConfig testFlightTeamToken]];
 #endif
     
-    // appearance proxies
-//    [HRSparkLineLine p .
-//    [[UIBarButtonItem appearance] something];
-//    [[HRSparkLineLine appearance] setLineColor:[UIColor blackColor]];
-//    [[HRSparkLineLine appearance] setLineWidth:4.0];
-//    [[HRSparkLineLine appearance] setOutOfRangeDotColor:[HRConfig redColor]];
-    
 #if DEBUG
     @try {
         objc_msgSend(NSClassFromString(@"WebView"), @selector(_enableRemoteInspector));
@@ -133,7 +126,7 @@
     // load patients if we don't have any yet
     NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
     if ([HRMPatient countInContext:context] == 0) {
-        NSArray *names = [NSArray arrayWithObjects:@"hs", @"js", @"ms", @"ss", @"ts",/* @"ns",*/ nil];
+        NSArray *names = [NSArray arrayWithObjects:@"hs", @"js", @"ms", @"ss", @"ts", @"ns", nil];
         [names enumerateObjectsUsingBlock:^(NSString *name, NSUInteger idx, BOOL *stop) {
             
             // load real data

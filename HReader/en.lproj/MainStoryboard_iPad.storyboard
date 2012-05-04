@@ -336,15 +336,15 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" tag="1" contentMode="left" text="name" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="MaR-3e-8Ax">
-                                        <rect key="frame" x="364" y="71" width="188" height="21"/>
+                                        <rect key="frame" x="364" y="71" width="208" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" tag="1" contentMode="left" text="date" lineBreakMode="tailTruncation" minimumFontSize="10" id="Ekf-Mc-PZr">
-                                        <rect key="frame" x="560" y="71" width="100" height="21"/>
+                                    <label opaque="NO" clipsSubviews="YES" tag="1" contentMode="left" text="Aug 20, 2010" lineBreakMode="tailTruncation" minimumFontSize="10" id="Ekf-Mc-PZr">
+                                        <rect key="frame" x="580" y="71" width="80" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
@@ -359,7 +359,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="DATE" lineBreakMode="tailTruncation" minimumFontSize="10" id="v9p-TN-A3e">
-                                        <rect key="frame" x="560" y="53" width="100" height="21"/>
+                                        <rect key="frame" x="580" y="53" width="80" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -411,7 +411,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" tag="2" contentMode="left" text="name" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="bzV-O3-5wg">
-                                        <rect key="frame" x="364" y="89" width="188" height="21"/>
+                                        <rect key="frame" x="364" y="89" width="208" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
@@ -419,7 +419,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" tag="2" contentMode="left" text="date" lineBreakMode="tailTruncation" minimumFontSize="10" id="hqG-Xq-oOr">
-                                        <rect key="frame" x="560" y="89" width="100" height="21"/>
+                                        <rect key="frame" x="580" y="89" width="80" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
@@ -427,7 +427,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" tag="3" contentMode="left" text="name" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="8MT-o0-mVg">
-                                        <rect key="frame" x="364" y="107" width="188" height="21"/>
+                                        <rect key="frame" x="364" y="107" width="208" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
@@ -435,7 +435,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" tag="3" contentMode="left" text="date" lineBreakMode="tailTruncation" minimumFontSize="10" id="QGd-6N-ZBZ">
-                                        <rect key="frame" x="560" y="107" width="100" height="21"/>
+                                        <rect key="frame" x="580" y="107" width="80" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
@@ -443,7 +443,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" tag="4" contentMode="left" text="name" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="9QE-8Z-XDU">
-                                        <rect key="frame" x="364" y="125" width="188" height="21"/>
+                                        <rect key="frame" x="364" y="125" width="208" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
@@ -451,7 +451,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" tag="4" contentMode="left" text="date" lineBreakMode="tailTruncation" minimumFontSize="10" id="b9i-sY-T4M">
-                                        <rect key="frame" x="560" y="125" width="100" height="21"/>
+                                        <rect key="frame" x="580" y="125" width="80" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
@@ -459,7 +459,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" tag="5" contentMode="left" text="name" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="fvc-ln-HP3">
-                                        <rect key="frame" x="364" y="143" width="188" height="21"/>
+                                        <rect key="frame" x="364" y="143" width="208" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
@@ -467,7 +467,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" tag="5" contentMode="left" text="date" lineBreakMode="tailTruncation" minimumFontSize="10" id="Ctg-uH-8uQ">
-                                        <rect key="frame" x="560" y="143" width="100" height="21"/>
+                                        <rect key="frame" x="580" y="143" width="80" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
@@ -495,13 +495,6 @@
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="DATE" lineBreakMode="tailTruncation" minimumFontSize="10" id="72t-Jp-HaU">
-                                        <rect key="frame" x="890" y="141" width="100" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" id="mqV-xM-smS">

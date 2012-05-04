@@ -23,6 +23,7 @@
 
 #import "NSDate+FormattedDate.h"
 #import "NSArray+Collect.h"
+#import "NSString+SentenceCapitalization.h"
 
 #import "SVPanelViewController.h"
 
@@ -151,8 +152,9 @@
             [[self.conditionNameLabels sortedArrayUsingKey:@"tag" ascending:YES] enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger index, BOOL *stop) {
                 if (index < conditionsCount) {
                     HRMEntry *condition = [conditions objectAtIndex:index];
-                    label.text = condition.desc;
+                    label.text = [condition.desc sentenceCapitalizedString];
                 }
+                else if (index == 0) { label.text = @"None"; }
                 else { label.text = nil; }
             }];
             [[self.conditionDateLabels sortedArrayUsingKey:@"tag" ascending:YES] enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger index, BOOL *stop) {
@@ -187,24 +189,29 @@
         // events
         {
             NSDictionary *event = [[syntheticInfo objectForKey:@"upcoming_events"] lastObject];
-            self.followUpAppointmentNameLabel.text = [event objectForKey:@"title"];
-            id care = [[event objectForKey:@"plan_of_care"] lastObject];
-            if (care) { self.planOfCareLabel.text = care; }
-            else { self.planOfCareLabel.text = @"None"; }
-            NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"follow_up_appointment_date"] doubleValue]];
-            self.followUpAppointmentDateLabel.text = [date mediumStyleDate];
+            NSString *name = [[event objectForKey:@"title"] sentenceCapitalizedString];
+            if (name) {
+                self.followUpAppointmentNameLabel.text = name;
+                NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"follow_up_appointment_date"] doubleValue]];
+                self.followUpAppointmentDateLabel.text = ([date mediumStyleDate]) ?: nil;
+            }
+            else {
+                self.followUpAppointmentDateLabel.text = nil;
+                self.followUpAppointmentNameLabel.text = @"None";
+            }
+            NSString *care = [[[event objectForKey:@"plan_of_care"] lastObject] sentenceCapitalizedString];
+            self.planOfCareLabel.text = (care) ?: @"None";
             NSDictionary *medication = [[event objectForKey:@"medication_refill"] lastObject];
             if (medication) {
                 NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[medication objectForKey:@"date"] doubleValue]];
                 self.medicationRefillDateLabel.text = [date mediumStyleDate];
-                self.medicationRefillNameLabel.text = [medication objectForKey:@"medication"];
+                self.medicationRefillNameLabel.text = [[medication objectForKey:@"medication"] sentenceCapitalizedString];
             }
             else {
                 self.medicationRefillNameLabel.text = @"None";
                 self.medicationRefillDateLabel.text = nil;
             }
         }
-        
         
         /*
          {

@@ -10,6 +10,7 @@
 #import "HRMEntry.h"
 
 #import "NSDate+FormattedDate.h"
+#import "NSString+SentenceCapitalization.h"
 
 @implementation HREncountersAppletTile
 
@@ -21,7 +22,7 @@
     [super tileDidLoad];
     HRMEntry *encounter = [[self.patient encounters] lastObject];
     self.dateLabel.text = [encounter.date mediumStyleDate];
-    self.descriptionLabel.text = encounter.desc;
+    self.descriptionLabel.text = [encounter.desc sentenceCapitalizedString];
     NSDictionary *codes = encounter.codes;
     NSDictionary *codeType = [[codes allKeys] lastObject];
     NSString *codeValues = [[codes objectForKey:codeType] componentsJoinedByString:@", "];
