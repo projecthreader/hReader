@@ -12,11 +12,9 @@
 #import "HRSparkLinePoint.h"
 #import "HRSparklineRange.h"
 
-@interface HRSparkLineView : UIView <UIAppearance>
+@interface HRSparkLineView : UIView
 
-@property (copy, nonatomic) NSArray *lines;
-@property (assign, nonatomic) HRSparkLineRange visibleRange;
-@property (strong, nonatomic) UIColor *visibleRangeColor UI_APPEARANCE_SELECTOR;
-@property (assign, nonatomic) UIEdgeInsets edgeInsets;
+@property (nonatomic, copy) NSArray *lines;
+@property (nonatomic, assign) UIEdgeInsets edgeInsets;
 
 @end

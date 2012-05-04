@@ -10,14 +10,12 @@
 #import "HRSparkLineLine.h"
 #import "HRSparkLinePoint.h"
 
+#if !__has_feature(objc_arc)
+#error This class requires ARC.
+#endif
 
-@interface HRSparkLineView ()
-
-- (CGPoint)screenPointWithDataPoint:(HRSparkLinePoint *)point;
-
-@end
-
-@implementation HRSparkLineView {
+@interface HRSparkLineView ()  {
+@private
     CGFloat x_min;
     CGFloat x_max;
     CGFloat y_min;
@@ -26,33 +24,14 @@
     CGFloat y_delta;
 }
 
+- (CGPoint)screenPointWithDataPoint:(HRSparkLinePoint *)point;
+
+@end
+
+@implementation HRSparkLineView
+
 @synthesize lines = __lines;
-@synthesize visibleRange = __visibleRange;
-@synthesize visibleRangeColor = __visibleRangeColor;
 @synthesize edgeInsets = __edgeInsets;
-
-#pragma mark - class methods
-
-//+ (id)appearance {
-//    static dispatch_once_t token;
-//    static HRSparkLineView *view = nil;
-//    dispatch_once(&token, ^{
-//        view = [[HRSparkLineView alloc] init];
-//        view.visibleRangeColor = [UIColor colorWithWhite:0.9 alpha:1.0];
-//        view.backgroundColor = [UIColor whiteColor];
-//    });
-//    return view;
-//}
-//
-//+ (id)appearanceWhenContainedIn:(Class <UIAppearanceContainer>)ContainerClass, ... {
-    //    static dispatch_once_t token;
-    //    static HRSparkLineLine *line = nil;
-    //    dispatch_once(&token, ^{
-    //        line = [[HRSparkLineLine alloc] init];
-    //    });
-    //    return line;
-//    return nil;
-//}
 
 #pragma mark - instance methods
 
@@ -72,8 +51,8 @@
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
     if (self) {
         [self commonInit];
     }
@@ -81,25 +60,13 @@
 }
 
 - (void)commonInit {
-    self.visibleRangeColor = [UIColor colorWithWhite:0.9 alpha:1.0];
     self.backgroundColor = [UIColor whiteColor];
     self.opaque = YES;
-    __visibleRange = HRZeroRange;
     __edgeInsets = UIEdgeInsetsMake(7.0, 7.0, 7.0, 7.0);
 }
 
 - (void)setLines:(NSArray *)lines {
     __lines = [lines copy];
-    [self setNeedsDisplay];
-}
-
-- (void)setVisibleRange:(HRSparkLineRange)visibleRange {
-    __visibleRange = visibleRange;
-    [self setNeedsDisplay];
-}
-
-- (void)setVisibleRangeColor:(UIColor *)color {
-    __visibleRangeColor = color;
     [self setNeedsDisplay];
 }
 
@@ -128,19 +95,20 @@
     // get drawing resources
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    // draw visible range
-    CGPoint leftRangePoint = [self screenPointWithX:0 y:HRMaxRange(self.visibleRange)];
-    CGPoint rightRangePoint = [self screenPointWithX:0 y:self.visibleRange.location];
-    CGContextSetFillColorWithColor(context, self.visibleRangeColor.CGColor);
-    CGContextFillRect(context, CGRectMake(0, leftRangePoint.y, self.bounds.size.width, rightRangePoint.y - leftRangePoint.y));
-    
     // draw all lines
     [self.lines enumerateObjectsUsingBlock:^(HRSparkLineLine *line, NSUInteger lineIndex, BOOL *stop) {
+        
+        // draw range box for this line
+        if (!HRIsZeroRange(line.range)) {
+            CGPoint leftRangePoint = [self screenPointWithX:0 y:HRMaxRange(line.range)];
+            CGPoint rightRangePoint = [self screenPointWithX:0 y:line.range.location];
+            CGContextSetFillColorWithColor(context, [line.rangeColor CGColor]);
+            CGContextFillRect(context, CGRectMake(0, leftRangePoint.y, self.bounds.size.width, rightRangePoint.y - leftRangePoint.y));
+        }
         
         // create paths for this line
         CGMutablePathRef inRangeDotPath = CGPathCreateMutable();
         CGMutablePathRef outOfRangeDotPath = CGPathCreateMutable();
-//        NSUInteger pointCount = [line.points count];
         
         // add points to the current path
         [line.points enumerateObjectsUsingBlock:^(HRSparkLinePoint *point, NSUInteger pointIndex, BOOL *stop) {
@@ -149,7 +117,6 @@
             CGPoint screenPoint = [self screenPointWithDataPoint:point];
             static CGFloat const HRSparkLineViewDotScale = 1.5;
             CGFloat dotScale = HRSparkLineViewDotScale;
-//            if (pointIndex == pointCount - 1) { dotScale = 2.2; }
             CGRect dotRect = CGRectMake(floorf(screenPoint.x - line.weight * dotScale * 0.5),
                                         floorf(screenPoint.y - line.weight * dotScale * 0.5),
                                         ceilf(line.weight * dotScale),
@@ -159,7 +126,7 @@
             if (!HRIsZeroRange(line.range) && !HRLocationInRange(point.y, line.range)) {
                 CGPathAddEllipseInRect(outOfRangeDotPath, NULL, dotRect);
             }
-            else /*if (pointIndex == pointCount - 1 || pointCount < 4)*/ {
+            else {
                 CGPathAddEllipseInRect(inRangeDotPath, NULL, dotRect);
             }
             
@@ -212,18 +179,16 @@
             x_max = MAX(x_max, point.x);
             y_min = MIN(y_min, point.y);
             y_max = MAX(y_max, point.y);
-        }];     
+        }];
+        if (!HRIsZeroRange(line.range)) {
+            y_min = MIN(y_min, line.range.location);
+            y_max = MAX(y_max, HRMaxRange(line.range));
+        }
     }];
     
     // grab deltas
     x_delta = ABS(x_max - x_min);
-    y_delta = ABS(y_max - y_min);     
-    
-    // adjust for visible range
-    if (!HRIsZeroRange(self.visibleRange)) {
-        y_min = MIN(y_min, self.visibleRange.location);
-        y_max = MAX(y_max, HRMaxRange(self.visibleRange));
-    }
+    y_delta = ABS(y_max - y_min);
     
 }
 
