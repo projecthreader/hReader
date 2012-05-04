@@ -1,3 +1,8 @@
+# 2012-4-4
+
+- minor ui bug fixes and changes
+- sparklines now show unique visible range per-line instead of for the whole graph
+
 # 2012-4-03
 
 - update henry smith user image
