@@ -84,6 +84,7 @@
 		3B77F03D15545452003C2DBD /* Glaucoma_Overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03B15545452003C2DBD /* Glaucoma_Overview.png */; };
 		3B77F03E15545452003C2DBD /* Glaucoma_Summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03C15545452003C2DBD /* Glaucoma_Summary.png */; };
 		3B77F0401554545D003C2DBD /* popHealth_FULL.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03F1554545D003C2DBD /* popHealth_FULL.png */; };
+		3B77F04715546051003C2DBD /* NSString+SentenceCapitalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F04615546051003C2DBD /* NSString+SentenceCapitalization.m */; };
 		3BB9C27F151B8AEF00527C20 /* HRKeychainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; };
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
@@ -294,6 +295,8 @@
 		3B77F03B15545452003C2DBD /* Glaucoma_Overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Glaucoma_Overview.png; sourceTree = "<group>"; };
 		3B77F03C15545452003C2DBD /* Glaucoma_Summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Glaucoma_Summary.png; sourceTree = "<group>"; };
 		3B77F03F1554545D003C2DBD /* popHealth_FULL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popHealth_FULL.png; sourceTree = "<group>"; };
+		3B77F04515546051003C2DBD /* NSString+SentenceCapitalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SentenceCapitalization.h"; sourceTree = "<group>"; };
+		3B77F04615546051003C2DBD /* NSString+SentenceCapitalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SentenceCapitalization.m"; sourceTree = "<group>"; };
 		3BB9C27D151B8AEF00527C20 /* HRKeychainManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRKeychainManager.h; sourceTree = "<group>"; };
 		3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRKeychainManager.m; sourceTree = "<group>"; };
 		3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hReader.xcdatamodel; sourceTree = "<group>"; };
@@ -525,11 +528,6 @@
 		3B19651414EE9DCB0045F827 /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				9454C35E1551789B0024C2EF /* Sparklines */,
-				94AACF9B15334A1C005E3851 /* HRGridTableView.h */,
-				94AACF9C15334A1D005E3851 /* HRGridTableView.m */,
-				94AACF94153330A2005E3851 /* HRGridTableViewCell.h */,
-				94AACF95153330A2005E3851 /* HRGridTableViewCell.m */,
 				941DB0BB1471B32D00A96B8B /* HRAppDelegate.h */,
 				941DB0BC1471B32D00A96B8B /* HRAppDelegate.m */,
 				94BB0324149BAF24009B2FCC /* HRPasscodeManager.h */,
@@ -555,6 +553,17 @@
 				3BE9A40414E40EBB00F87B60 /* HRMEntry.m */,
 			);
 			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		3B77F041155457E5003C2DBD /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				94AACF9B15334A1C005E3851 /* HRGridTableView.h */,
+				94AACF9C15334A1D005E3851 /* HRGridTableView.m */,
+				94AACF94153330A2005E3851 /* HRGridTableViewCell.h */,
+				94AACF95153330A2005E3851 /* HRGridTableViewCell.m */,
+			);
+			name = Grid;
 			sourceTree = "<group>";
 		};
 		3BCAC50415404AC8007C874B /* View Controllers */ = {
@@ -693,6 +702,8 @@
 			isa = PBXGroup;
 			children = (
 				3BCAC50415404AC8007C874B /* View Controllers */,
+				9454C35E1551789B0024C2EF /* Sparklines */,
+				3B77F041155457E5003C2DBD /* Grid */,
 				3B19651414EE9DCB0045F827 /* Global */,
 				3B5ADF6314E1C5D50025E069 /* Core Data */,
 				DD7037B114900E8A00F58A83 /* Models */,
@@ -730,6 +741,8 @@
 				3B3C919414F69F61005CD5C5 /* NSDate+FormattedDate.m */,
 				94E84E6E14FEBC390091B0A1 /* NSArray+Collect.h */,
 				94E84E6F14FEBC390091B0A1 /* NSArray+Collect.m */,
+				3B77F04515546051003C2DBD /* NSString+SentenceCapitalization.h */,
+				3B77F04615546051003C2DBD /* NSString+SentenceCapitalization.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1365,6 +1378,7 @@
 				94622A921541E5E300CFC592 /* HRPatientImageView.m in Sources */,
 				9454C36F1551797A0024C2EF /* HRSparkLineLine.m in Sources */,
 				9454C3701551797A0024C2EF /* HRSparkLinePoint.m in Sources */,
+				3B77F04715546051003C2DBD /* NSString+SentenceCapitalization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
