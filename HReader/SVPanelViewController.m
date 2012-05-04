@@ -195,6 +195,7 @@
     // shadow
     CALayer *layer = view.layer;
     layer.shouldRasterize = YES;
+    layer.rasterizationScale = [[UIScreen mainScreen] scale];
     layer.shadowColor = [[UIColor blackColor] CGColor];
     layer.shadowOpacity = 0.25;
     layer.shadowOffset = CGSizeMake(0.0, 0.0);
@@ -215,6 +216,9 @@
     
     // reset view ordering
     [self.view bringSubviewToFront:self.mainViewController.view];
+    if (state != 0) {
+        self.mainViewController.view.layer.shouldRasterize = NO;
+    }
     
     // vars
     UIViewController *controller = [self visibleAccessoryViewController];
@@ -330,7 +334,8 @@
          completion:^(BOOL finished) {
              [mask removeFromSuperview];
              mask = nil;
-             [controller viewDidAppear:animated];
+             [controller viewDidDisappear:animated];
+             self.mainViewController.view.layer.shouldRasterize = NO;
          }];
     }
     else {
