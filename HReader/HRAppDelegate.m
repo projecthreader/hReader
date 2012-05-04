@@ -132,8 +132,12 @@
             // load real data
             NSURL *URL = [[NSBundle mainBundle] URLForResource:name withExtension:@"json"];
             NSData *data = [NSData dataWithContentsOfURL:URL];
-            id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            HRMPatient *patient = [HRMPatient instanceWithDictionary:object inContext:context];
+            NSError *JSONError = nil;
+            HRMPatient *patient = nil;
+            id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
+            if (object) { patient = [HRMPatient instanceWithDictionary:object inContext:context]; }
+            else { NSLog(@"%@: %@", name, JSONError); }
+            
             
             // load synthetic data
             NSURL *syntheticURL = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@-synthetic", name] withExtension:@"json"];
