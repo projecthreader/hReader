@@ -163,7 +163,8 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
-    return [self.mainViewController shouldAutorotateToInterfaceOrientation:orientation];
+//    return [self.mainViewController shouldAutorotateToInterfaceOrientation:orientation];
+    return UIInterfaceOrientationIsLandscape(orientation);
 }
 
 - (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers {

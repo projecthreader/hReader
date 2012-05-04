@@ -1,5 +1,15 @@
 # 2012-4-4
 
+- make conditions and events tappable
+- add full screen views for each patient for conditions and events
+- lock entire user interface to landscape
+- add oxygen saturation applet
+- add respiratory rate applet
+- set default applets for nancy
+- update provider images for henry
+
+# 2012-4-4
+
 - immunizations applet shows black when up to date and red otherwise
 - adjusted column width of condition dates to allow for more of the condition name to be shown
 - remove date label from events > medication refills
