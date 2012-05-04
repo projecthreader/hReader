@@ -15,40 +15,38 @@
 #import "NSDate+FormattedDate.h"
 #import "NSArray+Collect.h"
 
-@interface HRBMIVitalAppletTile ()
+@interface HRBMIVitalAppletTile () {
+@private
+    NSArray * __strong __entries;
+}
+
 - (NSArray *)dataPoints;
 - (double)normalLow;
 - (double)normalHigh;
 - (BOOL)isValueNormal:(double)value;
+
 @end
 
-@implementation HRBMIVitalAppletTile {
-@private
-    UIPopoverController * __strong __popoverController;
-    NSArray * __strong __dataPoints;
-}
-
-@synthesize resultLabel     = __resultLabel;
-@synthesize dateLabel       = __dateLabel;
-@synthesize normalLabel     = __normalLabel;
-
-@synthesize sparkLineView   = __sparkLineView;
-
+@implementation HRBMIVitalAppletTile
 
 - (void)tileDidLoad {
     [super tileDidLoad];
     
     // save points
-    __dataPoints = [self.patient vitalSignsWithEntryType:@"BMI"];
-    HRMEntry *lastest = [__dataPoints lastObject];
+    __entries = [self.patient vitalSignsWithEntryType:@"BMI"];
+    HRMEntry *latest = [__entries lastObject];
     
     // set labels
-    self.resultLabel.adjustsFontSizeToFitWidth = YES;
-    float latestValue = [[lastest valueForKeyPath:@"value.scalar"] floatValue];
-    self.resultLabel.text = [NSString stringWithFormat:@"%0.1f", latestValue];
-    self.dateLabel.text = [lastest.date shortStyleDate];
-    self.dateLabel.adjustsFontSizeToFitWidth = YES;
-    self.normalLabel.adjustsFontSizeToFitWidth = YES;
+    self.titleLabel.text = @"BMI";
+    self.leftTitleLabel.text = @"RECENT RESULT:";
+    float latestValue = [[latest valueForKeyPath:@"value.scalar"] floatValue];
+    self.leftValueLabel.text = [NSString stringWithFormat:@"%0.1f", latestValue];
+    self.leftValueLabel.adjustsFontSizeToFitWidth = YES;
+    self.middleTitleLabel.text = @"DATE:";
+    self.middleValueLabel.text = [latest.date shortStyleDate];
+    self.middleValueLabel.adjustsFontSizeToFitWidth = YES;
+    self.rightValueLabel.text = [NSString stringWithFormat:@"%0.1f-%0.1f", [self normalLow], [self normalHigh]];
+    self.rightValueLabel.adjustsFontSizeToFitWidth = YES;
     
     // sparkline    
     HRSparkLineRange range = HRMakeRange([self normalLow], [self normalHigh] - [self normalLow]);
@@ -60,41 +58,14 @@
     self.sparkLineView.lines = [NSArray arrayWithObject:line];
 
     // display normal value
-    float val = [[lastest valueForKeyPath:@"value.scalar"] floatValue];
-    if ([self isValueNormal:val]) { self.resultLabel.textColor = [UIColor blackColor]; }
-    else { self.resultLabel.textColor = [HRConfig redColor]; }
+    float val = [[latest valueForKeyPath:@"value.scalar"] floatValue];
+    self.rightValueLabel.textColor = ([self isValueNormal:val]) ? [UIColor blackColor] : [HRConfig redColor];
     
 }
 
-- (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect {
-    UITableViewController *controller = [[HRKeyValueTableViewController alloc] initWithDataPoints:[self dataPoints]];
-    controller.title = @"BMI";
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-    if (__popoverController == nil) {
-        __popoverController = [[UIPopoverController alloc] initWithContentViewController:navController];
-    }
-    else {
-        __popoverController.contentViewController = navController;
-    }
-    [__popoverController
-     presentPopoverFromRect:rect
-     inView:sender.view
-     permittedArrowDirections:UIPopoverArrowDirectionAny
-     animated:YES];
-}
-
-#pragma mark - notifications
-
-- (void)applicationDidEnterBackground {
-    [__popoverController dismissPopoverAnimated:NO];
-}
-
-
-#pragma mark - private
-
-- (NSArray *)dataPoints {
-    NSMutableArray *points = [NSMutableArray arrayWithCapacity:[__dataPoints count]];
-    [__dataPoints enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
+- (NSArray *)dataForKeyValueTable {
+    NSMutableArray *entries = [NSMutableArray arrayWithCapacity:[__entries count]];
+    [__entries enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
         double value = [[entry.value objectForKey:@"scalar"] doubleValue];
         BOOL isNormal = [self isValueNormal:value];
         UIColor *color = isNormal ? [UIColor blackColor] : [HRConfig redColor];
@@ -103,14 +74,20 @@
                                     [entry.date mediumStyleDate], @"title",
                                     color, @"detail_color",
                                     nil];
-        [points addObject:dictionary];
+        [entries addObject:dictionary];
     }];
-    return [points copy];
+    return [entries copy];
 }
 
+- (NSString *)titleForKeyValueTable {
+    return self.titleLabel.text;
+}
+
+#pragma mark - private
+
 - (NSArray *)sparkLinePoints {
-    NSMutableArray *points = [[NSMutableArray alloc] initWithCapacity:[__dataPoints count]];
-    [__dataPoints enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
+    NSMutableArray *points = [[NSMutableArray alloc] initWithCapacity:[__entries count]];
+    [__entries enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
         NSTimeInterval timeInterval = [entry.date timeIntervalSince1970];
         NSString *scalarString = [entry.value objectForKey:@"scalar"];
         CGFloat value = 0.0;
@@ -132,8 +109,8 @@
     return 22.9;
 }
 
-- (BOOL)isValueNormal:(double)bmi {
-    return (bmi >= [self normalLow] && bmi <= [self normalHigh]);
+- (BOOL)isValueNormal:(double)value {
+    return (value >= [self normalLow] && value <= [self normalHigh]);
 }
 
 @end
