@@ -12,15 +12,16 @@
 
 @class HRSparkLinePoint;
 
-@interface HRSparkLineLine : NSObject// <UIAppearance>
+@interface HRSparkLineLine : NSObject
 
 @property (nonatomic, copy) NSArray *points;
-@property (nonatomic, strong) UIColor *lineColor UI_APPEARANCE_SELECTOR;
-@property (nonatomic, strong) UIColor *outOfRangeDotColor UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat weight UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIColor *lineColor;
+@property (nonatomic, strong) UIColor *outOfRangeDotColor;
+@property (nonatomic, assign) CGFloat weight;
 @property (nonatomic, assign) HRSparkLineRange range;
-@property (nonatomic, assign) CGLineJoin lineJoin UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGLineCap lineCap UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIColor *rangeColor;
+@property (nonatomic, assign) CGLineJoin lineJoin;
+@property (nonatomic, assign) CGLineCap lineCap;
 
 + (HRSparkLineLine *)lineWithPoints:(HRSparkLinePoint *)point, ... NS_REQUIRES_NIL_TERMINATION;
 

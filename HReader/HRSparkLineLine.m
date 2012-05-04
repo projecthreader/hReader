@@ -8,6 +8,10 @@
 
 #import "HRSparkLineLine.h"
 
+#if !__has_feature(objc_arc)
+#error This class requires ARC.
+#endif
+
 @implementation HRSparkLineLine
 
 @synthesize points = __points;
@@ -17,32 +21,9 @@
 @synthesize range = __range;
 @synthesize lineJoin = __lineJoin;
 @synthesize lineCap = __lineCap;
+@synthesize rangeColor = __rangeColor;
 
 #pragma mark - class methods
-
-//+ (id)appearance {
-//    static dispatch_once_t token;
-//    static HRSparkLineLine *line = nil;
-//    dispatch_once(&token, ^{
-//        line = [[HRSparkLineLine alloc] init];
-//        line.lineColor = [UIColor blackColor];
-//        line.weight = 4.0;
-//        line.outOfRangeDotColor = [UIColor redColor];
-//        line.lineCap = kCGLineCapRound;
-//        line.lineJoin = kCGLineJoinRound;
-//    });
-//    return line;
-//}
-//
-//+ (id)appearanceWhenContainedIn:(Class <UIAppearanceContainer>)ContainerClass, ... {
-//    static dispatch_once_t token;
-//    static HRSparkLineLine *line = nil;
-//    dispatch_once(&token, ^{
-//        line = [[HRSparkLineLine alloc] init];
-//    });
-//    return line;
-//    return nil;
-//}
 
 + (HRSparkLineLine *)lineWithPoints:(HRSparkLinePoint *)point, ... NS_REQUIRES_NIL_TERMINATION {
     NSMutableArray *array = [NSMutableArray array];
@@ -66,18 +47,13 @@
 - (id)init {
     self = [super init];
     if (self) {
-//        HRSparkLineLine *line = [HRSparkLineLine appearance];
-//        __weight = line.weight;
-//        __lineColor = line.lineColor;
-//        __outOfRangeDotColor = line.outOfRangeDotColor;
-//        __lineJoin  = line.lineJoin;
-//        __lineCap = line.lineCap;
         __lineColor = [UIColor blackColor];
         __weight = 4.0;
         __outOfRangeDotColor = [UIColor redColor];
         __lineCap = kCGLineCapRound;
         __lineJoin = kCGLineJoinRound;
         __range = HRZeroRange;
+        __rangeColor = [UIColor lightGrayColor];
     }
     return self;
 }
