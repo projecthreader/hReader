@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
-#import "HRAppletTile.h"
+#import "HRVitalAppletTile.h"
 
-@interface HROxygenSaturationAppletTile : HRAppletTile
+@interface HROxygenSaturationAppletTile : HRVitalAppletTile
 
 @end
