@@ -53,7 +53,7 @@
         __lineCap = kCGLineCapRound;
         __lineJoin = kCGLineJoinRound;
         __range = HRZeroRange;
-        __rangeColor = [UIColor lightGrayColor];
+        __rangeColor = [UIColor colorWithWhite:0.9 alpha:1.0];
     }
     return self;
 }

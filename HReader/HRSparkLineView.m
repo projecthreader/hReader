@@ -95,16 +95,18 @@
     // get drawing resources
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    // draw all lines
+    // draw all effective ranges
     [self.lines enumerateObjectsUsingBlock:^(HRSparkLineLine *line, NSUInteger lineIndex, BOOL *stop) {
-        
-        // draw range box for this line
         if (!HRIsZeroRange(line.range)) {
             CGPoint leftRangePoint = [self screenPointWithX:0 y:HRMaxRange(line.range)];
             CGPoint rightRangePoint = [self screenPointWithX:0 y:line.range.location];
             CGContextSetFillColorWithColor(context, [line.rangeColor CGColor]);
             CGContextFillRect(context, CGRectMake(0, leftRangePoint.y, self.bounds.size.width, rightRangePoint.y - leftRangePoint.y));
         }
+    }];
+    
+    // draw all lines
+    [self.lines enumerateObjectsUsingBlock:^(HRSparkLineLine *line, NSUInteger lineIndex, BOOL *stop) {
         
         // create paths for this line
         CGMutablePathRef inRangeDotPath = CGPathCreateMutable();
