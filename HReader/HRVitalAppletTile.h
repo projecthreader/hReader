@@ -7,23 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+
 #import "HRAppletTile.h"
 
-@class HRVital;
-@class ASBSparkLineView;
-@class HRVital;
+@class HRSparkLineView;
 
-@interface HRVitalView : HRAppletTile
+@interface HRVitalAppletTile : HRAppletTile
 
-@property (retain, nonatomic) HRVital *vital;
+@property (nonatomic, strong) IBOutlet UILabel *titleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *leftTitleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *middleTitleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *rightTitleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *leftValueLabel;
+@property (nonatomic, strong) IBOutlet UILabel *middleValueLabel;
+@property (nonatomic, strong) IBOutlet UILabel *rightValueLabel;
+@property (nonatomic, strong) IBOutlet HRSparkLineView *sparkLineView;
 
-@property (retain, nonatomic) IBOutlet UILabel *leftLabel;
-@property (retain, nonatomic) IBOutlet UILabel *rightLabel;
-@property (retain, nonatomic) IBOutlet UILabel *nameLabel;
-@property (retain, nonatomic) IBOutlet UILabel *resultLabel;
-@property (retain, nonatomic) IBOutlet UILabel *dateLabel;
-@property (retain, nonatomic) IBOutlet UILabel *normalLabel;
-@property (retain, nonatomic) IBOutlet UILabel *unitsLabel;
-@property (retain, nonatomic) IBOutlet ASBSparkLineView *sparkLineView;
+- (NSArray *)dataForKeyValueTable;
+- (NSString *)titleForKeyValueTable;
 
 @end
