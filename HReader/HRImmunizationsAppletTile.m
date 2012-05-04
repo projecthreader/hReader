@@ -16,7 +16,7 @@
     [super tileDidLoad];
     if ([[self.patient.syntheticInfo objectForKey:@"immunizations"] boolValue]) {
         self.upToDateLabel.text = @"Yes";
-        self.upToDateLabel.textColor = [HRConfig greenColor];
+        self.upToDateLabel.textColor = [UIColor blackColor];
     }
     else {
         self.upToDateLabel.text = @"No";
