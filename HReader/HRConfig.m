@@ -51,7 +51,7 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
 }
 
 + (NSString *)feedbackEmailAddress {
-    return @"hReader Feedback <..>";
+    return @"hReader Feedback <dwhill@mitre.org>";
 }
 
 #pragma mark - API Keys

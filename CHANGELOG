@@ -1,3 +1,8 @@
+# 2012-4-7
+
+- Converted feedback form to email instead of testflight.
+- Using dwhill@mitre.org for now until a mailing list is setup
+
 # 2012-4-4
 
 - make conditions and events tappable
