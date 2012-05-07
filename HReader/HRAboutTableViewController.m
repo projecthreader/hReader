@@ -49,7 +49,15 @@
     
     // feedback
     if ([cell.reuseIdentifier isEqualToString:@"FeedbackCell"]) {
-        [TestFlight openFeedbackView];
+//        [TestFlight openFeedbackView];
+        if ([MFMailComposeViewController canSendMail]) {
+            MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
+            controller.mailComposeDelegate = self;
+            [controller setToRecipients:[NSArray arrayWithObject:[HRConfig feedbackEmailAddress]]];
+            [controller setSubject:@"[hReader] Feedback"];
+            [controller setMessageBody:[NSString stringWithFormat:@"\n\n\n%@", [HRConfig formattedVersion]] isHTML:NO];
+            [self presentModalViewController:controller animated:YES];
+        }
     }
     
     // privacy demo
@@ -106,6 +114,12 @@
         
     }
 
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 

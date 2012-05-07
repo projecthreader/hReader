@@ -17,6 +17,7 @@ extern NSString * const HRPatientKey;
 + (NSString *)appVersion;
 + (NSString *)bundleVersion;
 + (NSString *)formattedVersion;
++ (NSString *)feedbackEmailAddress;
 
 + (NSString *)testFlightTeamToken;
 

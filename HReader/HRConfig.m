@@ -50,6 +50,10 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
     return [NSString stringWithFormat:@"%@ (%@)", [self appVersion], [self bundleVersion]];
 }
 
++ (NSString *)feedbackEmailAddress {
+    return @"hReader Feedback <..>";
+}
+
 #pragma mark - API Keys
 
 + (NSString *)testFlightTeamToken {

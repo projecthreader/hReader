@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
 #import "PINCodeViewController.h"
 #import "PINSecurityQuestionsViewController.h"
 
-@interface HRAboutTableViewController : UITableViewController
+@interface HRAboutTableViewController : UITableViewController <MFMailComposeViewControllerDelegate>
 //<
 //PINCodeViewControllerDelegate,
 //PINSecurityQuestionsViewControllerDelegate
