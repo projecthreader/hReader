@@ -106,7 +106,7 @@
 		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; };
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
 		3BD16EF614E1B5EE00F2249E /* GCManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16EE514E1B5EE00F2249E /* GCManagedObject.m */; };
-		3BD16F0514E1C5B700F2249E /* HRMPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16F0414E1C5B700F2249E /* HRMPatient.m */; };
+		3BD16F0514E1C5B700F2249E /* HRMPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16F0414E1C5B700F2249E /* HRMPatient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BE9A40514E40EBB00F87B60 /* HRMEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9A40414E40EBB00F87B60 /* HRMEntry.m */; };
 		3BE9A42D14E42A3800F87B60 /* hs.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9A42814E42A3800F87B60 /* hs.json */; };
 		3BE9A42E14E42A3800F87B60 /* js.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9A42914E42A3800F87B60 /* js.json */; };

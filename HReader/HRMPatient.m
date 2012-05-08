@@ -8,9 +8,12 @@
 
 #import "HRMPatient.h"
 #import "HRMEntry.h"
-#import "HRAppDelegate.h"
 
 #import "DDXML.h"
+
+#if !__has_feature(objc_arc)
+#error This class requires ARC
+#endif
 
 @interface HRMPatient ()
 
@@ -171,6 +174,16 @@
 
 #pragma mark - object methods
 
+- (void)awakeFromFetch {
+    NSArray *applets = [self.syntheticInfo objectForKey:@"applets"];
+    if (applets) {
+        self.applets = [applets mutableCopy];
+    }
+    else {
+        self.applets = [NSMutableArray array];
+    }
+}
+
 - (UIImage *)patientImage {
     return [UIImage imageNamed:[NSString stringWithFormat:@"UserImage-%@-%@", self.lastName, self.firstName]];
 }
@@ -207,7 +220,7 @@
 }
 
 - (NSArray *)medications {
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO];
     return [self entriesWithType:HRMEntryTypeMedication
                  sortDescriptors:[NSArray arrayWithObject:sort]];
 }
