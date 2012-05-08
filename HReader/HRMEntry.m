@@ -101,42 +101,43 @@
     else if (self.startDate)    { start = [format stringFromDate:self.startDate];   }
     else if (self.endDate)      { start = [format stringFromDate:self.endDate];     }
     
-    // get type
+    // get type and image
     short type = [self.type shortValue];
     NSString *category = nil;
     NSString *image = nil;
     if (type == HRMEntryTypeAllergy) {
         category = @"allergies";
-        image = @"observation.png";
+        image = @"observation";
     }
     else if (type == HRMEntryTypeCondition) {
         category = @"conditions";
-        image = @"condition.png";
+        image = @"condition";
     }
     else if (type == HRMEntryTypeResult) {
         category = @"results";
-        image = @"observation.png";
+        image = @"observation";
     }
     else if (type == HRMEntryTypeEncounter) {
         category = @"encounters";
-        image = @"encounter.png";
+        image = @"encounter";
     }
     else if (type == HRMEntryTypeVitalSign) {
         category = @"vitals";
-        image = @"observation.png";
+        image = @"observation";
     }
     else if (type == HRMEntryTypeImmunization) {
         category = @"immunizations";
-        image = @"treatment.png";
+        image = @"treatment";
     }
     else if (type == HRMEntryTypeMedication) {
         category = @"medications";
-        image = @"medication.png";
+        image = @"medication";
     }
     else if (type == HRMEntryTypeProcedure) {
         category = @"procedures";
-        image = @"treatment.png";
+        image = @"treatment";
     }
+    image = [NSString stringWithFormat:@"../HReader.app/timeline/hReader/icons/%@.png", image];
     
     NSMutableString *eventDesc = [NSMutableString string];
     [eventDesc appendFormat:@"%@", self.desc];
@@ -149,7 +150,7 @@
     [element addAttribute:[DDXMLElement attributeWithName:@"title" stringValue:@""]];
     [element addAttribute:[DDXMLElement attributeWithName:@"category" stringValue:category]];
     [element addAttribute:[DDXMLElement attributeWithName:@"start" stringValue:start]];
-    [element addAttribute:[DDXMLElement attributeWithName:@"icon" stringValue:[NSString stringWithFormat:@"../HReader.app/timeline/hReader/%@", image]]];
+    [element addAttribute:[DDXMLElement attributeWithName:@"icon" stringValue:image]];
     
     // return
     return element;
