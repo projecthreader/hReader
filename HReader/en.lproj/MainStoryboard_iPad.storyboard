@@ -307,7 +307,7 @@
                                         <rect key="frame" x="34" y="65" width="149" height="134"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" id="CfE-Xb-Pt1">
+                                            <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" id="CfE-Xb-Pt1">
                                                 <rect key="frame" x="0.0" y="0.0" width="149" height="134"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </imageView>

@@ -404,28 +404,27 @@
     
     // gestures
     {
-        UISwipeGestureRecognizer *gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveRightSwipe:)];
+        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(patientImageViewTap:)];
+        gesture.numberOfTapsRequired = 1;
         gesture.numberOfTouchesRequired = 1;
-        gesture.direction = UISwipeGestureRecognizerDirectionRight;
-        [self.patientImageView addGestureRecognizer:gesture];
+        [self.patientImageView.superview addGestureRecognizer:gesture];
     }
     
     {
-        UISwipeGestureRecognizer *gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveLeftSwipe:)];
-        gesture.numberOfTouchesRequired = 1;
-        gesture.direction = UISwipeGestureRecognizerDirectionLeft;
-        [self.patientImageView addGestureRecognizer:gesture];
-    }
-    
-    {
-        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(conditionsContainerViewTap:)];
+        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(conditionsContainerViewTap:)];
         gesture.numberOfTapsRequired = 1;
         gesture.numberOfTouchesRequired = 1;
         [self.conditionsContainerView addGestureRecognizer:gesture];
     }
     
     {
-        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(eventsContainerViewTap:)];
+        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(eventsContainerViewTap:)];
         gesture.numberOfTapsRequired = 1;
         gesture.numberOfTouchesRequired = 1;
         [self.eventsContainerView addGestureRecognizer:gesture];
@@ -552,24 +551,24 @@
     }
 }
 
+- (void)patientImageViewTap:(UITapGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateRecognized) {
+        HRPeoplePickerViewController *picker = (id)self.panelViewController.leftAccessoryViewController;
+        UIView *view = gesture.view;
+        if ([gesture locationInView:view].x < CGRectGetMidX(view.bounds)) {
+            [picker selectPreviousPatient];
+        }
+        else {
+            [picker selectNextPatient];
+        }
+    }
+}
+
 #pragma mark - private
 
 - (NSString *)formattedDate:(double)interval {
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
     return [date mediumStyleDate];
-}
-
-#pragma mark - gestures
-
-- (void)didReceiveLeftSwipe:(UISwipeGestureRecognizer *)swipe {
-    if (swipe.state == UIGestureRecognizerStateRecognized) {
-        [(id)self.panelViewController.leftAccessoryViewController selectNextPatient];
-    }
-}
-- (void)didReceiveRightSwipe:(UISwipeGestureRecognizer *)swipe {
-    if (swipe.state == UIGestureRecognizerStateRecognized) {
-        [(id)self.panelViewController.leftAccessoryViewController selectPreviousPatient];
-    }
 }
 
 @end
