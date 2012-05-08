@@ -101,6 +101,7 @@
 		3B77F04E15546ABD003C2DBD /* HROxygenSaturationAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F04D15546ABD003C2DBD /* HROxygenSaturationAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B77F05215546AD2003C2DBD /* HRRespiratoryRateAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B77F054155474DE003C2DBD /* HRBMIVitalAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */; };
+		3BA3E7DE15595F090095A5CC /* GCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3E7DD15595F090095A5CC /* GCAlertView.m */; };
 		3BB9C27F151B8AEF00527C20 /* HRKeychainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; };
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
@@ -331,6 +332,8 @@
 		3B77F05015546AD2003C2DBD /* HRRespiratoryRateAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRRespiratoryRateAppletTile.h; sourceTree = "<group>"; };
 		3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRRespiratoryRateAppletTile.m; sourceTree = "<group>"; };
 		3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRBMIVitalAppletTile.xib; sourceTree = "<group>"; };
+		3BA3E7DC15595F090095A5CC /* GCAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAlertView.h; sourceTree = "<group>"; };
+		3BA3E7DD15595F090095A5CC /* GCAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAlertView.m; sourceTree = "<group>"; };
 		3BB9C27D151B8AEF00527C20 /* HRKeychainManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRKeychainManager.h; sourceTree = "<group>"; };
 		3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRKeychainManager.m; sourceTree = "<group>"; };
 		3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hReader.xcdatamodel; sourceTree = "<group>"; };
@@ -624,6 +627,8 @@
 				3BD16EE514E1B5EE00F2249E /* GCManagedObject.m */,
 				94AEA73E1529F2DC00D9C67D /* GCActionSheet.h */,
 				94AEA73F1529F2DC00D9C67D /* GCActionSheet.m */,
+				3BA3E7DC15595F090095A5CC /* GCAlertView.h */,
+				3BA3E7DD15595F090095A5CC /* GCAlertView.m */,
 			);
 			name = "guicocoa-common-code";
 			path = "vendor/guicocoa-common-code";
@@ -1447,6 +1452,7 @@
 				3B77F04715546051003C2DBD /* NSString+SentenceCapitalization.m in Sources */,
 				3B77F04E15546ABD003C2DBD /* HROxygenSaturationAppletTile.m in Sources */,
 				3B77F05215546AD2003C2DBD /* HRRespiratoryRateAppletTile.m in Sources */,
+				3BA3E7DE15595F090095A5CC /* GCAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

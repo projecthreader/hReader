@@ -13,10 +13,6 @@
 #import "PINSecurityQuestionsViewController.h"
 
 @interface HRAboutTableViewController : UITableViewController <MFMailComposeViewControllerDelegate>
-//<
-//PINCodeViewControllerDelegate,
-//PINSecurityQuestionsViewControllerDelegate
-//>
 
 @property (retain, nonatomic) IBOutlet UILabel *versionLabel;
 @property (retain, nonatomic) IBOutlet UILabel *buildDateLabel;

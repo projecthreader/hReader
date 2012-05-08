@@ -11,6 +11,12 @@
 #import "HRKeychainManager.h"
 #import "HRAppDelegate.h"
 
+#import "GCAlertView.h"
+
+#if !__has_feature(objc_arc)
+#error This class requires ARC
+#endif
+
 @implementation HRAboutTableViewController
 
 @synthesize versionLabel = __versionLabel;
@@ -22,18 +28,16 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-#pragma mark - View lifecycle
+#pragma mark - view lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.versionLabel.text = [HRConfig formattedVersion];
-    
-    // set build date
     self.buildDateLabel.text = [NSString stringWithFormat:@"%s, %s", __DATE__, __TIME__];
 }
 
 - (void)viewDidUnload {
-    [self setBuildDateLabel:nil];
+    self.buildDateLabel = nil;
     self.versionLabel = nil;
     [super viewDidUnload];
 }
@@ -42,14 +46,13 @@
     return YES;
 }
 
-#pragma mark - Table view delegate
+#pragma mark - table view
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     // feedback
     if ([cell.reuseIdentifier isEqualToString:@"FeedbackCell"]) {
-//        [TestFlight openFeedbackView];
         if ([MFMailComposeViewController canSendMail]) {
             MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
             controller.mailComposeDelegate = self;
@@ -57,6 +60,21 @@
             [controller setSubject:@"[hReader] Feedback"];
             [controller setMessageBody:[NSString stringWithFormat:@"\n\n\n%@", [HRConfig formattedVersion]] isHTML:NO];
             [self presentModalViewController:controller animated:YES];
+        }
+        else {
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            GCAlertView *alert = [[GCAlertView alloc]
+                                  initWithTitle:nil
+                                  message:[NSString stringWithFormat:
+                                           @"No email accounts are configured on this %@. Would you like to add one now?",
+                                           [[UIDevice currentDevice] model]]];
+            [alert addButtonWithTitle:@"Not now" block:nil];
+            [alert addButtonWithTitle:@"Yes" block:^{
+                NSURL *URL = [NSURL URLWithString:@"mailto:"];
+                [[UIApplication sharedApplication] openURL:URL];
+            }];
+            [alert setCancelButtonIndex:0];
+            [alert show];
         }
     }
     
