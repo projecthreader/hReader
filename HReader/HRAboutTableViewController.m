@@ -57,12 +57,15 @@
             MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
             controller.mailComposeDelegate = self;
             [controller setToRecipients:[NSArray arrayWithObject:[HRConfig feedbackEmailAddress]]];
-            [controller setSubject:@"[hReader] Feedback"];
-            [controller setMessageBody:[NSString stringWithFormat:@"\n\n\n%@", [HRConfig formattedVersion]] isHTML:NO];
+            [controller setSubject:@"hReader Feedback"];
+            [controller
+             setMessageBody:[NSString stringWithFormat:
+                             @"\n\nApp Version: %@\n",
+                             [HRConfig formattedVersion]]
+             isHTML:NO];
             [self presentModalViewController:controller animated:YES];
         }
         else {
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
             GCAlertView *alert = [[GCAlertView alloc]
                                   initWithTitle:nil
                                   message:[NSString stringWithFormat:
@@ -76,6 +79,7 @@
             [alert setCancelButtonIndex:0];
             [alert show];
         }
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
     
     // privacy demo
