@@ -43,26 +43,23 @@ NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
 }
 
 - (void)selectNextPatient {
-    NSUInteger oldIndex = selectedPatientIndex;
-    id<NSFetchedResultsSectionInfo> info = [[controller sections] objectAtIndex:0];
-    selectedPatientIndex = MIN(selectedPatientIndex + 1, [info numberOfObjects] - 1);
+    id<NSFetchedResultsSectionInfo> section = [[controller sections] objectAtIndex:0];
+    if (selectedPatientIndex > [section numberOfObjects]) { selectedPatientIndex = 0; }
+    else { selectedPatientIndex++; }
     [self updateTableViewSelection];
-    if (selectedPatientIndex != oldIndex) {
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:HRPatientDidChangeNotification
-         object:self];
-    }
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:HRPatientDidChangeNotification
+     object:self];
 }
 
 - (void)selectPreviousPatient {
-    NSUInteger oldIndex = selectedPatientIndex;
-    if (selectedPatientIndex > 0) { selectedPatientIndex--; }
+    id<NSFetchedResultsSectionInfo> section = [[controller sections] objectAtIndex:0];
+    if (selectedPatientIndex == 0) { selectedPatientIndex = [section numberOfObjects] - 1; }
+    else { selectedPatientIndex--; }
     [self updateTableViewSelection];
-    if (selectedPatientIndex != oldIndex) {
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:HRPatientDidChangeNotification
-         object:self];
-    }
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:HRPatientDidChangeNotification
+     object:self];
 }
 
 #pragma mark - object methods
