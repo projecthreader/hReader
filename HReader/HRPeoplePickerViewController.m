@@ -44,8 +44,8 @@ NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
 
 - (void)selectNextPatient {
     id<NSFetchedResultsSectionInfo> section = [[controller sections] objectAtIndex:0];
-    if (selectedPatientIndex > [section numberOfObjects]) { selectedPatientIndex = 0; }
-    else { selectedPatientIndex++; }
+    selectedPatientIndex++;
+    if (selectedPatientIndex == [section numberOfObjects]) { selectedPatientIndex = 0; }
     [self updateTableViewSelection];
     [[NSNotificationCenter defaultCenter]
      postNotificationName:HRPatientDidChangeNotification
