@@ -8,7 +8,7 @@
     <!-- (where 2.3.1 is the current release number.)                                 -->
     <script>
       Timeline_ajax_url="../ajax/simile-ajax-api.js";
-      Timeline_urlPrefix='../api/'; 
+      Timeline_urlPrefix='../api/';
       Timeline_parameters='bundle=true';
     </script>
  
@@ -37,7 +37,7 @@
             theme.event.track.height=40;
             theme.event.track.offset = 8;
             theme.ether.backgroundColors[1] = theme.ether.backgroundColors[0];
-            theme.event.instant.icon = "treatment.png";
+            theme.event.instant.icon = "icons/treatment.png";
             theme.event.instant.iconWidth= 40;
             theme.event.instant.iconHeight= 40;
             
@@ -79,7 +79,7 @@
             var bandInfo= new Timeline.createBandInfo({ 
                     width:          "10%", 
                     intervalUnit:   Timeline.DateTime.YEAR, 
-                    intervalPixels: 1200,
+                    intervalPixels: 200,
                     eventSource:    eventSource_all,
                     date:           d,
                     theme:          theme,
