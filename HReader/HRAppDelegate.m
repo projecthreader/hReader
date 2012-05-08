@@ -155,8 +155,6 @@
         BOOL save = [context save:&error];
         NSAssert(save, @"Unable to import patients\n%@", error);
     }
-    NSArray *patients = [HRMPatient patientsInContext:context];
-    [HRMPatient setSelectedPatient:[patients objectAtIndex:0]];
     
     // configure the user interface
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];

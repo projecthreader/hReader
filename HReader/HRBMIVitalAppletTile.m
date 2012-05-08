@@ -32,7 +32,7 @@
     [super tileDidLoad];
     
     // save points
-    __entries = [self.patient vitalSignsWithEntryType:@"BMI"];
+    __entries = [self.patient vitalSignsWithType:@"BMI"];
     HRMEntry *latest = [__entries lastObject];
     
     // set labels

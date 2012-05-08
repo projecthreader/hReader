@@ -32,8 +32,8 @@
     [super tileDidLoad];
     
     // save points
-    __systolicDataPoints = [self.patient vitalSignsWithEntryType:@"systolic blood pressure"];
-    __diastolicDataPoints = [self.patient vitalSignsWithEntryType:@"diastolic blood pressure"];
+    __systolicDataPoints = [self.patient vitalSignsWithType:@"systolic blood pressure"];
+    __diastolicDataPoints = [self.patient vitalSignsWithType:@"diastolic blood pressure"];
     HRMEntry *lastestSystolic = [__systolicDataPoints lastObject];
     HRMEntry *lastestDiastolic = [__diastolicDataPoints lastObject];
     

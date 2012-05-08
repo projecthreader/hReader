@@ -18,6 +18,8 @@ typedef enum {
 
 @interface HRMPatient : GCManagedObject
 
+#pragma mark - core data properties
+
 @property (nonatomic, retain) NSString *firstName;
 @property (nonatomic, retain) NSString *lastName;
 @property (nonatomic, retain) NSString *compositeName;
@@ -29,37 +31,63 @@ typedef enum {
 @property (nonatomic, retain) NSSet *entries;
 @property (nonatomic, retain) NSDictionary *syntheticInfo;
 
-@property (nonatomic, retain) NSArray *allergies;
-@property (nonatomic, retain) NSArray *immunizations;
-@property (nonatomic, retain) NSArray *procedures;
-@property (nonatomic, retain) NSArray *results;
-
-@property (nonatomic, retain) NSMutableArray *applets;
+#pragma mark - fetched properties
 
 @property (nonatomic, readonly) NSArray *conditions;
 @property (nonatomic, readonly) NSArray *encounters;
 @property (nonatomic, readonly) NSArray *medications;
 
-// get a new patient with json dictionary
-+ (HRMPatient *)instanceWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context;
+#pragma mark - other properties
 
-// get list of patients from persistent store
-+ (NSArray *)patientsInContext:(NSManagedObjectContext *)context;
+@property (nonatomic, retain) NSArray *allergies;
+@property (nonatomic, retain) NSArray *immunizations;
+@property (nonatomic, retain) NSArray *procedures;
+@property (nonatomic, retain) NSArray *results;
+@property (nonatomic, retain) NSMutableArray *applets;
 
-// deal with current selection
-+ (void)setSelectedPatient:(HRMPatient *)patient;
-+ (HRMPatient *)selectedPatient;
+#pragma mark - instance methods
 
-// get fake data
+/*
+ 
+ Generate the XML document that is used to render the patient timeline.
+ 
+ */
 - (DDXMLElement *)timelineXMLDocument;
+
+/*
+ 
+ Load all entries that have the type set to HRMEntryTypeVitalSign and match the
+ given type. These entries will be sorted by date ascending.
+ 
+ */
+- (NSArray *)vitalSignsWithType:(NSString *)type;
+
+/*
+ 
+ These methods load simulated data from the application bundle.
+ 
+ */
 - (UIImage *)patientImage;
 - (NSURL *)C32HTMLURL;
 
-// fetched property accessors
-- (NSDictionary *)vitalSignsGroupedByDescription;
-- (NSArray *)vitalSignsWithEntryType:(NSString *)type;
-
+/*
+ 
+ Get the patient initials. If the receiver's name is "Jon Doe" then this method
+ will return "jd".
+ 
+ */
 - (NSString *)initials;
+
+#pragma mark - class methods
+
+/*
+ 
+ Returns a new patient object that is populated with data from the given
+ dictionary inserted into the given context. The format of the dictionary must
+ conform to the hData standard.
+ 
+ */
++ (HRMPatient *)instanceWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context;
 
 @end
 

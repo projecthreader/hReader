@@ -29,7 +29,7 @@
     [super tileDidLoad];
     
     // save points
-    __entries = [self.patient vitalSignsWithEntryType:@"Respiration"];
+    __entries = [self.patient vitalSignsWithType:@"Respiration"];
     HRMEntry *latest = [__entries lastObject];
     
     // set labels
