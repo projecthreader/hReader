@@ -140,20 +140,6 @@
             "version": 1
         }, 
         {
-            "_id": "4f4e9fcdb615219f0a000137", 
-            "_type": "Entry", 
-            "codes": {
-                "SNOMED-CT": [
-                    "370205009"
-                ]
-            }, 
-            "description": "Asthma Nighttime Symptoms Quantified", 
-            "start_time": 3490488000, 
-            "time": null, 
-            "value": {}, 
-            "version": 1
-        }, 
-        {
             "_id": "4f4e9fcdb615219f0a000138", 
             "_type": "Entry", 
             "codes": {

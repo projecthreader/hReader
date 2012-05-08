@@ -1,8 +1,15 @@
+# 2012-4-8
+
+- Add alert offering to setup an email account if none is present when the Feedback button is tapped
+- Change patient toggle to be cyclical
+- Change patient image interaction on the summary view to be tap instead of swipe (left vs right half of the image will do previous vs next respectively)
+- Sort conditions by the correct date field
+- Update timeline
+
 # 2012-4-7
 
 - Converted feedback form to email instead of testflight.
 - Emails go to hreader@googlegroups.com
-
 
 # 2012-4-4
 
