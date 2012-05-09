@@ -17,11 +17,12 @@
 #import "SVPanelViewController.h"
 
 NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
+static NSString * const HRPatientOrderArrayKey = @"HRPatientOrderArray";
 
 @interface HRPeoplePickerViewController () {
 @private
-    NSFetchedResultsController * __strong controller;
     NSManagedObjectContext * __strong context;
+    NSMutableArray * __strong patients;
     NSArray * __strong searchResults;
     NSArray * __strong sortDescriptors;
     NSUInteger selectedPatientIndex;
@@ -34,18 +35,17 @@ NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
 @implementation HRPeoplePickerViewController
 
 @synthesize tableView = __tableView;
+@synthesize toolbar = __toolbar;
 
 #pragma mark - public methods
 
 - (HRMPatient *)selectedPatient {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selectedPatientIndex inSection:0];
-    return [controller objectAtIndexPath:indexPath];
+    return [patients objectAtIndex:selectedPatientIndex];
 }
 
 - (void)selectNextPatient {
-    id<NSFetchedResultsSectionInfo> section = [[controller sections] objectAtIndex:0];
     selectedPatientIndex++;
-    if (selectedPatientIndex == [section numberOfObjects]) { selectedPatientIndex = 0; }
+    if (selectedPatientIndex == [patients count]) { selectedPatientIndex = 0; }
     [self updateTableViewSelection];
     [[NSNotificationCenter defaultCenter]
      postNotificationName:HRPatientDidChangeNotification
@@ -53,8 +53,7 @@ NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
 }
 
 - (void)selectPreviousPatient {
-    id<NSFetchedResultsSectionInfo> section = [[controller sections] objectAtIndex:0];
-    if (selectedPatientIndex == 0) { selectedPatientIndex = [section numberOfObjects] - 1; }
+    if (selectedPatientIndex == 0) { selectedPatientIndex = [patients count] - 1; }
     else { selectedPatientIndex--; }
     [self updateTableViewSelection];
     [[NSNotificationCenter defaultCenter]
@@ -67,26 +66,48 @@ NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (self) {
+        
+        // clear selected patient
         selectedPatientIndex = 0;
+        
+        // create context
         context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [context setParentContext:[HRAppDelegate managedObjectContext]];
-        NSFetchRequest *request = [HRMPatient fetchRequestInContext:context];
-        NSString *sort = [NSSortDescriptor sortDescriptorWithKey:@"dateOfBirth" ascending:YES];
-//        NSSortDescriptor *sortOne = [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES];
-//        NSSortDescriptor *sortTwo = [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES];
-        sortDescriptors = [NSArray arrayWithObjects:/*sortOne, sortTwo,*/ sort, nil];
-        [request setSortDescriptors:sortDescriptors];
-        controller = [[NSFetchedResultsController alloc]
-                      initWithFetchRequest:request
-                      managedObjectContext:context
-                      sectionNameKeyPath:nil
-                      cacheName:nil];
-        controller.delegate = self;
-        NSError *error = nil;
-        BOOL fetch = [controller performFetch:&error];
-        NSAssert(fetch, @"Unable to fetch patients\n%@", error);
+        
+        // load array
+        NSArray *objectIDStrings = [[NSUserDefaults standardUserDefaults] arrayForKey:HRPatientOrderArrayKey];
+        if (objectIDStrings) {
+            patients = [[NSMutableArray alloc] initWithCapacity:[objectIDStrings count]];
+            [objectIDStrings enumerateObjectsUsingBlock:^(NSString *mongoID, NSUInteger index, BOOL *stop) {
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"mongoID == %@", mongoID];
+                HRMPatient *patient = [[HRMPatient allInContext:context withPredicate:predicate] lastObject];
+                [patients addObject:patient];
+            }];
+        }
+        else {
+            NSFetchRequest *request = [HRMPatient fetchRequestInContext:context];
+            NSString *sort = [NSSortDescriptor sortDescriptorWithKey:@"dateOfBirth" ascending:YES];
+            sortDescriptors = [NSArray arrayWithObjects:sort, nil];
+            [request setSortDescriptors:sortDescriptors];
+            NSError *error = nil;            
+            patients = [[context executeFetchRequest:request error:&error] mutableCopy];
+            NSAssert(patients != nil, @"Unable to fetch patients\n%@", error);
+
+            [self persistPatientOrder];
+        }
+        
+        // notifications
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(managedObjectDidSave:)
+         name:NSManagedObjectContextDidSaveNotification
+         object:context];
+        
     }
     return self;
+}
+
+- (void)managedObjectDidSave:(NSNotification *)notif {   
 }
 
 - (void)updateTableViewSelection {
@@ -98,6 +119,9 @@ NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.tableView setEditing:YES];
+    
     [self.tableView reloadData];
     [self updateTableViewSelection];
 }
@@ -105,6 +129,11 @@ NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.searchDisplayController setActive:NO animated:animated];
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    [self.tableView setEditing:editing animated:animated];
 }
 
 #pragma mark - search controller
@@ -130,8 +159,7 @@ NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView == self.tableView) {
-        id<NSFetchedResultsSectionInfo> info = [[controller sections] objectAtIndex:section];
-        return [info numberOfObjects];
+        return [patients count];
     }
     else {
         return [searchResults count];
@@ -151,7 +179,7 @@ NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
     }
     HRMPatient *patient = nil;
     if (tableView == self.tableView) {
-        patient = [controller objectAtIndexPath:indexPath];
+        patient = [patients objectAtIndex:indexPath.row];
     }
     else {
         patient = [searchResults objectAtIndex:indexPath.row];
@@ -167,8 +195,7 @@ NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
     }
     else {
         HRMPatient *patient = [searchResults objectAtIndex:indexPath.row];
-        NSIndexPath *patientIndexPath = [controller indexPathForObject:patient];
-        selectedPatientIndex = patientIndexPath.row;
+        selectedPatientIndex = [patients indexOfObject:patient];
         [self updateTableViewSelection];
     }
     double delay = 0.15;
@@ -181,10 +208,26 @@ NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
     });
 }
 
-#pragma mark - fetched results controller
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleNone;
+}
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView reloadData];
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    [self persistPatientOrder];
+}
+
+- (void)persistPatientOrder {
+    NSArray *objectIDStrings = [patients valueForKey:@"mongoID"];
+    [[NSUserDefaults standardUserDefaults] setObject:objectIDStrings forKey:HRPatientOrderArrayKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

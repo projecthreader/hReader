@@ -31,6 +31,7 @@
 
 @implementation HRMPatient
 
+@dynamic mongoID;
 @dynamic dateOfBirth;
 @dynamic firstName;
 @dynamic lastName;
@@ -58,6 +59,11 @@
     __block id object = nil;
     
     // load basic data
+    
+    object = [dictionary objectForKey:@"_id"];
+    if (object && [object isKindOfClass:[NSString class]]) {
+        patient.mongoID = object;
+    }
     object = [dictionary objectForKey:@"first"];
     if (object && [object isKindOfClass:[NSString class]]) {
         patient.firstName = object;

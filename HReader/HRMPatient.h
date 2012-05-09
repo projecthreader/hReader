@@ -20,6 +20,7 @@ typedef enum {
 
 #pragma mark - core data properties
 
+@property (nonatomic, retain) NSString *mongoID;
 @property (nonatomic, retain) NSString *firstName;
 @property (nonatomic, retain) NSString *lastName;
 @property (nonatomic, retain) NSString *compositeName;

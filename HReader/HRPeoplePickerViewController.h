@@ -20,6 +20,7 @@ NSFetchedResultsControllerDelegate,
 UISearchDisplayDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UIToolbar *toolbar;
 
 /*
  

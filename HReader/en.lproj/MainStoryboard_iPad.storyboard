@@ -52,7 +52,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="081-5B-v9W">
-                                <rect key="frame" x="0.0" y="44" width="1024" height="704"/>
+                                <rect key="frame" x="0.0" y="44" width="1024" height="660"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -88,6 +88,11 @@
                                     <outlet property="delegate" destination="Zdm-jY-vjc" id="BrE-Rg-vUu"/>
                                 </connections>
                             </searchBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="kyb-Co-aV5">
+                                <rect key="frame" x="0.0" y="704" width="1024" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items/>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -95,6 +100,7 @@
                     <connections>
                         <outlet property="searchDisplayController" destination="lFe-7Y-Er3" id="6KK-wa-k6j"/>
                         <outlet property="tableView" destination="081-5B-v9W" id="f3u-u3-GtL"/>
+                        <outlet property="toolbar" destination="kyb-Co-aV5" id="j9P-Rn-mON"/>
                     </connections>
                 </viewController>
                 <searchDisplayController id="lFe-7Y-Er3">
@@ -881,6 +887,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRPeoplePickerViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
         </class>
         <class className="HRRootViewController" superclassName="UIViewController">
