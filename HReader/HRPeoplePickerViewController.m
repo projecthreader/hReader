@@ -221,6 +221,9 @@ static NSString * const HRPatientOrderArrayKey = @"HRPatientOrderArray";
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    id object = [patients objectAtIndex:fromIndexPath.row];
+    [patients removeObjectAtIndex:fromIndexPath.row];
+    [patients insertObject:object atIndex:toIndexPath.row];
     [self persistPatientOrder];
 }
 
