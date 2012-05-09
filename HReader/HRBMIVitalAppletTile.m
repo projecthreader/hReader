@@ -45,7 +45,7 @@
     self.middleTitleLabel.text = @"DATE:";
     self.middleValueLabel.text = [latest.date shortStyleDate];
     self.middleValueLabel.adjustsFontSizeToFitWidth = YES;
-    self.rightValueLabel.text = [NSString stringWithFormat:@"%0.1f-%0.1f", [self normalLow], [self normalHigh]];
+    self.rightValueLabel.text = [NSString stringWithFormat:@"%0.0f-%0.0f", [self normalLow], [self normalHigh]];
     self.rightValueLabel.adjustsFontSizeToFitWidth = YES;
     
     // sparkline    
@@ -100,11 +100,11 @@
 }
 
 - (double)normalLow {
-    return 18.5;
+    return 18.0;
 }
 
 - (double)normalHigh {
-    return 22.9;
+    return 25.0;
 }
 
 - (BOOL)isValueNormal:(double)value {
