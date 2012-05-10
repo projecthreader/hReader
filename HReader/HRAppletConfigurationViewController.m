@@ -145,11 +145,11 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
-    if (proposedDestinationIndexPath.section > 0) {
-        return [NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] inSection:0];
+    if (proposedDestinationIndexPath.section == 0) {
+        return proposedDestinationIndexPath;
     }
     else {
-        return proposedDestinationIndexPath;
+        return [NSIndexPath indexPathForRow:([tableView numberOfRowsInSection:0] - 1) inSection:0];
     }
 }
 
@@ -162,10 +162,6 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
     [[NSNotificationCenter defaultCenter]
      postNotificationName:HRAppletConfigurationDidChangeNotification
      object:self];
-}
-
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
 }
 
 @end
