@@ -18,6 +18,7 @@
 
 NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
 static NSString * const HRPatientOrderArrayKey = @"HRPatientOrderArray";
+static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
 
 @interface HRPeoplePickerViewController () {
 @private
@@ -29,6 +30,8 @@ static NSString * const HRPatientOrderArrayKey = @"HRPatientOrderArray";
 }
 
 - (void)updateTableViewSelection;
+- (void)persistSelectedPatientIndex;
+- (void)persistPatientOrder;
 
 @end
 
@@ -47,6 +50,7 @@ static NSString * const HRPatientOrderArrayKey = @"HRPatientOrderArray";
     selectedPatientIndex++;
     if (selectedPatientIndex == [patients count]) { selectedPatientIndex = 0; }
     [self updateTableViewSelection];
+    [self persistSelectedPatientIndex];
     [[NSNotificationCenter defaultCenter]
      postNotificationName:HRPatientDidChangeNotification
      object:self];
@@ -56,6 +60,7 @@ static NSString * const HRPatientOrderArrayKey = @"HRPatientOrderArray";
     if (selectedPatientIndex == 0) { selectedPatientIndex = [patients count] - 1; }
     else { selectedPatientIndex--; }
     [self updateTableViewSelection];
+    [self persistSelectedPatientIndex];
     [[NSNotificationCenter defaultCenter]
      postNotificationName:HRPatientDidChangeNotification
      object:self];
@@ -66,9 +71,6 @@ static NSString * const HRPatientOrderArrayKey = @"HRPatientOrderArray";
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (self) {
-        
-        // clear selected patient
-        selectedPatientIndex = 0;
         
         // create context
         context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
@@ -96,6 +98,10 @@ static NSString * const HRPatientOrderArrayKey = @"HRPatientOrderArray";
             [self persistPatientOrder];
         }
         
+        // selected index
+        selectedPatientIndex = [[NSUserDefaults standardUserDefaults] integerForKey:HRSelectedPatientIndexKey];
+        if (selectedPatientIndex >= [patients count]) { selectedPatientIndex = 0; }
+        
         // notifications
         [[NSNotificationCenter defaultCenter]
          addObserver:self
@@ -107,7 +113,8 @@ static NSString * const HRPatientOrderArrayKey = @"HRPatientOrderArray";
     return self;
 }
 
-- (void)managedObjectDidSave:(NSNotification *)notif {   
+- (void)managedObjectDidSave:(NSNotification *)notification {
+    
 }
 
 - (void)updateTableViewSelection {
@@ -115,13 +122,24 @@ static NSString * const HRPatientOrderArrayKey = @"HRPatientOrderArray";
     [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
 }
 
+- (void)persistSelectedPatientIndex {
+    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+    [settings setInteger:selectedPatientIndex forKey:HRSelectedPatientIndexKey];
+    [settings synchronize];
+}
+
+- (void)persistPatientOrder {
+    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+    NSArray *objectIDStrings = [patients valueForKey:@"mongoID"];
+    [settings setObject:objectIDStrings forKey:HRPatientOrderArrayKey];
+    [settings synchronize];
+}
+
 #pragma mark - view lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.tableView setEditing:YES];
-    
+    self.tableView.editing = YES;
     [self.tableView reloadData];
     [self updateTableViewSelection];
 }
@@ -158,12 +176,7 @@ static NSString * const HRPatientOrderArrayKey = @"HRPatientOrderArray";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (tableView == self.tableView) {
-        return [patients count];
-    }
-    else {
-        return [searchResults count];
-    }
+    return (tableView == self.tableView) ? [patients count] : [searchResults count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -171,9 +184,6 @@ static NSString * const HRPatientOrderArrayKey = @"HRPatientOrderArray";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-//        cell.imageView.layer.shadowColor = [[UIColor blackColor] CGColor];
-//        cell.imageView.layer.shadowRadius = 5.0;
-//        cell.imageView.layer.shadowOpacity = 0.5;
         cell.imageView.layer.cornerRadius = 5.0;
         cell.imageView.layer.masksToBounds = YES;
     }
@@ -224,13 +234,11 @@ static NSString * const HRPatientOrderArrayKey = @"HRPatientOrderArray";
     id object = [patients objectAtIndex:fromIndexPath.row];
     [patients removeObjectAtIndex:fromIndexPath.row];
     [patients insertObject:object atIndex:toIndexPath.row];
+    if (selectedPatientIndex == fromIndexPath.row) {
+        selectedPatientIndex = toIndexPath.row;
+        [self persistSelectedPatientIndex];
+    }
     [self persistPatientOrder];
-}
-
-- (void)persistPatientOrder {
-    NSArray *objectIDStrings = [patients valueForKey:@"mongoID"];
-    [[NSUserDefaults standardUserDefaults] setObject:objectIDStrings forKey:HRPatientOrderArrayKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end
