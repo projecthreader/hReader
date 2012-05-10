@@ -554,13 +554,13 @@
 - (void)patientImageViewTap:(UITapGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateRecognized) {
         HRPeoplePickerViewController *picker = (id)self.panelViewController.leftAccessoryViewController;
-        UIView *view = gesture.view;
-        if ([gesture locationInView:view].x < CGRectGetMidX(view.bounds)) {
-            [picker selectPreviousPatient];
-        }
-        else {
+//        UIView *view = gesture.view;
+//        if ([gesture locationInView:view].x < CGRectGetMidX(view.bounds)) {
+//            [picker selectPreviousPatient];
+//        }
+//        else {
             [picker selectNextPatient];
-        }
+//        }
     }
 }
 
