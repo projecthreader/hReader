@@ -22,7 +22,7 @@
  
  
  */
-+ (instancetype)tileWithPatient:(HRMPatient *)patient userInfo:(NSDictionary *)userInfo;
++ (id)tileWithPatient:(HRMPatient *)patient userInfo:(NSDictionary *)userInfo;
 
 /*
  

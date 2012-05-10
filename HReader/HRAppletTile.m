@@ -23,7 +23,7 @@
 
 #pragma mark - class methods
 
-+ (instancetype)tileWithPatient:(HRMPatient *)patient userInfo:(NSDictionary *)userInfo {
++ (id)tileWithPatient:(HRMPatient *)patient userInfo:(NSDictionary *)userInfo {
     HRAppletTile *tile = nil;
     
     // load the tile

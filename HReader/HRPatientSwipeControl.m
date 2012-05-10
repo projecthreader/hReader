@@ -28,7 +28,7 @@
 
 #pragma mark - class methods
 
-+ (instancetype)controlWithOwner:(id)owner options:(NSDictionary *)options target:(id)target action:(SEL)action {
++ (id)controlWithOwner:(id)owner options:(NSDictionary *)options target:(id)target action:(SEL)action {
     UINib *nib = [UINib nibWithNibName:NSStringFromClass(self) bundle:nil];
     NSArray *array = [nib instantiateWithOwner:owner options:options];
     NSAssert([array count] == 1, @"There should only be one top level object");

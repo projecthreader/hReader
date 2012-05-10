@@ -18,7 +18,7 @@
 @property (nonatomic, copy, readonly) NSArray *patients;
 
 // factory method to create a swipe control
-+ (instancetype)controlWithOwner:(id)owner options:(NSDictionary *)options target:(id)target action:(SEL)action;
++ (id)controlWithOwner:(id)owner options:(NSDictionary *)options target:(id)target action:(SEL)action;
 
 // set selected with optional animation
 - (void)setPage:(NSInteger)page animated:(BOOL)animated;
