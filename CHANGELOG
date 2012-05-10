@@ -1,3 +1,8 @@
+# 2012-4-10
+
+- Make sure that the patient picker table view allows selection while in reorder mode
+- Save which patient is selected and restore it on launch
+
 # 2012-4-9
 
 - Changed BMI normal range for adults to 18-25
