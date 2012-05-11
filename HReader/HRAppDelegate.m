@@ -111,6 +111,7 @@
     // test flight
 #if !TARGET_IPHONE_SIMULATOR
     [TestFlight takeOff:[HRConfig testFlightTeamToken]];
+    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
 #endif
     
 #if DEBUG

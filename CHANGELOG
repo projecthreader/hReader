@@ -1,6 +1,8 @@
 # 2012-4-11
 
 - Updated default applets
+- Added some backwards compat changes to compile on Snow Leopard
+- Upgraded TestFlight SDK to v1.0
 
 # 2012-4-10
 
