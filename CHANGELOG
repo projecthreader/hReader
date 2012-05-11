@@ -1,5 +1,10 @@
 # 2012-4-10
 
+- disable different tap regions of patient image
+- resolve crash where dragging installed applet to available applets would cause a crash
+
+# 2012-4-10
+
 - Make sure that the patient picker table view allows selection while in reorder mode
 - Save which patient is selected and restore it on launch
 

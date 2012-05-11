@@ -24,7 +24,13 @@
     CGFloat y_delta;
 }
 
+- (void)commonInit;
+
+- (CGPoint)screenPointWithX:(CGFloat)x Y:(CGFloat)y;
+
 - (CGPoint)screenPointWithDataPoint:(HRSparkLinePoint *)point;
+
+- (void)updateVisibleRange;
 
 @end
 
@@ -76,10 +82,10 @@
 }
 
 - (CGPoint)screenPointWithDataPoint:(HRSparkLinePoint *)point {
-    return [self screenPointWithX:point.x y:point.y];
+    return [self screenPointWithX:point.x Y:point.y];
 }
 
-- (CGPoint)screenPointWithX:(CGFloat)x y:(CGFloat)y {
+- (CGPoint)screenPointWithX:(CGFloat)x Y:(CGFloat)y {
     CGFloat x_percent = (x - x_min) / (x_max - x_min);
     CGFloat y_percent = 1 - (y - y_min) / (y_max - y_min);
     CGSize size = self.bounds.size;
@@ -90,7 +96,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    [self determineVisibleRange];
+    [self updateVisibleRange];
     
     // get drawing resources
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -98,8 +104,8 @@
     // draw all effective ranges
     [self.lines enumerateObjectsUsingBlock:^(HRSparkLineLine *line, NSUInteger lineIndex, BOOL *stop) {
         if (!HRIsZeroRange(line.range)) {
-            CGPoint leftRangePoint = [self screenPointWithX:0 y:HRMaxRange(line.range)];
-            CGPoint rightRangePoint = [self screenPointWithX:0 y:line.range.location];
+            CGPoint leftRangePoint = [self screenPointWithX:0 Y:HRMaxRange(line.range)];
+            CGPoint rightRangePoint = [self screenPointWithX:0 Y:line.range.location];
             CGContextSetFillColorWithColor(context, [line.rangeColor CGColor]);
             CGContextFillRect(context, CGRectMake(0, leftRangePoint.y, self.bounds.size.width, rightRangePoint.y - leftRangePoint.y));
         }
@@ -168,7 +174,7 @@
     
 }
 
-- (void)determineVisibleRange {
+- (void)updateVisibleRange {
     
     // set min and max
     x_min = y_min = CGFLOAT_MAX;

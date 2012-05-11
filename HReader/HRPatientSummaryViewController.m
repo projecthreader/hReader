@@ -469,7 +469,7 @@
 
 #pragma mark - grid view delegate
 
-- (NSInteger)numberOfViewsInGridView:(HRGridTableView *)gridView {
+- (NSUInteger)numberOfViewsInGridView:(HRGridTableView *)gridView {
     return [__gridViews count];
 }
 

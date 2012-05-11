@@ -16,6 +16,7 @@
 
 @interface HRPatientSwipeControl ()
 @property (nonatomic, copy, readwrite) NSArray *patients;
+@property (nonatomic, assign) NSInteger page;
 - (void)postChangeNotification;
 - (void)patientChanged:(NSNotification *)notif;
 @end

@@ -14,6 +14,8 @@
     NSInteger __numberOfViews;
 }
 
+- (void)didReceiveTap:(UITapGestureRecognizer *)gesture;
+
 @end
 
 @implementation HRGridTableView
@@ -27,8 +29,8 @@
 
 - (void)commonInit {
     __numberOfColumns = 3;
-    UIGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveTap:)];
-    [self addGestureRecognizer:tapGesture];
+    UIGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveTap:)];
+    [self addGestureRecognizer:gesture];
     self.delegate = self;
     self.dataSource = self;
     self.horizontalPadding = 30.0;
@@ -82,11 +84,11 @@
 
 #pragma mark - gestures
 
-- (void)didReceiveTap:(UIGestureRecognizer *)tapGesture {
-    if (tapGesture.state == UIGestureRecognizerStateRecognized) {
+- (void)didReceiveTap:(UITapGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateRecognized) {
         
         // get table view values
-        CGPoint tableViewPoint = [tapGesture locationInView:tapGesture.view];
+        CGPoint tableViewPoint = [gesture locationInView:gesture.view];
         NSIndexPath *indexPath = [self indexPathForRowAtPoint:tableViewPoint];
         
         // get column values

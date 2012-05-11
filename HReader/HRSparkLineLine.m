@@ -25,7 +25,7 @@
 
 #pragma mark - class methods
 
-+ (HRSparkLineLine *)lineWithPoints:(HRSparkLinePoint *)point, ... NS_REQUIRES_NIL_TERMINATION {
++ (HRSparkLineLine *)lineWithPoints:(HRSparkLinePoint *)point, ... {
     NSMutableArray *array = [NSMutableArray array];
     if (point) {
         [array addObject:point];

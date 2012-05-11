@@ -18,7 +18,9 @@
 #import "HRPeoplePickerViewController.h"
 
 @interface HRMessagesViewController ()
+- (void)reloadData;
 - (void)setHeaderViewShadow;
+- (void)patientDidChange:(NSNotification *)notification;
 @end
 
 @implementation HRMessagesViewController

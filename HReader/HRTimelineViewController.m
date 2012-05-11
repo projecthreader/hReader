@@ -17,7 +17,6 @@
 
 @interface HRTimelineViewController ()
 - (void)reloadData;
-- (void)reloadDataAnimated;
 @end
 
 @implementation HRTimelineViewController
@@ -67,14 +66,6 @@
     layer.shadowRadius = 5.0;
     layer.shouldRasterize = YES;
     layer.rasterizationScale = [[UIScreen mainScreen] scale];
-
-    // load patient swipe
-//    HRPatientSwipeControl *swipe = [HRPatientSwipeControl
-//                                    controlWithOwner:self
-//                                    options:nil 
-//                                    target:self
-//                                    action:@selector(patientChanged:)];
-//    [self.headerView addSubview:swipe];
     
     self.headerView.backgroundColor = [UIColor clearColor];    
     
@@ -116,23 +107,10 @@
 #pragma mark - NSNotificationCenter
 
 - (void)patientDidChange:(NSNotification *)sender {
-    [self reloadDataAnimated];
-}
-
-- (void)reloadDataAnimated {
-    [UIView animateWithDuration:0.4 animations:^{
-        self.nameLabel.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [self reloadData];
-        
-        [UIView animateWithDuration:0.4 animations:^{
-            self.nameLabel.alpha = 1.0;
-        }];
-    }];   
+    [self reloadData];
 }
 
 - (void)reloadData {
-    
 
     // vars
     NSURL *URL;

@@ -26,7 +26,7 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
     NSMutableArray * __strong patients;
     NSArray * __strong searchResults;
     NSArray * __strong sortDescriptors;
-    NSUInteger selectedPatientIndex;
+    NSInteger selectedPatientIndex;
 }
 
 - (void)updateTableViewSelection;
@@ -48,7 +48,7 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
 
 - (void)selectNextPatient {
     selectedPatientIndex++;
-    if (selectedPatientIndex == [patients count]) { selectedPatientIndex = 0; }
+    if (selectedPatientIndex == (NSInteger)[patients count]) { selectedPatientIndex = 0; }
     [self updateTableViewSelection];
     [self persistSelectedPatientIndex];
     [[NSNotificationCenter defaultCenter]
@@ -100,7 +100,7 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
         
         // selected index
         selectedPatientIndex = [[NSUserDefaults standardUserDefaults] integerForKey:HRSelectedPatientIndexKey];
-        if (selectedPatientIndex >= [patients count]) { selectedPatientIndex = 0; }
+        if (selectedPatientIndex >= (NSInteger)[patients count]) { selectedPatientIndex = 0; }
         
         // notifications
         [[NSNotificationCenter defaultCenter]

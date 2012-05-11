@@ -133,7 +133,6 @@
 		940D3D4114E0706C00FE41E6 /* HRWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D4014E0706C00FE41E6 /* HRWeight.m */; };
 		940D3D4414E077A500FE41E6 /* HRBloodPressure.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D4314E077A500FE41E6 /* HRBloodPressure.m */; };
 		940D3D4A14E07CEA00FE41E6 /* HRCholesterol.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D4914E07CEA00FE41E6 /* HRCholesterol.m */; };
-		9413C74614EC08AA00BFA521 /* HRPatientSwipeControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9413C74514EC08AA00BFA521 /* HRPatientSwipeControl.m */; };
 		9413C74914EC0B7800BFA521 /* HRPatientSwipeControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9413C74814EC0B7800BFA521 /* HRPatientSwipeControl.xib */; };
 		9415151F14A0E8FA009FF674 /* HRMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9415151E14A0E8FA009FF674 /* HRMessage.m */; };
 		9415152314AA3A7B009FF674 /* fail.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152114AA3A7B009FF674 /* fail.png */; };
@@ -175,7 +174,6 @@
 		94689AC414964BE400E1FCA6 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 94689AC014964BE400E1FCA6 /* README.txt */; };
 		94689AC514964BE400E1FCA6 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 94689AC114964BE400E1FCA6 /* release_notes.txt */; };
 		94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94689ACA1496560C00E1FCA6 /* HRAboutTableViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		94689AD714967E3600E1FCA6 /* HRC32ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94689AD514967E3600E1FCA6 /* HRC32ViewController.m */; };
 		947EF75B14D058E000A2AF97 /* HRMedication.m in Sources */ = {isa = PBXBuildFile; fileRef = 947EF75A14D058E000A2AF97 /* HRMedication.m */; };
 		947EF75E14D059AF00A2AF97 /* HRCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 947EF75D14D059AF00A2AF97 /* HRCondition.m */; };
 		947FCE4614B4C18600C716FD /* chevron-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE4514B4C18600C716FD /* chevron-left.png */; };
@@ -217,6 +215,7 @@
 		94F4CB611507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F4CB601507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m */; };
 		94F4CB651507E87E00EFEA43 /* PINCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F4CB641507E87E00EFEA43 /* PINCodeTextField.m */; };
 		94F871F41535D9F60018AF13 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F871F31535D9F60018AF13 /* libz.dylib */; };
+		C3390523155D536B00E77EBF /* HReaderConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */; };
 		DD124DAE148D3EF300E23A44 /* Doctor.png in Resources */ = {isa = PBXBuildFile; fileRef = DD124DAD148D3EF300E23A44 /* Doctor.png */; };
 		DD5597C114897DE2006A0D1D /* HRDoctorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5597BF14897DE2006A0D1D /* HRDoctorsViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DD5597C214897DE2006A0D1D /* HRDoctorsViewController_old.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5597C014897DE2006A0D1D /* HRDoctorsViewController_old.xib */; };
@@ -514,6 +513,7 @@
 		94F4CB631507E87E00EFEA43 /* PINCodeTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINCodeTextField.h; sourceTree = "<group>"; };
 		94F4CB641507E87E00EFEA43 /* PINCodeTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINCodeTextField.m; sourceTree = "<group>"; };
 		94F871F31535D9F60018AF13 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HReaderConfig.xcconfig; sourceTree = "<group>"; };
 		DD124DAD148D3EF300E23A44 /* Doctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Doctor.png; sourceTree = "<group>"; };
 		DD5597BE14897DE2006A0D1D /* HRDoctorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRDoctorsViewController.h; sourceTree = "<group>"; };
 		DD5597BF14897DE2006A0D1D /* HRDoctorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRDoctorsViewController.m; sourceTree = "<group>"; };
@@ -718,6 +718,7 @@
 		941DB09D1471B32D00A96B8B = {
 			isa = PBXGroup;
 			children = (
+				C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */,
 				94689ABC14964BBF00E1FCA6 /* Vendor */,
 				94026FB314B4A8A600F40185 /* timeline */,
 				941DB0B21471B32D00A96B8B /* HReader */,
@@ -1356,6 +1357,7 @@
 				3B74E5DB155482E700593ECF /* ts-condition-full.png in Resources */,
 				3B74E5DC155482E700593ECF /* ts-events-full.png in Resources */,
 				3B74E5DE1554854000593ECF /* ns-synthetic.json in Resources */,
+				C3390523155D536B00E77EBF /* HReaderConfig.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1391,7 +1393,6 @@
 				DD695D8514897C2200E4E2E1 /* HRMessagesViewController.m in Sources */,
 				DD5597C114897DE2006A0D1D /* HRDoctorsViewController.m in Sources */,
 				94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */,
-				94689AD714967E3600E1FCA6 /* HRC32ViewController.m in Sources */,
 				94BB031E14969675009B2FCC /* HRAddress.m in Sources */,
 				94BB0326149BAF25009B2FCC /* HRPasscodeManager.m in Sources */,
 				94BB032C149BB393009B2FCC /* HRPasscodeWarningViewController.m in Sources */,
@@ -1420,7 +1421,6 @@
 				9467077614E318ED00ACEA67 /* HRHeight.m in Sources */,
 				9467077914E31A6200ACEA67 /* HRBMI.m in Sources */,
 				9467077C14E31CD400ACEA67 /* HRGlucose.m in Sources */,
-				9413C74614EC08AA00BFA521 /* HRPatientSwipeControl.m in Sources */,
 				3B3C919514F69F61005CD5C5 /* NSDate+FormattedDate.m in Sources */,
 				9452D7F714FC16DF00021E69 /* HRProviderView.m in Sources */,
 				94EBD55114FE7A6200A3AF66 /* ASBSparkLineView.m in Sources */,
@@ -1488,6 +1488,7 @@
 /* Begin XCBuildConfiguration section */
 		941DB0CA1471B32D00A96B8B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
@@ -1512,6 +1513,7 @@
 		};
 		941DB0CB1471B32D00A96B8B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
@@ -1576,6 +1578,7 @@
 		};
 		94231792147AFE2500268377 /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";

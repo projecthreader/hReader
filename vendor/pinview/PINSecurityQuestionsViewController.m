@@ -14,6 +14,8 @@
     NSMutableDictionary *data;
 }
 
+- (void)updateDoneButtonEnabledState;
+
 @end
 
 @implementation PINSecurityQuestionsViewController
