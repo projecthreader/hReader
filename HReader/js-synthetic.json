@@ -5,8 +5,8 @@
     "org.mitre.hreader.encounters",
     "org.mitre.hreader.medications",
     "org.mitre.hreader.immunizations",
-              "org.mitre.hreader.placeholder.lymedisease",
-              "org.mitre.hreader.placeholder.pophealth"
+    "org.mitre.hreader.placeholder.pophealth",
+    "org.mitre.hreader.placeholder.lymedisease"
   ],
     
     "allergies": [
