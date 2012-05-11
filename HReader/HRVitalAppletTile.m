@@ -33,53 +33,7 @@
 - (void)tileDidLoad {
     [super tileDidLoad];
     self.sparkLineView.backgroundColor = [UIColor whiteColor];
-//    self.resultLabel.adjustsFontSizeToFitWidth = YES;
-//    self.normalLabel.adjustsFontSizeToFitWidth = YES;
-//    self.dateLabel.adjustsFontSizeToFitWidth = YES;
 }
-
-//- (void)setVital:(HRVital *)vital {
-//    
-//    // save
-//    __vital = vital;
-//    
-//    // set labels
-//    self.nameLabel.text = [vital.title uppercaseString];
-//    self.leftLabel.text = [vital.leftTitle uppercaseString];
-//    self.rightLabel.text = [vital.rightTitle uppercaseString];
-//    self.resultLabel.text = vital.leftValue;
-//    self.dateLabel.text = [vital.date shortStyleDate];
-//    self.unitsLabel.text = vital.leftUnit;
-//    self.normalLabel.text = vital.rightValue;
-//    
-//    // sparklines
-//    self.sparkLineView.labelText = @"";
-//    self.sparkLineView.showCurrentValue = NO;
-//    self.sparkLineView.penWidth = 6.0;
-//    self.sparkLineView.showRangeOverlay = YES;
-//    self.sparkLineView.rangeOverlayLowerLimit = [NSNumber numberWithDouble:vital.normalLow];
-//    self.sparkLineView.rangeOverlayUpperLimit = [NSNumber numberWithDouble:vital.normalHigh];
-//    self.sparkLineView.rangeOverlayColor = [UIColor colorWithWhite:0.9 alpha:1.0];
-//    NSArray *scalarStrings = [vital.entries valueForKeyPath:@"value.scalar"];
-//    NSArray *scalars = [scalarStrings collect:^(id object, NSUInteger idx) {
-//        if ([object isKindOfClass:[NSString class]]) {
-//            float value = [object floatValue];
-//            return [NSNumber numberWithDouble:value];
-//        }
-//        else {
-//            return [NSNumber numberWithDouble:0.0];
-//        }
-//    }];
-//    self.sparkLineView.dataValues = scalars;
-//    
-//    // display normal value
-//    if (vital.isNormal) {
-//        self.resultLabel.textColor = [UIColor blackColor];
-//    } else {
-//        self.resultLabel.textColor = [HRConfig redColor];
-//    }
-//    
-//}
 
 - (NSArray *)dataForKeyValueTable {
     return nil;
@@ -97,7 +51,7 @@
 
 - (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect {
     UITableViewController *controller = [[HRKeyValueTableViewController alloc] initWithDataPoints:[self dataForKeyValueTable]];
-    controller.title = [self.titleLabel.text capitalizedString];
+    controller.title = [self titleForKeyValueTable];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
     if (popoverController == nil) {
         popoverController = [[UIPopoverController alloc] initWithContentViewController:navController];
