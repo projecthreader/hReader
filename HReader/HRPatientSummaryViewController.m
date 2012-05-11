@@ -118,7 +118,7 @@
         
         // date of birth
         self.patientNameLabel.text = [[patient compositeName] uppercaseString];
-        if ([self.dateOfBirthTitleLabel.text isEqualToString:@"DOB"]) {
+        if ([self.dateOfBirthTitleLabel.text isEqualToString:@"DOB:"]) {
             self.dateOfBirthLabel.text = [patient.dateOfBirth mediumStyleDate];
         }
         else {
@@ -150,43 +150,43 @@
         // conditions
         {
             NSArray *conditions = [patient conditions];
+            NSArray *nameLabels = [self.conditionNameLabels sortedArrayUsingKey:@"tag" ascending:YES];
+            NSArray *dateLabels = [self.conditionDateLabels sortedArrayUsingKey:@"tag" ascending:YES];
             NSUInteger conditionsCount = [conditions count];
-            [[self.conditionNameLabels sortedArrayUsingKey:@"tag" ascending:YES] enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger index, BOOL *stop) {
-                if (index < conditionsCount) {
+            NSUInteger labelCount = [nameLabels count];
+            BOOL showCountLabel = (conditionsCount > labelCount);
+            NSAssert(labelCount == [dateLabels count], @"There must be an equal number of name and date labels");
+            [nameLabels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger index, BOOL *stop) {
+                
+                // this is the last label and we should show count
+                if (index == labelCount - 1 && showCountLabel) {
+                    label.text = [NSString stringWithFormat:@"%lu more…", conditionsCount - labelCount + 1];
+                }
+                
+                // normal condition label
+                else if (index < conditionsCount) {
                     HRMEntry *condition = [conditions objectAtIndex:index];
                     label.text = [condition.desc sentenceCapitalizedString];
                 }
+                
+                // no conditions
                 else if (index == 0) { label.text = @"None"; }
+                
+                // clear the label
                 else { label.text = nil; }
+                
             }];
-            [[self.conditionDateLabels sortedArrayUsingKey:@"tag" ascending:YES] enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger index, BOOL *stop) {
-                if (index < conditionsCount) {
+            [dateLabels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger index, BOOL *stop) {
+                if (index == labelCount - 1 && showCountLabel) {
+                    label.text = nil;
+                }
+                else if (index < conditionsCount) {
                     HRMEntry *condition = [conditions objectAtIndex:index];
                     label.text = [condition.startDate mediumStyleDate];
                 }
                 else { label.text = nil; }
             }];
         }
-//        {
-//            NSArray *conditions = [syntheticInfo objectForKey:@"chronic_conditions"];
-//            NSUInteger count = [conditions count];
-//            if (count) {
-//                self.chronicConditionsLabel.text = [conditions componentsJoinedByString:@", "];
-//            }
-//            else { self.chronicConditionsLabel.text = @"None"; }
-//        }
-//        {
-//            NSArray *conditions = patient.conditions;
-//            if ([conditions count]) {
-//                HRMEntry *condition = [conditions lastObject];
-//                self.recentConditionsDateLabel.text = [condition.startDate mediumStyleDate];
-//                self.recentConditionsLabel.text = condition.desc;
-//            }
-//            else {
-//                self.recentConditionsDateLabel.text = @"None";
-//                self.recentConditionsLabel.text = nil;
-//            }
-//        }
         
         // events
         {
@@ -237,27 +237,6 @@
          */
         
 
-
-        /*
-         {
-         NSArray *conditions = [syntheticInfo objectForKey:@"chronic_conditions"];
-         NSUInteger count = [conditions count];
-         if (count) {
-         NSMutableString *string = [[conditions objectAtIndex:0] mutableCopy];
-         if (count > 1) {
-         [string appendFormat:@", %lu more", (unsigned long)(count - 1)];
-         }
-         if ([string length] > 0) {
-         self.chronicConditionsLabel.text = string;
-         }
-         else {
-         self.chronicConditionsLabel.text = @"None";
-         }
-         }
-         else { self.chronicConditionsLabel.text = @"None"; }
-         }
-         */
-
         
         // grid view
         {
@@ -273,28 +252,8 @@
                 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier like %@", identifier];
                 NSDictionary *dictionary = [[applets filteredArrayUsingPredicate:predicate] lastObject];
                 if (dictionary) {
-                    
-                    // vitals
-                    
-//                    if ([identifier isEqualToString:@"org.mitre.hreader.vitals"]) {
-//                        NSLog(@"%@", [patient vitalSignsGroupedByDescription]);
-//                        NSDictionary *vitals = [patient vitalSignsGroupedByDescription];
-//                        [vitals enumerateKeysAndObjectsUsingBlock:^(NSString *type, NSArray *entries, BOOL *stop) {
-//                            HRVitalAppletTile *view = [HRVitalAppletTile tileWithPatient:patient userInfo:dictionary];
-//                            if ([type isEqualToString:@"BMI"]) {
-//                                view.vital = [[HRBMI alloc] initWithEntries:entries];
-//                            }
-//                            else  {
-//                                view.vital = [[HRVital alloc] initWithEntries:entries];
-//                            }
-//                            [views addObject:view];
-//                        }];
-//                    } else {
-                        // others
-                        Class c = NSClassFromString([dictionary objectForKey:@"class_name"]);
-                        [views addObject:[c tileWithPatient:patient userInfo:dictionary]];
-//                    }
-                    
+                    Class c = NSClassFromString([dictionary objectForKey:@"class_name"]);
+                    [views addObject:[c tileWithPatient:patient userInfo:dictionary]];
                 }
                 else { NSLog(@"Unable to find applet with identifier %@", identifier); }
             }];
@@ -507,11 +466,11 @@
 
 - (void)toggleDateOfBirth:(UITapGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateRecognized) {
-        if ([self.dateOfBirthTitleLabel.text isEqualToString:@"DOB"]) {
-            self.dateOfBirthTitleLabel.text = @"AGE";
+        if ([self.dateOfBirthTitleLabel.text isEqualToString:@"DOB:"]) {
+            self.dateOfBirthTitleLabel.text = @"AGE:";
         }
         else {
-            self.dateOfBirthTitleLabel.text = @"DOB";
+            self.dateOfBirthTitleLabel.text = @"DOB:";
         }
         [self reloadData];
     }
