@@ -36,17 +36,11 @@
     HRMEntry *latest = [__entries lastObject];
     
     // set labels
-    self.titleLabel.text = @"BMI";
-    self.leftTitleLabel.text = @"RECENT RESULT:";
     float latestValue = [[latest valueForKeyPath:@"value.scalar"] floatValue];
     self.leftValueLabel.text = [NSString stringWithFormat:@"%0.1f", latestValue];
-    self.leftValueLabel.adjustsFontSizeToFitWidth = YES;
     self.leftValueLabel.textColor = ([self isValueNormal:latestValue]) ? [UIColor blackColor] : [HRConfig redColor];
-    self.middleTitleLabel.text = @"DATE:";
     self.middleValueLabel.text = [latest.date shortStyleDate];
-    self.middleValueLabel.adjustsFontSizeToFitWidth = YES;
     self.rightValueLabel.text = [NSString stringWithFormat:@"%0.0f-%0.0f", [self normalLow], [self normalHigh]];
-    self.rightValueLabel.adjustsFontSizeToFitWidth = YES;
     
     // sparkline    
     HRSparkLineRange range = HRMakeRange([self normalLow], [self normalHigh] - [self normalLow]);
