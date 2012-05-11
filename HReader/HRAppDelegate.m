@@ -74,7 +74,7 @@
 #pragma mark - object methods
 
 - (void)presentPasscodeVerifyController {
-#if !defined(DEBUG)// || 1
+#if !DEBUG// || 1
     passcodeAttempts = 0;
     if ([HRKeychainManager isPasscodeSet]) {
         
@@ -115,7 +115,7 @@
     
 #if DEBUG
     @try {
-        objc_msgSend(NSClassFromString(@"WebView"), @selector(_enableRemoteInspector));
+        objc_msgSend(NSClassFromString(@"WebView"), NSSelectorFromString(@"_enableRemoteInspector"));
     }
     @catch (NSException *exception) {
         NSLog(@"Could not turn on remote web inspector\n%@", exception);
@@ -164,6 +164,7 @@
     panel.leftAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"PeoplePickerViewController"];
     [self.window makeKeyAndVisible];
     
+# if !DEBUG
     if ([HRKeychainManager isPasscodeSet]) {
         [self presentPasscodeVerifyController];
     }
@@ -194,6 +195,7 @@
         [alert show];
         
     }
+#endif
     
     // return
     return YES;
