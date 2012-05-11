@@ -1,11 +1,17 @@
 {
   "applets": [
-    "org.mitre.hreader.bloodpressure",
     "org.mitre.hreader.bmi",
-    "org.mitre.hreader.encounters",
+    "org.mitre.hreader.bloodpressure",
+    "org.mitre.hreader.vital_sign.respiratory_rate",
+    "org.mitre.hreader.vital_sign.oxygen_saturation",
     "org.mitre.hreader.medications",
     "org.mitre.hreader.immunizations",
-    "org.mitre.hreader.placeholder.withings"
+    "org.mitre.hreader.encounters",
+    "org.mitre.hreader.placeholder.withings",
+    "org.mitre.hreader.functionalstatus",
+    "org.mitre.hreader.placeholder.fitbit",
+    "org.mitre.hreader.placeholder.nikeplus",
+    "org.mitre.hreader.placeholder.wakemate"
   ],
     "immunizations": true,
     "chronic_conditions": [

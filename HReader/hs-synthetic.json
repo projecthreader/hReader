@@ -2,9 +2,12 @@
   "applets": [
     "org.mitre.hreader.bmi",
     "org.mitre.hreader.bloodpressure",
+    "org.mitre.hreader.vital_sign.respiratory_rate",
+    "org.mitre.hreader.vital_sign.oxygen_saturation",
     "org.mitre.hreader.encounters",
     "org.mitre.hreader.medications",
-    "org.mitre.hreader.immunizations"
+    "org.mitre.hreader.immunizations",
+    "org.mitre.hreader.placeholder.glaucoma"
   ],
     "immunizations": true,
     "chronic_conditions": [
