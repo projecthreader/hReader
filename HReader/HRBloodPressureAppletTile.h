@@ -6,15 +6,8 @@
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
-#import "HRAppletTile.h"
+#import "HRVitalAppletTile.h"
 
-@class HRSparkLineView;
-
-@interface HRBloodPressureAppletTile : HRAppletTile
-
-@property (retain, nonatomic) IBOutlet UILabel *resultLabel;
-@property (retain, nonatomic) IBOutlet UILabel *dateLabel;
-@property (retain, nonatomic) IBOutlet UILabel *normalLabel;
-@property (retain, nonatomic) IBOutlet HRSparkLineView *sparkLineView;
+@interface HRBloodPressureAppletTile : HRVitalAppletTile
 
 @end
