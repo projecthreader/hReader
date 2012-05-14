@@ -54,12 +54,33 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        self.title = @"Timeline";
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(patientDidChange:)
+         name:HRPatientDidChangeNotification
+         object:nil];
+    }
+    return self;
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CALayer *layer = self.patientImageView.layer;
+//    CALayer *layer = self.patientImageView.layer;
+//    layer.shadowColor = [[UIColor blackColor] CGColor];
+//    layer.shadowOpacity = 0.35;
+//    layer.shadowOffset = CGSizeMake(0.0, 1.0);
+//    layer.shadowRadius = 5.0;
+//    layer.shouldRasterize = YES;
+//    layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    
+    CALayer *layer = self.patientImageView.superview.layer;
     layer.shadowColor = [[UIColor blackColor] CGColor];
     layer.shadowOpacity = 0.35;
     layer.shadowOffset = CGSizeMake(0.0, 1.0);
@@ -67,7 +88,7 @@
     layer.shouldRasterize = YES;
     layer.rasterizationScale = [[UIScreen mainScreen] scale];
     
-    self.headerView.backgroundColor = [UIColor clearColor];    
+//    self.headerView.backgroundColor = [UIColor clearColor];    
     
     // swipe gesture
     {
