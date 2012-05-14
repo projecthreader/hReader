@@ -39,3 +39,4 @@ extern NSString * const HRPatientKey;
 + (NSDate *)dateForString:(NSString *)birthday;
 
 @end
+
