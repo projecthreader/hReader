@@ -10,6 +10,7 @@
 
 @interface HRImmunizationsAppletTile : HRAppletTile
 
-@property (retain, nonatomic) IBOutlet UILabel *upToDateLabel;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *immunizationLabels;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *dateLabels;
 
 @end

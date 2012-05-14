@@ -37,11 +37,11 @@ typedef enum {
 @property (nonatomic, readonly) NSArray *conditions;
 @property (nonatomic, readonly) NSArray *encounters;
 @property (nonatomic, readonly) NSArray *medications;
+@property (nonatomic, readonly) NSArray *immunizations;
 
 #pragma mark - other properties
 
 @property (nonatomic, retain) NSArray *allergies;
-@property (nonatomic, retain) NSArray *immunizations;
 @property (nonatomic, retain) NSArray *procedures;
 @property (nonatomic, retain) NSArray *results;
 @property (nonatomic, retain) NSMutableArray *applets;

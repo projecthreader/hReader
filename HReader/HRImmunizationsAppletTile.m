@@ -7,21 +7,56 @@
 //
 
 #import "HRImmunizationsAppletTile.h"
+#import "HRMEntry.h"
+
+#import "NSArray+Collect.h"
+#import "NSString+SentenceCapitalization.h"
+#import "NSDate+FormattedDate.h"
 
 @implementation HRImmunizationsAppletTile
 
-@synthesize upToDateLabel = __upToDateLabel;
+@synthesize immunizationLabels  = _immunizationLabels;
+@synthesize dateLabels          = _dateLabels;
 
 - (void)tileDidLoad {
     [super tileDidLoad];
-    if ([[self.patient.syntheticInfo objectForKey:@"immunizations"] boolValue]) {
-        self.upToDateLabel.text = @"Yes";
-        self.upToDateLabel.textColor = [UIColor blackColor];
-    }
-    else {
-        self.upToDateLabel.text = @"No";
-        self.upToDateLabel.textColor = [HRConfig redColor];
-    }
+    NSArray *immunizations = [[self patient] immunizations];
+    NSArray *immunizationLabels = [self.immunizationLabels sortedArrayUsingKey:@"tag" ascending:YES];
+    NSArray *dateLabels = [self.dateLabels sortedArrayUsingKey:@"tag" ascending:YES];
+    NSUInteger immunizationsCount = [immunizations count];
+    NSUInteger labelCount = [dateLabels count];
+    BOOL showCountLabel = (immunizationsCount > labelCount);
+    NSAssert(labelCount == [dateLabels count], @"There must be an equal number of name and date labels");
+    [immunizationLabels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger index, BOOL *stop) {
+        
+        // this is the last label and we should show count
+        if (index == labelCount - 1 && showCountLabel) {
+            label.text = [NSString stringWithFormat:@"%lu more…", immunizationsCount - labelCount + 1];
+        }
+        
+        // normal condition label
+        else if (index < immunizationsCount) {
+            HRMEntry *immunization = [immunizations objectAtIndex:index];
+            label.text = immunization.desc;
+        }
+        
+        // no conditions
+        else if (index == 0) { label.text = @"None"; }
+        
+        // clear the label
+        else { label.text = nil; }
+        
+    }];
+    [dateLabels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger index, BOOL *stop) {
+        if (index == labelCount - 1 && showCountLabel) {
+            label.text = nil;
+        }
+        else if (index < immunizationsCount) {
+            HRMEntry *immunization = [immunizations objectAtIndex:index];
+            label.text = [immunization.date mediumStyleDate];
+        }
+        else { label.text = nil; }
+    }];
 }
 
 @end
