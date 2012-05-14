@@ -151,6 +151,7 @@
 		94334ACC152A249F00B4C904 /* HRKeyValueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94334ACB152A249F00B4C904 /* HRKeyValueTableViewController.m */; };
 		9439A9D4153C7303007FE401 /* HRBMIVitalAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9439A9D3153C7303007FE401 /* HRBMIVitalAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		945286B0155844C600CF5EA3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 945286AF155844C600CF5EA3 /* MessageUI.framework */; };
+		945286BC156148C500CF5EA3 /* HRWebViewAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 945286BB156148C500CF5EA3 /* HRWebViewAppletTile.m */; };
 		9452D7F414FC167200021E69 /* HRProviderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9452D7F314FC167200021E69 /* HRProviderView.xib */; };
 		9452D7F714FC16DF00021E69 /* HRProviderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9452D7F614FC16DF00021E69 /* HRProviderView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9454C36F1551797A0024C2EF /* HRSparkLineLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9454C36B1551797A0024C2EF /* HRSparkLineLine.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -405,6 +406,8 @@
 		9439A9D2153C7303007FE401 /* HRBMIVitalAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBMIVitalAppletTile.h; sourceTree = "<group>"; };
 		9439A9D3153C7303007FE401 /* HRBMIVitalAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRBMIVitalAppletTile.m; sourceTree = "<group>"; };
 		945286AF155844C600CF5EA3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		945286BA156148C500CF5EA3 /* HRWebViewAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRWebViewAppletTile.h; sourceTree = "<group>"; };
+		945286BB156148C500CF5EA3 /* HRWebViewAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRWebViewAppletTile.m; sourceTree = "<group>"; };
 		9452D7F314FC167200021E69 /* HRProviderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRProviderView.xib; sourceTree = "<group>"; };
 		9452D7F514FC16DF00021E69 /* HRProviderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRProviderView.h; sourceTree = "<group>"; };
 		9452D7F614FC16DF00021E69 /* HRProviderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRProviderView.m; sourceTree = "<group>"; };
@@ -1018,6 +1021,8 @@
 				3B77F05015546AD2003C2DBD /* HRRespiratoryRateAppletTile.h */,
 				3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */,
 				3B74E5C715547DA200593ECF /* HRRespiratoryRateAppletTile.xib */,
+				945286BA156148C500CF5EA3 /* HRWebViewAppletTile.h */,
+				945286BB156148C500CF5EA3 /* HRWebViewAppletTile.m */,
 			);
 			name = "System Applets";
 			sourceTree = "<group>";
@@ -1453,6 +1458,7 @@
 				3B77F04E15546ABD003C2DBD /* HROxygenSaturationAppletTile.m in Sources */,
 				3B77F05215546AD2003C2DBD /* HRRespiratoryRateAppletTile.m in Sources */,
 				3BA3E7DE15595F090095A5CC /* GCAlertView.m in Sources */,
+				945286BC156148C500CF5EA3 /* HRWebViewAppletTile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
