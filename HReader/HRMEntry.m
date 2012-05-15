@@ -97,9 +97,9 @@
     
     // get start
     NSString *start = nil;
-    if (self.date)              { start = [format stringFromDate:self.date];        }
-    else if (self.startDate)    { start = [format stringFromDate:self.startDate];   }
-    else if (self.endDate)      { start = [format stringFromDate:self.endDate];     }
+    if (self.date)              { start = [format stringFromDate:self.date]; }
+    else if (self.startDate)    { start = [format stringFromDate:self.startDate]; }
+    else if (self.endDate)      { start = [format stringFromDate:self.endDate]; }
     
     // get type and image
     short type = [self.type shortValue];
@@ -137,7 +137,7 @@
         category = @"procedures";
         image = @"treatment";
     }
-    image = [NSString stringWithFormat:@"../HReader.app/timeline/hReader/icons/%@.png", image];
+    image = [[NSBundle mainBundle] pathForResource:image ofType:@"png" inDirectory:@"timeline/hReader/icons"];
     
     NSMutableString *eventDesc = [NSMutableString string];
     [eventDesc appendFormat:@"%@", self.desc];
