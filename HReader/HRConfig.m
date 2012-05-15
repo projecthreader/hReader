@@ -560,87 +560,87 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
 
 #pragma mark - Helper methods
 
-+ (NSDate *)dateForString:(NSString *)str {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"yyyyMMdd";
-    NSDate *date = [formatter dateFromString:str];
-    [formatter release];
-    
-    return date;
-}
-
-+ (void)parseEncounters {
-    // Ugly XML to get encounter until we move to JSON
-    __block NSMutableArray *patientEncounters = [[NSMutableArray alloc] init];
-    NSError *error = nil;
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Johnny_Smith_96" ofType:@"xml"];
-    NSData *data = [NSData dataWithContentsOfFile:filePath];
-    DDXMLDocument *doc = [[DDXMLDocument alloc] initWithData:data options:0 error:&error];
-    if (error) NSLog(@"ERROR Reading DOC %@", error);
-    NSArray *results = [doc nodesForXPath:@"//*[local-name()=\"section\"]" error:&error];
-    [doc release];
-    if (error) NSLog(@"ERROR %@", error);
-//    NSLog(@"parsed: %i", [results count]);
-    for (DDXMLElement *section in results) {
-        NSArray *encounters = [section nodesForXPath:@".//*[local-name()=\"title\"]" error:&error];
-//        NSLog(@"Encounters count: %i", [encounters count]);
-        if (error) NSLog(@"Section Error %@", error);
-        DDXMLNode *encounterNode = [encounters objectAtIndex:0];
-        if ([[encounterNode stringValue] isEqualToString:@"Encounters"]) {
-            NSArray *tbody = [section nodesForXPath:@".//*[local-name()=\"tbody\"]" error:nil];
-            DDXMLNode *encNode = [tbody objectAtIndex:0];
-            NSArray *enc = [encNode nodesForXPath:@".//*[local-name()=\"tr\"]" error:&error];
-//            NSLog(@"Encounters trs: %i", [enc count]);
-            for (DDXMLNode *tdNode in enc) {
-                NSString *title = [[tdNode childAtIndex:0] stringValue];
-//                NSLog(@"Title %@", title);
-                NSString *code = [[tdNode childAtIndex:1] stringValue];
-//                NSLog(@"Code %@", code);
-                NSString *nodeDate = [[tdNode childAtIndex:2] stringValue];
-                NSMutableString *date = [NSMutableString stringWithString:nodeDate];
-                NSArray *orindals = [NSArray arrayWithObjects:@"st", @"nd", @"rd", @"th", nil];
-                [orindals enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop) {
-                    [date replaceOccurrencesOfString:obj 
-                                          withString:@"" 
-                                             options:NSCaseInsensitiveSearch 
-                                               range:NSMakeRange(0, [date length])];
-                }];
-//                NSLog(@"Date %@", date);
-                NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-                NSLocale *enUS = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-                [formatter setLocale:enUS];
-                [enUS release];
-                [formatter setDateFormat:@"MMMM dd, yyyy mm:hh"]; /* Unicode Locale Data Markup Language */
-                NSDate *theDate = [formatter dateFromString:date]; /*e.g. @"Thu, 11 Sep 2008 12:34:12 +0200" */
-                HREncounter *hrEncounter = [[HREncounter alloc] initWithTitle:title code:code date:theDate];
-                [patientEncounters addObject:hrEncounter];
-                [hrEncounter release];
-            }
-        }
-    }
-    NSLog(@"Patient Encounters: %@", patientEncounters);
-    
-    NSString *timelinePath = [[NSBundle mainBundle] pathForResource:@"timeline/hReader/hReader" ofType:@"xml"];
-    NSData *timelineData = [NSData dataWithContentsOfFile:timelinePath];
-    DDXMLDocument *timelineDoc = [[DDXMLDocument alloc] initWithData:timelineData options:0 error:&error];
-//    NSLog(@"---- %@", timelineDoc);
-    DDXMLElement *dataElement = [[timelineDoc nodesForXPath:@"/data" error:&error] lastObject];
-    
-    for (HREncounter *encounter in patientEncounters) {
-        NSDateFormatter *df = [[NSDateFormatter alloc] init];
-        [df setDateFormat:@"MMM d yyyy 00:00:00"];
-        NSString *dateString = [df stringFromDate:encounter.date];
-        [df release];
-        NSString *xml = [NSString stringWithFormat:@"<event start=\"%@ GMT\" title=\"\" category=\"encounters\">%@ - %@</event>", dateString, encounter.title, encounter.code];
-        DDXMLElement *eElement = [[DDXMLElement alloc] initWithXMLString:xml error:&error];
-        [dataElement addChild:eElement];
-        [eElement release];
-    }
-    [patientEncounters release];
-    
-    NSString *p = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    [[timelineDoc XMLData] writeToFile:[p stringByAppendingPathComponent:@"hReader.xml"] atomically:YES];
-    [timelineDoc release];
-}
+//+ (NSDate *)dateForString:(NSString *)str {
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    formatter.dateFormat = @"yyyyMMdd";
+//    NSDate *date = [formatter dateFromString:str];
+//    [formatter release];
+//    
+//    return date;
+//}
+//
+//+ (void)parseEncounters {
+//    // Ugly XML to get encounter until we move to JSON
+//    __block NSMutableArray *patientEncounters = [[NSMutableArray alloc] init];
+//    NSError *error = nil;
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Johnny_Smith_96" ofType:@"xml"];
+//    NSData *data = [NSData dataWithContentsOfFile:filePath];
+//    DDXMLDocument *doc = [[DDXMLDocument alloc] initWithData:data options:0 error:&error];
+//    if (error) NSLog(@"ERROR Reading DOC %@", error);
+//    NSArray *results = [doc nodesForXPath:@"//*[local-name()=\"section\"]" error:&error];
+//    [doc release];
+//    if (error) NSLog(@"ERROR %@", error);
+////    NSLog(@"parsed: %i", [results count]);
+//    for (DDXMLElement *section in results) {
+//        NSArray *encounters = [section nodesForXPath:@".//*[local-name()=\"title\"]" error:&error];
+////        NSLog(@"Encounters count: %i", [encounters count]);
+//        if (error) NSLog(@"Section Error %@", error);
+//        DDXMLNode *encounterNode = [encounters objectAtIndex:0];
+//        if ([[encounterNode stringValue] isEqualToString:@"Encounters"]) {
+//            NSArray *tbody = [section nodesForXPath:@".//*[local-name()=\"tbody\"]" error:nil];
+//            DDXMLNode *encNode = [tbody objectAtIndex:0];
+//            NSArray *enc = [encNode nodesForXPath:@".//*[local-name()=\"tr\"]" error:&error];
+////            NSLog(@"Encounters trs: %i", [enc count]);
+//            for (DDXMLNode *tdNode in enc) {
+//                NSString *title = [[tdNode childAtIndex:0] stringValue];
+////                NSLog(@"Title %@", title);
+//                NSString *code = [[tdNode childAtIndex:1] stringValue];
+////                NSLog(@"Code %@", code);
+//                NSString *nodeDate = [[tdNode childAtIndex:2] stringValue];
+//                NSMutableString *date = [NSMutableString stringWithString:nodeDate];
+//                NSArray *orindals = [NSArray arrayWithObjects:@"st", @"nd", @"rd", @"th", nil];
+//                [orindals enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL *stop) {
+//                    [date replaceOccurrencesOfString:obj 
+//                                          withString:@"" 
+//                                             options:NSCaseInsensitiveSearch 
+//                                               range:NSMakeRange(0, [date length])];
+//                }];
+////                NSLog(@"Date %@", date);
+//                NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+//                NSLocale *enUS = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+//                [formatter setLocale:enUS];
+//                [enUS release];
+//                [formatter setDateFormat:@"MMMM dd, yyyy mm:hh"]; /* Unicode Locale Data Markup Language */
+//                NSDate *theDate = [formatter dateFromString:date]; /*e.g. @"Thu, 11 Sep 2008 12:34:12 +0200" */
+//                HREncounter *hrEncounter = [[HREncounter alloc] initWithTitle:title code:code date:theDate];
+//                [patientEncounters addObject:hrEncounter];
+//                [hrEncounter release];
+//            }
+//        }
+//    }
+//    NSLog(@"Patient Encounters: %@", patientEncounters);
+//    
+//    NSString *timelinePath = [[NSBundle mainBundle] pathForResource:@"timeline/hReader/hReader" ofType:@"xml"];
+//    NSData *timelineData = [NSData dataWithContentsOfFile:timelinePath];
+//    DDXMLDocument *timelineDoc = [[DDXMLDocument alloc] initWithData:timelineData options:0 error:&error];
+////    NSLog(@"---- %@", timelineDoc);
+//    DDXMLElement *dataElement = [[timelineDoc nodesForXPath:@"/data" error:&error] lastObject];
+//    
+//    for (HREncounter *encounter in patientEncounters) {
+//        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+//        [df setDateFormat:@"MMM d yyyy 00:00:00"];
+//        NSString *dateString = [df stringFromDate:encounter.date];
+//        [df release];
+//        NSString *xml = [NSString stringWithFormat:@"<event start=\"%@ GMT\" title=\"\" category=\"encounters\">%@ - %@</event>", dateString, encounter.title, encounter.code];
+//        DDXMLElement *eElement = [[DDXMLElement alloc] initWithXMLString:xml error:&error];
+//        [dataElement addChild:eElement];
+//        [eElement release];
+//    }
+//    [patientEncounters release];
+//    
+//    NSString *p = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+//    [[timelineDoc XMLData] writeToFile:[p stringByAppendingPathComponent:@"hReader.xml"] atomically:YES];
+//    [timelineDoc release];
+//}
 
 @end

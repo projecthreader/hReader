@@ -36,7 +36,7 @@ extern NSString * const HRPatientKey;
 + (void)setPrivacyWarningConfirmed:(BOOL)confirmed;
 
 
-+ (NSDate *)dateForString:(NSString *)birthday;
+//+ (NSDate *)dateForString:(NSString *)birthday;
 
 @end
 

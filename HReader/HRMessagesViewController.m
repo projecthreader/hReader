@@ -34,7 +34,6 @@
 @synthesize bodyLabel                   = __bodyLabel;
 @synthesize messageView                 = __messageView;
 @synthesize patientView                 = __patientView;
-@synthesize dateFormatter               = __dateFormatter;
 @synthesize tableView                   = __tableView;
 
 - (void)dealloc {

@@ -15,7 +15,8 @@
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateStyle:NSDateFormatterMediumStyle];
+//        [formatter setDateStyle:NSDateFormatterMediumStyle];
+        [formatter setDateFormat:@"d MMM y"];
     });
     return [formatter stringFromDate:self];
 }
@@ -25,7 +26,8 @@
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateStyle:NSDateFormatterShortStyle];
+//        [formatter setDateStyle:NSDateFormatterShortStyle];
+        [formatter setDateFormat:@"dMMMy"];
     });
     return [formatter stringFromDate:self];
     

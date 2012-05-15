@@ -86,7 +86,6 @@
 
 - (DDXMLElement *)timelineXMLElement {
     
-    
     // get date formatter
     static NSDateFormatter *format = nil;
     static dispatch_once_t token;
