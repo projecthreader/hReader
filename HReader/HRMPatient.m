@@ -43,7 +43,6 @@
 @dynamic entries;
 @dynamic syntheticInfo;
 
-@dynamic immunizations;
 @dynamic results;
 @dynamic allergies;
 @dynamic procedures;
@@ -240,6 +239,12 @@
 - (NSArray *)conditions {
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO];
     return [self entriesWithType:HRMEntryTypeCondition
+                 sortDescriptors:[NSArray arrayWithObject:sort]];
+}
+
+- (NSArray *)immunizations {
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
+    return [self entriesWithType:HRMEntryTypeImmunization
                  sortDescriptors:[NSArray arrayWithObject:sort]];
 }
 

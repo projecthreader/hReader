@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50b" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="GCManagedObject" representedClassName="GCManagedObject" isAbstract="YES" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
@@ -31,9 +31,6 @@
         <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HRMEntry" inverseName="patient" inverseEntity="HRMEntry" syncable="YES"/>
         <fetchedProperty name="allergies" optional="YES" syncable="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 1 AND patient == $FETCH_SOURCE"/>
-        </fetchedProperty>
-        <fetchedProperty name="immunizations" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 7 AND patient == $FETCH_SOURCE"/>
         </fetchedProperty>
         <fetchedProperty name="procedures" optional="YES" syncable="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 4 AND patient == $FETCH_SOURCE"/>
