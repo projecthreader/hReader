@@ -18,6 +18,7 @@
         <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="HRMPatient" inverseName="entries" inverseEntity="HRMPatient" syncable="YES"/>
     </entity>
     <entity name="HRMPatient" representedClassName="HRMPatient" parentEntity="GCManagedObject" syncable="YES">
+        <attribute name="applets" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="compositeName" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateOfBirth" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="ethnicity" optional="YES" attributeType="String" syncable="YES"/>
@@ -42,6 +43,6 @@
     <elements>
         <element name="GCManagedObject" positionX="72" positionY="72" width="128" height="60"/>
         <element name="HRMEntry" positionX="-533" positionY="-159" width="128" height="225"/>
-        <element name="HRMPatient" positionX="70" positionY="207" width="128" height="269"/>
+        <element name="HRMPatient" positionX="70" positionY="207" width="128" height="284"/>
     </elements>
 </model>

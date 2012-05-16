@@ -42,12 +42,11 @@
 @dynamic genderString;
 @dynamic entries;
 @dynamic syntheticInfo;
+@dynamic applets;
 
 @dynamic results;
 @dynamic allergies;
 @dynamic procedures;
-
-@synthesize applets = __applets;
 
 #pragma mark - class methods
 

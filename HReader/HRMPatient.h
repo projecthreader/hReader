@@ -31,6 +31,7 @@ typedef enum {
 @property (nonatomic, retain) NSDate *dateOfBirth;
 @property (nonatomic, retain) NSSet *entries;
 @property (nonatomic, retain) NSDictionary *syntheticInfo;
+@property (nonatomic, strong) NSArray *applets;
 
 #pragma mark - fetched properties
 
@@ -44,7 +45,6 @@ typedef enum {
 @property (nonatomic, retain) NSArray *allergies;
 @property (nonatomic, retain) NSArray *procedures;
 @property (nonatomic, retain) NSArray *results;
-@property (nonatomic, retain) NSMutableArray *applets;
 
 #pragma mark - instance methods
 
