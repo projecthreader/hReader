@@ -21,7 +21,12 @@ PINCodeViewControllerDelegate
 
 @property (strong, nonatomic) UIWindow *window;
 
-// access core data stores
+/*
+ 
+ Access the application-wide core data managed object context. This context
+ is created using the main queue concurrency type.
+ 
+ */
 + (NSManagedObjectContext *)managedObjectContext;
 
 // if you call this i will kill you

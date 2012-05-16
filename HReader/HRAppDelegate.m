@@ -7,6 +7,7 @@
 //
 
 #import <CoreData/CoreData.h>
+#import <objc/message.h>
 
 #import "HRAppDelegate.h"
 #import "HRPasscodeWarningViewController.h"
@@ -21,7 +22,6 @@
 
 #import "SVPanelViewController.h"
 
-#import <objc/message.h>
 
 @interface HRAppDelegate () {
 @private
@@ -29,6 +29,8 @@
 }
 
 + (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
+
++ (NSManagedObjectContext *)privateManagedObjectContext;
 
 - (void)presentPasscodeVerifyController;
 
@@ -61,12 +63,22 @@
     return coordinator;
 }
 
++ (NSManagedObjectContext *)privateManagedObjectContext {
+    static NSManagedObjectContext *context = nil;
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        [context setPersistentStoreCoordinator:[self persistentStoreCoordinator]];
+    });
+    return context;
+}
+
 + (NSManagedObjectContext *)managedObjectContext {
     static NSManagedObjectContext *context = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-        [context setPersistentStoreCoordinator:[self persistentStoreCoordinator]];
+        [context setParentContext:[self privateManagedObjectContext]];
     });
     return context;
 }
@@ -104,6 +116,26 @@
     [self.window.rootViewController.presentedViewController dismissModalViewControllerAnimated:YES];
 }
 
+#pragma mark - notifications
+
+- (void)managedObjectContextDidSave:(NSNotification *)notification {
+    
+    NSManagedObjectContext *publicContext = [HRAppDelegate managedObjectContext];
+    NSManagedObjectContext *privateContext = [HRAppDelegate privateManagedObjectContext];
+    NSManagedObjectContext *savingContext = [notification object];
+    
+    // child of public context
+    if ([savingContext parentContext] == publicContext) {
+        [publicContext save:nil];
+    }
+    
+    // child of private context
+    else if ([savingContext parentContext] == privateContext) {
+        [privateContext save:nil];
+    }
+    
+}
+
 #pragma mark - application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -114,6 +146,7 @@
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
 #endif
     
+    // web inspection
 #if DEBUG
     @try {
         objc_msgSend(NSClassFromString(@"WebView"), NSSelectorFromString(@"_enableRemoteInspector"));
@@ -123,6 +156,12 @@
     }
 #endif
     
+    // notifications
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(managedObjectContextDidSave:)
+     name:NSManagedObjectContextDidSaveNotification
+     object:nil];
     
     // load patients if we don't have any yet
     NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
