@@ -167,7 +167,12 @@
                     *stop = YES;
                 }
                 else {
-                    percentile = 99.0;
+                    if (score < 0) {
+                        percentile = 1.0;
+                    }
+                    else {
+                        percentile = 99.0;
+                    }
                 }
             }];
             *stop = YES;
