@@ -9,17 +9,13 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "HRPatientSummaryViewController.h"
-
 #import "HRRootViewController.h"
-#import "HRMPatient.h"
-#import "HRAddress.h"
-#import "HRVitalAppletTile.h"
-#import "HRVital.h"
-#import "HRMEntry.h"
-#import "HRBMI.h"
-#import "HRImageAppletTile.h"
 #import "HRAppletConfigurationViewController.h"
 #import "HRPeoplePickerViewController.h"
+#import "HRAppletTile.h"
+
+#import "HRMPatient.h"
+#import "HRMEntry.h"
 
 #import "NSDate+FormattedDate.h"
 #import "NSArray+Collect.h"

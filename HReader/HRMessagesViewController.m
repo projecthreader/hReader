@@ -8,14 +8,16 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "HRMessagesViewController.h"
-#import "HRMessage.h"
-#import "HRPatientSwipeControl.h"
 #import "HRMPatient.h"
+
+#import "HRMessagesViewController.h"
+#import "HRPatientSwipeControl.h"
+#import "HRPeoplePickerViewController.h"
+
 #import "NSDate+FormattedDate.h"
 #import "NSArray+Collect.h"
+
 #import "SVPanelViewController.h"
-#import "HRPeoplePickerViewController.h"
 
 @interface HRMessagesViewController ()
 - (void)reloadData;

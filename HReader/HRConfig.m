@@ -9,17 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
 
-#import "HRAddress.h"
-#import "HREncounter.h"
-#import "HRVital.h"
-#import "HRWeight.h"
-#import "HRBloodPressure.h"
-#import "HRCholesterol.h"
-#import "HRPeakFlow.h"
-#import "HRHeight.h"
-#import "HRBMI.h"
-#import "HRGlucose.h"
-
 #import "DDXML.h"
 
 NSString * const HRPatientKey                   = @"HRPatientKey";
@@ -30,7 +19,7 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
 //static HRPatient *selectedPatient = nil;
 
 @interface HRConfig ()
-+ (void)parseEncounters;
+//+ (void)parseEncounters;
 @end
 
 
