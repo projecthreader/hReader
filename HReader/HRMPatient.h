@@ -10,7 +10,8 @@
 
 typedef enum {
     HRMPatientGenderMale = 0,
-    HRMPatientGenderFemale
+    HRMPatientGenderFemale,
+    HRMPatientGenderUnknown
 } HRMPatientGender;
 
 @class HRMEntry;
@@ -23,16 +24,20 @@ typedef enum {
 @property (nonatomic, retain) NSString *mongoID;
 @property (nonatomic, retain) NSString *firstName;
 @property (nonatomic, retain) NSString *lastName;
-@property (nonatomic, retain) NSString *compositeName;
 @property (nonatomic, retain) NSString *race;
 @property (nonatomic, retain) NSString *ethnicity;
 @property (nonatomic, retain) NSNumber *gender;
-@property (nonatomic, retain) NSString *genderString;
 @property (nonatomic, retain) NSDate *dateOfBirth;
 @property (nonatomic, retain) NSSet *entries;
 @property (nonatomic, retain) NSDictionary *syntheticInfo;
 @property (nonatomic, strong) NSArray *applets;
 @property (nonatomic, strong) NSNumber *displayOrder;
+
+#pragma mark - transient properties
+
+@property (nonatomic, readonly) NSString *compositeName;
+@property (nonatomic, readonly) NSString *initials;
+@property (nonatomic, readonly) NSString *genderString;
 
 #pragma mark - fetched properties
 
@@ -40,14 +45,19 @@ typedef enum {
 @property (nonatomic, readonly) NSArray *encounters;
 @property (nonatomic, readonly) NSArray *medications;
 @property (nonatomic, readonly) NSArray *immunizations;
-
-#pragma mark - other properties
-
-@property (nonatomic, retain) NSArray *allergies;
-@property (nonatomic, retain) NSArray *procedures;
-@property (nonatomic, retain) NSArray *results;
+@property (nonatomic, readonly) NSArray *allergies;
+@property (nonatomic, readonly) NSArray *procedures;
+@property (nonatomic, readonly) NSArray *results;
 
 #pragma mark - instance methods
+
+/*
+ 
+ Clear all server generated data from the instance and repopulate with data
+ from the given JSON payload. This extends to all "entry" subitems.
+ 
+ */
+- (void)populateWithContentsOfDictionary:(NSDictionary *)dictionary;
 
 /*
  
@@ -71,14 +81,6 @@ typedef enum {
  */
 - (UIImage *)patientImage;
 - (NSURL *)C32HTMLURL;
-
-/*
- 
- Get the patient initials. If the receiver's name is "Jon Doe" then this method
- will return "jd".
- 
- */
-- (NSString *)initials;
 
 #pragma mark - class methods
 

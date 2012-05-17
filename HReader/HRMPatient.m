@@ -23,9 +23,8 @@
  the provided parameters.
  
  */
-- (NSArray *)entriesWithType:(HRMEntryType)type;
-- (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptors:(NSArray *)sortDescriptors;
-- (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate;
+- (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptor:(NSSortDescriptor *)sortDescriptor;
+- (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptor:(NSSortDescriptor *)sortDescriptor predicate:(NSPredicate *)predicate;
 
 @end
 
@@ -38,16 +37,10 @@
 @dynamic race;
 @dynamic ethnicity;
 @dynamic gender;
-@dynamic compositeName;
-@dynamic genderString;
 @dynamic entries;
 @dynamic syntheticInfo;
 @dynamic applets;
 @dynamic displayOrder;
-
-@dynamic results;
-@dynamic allergies;
-@dynamic procedures;
 
 #pragma mark - class methods
 
@@ -58,89 +51,27 @@
 }
 
 + (HRMPatient *)instanceWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context {
-    
-    // create patient
     HRMPatient *patient = [self instanceInContext:context];
-    __block id object = nil;
-    
-    // load basic data
-    
-    object = [dictionary objectForKey:@"_id"];
-    if (object && [object isKindOfClass:[NSString class]]) {
-        patient.mongoID = object;
-    }
-    object = [dictionary objectForKey:@"first"];
-    if (object && [object isKindOfClass:[NSString class]]) {
-        patient.firstName = object;
-    }
-    object = [dictionary objectForKey:@"last"];
-    if (object && [object isKindOfClass:[NSString class]]) {
-        patient.lastName = object;
-    }
-    object = [dictionary objectForKey:@"race"];
-    if (object && [object isKindOfClass:[NSString class]]) {
-        patient.race = object;
-    }
-    object = [dictionary objectForKey:@"ethnicity"];
-    if (object && [object isKindOfClass:[NSString class]]) {
-        patient.ethnicity = object;
-    }
-    object = [dictionary objectForKey:@"birthdate"];
-    if (object && [object isKindOfClass:[NSNumber class]]) {
-        NSTimeInterval stamp = [object doubleValue];
-        patient.dateOfBirth = [NSDate dateWithTimeIntervalSince1970:stamp];
-    }
-    object = [dictionary objectForKey:@"gender"];
-    if (object && [object isKindOfClass:[NSString class]]) {
-        if ([object isEqualToString:@"M"]) {
-            patient.gender = [NSNumber numberWithUnsignedInteger:HRMPatientGenderMale];
-        }
-        else if ([object isEqualToString:@"F"]) {
-            patient.gender = [NSNumber numberWithUnsignedInteger:HRMPatientGenderFemale];
-        }
-    }
-    
-    // define block for iterating over collections
-    void (^collectionBlock) (HRMEntryType, NSString *) = ^(HRMEntryType type, NSString *key) {
-        object = [dictionary objectForKey:key];
-        if (object && [object isKindOfClass:[NSArray class]]) {
-            [object enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                if (obj && [obj isKindOfClass:[NSDictionary class]]) {
-                    HRMEntry *entry = [HRMEntry
-                                       instanceWithDictionary:obj
-                                       type:type
-                                       inContext:context];
-                    [patient addEntriesObject:entry];
-                }
-            }];
-        }
-    };
-    
-    // encounters
-    collectionBlock(HRMEntryTypeEncounter, @"encounters");
-    collectionBlock(HRMEntryTypeCondition, @"conditions");
-    collectionBlock(HRMEntryTypeAllergy, @"allergies");
-    collectionBlock(HRMEntryTypeMedication, @"medications");
-    collectionBlock(HRMEntryTypeProcedure, @"procedures");
-    collectionBlock(HRMEntryTypeResult, @"results");
-    collectionBlock(HRMEntryTypeVitalSign, @"vital_signs");
-    collectionBlock(HRMEntryTypeImmunization, @"immunizations");
-    
-    // return
+    [patient populateWithContentsOfDictionary:dictionary];
     return patient;
-    
 }
 
 #pragma mark - attribute overrides
 
 - (NSString *)compositeName {
     [self willAccessValueForKey:@"compositeName"];
-    NSString *name = [NSString
-                      stringWithFormat:@"%@ %@*",
-                      self.firstName,
-                      self.lastName];
+    NSString *name = [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
     [self didAccessValueForKey:@"compositeName"];
     return name;
+}
+
+- (NSString *)initials {
+    [self willAccessValueForKey:NSStringFromSelector(_cmd)];
+    NSString *first = [[self.firstName substringToIndex:1] uppercaseString];
+    NSString *last = [[self.lastName substringToIndex:1] uppercaseString];
+    NSString *initials = [NSString stringWithFormat:@"%@%@", first, last];
+    [self didAccessValueForKey:NSStringFromSelector(_cmd)];
+    return initials;
 }
 
 - (NSString *)genderString {
@@ -158,32 +89,136 @@
 
 #pragma mark - fetch entries
 
-- (NSArray *)entriesWithType:(HRMEntryType)type {
-    return [self entriesWithType:type sortDescriptors:nil predicate:nil];
+- (NSArray *)medications {
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO];
+    return [self entriesWithType:HRMEntryTypeMedication sortDescriptor:sort];
 }
 
-- (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptors:(NSArray *)sortDescriptors {
-    return [self entriesWithType:type sortDescriptors:sortDescriptors predicate:nil];
+- (NSArray *)encounters {
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    return [self entriesWithType:HRMEntryTypeEncounter sortDescriptor:sort];
 }
 
-- (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptors:(NSArray *)sortDescriptors predicate:(NSPredicate *)predicate {
+- (NSArray *)conditions {
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO];
+    return [self entriesWithType:HRMEntryTypeCondition sortDescriptor:sort];
+}
+
+- (NSArray *)immunizations {
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
+    return [self entriesWithType:HRMEntryTypeImmunization sortDescriptor:sort];
+}
+
+- (NSArray *)procedures {
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
+    return [self entriesWithType:HRMEntryTypeProcedure sortDescriptor:sort];
+}
+
+- (NSArray *)allergies {
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO];
+    return [self entriesWithType:HRMEntryTypeAllergy sortDescriptor:sort];
+}
+
+- (NSArray *)results {
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO];
+    return [self entriesWithType:HRMEntryTypeResult sortDescriptor:sort];
+}
+
+- (NSArray *)vitalSignsWithType:(NSString *)type {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"desc LIKE[cd] %@", type];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    return [self entriesWithType:HRMEntryTypeVitalSign sortDescriptor:sort predicate:predicate];
+}
+
+- (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptor:(NSSortDescriptor *)sortDescriptor {
+    return [self entriesWithType:type sortDescriptor:sortDescriptor predicate:nil];
+}
+
+- (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptor:(NSSortDescriptor *)sortDescriptor predicate:(NSPredicate *)predicate {
     NSPredicate *typePredicate = [NSPredicate predicateWithFormat:@"type == %@", [NSNumber numberWithShort:type]];
     NSPredicate *patientPredicate = [NSPredicate predicateWithFormat:@"patient == %@", self];
-    NSPredicate *basePredicate = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithObjects:typePredicate, patientPredicate, nil]];
-    if (predicate) {
-        NSArray *subPredicates = [NSArray arrayWithObjects:basePredicate, predicate, nil];
-        return [HRMEntry allInContext:[self managedObjectContext] 
-                        withPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:subPredicates]
-                      sortDescriptors:sortDescriptors];
-    }
-    else {
-        return [HRMEntry allInContext:[self managedObjectContext] 
-                        withPredicate:basePredicate
-                      sortDescriptors:sortDescriptors];
-    }
+    NSMutableArray *predicates = [NSMutableArray arrayWithObjects:typePredicate, patientPredicate, nil];
+    if (predicate) { [predicates addObject:predicate]; }
+    NSPredicate *andPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
+    return [HRMEntry
+            allInContext:[self managedObjectContext]
+            withPredicate:andPredicate
+            sortDescriptor:sortDescriptor];
 }
 
 #pragma mark - object methods
+
+- (void)populateWithContentsOfDictionary:(NSDictionary *)dictionary {
+    
+    // store placeholder objects
+    id __block object = nil;
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    // mongo id
+    object = [dictionary objectForKey:@"_id"];
+    if (object && [object isKindOfClass:[NSString class]]) { self.mongoID = object; }
+    else { self.mongoID = nil; }
+    
+    // first name
+    object = [dictionary objectForKey:@"first"];
+    if (object && [object isKindOfClass:[NSString class]]) { self.firstName = object; }
+    else { self.firstName = nil; }
+    
+    // last name
+    object = [dictionary objectForKey:@"last"];
+    if (object && [object isKindOfClass:[NSString class]]) { self.lastName = object; }
+    else { self.lastName = nil; }
+    
+    // race
+    object = [dictionary objectForKey:@"race"];
+    if (object && [object isKindOfClass:[NSString class]]) { self.race = object; }
+    else { self.race = nil; }
+    
+    // ethnicity
+    object = [dictionary objectForKey:@"ethnicity"];
+    if (object && [object isKindOfClass:[NSString class]]) { self.ethnicity = object; }
+    else { self.ethnicity = nil; }
+    
+    // birthdate
+    object = [dictionary objectForKey:@"birthdate"];
+    if (object && [object isKindOfClass:[NSNumber class]]) {
+        NSTimeInterval interval = [object doubleValue];
+        self.dateOfBirth = [NSDate dateWithTimeIntervalSince1970:interval];
+    }
+    else { self.dateOfBirth = nil; }
+    
+    // gender
+    object = [dictionary objectForKey:@"gender"];
+    if (object && [object isKindOfClass:[NSString class]]) {
+        if ([object isEqualToString:@"M"]) { self.gender = [NSNumber numberWithShort:HRMPatientGenderMale]; }
+        else if ([object isEqualToString:@"F"]) { self.gender = [NSNumber numberWithShort:HRMPatientGenderFemale]; }
+        else { self.gender = [NSNumber numberWithUnsignedInteger:HRMPatientGenderUnknown]; }
+    }
+    else { self.gender = [NSNumber numberWithUnsignedInteger:HRMPatientGenderUnknown]; }
+    
+    // objects conforming to the "entry" type
+    [self removeEntries:self.entries];
+    void (^collectionBlock) (HRMEntryType, NSString *) = ^(HRMEntryType type, NSString *key) {
+        object = [dictionary objectForKey:key];
+        if (object && [object isKindOfClass:[NSArray class]]) {
+            [object enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                if (obj && [obj isKindOfClass:[NSDictionary class]]) {
+                    HRMEntry *entry = [HRMEntry instanceWithDictionary:obj type:type inContext:context];
+                    [self addEntriesObject:entry];
+                }
+            }];
+        }
+    };
+    collectionBlock(HRMEntryTypeEncounter, @"encounters");
+    collectionBlock(HRMEntryTypeCondition, @"conditions");
+    collectionBlock(HRMEntryTypeAllergy, @"allergies");
+    collectionBlock(HRMEntryTypeMedication, @"medications");
+    collectionBlock(HRMEntryTypeProcedure, @"procedures");
+    collectionBlock(HRMEntryTypeResult, @"results");
+    collectionBlock(HRMEntryTypeVitalSign, @"vital_signs");
+    collectionBlock(HRMEntryTypeImmunization, @"immunizations");
+    
+}
 
 - (UIImage *)patientImage {
     return [UIImage imageNamed:[NSString stringWithFormat:@"UserImage-%@-%@", self.lastName, self.firstName]];
@@ -210,44 +245,6 @@
 - (NSURL *)C32HTMLURL {
     NSString *string = [NSString stringWithFormat:@"C32-%@-%@", self.lastName, self.firstName];
     return [[NSBundle mainBundle] URLForResource:string withExtension:@"html"];
-}
-
-- (NSArray *)vitalSignsWithType:(NSString *)type {
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"desc LIKE[cd] %@", type];
-    return [self entriesWithType:HRMEntryTypeVitalSign 
-                 sortDescriptors:[NSArray arrayWithObject:sort] 
-                       predicate:predicate];
-}
-
-- (NSArray *)medications {
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO];
-    return [self entriesWithType:HRMEntryTypeMedication
-                 sortDescriptors:[NSArray arrayWithObject:sort]];
-}
-
-- (NSArray *)encounters {
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
-    return [self entriesWithType:HRMEntryTypeEncounter
-                 sortDescriptors:[NSArray arrayWithObject:sort]];
-}
-
-- (NSArray *)conditions {
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"startDate" ascending:NO];
-    return [self entriesWithType:HRMEntryTypeCondition
-                 sortDescriptors:[NSArray arrayWithObject:sort]];
-}
-
-- (NSArray *)immunizations {
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
-    return [self entriesWithType:HRMEntryTypeImmunization
-                 sortDescriptors:[NSArray arrayWithObject:sort]];
-}
-
-- (NSString *)initials {
-    NSString *first = [[self.firstName substringToIndex:1] lowercaseString];
-    NSString *last = [[self.lastName substringToIndex:1] lowercaseString];
-    return [NSString stringWithFormat:@"%@%@", first, last];
 }
 
 @end

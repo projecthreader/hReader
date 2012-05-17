@@ -26,24 +26,16 @@
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="genderString" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
+        <attribute name="initials" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mongoID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="race" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="syntheticInfo" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HRMEntry" inverseName="patient" inverseEntity="HRMEntry" syncable="YES"/>
-        <fetchedProperty name="allergies" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 1 AND patient == $FETCH_SOURCE"/>
-        </fetchedProperty>
-        <fetchedProperty name="procedures" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 4 AND patient == $FETCH_SOURCE"/>
-        </fetchedProperty>
-        <fetchedProperty name="results" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="HRMEntry" predicateString="type == 5 AND patient == $FETCH_SOURCE"/>
-        </fetchedProperty>
     </entity>
     <elements>
         <element name="GCManagedObject" positionX="72" positionY="72" width="128" height="60"/>
         <element name="HRMEntry" positionX="-533" positionY="-159" width="128" height="225"/>
-        <element name="HRMPatient" positionX="70" positionY="207" width="128" height="299"/>
+        <element name="HRMPatient" positionX="70" positionY="207" width="128" height="255"/>
     </elements>
 </model>
