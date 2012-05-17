@@ -23,6 +23,13 @@ PINCodeViewControllerDelegate
 
 /*
  
+ Access the application-wide core data persistent store coordinator.
+ 
+ */
++ (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
+
+/*
+ 
  Access the application-wide core data managed object context. This context
  is created using the main queue concurrency type.
  

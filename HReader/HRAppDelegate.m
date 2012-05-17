@@ -28,17 +28,13 @@
     NSUInteger passcodeAttempts;
 }
 
-+ (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
-
-+ (NSManagedObjectContext *)privateManagedObjectContext;
-
 - (void)presentPasscodeVerifyController;
 
 @end
 
 @implementation HRAppDelegate
 
-@synthesize window = __window;
+@synthesize window = _window;
 
 #pragma mark - class methods
 
@@ -63,22 +59,12 @@
     return coordinator;
 }
 
-+ (NSManagedObjectContext *)privateManagedObjectContext {
-    static NSManagedObjectContext *context = nil;
-    static dispatch_once_t token;
-    dispatch_once(&token, ^{
-        context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-        [context setPersistentStoreCoordinator:[self persistentStoreCoordinator]];
-    });
-    return context;
-}
-
 + (NSManagedObjectContext *)managedObjectContext {
     static NSManagedObjectContext *context = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-        [context setParentContext:[self privateManagedObjectContext]];
+        [context setPersistentStoreCoordinator:[self persistentStoreCoordinator]];
     });
     return context;
 }
@@ -119,21 +105,10 @@
 #pragma mark - notifications
 
 - (void)managedObjectContextDidSave:(NSNotification *)notification {
-    
-    NSManagedObjectContext *publicContext = [HRAppDelegate managedObjectContext];
-    NSManagedObjectContext *privateContext = [HRAppDelegate privateManagedObjectContext];
-    NSManagedObjectContext *savingContext = [notification object];
-    
-    // child of public context
-    if ([savingContext parentContext] == publicContext) {
-        [publicContext save:nil];
+    NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
+    if ([notification object] != context) {
+        [context mergeChangesFromContextDidSaveNotification:notification];
     }
-    
-    // child of private context
-    else if ([savingContext parentContext] == privateContext) {
-        [privateContext save:nil];
-    }
-    
 }
 
 #pragma mark - application lifecycle
@@ -178,13 +153,13 @@
             if (object) { patient = [HRMPatient instanceWithDictionary:object inContext:context]; }
             else { NSLog(@"%@: %@", name, JSONError); }
             
-            
             // load synthetic data
             NSURL *syntheticURL = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@-synthetic", name] withExtension:@"json"];
             NSData *syntheticData = [NSData dataWithContentsOfURL:syntheticURL];
             if (syntheticData) {
                 NSError *error = nil;
                 patient.syntheticInfo = [NSJSONSerialization JSONObjectWithData:syntheticData options:0 error:&error];
+                patient.applets = [patient.syntheticInfo objectForKey:@"applets"];
                 if (error) {
                     NSLog(@"Unable to load synthetic patient file %@\n%@", name, error);
                 }
