@@ -9,7 +9,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "HRPeoplePickerViewController.h"
-
 #import "HRAppDelegate.h"
 
 #import "HRMPatient.h"
@@ -17,38 +16,45 @@
 #import "SVPanelViewController.h"
 
 NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
-static NSString * const HRPatientOrderArrayKey = @"HRPatientOrderArray";
 static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
 
 @interface HRPeoplePickerViewController () {
 @private
-    NSManagedObjectContext * __strong context;
-    NSMutableArray * __strong patients;
+    
+    // support showing the main patient list
+    NSManagedObjectContext * __strong managedObjectContext;
+    NSFetchedResultsController * __strong fetchedResultsController;
+    NSInteger selectedPatientIndex;
+    BOOL shouldIgnoreUpdatesFromFetchedResultsController;
+    
+    // support people search
     NSArray * __strong searchResults;
     NSArray * __strong sortDescriptors;
-    NSInteger selectedPatientIndex;
+    
 }
 
 - (void)updateTableViewSelection;
 - (void)persistSelectedPatientIndex;
-- (void)persistPatientOrder;
 
 @end
 
 @implementation HRPeoplePickerViewController
 
-@synthesize tableView = __tableView;
-@synthesize toolbar = __toolbar;
+@synthesize tableView = _tableView;
+@synthesize toolbar = _toolbar;
 
 #pragma mark - public methods
 
 - (HRMPatient *)selectedPatient {
-    return [patients objectAtIndex:selectedPatientIndex];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selectedPatientIndex inSection:0];
+    return [fetchedResultsController objectAtIndexPath:indexPath];
 }
 
 - (void)selectNextPatient {
     selectedPatientIndex++;
-    if (selectedPatientIndex == (NSInteger)[patients count]) { selectedPatientIndex = 0; }
+    if (selectedPatientIndex >= (NSInteger)[[fetchedResultsController fetchedObjects] count]) {
+        selectedPatientIndex = 0;
+    }
     [self updateTableViewSelection];
     [self persistSelectedPatientIndex];
     [[NSNotificationCenter defaultCenter]
@@ -57,8 +63,10 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
 }
 
 - (void)selectPreviousPatient {
-    if (selectedPatientIndex == 0) { selectedPatientIndex = [patients count] - 1; }
-    else { selectedPatientIndex--; }
+    selectedPatientIndex--;
+    if (selectedPatientIndex <= 0) {
+        selectedPatientIndex = (NSInteger)([[fetchedResultsController fetchedObjects] count] - 1);
+    }
     [self updateTableViewSelection];
     [self persistSelectedPatientIndex];
     [[NSNotificationCenter defaultCenter]
@@ -72,49 +80,32 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
     self = [super initWithCoder:coder];
     if (self) {
         
-        // create context
-        context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-        [context setParentContext:[HRAppDelegate managedObjectContext]];
-        
-        // load array
-        NSArray *objectIDStrings = [[NSUserDefaults standardUserDefaults] arrayForKey:HRPatientOrderArrayKey];
-        if (objectIDStrings) {
-            patients = [[NSMutableArray alloc] initWithCapacity:[objectIDStrings count]];
-            [objectIDStrings enumerateObjectsUsingBlock:^(NSString *mongoID, NSUInteger index, BOOL *stop) {
-                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"mongoID == %@", mongoID];
-                HRMPatient *patient = [[HRMPatient allInContext:context withPredicate:predicate] lastObject];
-                [patients addObject:patient];
-            }];
-        }
-        else {
-            NSFetchRequest *request = [HRMPatient fetchRequestInContext:context];
-            NSString *sort = [NSSortDescriptor sortDescriptorWithKey:@"dateOfBirth" ascending:YES];
-            sortDescriptors = [NSArray arrayWithObjects:sort, nil];
-            [request setSortDescriptors:sortDescriptors];
-            NSError *error = nil;            
-            patients = [[context executeFetchRequest:request error:&error] mutableCopy];
-            NSAssert(patients != nil, @"Unable to fetch patients\n%@", error);
-
-            [self persistPatientOrder];
-        }
+        // load data from core data
+        managedObjectContext = [HRAppDelegate managedObjectContext];
+        sortDescriptors = [NSArray arrayWithObjects:
+                           [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES],
+                           [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES],
+                           nil];
+        NSMutableArray *descriptors = [sortDescriptors mutableCopy];
+        [descriptors insertObject:[NSSortDescriptor sortDescriptorWithKey:@"displayOrder" ascending:YES] atIndex:0];
+        NSFetchRequest *request = [HRMPatient fetchRequestInContext:managedObjectContext];
+        [request setSortDescriptors:descriptors];
+        fetchedResultsController = [[NSFetchedResultsController alloc]
+                                    initWithFetchRequest:request
+                                    managedObjectContext:managedObjectContext
+                                    sectionNameKeyPath:nil
+                                    cacheName:nil];
+        fetchedResultsController.delegate = self;
+        NSError *error = nil;
+        BOOL fetch = [fetchedResultsController performFetch:&error];
+        NSAssert(fetch, @"Unable to fetch patients\n%@", error);
         
         // selected index
-        selectedPatientIndex = [[NSUserDefaults standardUserDefaults] integerForKey:HRSelectedPatientIndexKey];
-        if (selectedPatientIndex >= (NSInteger)[patients count]) { selectedPatientIndex = 0; }
-        
-        // notifications
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self
-         selector:@selector(managedObjectDidSave:)
-         name:NSManagedObjectContextDidSaveNotification
-         object:context];
+        selectedPatientIndex = MIN([[NSUserDefaults standardUserDefaults] integerForKey:HRSelectedPatientIndexKey],
+                                   (NSInteger)[[fetchedResultsController fetchedObjects] count]);
         
     }
     return self;
-}
-
-- (void)managedObjectDidSave:(NSNotification *)notification {
-    
 }
 
 - (void)updateTableViewSelection {
@@ -128,17 +119,11 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
     [settings synchronize];
 }
 
-- (void)persistPatientOrder {
-    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
-    NSArray *objectIDStrings = [patients valueForKey:@"mongoID"];
-    [settings setObject:objectIDStrings forKey:HRPatientOrderArrayKey];
-    [settings synchronize];
-}
-
 #pragma mark - view lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    shouldIgnoreUpdatesFromFetchedResultsController = NO;
     self.tableView.editing = YES;
     [self.tableView reloadData];
     [self updateTableViewSelection];
@@ -165,8 +150,10 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
     NSPredicate *predicateTwo = [NSPredicate predicateWithFormat:@"lastName contains[cd] %@", searchText];
     NSPredicate *predicate = [NSCompoundPredicate orPredicateWithSubpredicates:
                               [NSArray arrayWithObjects:predicateOne, predicateTwo, nil]];
-    searchResults = [HRMPatient allInContext:context withPredicate:predicate sortDescriptors:sortDescriptors];
-    [self.searchDisplayController.searchResultsTableView reloadData];
+    searchResults = [HRMPatient
+                     allInContext:managedObjectContext
+                     withPredicate:predicate
+                     sortDescriptors:sortDescriptors];
 }
 
 #pragma mark - table view methods
@@ -176,7 +163,13 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (tableView == self.tableView) ? [patients count] : [searchResults count];
+    if (tableView == self.tableView) {
+        id<NSFetchedResultsSectionInfo> info = [[fetchedResultsController sections] objectAtIndex:section];
+        return [info numberOfObjects];
+    }
+    else {
+        return [searchResults count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -188,12 +181,8 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
         cell.imageView.layer.masksToBounds = YES;
     }
     HRMPatient *patient = nil;
-    if (tableView == self.tableView) {
-        patient = [patients objectAtIndex:indexPath.row];
-    }
-    else {
-        patient = [searchResults objectAtIndex:indexPath.row];
-    }
+    if (tableView == self.tableView) { patient = [fetchedResultsController objectAtIndexPath:indexPath]; }
+    else { patient = [searchResults objectAtIndex:indexPath.row]; }
     cell.textLabel.text = [patient compositeName];
     cell.imageView.image = [patient patientImage];
     return cell;
@@ -205,7 +194,7 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
     }
     else {
         HRMPatient *patient = [searchResults objectAtIndex:indexPath.row];
-        selectedPatientIndex = [patients indexOfObject:patient];
+        selectedPatientIndex = [fetchedResultsController indexPathForObject:patient].row;
         [self updateTableViewSelection];
     }
     double delay = 0.15;
@@ -231,14 +220,76 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-    id object = [patients objectAtIndex:fromIndexPath.row];
-    [patients removeObjectAtIndex:fromIndexPath.row];
-    [patients insertObject:object atIndex:toIndexPath.row];
-    if (selectedPatientIndex == fromIndexPath.row) {
+    
+    // gather patients and other variables
+    NSFetchRequest *request = fetchedResultsController.fetchRequest;
+    NSMutableArray *objects  = [[managedObjectContext executeFetchRequest:request error:nil] mutableCopy];
+    NSUInteger max = MAX(fromIndexPath.row, toIndexPath.row);
+    
+    // perform reorder
+    id object = [objects objectAtIndex:fromIndexPath.row];
+    [objects removeObjectAtIndex:fromIndexPath.row];
+    [objects insertObject:object atIndex:toIndexPath.row];
+    
+    // set display order up to the highest effected row
+    [objects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSNumber *number = [NSNumber numberWithLong:(long)idx];
+        [obj setDisplayOrder:number];
+        if (idx >= max) { *stop = YES; }
+    }];
+    
+    // update selected index if necessary
+    if (fromIndexPath.row == selectedPatientIndex) {
         selectedPatientIndex = toIndexPath.row;
         [self persistSelectedPatientIndex];
     }
-    [self persistPatientOrder];
+    
+    // save
+    shouldIgnoreUpdatesFromFetchedResultsController = YES;
+    [managedObjectContext save:nil];
+    shouldIgnoreUpdatesFromFetchedResultsController = NO;
+    
+}
+
+#pragma mark - fetched results controller
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    if (shouldIgnoreUpdatesFromFetchedResultsController) { return; }
+    [self.tableView beginUpdates];
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    if (shouldIgnoreUpdatesFromFetchedResultsController) { return; }
+    [self.tableView endUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)object atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    if (shouldIgnoreUpdatesFromFetchedResultsController) { return; }
+	UITableView *tableView = self.tableView;
+    if (type == NSFetchedResultsChangeInsert) {
+        [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    else if (type == NSFetchedResultsChangeDelete) {
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    else if (type == NSFetchedResultsChangeUpdate) {
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }
+    else if (type == NSFetchedResultsChangeMove) {
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    if (shouldIgnoreUpdatesFromFetchedResultsController) { return; }
+    UITableView *tableView = self.tableView;
+    if (type == NSFetchedResultsChangeInsert) {
+        [tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    else if (type == NSFetchedResultsChangeDelete) {
+        [tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
 }
 
 @end
