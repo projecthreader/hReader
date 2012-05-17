@@ -222,9 +222,8 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
     
     // gather patients and other variables
-    NSFetchRequest *request = fetchedResultsController.fetchRequest;
-    NSMutableArray *objects  = [[managedObjectContext executeFetchRequest:request error:nil] mutableCopy];
-    NSUInteger max = MAX(fromIndexPath.row, toIndexPath.row);
+    NSMutableArray *objects  = [fetchedResultsController.fetchedObjects mutableCopy];
+    NSInteger max = MAX(fromIndexPath.row, toIndexPath.row);
     
     // perform reorder
     id object = [objects objectAtIndex:fromIndexPath.row];
@@ -235,14 +234,16 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
     [objects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSNumber *number = [NSNumber numberWithLong:(long)idx];
         [obj setDisplayOrder:number];
-        if (idx >= max) { *stop = YES; }
+        if ((NSInteger)idx >= max) { *stop = YES; }
     }];
     
-    // update selected index if necessary
-    if (fromIndexPath.row == selectedPatientIndex) {
-        selectedPatientIndex = toIndexPath.row;
-        [self persistSelectedPatientIndex];
+    // update selected index
+    if (fromIndexPath.row == selectedPatientIndex) { selectedPatientIndex = toIndexPath.row; }
+    else if (max >= selectedPatientIndex) {
+        if (fromIndexPath.row <= selectedPatientIndex) { selectedPatientIndex--; }
+        else if (toIndexPath.row <= selectedPatientIndex) { selectedPatientIndex++; }
     }
+    [self persistSelectedPatientIndex];
     
     // save
     shouldIgnoreUpdatesFromFetchedResultsController = YES;
