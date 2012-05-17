@@ -43,6 +43,7 @@
 @dynamic entries;
 @dynamic syntheticInfo;
 @dynamic applets;
+@dynamic displayOrder;
 
 @dynamic results;
 @dynamic allergies;
@@ -50,10 +51,16 @@
 
 #pragma mark - class methods
 
++ (id)instanceInContext:(NSManagedObjectContext *)context {
+    HRMPatient *patient = [super instanceInContext:context];
+    patient.displayOrder = [NSNumber numberWithLong:LONG_MAX];
+    return patient;
+}
+
 + (HRMPatient *)instanceWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context {
     
     // create patient
-    HRMPatient *patient = [HRMPatient instanceInContext:context];
+    HRMPatient *patient = [self instanceInContext:context];
     __block id object = nil;
     
     // load basic data
@@ -177,16 +184,6 @@
 }
 
 #pragma mark - object methods
-
-- (void)awakeFromFetch {
-    NSArray *applets = [self.syntheticInfo objectForKey:@"applets"];
-    if (applets) {
-        self.applets = [applets mutableCopy];
-    }
-    else {
-        self.applets = [NSMutableArray array];
-    }
-}
 
 - (UIImage *)patientImage {
     return [UIImage imageNamed:[NSString stringWithFormat:@"UserImage-%@-%@", self.lastName, self.firstName]];

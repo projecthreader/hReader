@@ -32,6 +32,7 @@ typedef enum {
 @property (nonatomic, retain) NSSet *entries;
 @property (nonatomic, retain) NSDictionary *syntheticInfo;
 @property (nonatomic, strong) NSArray *applets;
+@property (nonatomic, strong) NSNumber *displayOrder;
 
 #pragma mark - fetched properties
 
