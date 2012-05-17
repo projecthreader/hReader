@@ -13,6 +13,7 @@
 #import "HRAppletConfigurationViewController.h"
 #import "HRPeoplePickerViewController.h"
 #import "HRAppletTile.h"
+#import "HRAppDelegate.h"
 
 #import "HRMPatient.h"
 #import "HRMEntry.h"
@@ -81,12 +82,12 @@
         self.title = @"Summary";
         [[NSNotificationCenter defaultCenter]
          addObserver:self
-         selector:@selector(appletConfigurationDidChange)
-         name:HRAppletConfigurationDidChangeNotification
+         selector:@selector(reloadData)
+         name:NSManagedObjectContextDidSaveNotification
          object:nil];
         [[NSNotificationCenter defaultCenter]
          addObserver:self
-         selector:@selector(patientDidChange:)
+         selector:@selector(reloadData)
          name:HRPatientDidChangeNotification
          object:nil];
     }
@@ -96,7 +97,7 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter]
      removeObserver:self
-     name:HRAppletConfigurationDidChangeNotification
+     name:NSManagedObjectContextDidSaveNotification
      object:nil];
     [[NSNotificationCenter defaultCenter]
      removeObserver:self
@@ -438,26 +439,6 @@
     [tile didReceiveTap:self inRect:rect];
 }
 
-#pragma mark - notifications
-
-- (void)patientDidChange:(NSNotification *)notification {
-    [self reloadData];
-}
-
-//- (void)patientChanged:(HRPatientSwipeControl *)control {
-//    [UIView
-//     animateWithDuration:UINavigationControllerHideShowBarDuration
-//     animations:^{
-//         [self.labels setValue:[NSNumber numberWithDouble:0.0] forKey:@"alpha"];
-//     }
-//     completion:^(BOOL finished) {
-//         [self reloadData];
-//         [UIView animateWithDuration:0.4 animations:^{
-//             [self.labels setValue:[NSNumber numberWithDouble:1.0] forKey:@"alpha"];
-//         }];
-//     }];
-//}
-
 #pragma mark - gestures
 
 - (void)toggleDateOfBirth:(UITapGestureRecognizer *)gesture {
@@ -509,13 +490,7 @@
 - (void)patientImageViewTap:(UITapGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateRecognized) {
         HRPeoplePickerViewController *picker = (id)self.panelViewController.leftAccessoryViewController;
-//        UIView *view = gesture.view;
-//        if ([gesture locationInView:view].x < CGRectGetMidX(view.bounds)) {
-//            [picker selectPreviousPatient];
-//        }
-//        else {
-            [picker selectNextPatient];
-//        }
+        [picker selectNextPatient];
     }
 }
 
