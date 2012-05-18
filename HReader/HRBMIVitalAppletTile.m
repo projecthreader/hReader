@@ -25,7 +25,7 @@
 - (NSDictionary *)bmiChartForGender:(HRMPatientGender)gender;
 - (NSInteger)percentileForBMIEntry:(HRMEntry *)entry;
 - (BOOL)isChild;
-- (NSInteger)ageInMonths;
+- (NSInteger)monthsForDate:(NSDate *)date;
 
 @end
 
@@ -176,7 +176,9 @@
     NSDictionary *bmiChart = [self bmiChartForGender:[self.patient.gender intValue]];
     
     // Chart uses half months as the keys, so 30 months will be looked up as 30.5
-    NSInteger months = [self ageInMonths];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *monthComponents = [calendar components:NSMonthCalendarUnit fromDate:self.patient.dateOfBirth toDate:entry.date options:0];    
+    NSInteger months = [monthComponents month];
     NSArray *row = [bmiChart objectForKey:[NSString stringWithFormat:@"%ld.5", (long)months]];
     
     __block NSInteger percentile = 0;
@@ -202,12 +204,14 @@
 }
 
 - (BOOL)isChild {
-    return [self ageInMonths] <= 240;
-}
-
-- (NSInteger)ageInMonths {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *monthComponents = [calendar components:NSMonthCalendarUnit fromDate:self.patient.dateOfBirth toDate:[NSDate date] options:0];    
+    return [monthComponents month] <= 240;
+}
+
+- (NSInteger)monthsForDate:(NSDate *)date {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *monthComponents = [calendar components:NSMonthCalendarUnit fromDate:date toDate:[NSDate date] options:0];    
     return [monthComponents month];
 }
 
