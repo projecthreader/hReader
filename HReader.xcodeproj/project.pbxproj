@@ -150,7 +150,7 @@
 		94334ACC152A249F00B4C904 /* HRKeyValueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94334ACB152A249F00B4C904 /* HRKeyValueTableViewController.m */; };
 		9439A9D4153C7303007FE401 /* HRBMIVitalAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9439A9D3153C7303007FE401 /* HRBMIVitalAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		945286B0155844C600CF5EA3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 945286AF155844C600CF5EA3 /* MessageUI.framework */; };
-		945286BC156148C500CF5EA3 /* HRWebViewAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 945286BB156148C500CF5EA3 /* HRWebViewAppletTile.m */; };
+		945286BC156148C500CF5EA3 /* HRWebViewAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 945286BB156148C500CF5EA3 /* HRWebViewAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9452D7F414FC167200021E69 /* HRProviderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9452D7F314FC167200021E69 /* HRProviderView.xib */; };
 		9452D7F714FC16DF00021E69 /* HRProviderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9452D7F614FC16DF00021E69 /* HRProviderView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9454C36F1551797A0024C2EF /* HRSparkLineLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9454C36B1551797A0024C2EF /* HRSparkLineLine.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -160,9 +160,6 @@
 		945560D214BB892100A3DC43 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560C914BB892100A3DC43 /* DDXMLDocument.m */; };
 		945560D314BB892100A3DC43 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560CB14BB892100A3DC43 /* DDXMLElement.m */; };
 		945560D414BB892100A3DC43 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560CD14BB892100A3DC43 /* DDXMLNode.m */; };
-		9458B5D015641B9700C96CA5 /* bmi-std-dev-male.json in Resources */ = {isa = PBXBuildFile; fileRef = 9458B5CD15641B9700C96CA5 /* bmi-std-dev-male.json */; };
-		9458B5D115641B9700C96CA5 /* bmi-std-dev-female.json in Resources */ = {isa = PBXBuildFile; fileRef = 9458B5CE15641B9700C96CA5 /* bmi-std-dev-female.json */; };
-		9458B5D215641B9700C96CA5 /* stddev.json in Resources */ = {isa = PBXBuildFile; fileRef = 9458B5CF15641B9700C96CA5 /* stddev.json */; };
 		94622A921541E5E300CFC592 /* HRPatientImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94622A911541E5E300CFC592 /* HRPatientImageView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9464C5881476BDAE0076B991 /* C32-Smith-Johnny.html in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5861476BDAE0076B991 /* C32-Smith-Johnny.html */; };
 		94650033153C8F7D003255AF /* HRSparkLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94650032153C8F7D003255AF /* HRSparkLineView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -180,6 +177,8 @@
 		947FCE4B14B4C76700C716FD /* HRPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947FCE4914B4C76700C716FD /* HRPrivacyViewController.m */; };
 		947FCE4C14B4C76700C716FD /* HRPrivacyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE4A14B4C76700C716FD /* HRPrivacyViewController.xib */; };
 		947FCE5914B4D7E400C716FD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947FCE5814B4D7E400C716FD /* AudioToolbox.framework */; };
+		9483F67115669E5400867CFC /* female-bmi-chart.json in Resources */ = {isa = PBXBuildFile; fileRef = 9483F67015669E5400867CFC /* female-bmi-chart.json */; };
+		9483F67315669EE000867CFC /* male-bmi-chart.json in Resources */ = {isa = PBXBuildFile; fileRef = 9483F67215669EE000867CFC /* male-bmi-chart.json */; };
 		9492CA531535F90E009DE7F2 /* tbi-fullscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 9492CA511535F90E009DE7F2 /* tbi-fullscreen.png */; };
 		9492CA541535F90E009DE7F2 /* tbi-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 9492CA521535F90E009DE7F2 /* tbi-tile.png */; };
 		9492CA5715360527009DE7F2 /* HREncountersAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9492CA5615360526009DE7F2 /* HREncountersAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -424,9 +423,6 @@
 		945560CC14BB892100A3DC43 /* DDXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDXMLNode.h; path = vendor/KissXML/KissXML/DDXMLNode.h; sourceTree = "<group>"; };
 		945560CD14BB892100A3DC43 /* DDXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDXMLNode.m; path = vendor/KissXML/KissXML/DDXMLNode.m; sourceTree = "<group>"; };
 		945560CF14BB892100A3DC43 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
-		9458B5CD15641B9700C96CA5 /* bmi-std-dev-male.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "bmi-std-dev-male.json"; sourceTree = "<group>"; };
-		9458B5CE15641B9700C96CA5 /* bmi-std-dev-female.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "bmi-std-dev-female.json"; sourceTree = "<group>"; };
-		9458B5CF15641B9700C96CA5 /* stddev.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stddev.json; sourceTree = "<group>"; };
 		94622A901541E5E300CFC592 /* HRPatientImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPatientImageView.h; sourceTree = "<group>"; };
 		94622A911541E5E300CFC592 /* HRPatientImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPatientImageView.m; sourceTree = "<group>"; };
 		9464C5861476BDAE0076B991 /* C32-Smith-Johnny.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Johnny.html"; sourceTree = "<group>"; };
@@ -456,6 +452,8 @@
 		947FCE4914B4C76700C716FD /* HRPrivacyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPrivacyViewController.m; sourceTree = "<group>"; };
 		947FCE4A14B4C76700C716FD /* HRPrivacyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPrivacyViewController.xib; sourceTree = "<group>"; };
 		947FCE5814B4D7E400C716FD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		9483F67015669E5400867CFC /* female-bmi-chart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "female-bmi-chart.json"; sourceTree = "<group>"; };
+		9483F67215669EE000867CFC /* male-bmi-chart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "male-bmi-chart.json"; sourceTree = "<group>"; };
 		9492CA511535F90E009DE7F2 /* tbi-fullscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tbi-fullscreen.png"; sourceTree = "<group>"; };
 		9492CA521535F90E009DE7F2 /* tbi-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tbi-tile.png"; sourceTree = "<group>"; };
 		9492CA5515360526009DE7F2 /* HREncountersAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HREncountersAppletTile.h; sourceTree = "<group>"; };
@@ -664,9 +662,8 @@
 				940C046A152B6ADF00834416 /* ss-synthetic.json */,
 				3BE9A42C14E42A3800F87B60 /* ts.json */,
 				940C046B152B6ADF00834416 /* ts-synthetic.json */,
-				9458B5CD15641B9700C96CA5 /* bmi-std-dev-male.json */,
-				9458B5CE15641B9700C96CA5 /* bmi-std-dev-female.json */,
-				9458B5CF15641B9700C96CA5 /* stddev.json */,
+				9483F67015669E5400867CFC /* female-bmi-chart.json */,
+				9483F67215669EE000867CFC /* male-bmi-chart.json */,
 			);
 			name = "Patient Data";
 			sourceTree = "<group>";
@@ -1339,9 +1336,8 @@
 				3B74E5DC155482E700593ECF /* ts-events-full.png in Resources */,
 				3B74E5DE1554854000593ECF /* ns-synthetic.json in Resources */,
 				C3390523155D536B00E77EBF /* HReaderConfig.xcconfig in Resources */,
-				9458B5D015641B9700C96CA5 /* bmi-std-dev-male.json in Resources */,
-				9458B5D115641B9700C96CA5 /* bmi-std-dev-female.json in Resources */,
-				9458B5D215641B9700C96CA5 /* stddev.json in Resources */,
+				9483F67115669E5400867CFC /* female-bmi-chart.json in Resources */,
+				9483F67315669EE000867CFC /* male-bmi-chart.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

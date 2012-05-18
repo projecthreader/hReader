@@ -44,7 +44,7 @@
                                     nil];
         [points addObject:dictionary];
     }];
-    return [points copy];
+    return [[points copy] autorelease];
 }
 
 - (BOOL)isNormal {
