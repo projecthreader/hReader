@@ -1,12 +1,10 @@
 .timeline-default {
-    font-family: Trebuchet MS, Helvetica, Arial, sans serif;
+    font-family: Helvetica, Arial, sans serif;
     font-size: 8pt;
     border: 1px solid #aaa;
 }
 
 .tape-special_event, .small-special_event { background-color: orange; }
-
-
 
 h2 {
 	font-size: 1.4em;
@@ -15,7 +13,7 @@ h2 {
 	margin-top: 0;
 	margin-bottom: 0;
 	padding: 5px 10px 6px 20px;
-    border-right: 1px solid #ccc;
+  border-right: 1px solid #ccc;
 }
 
 h2.even {
@@ -83,11 +81,12 @@ h2.last {
 .timeline-horizontal .timeline-date-label-em{height:6em;line-height:10em}
 #content {
     height: 440px;
-    margin:200px 0px 0px 0;
+    margin:0px 0px 0px 0;
 }
 
 
 div.simileAjax-bubble-contentContainer {
     background: none repeat scroll 0 0 #fff;
+    z-index: 5;
 }
 
