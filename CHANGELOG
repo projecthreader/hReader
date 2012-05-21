@@ -1,3 +1,9 @@
+# 2012-4-21
+
+- Update timeline code to use new edge-to-edge timeline
+- Add new patient image user interaction to timeline
+- Update timeline view layout to match dimensions and style of the summary screen
+
 # 2012-4-18
 
 - Using new BMI charts to get percentile for male and female children
