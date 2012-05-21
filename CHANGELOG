@@ -1,3 +1,9 @@
+# 2012-4-18
+
+- Using new BMI charts to get percentile for male and female children
+- Decreased search complexity when searching BMI chart which caused locking on the main thread
+- BMI percentiles are now calculated based on the age they were taken
+
 # 2012-4-16
 
 - Children < 20 years old now show BMI percetiles

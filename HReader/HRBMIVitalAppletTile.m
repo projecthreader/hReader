@@ -22,9 +22,10 @@
 - (double)normalLow;
 - (double)normalHigh;
 - (BOOL)isValueNormal:(double)value;
-- (NSArray *)stdDevForGender:(HRMPatientGender)gender;
-- (NSArray *)zScoreTable;
+- (NSDictionary *)bmiChartForGender:(HRMPatientGender)gender;
 - (NSInteger)percentileForBMIEntry:(HRMEntry *)entry;
+- (BOOL)isChild;
+- (NSInteger)monthsForDate:(NSDate *)date;
 
 @end
 
@@ -121,7 +122,6 @@
         HRSparkLinePoint *point = [HRSparkLinePoint pointWithX:timeInterval y:value];
         [points addObject:point];
     }];
-
     return points;
 }
 
@@ -139,6 +139,33 @@
     return (value >= [self normalLow] && value <= [self normalHigh]);
 }
 
+
+- (NSDictionary *)bmiChartForGender:(HRMPatientGender)gender {
+    static NSDictionary *femaleBMIChart;
+    static NSDictionary *maleBMIChart;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSError *error = nil;
+        NSURL *maleURL = [[NSBundle mainBundle] URLForResource:@"male-bmi-chart" withExtension:@"json"];
+        NSData *maleData = [NSData dataWithContentsOfURL:maleURL];
+        maleBMIChart = [NSJSONSerialization JSONObjectWithData:maleData options:0 error:nil];        
+        NSAssert(error == nil, @"Error parsing male bmi chart %@", error);
+        
+        NSURL *femaleURL = [[NSBundle mainBundle] URLForResource:@"female-bmi-chart" withExtension:@"json"];
+        NSData *femaleData = [NSData dataWithContentsOfURL:femaleURL];
+        femaleBMIChart = [NSJSONSerialization JSONObjectWithData:femaleData options:0 error:&error];
+        NSAssert(error == nil, @"Error parsing female bmi chart %@", error);
+    });
+    
+    if (gender == HRMPatientGenderMale) {
+        return maleBMIChart;
+    }
+    else {
+        return femaleBMIChart;
+    }
+}
+
 - (NSInteger)percentileForBMIEntry:(HRMEntry *)entry {
     NSString *scalarString = [entry.value objectForKey:@"scalar"];
     CGFloat bmi = 0.0;
@@ -146,83 +173,46 @@
         bmi = [scalarString floatValue];
     }
     
-    NSArray *stddevArray = [self stdDevForGender:[self.patient.gender intValue]];
+    NSDictionary *bmiChart = [self bmiChartForGender:[self.patient.gender intValue]];
     
-    __block NSInteger percentile;
+    // Chart uses half months as the keys, so 30 months will be looked up as 30.5
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *monthComponents = [calendar components:NSMonthCalendarUnit fromDate:self.patient.dateOfBirth toDate:entry.date options:0];    
+    NSInteger months = [monthComponents month];
+    NSArray *row = [bmiChart objectForKey:[NSString stringWithFormat:@"%ld.5", (long)months]];
     
-    [stddevArray enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL *stop) {
-        CGFloat ageInMonths = [[dict objectForKey:@"age"] floatValue];
-        NSCalendar *calendar = [NSCalendar currentCalendar];        
-        NSDateComponents *monthComponents = [calendar components:NSMonthCalendarUnit fromDate:self.patient.dateOfBirth toDate:entry.date options:0];
-        NSInteger patientAgeInMonths = [monthComponents month];
-        if (ageInMonths > patientAgeInMonths) {
-            CGFloat mean = [[dict objectForKey:@"mean"] floatValue];
-            CGFloat stddev = [[dict objectForKey:@"stddev"] floatValue];
-            CGFloat zScore = (bmi - mean) / stddev;
-            
-            [[self zScoreTable] enumerateObjectsUsingBlock:^(NSDictionary *zScoreDict, NSUInteger idx, BOOL *stop) {
-                CGFloat score = [[zScoreDict objectForKey:@"zscore"] floatValue];
-                if (score > zScore) {
-                    percentile = [[zScoreDict objectForKey:@"percentile"] intValue];
-                    *stop = YES;
-                }
-                else {
-                    if (score < 0) {
-                        percentile = 1.0;
-                    }
-                    else {
-                        percentile = 99.0;
-                    }
-                }
-            }];
+    __block NSInteger percentile = 0;
+    [row enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(NSNumber *bmiValue, NSUInteger index, BOOL *stop) {
+        if (bmi > [bmiValue floatValue]) {
+            if (index == 0) {
+                percentile = 3;
+            }
+            else if (index == [row count] - 1) {
+                percentile = 97;
+            }
+            else {
+                percentile = index * 5;                
+            }
             *stop = YES;
         }
     }];
     
+    if (percentile == 0) {
+        percentile = 3;
+    }
     return percentile;
-}
-
-- (NSArray *)stdDevForGender:(HRMPatientGender)gender {
-    static NSArray *maleBMI;
-    static NSArray *femaleBMI;
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSURL *maleURL = [[NSBundle mainBundle] URLForResource:@"bmi-std-dev-male" withExtension:@"json"];
-        NSData *maleData = [NSData dataWithContentsOfURL:maleURL];
-        maleBMI = [NSJSONSerialization JSONObjectWithData:maleData options:0 error:nil];
-        
-        NSURL *femaleURL = [[NSBundle mainBundle] URLForResource:@"bmi-std-dev-female" withExtension:@"json"];
-        NSData *femaleData = [NSData dataWithContentsOfURL:femaleURL];
-        femaleBMI = [NSJSONSerialization JSONObjectWithData:femaleData options:0 error:nil];
-        
-    });
-    
-    if (gender == HRMPatientGenderMale) {
-        return maleBMI;
-    }
-    else {
-        return femaleBMI;
-    }
-}
-
-- (NSArray *)zScoreTable {
-    static NSArray *zScoreTable;
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSURL *tableURL = [[NSBundle mainBundle] URLForResource:@"stddev" withExtension:@"json"];
-        NSData *tableData = [NSData dataWithContentsOfURL:tableURL];
-        zScoreTable = [NSJSONSerialization JSONObjectWithData:tableData options:0 error:nil];
-    });
-    
-    return zScoreTable;
 }
 
 - (BOOL)isChild {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *monthComponents = [calendar components:NSMonthCalendarUnit fromDate:self.patient.dateOfBirth toDate:[NSDate date] options:0];
+    NSDateComponents *monthComponents = [calendar components:NSMonthCalendarUnit fromDate:self.patient.dateOfBirth toDate:[NSDate date] options:0];    
     return [monthComponents month] <= 240;
+}
+
+- (NSInteger)monthsForDate:(NSDate *)date {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *monthComponents = [calendar components:NSMonthCalendarUnit fromDate:date toDate:[NSDate date] options:0];    
+    return [monthComponents month];
 }
 
 @end
