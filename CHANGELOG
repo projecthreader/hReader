@@ -1,3 +1,19 @@
+# 2012-4-21
+
+- Update timeline code to use new edge-to-edge timeline
+- Add new patient image user interaction to timeline
+- Update timeline view layout to match dimensions and style of the summary screen
+
+# 2012-4-18
+
+- Using new BMI charts to get percentile for male and female children
+- Decreased search complexity when searching BMI chart which caused locking on the main thread
+- BMI percentiles are now calculated based on the age they were taken
+
+# 2012-4-16
+
+- Children < 20 years old now show BMI percetiles
+
 # 2012-4-14
 
 - Started HRWebViewAppletTile
