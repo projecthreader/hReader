@@ -21,12 +21,19 @@
 - (void)tileDidLoad {
     [super tileDidLoad];
     HRMEntry *encounter = [[self.patient encounters] lastObject];
-    self.dateLabel.text = [encounter.date mediumStyleDate];
-    self.descriptionLabel.text = [encounter.desc sentenceCapitalizedString];
-    NSDictionary *codes = encounter.codes;
-    NSDictionary *codeType = [[codes allKeys] lastObject];
-    NSString *codeValues = [[codes objectForKey:codeType] componentsJoinedByString:@", "];
-    self.typeLabel.text = [NSString stringWithFormat:@"%@ %@", codeType, codeValues];
+    if (encounter) {
+        self.dateLabel.text = [encounter.date mediumStyleDate];
+        self.descriptionLabel.text = [encounter.desc sentenceCapitalizedString];
+        NSDictionary *codes = encounter.codes;
+        NSDictionary *codeType = [[codes allKeys] lastObject];
+        NSString *codeValues = [[codes objectForKey:codeType] componentsJoinedByString:@", "];
+        self.typeLabel.text = [NSString stringWithFormat:@"%@ %@", codeType, codeValues];
+    }
+    else {
+        self.dateLabel.text = @"None";
+        self.descriptionLabel.text = nil;
+        self.typeLabel.text = nil;
+    }
 }
 
 @end
