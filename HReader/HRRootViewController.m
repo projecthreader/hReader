@@ -50,7 +50,7 @@ static int HRRootViewControllerTitleContext;
         // create child view controllers
         controller = [storyboard instantiateViewControllerWithIdentifier:@"SummaryViewController"];
         [self addChildViewController:controller];
-        controller = [[HRTimelineViewController alloc] initWithNibName:nil bundle:nil];
+        controller = [storyboard instantiateViewControllerWithIdentifier:@"TimelineViewController"];
         [self addChildViewController:controller];
         controller = [[HRMessagesViewController alloc] initWithNibName:nil bundle:nil];
         [self addChildViewController:controller];
