@@ -1,7 +1,13 @@
+body {
+  margin: 0;
+}
+
 .timeline-default {
     font-family: Helvetica, Arial, sans serif;
     font-size: 8pt;
-    border: 1px solid #aaa;
+}
+#content {
+  margin: 0;
 }
 
 .tape-special_event, .small-special_event { background-color: orange; }
@@ -88,5 +94,9 @@ h2.last {
 div.simileAjax-bubble-contentContainer {
     background: none repeat scroll 0 0 #fff;
     z-index: 5;
+}
+
+.timeline-copyright {
+  display: none;
 }
 

@@ -10,11 +10,9 @@
 
 @interface HRTimelineViewController : UIViewController
 
-@property (retain, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (retain, nonatomic) IBOutlet UIWebView *webView;
-@property (retain, nonatomic) IBOutlet UIView *headerView;
-@property (retain, nonatomic) IBOutlet UILabel *nameLabel;
-
+@property (nonatomic, strong) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) IBOutlet UIView *headerView;
+@property (nonatomic, strong) IBOutlet UILabel *nameLabel;
 @property (nonatomic, strong) IBOutlet UIImageView *patientImageView;
 
 @end
