@@ -71,7 +71,11 @@
            lastObject];
     URL = [URL URLByAppendingPathComponent:@"hReader.xml"];
     NSString *XMLString = [[[patient timelineXMLDocument] XMLString] copy];
-    BOOL write = [XMLString writeToURL:URL atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    NSData *XMLData = [XMLString dataUsingEncoding:NSUTF8StringEncoding];
+    BOOL write = [XMLData
+                  writeToURL:URL
+                  options:(NSDataWritingAtomic | NSDataWritingFileProtectionComplete)
+                  error:nil];
     NSAssert(write, @"The XML file could not be written");
     
     // load timeline
