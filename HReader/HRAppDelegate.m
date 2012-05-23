@@ -22,6 +22,7 @@
 
 #import "SVPanelViewController.h"
 
+#import "HROAuthController.h"
 
 @interface HRAppDelegate () {
 @private
@@ -211,6 +212,8 @@
         
     }
 #endif
+    
+    [self.window.rootViewController presentModalViewController:[[HROAuthController alloc] init] animated:YES];
     
     // return
     return YES;
