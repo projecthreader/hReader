@@ -26,6 +26,8 @@
 		3B19652114EEAB970045F827 /* C32-Smith-Molly.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */; };
 		3B19652214EEAB970045F827 /* C32-Smith-Sarah.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */; };
 		3B19652314EEAB970045F827 /* C32-Smith-Tom.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651F14EEAB970045F827 /* C32-Smith-Tom.html */; };
+		3B364FA9156D628C00DDB201 /* GCOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B364FA5156D628C00DDB201 /* GCOAuth.m */; };
+		3B364FAA156D628C00DDB201 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B364FA7156D628C00DDB201 /* NSData+Base64.m */; };
 		3B3C919514F69F61005CD5C5 /* NSDate+FormattedDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C919414F69F61005CD5C5 /* NSDate+FormattedDate.m */; };
 		3B4365D61540A2890009F892 /* hs-0-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365A31540A2890009F892 /* hs-0-tile.png */; };
 		3B4365D71540A2890009F892 /* hs-1-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365A41540A2890009F892 /* hs-1-overview.png */; };
@@ -251,6 +253,10 @@
 		3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Sarah.html"; sourceTree = "<group>"; };
 		3B19651F14EEAB970045F827 /* C32-Smith-Tom.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Tom.html"; sourceTree = "<group>"; };
 		3B2B7B55156A863C003B3B77 /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
+		3B364FA4156D628C00DDB201 /* GCOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCOAuth.h; sourceTree = "<group>"; };
+		3B364FA5156D628C00DDB201 /* GCOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCOAuth.m; sourceTree = "<group>"; };
+		3B364FA6156D628C00DDB201 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		3B364FA7156D628C00DDB201 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		3B3C919314F69F61005CD5C5 /* NSDate+FormattedDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FormattedDate.h"; sourceTree = "<group>"; };
 		3B3C919414F69F61005CD5C5 /* NSDate+FormattedDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FormattedDate.m"; sourceTree = "<group>"; };
 		3B4365A31540A2890009F892 /* hs-0-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hs-0-tile.png"; sourceTree = "<group>"; };
@@ -573,6 +579,18 @@
 				94622A911541E5E300CFC592 /* HRPatientImageView.m */,
 			);
 			name = Global;
+			sourceTree = "<group>";
+		};
+		3B364FA3156D628C00DDB201 /* oauth */ = {
+			isa = PBXGroup;
+			children = (
+				3B364FA4156D628C00DDB201 /* GCOAuth.h */,
+				3B364FA5156D628C00DDB201 /* GCOAuth.m */,
+				3B364FA6156D628C00DDB201 /* NSData+Base64.h */,
+				3B364FA7156D628C00DDB201 /* NSData+Base64.m */,
+			);
+			name = oauth;
+			path = vendor/oauth;
 			sourceTree = "<group>";
 		};
 		3B5ADF6314E1C5D50025E069 /* Core Data */ = {
@@ -931,6 +949,7 @@
 		94689ABC14964BBF00E1FCA6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				3B364FA3156D628C00DDB201 /* oauth */,
 				94EBD54E14FE7A2E00A3AF66 /* Sparklines */,
 				3BD16ED714E1B5EE00F2249E /* guicocoa-common-code */,
 				3B04A54C14E0692600AD91F9 /* keychain */,
@@ -1431,6 +1450,8 @@
 				3B77F05215546AD2003C2DBD /* HRRespiratoryRateAppletTile.m in Sources */,
 				3BA3E7DE15595F090095A5CC /* GCAlertView.m in Sources */,
 				945286BC156148C500CF5EA3 /* HRWebViewAppletTile.m in Sources */,
+				3B364FA9156D628C00DDB201 /* GCOAuth.m in Sources */,
+				3B364FAA156D628C00DDB201 /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
