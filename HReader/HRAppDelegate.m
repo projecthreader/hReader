@@ -213,12 +213,28 @@
     }
 #endif
     
-    [self.window.rootViewController presentModalViewController:[[HROAuthController alloc] init] animated:YES];
+//    [self.window.rootViewController presentModalViewController:[[HROAuthController alloc] init] animated:YES];
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        while (YES) {
+//            [NSThread sleepForTimeInterval:30.0];
+//            
+//        }
+//    });
+    [HROAuthController GETRequestWithPath:@"/" completion:^(NSMutableURLRequest *request) {
+        if (request) {
+            [request setValue:@"application/xml" forHTTPHeaderField:@"Accepts"];
+            NSHTTPURLResponse *response = nil;
+            NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+            NSLog(@"%d", [response statusCode]);
+            NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        }
+    }];
     
     // return
     return YES;
     
 }
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -7,6 +7,3 @@
 [submodule "vendor/Sparklines"]
 	path = vendor/Sparklines
 	url = https://github.com/abelsey/Sparklines.git
-[submodule "vendor/oauth"]
-	path = vendor/oauth
-	url = https://github.com/guicocoa/cocoa-oauth.git
