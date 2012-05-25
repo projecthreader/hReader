@@ -8,8 +8,6 @@
 
 #import "HROAuthController.h"
 
-#import "GCOAuth.h"
-
 #import "SSKeychain.h"
 
 #if !__has_feature(objc_arc)
@@ -210,6 +208,21 @@ static dispatch_queue_t _requestQueue;
 + (void)GETRequestWithPath:(NSString *)path completion:(void (^) (NSMutableURLRequest *request))block {
     dispatch_queue_t queue = dispatch_get_current_queue();
     [self GETRequestWithPath:path queue:queue completion:block];
+}
+
++ (NSMutableURLRequest *)GETRequestWithPath:(NSString *)path {
+    NSMutableURLRequest * __block toReturn = nil;
+    BOOL __block hold = YES;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self GETRequestWithPath:path completion:^(NSMutableURLRequest *request) {
+            toReturn = request;
+            hold = NO;
+        }];
+    });
+    while (hold) {
+        [NSThread sleepForTimeInterval:0.1];
+    }
+    return toReturn;
 }
 
 + (void)GETRequestWithPath:(NSString *)path queue:(dispatch_queue_t)queue completion:(void (^) (NSMutableURLRequest *request))block {

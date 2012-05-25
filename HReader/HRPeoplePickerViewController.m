@@ -47,7 +47,12 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
 
 - (HRMPatient *)selectedPatient {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selectedPatientIndex inSection:0];
-    return [fetchedResultsController objectAtIndexPath:indexPath];
+    NSLog(@"%@", [fetchedResultsController fetchedObjects]);
+    id object = nil;
+    @try { [fetchedResultsController objectAtIndexPath:indexPath]; }
+    @catch (NSException *exception) {}
+    @finally {}
+    return object;
 }
 
 - (void)selectNextPatient {
@@ -110,7 +115,7 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
 
 - (void)updateTableViewSelection {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selectedPatientIndex inSection:0];
-    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+//    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
 }
 
 - (void)persistSelectedPatientIndex {

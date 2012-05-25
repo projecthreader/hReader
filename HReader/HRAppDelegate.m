@@ -24,6 +24,8 @@
 
 #import "HROAuthController.h"
 
+#import "DDXML.h"
+
 @interface HRAppDelegate () {
 @private
     NSUInteger passcodeAttempts;
@@ -140,37 +142,37 @@
      object:nil];
     
     // load patients if we don't have any yet
-    NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
-    if ([HRMPatient countInContext:context] == 0) {
-        NSArray *names = [NSArray arrayWithObjects:@"hs", @"js", @"ms", @"ss", @"ts", @"ns", nil];
-        [names enumerateObjectsUsingBlock:^(NSString *name, NSUInteger idx, BOOL *stop) {
-            
-            // load real data
-            NSURL *URL = [[NSBundle mainBundle] URLForResource:name withExtension:@"json"];
-            NSData *data = [NSData dataWithContentsOfURL:URL];
-            NSError *JSONError = nil;
-            HRMPatient *patient = nil;
-            id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
-            if (object) { patient = [HRMPatient instanceWithDictionary:object inContext:context]; }
-            else { NSLog(@"%@: %@", name, JSONError); }
-            
-            // load synthetic data
-            NSURL *syntheticURL = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@-synthetic", name] withExtension:@"json"];
-            NSData *syntheticData = [NSData dataWithContentsOfURL:syntheticURL];
-            if (syntheticData) {
-                NSError *error = nil;
-                patient.syntheticInfo = [NSJSONSerialization JSONObjectWithData:syntheticData options:0 error:&error];
-                patient.applets = [patient.syntheticInfo objectForKey:@"applets"];
-                if (error) {
-                    NSLog(@"Unable to load synthetic patient file %@\n%@", name, error);
-                }
-            }
-            
-        }];
-        NSError *error = nil;
-        BOOL save = [context save:&error];
-        NSAssert(save, @"Unable to import patients\n%@", error);
-    }
+//    NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
+//    if ([HRMPatient countInContext:context] == 0) {
+//        NSArray *names = [NSArray arrayWithObjects:@"hs", @"js", @"ms", @"ss", @"ts", @"ns", nil];
+//        [names enumerateObjectsUsingBlock:^(NSString *name, NSUInteger idx, BOOL *stop) {
+//            
+//            // load real data
+//            NSURL *URL = [[NSBundle mainBundle] URLForResource:name withExtension:@"json"];
+//            NSData *data = [NSData dataWithContentsOfURL:URL];
+//            NSError *JSONError = nil;
+//            HRMPatient *patient = nil;
+//            id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
+//            if (object) { patient = [HRMPatient instanceWithDictionary:object inContext:context]; }
+//            else { NSLog(@"%@: %@", name, JSONError); }
+//            
+//            // load synthetic data
+//            NSURL *syntheticURL = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@-synthetic", name] withExtension:@"json"];
+//            NSData *syntheticData = [NSData dataWithContentsOfURL:syntheticURL];
+//            if (syntheticData) {
+//                NSError *error = nil;
+//                patient.syntheticInfo = [NSJSONSerialization JSONObjectWithData:syntheticData options:0 error:&error];
+//                patient.applets = [patient.syntheticInfo objectForKey:@"applets"];
+//                if (error) {
+//                    NSLog(@"Unable to load synthetic patient file %@\n%@", name, error);
+//                }
+//            }
+//            
+//        }];
+//        NSError *error = nil;
+//        BOOL save = [context save:&error];
+//        NSAssert(save, @"Unable to import patients\n%@", error);
+//    }
     
     // configure the user interface
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
@@ -213,22 +215,74 @@
     }
 #endif
     
-//    [self.window.rootViewController presentModalViewController:[[HROAuthController alloc] init] animated:YES];
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        while (YES) {
-//            [NSThread sleepForTimeInterval:30.0];
-//            
-//        }
-//    });
-    [HROAuthController GETRequestWithPath:@"/" completion:^(NSMutableURLRequest *request) {
+    double delay = 5.0;
+    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
+    dispatch_after(time, dispatch_get_main_queue(), ^(void){
+        
+        // make a scratch context
+        NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
+        [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
+        NSMutableURLRequest * __block request = nil;
+        
+        // get list of patient ids
+        request = [HROAuthController GETRequestWithPath:@"/"];
+        NSArray *patientIDs = nil;
         if (request) {
-            [request setValue:@"application/xml" forHTTPHeaderField:@"Accepts"];
+            
+            // run request
+            NSError *error = nil;
             NSHTTPURLResponse *response = nil;
-            NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-            NSLog(@"%d", [response statusCode]);
-            NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+            
+            // get ids
+            DDXMLDocument *document = [[DDXMLDocument alloc] initWithData:data options:0 error:nil];
+            [[document rootElement] addNamespace:[DDXMLNode namespaceWithName:@"atom" stringValue:@"http://www.w3.org/2005/Atom"]];
+            patientIDs = [[document nodesForXPath:@"/atom:feed/atom:entry/atom:id" error:nil] valueForKey:@"stringValue"];
+            
         }
-    }];
+        
+        // sync each patient
+        [patientIDs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            
+            // get request
+            NSString *path = [NSString stringWithFormat:@"/records/%@/c32/%@", obj, obj];
+            request = [HROAuthController GETRequestWithPath:path];
+            if (request) {
+                
+                // configure request
+                [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+                
+                // run request
+                NSError *error = nil;
+                NSHTTPURLResponse *response = nil;
+                NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+                
+                // create patient
+                NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                [HRMPatient instanceWithDictionary:dictionary inContext:context];
+                
+            }
+            
+        }];
+        
+        
+//        [HROAuthController GETRequestWithPath:@"/records/5/c32/5" completion:^(NSMutableURLRequest *request) {
+//            if (request) {
+//                [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//                NSLog(@"%@", [request URL]);
+//                NSLog(@"%@", [request allHTTPHeaderFields]);
+//                NSHTTPURLResponse *response = nil;
+//                NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+//                NSLog(@"%d", [response statusCode]);
+//                NSLog(@"%@", [[response allHeaderFields] objectForKey:@"Content-Type"]);
+//                NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+//            }
+//        }];
+        
+        // save
+        [context save:nil];
+        
+    });
     
     // return
     return YES;

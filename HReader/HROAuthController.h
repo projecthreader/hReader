@@ -19,5 +19,6 @@
  
  */
 + (void)GETRequestWithPath:(NSString *)path completion:(void (^) (NSMutableURLRequest *request))block;
++ (NSMutableURLRequest *)GETRequestWithPath:(NSString *)path;
 
 @end
