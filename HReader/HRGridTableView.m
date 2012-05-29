@@ -9,27 +9,49 @@
 #import "HRGridTableView.h"
 #import "HRGridTableViewCell.h"
 
+#if !__has_feature(objc_arc)
+#error This class requires ARC
+#endif
+
 @interface HRGridTableView () {
 @private
-    NSInteger __numberOfViews;
+    NSInteger _numberOfViews;
 }
 
 - (void)didReceiveTap:(UITapGestureRecognizer *)gesture;
+- (void)commonInit;
 
 @end
 
 @implementation HRGridTableView
 
-@synthesize gridViewDelegate    = __gridViewDelegate;
-@synthesize numberOfColumns     = __numberOfColumns;
-@synthesize horizontalPadding   = __horizontalPadding;
-@synthesize verticalPadding     = __verticalPadding;
+@synthesize gridViewDelegate = _gridViewDelegate;
+@synthesize gridViewDataSource = _gridViewDataSource;
+@synthesize numberOfColumns = _numberOfColumns;
+@synthesize horizontalPadding = _horizontalPadding;
+@synthesize verticalPadding = _verticalPadding;
 
 #pragma mark - object methods
 
+- (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
+    self = [super initWithFrame:frame style:UITableViewStylePlain];
+    if (self) { [self commonInit]; }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) { [self commonInit]; }
+    return self;
+}
+
 - (void)commonInit {
-    __numberOfColumns = 3;
-    UIGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didReceiveTap:)];
+    _numberOfColumns = 3;
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]
+                                       initWithTarget:self
+                                       action:@selector(didReceiveTap:)];
+    gesture.numberOfTapsRequired = 1;
+    gesture.numberOfTouchesRequired = 1;
     [self addGestureRecognizer:gesture];
     self.delegate = self;
     self.dataSource = self;
@@ -37,25 +59,9 @@
     self.allowsSelection = NO;
 }
 
-- (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
-    self = [super initWithFrame:frame style:UITableViewStylePlain];
-    if (self) {
-        [self commonInit];
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)coder {
-    self = [super initWithCoder:coder];
-    if (self) {
-        [self commonInit];
-    }
-    return self;
-}
-
 - (void)setVerticalPadding:(CGFloat)verticalPadding {
     self.contentInset = UIEdgeInsetsMake(verticalPadding, 0.0, 0.0, 0.0);
-    __verticalPadding = verticalPadding;
+    _verticalPadding = verticalPadding;
 }
 
 #pragma mark - table view methods
@@ -65,8 +71,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    __numberOfViews = [self.gridViewDelegate numberOfViewsInGridView:self];
-    return (NSInteger)ceilf((float)__numberOfViews / (float)self.numberOfColumns);
+    _numberOfViews = [self.gridViewDataSource numberOfViewsInGridView:self];
+    return (NSInteger)ceilf((float)_numberOfViews / (float)self.numberOfColumns);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -75,9 +81,12 @@
     cell.horizontalPadding = self.horizontalPadding;
     cell.verticalPadding = self.verticalPadding;
     NSUInteger start = indexPath.row * self.numberOfColumns;
-    NSUInteger length = MIN(__numberOfViews - start, self.numberOfColumns);
-    NSRange range = NSMakeRange(start, length);
-    [cell setViews:[self.gridViewDelegate gridView:self viewsInRange:range]];
+    NSUInteger length = MIN(_numberOfViews - start, self.numberOfColumns);
+    NSMutableArray *views = [NSMutableArray arrayWithCapacity:length];
+    for (NSUInteger i = start; i < start + length; i++) {
+        [views addObject:[self.gridViewDataSource gridView:self viewAtIndex:i]];
+    }
+    [cell setViews:views];
     return cell;
 }
 
@@ -103,7 +112,9 @@
         }];
         if (column > -1) {
             NSInteger index = indexPath.row * self.numberOfColumns + column;
-            [self.gridViewDelegate gridView:self didSelectViewAtIndex:index];
+            if ([self.gridViewDelegate respondsToSelector:@selector(gridView:didSelectViewAtIndex:)]) {
+                [self.gridViewDelegate gridView:self didSelectViewAtIndex:index];
+            }
         }
         
     }

@@ -14,7 +14,6 @@
 @property (nonatomic, assign) CGFloat horizontalPadding;
 @property (nonatomic, assign) CGFloat verticalPadding;
 
-
 + (HRGridTableViewCell *)cellForTableView:(UITableView *)tableView;
 
 - (void)setViews:(NSArray *)views;

@@ -10,9 +10,9 @@
 
 @implementation HRGridTableViewCell
 
-@synthesize numberOfColumns         = __numberOfColumns;
-@synthesize horizontalPadding       = __horizontalPadding;
-@synthesize verticalPadding         = __verticalPadding;
+@synthesize numberOfColumns = _numberOfColumns;
+@synthesize horizontalPadding = _horizontalPadding;
+@synthesize verticalPadding = _verticalPadding;
 
 #pragma mark - class methods
 
@@ -30,9 +30,9 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        __horizontalPadding = 30;
-        __verticalPadding = 30;
-        __numberOfColumns = 3;
+        _horizontalPadding = 30;
+        _verticalPadding = 30;
+        _numberOfColumns = 3;
     }
     return self;
 }
@@ -43,7 +43,10 @@
     CGFloat columnWidth = totalColumnWidth / self.numberOfColumns;
     CGFloat rowHeight = self.contentView.bounds.size.height - self.verticalPadding;
     [self.contentView.subviews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
-        view.frame = CGRectMake(self.horizontalPadding + ((self.horizontalPadding + columnWidth) * idx), 0, columnWidth, rowHeight);
+        view.frame = CGRectMake(floor(self.horizontalPadding + ((self.horizontalPadding + columnWidth) * idx)),
+                                0.0,
+                                columnWidth,
+                                rowHeight);
     }];
 }
 

@@ -12,18 +12,23 @@
 
 @protocol HRGridTableViewDelegate <NSObject>
 
+@optional
+- (void)gridView:(HRGridTableView *)gridView didSelectViewAtIndex:(NSUInteger)index;
+
+@end
+
+@protocol HRGridTableViewDataSource <NSObject>
+
 @required
 - (NSUInteger)numberOfViewsInGridView:(HRGridTableView *)gridView;
-- (NSArray *)gridView:(HRGridTableView *)gridView viewsInRange:(NSRange)range;
-
-@optional
-- (void)gridView:(HRGridTableView *)gridView didSelectViewAtIndex:(NSInteger)index;
+- (UIView *)gridView:(HRGridTableView *)gridView viewAtIndex:(NSUInteger)index;
 
 @end
 
 @interface HRGridTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, assign) IBOutlet id<HRGridTableViewDelegate> gridViewDelegate;
+@property (nonatomic, weak) IBOutlet id<HRGridTableViewDelegate> gridViewDelegate;
+@property (nonatomic, weak) IBOutlet id<HRGridTableViewDataSource> gridViewDataSource;
 @property (nonatomic, assign) NSUInteger numberOfColumns;
 @property (nonatomic, assign) CGFloat horizontalPadding;
 @property (nonatomic, assign) CGFloat verticalPadding;
