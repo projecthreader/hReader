@@ -110,6 +110,7 @@
         HRMPatient *patient = [fetchedResultsController objectAtIndexPath:indexPath];
         tile.nameLabel.text = [patient compositeName];
         tile.imageView.image = [patient patientImage];
+        tile.statusLabel.text = patient.relationshipString;
         
         // shadow
         tile.layer.shadowColor = [[UIColor blackColor] CGColor];
@@ -137,6 +138,9 @@
 #pragma mark - fetched results controller
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationship == %d", HRMPatientRelationshipSpouse];
+    NSUInteger count = [HRMPatient countInContext:managedObjectContext withPredicate:predicate];
+    self.spouseButton.enabled = (count == 0);
     [self.gridView reloadData];
 }
 

@@ -14,6 +14,14 @@ typedef enum {
     HRMPatientGenderUnknown
 } HRMPatientGender;
 
+typedef enum {
+    HRMPatientRelationshipMe = 0,
+    HRMPatientRelationshipSpouse,
+    HRMPatientRelationshipChild,
+    HRMPatientRelationshipFamily,
+    HRMPatientRelationshipOther
+} HRMPatientRelationship;
+
 @class HRMEntry;
 @class DDXMLElement;
 
@@ -30,14 +38,16 @@ typedef enum {
 @property (nonatomic, retain) NSDate *dateOfBirth;
 @property (nonatomic, retain) NSSet *entries;
 @property (nonatomic, retain) NSDictionary *syntheticInfo;
-@property (nonatomic, strong) NSArray *applets;
-@property (nonatomic, strong) NSNumber *displayOrder;
+@property (nonatomic, retain) NSArray *applets;
+@property (nonatomic, retain) NSNumber *displayOrder;
+@property (nonatomic, retain) NSNumber *relationship;
 
 #pragma mark - transient properties
 
 @property (nonatomic, readonly) NSString *compositeName;
 @property (nonatomic, readonly) NSString *initials;
 @property (nonatomic, readonly) NSString *genderString;
+@property (nonatomic, readonly) NSString *relationshipString;
 
 #pragma mark - fetched properties
 

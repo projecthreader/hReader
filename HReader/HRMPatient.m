@@ -41,12 +41,15 @@
 @dynamic syntheticInfo;
 @dynamic applets;
 @dynamic displayOrder;
+@dynamic relationship;
 
 #pragma mark - class methods
 
 + (id)instanceInContext:(NSManagedObjectContext *)context {
     HRMPatient *patient = [super instanceInContext:context];
     patient.displayOrder = [NSNumber numberWithLong:LONG_MAX];
+    patient.relationship = [NSNumber numberWithShort:HRMPatientRelationshipOther];
+    patient.gender = [NSNumber numberWithShort:HRMPatientGenderUnknown];
     return patient;
 }
 
@@ -75,16 +78,24 @@
 }
 
 - (NSString *)genderString {
-    [self willAccessValueForKey:@"genderString"];
-    NSString *gender = @"Unknown";
-    if ([self.gender unsignedIntegerValue] == HRMPatientGenderMale) {
-        gender = @"Male";
-    }
-    else if ([self.gender unsignedIntegerValue] == HRMPatientGenderFemale) {
-        gender = @"Female";
-    }
-    [self didAccessValueForKey:@"genderString"];
-    return gender;
+    [self willAccessValueForKey:NSStringFromSelector(_cmd)];
+    NSUInteger value = [self.gender shortValue];
+    NSString *string = @"Unknown";
+    if (value == HRMPatientGenderMale) { string = @"Male"; }
+    else if (value == HRMPatientGenderFemale) { string = @"Female"; }
+    [self didAccessValueForKey:NSStringFromSelector(_cmd)];
+    return string;
+}
+
+- (NSString *)relationshipString {
+    [self willAccessValueForKey:NSStringFromSelector(_cmd)];
+    NSUInteger value = [self.relationship shortValue];
+    NSString *string = @"Other";
+    if (value == HRMPatientRelationshipMe) { string = @"Me"; }
+    else if (value == HRMPatientRelationshipSpouse) { string = @"Spouse"; }
+    else if (value == HRMPatientRelationshipChild) { string = @"Child"; }
+    [self didAccessValueForKey:NSStringFromSelector(_cmd)];
+    return string;
 }
 
 #pragma mark - fetch entries
@@ -192,9 +203,9 @@
     if (object && [object isKindOfClass:[NSString class]]) {
         if ([object isEqualToString:@"M"]) { self.gender = [NSNumber numberWithShort:HRMPatientGenderMale]; }
         else if ([object isEqualToString:@"F"]) { self.gender = [NSNumber numberWithShort:HRMPatientGenderFemale]; }
-        else { self.gender = [NSNumber numberWithUnsignedInteger:HRMPatientGenderUnknown]; }
+        else { self.gender = [NSNumber numberWithShort:HRMPatientGenderUnknown]; }
     }
-    else { self.gender = [NSNumber numberWithUnsignedInteger:HRMPatientGenderUnknown]; }
+    else { self.gender = [NSNumber numberWithShort:HRMPatientGenderUnknown]; }
     
     // objects conforming to the "entry" type
     [self removeEntries:self.entries];
