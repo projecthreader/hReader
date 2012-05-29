@@ -52,6 +52,7 @@
                                        action:@selector(didReceiveTap:)];
     gesture.numberOfTapsRequired = 1;
     gesture.numberOfTouchesRequired = 1;
+    gesture.cancelsTouchesInView = NO;
     [self addGestureRecognizer:gesture];
     self.delegate = self;
     self.dataSource = self;

@@ -18,8 +18,11 @@
 @private
     NSFetchedResultsController *fetchedResultsController;
     NSManagedObjectContext *managedObjectContext;
+    UIPopoverController *_popoverController;
     UINib *nib;
 }
+
+- (void)presentPopoverFromSender:(UIButton *)button withContentViewController:(UIViewController *)controller;
 
 @end
 
@@ -52,6 +55,18 @@
         [fetchedResultsController performFetch:nil];
     }
     return self;
+}
+
+- (void)presentPopoverFromSender:(UIButton *)button withContentViewController:(UIViewController *)controller {
+    if (_popoverController == nil) {
+        _popoverController = [[UIPopoverController alloc] initWithContentViewController:controller];
+    }
+    else { _popoverController.contentViewController = controller; }
+    [_popoverController
+     presentPopoverFromRect:button.frame
+     inView:button.superview
+     permittedArrowDirections:UIPopoverArrowDirectionAny
+     animated:YES];
 }
 
 #pragma mark - view lifecycle
@@ -87,11 +102,15 @@
 #pragma mark - button actions
 
 - (IBAction)spouseButtonPress:(id)sender {
-    
+    UIViewController *controller = [[UIViewController alloc] init];
+    controller.title = [sender currentTitle];
+    controller.contentSizeForViewInPopover = CGSizeMake(320.0, 500.0);
+    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:controller];
+    [self presentPopoverFromSender:sender withContentViewController:navigation];
 }
 
 - (IBAction)childButtonPress:(id)sender {
-
+    
 }
 
 - (IBAction)familyMemberButtonPress:(id)sender {
