@@ -28,8 +28,7 @@
 @synthesize gridView = _gridView;
 @synthesize emptyCellView = _emptyCellView;
 @synthesize spouseButton = _spouseButton;
-@synthesize childButtonButton = _childButtonButton;
-@synthesize familyMemberButton = _familyMemberButton;
+@synthesize emptyCellButtons = _emptyCellButtons;
 
 #pragma mark - object methods
 
@@ -59,10 +58,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // grid view
     self.gridView.rowHeight = 230.0;
     self.gridView.numberOfColumns = 3;
     self.gridView.verticalPadding = 30.0;
     self.gridView.horizontalPadding = 30.0;
+    
+    // empty cell view
+    UIImage *normal = [[UIImage imageNamed:@"GradientButton"] stretchableImageWithLeftCapWidth:11.0 topCapHeight:0.0];
+    UIImage *highlighted = [[UIImage imageNamed:@"GradientButtonHighlighted"] stretchableImageWithLeftCapWidth:11.0 topCapHeight:0.0];
+    [self.emptyCellButtons enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [obj setBackgroundImage:normal forState:UIControlStateNormal];
+        [obj setBackgroundImage:highlighted forState:UIControlStateHighlighted];
+    }];
+    
 }
 
 - (void)viewDidUnload {

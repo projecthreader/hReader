@@ -17,8 +17,7 @@
 @property (nonatomic, strong) IBOutlet UIView *emptyCellView;
 
 @property (nonatomic, weak) IBOutlet UIButton *spouseButton;
-@property (nonatomic, weak) IBOutlet UIButton *childButtonButton;
-@property (nonatomic, weak) IBOutlet UIButton *familyMemberButton;
+@property (nonatomic, strong) IBOutletCollection(UIButton) NSArray *emptyCellButtons;
 
 - (IBAction)spouseButtonPress:(id)sender;
 - (IBAction)childButtonPress:(id)sender;

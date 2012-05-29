@@ -12,6 +12,8 @@
 		3B001D46157522C300762FB0 /* HRPeopleSetupPlaceHolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B001D45157522C300762FB0 /* HRPeopleSetupPlaceHolderView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B001D481575373400762FB0 /* HRPeopleSetupTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B001D471575373400762FB0 /* HRPeopleSetupTileView.xib */; };
 		3B001D4B157538CB00762FB0 /* HRPeopleSetupTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B001D4A157538CB00762FB0 /* HRPeopleSetupTileView.m */; };
+		3B001D4E157550F800762FB0 /* GradientButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B001D4C157550F800762FB0 /* GradientButton@2x.png */; };
+		3B001D4F157550F800762FB0 /* GradientButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B001D4D157550F800762FB0 /* GradientButtonHighlighted@2x.png */; };
 		3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B04A55214E0692600AD91F9 /* SSKeychain.m */; };
 		3B04A56914E06A3A00AD91F9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B04A56814E06A3A00AD91F9 /* Security.framework */; };
 		3B0977E41552D1F2006392E2 /* UserImage-4fba8b7fdda7c400070001b4.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0977E31552D1F2006392E2 /* UserImage-4fba8b7fdda7c400070001b4.png */; };
@@ -242,6 +244,8 @@
 		3B001D471575373400762FB0 /* HRPeopleSetupTileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPeopleSetupTileView.xib; sourceTree = "<group>"; };
 		3B001D49157538CB00762FB0 /* HRPeopleSetupTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPeopleSetupTileView.h; sourceTree = "<group>"; };
 		3B001D4A157538CB00762FB0 /* HRPeopleSetupTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeopleSetupTileView.m; sourceTree = "<group>"; };
+		3B001D4C157550F800762FB0 /* GradientButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GradientButton@2x.png"; sourceTree = "<group>"; };
+		3B001D4D157550F800762FB0 /* GradientButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GradientButtonHighlighted@2x.png"; sourceTree = "<group>"; };
 		3B04A55114E0692600AD91F9 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
 		3B04A55214E0692600AD91F9 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		3B04A56814E06A3A00AD91F9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -814,6 +818,8 @@
 		941DB0B31471B32D00A96B8B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3B001D4C157550F800762FB0 /* GradientButton@2x.png */,
+				3B001D4D157550F800762FB0 /* GradientButtonHighlighted@2x.png */,
 				3B19651A14EEA6200045F827 /* Logo.png */,
 				3BFE7A2D14DAE5910037738D /* Icon-72.png */,
 				941DB0C11471B32D00A96B8B /* MainStoryboard_iPad.storyboard */,
@@ -1388,6 +1394,8 @@
 				9483F67315669EE000867CFC /* male-bmi-chart.json in Resources */,
 				3B001D3E157519DB00762FB0 /* InitialSetup_iPad.storyboard in Resources */,
 				3B001D481575373400762FB0 /* HRPeopleSetupTileView.xib in Resources */,
+				3B001D4E157550F800762FB0 /* GradientButton@2x.png in Resources */,
+				3B001D4F157550F800762FB0 /* GradientButtonHighlighted@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

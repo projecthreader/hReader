@@ -15,12 +15,12 @@
     // constants
     static CGFloat const dash[] = {5.0, 5.0};
     static CGFloat const radius = 20.0;
-    static CGFloat const width = 4.0;
+    static CGFloat const width = 2.0;
     CGSize size = self.bounds.size;
     
     // configure context
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetStrokeColorWithColor(context, [[UIColor colorWithWhite:0.0 alpha:0.35] CGColor]);
+    CGContextSetStrokeColorWithColor(context, [[UIColor colorWithWhite:0.0 alpha:0.15] CGColor]);
     CGContextSetLineWidth(context, width);
     CGContextSetLineDash(context, 0.0, dash, 2);
     
