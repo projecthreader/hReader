@@ -221,7 +221,7 @@
 }
 
 - (UIImage *)patientImage {
-    return [UIImage imageNamed:[NSString stringWithFormat:@"UserImage-%@-%@", self.lastName, self.firstName]];
+    return [UIImage imageNamed:[NSString stringWithFormat:@"UserImage-%@", self.mongoID]];
 }
 
 - (DDXMLElement *)timelineXMLDocument {

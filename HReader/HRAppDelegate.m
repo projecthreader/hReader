@@ -102,7 +102,7 @@
 }
 
 - (void)dismissModalViewController {
-    [self.window.rootViewController.presentedViewController dismissModalViewControllerAnimated:YES];
+//    [self.window.rootViewController.presentedViewController dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - notifications
@@ -175,12 +175,12 @@
 //    }
     
     // configure the user interface
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    SVPanelViewController *panel = (id)self.window.rootViewController;
-    panel.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"RootViewController"];
-    panel.rightAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"AppletsConfigurationViewController"];
-    panel.leftAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"PeoplePickerViewController"];
-    [self.window makeKeyAndVisible];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+//    SVPanelViewController *panel = (id)self.window.rootViewController;
+//    panel.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"RootViewController"];
+//    panel.rightAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"AppletsConfigurationViewController"];
+//    panel.leftAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"PeoplePickerViewController"];
+//    [self.window makeKeyAndVisible];
     
 # if !DEBUG
     if ([HRKeychainManager isPasscodeSet]) {
@@ -217,7 +217,7 @@
     
     double delay = 5.0;
     dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
-    dispatch_after(time, dispatch_get_main_queue(), ^(void){
+    dispatch_after(time, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
         
         // make a scratch context
         NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
@@ -265,20 +265,6 @@
             
         }];
         
-        
-//        [HROAuthController GETRequestWithPath:@"/records/5/c32/5" completion:^(NSMutableURLRequest *request) {
-//            if (request) {
-//                [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-//                NSLog(@"%@", [request URL]);
-//                NSLog(@"%@", [request allHTTPHeaderFields]);
-//                NSHTTPURLResponse *response = nil;
-//                NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-//                NSLog(@"%d", [response statusCode]);
-//                NSLog(@"%@", [[response allHeaderFields] objectForKey:@"Content-Type"]);
-//                NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-//            }
-//        }];
-        
         // save
         [context save:nil];
         
@@ -299,9 +285,9 @@
     //    self.window.hidden = YES;
     //    [self.window.rootViewController dismissModalViewControllerAnimated:NO];
 }
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    [self presentPasscodeVerifyController];
-}
+//- (void)applicationDidEnterBackground:(UIApplication *)application {
+//    [self presentPasscodeVerifyController];
+//}
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
@@ -321,12 +307,12 @@
     //    GCPINViewController *PIN = [self pinCodeViewController];
     //    [PIN presentFromViewController:self.window.rootViewController animated:NO];
 }
-- (void)applicationProtectedDataWillBecomeUnavailable:(UIApplication *)application {
-    [HRConfig setPasscodeEnabled:YES];
-}
-- (void)applicationProtectedDataDidBecomeAvailable:(UIApplication *)application {
-    
-}
+//- (void)applicationProtectedDataWillBecomeUnavailable:(UIApplication *)application {
+//    [HRConfig setPasscodeEnabled:YES];
+//}
+//- (void)applicationProtectedDataDidBecomeAvailable:(UIApplication *)application {
+//    
+//}
 
 
 #pragma mark - Privacy warning

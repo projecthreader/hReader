@@ -28,10 +28,8 @@
 	<true/>
 	<key>UIApplicationExitsOnSuspend</key>
 	<false/>
-	<key>UIMainStoryboardFile</key>
-	<string>MainStoryboard_iPhone</string>
 	<key>UIMainStoryboardFile~ipad</key>
-	<string>MainStoryboard_iPad</string>
+	<string>InitialSetup_iPad</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
