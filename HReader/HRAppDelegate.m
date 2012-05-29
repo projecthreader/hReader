@@ -233,6 +233,7 @@
             NSError *error = nil;
             NSHTTPURLResponse *response = nil;
             NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+            NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
             
             // get ids
             DDXMLDocument *document = [[DDXMLDocument alloc] initWithData:data options:0 error:nil];
