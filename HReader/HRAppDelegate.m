@@ -22,7 +22,7 @@
 
 #import "SVPanelViewController.h"
 
-#import "HROAuthController.h"
+#import "HRAPIClient.h"
 
 #import "DDXML.h"
 
@@ -224,8 +224,11 @@
         [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
         NSMutableURLRequest * __block request = nil;
         
+        // get an api client
+        HRAPIClient *client = [HRAPIClient clientWithHost:@"growing-spring-4857.herokuapp.com"];
+        
         // get list of patient ids
-        request = [HROAuthController GETRequestWithPath:@"/"];
+        request = [client GETRequestWithPath:@"/"];
         NSArray *patientIDs = nil;
         if (request) {
             
@@ -247,7 +250,7 @@
             
             // get request
             NSString *path = [NSString stringWithFormat:@"/records/%@/c32/%@", obj, obj];
-            request = [HROAuthController GETRequestWithPath:path];
+            request = [client GETRequestWithPath:path];
             if (request) {
                 
                 // configure request
