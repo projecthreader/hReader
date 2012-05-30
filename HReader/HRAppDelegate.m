@@ -23,6 +23,8 @@
 #import "SVPanelViewController.h"
 
 #import "HRAPIClient.h"
+#import "HRRHExLoginViewController.h"
+#import "HRPeopleSetupViewController.h"
 
 #import "DDXML.h"
 
@@ -215,64 +217,80 @@
     }
 #endif
     
-    double delay = 5.0;
+    double delay = 1.0;
     dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
-    dispatch_after(time, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-        
-        // make a scratch context
-        NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
-        [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
-        NSMutableURLRequest * __block request = nil;
-        
-        // get an api client
-        HRAPIClient *client = [HRAPIClient clientWithHost:@"growing-spring-4857.herokuapp.com"];
-        
-        // get list of patient ids
-        request = [client GETRequestWithPath:@"/"];
-        NSArray *patientIDs = nil;
-        if (request) {
-            
-            // run request
-            NSError *error = nil;
-            NSHTTPURLResponse *response = nil;
-            NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-            NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-            
-            // get ids
-            DDXMLDocument *document = [[DDXMLDocument alloc] initWithData:data options:0 error:nil];
-            [[document rootElement] addNamespace:[DDXMLNode namespaceWithName:@"atom" stringValue:@"http://www.w3.org/2005/Atom"]];
-            patientIDs = [[document nodesForXPath:@"/atom:feed/atom:entry/atom:id" error:nil] valueForKey:@"stringValue"];
-            
+    dispatch_after(time, dispatch_get_main_queue(), ^(void){
+        if ([[HRAPIClient accounts] count] == 0) {
+            id controller = [HRRHExLoginViewController loginViewControllerWithHost:@"growing-spring-4857.herokuapp.com"];
+            UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:controller];
+            [self.window.rootViewController presentViewController:navigation animated:YES completion:nil];
         }
-        
-        // sync each patient
-        [patientIDs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            
-            // get request
-            NSString *path = [NSString stringWithFormat:@"/records/%@/c32/%@", obj, obj];
-            request = [client GETRequestWithPath:path];
-            if (request) {
-                
-                // configure request
-                [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-                
-                // run request
-                NSError *error = nil;
-                NSHTTPURLResponse *response = nil;
-                NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-                
-                // create patient
-                NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                [HRMPatient instanceWithDictionary:dictionary inContext:context];
-                
-            }
-            
-        }];
-        
-        // save
-        [context save:nil];
-        
+        else {
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
+            id controller = [storyboard instantiateViewControllerWithIdentifier:@"PeopleSetupViewController"];
+            UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:controller];
+            [self.window.rootViewController presentViewController:navigation animated:YES completion:nil];
+        }
     });
+    
+//    double delay = 5.0;
+//    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
+//    dispatch_after(time, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+//        
+//        // make a scratch context
+//        NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
+//        [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
+//        NSMutableURLRequest * __block request = nil;
+//        
+//        // get an api client
+//        HRAPIClient *client = [HRAPIClient clientWithHost:@"growing-spring-4857.herokuapp.com"];
+//        
+//        // get list of patient ids
+//        request = [client GETRequestWithPath:@"/"];
+//        NSArray *patientIDs = nil;
+//        if (request) {
+//            
+//            // run request
+//            NSError *error = nil;
+//            NSHTTPURLResponse *response = nil;
+//            NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+//            NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+//            
+//            // get ids
+//            DDXMLDocument *document = [[DDXMLDocument alloc] initWithData:data options:0 error:nil];
+//            [[document rootElement] addNamespace:[DDXMLNode namespaceWithName:@"atom" stringValue:@"http://www.w3.org/2005/Atom"]];
+//            patientIDs = [[document nodesForXPath:@"/atom:feed/atom:entry/atom:id" error:nil] valueForKey:@"stringValue"];
+//            
+//        }
+//        
+//        // sync each patient
+//        [patientIDs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//            
+//            // get request
+//            NSString *path = [NSString stringWithFormat:@"/records/%@/c32/%@", obj, obj];
+//            request = [client GETRequestWithPath:path];
+//            if (request) {
+//                
+//                // configure request
+//                [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//                
+//                // run request
+//                NSError *error = nil;
+//                NSHTTPURLResponse *response = nil;
+//                NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+//                
+//                // create patient
+//                NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+//                [HRMPatient instanceWithDictionary:dictionary inContext:context];
+//                
+//            }
+//            
+//        }];
+//        
+//        // save
+//        [context save:nil];
+//        
+//    });
     
     // return
     return YES;

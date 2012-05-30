@@ -19,6 +19,13 @@
 
 /*
  
+ 
+ 
+ */
++ (NSArray *)accounts;
+
+/*
+ 
  Fetch a URL request configured to perform a GET for the provided path. The
  completion handler will be called with the request once one is available, or
  nil if none could be created. The completion handler will be called on the

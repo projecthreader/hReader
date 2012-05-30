@@ -118,6 +118,7 @@
 		3BD16F0514E1C5B700F2249E /* HRMPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16F0414E1C5B700F2249E /* HRMPatient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BE9A40514E40EBB00F87B60 /* HRMEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9A40414E40EBB00F87B60 /* HRMEntry.m */; };
 		3BEBAE6215766C3700E4CB33 /* HRAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBAE6115766C3700E4CB33 /* HRAPIClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		3BEBAE661576771400E4CB33 /* HRRHExLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBAE651576771400E4CB33 /* HRRHExLoginViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BF32213153CA32400757060 /* SVPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF32210153CA32400757060 /* SVPanelViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BF32214153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF32212153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BFBEE1A1534BEAA009EBA2D /* HRAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -367,6 +368,9 @@
 		3BE9A42C14E42A3800F87B60 /* ts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ts.json; sourceTree = "<group>"; };
 		3BEBAE6015766C3700E4CB33 /* HRAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAPIClient.h; sourceTree = "<group>"; };
 		3BEBAE6115766C3700E4CB33 /* HRAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAPIClient.m; sourceTree = "<group>"; };
+		3BEBAE641576771400E4CB33 /* HRRHExLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRRHExLoginViewController.h; sourceTree = "<group>"; };
+		3BEBAE651576771400E4CB33 /* HRRHExLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRRHExLoginViewController.m; sourceTree = "<group>"; };
+		3BEBAE6715767CC900E4CB33 /* HRAPIClient_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRAPIClient_private.h; sourceTree = "<group>"; };
 		3BF3220F153CA32400757060 /* SVPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPanelViewController.h; sourceTree = "<group>"; };
 		3BF32210153CA32400757060 /* SVPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPanelViewController.m; sourceTree = "<group>"; };
 		3BF32211153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SVPanelViewControllerAdditions.h"; sourceTree = "<group>"; };
@@ -584,6 +588,8 @@
 				3B001D471575373400762FB0 /* HRPeopleSetupTileView.xib */,
 				3B001D49157538CB00762FB0 /* HRPeopleSetupTileView.h */,
 				3B001D4A157538CB00762FB0 /* HRPeopleSetupTileView.m */,
+				3BEBAE641576771400E4CB33 /* HRRHExLoginViewController.h */,
+				3BEBAE651576771400E4CB33 /* HRRHExLoginViewController.m */,
 			);
 			name = "Initial Setup";
 			sourceTree = "<group>";
@@ -624,6 +630,7 @@
 				3B364FAD156D674C00DDB201 /* HROAuthController.h */,
 				3B364FAE156D674C00DDB201 /* HROAuthController.m */,
 				3BEBAE6015766C3700E4CB33 /* HRAPIClient.h */,
+				3BEBAE6715767CC900E4CB33 /* HRAPIClient_private.h */,
 				3BEBAE6115766C3700E4CB33 /* HRAPIClient.m */,
 			);
 			name = "API Interaction";
@@ -1493,6 +1500,7 @@
 				3B001D46157522C300762FB0 /* HRPeopleSetupPlaceHolderView.m in Sources */,
 				3B001D4B157538CB00762FB0 /* HRPeopleSetupTileView.m in Sources */,
 				3BEBAE6215766C3700E4CB33 /* HRAPIClient.m in Sources */,
+				3BEBAE661576771400E4CB33 /* HRRHExLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

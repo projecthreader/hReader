@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
-#import "HRAPIClient.h"
+#import "HRAPIClient_private.h"
 
 #import "SSKeychain.h"
 
@@ -41,7 +41,6 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.refresh-tok
 
 @interface HRAPIClient () {
 @private
-    dispatch_queue_t _requestQueue;
     NSString *_host;
     NSString *_accessToken;
     NSDate *_accessTokenExiprationDate;
@@ -53,35 +52,6 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.refresh-tok
  
  */
 - (id)initWithHost:(NSString *)host;
-
-/*
- 
- Refresh the stored refresh token, access token, and access token expiration
- date from the given payload.
- 
- */
-- (BOOL)refreshAccessTokenWithPayload:(NSDictionary *)payload;
-
-/*
- 
- Get the access token payload given the appropriate parameters. This method
- will not execute anything if another request is in 
- 
- The parameters dictionary MUST contain the "grant_type" which should be either 
- "authorization_code" or "refresh_token", and the appropriate associated value.
- 
- It is up to the caller to validate the returned payload and store any values.
- 
- */
-- (NSDictionary *)accessTokenWithParameters:(NSDictionary *)parameters;
-
-/*
- 
- Build the authorization request that is presented to the user through a web
- view.
- 
- */
-- (NSURLRequest *)authorizationRequest;
 
 /*
  
@@ -98,18 +68,11 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.refresh-tok
  */
 + (NSString *)queryStringWithParameters:(NSDictionary *)parameters;
 
-/*
- 
- Decode the given query string into a set of parameters.
- 
- */
-+ (NSDictionary *)parametersFromQueryString:(NSString *)string;
-
 @end
 
 @implementation HRAPIClient
 
-#pragma mark - get a client
+#pragma mark - class methods
 
 + (HRAPIClient *)clientWithHost:(NSString *)host {
     static NSMutableDictionary *dictionary = nil;
@@ -123,6 +86,10 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.refresh-tok
         [dictionary setObject:client forKey:host];
     }
     return client;
+}
+
++ (NSArray *)accounts {
+    return [[SSKeychain accountsForService:HROAuthKeychainService] valueForKey:(__bridge NSString *)kSecAttrAccount];
 }
 
 #pragma mark - build a client
@@ -184,8 +151,7 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.refresh-tok
         // make sure we have both required elements
         if (!_accessToken || !_accessTokenExiprationDate || interval < 60.0) {
             NSLog(@"[%@] Access token is invalid -- refreshing...", self);
-            NSDictionary *payload = [self accessTokenWithParameters:refreshParameters];
-            if ([self refreshAccessTokenWithPayload:payload]) {
+            if ([self refreshAccessTokenWithParameters:refreshParameters]) {
                 [self GETRequestWithPath:path queue:queue completion:block];
             }
             else {
@@ -197,8 +163,7 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.refresh-tok
         // check if our access token will expire soon
         if (interval < 60.0 * 3.0) {
             NSLog(@"[%@] Access token will expire soon -- refreshing", self);
-            NSDictionary *payload = [self accessTokenWithParameters:refreshParameters];
-            [self refreshAccessTokenWithPayload:payload];
+            [self refreshAccessTokenWithParameters:refreshParameters];
         }
         
         // build request parameters
@@ -218,7 +183,7 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.refresh-tok
     });
 }
 
-- (NSDictionary *)accessTokenWithParameters:(NSDictionary *)parameters {
+- (BOOL)refreshAccessTokenWithParameters:(NSDictionary *)parameters {
     
     // build request parameters
     NSMutableDictionary *requestParameters = [parameters mutableCopy];
@@ -251,26 +216,22 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.refresh-tok
         if (JSONError) { NSLog(@"%@", connectionError); }
     }
     
-    // return
-    return payload;
-    
-}
-
-- (BOOL)refreshAccessTokenWithPayload:(NSDictionary *)payload {
+    // parse payload
     if ([payload objectForKey:@"refresh_token"] && [payload objectForKey:@"expires_in"] && [payload objectForKey:@"access_token"]) {
-//        [SSKeychain setPassword:[payload objectForKey:@"refresh_token"] forService:HROAuthKeychainService account:_host];
-        [SSKeychain setPassword:[payload objectForKey:@"refresh_token"] forService:HROAuthKeychainService account:@"default"];
+        [SSKeychain setPassword:[payload objectForKey:@"refresh_token"] forService:HROAuthKeychainService account:_host];
         NSTimeInterval interval = [[payload objectForKey:@"expires_in"] doubleValue];
         _accessTokenExiprationDate = [NSDate dateWithTimeIntervalSinceNow:interval];
         _accessToken = [payload objectForKey:@"access_token"];
         return YES;
     }
+    
+    // last ditch return
     return NO;
+    
 }
 
 - (NSString *)refreshToken {
-//    return [SSKeychain passwordForService:HROAuthKeychainService account:_host];
-    return [SSKeychain passwordForService:HROAuthKeychainService account:@"default"];
+    return [SSKeychain passwordForService:HROAuthKeychainService account:_host];
 }
 
 - (NSURLRequest *)authorizationRequest {
