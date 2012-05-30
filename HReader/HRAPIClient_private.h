@@ -11,6 +11,7 @@
 @interface HRAPIClient () {
 @public
     dispatch_queue_t _requestQueue;
+    NSDate *_patientFeedLastFetchDate;
 }
 
 /*
@@ -33,6 +34,13 @@
  
  */
 - (BOOL)refreshAccessTokenWithParameters:(NSDictionary *)parameters;
+
+/*
+ 
+ 
+ 
+ */
+- (void)patientFeed:(void (^)(NSArray *))completion honorCache:(BOOL)cache;
 
 /*
  
