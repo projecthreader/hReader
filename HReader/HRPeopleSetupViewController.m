@@ -11,6 +11,8 @@
 #import "HRPeopleSetupViewController.h"
 #import "HRAppDelegate.h"
 #import "HRPeopleSetupTileView.h"
+#import "HRPeopleFeedViewController.h"
+#import "HRAPIClient.h"
 
 #import "HRMPatient.h"
 
@@ -102,11 +104,29 @@
 #pragma mark - button actions
 
 - (IBAction)spouseButtonPress:(id)sender {
-    UIViewController *controller = [[UIViewController alloc] init];
-    controller.title = [sender currentTitle];
-    controller.contentSizeForViewInPopover = CGSizeMake(320.0, 500.0);
+    
+    // get host
+    NSString *host = [[HRAPIClient accounts] lastObject];
+    HRAPIClient *client = [HRAPIClient clientWithHost:host];
+    
+    // create controller
+    id controller = [[HRPeopleFeedViewController alloc] initWithHost:host];
+    [controller setTitle:@"Add Spouse"];
+    [controller setDidFinishBlock:^(NSString *identifier) {
+        [client JSONForPatientWithIdentifier:identifier completion:^(NSDictionary *payload) {
+            NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
+            [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
+            [HRMPatient instanceWithDictionary:payload inContext:context];
+            [context save:nil];
+        }];
+        [_popoverController dismissPopoverAnimated:YES];
+    }];
+    
+    // show controller
     UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:controller];
+    navigation.toolbarHidden = NO;
     [self presentPopoverFromSender:sender withContentViewController:navigation];
+    
 }
 
 - (IBAction)childButtonPress:(id)sender {
