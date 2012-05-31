@@ -111,6 +111,7 @@
 		3B77F05215546AD2003C2DBD /* HRRespiratoryRateAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B77F054155474DE003C2DBD /* HRBMIVitalAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */; };
 		3BA3E7DE15595F090095A5CC /* GCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3E7DD15595F090095A5CC /* GCAlertView.m */; };
+		3BA7F18F1577EFCF00D4EB09 /* HRCryptoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA7F18E1577EFCF00D4EB09 /* HRCryptoManager.m */; };
 		3BB9C27F151B8AEF00527C20 /* HRKeychainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; };
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
@@ -351,6 +352,9 @@
 		3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRBMIVitalAppletTile.xib; sourceTree = "<group>"; };
 		3BA3E7DC15595F090095A5CC /* GCAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAlertView.h; sourceTree = "<group>"; };
 		3BA3E7DD15595F090095A5CC /* GCAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAlertView.m; sourceTree = "<group>"; };
+		3BA7F18D1577EFCF00D4EB09 /* HRCryptoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCryptoManager.h; sourceTree = "<group>"; };
+		3BA7F18E1577EFCF00D4EB09 /* HRCryptoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCryptoManager.m; sourceTree = "<group>"; };
+		3BA7F1901577EFF100D4EB09 /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
 		3BB9C27D151B8AEF00527C20 /* HRKeychainManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRKeychainManager.h; sourceTree = "<group>"; };
 		3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRKeychainManager.m; sourceTree = "<group>"; };
 		3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hReader.xcdatamodel; sourceTree = "<group>"; };
@@ -622,6 +626,8 @@
 				3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */,
 				94622A901541E5E300CFC592 /* HRPatientImageView.h */,
 				94622A911541E5E300CFC592 /* HRPatientImageView.m */,
+				3BA7F18D1577EFCF00D4EB09 /* HRCryptoManager.h */,
+				3BA7F18E1577EFCF00D4EB09 /* HRCryptoManager.m */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -799,6 +805,7 @@
 			isa = PBXGroup;
 			children = (
 				94F871F31535D9F60018AF13 /* libz.dylib */,
+				3BA7F1901577EFF100D4EB09 /* libcommonCrypto.dylib */,
 				945286AF155844C600CF5EA3 /* MessageUI.framework */,
 				3BD16ED514E1B32400F2249E /* CoreData.framework */,
 				3B04A56814E06A3A00AD91F9 /* Security.framework */,
@@ -1493,6 +1500,7 @@
 				3BEBAE6215766C3700E4CB33 /* HRAPIClient.m in Sources */,
 				3BEBAE661576771400E4CB33 /* HRRHExLoginViewController.m in Sources */,
 				3BEBAE6A15769ED400E4CB33 /* HRPeopleFeedViewController.m in Sources */,
+				3BA7F18F1577EFCF00D4EB09 /* HRCryptoManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1576,6 +1584,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/vendor/TestFlight\"",
+					"\"$(SDKROOT)/usr/lib/system\"",
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1598,6 +1607,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/vendor/TestFlight\"",
+					"\"$(SDKROOT)/usr/lib/system\"",
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1641,6 +1651,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/vendor/TestFlight\"",
+					"\"$(SDKROOT)/usr/lib/system\"",
 				);
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";

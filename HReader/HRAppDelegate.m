@@ -28,6 +28,8 @@
 
 #import "DDXML.h"
 
+#import "HRCryptoManager.h"
+
 @interface HRAppDelegate () {
 @private
     NSUInteger passcodeAttempts;
@@ -142,6 +144,8 @@
      selector:@selector(managedObjectContextDidSave:)
      name:NSManagedObjectContextDidSaveNotification
      object:nil];
+    
+    HRCryptoManagerTest();
     
     // load patients if we don't have any yet
 //    NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
