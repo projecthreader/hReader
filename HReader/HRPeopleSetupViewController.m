@@ -24,7 +24,7 @@
     UINib *nib;
 }
 
-- (void)presentPopoverFromSender:(UIButton *)button withContentViewController:(UIViewController *)controller;
+- (void)presentPopoverFromButton:(UIButton *)button withTitle:(NSString *)title relationship:(HRMPatientRelationship)relationship;
 
 @end
 
@@ -59,16 +59,39 @@
     return self;
 }
 
-- (void)presentPopoverFromSender:(UIButton *)button withContentViewController:(UIViewController *)controller {
+- (void)presentPopoverFromButton:(UIButton *)button withTitle:(NSString *)title relationship:(HRMPatientRelationship)relationship {
+    
+    // get api client
+    NSString *host = [[HRAPIClient accounts] lastObject];
+    HRAPIClient *client = [HRAPIClient clientWithHost:host];
+    
+    // create controller
+    HRPeopleFeedViewController *controller = [[HRPeopleFeedViewController alloc] initWithHost:host];
+    controller.title = title;
+    controller.didFinishBlock = ^(NSString *identifier) {
+        [client JSONForPatientWithIdentifier:identifier completion:^(NSDictionary *payload) {
+            NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
+            [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
+            HRMPatient *patient = [HRMPatient instanceWithDictionary:payload inContext:context];
+            patient.relationship = [NSNumber numberWithShort:relationship];
+            [context save:nil];
+        }];
+        [_popoverController dismissPopoverAnimated:YES];
+    };
+    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:controller];
+    navigation.toolbarHidden = NO;
+    
+    // show controller
     if (_popoverController == nil) {
-        _popoverController = [[UIPopoverController alloc] initWithContentViewController:controller];
+        _popoverController = [[UIPopoverController alloc] initWithContentViewController:navigation];
     }
-    else { _popoverController.contentViewController = controller; }
+    else { _popoverController.contentViewController = navigation; }
     [_popoverController
      presentPopoverFromRect:button.frame
      inView:button.superview
      permittedArrowDirections:UIPopoverArrowDirectionAny
      animated:YES];
+    
 }
 
 #pragma mark - view lifecycle
@@ -104,37 +127,15 @@
 #pragma mark - button actions
 
 - (IBAction)spouseButtonPress:(id)sender {
-    
-    // get host
-    NSString *host = [[HRAPIClient accounts] lastObject];
-    HRAPIClient *client = [HRAPIClient clientWithHost:host];
-    
-    // create controller
-    id controller = [[HRPeopleFeedViewController alloc] initWithHost:host];
-    [controller setTitle:@"Add Spouse"];
-    [controller setDidFinishBlock:^(NSString *identifier) {
-        [client JSONForPatientWithIdentifier:identifier completion:^(NSDictionary *payload) {
-            NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
-            [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
-            [HRMPatient instanceWithDictionary:payload inContext:context];
-            [context save:nil];
-        }];
-        [_popoverController dismissPopoverAnimated:YES];
-    }];
-    
-    // show controller
-    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:controller];
-    navigation.toolbarHidden = NO;
-    [self presentPopoverFromSender:sender withContentViewController:navigation];
-    
+    [self presentPopoverFromButton:sender withTitle:@"Add Spouse" relationship:HRMPatientRelationshipSpouse]; 
 }
 
 - (IBAction)childButtonPress:(id)sender {
-    
+    [self presentPopoverFromButton:sender withTitle:@"Add Child" relationship:HRMPatientRelationshipChild];
 }
 
 - (IBAction)familyMemberButtonPress:(id)sender {
-    
+    [self presentPopoverFromButton:sender withTitle:@"Family Member" relationship:HRMPatientRelationshipFamily];
 }
 
 #pragma mark - grid view

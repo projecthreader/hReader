@@ -94,6 +94,7 @@
     if (value == HRMPatientRelationshipMe) { string = @"Me"; }
     else if (value == HRMPatientRelationshipSpouse) { string = @"Spouse"; }
     else if (value == HRMPatientRelationshipChild) { string = @"Child"; }
+    else if (value == HRMPatientRelationshipFamily) { string = @"Family"; }
     [self didAccessValueForKey:NSStringFromSelector(_cmd)];
     return string;
 }
