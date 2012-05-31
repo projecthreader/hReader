@@ -16,7 +16,7 @@
 		3B001D4F157550F800762FB0 /* GradientButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B001D4D157550F800762FB0 /* GradientButtonHighlighted@2x.png */; };
 		3B001D5215755BA900762FB0 /* GradientButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B001D5015755BA900762FB0 /* GradientButton.png */; };
 		3B001D5315755BA900762FB0 /* GradientButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B001D5115755BA900762FB0 /* GradientButtonHighlighted.png */; };
-		3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B04A55214E0692600AD91F9 /* SSKeychain.m */; };
+		3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B04A55214E0692600AD91F9 /* SSKeychain.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B04A56914E06A3A00AD91F9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B04A56814E06A3A00AD91F9 /* Security.framework */; };
 		3B0977E41552D1F2006392E2 /* UserImage-4fba8b7fdda7c400070001b4.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0977E31552D1F2006392E2 /* UserImage-4fba8b7fdda7c400070001b4.png */; };
 		3B0977ED1553217F006392E2 /* people-picker.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0977EC1553217F006392E2 /* people-picker.png */; };
@@ -215,7 +215,6 @@
 		94E078C61538A4570051DC01 /* multiple_sclerosis_summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078BF1538A4570051DC01 /* multiple_sclerosis_summary.png */; };
 		94E078C71538A4570051DC01 /* pophealth-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078C01538A4570051DC01 /* pophealth-summary.png */; };
 		94E84E7014FEBC390091B0A1 /* NSArray+Collect.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E84E6F14FEBC390091B0A1 /* NSArray+Collect.m */; };
-		94EBD55114FE7A6200A3AF66 /* ASBSparkLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EBD55014FE7A6200A3AF66 /* ASBSparkLineView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94F4CB611507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F4CB601507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m */; };
 		94F4CB651507E87E00EFEA43 /* PINCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F4CB641507E87E00EFEA43 /* PINCodeTextField.m */; };
 		94F871F41535D9F60018AF13 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F871F31535D9F60018AF13 /* libz.dylib */; };
@@ -525,8 +524,6 @@
 		94E3BB581472E0DE00E05D4D /* HRConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRConfig.h; sourceTree = "<group>"; };
 		94E84E6E14FEBC390091B0A1 /* NSArray+Collect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Collect.h"; sourceTree = "<group>"; };
 		94E84E6F14FEBC390091B0A1 /* NSArray+Collect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Collect.m"; sourceTree = "<group>"; };
-		94EBD54F14FE7A6200A3AF66 /* ASBSparkLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASBSparkLineView.h; path = vendor/Sparklines/Sparklines/ASBSparkLineView.h; sourceTree = "<group>"; };
-		94EBD55014FE7A6200A3AF66 /* ASBSparkLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASBSparkLineView.m; path = vendor/Sparklines/Sparklines/ASBSparkLineView.m; sourceTree = "<group>"; };
 		94F4CB5F1507BD0A00EFEA43 /* PINSecurityQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINSecurityQuestionsViewController.h; sourceTree = "<group>"; };
 		94F4CB601507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINSecurityQuestionsViewController.m; sourceTree = "<group>"; };
 		94F4CB631507E87E00EFEA43 /* PINCodeTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINCodeTextField.h; sourceTree = "<group>"; };
@@ -606,7 +603,7 @@
 				3B04A55214E0692600AD91F9 /* SSKeychain.m */,
 			);
 			name = keychain;
-			path = vendor/keychain;
+			path = vendor/sskeychain;
 			sourceTree = "<group>";
 		};
 		3B19651414EE9DCB0045F827 /* Global */ = {
@@ -1001,7 +998,6 @@
 		94689ABC14964BBF00E1FCA6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				94EBD54E14FE7A2E00A3AF66 /* Sparklines */,
 				3BD16ED714E1B5EE00F2249E /* guicocoa-common-code */,
 				3B04A54C14E0692600AD91F9 /* keychain */,
 				3BFE7A2014DADE2B0037738D /* pinview */,
@@ -1126,15 +1122,6 @@
 				94BB032B149BB393009B2FCC /* HRPasscodeWarningViewController.xib */,
 			);
 			name = "Passcode Warning";
-			sourceTree = "<group>";
-		};
-		94EBD54E14FE7A2E00A3AF66 /* Sparklines */ = {
-			isa = PBXGroup;
-			children = (
-				94EBD54F14FE7A6200A3AF66 /* ASBSparkLineView.h */,
-				94EBD55014FE7A6200A3AF66 /* ASBSparkLineView.m */,
-			);
-			name = Sparklines;
 			sourceTree = "<group>";
 		};
 		DD7037B014900E5900F58A83 /* Patient Swipe */ = {
@@ -1469,7 +1456,6 @@
 				9467077C14E31CD400ACEA67 /* HRGlucose.m in Sources */,
 				3B3C919514F69F61005CD5C5 /* NSDate+FormattedDate.m in Sources */,
 				9452D7F714FC16DF00021E69 /* HRProviderView.m in Sources */,
-				94EBD55114FE7A6200A3AF66 /* ASBSparkLineView.m in Sources */,
 				94E84E7014FEBC390091B0A1 /* NSArray+Collect.m in Sources */,
 				94F4CB611507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m in Sources */,
 				94F4CB651507E87E00EFEA43 /* PINCodeTextField.m in Sources */,
