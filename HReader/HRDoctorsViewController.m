@@ -121,7 +121,7 @@
     return [__providerViews subarrayWithRange:range];
 }
 
-- (void)gridView:(HRGridTableView *)gridView didSelectViewAtIndex:(NSInteger)index {
+- (void)gridView:(HRGridTableView *)gridView didSelectViewAtIndex:(NSUInteger)index {
     HRAppletTile *tile = [__providerViews objectAtIndex:index];
     CGRect rect = [self.view convertRect:tile.bounds fromView:tile];
     [tile didReceiveTap:self inRect:rect];

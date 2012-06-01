@@ -114,7 +114,7 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
 }
 
 - (void)updateTableViewSelection {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selectedPatientIndex inSection:0];
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selectedPatientIndex inSection:0];
 //    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
 }
 

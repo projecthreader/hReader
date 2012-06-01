@@ -10,23 +10,19 @@
 #import <objc/message.h>
 
 #import "HRAppDelegate.h"
-#import "HRPasscodeWarningViewController.h"
-#import "HRPrivacyViewController.h"
+#import "HRAPIClient.h"
+#import "HRRHExLoginViewController.h"
+#import "HRPeopleSetupViewController.h"
+#import "HRCryptoManager.h"
+
 #import "HRKeychainManager.h"
 #import "HRAppletConfigurationViewController.h"
-#import "HRSparkLineView.h"
 
 #import "TestFlight.h"
 
 #import "HRMPatient.h"
 
 #import "SVPanelViewController.h"
-
-#import "HRAPIClient.h"
-#import "HRRHExLoginViewController.h"
-#import "HRPeopleSetupViewController.h"
-
-#import "DDXML.h"
 
 #import "HRCryptoManager.h"
 
@@ -221,17 +217,32 @@
     double delay = 5.0;
     dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
     dispatch_after(time, dispatch_get_main_queue(), ^(void){
-        if ([[HRAPIClient accounts] count] == 0) {
+        
+        // check for passcode
+        if (!HRCryptoManagerHasPasscode() || !HRCyproManagerHasSecurityQuestions()) {
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
+            PINCodeViewController *PIN = [storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
+            PIN.mode = PINCodeViewControllerModeCreate;
+            PIN.title = @"Set Passcode";
+            PIN.messageText = @"Enter a passcode";
+            PIN.confirmText = @"Verify passcode";
+            PIN.errorText = @"The passcodes do not match";
+            PIN.delegate = self;
+            UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:PIN];
+            [self.window.rootViewController presentViewController:navigation animated:YES completion:nil];
+        }
+        else if ([[HRAPIClient accounts] count] == 0) {
             id controller = [HRRHExLoginViewController loginViewControllerWithHost:@"growing-spring-4857.herokuapp.com"];
             UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:controller];
             [self.window.rootViewController presentViewController:navigation animated:YES completion:nil];
         }
-        else {
+        else if ([HRMPatient countInContext:[HRAppDelegate managedObjectContext]] == 0) {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
             id controller = [storyboard instantiateViewControllerWithIdentifier:@"PeopleSetupViewController"];
             UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:controller];
             [self.window.rootViewController presentViewController:navigation animated:YES completion:nil];
         }
+        
     });
     
 //    double delay = 5.0;
@@ -298,6 +309,11 @@
     
 }
 
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    HRCryptoManagerPurge();
+//    [self presentPasscodeVerifyController];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -308,9 +324,7 @@
     //    self.window.hidden = YES;
     //    [self.window.rootViewController dismissModalViewControllerAnimated:NO];
 }
-//- (void)applicationDidEnterBackground:(UIApplication *)application {
-//    [self presentPasscodeVerifyController];
-//}
+
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
@@ -360,22 +374,18 @@
 }
 
 - (void)PINCodeViewController:(PINCodeViewController *)controller didCreatePIN:(NSString *)PIN {
-    [HRKeychainManager setPasscode:PIN];
+//    [HRKeychainManager setPasscode:PIN];
     if ([controller.userInfo isEqualToString:@"change_passcode"] || [controller.userInfo isEqualToString:@"reset_passcode"]) {
         [controller dismissModalViewControllerAnimated:YES];
     }
     else {
-        
-        // security questions
+        HRCryptoManagerStoreTemporaryPasscode(PIN);
         PINSecurityQuestionsViewController *questions = [controller.storyboard instantiateViewControllerWithIdentifier:@"SecurityQuestionsController"];
         questions.navigationItem.hidesBackButton = YES;
         questions.mode = PINSecurityQuestionsViewControllerCreate;
         questions.delegate = self;
         questions.title = @"Security Questions";
-        
-        // show
         [controller.navigationController pushViewController:questions animated:YES];
-        
     }
 }
 
@@ -450,8 +460,10 @@
         }
     }
     else if (controller.mode == PINSecurityQuestionsViewControllerCreate || controller.mode == PINSecurityQuestionsViewControllerEdit) {
-        [HRKeychainManager setSecurityQuestions:questions answers:answers];
-        [controller dismissModalViewControllerAnimated:YES];
+//        [HRKeychainManager setSecurityQuestions:questions answers:answers];
+        HRCryptoManagerStoreTemporarySecurityQuestionsAndAnswers(questions, answers);
+        HRCryptoManagerFinalize();
+//        [controller dismissModalViewControllerAnimated:YES];
     }
 }
 

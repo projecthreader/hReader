@@ -30,7 +30,7 @@
 		3B0FE40415386B7000BEC21C /* wakemate-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3FC15386B7000BEC21C /* wakemate-summary.png */; };
 		3B0FE4081538755300BEC21C /* HRAppletConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0FE4071538755300BEC21C /* HRAppletConfigurationViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B108CDD1579199F00888E30 /* AppLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B108CDC1579199F00888E30 /* AppLogo.png */; };
-		3B108CE115791A0C00888E30 /* HRSplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B108CE015791A0C00888E30 /* HRSplashScreenViewController.m */; };
+		3B108CE115791A0C00888E30 /* HRSplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B108CE015791A0C00888E30 /* HRSplashScreenViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B108CE3157929FA00888E30 /* AppLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B108CE2157929FA00888E30 /* AppLogo@2x.png */; };
 		3B19651B14EEA6200045F827 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651A14EEA6200045F827 /* Logo.png */; };
 		3B19652014EEAB970045F827 /* C32-Smith-Henry.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651C14EEAB970045F827 /* C32-Smith-Henry.html */; };
@@ -114,7 +114,7 @@
 		3B77F05215546AD2003C2DBD /* HRRespiratoryRateAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B77F054155474DE003C2DBD /* HRBMIVitalAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */; };
 		3BA3E7DE15595F090095A5CC /* GCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3E7DD15595F090095A5CC /* GCAlertView.m */; };
-		3BA7F18F1577EFCF00D4EB09 /* HRCryptoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA7F18E1577EFCF00D4EB09 /* HRCryptoManager.m */; };
+		3BA7F18F1577EFCF00D4EB09 /* HRCryptoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA7F18E1577EFCF00D4EB09 /* HRCryptoManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BB9C27F151B8AEF00527C20 /* HRKeychainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; };
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };

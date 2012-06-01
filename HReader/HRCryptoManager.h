@@ -8,6 +8,50 @@
 
 #import <Foundation/Foundation.h>
 
+/*
+ 
+ 
+ 
+ */
+BOOL HRCryptoManagerHasPasscode(void);
+
+/*
+ 
+ 
+ 
+ */
+BOOL HRCyproManagerHasSecurityQuestions(void);
+
+/*
+ 
+ 
+ 
+ */
+void HRCryptoManagerStoreTemporaryPasscode(NSString *code);
+
+/*
+ 
+ 
+ 
+ */
+void HRCryptoManagerStoreTemporarySecurityQuestionsAndAnswers(NSArray *questions, NSArray *answers);
+
+/*
+ 
+ 
+ 
+ */
+void HRCryptoManagerFinalize(void);
+
+/*
+ 
+ 
+ 
+ */
+void HRCryptoManagerPurge(void);
+
+//void HRCryptoManagerStoreTempo
+
 @interface HRCryptoManager : NSObject
 
 @end
