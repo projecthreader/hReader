@@ -29,6 +29,9 @@
 		3B0FE40315386B7000BEC21C /* wakemate-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3FB15386B7000BEC21C /* wakemate-overview.png */; };
 		3B0FE40415386B7000BEC21C /* wakemate-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3FC15386B7000BEC21C /* wakemate-summary.png */; };
 		3B0FE4081538755300BEC21C /* HRAppletConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0FE4071538755300BEC21C /* HRAppletConfigurationViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		3B108CDD1579199F00888E30 /* AppLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B108CDC1579199F00888E30 /* AppLogo.png */; };
+		3B108CE115791A0C00888E30 /* HRSplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B108CE015791A0C00888E30 /* HRSplashScreenViewController.m */; };
+		3B108CE3157929FA00888E30 /* AppLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B108CE2157929FA00888E30 /* AppLogo@2x.png */; };
 		3B19651B14EEA6200045F827 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651A14EEA6200045F827 /* Logo.png */; };
 		3B19652014EEAB970045F827 /* C32-Smith-Henry.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651C14EEAB970045F827 /* C32-Smith-Henry.html */; };
 		3B19652114EEAB970045F827 /* C32-Smith-Molly.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */; };
@@ -263,6 +266,10 @@
 		3B0FE3FC15386B7000BEC21C /* wakemate-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wakemate-summary.png"; sourceTree = "<group>"; };
 		3B0FE4061538755300BEC21C /* HRAppletConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAppletConfigurationViewController.h; sourceTree = "<group>"; };
 		3B0FE4071538755300BEC21C /* HRAppletConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAppletConfigurationViewController.m; sourceTree = "<group>"; };
+		3B108CDC1579199F00888E30 /* AppLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo.png; sourceTree = "<group>"; };
+		3B108CDF15791A0C00888E30 /* HRSplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSplashScreenViewController.h; sourceTree = "<group>"; };
+		3B108CE015791A0C00888E30 /* HRSplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSplashScreenViewController.m; sourceTree = "<group>"; };
+		3B108CE2157929FA00888E30 /* AppLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppLogo@2x.png"; sourceTree = "<group>"; };
 		3B19651A14EEA6200045F827 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		3B19651C14EEAB970045F827 /* C32-Smith-Henry.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Henry.html"; sourceTree = "<group>"; };
 		3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Molly.html"; sourceTree = "<group>"; };
@@ -596,6 +603,8 @@
 				3BEBAE651576771400E4CB33 /* HRRHExLoginViewController.m */,
 				3BEBAE6815769ED400E4CB33 /* HRPeopleFeedViewController.h */,
 				3BEBAE6915769ED400E4CB33 /* HRPeopleFeedViewController.m */,
+				3B108CDF15791A0C00888E30 /* HRSplashScreenViewController.h */,
+				3B108CE015791A0C00888E30 /* HRSplashScreenViewController.m */,
 			);
 			name = "Initial Setup";
 			sourceTree = "<group>";
@@ -837,6 +846,8 @@
 		941DB0B31471B32D00A96B8B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3B108CDC1579199F00888E30 /* AppLogo.png */,
+				3B108CE2157929FA00888E30 /* AppLogo@2x.png */,
 				3B001D5015755BA900762FB0 /* GradientButton.png */,
 				3B001D5115755BA900762FB0 /* GradientButtonHighlighted.png */,
 				3B001D4C157550F800762FB0 /* GradientButton@2x.png */,
@@ -1403,6 +1414,8 @@
 				3B001D4F157550F800762FB0 /* GradientButtonHighlighted@2x.png in Resources */,
 				3B001D5215755BA900762FB0 /* GradientButton.png in Resources */,
 				3B001D5315755BA900762FB0 /* GradientButtonHighlighted.png in Resources */,
+				3B108CDD1579199F00888E30 /* AppLogo.png in Resources */,
+				3B108CE3157929FA00888E30 /* AppLogo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1501,6 +1514,7 @@
 				3BEBAE661576771400E4CB33 /* HRRHExLoginViewController.m in Sources */,
 				3BEBAE6A15769ED400E4CB33 /* HRPeopleFeedViewController.m in Sources */,
 				3BA7F18F1577EFCF00D4EB09 /* HRCryptoManager.m in Sources */,
+				3B108CE115791A0C00888E30 /* HRSplashScreenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

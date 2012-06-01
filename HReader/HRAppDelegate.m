@@ -122,20 +122,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    // test flight
-#if !TARGET_IPHONE_SIMULATOR
-    [TestFlight takeOff:[HRConfig testFlightTeamToken]];
-    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
-#endif
-    
-    // web inspection
-#if DEBUG
+    // debugging
+#if TARGET_IPHONE_SIMULATOR
     @try {
         objc_msgSend(NSClassFromString(@"WebView"), NSSelectorFromString(@"_enableRemoteInspector"));
     }
     @catch (NSException *exception) {
         NSLog(@"Could not turn on remote web inspector\n%@", exception);
     }
+#else
+    [TestFlight takeOff:[HRConfig testFlightTeamToken]];
+    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
 #endif
     
     // notifications
@@ -145,7 +142,7 @@
      name:NSManagedObjectContextDidSaveNotification
      object:nil];
     
-    HRCryptoManagerTest();
+//    HRCryptoManagerTest();
     
     // load patients if we don't have any yet
 //    NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
@@ -221,7 +218,7 @@
     }
 #endif
     
-    double delay = 1.0;
+    double delay = 5.0;
     dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
     dispatch_after(time, dispatch_get_main_queue(), ^(void){
         if ([[HRAPIClient accounts] count] == 0) {

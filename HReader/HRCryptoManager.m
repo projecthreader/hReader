@@ -119,8 +119,8 @@ void HRCryptoManagerTest(void) {
     NSString *key = @"my test key";
     NSData *cipher = HRCryptoManagerEncrypt(key, message);
     NSData *result = HRCryptoManagerDecrypt(key, cipher);
-    NSAssert([message isEqualToData:result], @"The original and transformed messages must be the same");
-    NSAssert(![message isEqualToData:cipher], @"The original message and cipher text must not be the same");
+    NSCAssert([message isEqualToData:result], @"The original and transformed messages must be the same");
+    NSCAssert(![message isEqualToData:cipher], @"The original message and cipher text must not be the same");
 }
 
 @implementation HRCryptoManager
