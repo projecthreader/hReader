@@ -5,7 +5,7 @@
     "org.mitre.hreader.encounters",
     "org.mitre.hreader.medications",
     "org.mitre.hreader.immunizations",
-    "org.mitre.hreader.placeholder.tbi"
+    "org.mitre.hreader.tbi"
   ],
     "immunizations": true,
     "chronic_conditions": [

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		068734B0157670C100B94497 /* TBITrackerAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 068734AB157670C100B94497 /* TBITrackerAppletTile.m */; };
+		068734B1157670C100B94497 /* TBITrackerAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 068734AC157670C100B94497 /* TBITrackerAppletTile.xib */; };
+		068734B2157670C100B94497 /* TBITrackerDashboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 068734AE157670C100B94497 /* TBITrackerDashboard.m */; };
+		068734B3157670C100B94497 /* TBITrackerDashboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 068734AF157670C100B94497 /* TBITrackerDashboard.xib */; };
 		3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B04A55214E0692600AD91F9 /* SSKeychain.m */; };
 		3B04A56914E06A3A00AD91F9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B04A56814E06A3A00AD91F9 /* Security.framework */; };
 		3B0977E41552D1F2006392E2 /* UserImage-Smith-Henry.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0977E31552D1F2006392E2 /* UserImage-Smith-Henry.png */; };
@@ -229,6 +233,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		068734AA157670C100B94497 /* TBITrackerAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBITrackerAppletTile.h; sourceTree = "<group>"; };
+		068734AB157670C100B94497 /* TBITrackerAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBITrackerAppletTile.m; sourceTree = "<group>"; };
+		068734AC157670C100B94497 /* TBITrackerAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBITrackerAppletTile.xib; sourceTree = "<group>"; };
+		068734AD157670C100B94497 /* TBITrackerDashboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBITrackerDashboard.h; sourceTree = "<group>"; };
+		068734AE157670C100B94497 /* TBITrackerDashboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBITrackerDashboard.m; sourceTree = "<group>"; };
+		068734AF157670C100B94497 /* TBITrackerDashboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBITrackerDashboard.xib; sourceTree = "<group>"; };
 		3B04A55114E0692600AD91F9 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
 		3B04A55214E0692600AD91F9 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		3B04A56814E06A3A00AD91F9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -546,6 +556,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		068734A8157670A100B94497 /* TBITracker */ = {
+			isa = PBXGroup;
+			children = (
+				068734AA157670C100B94497 /* TBITrackerAppletTile.h */,
+				068734AB157670C100B94497 /* TBITrackerAppletTile.m */,
+				068734AC157670C100B94497 /* TBITrackerAppletTile.xib */,
+				068734AD157670C100B94497 /* TBITrackerDashboard.h */,
+				068734AE157670C100B94497 /* TBITrackerDashboard.m */,
+				068734AF157670C100B94497 /* TBITrackerDashboard.xib */,
+			);
+			name = TBITracker;
+			sourceTree = "<group>";
+		};
 		3B04A54C14E0692600AD91F9 /* keychain */ = {
 			isa = PBXGroup;
 			children = (
@@ -983,6 +1006,7 @@
 		9492CA4F1535F8EC009DE7F2 /* System Applets */ = {
 			isa = PBXGroup;
 			children = (
+				068734A8157670A100B94497 /* TBITracker */,
 				94AACFAB1535CFEE005E3851 /* Images */,
 				941F253D14E2EC5D0077D6D1 /* HRVitalAppletTile.h */,
 				941F253E14E2EC5D0077D6D1 /* HRVitalAppletTile.m */,
@@ -1340,6 +1364,8 @@
 				C3390523155D536B00E77EBF /* HReaderConfig.xcconfig in Resources */,
 				9483F67115669E5400867CFC /* female-bmi-chart.json in Resources */,
 				9483F67315669EE000867CFC /* male-bmi-chart.json in Resources */,
+				068734B1157670C100B94497 /* TBITrackerAppletTile.xib in Resources */,
+				068734B3157670C100B94497 /* TBITrackerDashboard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1431,6 +1457,8 @@
 				3B77F05215546AD2003C2DBD /* HRRespiratoryRateAppletTile.m in Sources */,
 				3BA3E7DE15595F090095A5CC /* GCAlertView.m in Sources */,
 				945286BC156148C500CF5EA3 /* HRWebViewAppletTile.m in Sources */,
+				068734B0157670C100B94497 /* TBITrackerAppletTile.m in Sources */,
+				068734B2157670C100B94497 /* TBITrackerDashboard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
