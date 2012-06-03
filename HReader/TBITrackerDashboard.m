@@ -48,4 +48,15 @@
 	return YES;
 }
 
+- (IBAction) mocaButtonTap: (id) sender {
+    //Note sender is the button
+    
+    UIStoryboard *mocaTest = [UIStoryboard storyboardWithName:@"MoCATest" bundle:nil];
+    UIViewController *controller = [mocaTest instantiateInitialViewController];
+    //controller.title = @"MoCA Test";
+    [self.navigationController pushViewController:controller animated:YES];
+    //[self.parentViewController.navigationController pushViewController:controller animated:YES];
+}
+
+
 @end

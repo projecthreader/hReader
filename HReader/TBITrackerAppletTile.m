@@ -7,6 +7,7 @@
 //
 
 #import "TBITrackerAppletTile.h"
+#import "TBITrackerDashboard.h"
 
 @implementation TBITrackerAppletTile
 
@@ -23,7 +24,7 @@
 
 -(void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect
 {
-    UIViewController *controller = [[UIViewController alloc] initWithNibName:@"TBITrackerDashboard" bundle: [NSBundle mainBundle]];
+    UIViewController *controller = [[TBITrackerDashboard alloc] init];
     controller.title = [self.userInfo objectForKey:@"display_name"];
     [sender.navigationController pushViewController:controller animated:YES];
    

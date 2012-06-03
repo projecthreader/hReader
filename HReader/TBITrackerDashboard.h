@@ -10,4 +10,6 @@
 
 @interface TBITrackerDashboard : UIViewController
 
+- (IBAction) mocaButtonTap: (id) sender;
+
 @end

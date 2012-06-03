@@ -127,6 +127,7 @@
 		3BFE7A2A14DADE2B0037738D /* PINCodeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2414DADE2B0037738D /* PINCodeStoryboard.storyboard */; };
 		3BFE7A2B14DADE2B0037738D /* PINCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2614DADE2B0037738D /* PINCodeViewController.m */; };
 		3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2D14DAE5910037738D /* Icon-72.png */; };
+		87199881157BC6BD00A3332C /* MoCATest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87199880157BC6BD00A3332C /* MoCATest.storyboard */; };
 		94026FB414B4A8A600F40185 /* timeline in Resources */ = {isa = PBXBuildFile; fileRef = 94026FB314B4A8A600F40185 /* timeline */; };
 		940C046C152B6ADF00834416 /* hs-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C0467152B6ADF00834416 /* hs-synthetic.json */; };
 		940C046D152B6ADF00834416 /* js-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C0468152B6ADF00834416 /* js-synthetic.json */; };
@@ -372,6 +373,7 @@
 		3BFE7A2514DADE2B0037738D /* PINCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINCodeViewController.h; sourceTree = "<group>"; };
 		3BFE7A2614DADE2B0037738D /* PINCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINCodeViewController.m; sourceTree = "<group>"; };
 		3BFE7A2D14DAE5910037738D /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		87199880157BC6BD00A3332C /* MoCATest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MoCATest.storyboard; sourceTree = "<group>"; };
 		94026FB314B4A8A600F40185 /* timeline */ = {isa = PBXFileReference; lastKnownFileType = folder; path = timeline; sourceTree = "<group>"; };
 		940C0467152B6ADF00834416 /* hs-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "hs-synthetic.json"; sourceTree = "<group>"; };
 		940C0468152B6ADF00834416 /* js-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "js-synthetic.json"; sourceTree = "<group>"; };
@@ -565,6 +567,7 @@
 				068734AD157670C100B94497 /* TBITrackerDashboard.h */,
 				068734AE157670C100B94497 /* TBITrackerDashboard.m */,
 				068734AF157670C100B94497 /* TBITrackerDashboard.xib */,
+				87199880157BC6BD00A3332C /* MoCATest.storyboard */,
 			);
 			name = TBITracker;
 			sourceTree = "<group>";
@@ -1366,6 +1369,7 @@
 				9483F67315669EE000867CFC /* male-bmi-chart.json in Resources */,
 				068734B1157670C100B94497 /* TBITrackerAppletTile.xib in Resources */,
 				068734B3157670C100B94497 /* TBITrackerDashboard.xib in Resources */,
+				87199881157BC6BD00A3332C /* MoCATest.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
