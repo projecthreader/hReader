@@ -19,8 +19,6 @@ extern NSString * const HRPatientKey;
 + (NSString *)formattedVersion;
 + (NSString *)feedbackEmailAddress;
 
-+ (NSString *)testFlightTeamToken;
-
 + (UIColor *)textureColor;
 + (UIColor *)redColor;
 + (UIColor *)greenColor;

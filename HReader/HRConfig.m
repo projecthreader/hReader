@@ -45,10 +45,6 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
 
 #pragma mark - API Keys
 
-+ (NSString *)testFlightTeamToken {
-    return @"e8ef4e7b3c88827400af56886c6fe280_MjYyNTYyMDExLTEwLTE5IDE2OjU3OjQ3LjMyNDk4OQ";
-}
-
 #pragma mark - Colors
 
 + (UIColor *)textureColor {

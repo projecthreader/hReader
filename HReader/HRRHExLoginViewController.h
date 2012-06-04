@@ -10,7 +10,7 @@
 
 @interface HRRHExLoginViewController : UIViewController <UIWebViewDelegate>
 
-@property (nonatomic, strong) IBOutlet UIWebView *webView;
+@property (nonatomic, weak) IBOutlet UIWebView *webView;
 
 + (HRRHExLoginViewController *)loginViewControllerWithHost:(NSString *)host;
 

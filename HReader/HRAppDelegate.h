@@ -36,7 +36,4 @@ PINCodeViewControllerDelegate
  */
 + (NSManagedObjectContext *)managedObjectContext;
 
-// if you call this i will kill you
-- (void)dismissModalViewController;
-
 @end

@@ -33,17 +33,8 @@ static NSString * const HROAuthURLHost = @"oauth";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.webView = [[UIWebView alloc] initWithFrame:self.view.frame];
-    self.webView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
-    self.webView.delegate = self;
     HRAPIClient *client = [HRAPIClient clientWithHost:_host];
     [self.webView loadRequest:[client authorizationRequest]];
-    [self.view addSubview:self.webView];
-}
-
-- (void)viewDidUnload {
-    self.webView = nil;
-    [super viewDidUnload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
