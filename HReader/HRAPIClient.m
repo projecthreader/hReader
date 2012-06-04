@@ -129,14 +129,13 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.refresh-tok
 }
 
 - (void)patientFeed:(void (^)(NSArray *))completion honorCache:(BOOL)cache {
-    
-    // check time stamp
-    NSTimeInterval interval = ABS([_patientFeedLastFetchDate timeIntervalSinceNow]);
-    if (interval > 60 * 5 || _patientFeedLastFetchDate == nil || !cache) {
+    dispatch_queue_t queue = dispatch_get_current_queue();
+    dispatch_async(_requestQueue, ^{
         
-        // refetch
-        dispatch_queue_t queue = dispatch_get_current_queue();
-        dispatch_async(_requestQueue, ^{
+        // check time stamp
+        NSTimeInterval interval = ABS([_patientFeedLastFetchDate timeIntervalSinceNow]);
+        if (interval > 60 * 5 || _patientFeedLastFetchDate == nil || !cache) {
+            
             NSMutableURLRequest *request = [self GETRequestWithPath:@"/"];
             NSMutableArray *patients = nil;
             if (request) {
@@ -175,14 +174,16 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.refresh-tok
                 });
             }
             
-        });
-    }
-    
-    // we already have something
-    else {
-        if (completion) { completion(_patientFeed); }
-    }
-    
+        }
+        
+        // we already have something
+        else if (completion) {
+            dispatch_async(queue, ^{
+                completion(_patientFeed);
+            });
+        }
+        
+    });
 }
 
 - (void)patientFeed:(void (^) (NSArray *patients))completion {
