@@ -8,7 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "HRPeoplePickerViewController.h"
+#import "HRPeoplePickerViewController_private.h"
 #import "HRAppDelegate.h"
 
 #import "HRMPatient.h"
@@ -34,6 +34,7 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
 }
 
 - (void)updateTableViewSelection;
+
 - (void)persistSelectedPatientIndex;
 
 @end
@@ -42,6 +43,14 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
 
 @synthesize tableView = _tableView;
 @synthesize toolbar = _toolbar;
+
+#pragma mark - class methods
+
++ (void)setSelectedPatientIndex:(NSInteger)index {
+    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+    [settings setInteger:index forKey:HRSelectedPatientIndexKey];
+    [settings synchronize];
+}
 
 #pragma mark - public methods
 
@@ -77,6 +86,10 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
     [[NSNotificationCenter defaultCenter]
      postNotificationName:HRPatientDidChangeNotification
      object:self];
+}
+
+- (void)persistSelectedPatientIndex {
+    [HRPeoplePickerViewController setSelectedPatientIndex:selectedPatientIndex];
 }
 
 #pragma mark - object methods
@@ -116,12 +129,6 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
 - (void)updateTableViewSelection {
 //    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selectedPatientIndex inSection:0];
 //    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
-}
-
-- (void)persistSelectedPatientIndex {
-    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
-    [settings setInteger:selectedPatientIndex forKey:HRSelectedPatientIndexKey];
-    [settings synchronize];
 }
 
 #pragma mark - view lifecycle

@@ -275,6 +275,7 @@
 		3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Sarah.html"; sourceTree = "<group>"; };
 		3B19651F14EEAB970045F827 /* C32-Smith-Tom.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Tom.html"; sourceTree = "<group>"; };
 		3B2B7B55156A863C003B3B77 /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
+		3B305F19157D4F2900FC03E6 /* HRPeoplePickerViewController_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPeoplePickerViewController_private.h; sourceTree = "<group>"; };
 		3B3C919314F69F61005CD5C5 /* NSDate+FormattedDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FormattedDate.h"; sourceTree = "<group>"; };
 		3B3C919414F69F61005CD5C5 /* NSDate+FormattedDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FormattedDate.m"; sourceTree = "<group>"; };
 		3B4365A31540A2890009F892 /* hs-0-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hs-0-tile.png"; sourceTree = "<group>"; };
@@ -1165,6 +1166,7 @@
 				3B0FE4061538755300BEC21C /* HRAppletConfigurationViewController.h */,
 				3B0FE4071538755300BEC21C /* HRAppletConfigurationViewController.m */,
 				3B6FAF8D153F259E002C9EF5 /* HRPeoplePickerViewController.h */,
+				3B305F19157D4F2900FC03E6 /* HRPeoplePickerViewController_private.h */,
 				3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */,
 				DD7037B014900E5900F58A83 /* Patient Swipe */,
 			);

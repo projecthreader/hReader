@@ -13,6 +13,7 @@
 #import "HRPeopleSetupTileView.h"
 #import "HRPeopleFeedViewController.h"
 #import "HRAPIClient.h"
+#import "HRPeoplePickerViewController_private.h"
 
 #import "HRMPatient.h"
 
@@ -49,6 +50,7 @@
         managedObjectContext = [HRAppDelegate managedObjectContext];
         NSFetchRequest *request = [HRMPatient fetchRequestInContext:managedObjectContext];
         NSArray *descriptors = [NSArray arrayWithObjects:
+                                [NSSortDescriptor sortDescriptorWithKey:@"displayOrder" ascending:YES],
                                 [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES],
                                 [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES],
                                 nil];
@@ -231,9 +233,10 @@
 - (void)gridView:(HRGridTableView *)gridView didSelectViewAtIndex:(NSUInteger)index {
     id<NSFetchedResultsSectionInfo> info = [[fetchedResultsController sections] objectAtIndex:0];
     if (index < [info numberOfObjects]) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-        HRMPatient *patient = [fetchedResultsController objectAtIndexPath:indexPath];
-        NSLog(@"%@", patient);
+        [HRPeoplePickerViewController setSelectedPatientIndex:index];
+//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+//        HRMPatient *patient = [fetchedResultsController objectAtIndexPath:indexPath];
+//        NSLog(@"%@", patient);
     }
 }
 
