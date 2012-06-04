@@ -169,16 +169,18 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.refresh-tok
             }
             
             // call completion handler
-            dispatch_async(queue, ^{
-                completion(_patientFeed);
-            });
+            if (completion) {
+                dispatch_async(queue, ^{
+                    completion(_patientFeed);
+                });
+            }
             
         });
     }
     
     // we already have something
     else {
-        completion(_patientFeed);
+        if (completion) { completion(_patientFeed); }
     }
     
 }
