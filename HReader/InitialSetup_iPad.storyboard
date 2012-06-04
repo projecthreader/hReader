@@ -53,7 +53,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="vQn-TP-tDi" customClass="HRGridTableView">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
+                                <rect key="frame" x="0.0" y="456" width="1024" height="248"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -61,6 +61,28 @@
                                     <outlet property="gridViewDelegate" destination="flO-yV-wuk" id="nU0-4O-Sah"/>
                                 </connections>
                             </view>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="AppLogo.png" id="QmE-hM-P0V">
+                                <rect key="frame" x="362" y="248" width="300" height="104"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="x4v-18-OId">
+                                <rect key="frame" x="362" y="355" width="300" height="37"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Add My Info">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="0.5" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="meButtonPress:" destination="flO-yV-wuk" eventType="touchUpInside" id="Yv3-hL-Gha"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.92000000000000004" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -70,10 +92,12 @@
                     <connections>
                         <outlet property="emptyCellView" destination="2UP-rs-FNG" id="gTO-Py-GWf"/>
                         <outlet property="gridView" destination="vQn-TP-tDi" id="gje-J4-Ei6"/>
+                        <outlet property="imageView" destination="QmE-hM-P0V" id="JcS-P1-5N7"/>
+                        <outlet property="meButton" destination="x4v-18-OId" id="USW-H8-1g5"/>
                         <outlet property="spouseButton" destination="HOX-pf-YQo" id="Jgs-DL-L1R"/>
-                        <outletCollection property="emptyCellButtons" destination="HOX-pf-YQo" id="10h-k5-GnH"/>
-                        <outletCollection property="emptyCellButtons" destination="o5u-Bm-ZWx" id="ZEn-xz-1KT"/>
-                        <outletCollection property="emptyCellButtons" destination="ZBm-e5-3ut" id="yAY-n4-MmJ"/>
+                        <outletCollection property="emptyCellButtons" destination="HOX-pf-YQo" id="5tk-UC-Sng"/>
+                        <outletCollection property="emptyCellButtons" destination="o5u-Bm-ZWx" id="SnR-1c-4lL"/>
+                        <outletCollection property="emptyCellButtons" destination="ZBm-e5-3ut" id="iN9-xW-Tr1"/>
                     </connections>
                 </viewController>
                 <view contentMode="scaleToFill" id="2UP-rs-FNG" customClass="HRPeopleSetupPlaceHolderView">
@@ -182,9 +206,12 @@
             <relationships>
                 <relationship kind="action" name="childButtonPress:"/>
                 <relationship kind="action" name="familyMemberButtonPress:"/>
+                <relationship kind="action" name="meButtonPress:"/>
                 <relationship kind="action" name="spouseButtonPress:"/>
                 <relationship kind="outlet" name="emptyCellView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="gridView" candidateClass="HRGridTableView"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="meButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="spouseButton" candidateClass="UIButton"/>
                 <relationship kind="outletCollection" name="emptyCellButtons" candidateClass="UIButton"/>
             </relationships>

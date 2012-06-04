@@ -16,9 +16,13 @@
 @property (nonatomic, weak) IBOutlet HRGridTableView *gridView;
 @property (nonatomic, strong) IBOutlet UIView *emptyCellView;
 
-@property (nonatomic, weak) IBOutlet UIButton *spouseButton;
+@property (nonatomic, strong) IBOutlet UIButton *spouseButton;
 @property (nonatomic, strong) IBOutletCollection(UIButton) NSArray *emptyCellButtons;
 
+@property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, weak) IBOutlet UIButton *meButton;
+
+- (IBAction)meButtonPress:(id)sender;
 - (IBAction)spouseButtonPress:(id)sender;
 - (IBAction)childButtonPress:(id)sender;
 - (IBAction)familyMemberButtonPress:(id)sender;

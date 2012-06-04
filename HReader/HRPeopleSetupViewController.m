@@ -24,7 +24,10 @@
     UINib *nib;
 }
 
-- (void)presentPopoverFromButton:(UIButton *)button withTitle:(NSString *)title relationship:(HRMPatientRelationship)relationship;
+- (void)presentPopoverFromButton:(UIButton *)button
+                       withTitle:(NSString *)title
+                    relationship:(HRMPatientRelationship)relationship
+                      completion:(void (^) (void))completion;
 
 @end
 
@@ -34,6 +37,8 @@
 @synthesize emptyCellView = _emptyCellView;
 @synthesize spouseButton = _spouseButton;
 @synthesize emptyCellButtons = _emptyCellButtons;
+@synthesize meButton = _meButton;
+@synthesize imageView = _imageView;
 
 #pragma mark - object methods
 
@@ -59,7 +64,10 @@
     return self;
 }
 
-- (void)presentPopoverFromButton:(UIButton *)button withTitle:(NSString *)title relationship:(HRMPatientRelationship)relationship {
+- (void)presentPopoverFromButton:(UIButton *)button
+                       withTitle:(NSString *)title
+                    relationship:(HRMPatientRelationship)relationship
+                      completion:(void (^) (void))completion {
     
     // get api client
     NSString *host = [[HRAPIClient accounts] lastObject];
@@ -77,6 +85,7 @@
             [context save:nil];
         }];
         [_popoverController dismissPopoverAnimated:YES];
+        if (completion) { completion(); }
     };
     UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:controller];
     navigation.toolbarHidden = NO;
@@ -108,15 +117,33 @@
     // empty cell view
     UIImage *normal = [[UIImage imageNamed:@"GradientButton"] stretchableImageWithLeftCapWidth:11.0 topCapHeight:0.0];
     UIImage *highlighted = [[UIImage imageNamed:@"GradientButtonHighlighted"] stretchableImageWithLeftCapWidth:11.0 topCapHeight:0.0];
-    [self.emptyCellButtons enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    NSMutableArray *buttons = [self.emptyCellButtons mutableCopy];
+    [buttons addObject:self.meButton];
+    [buttons enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [obj setBackgroundImage:normal forState:UIControlStateNormal];
         [obj setBackgroundImage:highlighted forState:UIControlStateHighlighted];
     }];
+    
+    // determine view placement
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationship = %d", HRMPatientRelationshipMe];
+    if ([HRMPatient countInContext:[HRAppDelegate managedObjectContext] withPredicate:predicate] == 0) {
+        CGRect frame = self.view.bounds;
+        frame = CGRectOffset(frame, 0.0, CGRectGetHeight(frame));
+        self.gridView.frame = frame;
+        self.gridView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin);
+    }
+    else {
+        self.gridView.frame = self.view.bounds;
+        self.gridView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+        self.imageView.hidden = YES;
+        self.meButton.hidden = YES;
+    }
     
 }
 
 - (void)viewDidUnload {
     self.emptyCellView = nil;
+    self.emptyCellButtons = nil;
     [self viewDidUnload];
 }
 
@@ -126,16 +153,37 @@
 
 #pragma mark - button actions
 
+- (IBAction)meButtonPress:(id)sender {
+    [self presentPopoverFromButton:sender withTitle:@"Add My Info" relationship:HRMPatientRelationshipMe completion:^{
+        [UIView
+         animateWithDuration:0.5
+         delay:0.5
+         options:UIViewAnimationOptionCurveEaseInOut
+         animations:^{
+             CGRect frame = self.imageView.frame;
+             frame = CGRectOffset(frame, 0.0, CGRectGetHeight(self.view.bounds) * -1.0);
+             self.imageView.frame = frame;
+             frame = self.meButton.frame;
+             frame = CGRectOffset(frame, 0.0, CGRectGetHeight(self.view.bounds) * -1.0);
+             self.meButton.frame = frame;
+             self.gridView.frame = self.view.bounds;
+         }
+         completion:^(BOOL finished) {
+             self.gridView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+         }];
+    }];
+}
+
 - (IBAction)spouseButtonPress:(id)sender {
-    [self presentPopoverFromButton:sender withTitle:@"Add Spouse" relationship:HRMPatientRelationshipSpouse]; 
+    [self presentPopoverFromButton:sender withTitle:@"Add Spouse" relationship:HRMPatientRelationshipSpouse completion:nil]; 
 }
 
 - (IBAction)childButtonPress:(id)sender {
-    [self presentPopoverFromButton:sender withTitle:@"Add Child" relationship:HRMPatientRelationshipChild];
+    [self presentPopoverFromButton:sender withTitle:@"Add Child" relationship:HRMPatientRelationshipChild completion:nil];
 }
 
 - (IBAction)familyMemberButtonPress:(id)sender {
-    [self presentPopoverFromButton:sender withTitle:@"Family Member" relationship:HRMPatientRelationshipFamily];
+    [self presentPopoverFromButton:sender withTitle:@"Add Family Member" relationship:HRMPatientRelationshipFamily completion:nil];
 }
 
 #pragma mark - grid view
@@ -188,7 +236,7 @@
 #pragma mark - fetched results controller
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationship == %d", HRMPatientRelationshipSpouse];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationship = %d", HRMPatientRelationshipSpouse];
     NSUInteger count = [HRMPatient countInContext:managedObjectContext withPredicate:predicate];
     self.spouseButton.enabled = (count == 0);
     [self.gridView reloadData];
