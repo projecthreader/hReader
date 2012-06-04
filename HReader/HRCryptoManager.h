@@ -68,6 +68,13 @@ NSString * HRCryptoManagerKeychainItemString(NSString *service, NSString *accoun
 void HRCryptoManagerSetKeychainItemData(NSString *service, NSString *account, NSData *value);
 void HRCryptoManagerSetKeychainItemString(NSString *service, NSString *account, NSString *value);
 
+/*
+ 
+ Access the stored security questions.
+ 
+ */
+NSArray * HRCryptoManagerSecurityQuestions(void);
+
 @interface HRCryptoManager : NSObject
 
 @end

@@ -20,7 +20,7 @@ static NSString * const HRPasscodeKeychainAccount = @"passcode";
 static NSString * const HRSharedKeyPasscodeKeychainAccount = @"shared_key_passcode";
 static NSString * const HRSecurityQuestionsKeychainAccount = @"security_questions";
 static NSString * const HRSecurityAnswersKeychainAccount = @"security_answers";
-static NSString * const HRSharedKeySecurityAnswersKeychain = @"shared_key_security_answers";
+static NSString * const HRSharedKeySecurityAnswersKeychainAccount = @"shared_key_security_answers";
 
 // static variables
 
@@ -195,7 +195,7 @@ void HRCryptoManagerFinalize(void) {
     
     // store shared key encrypted with clear answers to security questions
     NSData *two = HRCryptoManagerEncrypt_private([_temporaryAnswers componentsJoinedByString:@""], key);
-    [SSKeychain setPasswordData:two forService:HRKeychainService account:HRSharedKeySecurityAnswersKeychain];
+    [SSKeychain setPasswordData:two forService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount];
     
     // cleanup
     _temporaryAnswers = nil;
@@ -222,7 +222,7 @@ BOOL HRCryptoManagerUnlockWithPasscode(NSString *passcode) {
 }
 
 BOOL HRCryptoManagerUnlockWithAnswersForSecurityQuestions(NSArray *answers) {
-    NSData *encryptedKey = [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeySecurityAnswersKeychain];
+    NSData *encryptedKey = [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount];
     NSData *decryptedKey = HRCryptoManagerDecrypt_private([answers componentsJoinedByString:@""], encryptedKey);
     if (decryptedKey) {
         _temporaryKey = [[NSString alloc] initWithData:decryptedKey encoding:NSUTF8StringEncoding];
@@ -251,6 +251,11 @@ void HRCryptoManagerSetKeychainItemData(NSString *service, NSString *account, NS
 void HRCryptoManagerSetKeychainItemString(NSString *service, NSString *account, NSString *value) {
     NSData *valueData = [value dataUsingEncoding:NSUTF8StringEncoding];
     HRCryptoManagerSetKeychainItemData(service, account, valueData);
+}
+
+NSArray * HRCryptoManagerSecurityQuestions(void) {
+    NSData *questions = [SSKeychain passwordDataForService:HRKeychainService account:HRSecurityQuestionsKeychainAccount];
+    return [NSJSONSerialization JSONObjectWithData:questions options:0 error:nil];
 }
 
 @implementation HRCryptoManager
