@@ -7,9 +7,11 @@
 //
 
 #import "HRAPIClient_private.h"
+#import "HRCryptoManager.h"
+
+#import "DDXML.h"
 
 #import "SSKeychain.h"
-#import "DDXML.h"
 
 // oauth client resources
 static NSString * const HROAuthClientIdentifier = @"c367aa7b8c87ce239981140511a7d158";
@@ -50,7 +52,7 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.refresh-tok
 
 /*
  
- 
+ Create an API client centered around the given host.
  
  */
 - (id)initWithHost:(NSString *)host;
@@ -272,7 +274,7 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.refresh-tok
     
     // parse payload
     if ([payload objectForKey:@"refresh_token"] && [payload objectForKey:@"expires_in"] && [payload objectForKey:@"access_token"]) {
-        [SSKeychain setPassword:[payload objectForKey:@"refresh_token"] forService:HROAuthKeychainService account:_host];
+        HRCryptoManagerSetKeychainItemString(HROAuthKeychainService, _host, [payload objectForKey:@"refresh_token"]);
         NSTimeInterval interval = [[payload objectForKey:@"expires_in"] doubleValue];
         _accessTokenExiprationDate = [NSDate dateWithTimeIntervalSinceNow:interval];
         _accessToken = [payload objectForKey:@"access_token"];
@@ -285,7 +287,7 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.refresh-tok
 }
 
 - (NSString *)refreshToken {
-    return [SSKeychain passwordForService:HROAuthKeychainService account:_host];
+    return HRCryptoManagerKeychainItemString(HROAuthKeychainService, _host);
 }
 
 - (NSURLRequest *)authorizationRequest {

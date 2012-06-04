@@ -92,47 +92,47 @@
     
     // passcode cell
     else if ([cell.reuseIdentifier isEqualToString:@"ChangePasscodeCell"]) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
-        PINCodeViewController *PIN = [storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
-        PIN.mode = PINCodeViewControllerModeVerify;
-        PIN.title = @"Enter Passcode";
-        PIN.messageText = @"Enter your passcode";
-        PIN.errorText = @"Incorrect passcode";
-        PIN.delegate = (HRAppDelegate *)[[UIApplication sharedApplication] delegate];
-        PIN.userInfo = @"change_passcode";
-        PIN.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
-                                                initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                target:[[UIApplication sharedApplication] delegate]
-                                                action:@selector(dismissModalViewController)];
-        UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:PIN];
-        navigation.navigationBar.barStyle = UIBarStyleBlack;
-        navigation.definesPresentationContext = YES;
-        [self presentModalViewController:navigation animated:YES];
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
+//        PINCodeViewController *PIN = [storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
+//        PIN.mode = PINCodeViewControllerModeVerify;
+//        PIN.title = @"Enter Passcode";
+//        PIN.messageText = @"Enter your passcode";
+//        PIN.errorText = @"Incorrect passcode";
+//        PIN.delegate = (HRAppDelegate *)[[UIApplication sharedApplication] delegate];
+//        PIN.userInfo = @"change_passcode";
+//        PIN.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+//                                                initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+//                                                target:[[UIApplication sharedApplication] delegate]
+//                                                action:@selector(dismissModalViewController)];
+//        UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:PIN];
+//        navigation.navigationBar.barStyle = UIBarStyleBlack;
+//        navigation.definesPresentationContext = YES;
+//        [self presentModalViewController:navigation animated:YES];
     }
     
     // questions cell
     else if ([cell.reuseIdentifier isEqualToString:@"ChangeQuestionsCell"]) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
-        PINCodeViewController *PIN = [storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
-        PIN.mode = PINCodeViewControllerModeVerify;
-        PIN.title = @"Enter Passcode";
-        PIN.messageText = @"Enter your passcode";
-        PIN.errorText = @"Incorrect passcode";
-        PIN.delegate = (HRAppDelegate *)[[UIApplication sharedApplication] delegate];
-        PIN.userInfo = @"change_questions";
-        PIN.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
-                                                initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                target:[[UIApplication sharedApplication] delegate]
-                                                action:@selector(dismissModalViewController)];
-        UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:PIN];
-        navigation.navigationBar.barStyle = UIBarStyleBlack;
-        navigation.definesPresentationContext = YES;
-        
-        // show
-        UIViewController *controller = self.presentingViewController;
-        [self dismissViewControllerAnimated:YES completion:^{
-            [controller presentModalViewController:navigation animated:YES];
-        }];
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
+//        PINCodeViewController *PIN = [storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
+//        PIN.mode = PINCodeViewControllerModeVerify;
+//        PIN.title = @"Enter Passcode";
+//        PIN.messageText = @"Enter your passcode";
+//        PIN.errorText = @"Incorrect passcode";
+//        PIN.delegate = (HRAppDelegate *)[[UIApplication sharedApplication] delegate];
+//        PIN.userInfo = @"change_questions";
+//        PIN.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+//                                                initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+//                                                target:[[UIApplication sharedApplication] delegate]
+//                                                action:@selector(dismissModalViewController)];
+//        UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:PIN];
+//        navigation.navigationBar.barStyle = UIBarStyleBlack;
+//        navigation.definesPresentationContext = YES;
+//        
+//        // show
+//        UIViewController *controller = self.presentingViewController;
+//        [self dismissViewControllerAnimated:YES completion:^{
+//            [controller presentModalViewController:navigation animated:YES];
+//        }];
         
     }
 

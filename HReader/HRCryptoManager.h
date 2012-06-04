@@ -20,37 +20,53 @@ BOOL HRCryptoManagerHasPasscode(void);
  
  
  */
-BOOL HRCyproManagerHasSecurityQuestions(void);
+BOOL HRCryptoManagerHasSecurityQuestions(void);
 
 /*
  
- 
+ Store values that will be used to drive encryption with these methods. Data
+ stored by these methods will only be kept in memory until 
+ `HRCryptoManagerFinalize` is called.
  
  */
 void HRCryptoManagerStoreTemporaryPasscode(NSString *code);
-
-/*
- 
- 
- 
- */
 void HRCryptoManagerStoreTemporarySecurityQuestionsAndAnswers(NSArray *questions, NSArray *answers);
 
 /*
  
- 
+ Finalize the encryption setup process and save all valid attributes to the
+ keychain. This method generates the shared encryption key, stores all
+ relevant resources to the keychain, and purges any values from memory that
+ are not necessary to keep.
  
  */
 void HRCryptoManagerFinalize(void);
 
 /*
  
- 
+ Call this method any time the application looses focus. This causes all cached
+ encryption resources to be purged from memory. Any future calls 
  
  */
 void HRCryptoManagerPurge(void);
 
-//void HRCryptoManagerStoreTempo
+/*
+ 
+ 
+ 
+ */
+void HRCryptoManagerUnlockWithPasscode(NSString *passcode);
+void HRCryptoManagerUnlockWithAnswersForSecurityQuestions(NSArray *answers);
+
+/*
+ 
+ 
+ 
+ */
+NSData * HRCryptoManagerKeychainItemData(NSString *service, NSString *account);
+NSString * HRCryptoManagerKeychainItemString(NSString *service, NSString *account);
+void HRCryptoManagerSetKeychainItemData(NSString *service, NSString *account, NSData *value);
+void HRCryptoManagerSetKeychainItemString(NSString *service, NSString *account, NSString *value);
 
 @interface HRCryptoManager : NSObject
 
