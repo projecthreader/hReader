@@ -66,7 +66,13 @@ typedef enum {
 
 /*
  
- Delegatation.
+ Delegation methods. The delegate must implement the 
+ `PINCodeViewControllerDelegate` protocol. The action provided can be any
+ method that takes two parameters. The first of these parameters is an instance
+ of `PINCodeViewController` and the second is the passcode itself. The return
+ value of this method can be `void` while the pin code controller is in create
+ mode as it is ignored. The return value in verify mode is used to control
+ the error behavior of the pin code controller so it should be a `BOOL`.
  
  */
 @property (nonatomic, assign) IBOutlet id<PINCodeViewControllerDelegate> delegate;
