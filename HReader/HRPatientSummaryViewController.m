@@ -429,8 +429,8 @@
     return [__gridViews count];
 }
 
-- (NSArray *)gridView:(HRGridTableView *)gridView viewsInRange:(NSRange)range {
-    return [__gridViews subarrayWithRange:range];
+- (UIView *)gridView:(HRGridTableView *)gridView viewAtIndex:(NSUInteger)index {
+    return [__gridViews objectAtIndex:index];
 }
 
 - (void)gridView:(HRGridTableView *)gridView didSelectViewAtIndex:(NSUInteger)index {

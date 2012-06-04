@@ -10,7 +10,7 @@
 
 #import "HRGridTableView.h"
 
-@interface HRPatientSummaryViewController : UIViewController <HRGridTableViewDelegate>
+@interface HRPatientSummaryViewController : UIViewController <HRGridTableViewDelegate, HRGridTableViewDataSource>
 
 // container views
 @property (strong, nonatomic) IBOutlet HRGridTableView *gridView;

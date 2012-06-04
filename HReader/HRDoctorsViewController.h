@@ -7,16 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "HRGridTableView.h"
 
 @class HRPatientImageView;
 
-@interface HRDoctorsViewController : UIViewController <HRGridTableViewDelegate>
+@interface HRDoctorsViewController : UIViewController <HRGridTableViewDelegate, HRGridTableViewDataSource>
 
-@property (retain, nonatomic) IBOutlet UILabel *nameLabel;
-@property (retain, nonatomic) IBOutlet HRGridTableView *gridTableView;
-@property (nonatomic, strong) IBOutlet UIImageView *patientImageView;
-
-//- (IBAction)patientImageViewSwipe:(HRPatientImageView *)sender;
+@property (nonatomic, weak) IBOutlet UILabel *nameLabel;
+@property (nonatomic, weak) IBOutlet HRGridTableView *gridTableView;
+@property (nonatomic, weak) IBOutlet UIImageView *patientImageView;
 
 @end

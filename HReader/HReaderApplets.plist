@@ -10,14 +10,6 @@
 		<key>display_name</key>
 		<string>Encounters</string>
 	</dict>
-  <!-- <dict>
-    <key>identifier</key>
-    <string>org.mitre.hreader.vitals</string>
-    <key>class_name</key>
-    <string>HRVitalView</string>
-    <key>display_name</key>
-    <string>Vital Signs</string>
-  </dict> -->
 	<dict>
 		<key>identifier</key>
 		<string>org.mitre.hreader.bmi</string>

@@ -20,17 +20,18 @@
 #import "SVPanelViewController.h"
 
 @interface HRDoctorsViewController ()
+
 - (void)reloadData;
-- (void)reloadDataAnimated;
+
 @end
 
 @implementation HRDoctorsViewController {
-    NSArray * __strong __providerViews;
+    NSArray *_providerViews;
 }
 
-@synthesize nameLabel       = __nameLabel;
-@synthesize gridTableView   = __gridTableView;
-@synthesize patientImageView = __patientImageView;
+@synthesize nameLabel = _nameLabel;
+@synthesize gridTableView = _gridTableView;
+@synthesize patientImageView = _patientImageView;
 
 #pragma mark - object methods
 
@@ -40,7 +41,7 @@
         self.title = @"Providers";
         [[NSNotificationCenter defaultCenter]
          addObserver:self
-         selector:@selector(patientDidChange:)
+         selector:@selector(reloadData)
          name:HRPatientDidChangeNotification
          object:nil];
     }
@@ -94,68 +95,32 @@
     
 }
 
-- (void)viewDidUnload {
-    self.nameLabel = nil;
-    self.gridTableView = nil;
-    self.patientImageView = nil;
-    [super viewDidUnload];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
-}
-
-#pragma mark - NSNotificationCenter
-
-- (void)patientDidChange:(NSNotification *)sender {
-    [self reloadDataAnimated];
-}
-
 #pragma mark - grid table view delegate
 
 - (NSUInteger)numberOfViewsInGridView:(HRGridTableView *)gridView {
-    return [__providerViews count];
+    return [_providerViews count];
 }
 
-- (NSArray *)gridView:(HRGridTableView *)gridView viewsInRange:(NSRange)range {
-    return [__providerViews subarrayWithRange:range];
+- (UIView *)gridView:(HRGridTableView *)gridView viewAtIndex:(NSUInteger)index {
+    return [_providerViews objectAtIndex:index];
 }
 
 - (void)gridView:(HRGridTableView *)gridView didSelectViewAtIndex:(NSUInteger)index {
-    HRAppletTile *tile = [__providerViews objectAtIndex:index];
+    HRAppletTile *tile = [_providerViews objectAtIndex:index];
     CGRect rect = [self.view convertRect:tile.bounds fromView:tile];
     [tile didReceiveTap:self inRect:rect];
 }
 
 #pragma mark - private methods
 
-- (void)reloadDataAnimated {
-    [UIView animateWithDuration:0.4 animations:^{
-        self.nameLabel.alpha = 0.0;
-        self.gridTableView.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [self reloadData];
-        [UIView animateWithDuration:0.4 animations:^{
-            self.nameLabel.alpha = 1.0;
-            self.gridTableView.alpha = 1.0;
-        }];
-    }];       
-}
-
 - (void)reloadData {
     
     // initial setup
     HRMPatient *patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
-//    NSArray *providers = [[HRMPatient selectedPatient] valueForKeyPath:@"syntheticInfo.providers"];
-//    NSMutableArray *views = [[NSMutableArray alloc] initWithCapacity:[providers count]];
-//    UINib *nib = [UINib nibWithNibName:@"HRProviderView" bundle:nil];
     self.nameLabel.text = [[patient compositeName] uppercaseString];
     self.patientImageView.image = [patient patientImage];
     
-    // configure views
-    
-    // health gateway
-    // Loading mockups by file name convention
+    // load mockup tiles
     NSMutableArray *views = [[NSMutableArray alloc] init];
     for (int i = 0; i < 6; i++) {
         NSString *imagePrefix = [NSString stringWithFormat:@"%@-%d", [patient initials], i];
@@ -167,6 +132,14 @@
         HRImageAppletTile *tile = [HRImageAppletTile tileWithPatient:patient userInfo:userInfo];
         [views addObject:tile];
     }
+    
+    // save and reload
+    _providerViews = views;
+    [self.gridTableView reloadData];
+    
+    //    NSArray *providers = [[HRMPatient selectedPatient] valueForKeyPath:@"syntheticInfo.providers"];
+    //    NSMutableArray *views = [[NSMutableArray alloc] initWithCapacity:[providers count]];
+    //    UINib *nib = [UINib nibWithNibName:@"HRProviderView" bundle:nil];
 
     /*
     NSArray *imagePrefixes = [NSArray arrayWithObjects:@"dentist", @"insurance", @"pharmacy", nil];
@@ -202,10 +175,6 @@
         [views addObject:view];
     }];
      */
-    
-    // save and reload
-    __providerViews = views;
-    [self.gridTableView reloadData];
     
 }
 

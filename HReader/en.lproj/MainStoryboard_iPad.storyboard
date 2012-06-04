@@ -219,6 +219,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <outlet property="gridViewDataSource" destination="hnH-bE-dJJ" id="cPB-6I-g7T"/>
                                     <outlet property="gridViewDelegate" destination="hnH-bE-dJJ" id="zzc-Dx-VNr"/>
                                 </connections>
                             </tableView>
@@ -268,6 +269,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <outlet property="gridViewDataSource" destination="6U1-hI-wo6" id="uKo-RM-43p"/>
                                     <outlet property="gridViewDelegate" destination="6U1-hI-wo6" id="QhL-Fj-JxV"/>
                                 </connections>
                             </tableView>
@@ -958,6 +960,7 @@
         <class className="HRGridTableView" superclassName="UITableView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRGridTableView.h"/>
             <relationships>
+                <relationship kind="outlet" name="gridViewDataSource"/>
                 <relationship kind="outlet" name="gridViewDelegate"/>
             </relationships>
         </class>
