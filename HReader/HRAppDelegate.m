@@ -26,6 +26,8 @@
 
 #import "HRCryptoManager.h"
 
+#import "SSKeychain.h"
+
 @interface HRAppDelegate () {
 @private
     NSUInteger passcodeAttempts;
@@ -131,6 +133,9 @@
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
 #endif
     
+    // keychain
+    [SSKeychain setAccessibilityType:kSecAttrAccessibleWhenUnlockedThisDeviceOnly];
+    
     // notifications
     [[NSNotificationCenter defaultCenter]
      addObserver:self
@@ -196,6 +201,7 @@
         PIN.confirmText = @"Verify passcode";
         PIN.errorText = @"The passcodes do not match";
         PIN.delegate = self;
+        PIN.action = @selector();
         UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:PIN];
         navigation.navigationBar.barStyle = UIBarStyleBlack;
         
@@ -219,7 +225,7 @@
     dispatch_after(time, dispatch_get_main_queue(), ^(void){
         
         // check for passcode
-        if (!HRCryptoManagerHasPasscode() || !HRCyproManagerHasSecurityQuestions()) {
+        if (!HRCryptoManagerHasPasscode() || !HRCryptoManagerHasSecurityQuestions()) {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
             PINCodeViewController *PIN = [storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
             PIN.mode = PINCodeViewControllerModeCreate;
@@ -228,6 +234,7 @@
             PIN.confirmText = @"Verify passcode";
             PIN.errorText = @"The passcodes do not match";
             PIN.delegate = self;
+            PIN.action = @selector(createInitialPasscode::);
             UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:PIN];
             [self.window.rootViewController presentViewController:navigation animated:YES completion:nil];
         }
@@ -373,61 +380,71 @@
     return 6;
 }
 
-- (void)PINCodeViewController:(PINCodeViewController *)controller didCreatePIN:(NSString *)PIN {
-//    [HRKeychainManager setPasscode:PIN];
-    if ([controller.userInfo isEqualToString:@"change_passcode"] || [controller.userInfo isEqualToString:@"reset_passcode"]) {
-        [controller dismissModalViewControllerAnimated:YES];
-    }
-    else {
-        HRCryptoManagerStoreTemporaryPasscode(PIN);
-        PINSecurityQuestionsViewController *questions = [controller.storyboard instantiateViewControllerWithIdentifier:@"SecurityQuestionsController"];
-        questions.navigationItem.hidesBackButton = YES;
-        questions.mode = PINSecurityQuestionsViewControllerCreate;
-        questions.delegate = self;
-        questions.title = @"Security Questions";
-        [controller.navigationController pushViewController:questions animated:YES];
-    }
+- (void)createInitialPasscode:(PINCodeViewController *)controller :(NSString *)passcode {
+    HRCryptoManagerStoreTemporaryPasscode(passcode);
+    PINSecurityQuestionsViewController *questions = [controller.storyboard instantiateViewControllerWithIdentifier:@"SecurityQuestionsController"];
+    questions.navigationItem.hidesBackButton = YES;
+    questions.mode = PINSecurityQuestionsViewControllerCreate;
+    questions.delegate = self;
+    questions.title = @"Security Questions";
+    [controller.navigationController pushViewController:questions animated:YES];
 }
 
+//- (void)PINCodeViewController:(PINCodeViewController *)controller didCreatePIN:(NSString *)PIN {
+////    [HRKeychainManager setPasscode:PIN];
+//    if ([controller.userInfo isEqualToString:@"change_passcode"] || [controller.userInfo isEqualToString:@"reset_passcode"]) {
+//        [controller dismissModalViewControllerAnimated:YES];
+//    }
+//    else {
+//        HRCryptoManagerStoreTemporaryPasscode(PIN);
+//        PINSecurityQuestionsViewController *questions = [controller.storyboard instantiateViewControllerWithIdentifier:@"SecurityQuestionsController"];
+//        questions.navigationItem.hidesBackButton = YES;
+//        questions.mode = PINSecurityQuestionsViewControllerCreate;
+//        questions.delegate = self;
+//        questions.title = @"Security Questions";
+//        [controller.navigationController pushViewController:questions animated:YES];
+//    }
+//}
+
 - (BOOL)PINCodeViewController:(PINCodeViewController *)controller isValidPIN:(NSString *)PIN {
-    BOOL valid = [HRKeychainManager isPasscodeValid:PIN];
-    if (valid) {
-        if ([controller.userInfo isEqualToString:@"change_passcode"]) {
-            PINCodeViewController *create = [controller.storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
-            create.mode = PINCodeViewControllerModeCreate;
-            create.title = @"Set Passcode";
-            create.messageText = @"Enter a passcode";
-            create.confirmText = @"Verify passcode";
-            create.errorText = @"The passcodes do not match";
-            create.userInfo = controller.userInfo;
-            create.delegate = (HRAppDelegate *)[[UIApplication sharedApplication] delegate];
-            create.navigationItem.leftBarButtonItem = controller.navigationItem.leftBarButtonItem;
-            [controller.navigationController pushViewController:create animated:YES];
-        }
-        else if ([controller.userInfo isEqualToString:@"change_questions"]) {
-            PINSecurityQuestionsViewController *questions = [controller.storyboard instantiateViewControllerWithIdentifier:@"SecurityQuestionsController"];
-            questions.navigationItem.hidesBackButton = YES;
-            questions.mode = PINSecurityQuestionsViewControllerEdit;
-            questions.delegate = (HRAppDelegate *)[[UIApplication sharedApplication] delegate];
-            questions.title = @"Security Questions";
-            questions.navigationItem.leftBarButtonItem = controller.navigationItem.leftBarButtonItem;
-            [controller.navigationController pushViewController:questions animated:YES];
-        }
-        else {
-            [controller dismissModalViewControllerAnimated:YES];
-        }
-    }
-    else if (controller.userInfo == nil) {
-        if (++passcodeAttempts > 2) {
-            UIBarButtonItem *resetButton = [[UIBarButtonItem alloc] 
-                                            initWithTitle:@"Reset Passcode" 
-                                            style:UIBarButtonItemStyleBordered 
-                                            target:self 
-                                            action:@selector(resetPasscode:)];
-            controller.navigationItem.leftBarButtonItem = resetButton;
-        }
-    }
-    return valid;
+//    BOOL valid = [HRKeychainManager isPasscodeValid:PIN];
+//    if (valid) {
+//        if ([controller.userInfo isEqualToString:@"change_passcode"]) {
+//            PINCodeViewController *create = [controller.storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
+//            create.mode = PINCodeViewControllerModeCreate;
+//            create.title = @"Set Passcode";
+//            create.messageText = @"Enter a passcode";
+//            create.confirmText = @"Verify passcode";
+//            create.errorText = @"The passcodes do not match";
+//            create.userInfo = controller.userInfo;
+//            create.delegate = (HRAppDelegate *)[[UIApplication sharedApplication] delegate];
+//            create.navigationItem.leftBarButtonItem = controller.navigationItem.leftBarButtonItem;
+//            [controller.navigationController pushViewController:create animated:YES];
+//        }
+//        else if ([controller.userInfo isEqualToString:@"change_questions"]) {
+//            PINSecurityQuestionsViewController *questions = [controller.storyboard instantiateViewControllerWithIdentifier:@"SecurityQuestionsController"];
+//            questions.navigationItem.hidesBackButton = YES;
+//            questions.mode = PINSecurityQuestionsViewControllerEdit;
+//            questions.delegate = (HRAppDelegate *)[[UIApplication sharedApplication] delegate];
+//            questions.title = @"Security Questions";
+//            questions.navigationItem.leftBarButtonItem = controller.navigationItem.leftBarButtonItem;
+//            [controller.navigationController pushViewController:questions animated:YES];
+//        }
+//        else {
+//            [controller dismissModalViewControllerAnimated:YES];
+//        }
+//    }
+//    else if (controller.userInfo == nil) {
+//        if (++passcodeAttempts > 2) {
+//            UIBarButtonItem *resetButton = [[UIBarButtonItem alloc] 
+//                                            initWithTitle:@"Reset Passcode" 
+//                                            style:UIBarButtonItemStyleBordered 
+//                                            target:self 
+//                                            action:@selector(resetPasscode:)];
+//            controller.navigationItem.leftBarButtonItem = resetButton;
+//        }
+//    }
+//    return valid;
 }
 
 #pragma mark - security questions delegate
@@ -437,34 +454,34 @@
 }
 
 - (void)securityQuestionsController:(PINSecurityQuestionsViewController *)controller didSubmitQuestions:(NSArray *)questions answers:(NSArray *)answers {
-    if (controller.mode == PINSecurityQuestionsViewControllerVerify) {
-        if ([HRKeychainManager areAnswersForSecurityQuestionsValid:answers]) {
-            PINCodeViewController *create = [controller.storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
-            create.mode = PINCodeViewControllerModeCreate;
-            create.title = @"Set Passcode";
-            create.messageText = @"Enter a passcode";
-            create.confirmText = @"Verify passcode";
-            create.errorText = @"The passcodes do not match";
-            create.userInfo = @"reset_passcode";
-            create.delegate = self;
-            create.navigationItem.hidesBackButton = YES;
-            [controller.navigationController pushViewController:create animated:YES];
-        } else {
-            UIAlertView *alert = [[UIAlertView alloc] 
-                                  initWithTitle:@"Invalid Answers" 
-                                  message:@"The answers you provided are not correct" 
-                                  delegate:nil 
-                                  cancelButtonTitle:@"OK" 
-                                  otherButtonTitles:nil];
-            [alert show];
-        }
-    }
-    else if (controller.mode == PINSecurityQuestionsViewControllerCreate || controller.mode == PINSecurityQuestionsViewControllerEdit) {
-//        [HRKeychainManager setSecurityQuestions:questions answers:answers];
-        HRCryptoManagerStoreTemporarySecurityQuestionsAndAnswers(questions, answers);
-        HRCryptoManagerFinalize();
-//        [controller dismissModalViewControllerAnimated:YES];
-    }
+//    if (controller.mode == PINSecurityQuestionsViewControllerVerify) {
+//        if ([HRKeychainManager areAnswersForSecurityQuestionsValid:answers]) {
+//            PINCodeViewController *create = [controller.storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
+//            create.mode = PINCodeViewControllerModeCreate;
+//            create.title = @"Set Passcode";
+//            create.messageText = @"Enter a passcode";
+//            create.confirmText = @"Verify passcode";
+//            create.errorText = @"The passcodes do not match";
+//            create.userInfo = @"reset_passcode";
+//            create.delegate = self;
+//            create.navigationItem.hidesBackButton = YES;
+//            [controller.navigationController pushViewController:create animated:YES];
+//        } else {
+//            UIAlertView *alert = [[UIAlertView alloc] 
+//                                  initWithTitle:@"Invalid Answers" 
+//                                  message:@"The answers you provided are not correct" 
+//                                  delegate:nil 
+//                                  cancelButtonTitle:@"OK" 
+//                                  otherButtonTitles:nil];
+//            [alert show];
+//        }
+//    }
+//    else if (controller.mode == PINSecurityQuestionsViewControllerCreate || controller.mode == PINSecurityQuestionsViewControllerEdit) {
+////        [HRKeychainManager setSecurityQuestions:questions answers:answers];
+//        HRCryptoManagerStoreTemporarySecurityQuestionsAndAnswers(questions, answers);
+//        HRCryptoManagerFinalize();
+////        [controller dismissModalViewControllerAnimated:YES];
+//    }
 }
 
 - (NSArray *)securityQuestions {

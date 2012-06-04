@@ -15,10 +15,6 @@
 
 - (NSUInteger)PINCodeLength;
 
-- (void)PINCodeViewController:(PINCodeViewController *)controller didCreatePIN:(NSString *)PIN;
-
-- (BOOL)PINCodeViewController:(PINCodeViewController *)controller isValidPIN:(NSString *)PIN;
-
 @end
 
 typedef enum {
@@ -70,27 +66,21 @@ typedef enum {
 
 /*
  
- Delegate.
+ Delegatation.
  
  */
 @property (nonatomic, assign) IBOutlet id<PINCodeViewControllerDelegate> delegate;
-
-/*
- 
- User info.
- 
- */
-@property (nonatomic, copy) NSString *userInfo;
+@property (nonatomic, assign) SEL action;
 
 /*
  
  User interface properties.
  
  */
-@property (nonatomic, retain) IBOutletCollection(UIButton) NSArray *buttons;
-@property (nonatomic, retain) IBOutlet UILabel *passcodeLabel;
-@property (nonatomic, retain) IBOutlet UILabel *messageLabel;
-@property (nonatomic, retain) IBOutlet UILabel *errorLabel;
+@property (nonatomic, copy) IBOutletCollection(UIButton) NSArray *buttons;
+@property (nonatomic, weak) IBOutlet UILabel *passcodeLabel;
+@property (nonatomic, weak) IBOutlet UILabel *messageLabel;
+@property (nonatomic, weak) IBOutlet UILabel *errorLabel;
 - (IBAction)deleteButtonTap;
 - (IBAction)numberButtonTap:(UIButton *)sender;
 

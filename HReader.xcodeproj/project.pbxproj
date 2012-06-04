@@ -132,7 +132,7 @@
 		3BFE7A2814DADE2B0037738D /* PINCodeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2214DADE2B0037738D /* PINCodeButton.png */; };
 		3BFE7A2914DADE2B0037738D /* PINCodeDeleteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2314DADE2B0037738D /* PINCodeDeleteButton.png */; };
 		3BFE7A2A14DADE2B0037738D /* PINCodeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2414DADE2B0037738D /* PINCodeStoryboard.storyboard */; };
-		3BFE7A2B14DADE2B0037738D /* PINCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2614DADE2B0037738D /* PINCodeViewController.m */; };
+		3BFE7A2B14DADE2B0037738D /* PINCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2614DADE2B0037738D /* PINCodeViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2D14DAE5910037738D /* Icon-72.png */; };
 		94026FB414B4A8A600F40185 /* timeline in Resources */ = {isa = PBXBuildFile; fileRef = 94026FB314B4A8A600F40185 /* timeline */; };
 		940C046C152B6ADF00834416 /* hs-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C0467152B6ADF00834416 /* hs-synthetic.json */; };
@@ -361,7 +361,6 @@
 		3BA3E7DD15595F090095A5CC /* GCAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAlertView.m; sourceTree = "<group>"; };
 		3BA7F18D1577EFCF00D4EB09 /* HRCryptoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCryptoManager.h; sourceTree = "<group>"; };
 		3BA7F18E1577EFCF00D4EB09 /* HRCryptoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCryptoManager.m; sourceTree = "<group>"; };
-		3BA7F1901577EFF100D4EB09 /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
 		3BB9C27D151B8AEF00527C20 /* HRKeychainManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRKeychainManager.h; sourceTree = "<group>"; };
 		3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRKeychainManager.m; sourceTree = "<group>"; };
 		3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hReader.xcdatamodel; sourceTree = "<group>"; };
@@ -814,7 +813,6 @@
 			isa = PBXGroup;
 			children = (
 				94F871F31535D9F60018AF13 /* libz.dylib */,
-				3BA7F1901577EFF100D4EB09 /* libcommonCrypto.dylib */,
 				945286AF155844C600CF5EA3 /* MessageUI.framework */,
 				3BD16ED514E1B32400F2249E /* CoreData.framework */,
 				3B04A56814E06A3A00AD91F9 /* Security.framework */,

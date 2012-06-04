@@ -11,36 +11,37 @@
 
 #define kGCPINViewControllerDelay 0.5
 
+#if !__has_feature(objc_arc)
+#error This class requires ARC
+#endif
+
 @interface PINCodeViewController () {
     BOOL clearOnNextInput;
+    NSMutableString *mutableInputText;
+    NSString *inputText;
 }
-
-@property (nonatomic, retain) NSMutableString *mutableInputText;
-@property (nonatomic, copy) NSString *inputText;
 
 - (void)clearIfNeeded;
 - (void)updatePasscodeLabel;
 - (void)passcodeTextDidChange;
-- (void)cleanupView;
 
 @end
 
 @implementation PINCodeViewController
 
-@synthesize delegate = __delegate;
-@synthesize mutableInputText = __inputTextOne;
-@synthesize inputText = __inputTextTwo;
-@synthesize mode = __mode;
+@synthesize messageText = _messageText;
+@synthesize confirmText = _confirmText;
+@synthesize errorText = _errorText;
 
-@synthesize buttons = __buttons;
-@synthesize passcodeLabel = __passcodeLabel;
-@synthesize messageLabel = __messageLabel;
-@synthesize errorLabel = __errorLabel;
+@synthesize mode = _mode;
 
-@synthesize messageText = __messageText;
-@synthesize confirmText = __confirmText;
-@synthesize errorText = __errorText;
-@synthesize userInfo = __userInfo;
+@synthesize delegate = _delegate;
+@synthesize action = _action;
+
+@synthesize buttons = _buttons;
+@synthesize passcodeLabel = _passcodeLabel;
+@synthesize messageLabel = _messageLabel;
+@synthesize errorLabel = _errorLabel;
 
 #pragma mark - object methods
 
@@ -48,99 +49,88 @@
     self = [super initWithCoder:coder];
     if (self) {
         clearOnNextInput = NO;
-        __mode = 0;
+        _mode = 0;
     }
     return self;
-}
-
-- (void)dealloc {
-    self.messageText = nil;
-    self.confirmText = nil;
-    self.userInfo = nil;
-    [self cleanupView];
-    [super dealloc];
 }
 
 - (void)clearIfNeeded {
     if (clearOnNextInput) {
         clearOnNextInput = NO;
         self.errorLabel.hidden = YES;
-        self.mutableInputText = [NSMutableString string];
-        self.inputText = nil;
+        mutableInputText = [NSMutableString string];
+        inputText = nil;
     }
-}
-
-- (void)cleanupView {
-    self.buttons = nil;
-    self.passcodeLabel = nil;
-    self.messageLabel = nil;
-    self.errorLabel = nil;
-    self.mutableInputText = nil;
-    self.inputText = nil;
 }
 
 - (void)updatePasscodeLabel {
     NSMutableString *string = [NSMutableString string];
-    for (NSUInteger i = 0; i < [self.mutableInputText length]; i++) {
+    for (NSUInteger i = 0; i < [mutableInputText length]; i++) {
         [string appendString:@"•"];
     }
     self.passcodeLabel.text = string;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 - (void)passcodeTextDidChange {
+    UIApplication *app = [UIApplication sharedApplication];
     [self updatePasscodeLabel];
-    if ([self.mutableInputText length] == [self.delegate PINCodeLength]) {
-        if (self.mode == PINCodeViewControllerModeCreate) {
-            if (self.inputText == nil) {
-                self.inputText = self.mutableInputText;
-                self.mutableInputText = [NSMutableString string];
-                if (self.confirmText) {
-                    self.messageLabel.text = self.confirmText;
+    if ([mutableInputText length] == [self.delegate PINCodeLength]) {
+        [app beginIgnoringInteractionEvents];
+        double delay = 0.25;
+        dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
+        dispatch_after(time, dispatch_get_main_queue(), ^(void) {
+            if (self.mode == PINCodeViewControllerModeCreate) {
+                if (inputText == nil) {
+                    inputText = [mutableInputText copy];
+                    mutableInputText = [NSMutableString string];
+                    if (self.confirmText) { self.messageLabel.text = self.confirmText; }
+                    [self updatePasscodeLabel];
                 }
-                [self updatePasscodeLabel];
+                else {
+                    clearOnNextInput = YES;
+                    if ([mutableInputText isEqualToString:inputText]) {
+                        [self.delegate performSelector:self.action withObject:self withObject:inputText];
+                    }
+                    else {
+                        self.messageLabel.text = self.messageText;
+                        mutableInputText = [NSMutableString string];
+                        inputText = nil;
+                        self.errorLabel.text = self.errorText;
+                        self.errorLabel.hidden = NO;
+                        [self updatePasscodeLabel];
+                    }
+                }
             }
             else {
                 clearOnNextInput = YES;
-                if ([self.mutableInputText isEqualToString:self.inputText]) {
-                    [self.delegate PINCodeViewController:self didCreatePIN:self.inputText];
-                }
-                else {
-                    self.messageLabel.text = self.messageText;
-                    self.mutableInputText = [NSMutableString string];
-                    self.inputText = nil;
+                if (![self.delegate performSelector:self.action withObject:self withObject:[mutableInputText copy]]) {
                     self.errorLabel.text = self.errorText;
                     self.errorLabel.hidden = NO;
+                    mutableInputText = [NSMutableString string];
                     [self updatePasscodeLabel];
                 }
             }
-        }
-        else {
-            clearOnNextInput = YES;
-            if (![self.delegate PINCodeViewController:self isValidPIN:self.mutableInputText]) {
-                self.errorLabel.text = self.errorText;
-                self.errorLabel.hidden = NO;
-                self.mutableInputText = [NSMutableString string];
-                [self updatePasscodeLabel];
-            }
-        }
+            [app endIgnoringInteractionEvents];
+        });
     }
 }
+#pragma clang diagnostic pop
 
 - (void)setMode:(PINCodeViewControllerMode)mode {
     NSAssert((mode > 0 && mode < 3), @"%d is an invalid mode", mode);
-    if (__mode == 0) {
-        __mode = mode;
-    }
+    if (_mode == 0) { _mode = mode; }
 }
 
 #pragma mark - button actions
 
 - (IBAction)deleteButtonTap {
     [self clearIfNeeded];
-    NSUInteger length = [self.mutableInputText length];
+    NSUInteger length = [mutableInputText length];
     if (length) {
         NSRange range = NSMakeRange(length - 1, 1);
-        [self.mutableInputText deleteCharactersInRange:range];
+        [mutableInputText deleteCharactersInRange:range];
     }
     [self passcodeTextDidChange];
 }
@@ -148,7 +138,7 @@
 - (IBAction)numberButtonTap:(UIButton *)sender {
     [self clearIfNeeded];
     NSAssert(sender, @"No sender was provided");
-    [self.mutableInputText appendString:sender.currentTitle];
+    [mutableInputText appendString:sender.currentTitle];
     [self passcodeTextDidChange];
 }
 
@@ -156,7 +146,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSAssert(__mode > 0, @"No mode has been set");
+    NSAssert(self.mode > 0, @"No mode has been set");
+    NSAssert(self.action, @"No action has been set");
+    NSAssert(self.delegate, @"No delegate has been set");
     
     // self
     UIImage *backgroundImage = [UIImage imageNamed:@"PINCodeBackground"];
@@ -167,7 +159,7 @@
     self.messageLabel.text = self.messageText;
     
     // collect buttons
-    NSMutableArray *array = [[self.buttons mutableCopy] autorelease];
+    NSMutableArray *array = [self.buttons mutableCopy];
     NSUInteger count = [array count];
     for (NSUInteger i = 0; i < count; i++) {
         u_int32_t elements = count - i;
@@ -181,8 +173,8 @@
 }
 
 - (void)viewDidUnload {
+    self.buttons = nil;
     [super viewDidUnload];
-    [self cleanupView];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
