@@ -30,7 +30,7 @@
 
 @implementation HRMPatient
 
-@dynamic mongoID;
+@dynamic serverID;
 @dynamic dateOfBirth;
 @dynamic firstName;
 @dynamic lastName;
@@ -52,12 +52,6 @@
     patient.gender = [NSNumber numberWithShort:HRMPatientGenderUnknown];
 //    patient.applets = [NSArray array];
     patient.applets = [NSArray arrayWithObjects:@"org.mitre.hreader.medications", @"org.mitre.hreader.bloodpressure", nil];
-    return patient;
-}
-
-+ (HRMPatient *)instanceWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context {
-    HRMPatient *patient = [self instanceInContext:context];
-    [patient populateWithContentsOfDictionary:dictionary];
     return patient;
 }
 
@@ -178,11 +172,6 @@
     id __block object = nil;
     NSManagedObjectContext *context = [self managedObjectContext];
     
-    // mongo id
-    object = [dictionary objectForKey:@"_id"];
-    if (object && [object isKindOfClass:[NSString class]]) { self.mongoID = object; }
-    else { self.mongoID = nil; }
-    
     // first name
     object = [dictionary objectForKey:@"first"];
     if (object && [object isKindOfClass:[NSString class]]) { self.firstName = object; }
@@ -245,7 +234,7 @@
 }
 
 - (UIImage *)patientImage {
-    return [UIImage imageNamed:[NSString stringWithFormat:@"UserImage-%@", self.mongoID]];
+    return [UIImage imageNamed:[NSString stringWithFormat:@"UserImage-%@", self.serverID]];
 }
 
 - (DDXMLElement *)timelineXMLDocument {

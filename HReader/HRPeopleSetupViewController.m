@@ -86,7 +86,9 @@
         [client JSONForPatientWithIdentifier:identifier completion:^(NSDictionary *payload) {
             NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
             [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
-            HRMPatient *patient = [HRMPatient instanceWithDictionary:payload inContext:context];
+            HRMPatient *patient = [HRMPatient instanceInContext:context];
+            [patient populateWithContentsOfDictionary:payload];
+            patient.serverID = identifier;
             patient.relationship = [NSNumber numberWithShort:relationship];
             [context save:nil];
         }];

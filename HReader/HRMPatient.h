@@ -29,7 +29,7 @@ typedef enum {
 
 #pragma mark - core data properties
 
-@property (nonatomic, retain) NSString *mongoID;
+@property (nonatomic, retain) NSString *serverID;
 @property (nonatomic, retain) NSString *firstName;
 @property (nonatomic, retain) NSString *lastName;
 @property (nonatomic, retain) NSString *race;
@@ -91,17 +91,6 @@ typedef enum {
  */
 - (UIImage *)patientImage;
 - (NSURL *)C32HTMLURL;
-
-#pragma mark - class methods
-
-/*
- 
- Returns a new patient object that is populated with data from the given
- dictionary inserted into the given context. The format of the dictionary must
- conform to the hData standard.
- 
- */
-+ (HRMPatient *)instanceWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context;
 
 @end
 
