@@ -55,8 +55,8 @@ void HRCryptoManagerPurge(void);
  
  
  */
-void HRCryptoManagerUnlockWithPasscode(NSString *passcode);
-void HRCryptoManagerUnlockWithAnswersForSecurityQuestions(NSArray *answers);
+BOOL HRCryptoManagerUnlockWithPasscode(NSString *passcode);
+BOOL HRCryptoManagerUnlockWithAnswersForSecurityQuestions(NSArray *answers);
 
 /*
  

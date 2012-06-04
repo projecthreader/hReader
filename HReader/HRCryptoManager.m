@@ -211,16 +211,24 @@ void HRCryptoManagerPurge(void) {
     _temporaryKey = nil;
 }
 
-void HRCryptoManagerUnlockWithPasscode(NSString *passcode) {
+BOOL HRCryptoManagerUnlockWithPasscode(NSString *passcode) {
     NSData *encryptedKey = [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount];
     NSData *decryptedKey = HRCryptoManagerDecrypt_private(passcode, encryptedKey);
-    _temporaryKey = [[NSString alloc] initWithData:decryptedKey encoding:NSUTF8StringEncoding];
+    if (decryptedKey) {
+        _temporaryKey = [[NSString alloc] initWithData:decryptedKey encoding:NSUTF8StringEncoding];
+        return YES;
+    }
+    return NO;
 }
 
-void HRCryptoManagerUnlockWithAnswersForSecurityQuestions(NSArray *answers) {
+BOOL HRCryptoManagerUnlockWithAnswersForSecurityQuestions(NSArray *answers) {
     NSData *encryptedKey = [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeySecurityAnswersKeychain];
     NSData *decryptedKey = HRCryptoManagerDecrypt_private([answers componentsJoinedByString:@""], encryptedKey);
-    _temporaryKey = [[NSString alloc] initWithData:decryptedKey encoding:NSUTF8StringEncoding];
+    if (decryptedKey) {
+        _temporaryKey = [[NSString alloc] initWithData:decryptedKey encoding:NSUTF8StringEncoding];
+        return YES;
+    }
+    return NO;
 }
 
 NSData * HRCryptoManagerKeychainItemData(NSString *service, NSString *account) {
