@@ -50,6 +50,8 @@
     patient.displayOrder = [NSNumber numberWithLong:LONG_MAX];
     patient.relationship = [NSNumber numberWithShort:HRMPatientRelationshipOther];
     patient.gender = [NSNumber numberWithShort:HRMPatientGenderUnknown];
+//    patient.applets = [NSArray array];
+    patient.applets = [NSArray arrayWithObjects:@"org.mitre.hreader.medications", @"org.mitre.hreader.bloodpressure", nil];
     return patient;
 }
 
