@@ -139,6 +139,10 @@
         self.meButton.hidden = YES;
     }
     
+    // initiate initial patient load
+    NSString *host = [[HRAPIClient accounts] lastObject];
+    [[HRAPIClient clientWithHost:host] patientFeed:nil];
+    
 }
 
 - (void)viewDidUnload {
