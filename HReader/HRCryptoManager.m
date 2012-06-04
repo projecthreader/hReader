@@ -16,11 +16,11 @@
 // keychain keys
 
 static NSString * const HRKeychainService = @"org.mitre.hreader.security";
-static NSString * const HRPasscodeKeychainAccount = @"org.mitre.hreader.security";
-static NSString * const HRSharedKeyPasscodeKeychainAccount = @"org.mitre.hreader.security";
-static NSString * const HRSecurityQuestionsKeychainAccount = @"org.mitre.hreader.security";
-static NSString * const HRSecurityAnswersKeychainAccount = @"org.mitre.hreader.security";
-static NSString * const HRSharedKeySecurityAnswersKeychain = @"org.mitre.hreader.security";
+static NSString * const HRPasscodeKeychainAccount = @"passcode";
+static NSString * const HRSharedKeyPasscodeKeychainAccount = @"shared_key_passcode";
+static NSString * const HRSecurityQuestionsKeychainAccount = @"security_questions";
+static NSString * const HRSecurityAnswersKeychainAccount = @"security_answers";
+static NSString * const HRSharedKeySecurityAnswersKeychain = @"shared_key_security_answers";
 
 // static variables
 
