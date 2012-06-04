@@ -19,8 +19,8 @@ extern NSString * const HRPatientDidChangeNotification;
 NSFetchedResultsControllerDelegate,
 UISearchDisplayDelegate, UISearchBarDelegate>
 
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) IBOutlet UIToolbar *toolbar;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UIToolbar *toolbar;
 
 /*
  

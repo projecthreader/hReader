@@ -19,17 +19,16 @@ NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
 static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
 
 @interface HRPeoplePickerViewController () {
-@private
     
     // support showing the main patient list
-    NSManagedObjectContext * __strong managedObjectContext;
-    NSFetchedResultsController * __strong fetchedResultsController;
+    NSManagedObjectContext *managedObjectContext;
+    NSFetchedResultsController *fetchedResultsController;
     NSInteger selectedPatientIndex;
     BOOL shouldIgnoreUpdatesFromFetchedResultsController;
     
     // support people search
-    NSArray * __strong searchResults;
-    NSArray * __strong sortDescriptors;
+    NSArray *searchResults;
+    NSArray *sortDescriptors;
     
 }
 
@@ -56,12 +55,7 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
 
 - (HRMPatient *)selectedPatient {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selectedPatientIndex inSection:0];
-    NSLog(@"%@", [fetchedResultsController fetchedObjects]);
-    id object = nil;
-    @try { [fetchedResultsController objectAtIndexPath:indexPath]; }
-    @catch (NSException *exception) {}
-    @finally {}
-    return object;
+    return [fetchedResultsController objectAtIndexPath:indexPath];
 }
 
 - (void)selectNextPatient {
@@ -127,8 +121,8 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
 }
 
 - (void)updateTableViewSelection {
-//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selectedPatientIndex inSection:0];
-//    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selectedPatientIndex inSection:0];
+    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
 }
 
 #pragma mark - view lifecycle
