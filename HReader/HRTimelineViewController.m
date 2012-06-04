@@ -56,36 +56,38 @@
 }
 
 - (void)reloadData {
-    
-    // vars
-    NSURL *URL;
-    
-    // load patient
-    HRMPatient *patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
-    self.patientImageView.image = [patient patientImage];
-    
-    self.nameLabel.text = [patient.compositeName uppercaseString];
-    URL = [[[NSFileManager defaultManager]
-            URLsForDirectory:NSDocumentDirectory
-            inDomains:NSUserDomainMask]
-           lastObject];
-    URL = [URL URLByAppendingPathComponent:@"hReader.xml"];
-    NSString *XMLString = [[[patient timelineXMLDocument] XMLString] copy];
-    NSData *XMLData = [XMLString dataUsingEncoding:NSUTF8StringEncoding];
-    BOOL write = [XMLData
-                  writeToURL:URL
-                  options:(NSDataWritingAtomic | NSDataWritingFileProtectionComplete)
-                  error:nil];
-    NSAssert(write, @"The XML file could not be written");
-    
-    // load timeline
-    URL = [[NSBundle mainBundle]
-           URLForResource:@"hReader"
-           withExtension:@"html"
-           subdirectory:@"timeline/hReader"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    [self.webView loadRequest:request];
-    
+    if ([self isViewLoaded]) {
+        
+        // vars
+        NSURL *URL;
+        
+        // load patient
+        HRMPatient *patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
+        self.patientImageView.image = [patient patientImage];
+        
+        self.nameLabel.text = [patient.compositeName uppercaseString];
+        URL = [[[NSFileManager defaultManager]
+                URLsForDirectory:NSDocumentDirectory
+                inDomains:NSUserDomainMask]
+               lastObject];
+        URL = [URL URLByAppendingPathComponent:@"hReader.xml"];
+        NSString *XMLString = [[[patient timelineXMLDocument] XMLString] copy];
+        NSData *XMLData = [XMLString dataUsingEncoding:NSUTF8StringEncoding];
+        BOOL write = [XMLData
+                      writeToURL:URL
+                      options:(NSDataWritingAtomic | NSDataWritingFileProtectionComplete)
+                      error:nil];
+        NSAssert(write, @"The XML file could not be written");
+        
+        // load timeline
+        URL = [[NSBundle mainBundle]
+               URLForResource:@"hReader"
+               withExtension:@"html"
+               subdirectory:@"timeline/hReader"];
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+        [self.webView loadRequest:request];
+        
+    }
 }
 
 #pragma mark - view lifecycle

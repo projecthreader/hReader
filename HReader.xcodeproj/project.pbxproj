@@ -226,7 +226,6 @@
 		DD5597C114897DE2006A0D1D /* HRDoctorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5597BF14897DE2006A0D1D /* HRDoctorsViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DD5597C214897DE2006A0D1D /* HRDoctorsViewController_old.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5597C014897DE2006A0D1D /* HRDoctorsViewController_old.xib */; };
 		DD695D7C1489439100E4E2E1 /* HRTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD695D7A1489439100E4E2E1 /* HRTimelineViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		DD695D7D1489439100E4E2E1 /* HRTimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD695D7B1489439100E4E2E1 /* HRTimelineViewController.xib */; };
 		DD695D8514897C2200E4E2E1 /* HRMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD695D8314897C2200E4E2E1 /* HRMessagesViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DD695D8614897C2200E4E2E1 /* HRMessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD695D8414897C2200E4E2E1 /* HRMessagesViewController.xib */; };
 		DD8BD9DB148D13910090F729 /* chevron.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8BD9DA148D13910090F729 /* chevron.png */; };
@@ -544,7 +543,6 @@
 		DD5597C014897DE2006A0D1D /* HRDoctorsViewController_old.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRDoctorsViewController_old.xib; sourceTree = "<group>"; };
 		DD695D791489439100E4E2E1 /* HRTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRTimelineViewController.h; sourceTree = "<group>"; };
 		DD695D7A1489439100E4E2E1 /* HRTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRTimelineViewController.m; sourceTree = "<group>"; };
-		DD695D7B1489439100E4E2E1 /* HRTimelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRTimelineViewController.xib; sourceTree = "<group>"; };
 		DD695D8214897C2200E4E2E1 /* HRMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMessagesViewController.h; sourceTree = "<group>"; };
 		DD695D8314897C2200E4E2E1 /* HRMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMessagesViewController.m; sourceTree = "<group>"; };
 		DD695D8414897C2200E4E2E1 /* HRMessagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRMessagesViewController.xib; sourceTree = "<group>"; };
@@ -1191,7 +1189,6 @@
 			children = (
 				DD695D791489439100E4E2E1 /* HRTimelineViewController.h */,
 				DD695D7A1489439100E4E2E1 /* HRTimelineViewController.m */,
-				DD695D7B1489439100E4E2E1 /* HRTimelineViewController.xib */,
 			);
 			name = Timeline;
 			sourceTree = "<group>";
@@ -1276,7 +1273,6 @@
 				941DB0C31471B32D00A96B8B /* MainStoryboard_iPad.storyboard in Resources */,
 				9464C5881476BDAE0076B991 /* C32-Smith-Johnny.html in Resources */,
 				94AEAE11148690DA00C005B2 /* HRPatientSummaryViewController.xib in Resources */,
-				DD695D7D1489439100E4E2E1 /* HRTimelineViewController.xib in Resources */,
 				DD695D8614897C2200E4E2E1 /* HRMessagesViewController.xib in Resources */,
 				DD5597C214897DE2006A0D1D /* HRDoctorsViewController_old.xib in Resources */,
 				DD8BD9DB148D13910090F729 /* chevron.png in Resources */,
