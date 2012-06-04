@@ -92,8 +92,18 @@
     NSUInteger value = [self.relationship shortValue];
     NSString *string = @"Other";
     if (value == HRMPatientRelationshipMe) { string = @"Me"; }
-    else if (value == HRMPatientRelationshipSpouse) { string = @"Spouse"; }
-    else if (value == HRMPatientRelationshipChild) { string = @"Child"; }
+    else if (value == HRMPatientRelationshipSpouse) {
+        string = @"Spouse";
+        short value = [self.gender shortValue];
+        if (value == HRMPatientGenderMale) { string = @"Husband"; }
+        else if (value == HRMPatientGenderFemale) { string = @"Wife"; }
+    }
+    else if (value == HRMPatientRelationshipChild) {
+        string = @"Child";
+        short value = [self.gender shortValue];
+        if (value == HRMPatientGenderMale) { string = @"Son"; }
+        else if (value == HRMPatientGenderFemale) { string = @"Daughter"; }
+    }
     else if (value == HRMPatientRelationshipFamily) { string = @"Family"; }
     [self didAccessValueForKey:NSStringFromSelector(_cmd)];
     return string;
