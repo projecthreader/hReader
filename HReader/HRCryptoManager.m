@@ -231,6 +231,10 @@ BOOL HRCryptoManagerUnlockWithAnswersForSecurityQuestions(NSArray *answers) {
     return NO;
 }
 
+BOOL HRCryptoManagerIsUnlocked(void) {
+    return (_temporaryKey != nil);
+}
+
 NSData * HRCryptoManagerKeychainItemData(NSString *service, NSString *account) {
     NSCAssert(_temporaryKey, @"Decryption cannot be performed at this time");
     NSData *value = [SSKeychain passwordDataForService:service account:account];
