@@ -17,6 +17,8 @@
 
 #import "HRMPatient.h"
 
+#import "SVPanelViewController.h"
+
 @interface HRPeopleSetupViewController () {
 @private
     NSFetchedResultsController *fetchedResultsController;
@@ -29,6 +31,8 @@
                        withTitle:(NSString *)title
                     relationship:(HRMPatientRelationship)relationship
                       completion:(void (^) (void))completion;
+
+- (void)showMainApplicationInterface;
 
 @end
 
@@ -103,6 +107,15 @@
      permittedArrowDirections:UIPopoverArrowDirectionAny
      animated:YES];
     
+}
+
+- (void)showMainApplicationInterface {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    SVPanelViewController *panel = [storyboard instantiateInitialViewController];
+    panel.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"RootViewController"];
+    panel.rightAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"AppletsConfigurationViewController"];
+    panel.leftAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"PeoplePickerViewController"];
+    [self presentViewController:panel animated:YES completion:nil];
 }
 
 #pragma mark - view lifecycle
@@ -234,6 +247,7 @@
     id<NSFetchedResultsSectionInfo> info = [[fetchedResultsController sections] objectAtIndex:0];
     if (index < [info numberOfObjects]) {
         [HRPeoplePickerViewController setSelectedPatientIndex:index];
+        [self showMainApplicationInterface];
 //        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
 //        HRMPatient *patient = [fetchedResultsController objectAtIndexPath:indexPath];
 //        NSLog(@"%@", patient);
