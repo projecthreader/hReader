@@ -6,9 +6,15 @@
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
+#import <objc/message.h>
+
 #import "PINSecurityQuestionsViewController.h"
 #import "PINCodeTextField.h"
 #import "PINCodeViewController.h"
+
+#if !__has_feature(objc_arc)
+#error This class requires ARC
+#endif
 
 @interface PINSecurityQuestionsViewController () {
     NSMutableDictionary *data;
@@ -20,51 +26,43 @@
 
 @implementation PINSecurityQuestionsViewController
 
-@synthesize tableView = __tableView;
-@synthesize mode = __mode;
-@synthesize delegate = __delegate;
+@synthesize tableView = _tableView;
+@synthesize mode = _mode;
+@synthesize delegate = _delegate;
+@synthesize action = _action;
 
-#pragma mark - object lifecycle
+#pragma mark - object methods
 
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (self) {
         data = [[NSMutableDictionary alloc] init];
-        __mode = 0;
+        _mode = 0;
     }
     return self;
 }
 
-- (void)dealloc {
-    [data release];
-    data = nil;
-    [super dealloc];
-}
-
-#pragma mark - property overrides
-
 - (void)setMode:(PINSecurityQuestionsViewControllerMode)mode {
     NSAssert((mode > 0 && mode < 4), @"You must provide a valid mode");
-    if (__mode == 0) {
-        __mode = mode;
-    }
+    if (_mode == 0) { _mode = mode; }
 }
 
 #pragma mark - view lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSAssert(__mode > 0, @"The security question mode must be set");
+    NSAssert(self.mode > 0, @"The security question mode must be set");
+    NSAssert(self.delegate > 0, @"The delegate must be set");
+    NSAssert(self.action > 0, @"The action must be set");
     UIImage *backgroundImage = [UIImage imageNamed:@"PINCodeBackground"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
     self.tableView.backgroundView = nil;
-    if (__mode != PINSecurityQuestionsViewControllerCreate) {
+    if (self.mode != PINSecurityQuestionsViewControllerCreate) {
         NSArray *array = [self.delegate securityQuestions];
         [array enumerateObjectsUsingBlock:^(NSString *question, NSUInteger idx, BOOL *stop) {
             [data setObject:question forKey:[NSString stringWithFormat:@"Question%lx", (unsigned long)idx]];
         }];
     }
-    
     [self updateDoneButtonEnabledState];
 }
 
@@ -75,21 +73,8 @@
 
 #pragma mark - text fields
 
-- (void)keyboardWillShow:(NSNotification *)notification {
-//    [UIView
-//     animateWithDuration:<#(NSTimeInterval)#>
-//     delay:0.0
-//     options:<#(UIViewAnimationOptions)#>
-//     animations:<#^(void)animations#>
-//     completion:<#^(BOOL finished)completion#>
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)field {
     return YES;
-}
-
-- (void)textFieldTextDidChange:(NSNotification *)notification {
-    
 }
 
 - (IBAction)valueChanged:(PINCodeTextField *)sender {
@@ -103,19 +88,15 @@
     
     // get data
     NSArray *keys = [data allKeys];
-    
     NSArray *questionKeys = [[keys filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF LIKE 'Question*'"]] 
                              sortedArrayUsingSelector:@selector(compare:)];
     NSArray *answerKeys = [[keys filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF LIKE 'Answer*'"]]
                            sortedArrayUsingSelector:@selector(compare:)];
-        
     NSArray *questions = [data objectsForKeys:questionKeys notFoundMarker:[NSNull null]];
     NSArray *answers = [data objectsForKeys:answerKeys notFoundMarker:[NSNull null]];
     
     // do stuff with data
-    [self.delegate securityQuestionsController:self
-                            didSubmitQuestions:questions
-                                       answers:answers];
+    objc_msgSend(self.delegate, self.action, self, questions, answers);
     
 }
 
@@ -141,7 +122,7 @@
     if (indexPath.row == 0) {
         field.autocorrectionType = UITextAutocorrectionTypeDefault;
         field.autocapitalizationType = UITextAutocapitalizationTypeSentences;
-        field.enabled = (__mode != PINSecurityQuestionsViewControllerVerify);
+        field.enabled = (self.mode != PINSecurityQuestionsViewControllerVerify);
         field.placeholder = @"Question";
         NSString *key = [NSString stringWithFormat:@"Question%ld", indexPath.section];
         field.key = key;
@@ -163,14 +144,14 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     CGFloat offset = 45.0;
-    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(offset, 0.0, tableView.frame.size.width - offset, 35.0)] autorelease];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(offset, 0.0, tableView.frame.size.width - offset, 35.0)];
     label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     label.font = [UIFont boldSystemFontOfSize:17.0];
     label.text = [self tableView:tableView titleForHeaderInSection:section];
     label.backgroundColor = [UIColor clearColor];
     label.opaque = YES;
     label.textColor = [UIColor whiteColor];
-    UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, label.bounds.size.height)] autorelease];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, label.bounds.size.height)];
     [view addSubview:label];
     return view;
 }

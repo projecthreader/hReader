@@ -13,6 +13,12 @@
 
 @required
 
+/*
+ 
+ This determines how long the user input must be before the pin code controller
+ tries to verify the data with the delegate and inidicate success or error.
+ 
+ */
 - (NSUInteger)PINCodeLength;
 
 @end
@@ -78,11 +84,7 @@ typedef enum {
 @property (nonatomic, assign) IBOutlet id<PINCodeViewControllerDelegate> delegate;
 @property (nonatomic, assign) SEL action;
 
-/*
- 
- User interface properties.
- 
- */
+// internal
 @property (nonatomic, copy) IBOutletCollection(UIButton) NSArray *buttons;
 @property (nonatomic, weak) IBOutlet UILabel *passcodeLabel;
 @property (nonatomic, weak) IBOutlet UILabel *messageLabel;
