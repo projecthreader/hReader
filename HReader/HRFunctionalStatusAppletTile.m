@@ -20,12 +20,19 @@
 - (void)tileDidLoad {
     [super tileDidLoad];
     NSDictionary *functionalStatus = [self.patient.syntheticInfo objectForKey:@"functional_status"];
-
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[functionalStatus objectForKey:@"date"] doubleValue]];
-    self.dateLabel.text = [date mediumStyleDate];
-    self.typeLabel.text = [functionalStatus objectForKey:@"type"];
-    self.problemLabel.text = [functionalStatus objectForKey:@"problem"];
-    self.statusLabel.text = [functionalStatus objectForKey:@"status"];
+    if (functionalStatus) {
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[functionalStatus objectForKey:@"date"] doubleValue]];
+        self.dateLabel.text = [date mediumStyleDate];
+        self.typeLabel.text = [functionalStatus objectForKey:@"type"];
+        self.problemLabel.text = [functionalStatus objectForKey:@"problem"];
+        self.statusLabel.text = [functionalStatus objectForKey:@"status"];
+    }
+    else {
+        self.dateLabel.text = @"None";
+        self.typeLabel.text = nil;
+        self.problemLabel.text = nil;
+        self.statusLabel.text = nil;
+    }
 }
 
 - (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect {
