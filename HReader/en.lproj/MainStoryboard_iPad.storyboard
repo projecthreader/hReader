@@ -757,10 +757,33 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="Kec-fF-Ab0">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ManageFamilyCell" textLabel="lyC-hr-sWu" style="IBUITableViewCellStyleDefault" id="OB5-p6-6bi">
+                                        <rect key="frame" x="0.0" y="96" width="540" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="31" y="1" width="458" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Manage Family" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="lyC-hr-sWu">
+                                                    <rect key="frame" x="10" y="0.0" width="438" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection id="yRA-7f-rXB">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChangePasscodeCell" textLabel="dLF-0I-5kg" style="IBUITableViewCellStyleDefault" id="DTB-cB-HNP">
-                                        <rect key="frame" x="0.0" y="96" width="540" height="45"/>
+                                        <rect key="frame" x="0.0" y="162" width="540" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="31" y="1" width="458" height="43"/>
@@ -779,7 +802,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChangeQuestionsCell" textLabel="R9t-9L-21D" style="IBUITableViewCellStyleDefault" id="w7z-4U-JAU">
-                                        <rect key="frame" x="0.0" y="141" width="540" height="45"/>
+                                        <rect key="frame" x="0.0" y="207" width="540" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="31" y="0.0" width="458" height="43"/>
@@ -802,7 +825,7 @@
                             <tableViewSection headerTitle="About" footerTitle="The MITRE Corporation © 2012" id="Sn1-ug-z15">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Xtt-rv-9qB" detailTextLabel="vS6-de-HAa" style="IBUITableViewCellStyleValue1" id="Yg1-Ty-Tx2">
-                                        <rect key="frame" x="0.0" y="230" width="540" height="45"/>
+                                        <rect key="frame" x="0.0" y="296" width="540" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="31" y="1" width="478" height="43"/>
@@ -828,7 +851,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DateCell" textLabel="zZl-vc-Tg9" detailTextLabel="lcE-Ls-XNx" style="IBUITableViewCellStyleValue1" id="Zgo-be-pNd">
-                                        <rect key="frame" x="0.0" y="275" width="540" height="44"/>
+                                        <rect key="frame" x="0.0" y="341" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="31" y="0.0" width="478" height="43"/>
@@ -854,7 +877,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DateCell" textLabel="69W-P4-5gF" style="IBUITableViewCellStyleDefault" id="MQO-PX-DoE">
-                                        <rect key="frame" x="0.0" y="319" width="540" height="45"/>
+                                        <rect key="frame" x="0.0" y="385" width="540" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="31" y="0.0" width="458" height="43"/>

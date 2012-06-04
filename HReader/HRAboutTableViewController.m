@@ -19,7 +19,7 @@
 
 @implementation HRAboutTableViewController
 
-@synthesize versionLabel = __versionLabel;
+@synthesize versionLabel = _versionLabel;
 @synthesize buildDateLabel = _buildDateLabel;
 
 #pragma mark - button actions
@@ -82,6 +82,17 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
     
+    // pop to root
+    else if ([cell.reuseIdentifier isEqualToString:@"ManageFamilyCell"]) {
+        double delay = 0.25;
+        dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
+        dispatch_after(time, dispatch_get_main_queue(), ^(void) {
+            UIApplication *app = [UIApplication sharedApplication];
+            HRAppDelegate *delegate = (id)app.delegate;
+            [delegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+        });
+    }
+    
     // privacy demo
     else if ([cell.reuseIdentifier isEqualToString:@"PrivacyDemoCell"]) {
 //        HRPasscodeWarningViewController *warningViewController = [[HRPasscodeWarningViewController alloc] initWithNibName:nil bundle:nil];
@@ -92,13 +103,13 @@
     
     // passcode cell
     else if ([cell.reuseIdentifier isEqualToString:@"ChangePasscodeCell"]) {
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
-//        PINCodeViewController *PIN = [storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
-//        PIN.mode = PINCodeViewControllerModeVerify;
-//        PIN.title = @"Enter Passcode";
-//        PIN.messageText = @"Enter your passcode";
-//        PIN.errorText = @"Incorrect passcode";
-//        PIN.delegate = (HRAppDelegate *)[[UIApplication sharedApplication] delegate];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
+        PINCodeViewController *PIN = [storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
+        PIN.mode = PINCodeViewControllerModeVerify;
+        PIN.title = @"Enter Passcode";
+        PIN.messageText = @"Enter your passcode";
+        PIN.errorText = @"Incorrect passcode";
+        PIN.delegate = (HRAppDelegate *)[[UIApplication sharedApplication] delegate];
 //        PIN.userInfo = @"change_passcode";
 //        PIN.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
 //                                                initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
@@ -106,7 +117,6 @@
 //                                                action:@selector(dismissModalViewController)];
 //        UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:PIN];
 //        navigation.navigationBar.barStyle = UIBarStyleBlack;
-//        navigation.definesPresentationContext = YES;
 //        [self presentModalViewController:navigation animated:YES];
     }
     
