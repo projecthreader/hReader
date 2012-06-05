@@ -1,3 +1,25 @@
+# 2012-5-20
+
+## New
+
+- Add initial launch flow including passcode, security questions, RHEx login, and family setup
+- All patient data is being served by RHEx so some of it might not look pretty or be incorrect
+- Fix bug in functional status applet
+- Authentication is done against RHEx using OAuth 2
+- New "Configure Family" view allows adding of patients and selecting a patient opens the main app interface to that patient
+- All new encryption back end that keeps the app from functioning if the passcode has not been set
+- Server authentication keys are stored in the keychain after being encrypted
+- Timeline XML document is now marked as protected on the file system
+- Fix bugs in patient reordering
+- Persist and sync patient data with RHEx
+- Applet selection and order is persisted
+
+## Known Issues
+
+- Resetting the passcode and security questions is not yet supported
+- 6 digit passcode is succeptable to brute force attacks in about 8 seconds
+- All patients are re-synced with RHEx even if the patient has not changed
+
 # 2012-4-21
 
 - Update timeline code to use new edge-to-edge timeline
