@@ -667,6 +667,20 @@
 			name = "Grid View";
 			sourceTree = "<group>";
 		};
+		3B8D14FE157E3EB700A5B84E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				3B0977EC1553217F006392E2 /* people-picker.png */,
+				DD124DAD148D3EF300E23A44 /* Doctor.png */,
+				DD8BD9DA148D13910090F729 /* chevron.png */,
+				947FCE4514B4C18600C716FD /* chevron-left.png */,
+				9415152114AA3A7B009FF674 /* fail.png */,
+				9415152214AA3A7B009FF674 /* win.png */,
+				9415152514AA3F9F009FF674 /* question_mark.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		3BB8D9A7157D206E00124A57 /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
@@ -836,9 +850,9 @@
 				3B5ADF6314E1C5D50025E069 /* Core Data */,
 				9492CA4F1535F8EC009DE7F2 /* System Applets */,
 				3BFBEE1D1534C0AE009EBA2D /* Patient Data */,
-				941DB0B31471B32D00A96B8B /* Supporting Files */,
-				944A2F2B1472C60600694816 /* Images */,
 				9424C156147A9C95008BF5CE /* Categories */,
+				941DB0B31471B32D00A96B8B /* Supporting Files */,
+				3B8D14FE157E3EB700A5B84E /* Images */,
 			);
 			path = HReader;
 			sourceTree = "<group>";
@@ -936,21 +950,6 @@
 				3B4365D51540A2890009F892 /* ts-5-tile.png */,
 			);
 			name = images;
-			sourceTree = "<group>";
-		};
-		944A2F2B1472C60600694816 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				3B0977EC1553217F006392E2 /* people-picker.png */,
-				DD124DAD148D3EF300E23A44 /* Doctor.png */,
-				DD8BD9DA148D13910090F729 /* chevron.png */,
-				947FCE4514B4C18600C716FD /* chevron-left.png */,
-				9415152114AA3A7B009FF674 /* fail.png */,
-				9415152214AA3A7B009FF674 /* win.png */,
-				9415152514AA3F9F009FF674 /* question_mark.png */,
-			);
-			name = Images;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		9454C35E1551789B0024C2EF /* Sparklines */ = {
