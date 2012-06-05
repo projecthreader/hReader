@@ -159,6 +159,7 @@
         
         // check for patients
         else/* if ([HRMPatient countInContext:[HRAppDelegate managedObjectContext]] == 0)*/ {
+            [HRMPatient performSync];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
             id controller = [storyboard instantiateViewControllerWithIdentifier:@"PeopleSetupViewController"];
             [[controller navigationItem] setHidesBackButton:YES];

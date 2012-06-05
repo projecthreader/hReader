@@ -9,11 +9,19 @@
 #import "HRMPatient.h"
 #import "HRMEntry.h"
 
+#import "HRAppDelegate.h"
+#import "HRAPIClient.h"
+
 #import "DDXML.h"
 
 #if !__has_feature(objc_arc)
 #error This class requires ARC
 #endif
+
+static NSString *HRMPatientSyncStatus = nil;
+static NSString *HRMPatientSyncStatusLock = @"lock";
+static dispatch_queue_t sync_queue = NULL;
+NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncStatusDidChange";
 
 @interface HRMPatient ()
 
@@ -46,6 +54,12 @@
 
 #pragma mark - class methods
 
++ (void)initialize {
+    if (self == [HRMPatient class]) {
+        sync_queue = dispatch_queue_create("org.mitre.hreader.patient-sync-queue", DISPATCH_QUEUE_SERIAL);
+    }
+}
+
 + (id)instanceInContext:(NSManagedObjectContext *)context {
     HRMPatient *patient = [super instanceInContext:context];
     patient.displayOrder = [NSNumber numberWithLong:LONG_MAX];
@@ -54,6 +68,64 @@
 //    patient.applets = [NSArray array];
     patient.applets = [NSArray arrayWithObjects:@"org.mitre.hreader.medications", @"org.mitre.hreader.bloodpressure", nil];
     return patient;
+}
+
++ (NSString *)syncStatus {
+    @synchronized(HRMPatientSyncStatusLock) {
+        return HRMPatientSyncStatus;
+    }
+}
+
++ (void)performSync {
+    dispatch_async(sync_queue, ^{
+        
+        // status message
+//        dispatch_sync(dispatch_get_main_queue(), ^{
+//            HRMPatientSyncStatus = @"Starting sync...";
+//            NSLog(@"%@", HRMPatientSyncStatus);
+//            [[NSNotificationCenter defaultCenter]
+//             postNotificationName:HRMPatientSyncStatusDidChangeNotification
+//             object:nil];
+//        });
+        
+        // get context
+        NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
+        [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
+        
+        // iterate over patients
+        NSArray *patients = [self allInContext:context];
+        NSUInteger count = [patients count];
+        [patients enumerateObjectsUsingBlock:^(HRMPatient *obj, NSUInteger idx, BOOL *stop) {
+            HRAPIClient *client = [HRAPIClient clientWithHost:obj.host];
+            [client
+             JSONForPatientWithIdentifier:obj.serverID
+             startBlock:^{
+                 NSLog(@"%@", [NSString stringWithFormat:@"Syncing %@", [obj compositeName]]);
+//                 dispatch_sync(dispatch_get_main_queue(), ^{
+//                     HRMPatientSyncStatus = [NSString stringWithFormat:@"Syncing %@", [obj compositeName]];
+//                     NSLog(@"%@", HRMPatientSyncStatus);
+//                     [[NSNotificationCenter defaultCenter]
+//                      postNotificationName:HRMPatientSyncStatusDidChangeNotification
+//                      object:nil];
+//                 });
+             }
+             finishBlock:^(NSDictionary *payload) {
+                 [obj populateWithContentsOfDictionary:payload];
+                 if (idx == (count - 1)) {
+                     [context save:nil];
+//                     dispatch_sync(dispatch_get_main_queue(), ^{
+//                         HRMPatientSyncStatus = nil;
+//                         NSLog(@"%@", HRMPatientSyncStatus);
+//                         [[NSNotificationCenter defaultCenter]
+//                          postNotificationName:HRMPatientSyncStatusDidChangeNotification
+//                          object:nil];
+//                     });
+                 }
+             }];
+            
+        }];
+        
+    });
 }
 
 #pragma mark - attribute overrides

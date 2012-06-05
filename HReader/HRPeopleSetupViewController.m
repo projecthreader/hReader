@@ -83,7 +83,7 @@
     HRPeopleFeedViewController *controller = [[HRPeopleFeedViewController alloc] initWithHost:host];
     controller.title = title;
     controller.didFinishBlock = ^(NSString *identifier) {
-        [client JSONForPatientWithIdentifier:identifier completion:^(NSDictionary *payload) {
+        [client JSONForPatientWithIdentifier:identifier finishBlock:^(NSDictionary *payload) {
             NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
             [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
             HRMPatient *patient = [HRMPatient instanceInContext:context];

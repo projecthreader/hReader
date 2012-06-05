@@ -22,6 +22,8 @@ typedef enum {
     HRMPatientRelationshipOther
 } HRMPatientRelationship;
 
+//extern NSString * const HRMPatientSyncStatusDidChangeNotification;
+
 @class HRMEntry;
 @class DDXMLElement;
 
@@ -59,6 +61,11 @@ typedef enum {
 @property (nonatomic, readonly) NSArray *allergies;
 @property (nonatomic, readonly) NSArray *procedures;
 @property (nonatomic, readonly) NSArray *results;
+
+#pragma mark - class methods
+
+//+ (NSString *)syncStatus;
++ (void)performSync;
 
 #pragma mark - instance methods
 
