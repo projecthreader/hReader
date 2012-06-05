@@ -10,6 +10,8 @@
 #import "HRAPIClient_private.h"
 #import "HRPeopleSetupViewController.h"
 
+#import "CMDActivityHUD.h"
+
 static NSString * const HROAuthURLScheme = @"x-org-mitre-hreader";
 static NSString * const HROAuthURLHost = @"oauth";
 
@@ -33,6 +35,7 @@ static NSString * const HROAuthURLHost = @"oauth";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [CMDActivityHUD show];
     HRAPIClient *client = [HRAPIClient clientWithHost:_host];
     [self.webView loadRequest:[client authorizationRequest]];
 }
@@ -44,6 +47,7 @@ static NSString * const HROAuthURLHost = @"oauth";
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSURL *URL = [request URL];
     if ([[URL scheme] isEqualToString:HROAuthURLScheme] && [[URL host] isEqualToString:HROAuthURLHost]) {
+        [CMDActivityHUD show];
         HRAPIClient *client = [HRAPIClient clientWithHost:_host];
         dispatch_async(client->_requestQueue, ^{
             NSDictionary *parameters = [HRAPIClient parametersFromQueryString:[URL query]];
@@ -52,6 +56,7 @@ static NSString * const HROAuthURLHost = @"oauth";
                           @"authorization_code", @"grant_type",
                           nil];
             if ([client refreshAccessTokenWithParameters:parameters]) {
+                [CMDActivityHUD dismiss];
                 HRPeopleSetupViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"PeopleSetupViewController"];
                 controller.navigationItem.hidesBackButton = YES;
                 [self.navigationController pushViewController:controller animated:YES];
@@ -62,6 +67,10 @@ static NSString * const HROAuthURLHost = @"oauth";
         });
     }
     return YES;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [CMDActivityHUD dismiss];
 }
 
 @end

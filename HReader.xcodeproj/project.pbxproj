@@ -89,6 +89,7 @@
 		3B4366061540A2890009F892 /* ts-4-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365D31540A2890009F892 /* ts-4-tile.png */; };
 		3B4366071540A2890009F892 /* ts-5-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365D41540A2890009F892 /* ts-5-overview.png */; };
 		3B4366081540A2890009F892 /* ts-5-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365D51540A2890009F892 /* ts-5-tile.png */; };
+		3B651F7A157E8F0D0007817C /* CMDActivityHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B651F79157E8F0D0007817C /* CMDActivityHUD.m */; };
 		3B6FAF8F153F259E002C9EF5 /* HRPeoplePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B6FAF95153F4796002C9EF5 /* HRConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8BD9F1148D2BDC0090F729 /* HRConfig.m */; };
 		3B74E5C5155477C400593ECF /* HROxygenSaturationAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5C4155477C400593ECF /* HROxygenSaturationAppletTile.xib */; };
@@ -328,6 +329,8 @@
 		3B4365D31540A2890009F892 /* ts-4-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-4-tile.png"; sourceTree = "<group>"; };
 		3B4365D41540A2890009F892 /* ts-5-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-5-overview.png"; sourceTree = "<group>"; };
 		3B4365D51540A2890009F892 /* ts-5-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-5-tile.png"; sourceTree = "<group>"; };
+		3B651F78157E8F0D0007817C /* CMDActivityHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMDActivityHUD.h; path = vendor/activityhud/CMDActivityHUD.h; sourceTree = "<group>"; };
+		3B651F79157E8F0D0007817C /* CMDActivityHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMDActivityHUD.m; path = vendor/activityhud/CMDActivityHUD.m; sourceTree = "<group>"; };
 		3B6FAF8D153F259E002C9EF5 /* HRPeoplePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPeoplePickerViewController.h; sourceTree = "<group>"; };
 		3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeoplePickerViewController.m; sourceTree = "<group>"; };
 		3B74E5C4155477C400593ECF /* HROxygenSaturationAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HROxygenSaturationAppletTile.xib; sourceTree = "<group>"; };
@@ -654,6 +657,15 @@
 				3BE9A40414E40EBB00F87B60 /* HRMEntry.m */,
 			);
 			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		3B651F76157E8EF60007817C /* activityhud */ = {
+			isa = PBXGroup;
+			children = (
+				3B651F78157E8F0D0007817C /* CMDActivityHUD.h */,
+				3B651F79157E8F0D0007817C /* CMDActivityHUD.m */,
+			);
+			name = activityhud;
 			sourceTree = "<group>";
 		};
 		3B77F041155457E5003C2DBD /* Grid View */ = {
@@ -1015,6 +1027,7 @@
 		94689ABC14964BBF00E1FCA6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				3B651F76157E8EF60007817C /* activityhud */,
 				3BD16ED714E1B5EE00F2249E /* guicocoa-common-code */,
 				3B04A54C14E0692600AD91F9 /* keychain */,
 				3BFE7A2014DADE2B0037738D /* pinview */,
@@ -1512,6 +1525,7 @@
 				3BEBAE6A15769ED400E4CB33 /* HRPeopleFeedViewController.m in Sources */,
 				3BA7F18F1577EFCF00D4EB09 /* HRCryptoManager.m in Sources */,
 				3B108CE115791A0C00888E30 /* HRSplashScreenViewController.m in Sources */,
+				3B651F7A157E8F0D0007817C /* CMDActivityHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

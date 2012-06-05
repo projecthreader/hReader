@@ -14,6 +14,7 @@
 #import "HRRHExLoginViewController.h"
 #import "HRPeopleSetupViewController.h"
 #import "HRCryptoManager.h"
+#import "HRSplashScreenViewController.h"
 
 #import "HRKeychainManager.h"
 #import "HRAppletConfigurationViewController.h"
@@ -29,8 +30,8 @@
 #import "SSKeychain.h"
 
 @interface HRAppDelegate () {
-@private
     NSUInteger passcodeAttempts;
+    UINavigationController *securityNavigationController;
 }
 
 /*
@@ -102,23 +103,29 @@
 
 - (void)presentPasscodeVerificationController:(BOOL)animated {
     passcodeAttempts = 0;
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
-    PINCodeViewController *PIN = [storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
-    PIN.mode = PINCodeViewControllerModeVerify;
-    PIN.title = @"Enter Passcode";
-    PIN.messageText = @"Enter your passcode";
-    PIN.errorText = @"Incorrect passcode";
-    PIN.delegate = self;
-    PIN.action = @selector(verifyPasscodeOnLaunch::);
-    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:PIN];
-    navigation.navigationBar.barStyle = UIBarStyleBlack;
-    UIViewController *controller = self.window.rootViewController;
-    while (YES) {
-        UIViewController *presented = controller.presentedViewController;
-        if (presented) { controller = presented; }
-        else { break; }
+    if (securityNavigationController == nil) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
+        PINCodeViewController *PIN = [storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
+        PIN.mode = PINCodeViewControllerModeVerify;
+        PIN.title = @"Enter Passcode";
+        PIN.messageText = @"Enter your passcode";
+        PIN.errorText = @"Incorrect passcode";
+        PIN.delegate = self;
+        PIN.action = @selector(verifyPasscodeOnLaunch::);
+        securityNavigationController = [[UINavigationController alloc] initWithRootViewController:PIN];
+        securityNavigationController.navigationBar.barStyle = UIBarStyleBlack;
+        UIViewController *controller = self.window.rootViewController;
+        while (YES) {
+            UIViewController *presented = controller.presentedViewController;
+            if (presented) { controller = presented; }
+            else { break; }
+        }
+        [controller presentViewController:securityNavigationController animated:animated completion:nil];
     }
-    [controller presentViewController:navigation animated:animated completion:nil];
+    else {
+        UIViewController *controller = [securityNavigationController.viewControllers objectAtIndex:0];
+        controller.navigationItem.leftBarButtonItem = nil;
+    }
 }
 
 - (void)performLaunchSteps {
@@ -157,8 +164,8 @@
             [[(id)self.window.rootViewController navigationBar] setBarStyle:UIBarStyleDefault];
         }
         
-        // check for patients
-        else/* if ([HRMPatient countInContext:[HRAppDelegate managedObjectContext]] == 0)*/ {
+        // check user interface
+        else if ([[(id)self.window.rootViewController topViewController] isKindOfClass:[HRSplashScreenViewController class]]) {
             [HRMPatient performSync];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
             id controller = [storyboard instantiateViewControllerWithIdentifier:@"PeopleSetupViewController"];
@@ -208,7 +215,7 @@
     @catch (NSException *exception) {
         NSLog(@"Could not turn on remote web inspector\n%@", exception);
     }
-#else
+#elif !DEBUG
     [TestFlight takeOff:@"e8ef4e7b3c88827400af56886c6fe280_MjYyNTYyMDExLTEwLTE5IDE2OjU3OjQ3LjMyNDk4OQ"];
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
 #endif
@@ -286,7 +293,10 @@
     if (!HRCryptoManagerHasPasscode() || !HRCryptoManagerHasSecurityQuestions()) {
         [(id)self.window.rootViewController popToRootViewControllerAnimated:NO];
     }
+    [securityNavigationController dismissModalViewControllerAnimated:NO];
+    securityNavigationController = nil;
     [self presentPasscodeVerificationController:NO];
+    [securityNavigationController popToRootViewControllerAnimated:NO];
 }
 
 #pragma mark - passcode
@@ -309,6 +319,7 @@
 - (BOOL)verifyPasscodeOnLaunch:(PINCodeViewController *)controller :(NSString *)passcode {
     if (HRCryptoManagerUnlockWithPasscode(passcode)) {
         [controller dismissViewControllerAnimated:YES completion:^{
+            securityNavigationController = nil;
             [self performLaunchSteps];
         }];
         return YES;

@@ -235,6 +235,7 @@ void HRCryptoManagerPurge(void) {
 }
 
 BOOL HRCryptoManagerUnlockWithPasscode(NSString *passcode) {
+    NSCAssert(passcode, @"The passcode must not be nil");
     NSData *encryptedKey = [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount];
     NSData *decryptedKey = HRCryptoManagerDecrypt_private(encryptedKey, passcode);
     if (decryptedKey) {
@@ -245,6 +246,7 @@ BOOL HRCryptoManagerUnlockWithPasscode(NSString *passcode) {
 }
 
 BOOL HRCryptoManagerUnlockWithAnswersForSecurityQuestions(NSArray *answers) {
+    NSCAssert(answers, @"The answers must not be nil");
     NSData *encryptedKey = [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount];
     NSData *decryptedKey = HRCryptoManagerDecrypt_private(encryptedKey, [answers componentsJoinedByString:@""]);
     if (decryptedKey) {
@@ -259,17 +261,20 @@ BOOL HRCryptoManagerIsUnlocked(void) {
 }
 
 void HRCryptoManagerUpdatePasscode(NSString *passcode) {
-    NSCAssert(_temporaryKey, @"There is no key to encrypt");
     NSCAssert(passcode, @"The passcode must not be nil");
-    NSData *keyData = [_temporaryKey dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *encryptedKeyData = HRCryptoManagerEncrypt_private(keyData, passcode);
-    [SSKeychain setPasswordData:encryptedKeyData forService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount];
+    if (_temporaryKey) {
+        NSData *keyData = [_temporaryKey dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *encryptedKeyData = HRCryptoManagerEncrypt_private(keyData, passcode);
+        [SSKeychain setPasswordData:encryptedKeyData forService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount];
+    }
 }
 
 NSData * HRCryptoManagerKeychainItemData(NSString *service, NSString *account) {
-    NSCAssert(_temporaryKey, @"Decryption cannot be performed at this time");
-    NSData *value = [SSKeychain passwordDataForService:service account:account];
-    return HRCryptoManagerDecrypt_private(value, _temporaryKey);
+    if (_temporaryKey) {
+        NSData *value = [SSKeychain passwordDataForService:service account:account];
+        return HRCryptoManagerDecrypt_private(value, _temporaryKey);
+    }
+    return nil;
 }
 
 NSString * HRCryptoManagerKeychainItemString(NSString *service, NSString *account) {
@@ -278,9 +283,10 @@ NSString * HRCryptoManagerKeychainItemString(NSString *service, NSString *accoun
 }
 
 void HRCryptoManagerSetKeychainItemData(NSString *service, NSString *account, NSData *value) {
-    NSCAssert(_temporaryKey, @"Decryption cannot be performed at this time");
-    NSData *encrypted = HRCryptoManagerEncrypt_private(value, _temporaryKey);
-    [SSKeychain setPasswordData:encrypted forService:service account:account];
+    if (_temporaryKey) {
+        NSData *encrypted = HRCryptoManagerEncrypt_private(value, _temporaryKey);
+        [SSKeychain setPasswordData:encrypted forService:service account:account];
+    }
 }
 
 void HRCryptoManagerSetKeychainItemString(NSString *service, NSString *account, NSString *value) {
