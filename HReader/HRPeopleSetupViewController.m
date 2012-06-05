@@ -149,6 +149,8 @@
         frame = CGRectOffset(frame, 0.0, CGRectGetHeight(frame));
         self.gridView.frame = frame;
         self.gridView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin);
+        NSString *host = [[HRAPIClient accounts] lastObject];
+        [[HRAPIClient clientWithHost:host] patientFeed:nil];
     }
     else {
         self.gridView.frame = self.view.bounds;
@@ -156,10 +158,6 @@
         self.imageView.hidden = YES;
         self.meButton.hidden = YES;
     }
-    
-    // initiate initial patient load
-    NSString *host = [[HRAPIClient accounts] lastObject];
-    [[HRAPIClient clientWithHost:host] patientFeed:nil];
     
 }
 
