@@ -26,6 +26,7 @@
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="genderString" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
+        <attribute name="host" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="initials" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="race" optional="YES" attributeType="String" syncable="YES"/>
@@ -37,6 +38,6 @@
     <elements>
         <element name="GCManagedObject" positionX="72" positionY="72" width="128" height="60"/>
         <element name="HRMEntry" positionX="-533" positionY="-159" width="128" height="225"/>
-        <element name="HRMPatient" positionX="70" positionY="207" width="128" height="270"/>
+        <element name="HRMPatient" positionX="70" positionY="207" width="128" height="285"/>
     </elements>
 </model>

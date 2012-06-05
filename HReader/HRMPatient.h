@@ -30,6 +30,7 @@ typedef enum {
 #pragma mark - core data properties
 
 @property (nonatomic, retain) NSString *serverID;
+@property (nonatomic, retain) NSString *host;
 @property (nonatomic, retain) NSString *firstName;
 @property (nonatomic, retain) NSString *lastName;
 @property (nonatomic, retain) NSString *race;

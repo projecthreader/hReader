@@ -670,6 +670,14 @@
 		3B8D14FE157E3EB700A5B84E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3B108CDC1579199F00888E30 /* AppLogo.png */,
+				3B108CE2157929FA00888E30 /* AppLogo@2x.png */,
+				3B001D5015755BA900762FB0 /* GradientButton.png */,
+				3B001D5115755BA900762FB0 /* GradientButtonHighlighted.png */,
+				3B001D4C157550F800762FB0 /* GradientButton@2x.png */,
+				3B001D4D157550F800762FB0 /* GradientButtonHighlighted@2x.png */,
+				3B19651A14EEA6200045F827 /* Logo.png */,
+				3BFE7A2D14DAE5910037738D /* Icon-72.png */,
 				3B0977EC1553217F006392E2 /* people-picker.png */,
 				DD124DAD148D3EF300E23A44 /* Doctor.png */,
 				DD8BD9DA148D13910090F729 /* chevron.png */,
@@ -860,14 +868,6 @@
 		941DB0B31471B32D00A96B8B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3B108CDC1579199F00888E30 /* AppLogo.png */,
-				3B108CE2157929FA00888E30 /* AppLogo@2x.png */,
-				3B001D5015755BA900762FB0 /* GradientButton.png */,
-				3B001D5115755BA900762FB0 /* GradientButtonHighlighted.png */,
-				3B001D4C157550F800762FB0 /* GradientButton@2x.png */,
-				3B001D4D157550F800762FB0 /* GradientButtonHighlighted@2x.png */,
-				3B19651A14EEA6200045F827 /* Logo.png */,
-				3BFE7A2D14DAE5910037738D /* Icon-72.png */,
 				941DB0C11471B32D00A96B8B /* MainStoryboard_iPad.storyboard */,
 				3BFBEE161534BD33009EBA2D /* HReader.entitlements */,
 				941DB0B41471B32D00A96B8B /* HReader-Info.plist */,

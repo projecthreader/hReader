@@ -89,6 +89,7 @@
             HRMPatient *patient = [HRMPatient instanceInContext:context];
             [patient populateWithContentsOfDictionary:payload];
             patient.serverID = identifier;
+            patient.host = host;
             patient.relationship = [NSNumber numberWithShort:relationship];
             [context save:nil];
         }];

@@ -31,6 +31,7 @@
 @implementation HRMPatient
 
 @dynamic serverID;
+@dynamic host;
 @dynamic dateOfBirth;
 @dynamic firstName;
 @dynamic lastName;
