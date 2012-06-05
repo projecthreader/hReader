@@ -59,16 +59,28 @@
     static NSPersistentStoreCoordinator *coordinator = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
+        
+        // get the model
         NSManagedObjectModel *model = [NSManagedObjectModel mergedModelFromBundles:nil];
+        
+        // get the coordinator
         coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
+        
+        // add store
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSURL *applicationSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
+        [fileManager createDirectoryAtURL:applicationSupportURL withIntermediateDirectories:NO attributes:nil error:nil];
+        NSURL *databaseURL = [applicationSupportURL URLByAppendingPathComponent:@"database.sqlite"];
         NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
                                  NSFileProtectionComplete, NSPersistentStoreFileProtectionKey,
+                                 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                                 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption,
                                  nil];
         NSError *error = nil;
         NSPersistentStore *store = [coordinator
-                                    addPersistentStoreWithType:NSInMemoryStoreType
+                                    addPersistentStoreWithType:NSSQLiteStoreType
                                     configuration:nil
-                                    URL:nil
+                                    URL:databaseURL
                                     options:options
                                     error:&error];
         NSAssert(store, @"Unable to add persistent store\n%@", error);
@@ -146,7 +158,7 @@
         }
         
         // check for patients
-        else if ([HRMPatient countInContext:[HRAppDelegate managedObjectContext]] == 0) {
+        else/* if ([HRMPatient countInContext:[HRAppDelegate managedObjectContext]] == 0)*/ {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
             id controller = [storyboard instantiateViewControllerWithIdentifier:@"PeopleSetupViewController"];
             [[controller navigationItem] setHidesBackButton:YES];
