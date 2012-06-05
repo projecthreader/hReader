@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#if DEBUG
+void HRCryptoManagerTest(void);
+void HRCryptoManagerHack(void);
+#endif
+
 /*
  
  
@@ -58,6 +63,13 @@ void HRCryptoManagerPurge(void);
 BOOL HRCryptoManagerUnlockWithPasscode(NSString *passcode);
 BOOL HRCryptoManagerUnlockWithAnswersForSecurityQuestions(NSArray *answers);
 BOOL HRCryptoManagerIsUnlocked(void);
+
+/*
+ 
+ 
+ 
+ */
+void HRCryptoManagerUpdatePasscode(NSString *passcode);
 
 /*
  

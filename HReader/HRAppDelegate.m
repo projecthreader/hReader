@@ -163,6 +163,17 @@
     
 }
 
+- (void)resetPasscodeWithSecurityQuestions {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
+    PINSecurityQuestionsViewController *questions = [storyboard instantiateViewControllerWithIdentifier:@"SecurityQuestionsController"];
+    questions.navigationItem.hidesBackButton = YES;
+    questions.mode = PINSecurityQuestionsViewControllerCreate;
+    questions.delegate = self;
+    questions.title = @"Security Questions";
+    questions.action = @selector(resetPasscodeWithSecurityQuestions:::);
+    [(id)self.window.rootViewController pushViewController:questions animated:YES];
+}
+
 #pragma mark - notifications
 
 - (void)managedObjectContextDidSave:(NSNotification *)notification {
@@ -199,7 +210,11 @@
      name:NSManagedObjectContextDidSaveNotification
      object:nil];
     
-//    HRCryptoManagerTest();
+    // cipher test
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        HRCryptoManagerTest();
+        HRCryptoManagerHack();
+    });
     
     // load patients if we don't have any yet
 //    NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
@@ -261,7 +276,7 @@
     [self presentPasscodeVerificationController:NO];
 }
 
-#pragma mark - pin code
+#pragma mark - passcode
 
 - (NSUInteger)PINCodeLength {
     return 6;
@@ -287,12 +302,11 @@
     }
     else {
         if (++passcodeAttempts > 2) {
-//            UIBarButtonItem *resetButton = [[UIBarButtonItem alloc] 
-//                                            initWithTitle:@"Reset Passcode" 
-//                                            style:UIBarButtonItemStyleBordered 
-//                                            target:self 
-//                                            action:@selector(resetPasscode:)];
-//            controller.navigationItem.leftBarButtonItem = resetButton;
+            controller.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+                                                           initWithTitle:@"Reset Passcode" 
+                                                           style:UIBarButtonItemStyleDone 
+                                                           target:self 
+                                                           action:@selector(resetPasscodeWithSecurityQuestions)];
         }
         return NO;
     }
@@ -369,6 +383,23 @@
     HRCryptoManagerStoreTemporarySecurityQuestionsAndAnswers(questions, answers);
     HRCryptoManagerFinalize();
     [self performLaunchSteps];
+}
+
+- (void)resetPasscodeWithSecurityQuestions:(PINSecurityQuestionsViewController *)controller :(NSArray *)questions :(NSArray *)answers {
+    if (HRCryptoManagerUnlockWithAnswersForSecurityQuestions(answers)) {
+//        PINCodeViewController *PIN = [controller.storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
+//        PIN.mode = PINCodeViewControllerModeCreate;
+//        PIN.title = @"Set Passcode";
+//        PIN.messageText = @"Enter a passcode";
+//        PIN.confirmText = @"Verify passcode";
+//        PIN.errorText = @"The passcodes do not match";
+//        PIN.delegate = self;
+//        PIN.action = @selector(createInitialPasscode::);
+//        PIN.navigationItem.hidesBackButton = YES;
+    }
+    else {
+        
+    }
 }
 
 - (void)securityQuestionsController:(PINSecurityQuestionsViewController *)controller didSubmitQuestions:(NSArray *)questions answers:(NSArray *)answers {
