@@ -304,9 +304,14 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.refresh-tok
     return [[NSURLRequest alloc] initWithURL:URL];
 }
 
-- (void)JSONForPatientWithIdentifier:(NSString *)identifier completion:(void (^) (NSDictionary *payload))block {
+- (void)JSONForPatientWithIdentifier:(NSString *)identifier startBlock:(void (^) (void))startBlock finishBlock:(void (^) (NSDictionary *payload))finishBlock {
     dispatch_queue_t queue = dispatch_get_current_queue();
     dispatch_async(_requestQueue, ^{
+        
+        // start block
+        if (startBlock) {
+            dispatch_sync(queue, startBlock);
+        }
         
         // create request
         NSString *path = [NSString stringWithFormat:@"/records/%@/c32/%@", identifier, identifier];
@@ -323,11 +328,15 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.refresh-tok
         NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
         
         // return
-        dispatch_async(queue, ^{
-            block(dictionary);
-        });
+        if (finishBlock) {
+            dispatch_sync(queue, ^{ finishBlock(dictionary); });
+        }
         
     });
+}
+
+- (void)JSONForPatientWithIdentifier:(NSString *)identifier finishBlock:(void (^) (NSDictionary *payload))block {
+    [self JSONForPatientWithIdentifier:identifier startBlock:nil finishBlock:block];
 }
 
 @end

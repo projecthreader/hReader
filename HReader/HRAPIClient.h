@@ -36,6 +36,7 @@
  
  
  */
-- (void)JSONForPatientWithIdentifier:(NSString *)identifier completion:(void (^) (NSDictionary *payload))block;
+- (void)JSONForPatientWithIdentifier:(NSString *)identifier finishBlock:(void (^) (NSDictionary *payload))block;
+- (void)JSONForPatientWithIdentifier:(NSString *)identifier startBlock:(void (^) (void))startBlock finishBlock:(void (^) (NSDictionary *payload))finishBlock;
 
 @end
