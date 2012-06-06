@@ -17,8 +17,8 @@
 
 static NSString * const HRKeychainService = @"org.mitre.hreader.security";
 static NSString * const HRSecurityQuestionsKeychainAccount = @"security_questions";
-static NSString * const HRSecurityAnswersKeychainAccount = @"security_questions";
-static NSString * const HRPasscodeKeychainAccount = @"security_questions";
+static NSString * const HRSecurityAnswersKeychainAccount = @"security_answers";
+static NSString * const HRPasscodeKeychainAccount = @"passcode";
 static NSString * const HRSharedKeyPasscodeKeychainAccount = @"shared_key_passcode";
 static NSString * const HRSharedKeySecurityAnswersKeychainAccount = @"shared_key_security_answers";
 
