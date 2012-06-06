@@ -13,5 +13,6 @@
 @synthesize imageView = _imageView;
 @synthesize nameLabel = _nameLabel;
 @synthesize statusLabel = _statusLabel;
+@synthesize patient = _patient;
 
 @end

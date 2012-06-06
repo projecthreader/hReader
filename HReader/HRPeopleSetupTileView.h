@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class HRMPatient;
+
 @interface HRPeopleSetupTileView : UIView
 
 @property (nonatomic, strong) IBOutlet UILabel *nameLabel;
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) IBOutlet UILabel *statusLabel;
+@property (nonatomic, strong) HRMPatient *patient;
 
 @end
