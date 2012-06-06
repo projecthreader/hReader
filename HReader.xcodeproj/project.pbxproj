@@ -90,6 +90,10 @@
 		3B4366071540A2890009F892 /* ts-5-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365D41540A2890009F892 /* ts-5-overview.png */; };
 		3B4366081540A2890009F892 /* ts-5-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365D51540A2890009F892 /* ts-5-tile.png */; };
 		3B651F7A157E8F0D0007817C /* CMDActivityHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B651F79157E8F0D0007817C /* CMDActivityHUD.m */; };
+		3B651F7F157FC8B50007817C /* interstitial_closebox-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B651F7B157FC8B50007817C /* interstitial_closebox-down.png */; };
+		3B651F80157FC8B50007817C /* interstitial_closebox-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B651F7C157FC8B50007817C /* interstitial_closebox-down@2x.png */; };
+		3B651F81157FC8B50007817C /* interstitial_closebox.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B651F7D157FC8B50007817C /* interstitial_closebox.png */; };
+		3B651F82157FC8B50007817C /* interstitial_closebox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B651F7E157FC8B50007817C /* interstitial_closebox@2x.png */; };
 		3B6FAF8F153F259E002C9EF5 /* HRPeoplePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B6FAF95153F4796002C9EF5 /* HRConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8BD9F1148D2BDC0090F729 /* HRConfig.m */; };
 		3B74E5C5155477C400593ECF /* HROxygenSaturationAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5C4155477C400593ECF /* HROxygenSaturationAppletTile.xib */; };
@@ -331,6 +335,10 @@
 		3B4365D51540A2890009F892 /* ts-5-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-5-tile.png"; sourceTree = "<group>"; };
 		3B651F78157E8F0D0007817C /* CMDActivityHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMDActivityHUD.h; path = vendor/activityhud/CMDActivityHUD.h; sourceTree = "<group>"; };
 		3B651F79157E8F0D0007817C /* CMDActivityHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMDActivityHUD.m; path = vendor/activityhud/CMDActivityHUD.m; sourceTree = "<group>"; };
+		3B651F7B157FC8B50007817C /* interstitial_closebox-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "interstitial_closebox-down.png"; sourceTree = "<group>"; };
+		3B651F7C157FC8B50007817C /* interstitial_closebox-down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "interstitial_closebox-down@2x.png"; sourceTree = "<group>"; };
+		3B651F7D157FC8B50007817C /* interstitial_closebox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interstitial_closebox.png; sourceTree = "<group>"; };
+		3B651F7E157FC8B50007817C /* interstitial_closebox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "interstitial_closebox@2x.png"; sourceTree = "<group>"; };
 		3B6FAF8D153F259E002C9EF5 /* HRPeoplePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPeoplePickerViewController.h; sourceTree = "<group>"; };
 		3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeoplePickerViewController.m; sourceTree = "<group>"; };
 		3B74E5C4155477C400593ECF /* HROxygenSaturationAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HROxygenSaturationAppletTile.xib; sourceTree = "<group>"; };
@@ -697,6 +705,10 @@
 				9415152114AA3A7B009FF674 /* fail.png */,
 				9415152214AA3A7B009FF674 /* win.png */,
 				9415152514AA3F9F009FF674 /* question_mark.png */,
+				3B651F7B157FC8B50007817C /* interstitial_closebox-down.png */,
+				3B651F7C157FC8B50007817C /* interstitial_closebox-down@2x.png */,
+				3B651F7D157FC8B50007817C /* interstitial_closebox.png */,
+				3B651F7E157FC8B50007817C /* interstitial_closebox@2x.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -1427,6 +1439,10 @@
 				3B001D5315755BA900762FB0 /* GradientButtonHighlighted.png in Resources */,
 				3B108CDD1579199F00888E30 /* AppLogo.png in Resources */,
 				3B108CE3157929FA00888E30 /* AppLogo@2x.png in Resources */,
+				3B651F7F157FC8B50007817C /* interstitial_closebox-down.png in Resources */,
+				3B651F80157FC8B50007817C /* interstitial_closebox-down@2x.png in Resources */,
+				3B651F81157FC8B50007817C /* interstitial_closebox.png in Resources */,
+				3B651F82157FC8B50007817C /* interstitial_closebox@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
