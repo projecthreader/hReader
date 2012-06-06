@@ -25,7 +25,7 @@
 
 @end
 
-@interface HRGridTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
+@interface HRGridTableView : UITableView <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 
 @property (nonatomic, weak) IBOutlet id<HRGridTableViewDelegate> gridViewDelegate;
 @property (nonatomic, weak) IBOutlet id<HRGridTableViewDataSource> gridViewDataSource;

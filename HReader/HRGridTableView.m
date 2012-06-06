@@ -14,7 +14,6 @@
 #endif
 
 @interface HRGridTableView () {
-@private
     NSInteger _numberOfViews;
 }
 
@@ -53,6 +52,7 @@
     gesture.numberOfTapsRequired = 1;
     gesture.numberOfTouchesRequired = 1;
     gesture.cancelsTouchesInView = NO;
+    gesture.delegate = self;
     [self addGestureRecognizer:gesture];
     self.delegate = self;
     self.dataSource = self;
@@ -91,8 +91,11 @@
     return cell;
 }
 
-
 #pragma mark - gestures
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    return ![touch.view isKindOfClass:[UIButton class]];
+}
 
 - (void)didReceiveTap:(UITapGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateRecognized) {
