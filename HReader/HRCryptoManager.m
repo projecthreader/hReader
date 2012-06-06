@@ -15,7 +15,7 @@
 
 // keychain keys
 
-static NSString * const HRKeychainService = @"org.mitre.hreader.security";
+static NSString * const HRKeychainService = @"org.mitre.hreader.security.2";
 static NSString * const HRSecurityQuestionsKeychainAccount = @"security_questions";
 static NSString * const HRSecurityAnswersKeychainAccount = @"security_answers";
 static NSString * const HRPasscodeKeychainAccount = @"passcode";
