@@ -230,14 +230,6 @@
      name:NSManagedObjectContextDidSaveNotification
      object:nil];
     
-    // cipher test
-#if DEBUG
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        HRCryptoManagerTest();
-        HRCryptoManagerHack();
-    });
-#endif
-    
     // load patients if we don't have any yet
 //    NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
 //    if ([HRMPatient countInContext:context] == 0) {

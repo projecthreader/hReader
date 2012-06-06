@@ -17,6 +17,8 @@
 
 static NSString * const HRKeychainService = @"org.mitre.hreader.security";
 static NSString * const HRSecurityQuestionsKeychainAccount = @"security_questions";
+static NSString * const HRSecurityAnswersKeychainAccount = @"security_questions";
+static NSString * const HRPasscodeKeychainAccount = @"security_questions";
 static NSString * const HRSharedKeyPasscodeKeychainAccount = @"shared_key_passcode";
 static NSString * const HRSharedKeySecurityAnswersKeychainAccount = @"shared_key_security_answers";
 
@@ -129,60 +131,15 @@ static NSData * HRCryptoManagerDecrypt_private(NSData *data, NSString *key) {
     }
     else {
         free(buffer);
-//#if DEBUG
-//        NSLog(@"%s %d", __PRETTY_FUNCTION__, status);
-//#endif
+#if DEBUG
+        NSLog(@"%s %d", __PRETTY_FUNCTION__, status);
+#endif
         return nil;
     }
     
 }
 
 #pragma mark - public methods
-
-#if DEBUG
-
-void HRCryptoManagerTest(void) {
-    NSData *message = [@"test message" dataUsingEncoding:NSUTF8StringEncoding];
-    NSString *key = @"my test key";
-    NSData *cipher = HRCryptoManagerEncrypt_private(message, key);
-    NSData *result = HRCryptoManagerDecrypt_private(cipher, key);
-    NSCAssert([message isEqualToData:result], @"The original and transformed messages must be the same");
-    NSCAssert(![message isEqualToData:cipher], @"The original message and cipher text must not be the same");
-}
-
-void HRCryptoManagerHack(void) {
-    
-    // initialize information
-    NSString *passcode = @"999999";
-    NSString *keyString = [[NSProcessInfo processInfo] globallyUniqueString];
-    NSData *keyData = [keyString dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *cipherText = HRCryptoManagerEncrypt_private(keyData, passcode);
-    
-    // start time
-    NSTimeInterval startInterval = [[NSDate date] timeIntervalSinceReferenceDate];
-    
-    // hack it up
-    int number = 0;
-    for (int i = 0; i < powl(10, 6); i++) {
-        char c[7];
-        sprintf(c, "%06d", number++);
-        NSString *hackString = [NSString stringWithUTF8String:c];
-        NSData *hackData = HRCryptoManagerDecrypt_private(cipherText, hackString);
-        if ([hackData isEqualToData:cipherText]) {
-            NSLog(@"Passcode is: %@", hackString);
-            break;
-        }
-    }
-    
-    // end time
-    NSTimeInterval endInterval = [[NSDate date] timeIntervalSinceReferenceDate];
-    
-    // log
-    NSLog(@"Hack took %f seconds", (endInterval - startInterval));
-    
-}
-
-#endif
 
 BOOL HRCryptoManagerHasPasscode(void) {
     return ([SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount] != nil);
@@ -207,18 +164,12 @@ void HRCryptoManagerFinalize(void) {
     
     // generate shared key
     _temporaryKey = [[NSProcessInfo processInfo] globallyUniqueString];
-    NSData *key = [_temporaryKey dataUsingEncoding:NSUTF8StringEncoding];
-    
-    // store clear security questions
-    NSData *questions = [NSJSONSerialization dataWithJSONObject:_temporaryQuestions options:0 error:nil];
-    [SSKeychain setPasswordData:questions forService:HRKeychainService account:HRSecurityQuestionsKeychainAccount];
     
     // store passcode
     HRCryptoManagerUpdatePasscode(_temporaryPasscode);
     
-    // store shared key encrypted with clear answers to security questions
-    NSData *two = HRCryptoManagerEncrypt_private(key, [_temporaryAnswers componentsJoinedByString:@""]);
-    [SSKeychain setPasswordData:two forService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount];
+    // store answers for security questions
+    HRCryptoManagerUpdateSecurityQuestionsAndAnswers(_temporaryQuestions, _temporaryAnswers);
     
     // cleanup
     _temporaryAnswers = nil;
@@ -236,22 +187,31 @@ void HRCryptoManagerPurge(void) {
 
 BOOL HRCryptoManagerUnlockWithPasscode(NSString *passcode) {
     NSCAssert(passcode, @"The passcode must not be nil");
-    NSData *encryptedKey = [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount];
-    NSData *decryptedKey = HRCryptoManagerDecrypt_private(encryptedKey, passcode);
-    if (decryptedKey) {
-        _temporaryKey = [[NSString alloc] initWithData:decryptedKey encoding:NSUTF8StringEncoding];
-        return YES;
+    NSData *one = [SSKeychain passwordDataForService:HRKeychainService account:HRPasscodeKeychainAccount];
+    NSData *two = HRCryptoManagerHashString(passcode);
+    if ([one isEqualToData:two]) {
+        NSData *encryptedKey = [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount];
+        NSData *decryptedKey = HRCryptoManagerDecrypt_private(encryptedKey, passcode);
+        if (decryptedKey) {
+            _temporaryKey = [[NSString alloc] initWithData:decryptedKey encoding:NSUTF8StringEncoding];
+            return YES;
+        }
     }
     return NO;
 }
 
 BOOL HRCryptoManagerUnlockWithAnswersForSecurityQuestions(NSArray *answers) {
     NSCAssert(answers, @"The answers must not be nil");
-    NSData *encryptedKey = [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount];
-    NSData *decryptedKey = HRCryptoManagerDecrypt_private(encryptedKey, [answers componentsJoinedByString:@""]);
-    if (decryptedKey) {
-        _temporaryKey = [[NSString alloc] initWithData:decryptedKey encoding:NSUTF8StringEncoding];
-        return YES;
+    NSData *one = [SSKeychain passwordDataForService:HRKeychainService account:HRSecurityAnswersKeychainAccount];
+    NSData *two = [NSJSONSerialization dataWithJSONObject:answers options:0 error:nil];
+    two = HRCryptoManagerHashData(one);
+    if ([one isEqualToData:two]) {
+        NSData *encryptedKey = [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount];
+        NSData *decryptedKey = HRCryptoManagerDecrypt_private(encryptedKey, [answers componentsJoinedByString:@""]);
+        if (decryptedKey) {
+            _temporaryKey = [[NSString alloc] initWithData:decryptedKey encoding:NSUTF8StringEncoding];
+            return YES;
+        }
     }
     return NO;
 }
@@ -263,9 +223,38 @@ BOOL HRCryptoManagerIsUnlocked(void) {
 void HRCryptoManagerUpdatePasscode(NSString *passcode) {
     NSCAssert(passcode, @"The passcode must not be nil");
     if (_temporaryKey) {
+        
+        // write shared key
         NSData *keyData = [_temporaryKey dataUsingEncoding:NSUTF8StringEncoding];
         NSData *encryptedKeyData = HRCryptoManagerEncrypt_private(keyData, passcode);
         [SSKeychain setPasswordData:encryptedKeyData forService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount];
+        
+        // write hashed passcode
+        NSData *hashedData = HRCryptoManagerHashString(passcode);
+        [SSKeychain setPasswordData:hashedData forService:HRKeychainService account:HRPasscodeKeychainAccount];
+        
+    }
+}
+
+void HRCryptoManagerUpdateSecurityQuestionsAndAnswers(NSArray *questions, NSArray *answers) {
+    NSCAssert(questions, @"The questions must not be nil");
+    NSCAssert(answers, @"The answers must not be nil");
+    if (_temporaryKey) {
+        
+        // write  shared key
+        NSData *keyData = [_temporaryKey dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *encryptedData = HRCryptoManagerEncrypt_private(keyData, [_temporaryAnswers componentsJoinedByString:@""]);
+        [SSKeychain setPasswordData:encryptedData forService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount];
+        
+        // write clear questions
+        NSData *questions = [NSJSONSerialization dataWithJSONObject:_temporaryQuestions options:0 error:nil];
+        [SSKeychain setPasswordData:questions forService:HRKeychainService account:HRSecurityQuestionsKeychainAccount];
+        
+        // write hashed answers
+        NSData *answers = [NSJSONSerialization dataWithJSONObject:_temporaryAnswers options:0 error:nil];
+        answers = HRCryptoManagerHashData(answers);
+        [SSKeychain setPasswordData:answers forService:HRKeychainService account:HRSecurityAnswersKeychainAccount];
+        
     }
 }
 
