@@ -38,6 +38,8 @@
 
 - (void)showMainApplicationInterface;
 
+- (void)adjustUserInterfaceForPatients:(BOOL)animated;
+
 @end
 
 @implementation HRPeopleSetupViewController
@@ -46,8 +48,8 @@
 @synthesize emptyCellView = _emptyCellView;
 @synthesize spouseButton = _spouseButton;
 @synthesize emptyCellButtons = _emptyCellButtons;
+@synthesize firstView = _firstView;
 @synthesize meButton = _meButton;
-@synthesize imageView = _imageView;
 
 #pragma mark - object methods
 
@@ -130,6 +132,49 @@
     [self.gridView reloadData];
 }
 
+- (void)adjustUserInterfaceForPatients:(BOOL)animated {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationship = %d", HRMPatientRelationshipMe];
+    void (^animations) (void) = nil;
+    if ([HRMPatient countInContext:[HRAppDelegate managedObjectContext] withPredicate:predicate] == 0) {
+        self.navigationItem.rightBarButtonItem = nil;
+        self.editing = NO;
+        animations = ^{
+            CGRect frame = self.view.bounds;
+            self.firstView.frame = frame;
+            self.firstView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+            frame = CGRectOffset(frame, 0.0, CGRectGetHeight(frame));
+            self.gridView.frame = frame;
+            self.gridView.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
+                                              UIViewAutoresizingFlexibleTopMargin |
+                                              UIViewAutoresizingFlexibleHeight);
+        };
+    }
+    else {
+        self.navigationItem.rightBarButtonItem = [self editButtonItem];
+        animations = ^{
+            CGRect frame = self.view.bounds;
+            self.gridView.frame = frame;
+            self.gridView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+            frame = CGRectOffset(frame, 0.0, CGRectGetHeight(frame) * -1.0);
+            self.firstView.frame = frame;
+            self.firstView.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
+                                               UIViewAutoresizingFlexibleHeight |
+                                               UIViewAutoresizingFlexibleBottomMargin);
+        };
+    }
+    if (animated) {
+        [UIView
+         animateWithDuration:0.5
+         delay:0.0
+         options:UIViewAnimationOptionCurveEaseInOut
+         animations:animations
+         completion:nil];
+    }
+    else {
+        animations();
+    }
+}
+
 #pragma mark - view lifecycle
 
 - (void)viewDidLoad {
@@ -140,6 +185,10 @@
     self.gridView.numberOfColumns = 3;
     self.gridView.verticalPadding = 30.0;
     self.gridView.horizontalPadding = 30.0;
+    
+    // colors
+    self.gridView.backgroundColor = [UIColor clearColor];
+    self.firstView.backgroundColor = [UIColor clearColor];
     
     // empty cell view
     UIImage *normal = [[UIImage imageNamed:@"GradientButton"] stretchableImageWithLeftCapWidth:11.0 topCapHeight:0.0];
@@ -152,23 +201,9 @@
     }];
     
     // determine view placement
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationship = %d", HRMPatientRelationshipMe];
-    if ([HRMPatient countInContext:[HRAppDelegate managedObjectContext] withPredicate:predicate] == 0) {
-        CGRect frame = self.view.bounds;
-        frame = CGRectOffset(frame, 0.0, CGRectGetHeight(frame));
-        self.gridView.frame = frame;
-        self.gridView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin);
-        NSString *host = [[HRAPIClient accounts] lastObject];
-        [[HRAPIClient clientWithHost:host] patientFeed:nil];
-        self.navigationItem.rightBarButtonItem = nil;
-    }
-    else {
-        self.gridView.frame = self.view.bounds;
-        self.gridView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
-        self.imageView.hidden = YES;
-        self.meButton.hidden = YES;
-        self.navigationItem.rightBarButtonItem = [self editButtonItem];
-    }
+    [self adjustUserInterfaceForPatients:NO];
+    NSString *host = [[HRAPIClient accounts] lastObject];
+    [[HRAPIClient clientWithHost:host] patientFeed:nil];
     
 }
 
@@ -178,6 +213,11 @@
     [self viewDidUnload];
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    self.editing = NO;
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
 	return UIInterfaceOrientationIsLandscape(orientation);
 }
@@ -185,25 +225,7 @@
 #pragma mark - button actions
 
 - (IBAction)meButtonPress:(id)sender {
-    [self presentPopoverFromButton:sender withTitle:@"Add My Info" relationship:HRMPatientRelationshipMe completion:^{
-        [UIView
-         animateWithDuration:0.5
-         delay:0.5
-         options:UIViewAnimationOptionCurveEaseInOut
-         animations:^{
-             CGRect frame = self.imageView.frame;
-             frame = CGRectOffset(frame, 0.0, CGRectGetHeight(self.view.bounds) * -1.0);
-             self.imageView.frame = frame;
-             frame = self.meButton.frame;
-             frame = CGRectOffset(frame, 0.0, CGRectGetHeight(self.view.bounds) * -1.0);
-             self.meButton.frame = frame;
-             self.gridView.frame = self.view.bounds;
-         }
-         completion:^(BOOL finished) {
-             self.navigationItem.rightBarButtonItem = [self editButtonItem];
-             self.gridView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
-         }];
-    }];
+    [self presentPopoverFromButton:sender withTitle:@"Add My Info" relationship:HRMPatientRelationshipMe completion:nil];
 }
 
 - (IBAction)spouseButtonPress:(id)sender {
@@ -312,7 +334,6 @@
         [self showMainApplicationInterface];
 //        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
 //        HRMPatient *patient = [fetchedResultsController objectAtIndexPath:indexPath];
-//        NSLog(@"%@", patient);
     }
 }
 
@@ -323,6 +344,7 @@
     NSUInteger count = [HRMPatient countInContext:managedObjectContext withPredicate:predicate];
     self.spouseButton.enabled = (count == 0);
     [self.gridView reloadData];
+    [self adjustUserInterfaceForPatients:YES];
 }
 
 @end

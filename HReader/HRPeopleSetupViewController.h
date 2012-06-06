@@ -19,7 +19,7 @@
 @property (nonatomic, strong) IBOutlet UIButton *spouseButton;
 @property (nonatomic, strong) IBOutletCollection(UIButton) NSArray *emptyCellButtons;
 
-@property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, weak) IBOutlet UIView *firstView;
 @property (nonatomic, weak) IBOutlet UIButton *meButton;
 
 - (IBAction)meButtonPress:(id)sender;

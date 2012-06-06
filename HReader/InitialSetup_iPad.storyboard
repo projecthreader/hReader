@@ -53,36 +53,50 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="vQn-TP-tDi" customClass="HRGridTableView">
-                                <rect key="frame" x="0.0" y="456" width="1024" height="248"/>
+                                <rect key="frame" x="0.0" y="456" width="663" height="248"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="gridViewDataSource" destination="flO-yV-wuk" id="hyI-sB-hjd"/>
                                     <outlet property="gridViewDelegate" destination="flO-yV-wuk" id="nU0-4O-Sah"/>
                                 </connections>
                             </view>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="AppLogo.png" id="QmE-hM-P0V">
-                                <rect key="frame" x="362" y="248" width="300" height="104"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="x4v-18-OId">
-                                <rect key="frame" x="362" y="355" width="300" height="37"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Add My Info">
-                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="0.5" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="meButtonPress:" destination="flO-yV-wuk" eventType="touchUpInside" id="Yv3-hL-Gha"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" id="C6z-cG-5QQ">
+                                <rect key="frame" x="38" y="7" width="652" height="434"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="d8a-Id-OJs">
+                                        <rect key="frame" x="156" y="87" width="340" height="207"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="AppLogo.png" id="QmE-hM-P0V">
+                                                <rect key="frame" x="20" y="32" width="300" height="104"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="x4v-18-OId">
+                                                <rect key="frame" x="20" y="139" width="300" height="37"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="Add My Info">
+                                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="meButtonPress:" destination="flO-yV-wuk" eventType="touchUpInside" id="Yv3-hL-Gha"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.92000000000000004" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -91,9 +105,9 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="emptyCellView" destination="2UP-rs-FNG" id="gTO-Py-GWf"/>
+                        <outlet property="firstView" destination="C6z-cG-5QQ" id="f56-gN-Vkv"/>
                         <outlet property="gridView" destination="vQn-TP-tDi" id="gje-J4-Ei6"/>
-                        <outlet property="imageView" destination="QmE-hM-P0V" id="JcS-P1-5N7"/>
-                        <outlet property="meButton" destination="x4v-18-OId" id="USW-H8-1g5"/>
+                        <outlet property="meButton" destination="x4v-18-OId" id="NxP-pH-Bw2"/>
                         <outlet property="spouseButton" destination="HOX-pf-YQo" id="Jgs-DL-L1R"/>
                         <outletCollection property="emptyCellButtons" destination="HOX-pf-YQo" id="5tk-UC-Sng"/>
                         <outletCollection property="emptyCellButtons" destination="o5u-Bm-ZWx" id="SnR-1c-4lL"/>
@@ -209,8 +223,8 @@
                 <relationship kind="action" name="meButtonPress:"/>
                 <relationship kind="action" name="spouseButtonPress:"/>
                 <relationship kind="outlet" name="emptyCellView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="firstView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="gridView" candidateClass="HRGridTableView"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="meButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="spouseButton" candidateClass="UIButton"/>
                 <relationship kind="outletCollection" name="emptyCellButtons" candidateClass="UIButton"/>
