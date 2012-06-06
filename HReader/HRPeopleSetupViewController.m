@@ -19,6 +19,10 @@
 
 #import "SVPanelViewController.h"
 
+#import "GCAlertView.h"
+
+#define kDeleteButtonViewTag 100
+
 @interface HRPeopleSetupViewController () {
 @private
     NSFetchedResultsController *fetchedResultsController;
@@ -121,6 +125,11 @@
     [self presentViewController:panel animated:YES completion:nil];
 }
 
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    [self.gridView reloadData];
+}
+
 #pragma mark - view lifecycle
 
 - (void)viewDidLoad {
@@ -151,12 +160,14 @@
         self.gridView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin);
         NSString *host = [[HRAPIClient accounts] lastObject];
         [[HRAPIClient clientWithHost:host] patientFeed:nil];
+        self.navigationItem.rightBarButtonItem = nil;
     }
     else {
         self.gridView.frame = self.view.bounds;
         self.gridView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
         self.imageView.hidden = YES;
         self.meButton.hidden = YES;
+        self.navigationItem.rightBarButtonItem = [self editButtonItem];
     }
     
 }
@@ -189,6 +200,7 @@
              self.gridView.frame = self.view.bounds;
          }
          completion:^(BOOL finished) {
+             self.navigationItem.rightBarButtonItem = [self editButtonItem];
              self.gridView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
          }];
     }];
@@ -204,6 +216,28 @@
 
 - (IBAction)familyMemberButtonPress:(id)sender {
     [self presentPopoverFromButton:sender withTitle:@"Add Family Member" relationship:HRMPatientRelationshipFamily completion:nil];
+}
+
+- (void)deleteButtonPress:(UIButton *)button {
+    
+    // get patient
+    HRPeopleSetupTileView *tile = ((HRPeopleSetupTileView *)button.superview);
+    HRMPatient *patient = tile.patient;
+    
+    // prompt user to confirm
+    GCAlertView *alert = [[GCAlertView alloc]
+                          initWithTitle:@"Delete"
+                          message:[NSString stringWithFormat:@"Are you sure you want to delete %@?", [patient compositeName]]];
+    [alert addButtonWithTitle:@"Yes" block:^{
+        NSManagedObjectContext *context = [patient managedObjectContext];
+        [context deleteObject:patient];
+        [context save:nil];
+        [self.gridView reloadData];
+        
+    }];
+    [alert addButtonWithTitle:@"No" block:nil];
+    [alert setCancelButtonIndex:1];
+    [alert show];
 }
 
 #pragma mark - grid view
@@ -226,6 +260,7 @@
         // patient
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
         HRMPatient *patient = [fetchedResultsController objectAtIndexPath:indexPath];
+        tile.patient = patient;
         tile.nameLabel.text = [patient compositeName];
         tile.imageView.image = [patient patientImage];
         tile.statusLabel.text = patient.relationshipString;
@@ -237,6 +272,32 @@
         tile.layer.shadowOffset = CGSizeMake(0.0, 3.0);
         tile.layer.shouldRasterize = YES;
         tile.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+        
+        // edit mode
+        if (self.isEditing && ![tile viewWithTag:kDeleteButtonViewTag]) {
+            
+            // create button
+            UIImage *normalImage = [UIImage imageNamed:@"interstitial_closebox"];
+            UIImage *highlightedImage = [UIImage imageNamed:@"interstitial_closebox_down"];
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            [button setBackgroundImage:normalImage forState:UIControlStateNormal];
+            [button setBackgroundImage:highlightedImage forState:UIControlStateHighlighted];
+            [button addTarget:self action:@selector(deleteButtonPress:) forControlEvents:UIControlEventTouchUpInside];
+            button.userInteractionEnabled = YES;
+            button.adjustsImageWhenHighlighted = YES;
+            button.tag = kDeleteButtonViewTag;
+            
+            // place button
+            CGSize imageSize = normalImage.size;
+            button.frame = CGRectMake(0.0,
+                                      0.0,
+                                      imageSize.width,
+                                      imageSize.width);
+            
+            // add button
+            [tile addSubview:button];
+            
+        }
         
         // return
         return tile;
