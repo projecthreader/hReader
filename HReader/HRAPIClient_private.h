@@ -40,7 +40,7 @@
  
  
  */
-- (void)patientFeed:(void (^)(NSArray *))completion honorCache:(BOOL)cache;
+- (void)patientFeed:(void (^) (NSArray *))completion ignoreCache:(BOOL)ignore;
 
 /*
  

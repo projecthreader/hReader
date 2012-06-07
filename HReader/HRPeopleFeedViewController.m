@@ -20,6 +20,7 @@
 }
 
 - (void)refresh;
+- (void)refresh:(BOOL)ignoreCache;
 
 @end
 
@@ -63,28 +64,41 @@
                          fixed,
                          nil];
     
-    // get client
-    HRAPIClient *client = [HRAPIClient clientWithHost:_host];
-    
-    // load patients
-    [client patientFeed:^(NSArray *patients) {
-        NSString *string = [NSString stringWithFormat:@"Updated: %@", [_dateFormatter stringFromDate:client->_patientFeedLastFetchDate]];
-        _statusLabel.text = string;
-        _patients = [patients sortedArrayUsingKey:@"name" ascending:YES];
-        [self.tableView reloadData];
-    }];
+    // first load
+    [self refresh:NO];
     
 }
 
 - (void)refresh {
+    [self refresh:YES];
+}
+
+- (void)refresh:(BOOL)ignoreCache {
     HRAPIClient *client = [HRAPIClient clientWithHost:_host];
     _statusLabel.text = @"Loading…";
     [client patientFeed:^(NSArray *patients) {
-        NSString *string = [NSString stringWithFormat:@"Updated: %@", [_dateFormatter stringFromDate:client->_patientFeedLastFetchDate]];
-        _statusLabel.text = string;
+        if (patients) {
+            NSString *message = [NSString stringWithFormat:
+                                 @"Updated: %@",
+                                 [_dateFormatter stringFromDate:client->_patientFeedLastFetchDate]];
+            _statusLabel.text = message;
+        }
+        else {
+            _statusLabel.text = @"Error";
+            NSString *message = [NSString stringWithFormat:
+                                 @"An error occurred while fetching the patient list from %@",
+                                 _host];
+            [[[UIAlertView alloc]
+              initWithTitle:@"Error"
+              message:message
+              delegate:nil
+              cancelButtonTitle:@"OK"
+              otherButtonTitles:nil]
+             show];
+        }
         _patients = [patients sortedArrayUsingKey:@"name" ascending:YES];
         [self.tableView reloadData];
-    } honorCache:NO];
+    } ignoreCache:ignoreCache];
 }
 
 #pragma mark - Table view data source

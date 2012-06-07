@@ -19,14 +19,18 @@
 
 /*
  
- 
+ Get a list of all hosts that have authenticated accounts stored locally.
  
  */
-+ (NSArray *)accounts;
++ (NSArray *)hosts;
 
 /*
  
+ Request the patient feed from the receiver. This method returns imediatly and
+ notifies the caller upon completion using the completion block.
  
+ The completion accepts an array of dictionaries each having two keys: id and
+ name. Should an error occur, `patients` will be nil.
  
  */
 - (void)patientFeed:(void (^) (NSArray *patients))completion;

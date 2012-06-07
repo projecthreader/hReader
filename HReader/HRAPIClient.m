@@ -91,7 +91,7 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.oauth.2";
     return client;
 }
 
-+ (NSArray *)accounts {
++ (NSArray *)hosts {
     return [[SSKeychain accountsForService:HROAuthKeychainService] valueForKey:(__bridge NSString *)kSecAttrAccount];
 }
 
@@ -128,13 +128,13 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.oauth.2";
     return self;
 }
 
-- (void)patientFeed:(void (^)(NSArray *))completion honorCache:(BOOL)cache {
+- (void)patientFeed:(void (^)(NSArray *))completion ignoreCache:(BOOL)ignore {
     dispatch_queue_t queue = dispatch_get_current_queue();
     dispatch_async(_requestQueue, ^{
         
         // check time stamp
         NSTimeInterval interval = ABS([_patientFeedLastFetchDate timeIntervalSinceNow]);
-        if (interval > 60 * 5 || _patientFeedLastFetchDate == nil || !cache) {
+        if (interval > 60 * 5 || _patientFeedLastFetchDate == nil || ignore) {
             
             NSMutableURLRequest *request = [self GETRequestWithPath:@"/"];
             NSMutableArray *patients = nil;
@@ -176,8 +176,8 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.oauth.2";
             
         }
         
-        // we already have something
-        else if (completion) {
+        // call completion handler
+        if (completion) {
             dispatch_async(queue, ^{
                 completion(_patientFeed);
             });
@@ -187,7 +187,7 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.oauth.2";
 }
 
 - (void)patientFeed:(void (^) (NSArray *patients))completion {
-    [self patientFeed:completion honorCache:YES];
+    [self patientFeed:completion ignoreCache:NO];
 }
 
 - (NSMutableURLRequest *)GETRequestWithPath:(NSString *)path {

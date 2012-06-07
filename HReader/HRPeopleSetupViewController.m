@@ -82,7 +82,7 @@
                       completion:(void (^) (void))completion {
     
     // get api client
-    NSString *host = [[HRAPIClient accounts] lastObject];
+    NSString *host = [[HRAPIClient hosts] lastObject];
     HRAPIClient *client = [HRAPIClient clientWithHost:host];
     
     // create controller
@@ -202,7 +202,7 @@
     
     // determine view placement
     [self adjustUserInterfaceForPatients:NO];
-    NSString *host = [[HRAPIClient accounts] lastObject];
+    NSString *host = [[HRAPIClient hosts] lastObject];
     [[HRAPIClient clientWithHost:host] patientFeed:nil];
     
 }
@@ -260,6 +260,7 @@
     [alert addButtonWithTitle:@"No" block:nil];
     [alert setCancelButtonIndex:1];
     [alert show];
+    
 }
 
 #pragma mark - grid view
