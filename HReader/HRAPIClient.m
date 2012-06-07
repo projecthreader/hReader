@@ -309,9 +309,7 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.oauth.2";
     dispatch_async(_requestQueue, ^{
         
         // start block
-        if (startBlock) {
-            dispatch_sync(queue, startBlock);
-        }
+        if (startBlock) { dispatch_async(queue, startBlock); }
         
         // create request
         NSString *path = [NSString stringWithFormat:@"/records/%@/c32/%@", identifier, identifier];
@@ -328,9 +326,7 @@ static NSString * const HROAuthKeychainService = @"org.mitre.hreader.oauth.2";
         NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
         
         // return
-        if (finishBlock) {
-            dispatch_sync(queue, ^{ finishBlock(dictionary); });
-        }
+        if (finishBlock) { dispatch_async(queue, ^{ finishBlock(dictionary); }); }
         
     });
 }

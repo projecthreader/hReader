@@ -30,14 +30,24 @@
  notifies the caller upon completion using the completion block.
  
  The completion accepts an array of dictionaries each having two keys: id and
- name. Should an error occur, `patients` will be nil.
+ name. Should an error occur, `patients` will be nil. It will be executed on
+ the thread which initiated the call.
  
  */
 - (void)patientFeed:(void (^) (NSArray *patients))completion;
 
 /*
  
+ Fetch a given patient payload from the receiver. This method returns
+ imediately and notifes the caller upon completion using the completion block
+ and optionally on start with the start block.
  
+ `finishBlock` accepts a dictionary that represents the patient payload. This
+ will be `nil` should an error occur.
+ 
+ `startBlock` simply notifies the caller that the operation is about to begin.
+ 
+ Both blocks will be executed on the thread which initiated the call.
  
  */
 - (void)JSONForPatientWithIdentifier:(NSString *)identifier finishBlock:(void (^) (NSDictionary *payload))block;
