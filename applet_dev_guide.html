@@ -1,0 +1,185 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+/* 
+   This document has been created with Marked.app <http://markedapp.com>, Copyright 2011 Brett Terpstra
+   Please leave this notice in place, along with any additional credits below.
+   ---------------------------------------------------------------
+   Title: GitHub
+   Author: Brett Terpstra
+   Description: Github README style. Includes theme for Pygmentized code blocks.
+*/
+html,body{color:black}*{margin:0;padding:0}body{font:13.34px helvetica,arial,freesans,clean,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.4;padding:3px;background:#fff;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px}p{margin:1em 0}a{color:#4183c4;text-decoration:none}#wrapper{background-color:#fff;border:3px solid #eee!important;padding:0 30px;margin:15px}#wrapper{font-size:14px;line-height:1.6}#wrapper>*:first-child{margin-top:0!important}#wrapper>*:last-child{margin-bottom:0!important}h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1{margin:15px 0;padding-bottom:2px;font-size:24px;border-bottom:1px solid #eee}h2{margin:20px 0 10px 0;font-size:18px}h3{margin:20px 0 10px 0;padding-bottom:2px;font-size:14px;border-bottom:1px solid #ddd}h4{font-size:14px;line-height:26px;padding:18px 0 4px;font-weight:bold;text-transform:uppercase}h5{font-size:13px;line-height:26px;padding:14px 0 0;font-weight:bold;text-transform:uppercase}h6{color:#666;font-size:14px;line-height:26px;padding:18px 0 0;font-weight:normal;font-variant:italic}hr{background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;border:0 none;color:#ccc;height:4px;margin:20px 0;padding:0}#wrapper>h2:first-child,#wrapper>h1:first-child,#wrapper>h1:first-child+h2{border:0;margin:0;padding:0}#wrapper>h3:first-child,#wrapper>h4:first-child,#wrapper>h5:first-child,#wrapper>h6:first-child{margin:0;padding:0}h4+p,h5+p,h6+p{margin-top:0}li p.first{display:inline-block}ul,ol{margin:15px 0 15px 25px}ul li,ol li{margin-top:7px;margin-bottom:7px}ul li>*:last-child,ol li>*:last-child{margin-bottom:0}ul li>*:first-child,ol li>*:first-child{margin-top:0}#wrapper>ul,#wrapper>ol{margin-top:21px;margin-left:36px}dl{margin:0;padding:20px 0 0}dl dt{font-size:14px;font-weight:bold;line-height:normal;margin:0;padding:20px 0 0}dl dt:first-child{padding:0}dl dd{font-size:13px;margin:0;padding:3px 0 0}blockquote{margin:14px 0;border-left:4px solid #ddd;padding-left:11px;color:#555}table{border-collapse:collapse;margin:20px 0 0;padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th,table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}img{max-width:100%;height:auto}img.center{display:block;margin-left:auto;margin-right:auto}code,tt{margin:0 2px;padding:2px 5px;white-space:nowrap;border:1px solid #ccc;background-color:#f8f8f8;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;font-size:12px}pre>code{margin:0;padding:0;white-space:pre;border:0;background:transparent;font-size:13px}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px}#wrapper>pre,#wrapper>div.highlight{margin:10px 0 0}pre code,pre tt{background-color:transparent;border:0}#wrapper{background-color:#fff;border:1px solid #cacaca;padding:30px}.poetry pre{font-family:Georgia,Garamond,serif!important;font-style:italic;font-size:110%!important;line-height:1.6em;display:block;margin-left:1em}.poetry pre code{font-family:Georgia,Garamond,serif!important}sup,sub,a.footnote{font-size:1.4ex;height:0;line-height:1;vertical-align:super;position:relative}sub{vertical-align:sub;top:-1px}@media print{body{background:#fff}img,pre,blockquote,table,figure{page-break-inside:avoid}#wrapper{background:#fff;border:0}code{background-color:#fff;color:#444!important;padding:0 .2em;border:1px solid #dedede}pre code{background-color:#fff!important;overflow:visible}pre{background:#fff}}@media screen{body.inverted,.inverted #wrapper,.inverted hr .inverted p,.inverted td,.inverted li,.inverted h1,.inverted h2,.inverted h3,.inverted h4,.inverted h5,.inverted h6,.inverted th,.inverted .math,.inverted caption,.inverted dd,.inverted dt,.inverted blockquote{color:#eee!important;border-color:#555}.inverted td,.inverted th{background:#333}.inverted pre,.inverted code,.inverted tt{background:#444!important}.inverted h2{border-color:#555}.inverted hr{border-color:#777;border-width:1px!important}::selection{background:rgba(157,193,200,.5)}h1::selection{background-color:rgba(45,156,208,.3)}h2::selection{background-color:rgba(90,182,224,.3)}h3::selection,h4::selection,h5::selection,h6::selection,li::selection,ol::selection{background-color:rgba(133,201,232,.3)}code::selection{background-color:rgba(0,0,0,.7);color:#eee}code span::selection{background-color:rgba(0,0,0,.7)!important;color:#eee!important}a::selection{background-color:rgba(255,230,102,.2)}.inverted a::selection{background-color:rgba(255,230,102,.6)}td::selection,th::selection,caption::selection{background-color:rgba(180,237,95,.5)}.inverted{background:#0b2531}.inverted #wrapper,.inverted{background:rgba(37,42,42,1)}.inverted a{color:rgba(172,209,213,1)}}.highlight .c{color:#998;font-style:italic}.highlight .err{color:#a61717;background-color:#e3d2d2}.highlight .k{font-weight:bold}.highlight .o{font-weight:bold}.highlight .cm{color:#998;font-style:italic}.highlight .cp{color:#999;font-weight:bold}.highlight .c1{color:#998;font-style:italic}.highlight .cs{color:#999;font-weight:bold;font-style:italic}.highlight .gd{color:#000;background-color:#fdd}.highlight .gd .x{color:#000;background-color:#faa}.highlight .ge{font-style:italic}.highlight .gr{color:#a00}.highlight .gh{color:#999}.highlight .gi{color:#000;background-color:#dfd}.highlight .gi .x{color:#000;background-color:#afa}.highlight .go{color:#888}.highlight .gp{color:#555}.highlight .gs{font-weight:bold}.highlight .gu{color:#800080;font-weight:bold}.highlight .gt{color:#a00}.highlight .kc{font-weight:bold}.highlight .kd{font-weight:bold}.highlight .kn{font-weight:bold}.highlight .kp{font-weight:bold}.highlight .kr{font-weight:bold}.highlight .kt{color:#458;font-weight:bold}.highlight .m{color:#099}.highlight .s{color:#d14}.highlight .na{color:#008080}.highlight .nb{color:#0086b3}.highlight .nc{color:#458;font-weight:bold}.highlight .no{color:#008080}.highlight .ni{color:#800080}.highlight .ne{color:#900;font-weight:bold}.highlight .nf{color:#900;font-weight:bold}.highlight .nn{color:#555}.highlight .nt{color:#000080}.highlight .nv{color:#008080}.highlight .ow{font-weight:bold}.highlight .w{color:#bbb}.highlight .mf{color:#099}.highlight .mh{color:#099}.highlight .mi{color:#099}.highlight .mo{color:#099}.highlight .sb{color:#d14}.highlight .sc{color:#d14}.highlight .sd{color:#d14}.highlight .s2{color:#d14}.highlight .se{color:#d14}.highlight .sh{color:#d14}.highlight .si{color:#d14}.highlight .sx{color:#d14}.highlight .sr{color:#009926}.highlight .s1{color:#d14}.highlight .ss{color:#990073}.highlight .bp{color:#999}.highlight .vc{color:#008080}.highlight .vg{color:#008080}.highlight .vi{color:#008080}.highlight .il{color:#099}.highlight .gc{color:#999;background-color:#eaf2f5}.type-csharp .highlight .k{color:#00F}.type-csharp .highlight .kt{color:#00F}.type-csharp .highlight .nf{color:#000;font-weight:normal}.type-csharp .highlight .nc{color:#2b91af}.type-csharp .highlight .nn{color:#000}.type-csharp .highlight .s{color:#a31515}.type-csharp .highlight .sc{color:#a31515}
+</style>
+<style>#wrapper { max-width:900px; margin:0 auto }</style>
+</head>
+<body class="normal">
+  <div id="wrapper">
+      <h1 id="hreaderappletdevelopersguide">hReader Applet Developers Guide</h1>
+
+<h2 id="appletarchitecture">Applet Architecture</h2>
+
+<p>The applet architecture provides an environment for applets to be included and executed within hReader.  hReader provides a framework for selecting and displaying a list of applets for each patient, launching applets, and handling application state transitions within the applet.</p>
+
+<h3 id="aboutapplets">About Applets</h3>
+
+<p>Applets provide custom functionality and services that patients can pick and choose to be on their summary page.  The summary page displays the patient's selected applets within a grid so that they are all visible within a single scrollable view.  Each applet fills their grid element with a summary view providing the most important, top-level information to the patient.</p>
+
+<img class="center" src="images/hs_summary.png" />
+
+<p>When the grid element for an applet is touched, the applet expands to the entire screen and can provide more detailed information, as well as navigation to other pages within the applet.</p>
+
+<img class="center" src="images/hs_conditions.png" />
+
+<p>There are two types of applets supported by hReader:  native iOS applets, and HTML5/CSS3-based applets.</p>
+
+<p>Native iOS applets provide the most flexibility in UI design and functionality, leveraging the full capabilities of the iOS platform, including BlueTooth, GPS, accelerometers, graphics, and other built-in services.  Native applets can communicate with a server using protocols and data formats of the author's choosing as well as BlueTooth and WiFi-based sensors.  Updating content, however, may require changes to the applet code with hReader.</p>
+
+<p>HTML5/CSS3-based applets act as a browser to a web site that can be displayed within hReader.  Content can easily be modified without requiring an update to hReader.  This type of applet, however, is limited to the services provided by the built-in Safari browser, HTML5, and CSS3.</p>
+
+<img class="center" src="images/architecture.png" />
+
+<p>Each applet will run in its own sandbox for privacy and security, enforced by the applet framework within hReader and a code review for each new and updated applet.</p>
+
+<p>In concept, this is similar Apple's strategy for applications, which installs each app in its own directory in the iOS file system.  Apple's sandboxing technology, however, cannot be extended to applets, so hReader needs to implement its own sandboxing scheme.</p>
+
+<p>Since hReader will be open sourced, anyone can write an applet to be included within hReader.  The code for native iOS applets is directly linked into hReader so that they can display information within hReader while still accommodating Apple's iOS application requirements.  New versions of hReader will be periodically released to include new applets, after the new and updated applets pass a review process.</p>
+
+<h2 id="loadingappletsinhreader">Loading Applets in hReader</h2>
+
+<p>When hReader launches, it loads a property list that defines all the applets included with hReader.</p>
+
+<h3 id="hreaderapplets.plist">HReaderApplets.plist</h3>
+
+<p>Each applet is defined in a dictionary element as a set of key-value pairs. The dictionary that you provide in this file is given to your applet instance when it is created. Here is an example of what one such file would look like:</p>
+
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+&lt;plist version=&quot;1.0&quot;&gt;
+    &lt;array&gt;
+        &lt;!-- Native iOS Applet --&gt;
+        &lt;dict&gt;
+            &lt;key&gt;identifier&lt;/key&gt;
+            &lt;string&gt;org.mitre.hreader.encounters&lt;/string&gt;
+            &lt;key&gt;class_name&lt;/key&gt;
+            &lt;string&gt;HREncountersAppletTile&lt;/string&gt;
+            &lt;key&gt;display_name&lt;/key&gt;
+            &lt;string&gt;Encounters&lt;/string&gt;
+        &lt;/dict&gt;
+        
+        &lt;!-- Native iOS Applet --&gt;
+        &lt;dict&gt;
+            &lt;key&gt;identifier&lt;/key&gt;
+            &lt;string&gt;org.mitre.hreader.vital.bmi&lt;/string&gt;
+            &lt;key&gt;class_name&lt;/key&gt;
+            &lt;string&gt;HRBMIVitalView&lt;/string&gt;
+            &lt;key&gt;display_name&lt;/key&gt;
+            &lt;string&gt;BMI&lt;/string&gt;
+        &lt;/dict&gt;
+        
+        &lt;!-- HTML5/CSS3-based Applet --&gt;
+        &lt;dict&gt;
+            &lt;key&gt;identifier&lt;/key&gt;
+            &lt;string&gt;org.mitre.hreader.pharmacyfinder&lt;/string&gt;
+            &lt;key&gt;class_name&lt;/key&gt;
+            &lt;string&gt;HRBrowserAppletTile&lt;/string&gt;
+            &lt;key&gt;display_name&lt;/key&gt;
+            &lt;string&gt;Pharmacy Finder&lt;/string&gt;
+            &lt;key&gt;summary_url&lt;/key&gt;
+            &lt;string&gt;http://www.pharmacyfinder.org/hreader/summary.html&lt;/string&gt;
+            &lt;key&gt;main_url&lt;/key&gt;
+            &lt;string&gt;http://www.pharmacyfinder.org/hreader/index.html&lt;/string&gt;
+        &lt;/dict&gt;
+    &lt;/array&gt;
+&lt;/plist&gt;
+</code></pre>
+
+<h4 id="requiredkeys">Required Keys</h4>
+
+<p>The system requires three keys to be defined at all times: <code>identifier</code>, <code>class_name</code>, and <code>display_name</code>.</p>
+
+<p><code>identifier</code> <strong>must</strong> be unique. It is best to define this in a reverse-dns style. For example, one of our system applets is defined as <code>org.mitre.hreader.vitals.bmi</code>.</p>
+
+<p><code>class_name</code> defines the name of the class that represents your applet tile. Instances of the class name you provide will be allocated when they are needed.</p>
+
+<p><code>display_name</code> defines the user-facing string that is shown in the Applet chooser. This is the best place to indicate to a user what your applet represents.</p>
+
+<p><strong>HTML5/CSS3-based applets</strong> need to define two additional keys so that hReader knows where to get the content for your applet.</p>
+
+<p><code>summary_url</code> is the URL to present the applet on the summary page.  Each patient has a summary page where active applets are displayed in a grid.  Each applet has a ??? x ??? pixel space to present content within the grid.</p>
+
+<p><code>main_url</code> is the URL to display content when the applet is selected in the summary grid.  When selected, the applet expands to most of the display and can provide much more detailed information.  The main URL can also provide navigation to many other pages, as needed by the applet.</p>
+
+<h4 id="optionalkeys">Optional Keys</h4>
+
+<p>The only optional key that every native iOS applet will try to load is <code>nib_name</code>. By default, all native applets will try to load a nib file that matches the class name of the applet. This key gives you the opportunity to provide a custom nib file that overrides that mechanism.</p>
+
+<p>You may also provide any keys that your applet requires. As previously mentioned, the dictionary that defines your applet is provided to you upon instantiation so that you can access any applet-specific information.</p>
+
+<h3 id="hrapplettilesubclass">HRAppletTile Subclass</h3>
+
+<p>Every applet in hReader is a subclass of <code>HRAppletTile</code>. This lets the app depend on a common class interface that defines a few properties and instance methods that can be overridden to provide custom functionality.</p>
+
+<p>At the very minimum, all applet subclasses should override <code>tileDidLoad</code>. This is the point in object creation where the nib for native applets has been loaded and the <code>patient</code> and <code>userInfo</code> properties have been set. For more information about <code>HRAppletTile</code> please visit that class’s header file.</p>
+
+<pre><code>- (void)tileDidLoad {
+    [super tileDidLoad];
+    // build your content
+}
+</code></pre>
+
+<p>This class also provides a few utility methods, one for touch handling and another for application lifecycle events. These are important for you to override so that you can respond to use events or the application going into the background.</p>
+
+<pre><code>- (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect {
+    // push a view controller, present a modal view controller, or show a popover
+}
+
+- (void)applicationDidEnterBackground {
+    // hide anything you don’t want to be seen when the application snapshot is taken
+}
+</code></pre>
+
+<h2 id="referenceimplementation">Reference Implementation</h2>
+
+<p>Here we are going to show an example implementation of an <code>HRAppletTile</code> subclass. You will see sample actions that we perform in each of the three methods that <code>HRAppletTile</code> defines.</p>
+
+<p>This applet subclass defines custom keys that represent images that will be loaded at runtime and it performs a custom action when it receives a tap.</p>
+
+<pre><code>#import &quot;HRImageAppletTile.h&quot;
+
+@implementation HRImageAppletTile
+
+- (void)tileDidLoad {
+    [super tileDidLoad];
+    [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    UIImage *tileImage = [UIImage imageNamed:[self.userInfo objectForKey:@&quot;tile_image&quot;]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:tileImage];
+    imageView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+    imageView.frame = self.bounds;
+    [self addSubview:imageView];
+}
+
+- (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect {
+    NSString *fullScreenName = [self.userInfo objectForKey:@&quot;fullscreen_image&quot;];
+    UIImage *fullScreenImage = [UIImage imageNamed:fullScreenName];
+    if (fullScreenImage) {
+        UIViewController *controller = [[UIViewController alloc] init];
+        controller.title = [self.userInfo objectForKey:@&quot;display_name&quot;];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:fullScreenImage];
+        imageView.frame = controller.view.bounds;
+        imageView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+        [controller.view addSubview:imageView];
+        [sender.navigationController pushViewController:controller animated:YES];   
+    }
+}
+
+@end
+</code></pre>
+    </div>
+</body>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          

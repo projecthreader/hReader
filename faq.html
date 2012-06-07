@@ -1,0 +1,382 @@
+<!doctype html>
+<meta charset=utf-8>
+<html>
+  <head> 
+    <title>Frequently Asked Questions About hReader</title>
+    <!-- Enable IE9 Standards mode -->
+    <meta http-equiv="X-UA-Compatible" content="IE=9" >
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css" />
+		<link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" type="text/css" />
+		<link rel="stylesheet" href="stylesheets/style.css" type="text/css" />  
+    <link rel="icon" type="image/png" href="images/hreader_icon2.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body id="top">
+  	<div class="navbar navbar-fixed-top">
+  		<div class="navbar-inner">
+  			<div class="container">
+  				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+  				</a>
+      		<a class="brand" href="index.html"><img src="images/hreader_logo_small.png" alt="hReader Logo" /></a>
+      		<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li class=""><a href="index.html">Home</a></li>
+							<li class=""><a href="about.html">About</a></li>
+							<li class=""><a href="screen_shots.html">Screen Shots</a></li>
+							<li class=""><a href="https://github.com/projecthreader">Code</a></li>
+							<li class=""><a href="documentation.html">Docs</a></li>
+							<li class=""><a href="participate.html">Participate</a></li>
+							<li class=""><a href="news.html">News</a></li>
+							<li class="active"><a href="faq.html">FAQ</a></li>
+							<li class=""><a href="contact.html">Contact</a></li>
+						</ul>
+						<ul class="nav pull-right">
+							<li><a class="right" href="http://twitter.com/projecthreader"><img src="images/twitter.png" /></a></li>
+							<li><a class="right" href="http://www.facebook.com/projecthreader"><img src="images/facebook.png" /></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container content" id="faq">
+			<h1>Frequently Asked Questions</h1>
+			<div class="row">
+				<div class="span12">
+					<h2 class="section">General Overview</h2>
+					<ul>
+						<li><a href="#description">What is hReader?</a></li>
+						<li><a href="#need">Why is hReader needed?</a></li>
+						<li><a href="#objective">What is the objective of hReader?</a></li>
+						<li><a href="#users">Who are the intended users of hReader?</a></li>
+						<li><a href="#funding">Who is funding the hReader project?</a></li>
+						<li><a href="#meaningful_use">Can hReader be used to demonstrate Meaningful Use?</a></li>
+						<li><a href="#human_factors">Does hReader have human factors specialists on the team?</a></li>
+					</ul>
+					<h2 class="section">Technical Details</h2>
+					<ul>
+						<li><a href="#operations">What is the basic theory of operations for use of hReader?</a></li>
+						<li><a href="#standards">What standards does hReader use?</a></li>
+						<li><a href="#instructions">Are there step-by-step instructions for setting up hReader from source code?</a></li>
+						<li><a href="#ios">Does hReader run under iOS?</a></li>
+						<li><a href="#iphone">Does hReader run on an iPhone or iPod Touch?</a></li>
+						<li><a href="#android">Does hReader run under Android?</a></li>
+						<li><a href="#blackberry">Does hReader run under Blackberry?</a></li>
+						<li><a href="#languages">What programming languages does hReader use?</a></li>
+					</ul>
+					<h2 class="section">Open Source</h2>
+					<ul>
+						<li><a href="#license">Under what license is hReader released?</a></li>
+						<li><a href="#communication">How is communication managed on the open source project?</a></li>
+						<li><a href="#hdata">Is hReader related to project hData?</a></li>
+						<li><a href="#rhex">Is hReader related to project RHEx?</a></li>
+						<li><a href="#hreader">Is hReader related to project popHealth?</a></li>
+						<li><a href="#contribute">Can I contribute software open source to hReader?</a></li>
+						<li><a href="#conventions">Are there coding conventions that I must follow to submit code?</a></li>
+					</ul>
+					<dl>
+						<dt id="description">What is hReader?</dt>
+						<dd>
+							hReader is a patient-centric, simple, safe, mobile health data manager that 
+							provides patients and their families with their complete health information 
+							in the palm of their hand.  It leverages the
+							<a href="http://www.projecthdata.org">hData</a> and
+							<a href="https://github.com/project-rhex/patient-data-server">RHEx</a> projects, 
+							and provides an applet framework to provide hyper-personalized 
+							“focused-on-me” applets to engage patients in their own health status and 
+							how they can improve.  hReader will be released to the open source community 
+							and available for free.
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="need">Why do we need hReader?</dt>
+						<dd>
+							Today, it is very difficult, if not impossible, for patients and families
+							to obtain their complete health information.  Patients and families 
+							often see many different providers and specialists and that data is owned 
+							and scattered across those providers.  Many patients today have little or no 
+							access to this health care data.  When it is made available to the patient, 
+							it is spread across a variety of portals and often difficult to understand.  
+							Patient-provider communication is also very sporadic and inconsistent.  All 
+							of these factors makes it very difficult to engage patients to improve their 
+							health, which results in increased office visits and higher cost.
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="objective">What is the objective of hReader?</dt>
+						<dd>
+							The desired outcome for hReader is to securely collect and capture the 
+							patient’s entire health care record to make it easy for them to understand 
+							and correct, if necessary.  By helping patients understand their individual 
+							health data and their family’s health status, and by providing a mobile 
+							platform to access that data, hReader seeks to improve the communication 
+							between patients, family members, and health care providers.  This should 
+							engage and empower patients to improve their health access protocols, 
+							security, and vision, with better results at a lower cost.
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="users">Who are the intended users of hReader?</dt>
+						<dd>
+							Patients and families.
+						</dd>
+						<dt id="funding">Who is funding the hReader project?</dt>
+						<dd>
+							The hReader project is currently being funded by 
+							<a href="http://www.mitre.org">the MITRE corporation</a>.
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="meaningful_use">Can hReader be used to demonstrate Meaningful Use?</dt>
+						<dd>
+							Stage 2 Meaningful Requirements mandates that information on allergies,
+							adverse reactions, alerts, medications, problems, procedures, and results
+							be reported.  hReader provides this information in the summary, conditions, 
+							and timeline pages.  hReader also provides information that is optional in
+							Stage 2, including encounters, functional status, immunizations, plan of
+							care, and vital signs.
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="human_factors">Does hReader have human factors specialists on the team?</dt>
+						<dd>
+							Yes, hReader has human factors specialists on the team. Human factors 
+							is a multidisciplinary field that concerns the study of how people 
+							interact with technological systems. Human factors practitioners consider 
+							the physical settings, cognitive and perceptual capabilities of the user, 
+							the organizational climate and how these factors interact with technology. 
+							The primary goal is to understand the user and develop technology that 
+							enhances what people do well and provide support for those tasks that 
+							people find difficult. Human factors has important implications for health 
+							care systems, so human factors experts apply their knowledge of human 
+							computer interaction, usability, and user interface design to improve the 
+							usability of the hReader software.
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="operations">What is the basic theory of operations for use of hReader?</dt>
+						<dd>
+							<p>
+								hReader works in conjunction with the RESTful Health Exchange project (RHEx)
+								Patient Data Server to provide patients with their data.  RHEx interfaces 
+								with a variety of different EHR systems and acts as a secure repository 
+								for patient data.  RHEx also provides a single RESTful API, which hReader 
+								uses to access the data.
+							</p>
+							<img src="images/rhex.png" />
+							<p class="after-rhex">
+								Once the patient's data is downloaded to hReader in greenCDA JSON format, 
+								it is encrypted (if the pass code has been set) and stored on the iPad so 
+								that it can be accessed even without a network connection.  Local iPad
+								storage allows the patient to control their own data, bring it to
+								their provider, and ask more informed questions about their health.
+							</p>
+							<p>
+								If a network connection is available, real-time updates are possible
+								between RHEx and hReader.
+							</p>
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="standards">What standards does hReader use?</dt>
+						<dd>
+							hReader make use of several emerging standards, both directly and 
+							indirectly, including
+							<a href="http://projecthdata.org">hData</a>
+							and the
+							<a href="https://github.com/project-rhex/patient-data-server">RHEx Patient Data Server</a>.  
+							Soon, it will also integrate with standards established by the
+							<a href="http://projectpophealth.org">popHealth</a> project.
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="instructions">Are there step-by-step instructions for setting up hReader from source code?</dt>
+						<dd>
+							Yes.  This information will be made available when the code is released.
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="ios">Does hReader run under iOS?</dt>
+						<dd>
+							Yes.  It currently runs only on the iPad, including the original iPad,
+							iPad 2, and the new iPad.
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="iphone">Does hReader run on an iPhone or iPod Touch?</dt>
+						<dd>
+							Not at this time.  Currently hReader is designed for the iPad.
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="android">Does hReader run under Android?</dt>
+						<dd>
+							Not at this time.
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="blackberry">Does hReader run under Blackberry?</dt>
+						<dd>
+							No.  There are no plans to develop hReader for Blackberry.
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="languages">What programming languages does hReader use?</dt>
+						<dd>
+							hReader runs on Apples iOS application framework. Developing new software 
+							with hReader, and/or adding new customized features, will require 
+							non-trivial software development knowledge of iOS, Objective C, or 
+							HTML5/CSS3 programming languages.
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="license">Under what license is hReader released?</dt>
+						<dd>
+							<p>
+								hReader is released under the Apache 2.0 license.
+							</p>
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="communication">How is communication managed on the open source project?</dt>
+						<dd>
+							<p>
+								The most prominent and active activities are always published on the 
+								project website. We have attempted to include enough high level 
+								information on our project site and our installation instructions 
+								available in the source code to setup the development environment for 
+								hReader. Whenever possible, please make use of our FAQ and software 
+								documentation before exploring other communication channels.
+							</p>
+							<p>
+								There are three email distribution lists which may also be used to 
+								request information about the project's plans and activities. These lists 
+								are:
+							</p>
+							<ul>
+								<li>
+									<em><a href="mailto:announcements@hreader.org">announcements@hreader.org</a></em>
+									<p>
+										Anyone can subscribe to this list.  Messages to this list are limited
+										to the hReader governing organizations.
+									</p>
+								</li>
+								<li>
+									<em><a href="mailto:talk@hreader.org">talk@hreader.org</a></em>
+									<p>
+										Like the announcement list, anyone can subscribe to this list.
+										Additionally, anyone is free to submit questions about the project to 
+										this list.  To prevent spam, all message are first reviewed by the
+										project team before being forwarded to the distribution list.
+									</p>
+								</li>
+								<li>
+									<em><a href="mailto:dev@hreader.org">dev@hreader.org</a></em>
+									<p>
+										This list is exclusively used for software development questions.
+										Membership to this list is also open to anyone.  However, we 
+										encourage individuals to limit participation to those that are
+										active software engineers.  Likewise, anyone is free to submit
+										questions about the project to this list.  Similarly, to prevent
+										spam, all messages are first reviewed by the project team before
+										being forwarded to the distribution list.
+									</p>
+								</li>
+							</ul>
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="hdata">Is hReader related to project hData?</dt>
+						<dd>
+							While hReader is not directly related to 
+							<a href="http://projecthdata.org">hData</a>, hReader depends on the
+							<a href="https://github.com/project-rhex/patient-data-server">RHEx Patient Data Server</a>
+						 	to obtain its data and RHEx depends on 
+						 	<a href="http://projecthdata.org">hData</a>.
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="rhex">Is hReader related to project RHEx?</dt>
+						<dd>
+							hReader relies on the 
+							<a href="https://github.com/project-rhex/patient-data-server">RHEx Patient Data Server</a>
+							to obtain patient Electronic Health Record (EHR) information.
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="hreader">Is hReader related to project popHealth?</dt>
+						<dd>
+							hReader will soon integrate the clinical quality measures provided by the
+							<a href="http://projectpophealth.org">popHealth</a> project.
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="contribute">Can I contribute software open source to hReader?</dt>
+						<dd>
+							<p>
+								Yes. Code contributions, bug fixes, ideas for new features, are all 
+								welcome for hReader. A requirement for contributing software is that 
+								any and all software contributed to hReader is released under an 
+								Apache 2.0 open source distribution license, and that you transfer 
+								copyright of any code or patches you submit to the project. Source code 
+								contributions, as well as dialog/discussions for feature requests and 
+								enhancements will be publicly reviewed and vetted by the hReader 
+								project's governing organizations.
+							</p>
+							<p>
+								To submit a new feature for consideration into the hReader repository, 
+								setup an account on GitHub. Fork the hReader code, and create a branch 
+								of hReader on your repository. Send the link to your hReader branch 
+								to the hReader developer email list, and cite either an existing bug 
+								or feature from the hReader project tracker to specify the changes 
+								that you are contributing.
+							</p>
+							<p>
+								If you have suggestions on new features, or want to report a bug that has 
+								not yet been tracked, send an email to the developer email list with 
+								either the details to reproduce a bug, or detailed description about a 
+								suggested feature that you would like to see added to hReader.		
+							</p>				
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+						<dt id="conventions">Are there coding conventions that I must follow to submit code?</dt>
+						<dd>
+							Yes. The hReader open source community is dedicated to ensuring that the 
+							quality of the software source code is always supporting very high 
+							standards. There is an Objective-C code convention requirement and any 
+							additional features added to the hReader project must include mature unit 
+							tests to ensure that the intended feature is performing correctly.
+							<a class="top" href="#top">Back to top</a>
+						</dd>
+					</dl>
+				</div>
+			</div>
+ 			<div class="row" id="footer">
+ 				<div class="span4" id="twitter">
+ 					<h3><a href="http://www.twitter.com/projecthreader">TWITTER UPDATES</a></h3>
+ 					<ul>
+ 						<li>
+ 							<a href="http://www.twitter.com/projecthreader" class="handle">hreader</a>: 
+ 							Just released two new applets!
+ 						</li>
+ 					</ul>
+ 				</div>
+ 				<div class="span4" id="menu">
+ 					<h3><a href="news.html">LATEST APPLETS</a></h3>
+ 					<ul>
+ 						<li>Oxygen Saturation</li>
+ 						<li>Respiratory Rate</li>
+ 					</ul>
+ 				</div>
+ 				<div class="span4" id="contact">
+ 					<h3><a href="contact.html">CONTACT</a></h3>
+					<ul>
+						<li><a href="mailto:talk@hreader.org">Talk list</a></li>
+						<li><a href="mailto:dev@hreader.org">Developer list</a></li>
+					</ul>
+ 				</div>
+ 			</div>
+ 			<div class="row" id="postscript">
+ 				<div class="span6" id="host">
+ 					<a href="http://github.com/">
+ 						<img src="images/github_icon.png" alt="GitHub Logo"/>
+ 					</a>
+ 				</div>
+ 				<div class="span6" id="disclaimer">
+ 					<em>
+ 						All data and information in hReader screen shots are associated with 
+ 						fictional individuals.
+ 					</em>
+ 				</div>
+ 			</div>
+		</div>
+	</body>
+  <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+</html>
