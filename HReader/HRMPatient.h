@@ -22,7 +22,7 @@ typedef enum {
     HRMPatientRelationshipOther
 } HRMPatientRelationship;
 
-//extern NSString * const HRMPatientSyncStatusDidChangeNotification;
+extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 
 @class HRMEntry;
 @class DDXMLElement;

@@ -19,8 +19,6 @@
 #endif
 
 static NSString *HRMPatientSyncStatus = nil;
-static NSString *HRMPatientSyncStatusLock = @"lock";
-static dispatch_queue_t sync_queue = NULL;
 NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncStatusDidChange";
 
 @interface HRMPatient ()
@@ -33,6 +31,13 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
  */
 - (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptor:(NSSortDescriptor *)sortDescriptor;
 - (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptor:(NSSortDescriptor *)sortDescriptor predicate:(NSPredicate *)predicate;
+
+/*
+ 
+ 
+ 
+ */
++ (void)setSyncStatus:(NSString *)status;
 
 @end
 
@@ -54,12 +59,6 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
 
 #pragma mark - class methods
 
-+ (void)initialize {
-    if (self == [HRMPatient class]) {
-        sync_queue = dispatch_queue_create("org.mitre.hreader.patient-sync-queue", DISPATCH_QUEUE_SERIAL);
-    }
-}
-
 + (id)instanceInContext:(NSManagedObjectContext *)context {
     HRMPatient *patient = [super instanceInContext:context];
     patient.displayOrder = [NSNumber numberWithLong:LONG_MAX];
@@ -70,27 +69,32 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     return patient;
 }
 
-+ (NSString *)syncStatus {
-    @synchronized(HRMPatientSyncStatusLock) {
-        return HRMPatientSyncStatus;
++ (void)setSyncStatus:(NSString *)status {
+    @synchronized(self) {
+        NSLog(@"%@", status);
+        HRMPatientSyncStatus = status;
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:HRMPatientSyncStatusDidChangeNotification
+         object:nil];
     }
 }
 
++ (NSString *)syncStatus {
+    NSString *status = nil;
+    @synchronized(self) {
+        status = HRMPatientSyncStatus;
+    }
+    return status;
+}
+
 + (void)performSync {
-    dispatch_async(sync_queue, ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         
-        // status message
-//        dispatch_sync(dispatch_get_main_queue(), ^{
-//            HRMPatientSyncStatus = @"Starting sync...";
-//            NSLog(@"%@", HRMPatientSyncStatus);
-//            [[NSNotificationCenter defaultCenter]
-//             postNotificationName:HRMPatientSyncStatusDidChangeNotification
-//             object:nil];
-//        });
+        // log
+        [self setSyncStatus:@"Starting sync…"];
         
         // get context
-        NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
-        [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
+        NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
         
         // iterate over patients
         NSArray *patients = [self allInContext:context];
@@ -100,26 +104,13 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
             [client
              JSONForPatientWithIdentifier:obj.serverID
              startBlock:^{
-                 NSLog(@"%@", [NSString stringWithFormat:@"Syncing %@", [obj compositeName]]);
-//                 dispatch_sync(dispatch_get_main_queue(), ^{
-//                     HRMPatientSyncStatus = [NSString stringWithFormat:@"Syncing %@", [obj compositeName]];
-//                     NSLog(@"%@", HRMPatientSyncStatus);
-//                     [[NSNotificationCenter defaultCenter]
-//                      postNotificationName:HRMPatientSyncStatusDidChangeNotification
-//                      object:nil];
-//                 });
+                 [self setSyncStatus:[NSString stringWithFormat:@"Syncing %@…", [obj compositeName]]];
              }
              finishBlock:^(NSDictionary *payload) {
                  [obj populateWithContentsOfDictionary:payload];
                  if (idx == (count - 1)) {
                      [context save:nil];
-//                     dispatch_sync(dispatch_get_main_queue(), ^{
-//                         HRMPatientSyncStatus = nil;
-//                         NSLog(@"%@", HRMPatientSyncStatus);
-//                         [[NSNotificationCenter defaultCenter]
-//                          postNotificationName:HRMPatientSyncStatusDidChangeNotification
-//                          object:nil];
-//                     });
+                     [self setSyncStatus:nil];
                  }
              }];
             
