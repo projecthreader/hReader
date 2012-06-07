@@ -1,0 +1,240 @@
+em {
+	color: #D61F29;
+}
+
+a.brand {
+	margin-top: 1px;
+}
+
+h1 {
+	font-weight: normal;
+	text-align: left;
+	color: #444444;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+h1.logo {
+	text-align: center;
+	font-size: 32px;
+	vertical-align: bottom;
+	padding-bottom: 50px;
+}
+
+h2 {
+	font-weight: normal;
+	text-align: left;
+	color: #D61F29;
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+
+h2.section {
+	color: #444444;
+}
+
+ul, p, dd {
+	font-size: 16px;
+	line-height: 24px;
+	color: #444444;
+}
+
+li {
+	line-height: 24px;
+}
+
+dl {
+	padding-top: 40px;
+}
+
+dt {
+	padding-top: 60px;
+	padding-bottom: 30px;
+	font-size: 24px;
+	font-weight: normal;
+	color: #D61F29;
+}
+
+.navbar-inner {
+  background-color: #cccccc;
+  background-image: -moz-linear-gradient(top, #ffffff, #aaaaaa);
+  background-image: -ms-linear-gradient(top, #ffffff, #aaaaaa);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#aaaaaa));
+  background-image: -webkit-linear-gradient(top, #ffffff, #aaaaaa);
+  background-image: -o-linear-gradient(top, #ffffff, #aaaaaa);
+  background-image: linear-gradient(top, #ffffff, #aaaaaa);
+}
+
+.navbar .nav > li > a {
+	margin-top: 5px;
+	font-size: 18px;
+	padding: 9px 10px 15px;
+	text-shadow: none;
+	color: #444444;
+}
+
+.navbar .nav > li > a.soon {
+	padding: 9px 10px 9px;
+}
+
+.navbar .nav > li > a.right {
+	padding: 0px;
+	margin-top: 3px;
+}
+
+#slides { 
+	position: relative; 
+	width: 864px; 
+	height: 530px;
+	z-index: -100;
+}
+
+#slides img { 
+	position: absolute; 
+	left: 0; 
+	top: 0; 
+}
+
+#shadow {
+	z-index: -1000;
+	position: relative;
+	left: 0px;
+	top: 565px;
+}
+
+#splash {
+	padding-top: 30px;
+}
+
+#taglines {	
+	text-align: center;
+	padding-top: 50px;
+}
+
+#taglines a {
+	font-size: 18px;
+}
+
+.tagline {
+	color: #444444;
+	font-weight: normal;
+	text-align: center;
+	font-size: 28px;
+	line-height: 60px;
+}
+
+div.content {
+	padding-top: 60px;
+}
+
+div#index {
+	padding-top: 50px;
+}
+
+#sections {
+	outline: 1px solid #dddddd;
+	border-top: 1px solid #dddddd;
+	background-color: #eeeeee;
+  background-image: -moz-linear-gradient(top, #eeeeee, #ffffff);
+  background-image: -ms-linear-gradient(top, #eeeeee, #ffffff);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#ffffff));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #ffffff);
+  background-image: -o-linear-gradient(top, #eeeeee, #ffffff);
+  background-image: linear-gradient(top, #eeeeee, #ffffff);
+  padding-bottom: 10px;
+}
+
+#spotlight, #applets {
+	border-right: 0px solid gray;
+}
+
+#screen_shots .row {
+	padding-top: 30px;
+}
+
+.caption {
+	padding-top: 10px;
+	text-align: center;
+}
+
+#footer {
+	color: #eeeeee;
+	margin-top: 40px;
+  background-color: #D61F29;
+  padding-bottom: 20px;
+}
+
+#footer h3 {
+	font-weight: normal;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+#footer ul {
+	list-style-type: none;
+	font-size: 14px;
+	color: #eeeeee;
+}
+
+#footer a {
+	color: #eeeeee
+}
+
+#postscript {
+	padding-top: 10px;
+}
+
+#participate h2 {
+	padding-bottom: 0px;
+}
+
+#participate h3 {
+	padding-top: 20px;
+}
+
+#participate ul, #footer ul, #contact ul {
+	list-style-type: none;
+}
+
+#participate li, #footer li, #contact li {
+	margin-left: -25px;
+}
+
+#pdf {
+	padding-top: 30px;
+}
+
+a.top {
+	display: block;
+	padding-top: 10px;
+}
+
+a.handle {
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+#date .month {
+	display: block;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+#date .year {
+	display: block;
+	color: #D61F29;
+	font-size: 36px;
+}
+
+#documents li {
+	padding-bottom: 15px;
+}
+
+#faq img {
+	text-align: center;
+}
+
+p.after-rhex {
+	margin-top: 20px;
+}
