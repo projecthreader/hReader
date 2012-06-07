@@ -155,9 +155,10 @@
     
     // unlocked
     else if (HRCryptoManagerIsUnlocked()) {
+        NSArray *hosts = [HRAPIClient hosts];
         
         // check for accounts
-        if ([[HRAPIClient accounts] count] == 0) {
+        if ([hosts count] == 0) {
             id controller = [HRRHExLoginViewController loginViewControllerWithHost:@"growing-spring-4857.herokuapp.com"];
             [[controller navigationItem] setHidesBackButton:YES];
             [(id)self.window.rootViewController pushViewController:controller animated:YES];
@@ -166,6 +167,8 @@
         
         // check user interface
         else if ([[(id)self.window.rootViewController topViewController] isKindOfClass:[HRSplashScreenViewController class]]) {
+            NSString *host = [hosts lastObject];
+            [[HRAPIClient clientWithHost:host] patientFeed:nil];
             [HRMPatient performSync];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
             id controller = [storyboard instantiateViewControllerWithIdentifier:@"PeopleSetupViewController"];
