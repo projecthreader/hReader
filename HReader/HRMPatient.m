@@ -80,11 +80,9 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
 }
 
 + (NSString *)syncStatus {
-    NSString *status = nil;
     @synchronized(self) {
-        status = HRMPatientSyncStatus;
+        return HRMPatientSyncStatus;
     }
-    return status;
 }
 
 + (void)performSync {
