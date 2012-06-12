@@ -1,14 +1,14 @@
 //
-//  TBITrackerDashboard.m
+//  MoCATest.m
 //  HReader
 //
-//  Created by Lindsay Kaye on 5/15/12.
+//  Created by Kiley, Thomas L. on 6/4/12.
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
-#import "TBITrackerDashboard.h"
+#import "MoCATest.h"
 
-@implementation TBITrackerDashboard
+@implementation MoCATest
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,11 +29,20 @@
 
 #pragma mark - View lifecycle
 
+/*
+// Implement loadView to create a view hierarchy programmatically, without using a nib.
+- (void)loadView
+{
+}
+*/
+
+/*
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
+*/
 
 - (void)viewDidUnload
 {
@@ -47,16 +56,5 @@
     // Return YES for supported orientations
 	return YES;
 }
-
-- (IBAction) mocaButtonTap: (id) sender {
-    //Note sender is the button
-    
-    UIStoryboard *mocaTest = [UIStoryboard storyboardWithName:@"MoCATest" bundle:nil];
-    UIViewController *controller = [mocaTest instantiateInitialViewController];
-    controller.title = @"MoCA Test";
-    [self.navigationController pushViewController:controller animated:YES];
-    //[self.parentViewController.navigationController pushViewController:controller animated:YES];
-}
-
 
 @end
