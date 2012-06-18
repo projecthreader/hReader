@@ -52,7 +52,8 @@ void HRCryptoManagerPurge(void);
 
 /*
  
- 
+ Unlock the application given the appropriate data. Each of these functions
+ returns whether the app has been successfully unlocked.
  
  */
 BOOL HRCryptoManagerUnlockWithPasscode(NSString *passcode);
@@ -61,7 +62,8 @@ BOOL HRCryptoManagerIsUnlocked(void);
 
 /*
  
- 
+ Set new authentication information. These may only be called when the app is
+ unlocked.
  
  */
 void HRCryptoManagerUpdatePasscode(NSString *passcode);
@@ -83,7 +85,3 @@ void HRCryptoManagerSetKeychainItemString(NSString *service, NSString *account, 
  
  */
 NSArray * HRCryptoManagerSecurityQuestions(void);
-
-@interface HRCryptoManager : NSObject
-
-@end

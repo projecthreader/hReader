@@ -143,12 +143,14 @@ static NSData * HRCryptoManagerDecrypt_private(NSData *data, NSString *key) {
 #pragma mark - public methods
 
 BOOL HRCryptoManagerHasPasscode(void) {
-    return ([SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount] != nil);
+    return ([SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount] != nil &&
+            [SSKeychain passwordDataForService:HRKeychainService account:HRPasscodeKeychainAccount]);
 }
 
 BOOL HRCryptoManagerHasSecurityQuestions(void) {
     return ([SSKeychain passwordDataForService:HRKeychainService account:HRSecurityQuestionsKeychainAccount] != nil &&
-            [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount]);
+            [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount] &&
+            [SSKeychain passwordDataForService:HRKeychainService account:HRSecurityAnswersKeychainAccount]);
 }
 
 void HRCryptoManagerStoreTemporarySecurityQuestionsAndAnswers(NSArray *questions, NSArray *answers) {
@@ -247,8 +249,8 @@ void HRCryptoManagerUpdateSecurityQuestionsAndAnswers(NSArray *questions, NSArra
         NSString *answersString = [answers componentsJoinedByString:@""];
         
         // write clear questions
-        NSData *questions = [NSJSONSerialization dataWithJSONObject:questions options:0 error:nil];
-        [SSKeychain setPasswordData:questions forService:HRKeychainService account:HRSecurityQuestionsKeychainAccount];
+        NSData *questionsData = [NSJSONSerialization dataWithJSONObject:questions options:0 error:nil];
+        [SSKeychain setPasswordData:questionsData forService:HRKeychainService account:HRSecurityQuestionsKeychainAccount];
         
         // write  encrypted shared key
         NSData *keyData = [_temporaryKey dataUsingEncoding:NSUTF8StringEncoding];
@@ -292,7 +294,3 @@ NSArray * HRCryptoManagerSecurityQuestions(void) {
     NSData *questions = [SSKeychain passwordDataForService:HRKeychainService account:HRSecurityQuestionsKeychainAccount];
     return [NSJSONSerialization JSONObjectWithData:questions options:0 error:nil];
 }
-
-@implementation HRCryptoManager
-
-@end
