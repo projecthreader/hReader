@@ -15,12 +15,13 @@
 
 // keychain keys
 
-static NSString * const HRKeychainService = @"org.mitre.hreader.security.2";
+static NSString * const HRKeychainService = @"org.hreader.security.2";
 static NSString * const HRSecurityQuestionsKeychainAccount = @"security_questions";
 static NSString * const HRSecurityAnswersKeychainAccount = @"security_answers";
 static NSString * const HRPasscodeKeychainAccount = @"passcode";
 static NSString * const HRSharedKeyPasscodeKeychainAccount = @"shared_key_passcode";
 static NSString * const HRSharedKeySecurityAnswersKeychainAccount = @"shared_key_security_answers";
+static NSString * const HRKeychainIdentifierFlag = @"org.hreader.security.flag";
 
 // static variables
 
@@ -187,9 +188,10 @@ void HRCryptoManagerPurge(void) {
 
 BOOL HRCryptoManagerUnlockWithPasscode(NSString *passcode) {
     NSCAssert(passcode, @"The passcode must not be nil");
-    NSData *one = [SSKeychain passwordDataForService:HRKeychainService account:HRPasscodeKeychainAccount];
-    NSData *two = HRCryptoManagerHashString(passcode);
-    if ([one isEqualToData:two]) {
+    NSData *encryptedIdentifierData = [SSKeychain passwordDataForService:HRKeychainService account:HRPasscodeKeychainAccount];
+    NSData *identifierData = HRCryptoManagerDecrypt_private(encryptedIdentifierData, passcode);
+    NSString *identifier = [[NSString alloc] initWithData:identifierData encoding:NSUTF8StringEncoding];
+    if ([identifier isEqualToString:HRKeychainIdentifierFlag]) {
         NSData *encryptedKey = [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount];
         NSData *decryptedKey = HRCryptoManagerDecrypt_private(encryptedKey, passcode);
         if (decryptedKey) {
@@ -202,10 +204,11 @@ BOOL HRCryptoManagerUnlockWithPasscode(NSString *passcode) {
 
 BOOL HRCryptoManagerUnlockWithAnswersForSecurityQuestions(NSArray *answers) {
     NSCAssert(answers, @"The answers must not be nil");
-    NSData *one = [SSKeychain passwordDataForService:HRKeychainService account:HRSecurityAnswersKeychainAccount];
-    NSData *two = [NSJSONSerialization dataWithJSONObject:answers options:0 error:nil];
-    two = HRCryptoManagerHashData(one);
-    if ([one isEqualToData:two]) {
+    NSString *answersString = [answers componentsJoinedByString:@""];
+    NSData *encryptedIdentifierData = [SSKeychain passwordDataForService:HRKeychainService account:HRSecurityAnswersKeychainAccount];
+    NSData *identifierData = HRCryptoManagerDecrypt_private(encryptedIdentifierData, answersString);
+    NSString *identifier = [[NSString alloc] initWithData:identifierData encoding:NSUTF8StringEncoding];
+    if ([identifier isEqualToString:HRKeychainIdentifierFlag]) {
         NSData *encryptedKey = [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount];
         NSData *decryptedKey = HRCryptoManagerDecrypt_private(encryptedKey, [answers componentsJoinedByString:@""]);
         if (decryptedKey) {
@@ -224,14 +227,15 @@ void HRCryptoManagerUpdatePasscode(NSString *passcode) {
     NSCAssert(passcode, @"The passcode must not be nil");
     if (_temporaryKey) {
         
-        // write shared key
+        // write encrypted shared key
         NSData *keyData = [_temporaryKey dataUsingEncoding:NSUTF8StringEncoding];
         NSData *encryptedKeyData = HRCryptoManagerEncrypt_private(keyData, passcode);
         [SSKeychain setPasswordData:encryptedKeyData forService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount];
         
-        // write hashed passcode
-        NSData *hashedData = HRCryptoManagerHashString(passcode);
-        [SSKeychain setPasswordData:hashedData forService:HRKeychainService account:HRPasscodeKeychainAccount];
+        // write encrypted identifier
+        NSData *identifierData = [HRKeychainIdentifierFlag dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *encryptedIdentifierData = HRCryptoManagerEncrypt_private(identifierData, passcode);
+        [SSKeychain setPasswordData:encryptedIdentifierData forService:HRKeychainService account:HRPasscodeKeychainAccount];
         
     }
 }
@@ -240,20 +244,21 @@ void HRCryptoManagerUpdateSecurityQuestionsAndAnswers(NSArray *questions, NSArra
     NSCAssert(questions, @"The questions must not be nil");
     NSCAssert(answers, @"The answers must not be nil");
     if (_temporaryKey) {
-        
-        // write  shared key
-        NSData *keyData = [_temporaryKey dataUsingEncoding:NSUTF8StringEncoding];
-        NSData *encryptedData = HRCryptoManagerEncrypt_private(keyData, [_temporaryAnswers componentsJoinedByString:@""]);
-        [SSKeychain setPasswordData:encryptedData forService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount];
+        NSString *answersString = [answers componentsJoinedByString:@""];
         
         // write clear questions
-        NSData *questions = [NSJSONSerialization dataWithJSONObject:_temporaryQuestions options:0 error:nil];
+        NSData *questions = [NSJSONSerialization dataWithJSONObject:questions options:0 error:nil];
         [SSKeychain setPasswordData:questions forService:HRKeychainService account:HRSecurityQuestionsKeychainAccount];
         
-        // write hashed answers
-        NSData *answers = [NSJSONSerialization dataWithJSONObject:_temporaryAnswers options:0 error:nil];
-        answers = HRCryptoManagerHashData(answers);
-        [SSKeychain setPasswordData:answers forService:HRKeychainService account:HRSecurityAnswersKeychainAccount];
+        // write  encrypted shared key
+        NSData *keyData = [_temporaryKey dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *encryptedData = HRCryptoManagerEncrypt_private(keyData, answersString);
+        [SSKeychain setPasswordData:encryptedData forService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount];
+        
+        // write encrypted identifier
+        NSData *identifierData = [HRKeychainIdentifierFlag dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *encryptedIdentifierData = HRCryptoManagerEncrypt_private(identifierData, answersString);
+        [SSKeychain setPasswordData:encryptedIdentifierData forService:HRKeychainService account:HRSecurityAnswersKeychainAccount];
         
     }
 }
