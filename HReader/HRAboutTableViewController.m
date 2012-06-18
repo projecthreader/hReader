@@ -103,13 +103,13 @@
     
     // passcode cell
     else if ([cell.reuseIdentifier isEqualToString:@"ChangePasscodeCell"]) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
-        PINCodeViewController *PIN = [storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
-        PIN.mode = PINCodeViewControllerModeVerify;
-        PIN.title = @"Enter Passcode";
-        PIN.messageText = @"Enter your passcode";
-        PIN.errorText = @"Incorrect passcode";
-        PIN.delegate = (HRAppDelegate *)[[UIApplication sharedApplication] delegate];
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
+//        PINCodeViewController *PIN = [storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
+//        PIN.mode = PINCodeViewControllerModeVerify;
+//        PIN.title = @"Enter Passcode";
+//        PIN.messageText = @"Enter your passcode";
+//        PIN.errorText = @"Incorrect passcode";
+//        PIN.delegate = (HRAppDelegate *)[[UIApplication sharedApplication] delegate];
 //        PIN.userInfo = @"change_passcode";
 //        PIN.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
 //                                                initWithBarButtonSystemItem:UIBarButtonSystemItemCancel

@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 
-#import "PINCodeViewController.h"
-#import "PINSecurityQuestionsViewController.h"
-
 @interface HRAboutTableViewController : UITableViewController <MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet UILabel *versionLabel;

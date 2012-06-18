@@ -43,6 +43,78 @@
             </objects>
             <point key="canvasLocation" x="-218" y="-515"/>
         </scene>
+        <!--Passcode View Controller - Title-->
+        <scene sceneID="N3K-w8-E5b">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QU7-G2-qI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="CreatePasscodeViewController" id="4zr-1M-trb" customClass="HRPasscodeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z3i-Nr-DEi">
+                        <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="LYH-0K-SbB">
+                                <rect key="frame" x="212" y="52" width="600" height="141"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Passcode" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" id="a9A-pq-hwx">
+                                        <rect key="frame" x="15" y="86" width="570" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                        <connections>
+                                            <action selector="textFieldTextDidChange:" destination="4zr-1M-trb" eventType="editingChanged" id="0Ka-Jq-wkE"/>
+                                            <outlet property="delegate" destination="4zr-1M-trb" id="nwv-4h-Ddi"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Passcode" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" id="AM3-E7-vci">
+                                        <rect key="frame" x="15" y="15" width="570" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                        <connections>
+                                            <action selector="textFieldTextDidChange:" destination="4zr-1M-trb" eventType="editingChanged" id="VbZ-zV-25T"/>
+                                            <outlet property="delegate" destination="4zr-1M-trb" id="9F1-0P-Eap"/>
+                                        </connections>
+                                    </textField>
+                                    <view contentMode="scaleToFill" id="M56-o4-vAm" userLabel="Divider">
+                                        <rect key="frame" x="0.0" y="70" width="600" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.79000000000000004" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Your passcode must be at least 8 characters in length and have one lowercase letter, one uppercase letter, and one number." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Wnn-43-xPF">
+                                <rect key="frame" x="262" y="219" width="500" height="91"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.25" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.92000000000000004" alpha="1" colorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="W9b-SY-ftR">
+                        <barButtonItem key="rightBarButtonItem" title="Next" style="done" id="Hhl-h6-BzB">
+                            <connections>
+                                <action selector="create:" destination="4zr-1M-trb" id="Hrr-5N-8hb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="dividerView" destination="M56-o4-vAm" id="515-vZ-Fdv"/>
+                        <outlet property="passcodeOneField" destination="AM3-E7-vci" id="jnI-VP-9C1"/>
+                        <outlet property="passcodeTwoField" destination="a9A-pq-hwx" id="9im-gk-lef"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-218" y="1390"/>
+        </scene>
         <!--People Setup View Controller - Configure Family-->
         <scene sceneID="fzF-xi-oDW">
             <objects>
@@ -200,6 +272,120 @@
             </objects>
             <point key="canvasLocation" x="1004" y="-106"/>
         </scene>
+        <!--Passcode View Controller - Title-->
+        <scene sceneID="rSU-lD-Yx8">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Yd-97-KjL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="VerifyPasscodeViewController" id="HUK-hN-tT9" customClass="HRPasscodeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SdH-Qh-4Yx">
+                        <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="b26-g1-799">
+                                <rect key="frame" x="212" y="144" width="600" height="100"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Passcode" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" id="SCb-Wh-Sjs">
+                                        <rect key="frame" x="15" y="30" width="570" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                        <connections>
+                                            <action selector="textFieldTextDidChange:" destination="HUK-hN-tT9" eventType="editingChanged" id="FCj-3V-ORg"/>
+                                            <outlet property="delegate" destination="HUK-hN-tT9" id="Q9K-3A-TCa"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="hReader" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="toW-Vh-CfH">
+                                <rect key="frame" x="212" y="61" width="600" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.25" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.92000000000000004" alpha="1" colorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="OUR-DL-eYI">
+                        <barButtonItem key="rightBarButtonItem" title="Login" style="done" id="xMQ-cZ-WvQ">
+                            <connections>
+                                <action selector="verify:" destination="HUK-hN-tT9" id="FcW-i2-3Vt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="passcodeOneField" destination="SCb-Wh-Sjs" id="BjD-Tg-KEl"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1004" y="1390"/>
+        </scene>
+        <!--Security Questions View Controller - Title-->
+        <scene sceneID="4SV-Kk-DIT">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jhe-03-OQT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="SecurityQuestionsController" id="HXH-Vd-1VY" customClass="HRSecurityQuestionsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="etU-nl-wPh">
+                        <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="70" sectionHeaderHeight="10" sectionFooterHeight="10" id="BXf-O4-AqO">
+                                <rect key="frame" x="212" y="0.0" width="600" height="704"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TextFieldCell" id="jTk-Zl-qcG">
+                                        <rect key="frame" x="0.0" y="54" width="600" height="72"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="36" y="1" width="528" height="69"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Text Field" adjustsFontSizeToFit="NO" minimumFontSize="17" id="Ruo-BI-GAC" customClass="HRSecurityQuestionsTextField">
+                                                    <rect key="frame" x="10" y="15" width="508" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <action selector="valueChanged:" destination="HXH-Vd-1VY" eventType="editingChanged" id="qGL-GV-UZF"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="HXH-Vd-1VY" id="IfO-1x-9zh"/>
+                                    <outlet property="delegate" destination="HXH-Vd-1VY" id="v07-bi-q8n"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.92000000000000004" alpha="1" colorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="H2f-Dc-pjj">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="qOn-sD-XCB">
+                            <connections>
+                                <action selector="done" destination="HXH-Vd-1VY" id="iWO-NF-aRm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="BXf-O4-AqO" id="ogf-QW-Obj"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2218" y="1390"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AppLogo.png" width="448" height="104"/>
@@ -210,6 +396,17 @@
             <relationships>
                 <relationship kind="outlet" name="gridViewDataSource"/>
                 <relationship kind="outlet" name="gridViewDelegate"/>
+            </relationships>
+        </class>
+        <class className="HRPasscodeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRPasscodeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="create:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="textFieldTextDidChange:" candidateClass="UITextField"/>
+                <relationship kind="action" name="verify:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="dividerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="passcodeOneField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passcodeTwoField" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="HRPeopleSetupPlaceHolderView" superclassName="UIView">

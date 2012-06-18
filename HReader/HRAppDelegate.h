@@ -8,15 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-#import "PINSecurityQuestionsViewController.h"
-#import "PINCodeViewController.h"
+#import "HRSecurityQuestionsViewController.h"
 
 @interface HRAppDelegate : UIResponder
 
 <
 UIApplicationDelegate,
-PINSecurityQuestionsViewControllerDelegate,
-PINCodeViewControllerDelegate
+HRSecurityQuestionsViewControllerDelegate
 >
 
 @property (strong, nonatomic) UIWindow *window;

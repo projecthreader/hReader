@@ -89,7 +89,7 @@
 		3B4366061540A2890009F892 /* ts-4-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365D31540A2890009F892 /* ts-4-tile.png */; };
 		3B4366071540A2890009F892 /* ts-5-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365D41540A2890009F892 /* ts-5-overview.png */; };
 		3B4366081540A2890009F892 /* ts-5-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365D51540A2890009F892 /* ts-5-tile.png */; };
-		3B651F7A157E8F0D0007817C /* CMDActivityHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B651F79157E8F0D0007817C /* CMDActivityHUD.m */; };
+		3B651F7A157E8F0D0007817C /* CMDActivityHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B651F79157E8F0D0007817C /* CMDActivityHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B651F7F157FC8B50007817C /* interstitial_closebox-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B651F7B157FC8B50007817C /* interstitial_closebox-down.png */; };
 		3B651F80157FC8B50007817C /* interstitial_closebox-down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B651F7C157FC8B50007817C /* interstitial_closebox-down@2x.png */; };
 		3B651F81157FC8B50007817C /* interstitial_closebox.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B651F7D157FC8B50007817C /* interstitial_closebox.png */; };
@@ -119,6 +119,9 @@
 		3B77F054155474DE003C2DBD /* HRBMIVitalAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */; };
 		3BA3E7DE15595F090095A5CC /* GCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3E7DD15595F090095A5CC /* GCAlertView.m */; };
 		3BA7F18F1577EFCF00D4EB09 /* HRCryptoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA7F18E1577EFCF00D4EB09 /* HRCryptoManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		3BB16A98158FB7B100CF34A6 /* HRSecurityQuestionsTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB16A95158FB7B000CF34A6 /* HRSecurityQuestionsTextField.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		3BB16A99158FB7B100CF34A6 /* HRSecurityQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB16A97158FB7B000CF34A6 /* HRSecurityQuestionsViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		3BB3F0C015823AFB00C1EC1D /* HRPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB3F0BF15823AFB00C1EC1D /* HRPasscodeViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BB9C27F151B8AEF00527C20 /* HRKeychainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; };
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
@@ -132,11 +135,6 @@
 		3BF32214153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF32212153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BFBEE1A1534BEAA009EBA2D /* HRAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BFBEE1C1534BF32009EBA2D /* HReaderApplets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */; };
-		3BFE7A2714DADE2B0037738D /* PINCodeBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2114DADE2B0037738D /* PINCodeBackground.png */; };
-		3BFE7A2814DADE2B0037738D /* PINCodeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2214DADE2B0037738D /* PINCodeButton.png */; };
-		3BFE7A2914DADE2B0037738D /* PINCodeDeleteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2314DADE2B0037738D /* PINCodeDeleteButton.png */; };
-		3BFE7A2A14DADE2B0037738D /* PINCodeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2414DADE2B0037738D /* PINCodeStoryboard.storyboard */; };
-		3BFE7A2B14DADE2B0037738D /* PINCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2614DADE2B0037738D /* PINCodeViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2D14DAE5910037738D /* Icon-72.png */; };
 		94026FB414B4A8A600F40185 /* timeline in Resources */ = {isa = PBXBuildFile; fileRef = 94026FB314B4A8A600F40185 /* timeline */; };
 		940C046C152B6ADF00834416 /* hs-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C0467152B6ADF00834416 /* hs-synthetic.json */; };
@@ -223,8 +221,6 @@
 		94E078C61538A4570051DC01 /* multiple_sclerosis_summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078BF1538A4570051DC01 /* multiple_sclerosis_summary.png */; };
 		94E078C71538A4570051DC01 /* pophealth-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078C01538A4570051DC01 /* pophealth-summary.png */; };
 		94E84E7014FEBC390091B0A1 /* NSArray+Collect.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E84E6F14FEBC390091B0A1 /* NSArray+Collect.m */; };
-		94F4CB611507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F4CB601507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		94F4CB651507E87E00EFEA43 /* PINCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F4CB641507E87E00EFEA43 /* PINCodeTextField.m */; };
 		94F871F41535D9F60018AF13 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F871F31535D9F60018AF13 /* libz.dylib */; };
 		C3390523155D536B00E77EBF /* HReaderConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */; };
 		DD124DAE148D3EF300E23A44 /* Doctor.png in Resources */ = {isa = PBXBuildFile; fileRef = DD124DAD148D3EF300E23A44 /* Doctor.png */; };
@@ -369,6 +365,12 @@
 		3BA3E7DD15595F090095A5CC /* GCAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAlertView.m; sourceTree = "<group>"; };
 		3BA7F18D1577EFCF00D4EB09 /* HRCryptoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCryptoManager.h; sourceTree = "<group>"; };
 		3BA7F18E1577EFCF00D4EB09 /* HRCryptoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCryptoManager.m; sourceTree = "<group>"; };
+		3BB16A94158FB7B000CF34A6 /* HRSecurityQuestionsTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; path = HRSecurityQuestionsTextField.h; sourceTree = "<group>"; };
+		3BB16A95158FB7B000CF34A6 /* HRSecurityQuestionsTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSecurityQuestionsTextField.m; sourceTree = "<group>"; };
+		3BB16A96158FB7B000CF34A6 /* HRSecurityQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = HRSecurityQuestionsViewController.h; sourceTree = "<group>"; };
+		3BB16A97158FB7B000CF34A6 /* HRSecurityQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSecurityQuestionsViewController.m; sourceTree = "<group>"; };
+		3BB3F0BE15823AFB00C1EC1D /* HRPasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPasscodeViewController.h; sourceTree = "<group>"; };
+		3BB3F0BF15823AFB00C1EC1D /* HRPasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPasscodeViewController.m; sourceTree = "<group>"; };
 		3BB9C27D151B8AEF00527C20 /* HRKeychainManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRKeychainManager.h; sourceTree = "<group>"; };
 		3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRKeychainManager.m; sourceTree = "<group>"; };
 		3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hReader.xcdatamodel; sourceTree = "<group>"; };
@@ -399,12 +401,6 @@
 		3BFBEE181534BEAA009EBA2D /* HRAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAppletTile.h; sourceTree = "<group>"; };
 		3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAppletTile.m; sourceTree = "<group>"; };
 		3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HReaderApplets.plist; sourceTree = "<group>"; };
-		3BFE7A2114DADE2B0037738D /* PINCodeBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PINCodeBackground.png; sourceTree = "<group>"; };
-		3BFE7A2214DADE2B0037738D /* PINCodeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PINCodeButton.png; sourceTree = "<group>"; };
-		3BFE7A2314DADE2B0037738D /* PINCodeDeleteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PINCodeDeleteButton.png; sourceTree = "<group>"; };
-		3BFE7A2414DADE2B0037738D /* PINCodeStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PINCodeStoryboard.storyboard; sourceTree = "<group>"; };
-		3BFE7A2514DADE2B0037738D /* PINCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINCodeViewController.h; sourceTree = "<group>"; };
-		3BFE7A2614DADE2B0037738D /* PINCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINCodeViewController.m; sourceTree = "<group>"; };
 		3BFE7A2D14DAE5910037738D /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		94026FB314B4A8A600F40185 /* timeline */ = {isa = PBXFileReference; lastKnownFileType = folder; path = timeline; sourceTree = "<group>"; };
 		940C0467152B6ADF00834416 /* hs-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "hs-synthetic.json"; sourceTree = "<group>"; };
@@ -542,10 +538,6 @@
 		94E3BB581472E0DE00E05D4D /* HRConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRConfig.h; sourceTree = "<group>"; };
 		94E84E6E14FEBC390091B0A1 /* NSArray+Collect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Collect.h"; sourceTree = "<group>"; };
 		94E84E6F14FEBC390091B0A1 /* NSArray+Collect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Collect.m"; sourceTree = "<group>"; };
-		94F4CB5F1507BD0A00EFEA43 /* PINSecurityQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINSecurityQuestionsViewController.h; sourceTree = "<group>"; };
-		94F4CB601507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINSecurityQuestionsViewController.m; sourceTree = "<group>"; };
-		94F4CB631507E87E00EFEA43 /* PINCodeTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PINCodeTextField.h; sourceTree = "<group>"; };
-		94F4CB641507E87E00EFEA43 /* PINCodeTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PINCodeTextField.m; sourceTree = "<group>"; };
 		94F871F31535D9F60018AF13 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HReaderConfig.xcconfig; sourceTree = "<group>"; };
 		DD124DAD148D3EF300E23A44 /* Doctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Doctor.png; sourceTree = "<group>"; };
@@ -611,6 +603,12 @@
 				3BEBAE6915769ED400E4CB33 /* HRPeopleFeedViewController.m */,
 				3B108CDF15791A0C00888E30 /* HRSplashScreenViewController.h */,
 				3B108CE015791A0C00888E30 /* HRSplashScreenViewController.m */,
+				3BB3F0BE15823AFB00C1EC1D /* HRPasscodeViewController.h */,
+				3BB3F0BF15823AFB00C1EC1D /* HRPasscodeViewController.m */,
+				3BB16A94158FB7B000CF34A6 /* HRSecurityQuestionsTextField.h */,
+				3BB16A95158FB7B000CF34A6 /* HRSecurityQuestionsTextField.m */,
+				3BB16A96158FB7B000CF34A6 /* HRSecurityQuestionsViewController.h */,
+				3BB16A97158FB7B000CF34A6 /* HRSecurityQuestionsViewController.m */,
 			);
 			name = "Initial Setup";
 			sourceTree = "<group>";
@@ -793,24 +791,6 @@
 				9483F67215669EE000867CFC /* male-bmi-chart.json */,
 			);
 			name = "Patient Data";
-			sourceTree = "<group>";
-		};
-		3BFE7A2014DADE2B0037738D /* pinview */ = {
-			isa = PBXGroup;
-			children = (
-				3BFE7A2114DADE2B0037738D /* PINCodeBackground.png */,
-				3BFE7A2214DADE2B0037738D /* PINCodeButton.png */,
-				3BFE7A2314DADE2B0037738D /* PINCodeDeleteButton.png */,
-				3BFE7A2414DADE2B0037738D /* PINCodeStoryboard.storyboard */,
-				3BFE7A2514DADE2B0037738D /* PINCodeViewController.h */,
-				3BFE7A2614DADE2B0037738D /* PINCodeViewController.m */,
-				94F4CB5F1507BD0A00EFEA43 /* PINSecurityQuestionsViewController.h */,
-				94F4CB601507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m */,
-				94F4CB631507E87E00EFEA43 /* PINCodeTextField.h */,
-				94F4CB641507E87E00EFEA43 /* PINCodeTextField.m */,
-			);
-			name = pinview;
-			path = vendor/pinview;
 			sourceTree = "<group>";
 		};
 		940D3D3E14E0704E00FE41E6 /* Vitals */ = {
@@ -1042,7 +1022,6 @@
 				3B651F76157E8EF60007817C /* activityhud */,
 				3BD16ED714E1B5EE00F2249E /* guicocoa-common-code */,
 				3B04A54C14E0692600AD91F9 /* keychain */,
-				3BFE7A2014DADE2B0037738D /* pinview */,
 				945560BF14BB891500A3DC43 /* KissXML */,
 				94689ABE14964BCF00E1FCA6 /* TestFlight-0.8.4 */,
 			);
@@ -1314,10 +1293,6 @@
 				94026FB414B4A8A600F40185 /* timeline in Resources */,
 				947FCE4614B4C18600C716FD /* chevron-left.png in Resources */,
 				947FCE4C14B4C76700C716FD /* HRPrivacyViewController.xib in Resources */,
-				3BFE7A2714DADE2B0037738D /* PINCodeBackground.png in Resources */,
-				3BFE7A2814DADE2B0037738D /* PINCodeButton.png in Resources */,
-				3BFE7A2914DADE2B0037738D /* PINCodeDeleteButton.png in Resources */,
-				3BFE7A2A14DADE2B0037738D /* PINCodeStoryboard.storyboard in Resources */,
 				3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */,
 				941F254114E2EC7E0077D6D1 /* HRVitalAppletTile.xib in Resources */,
 				9413C74914EC0B7800BFA521 /* HRPatientSwipeControl.xib in Resources */,
@@ -1486,7 +1461,6 @@
 				945560D214BB892100A3DC43 /* DDXMLDocument.m in Sources */,
 				945560D314BB892100A3DC43 /* DDXMLElement.m in Sources */,
 				945560D414BB892100A3DC43 /* DDXMLNode.m in Sources */,
-				3BFE7A2B14DADE2B0037738D /* PINCodeViewController.m in Sources */,
 				940D3D3C14E056B800FE41E6 /* HRVital.m in Sources */,
 				940D3D4114E0706C00FE41E6 /* HRWeight.m in Sources */,
 				940D3D4414E077A500FE41E6 /* HRBloodPressure.m in Sources */,
@@ -1504,8 +1478,6 @@
 				3B3C919514F69F61005CD5C5 /* NSDate+FormattedDate.m in Sources */,
 				9452D7F714FC16DF00021E69 /* HRProviderView.m in Sources */,
 				94E84E7014FEBC390091B0A1 /* NSArray+Collect.m in Sources */,
-				94F4CB611507BD0A00EFEA43 /* PINSecurityQuestionsViewController.m in Sources */,
-				94F4CB651507E87E00EFEA43 /* PINCodeTextField.m in Sources */,
 				3BB9C27F151B8AEF00527C20 /* HRKeychainManager.m in Sources */,
 				94AEA7401529F2DC00D9C67D /* GCActionSheet.m in Sources */,
 				94334ACC152A249F00B4C904 /* HRKeyValueTableViewController.m in Sources */,
@@ -1542,6 +1514,9 @@
 				3BA7F18F1577EFCF00D4EB09 /* HRCryptoManager.m in Sources */,
 				3B108CE115791A0C00888E30 /* HRSplashScreenViewController.m in Sources */,
 				3B651F7A157E8F0D0007817C /* CMDActivityHUD.m in Sources */,
+				3BB3F0C015823AFB00C1EC1D /* HRPasscodeViewController.m in Sources */,
+				3BB16A98158FB7B100CF34A6 /* HRSecurityQuestionsTextField.m in Sources */,
+				3BB16A99158FB7B100CF34A6 /* HRSecurityQuestionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
