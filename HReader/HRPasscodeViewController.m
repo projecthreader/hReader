@@ -95,7 +95,7 @@
     BOOL valid = (BOOL)[self.target performSelector:self.action withObject:self withObject:passcode];
 #pragma clang diagnostic pop
     if (!valid) {
-        // show error message
+        self.passcodeOneField.text = nil;
     }
 }
 
