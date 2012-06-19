@@ -295,6 +295,13 @@
         return YES;
     }
     else {
+        [[[UIAlertView alloc]
+          initWithTitle:@"Error"
+          message:@"The passcode you provided is not correct."
+          delegate:nil
+          cancelButtonTitle:@"OK"
+          otherButtonTitles:nil]
+         show];
         if (++passcodeAttempts > 2) {
             controller.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
                                                            initWithTitle:@"Reset Passcode" 
