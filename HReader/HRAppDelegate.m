@@ -296,8 +296,8 @@
     }
     else {
         [[[UIAlertView alloc]
-          initWithTitle:@"Error"
-          message:@"The passcode you provided is not correct."
+          initWithTitle:@"The passcode you provided is not correct."
+          message:nil
           delegate:nil
           cancelButtonTitle:@"OK"
           otherButtonTitles:nil]
@@ -410,7 +410,13 @@
 //        PIN.navigationItem.hidesBackButton = YES;
     }
     else {
-        
+        [[[UIAlertView alloc]
+          initWithTitle:@"The answers you provided are not correct."
+          message:nil
+          delegate:nil
+          cancelButtonTitle:@"OK"
+          otherButtonTitles:nil]
+         show];
     }
 }
 

@@ -111,7 +111,7 @@
         }
         else {
             [[[UIAlertView alloc]
-              initWithTitle:@"The passcode does not meet the requirements."
+              initWithTitle:@"The passcode does not meet security requirements."
               message:nil
               delegate:nil
               cancelButtonTitle:@"OK"
