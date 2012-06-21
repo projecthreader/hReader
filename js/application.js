@@ -9,3 +9,9 @@ $.fn.slideShow = function(timeOut) {
 $(document).ready(function() {
 	$('#slides').slideShow();
 });
+
+$('.carousel').carousel({
+  interval: 2000
+  .carousel('cycle')
+})
+

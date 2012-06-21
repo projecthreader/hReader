@@ -195,7 +195,6 @@ a:hover {
 .navbar-fixed-bottom .container {
   width: 940px;
 }
-
 .span12 {
   width: 940px;
 }
@@ -3596,7 +3595,7 @@ input[type="submit"].btn.btn-mini {
 .navbar .brand {
   display: block;
   float: left;
-  padding: 8px 20px 12px;
+  padding: 8px 20px 11px;
   margin-left: -20px;
   font-size: 20px;
   font-weight: 200;
@@ -3720,7 +3719,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar-fixed-top,
 .navbar-fixed-bottom {
-  position: fixed;
+  position: fixed !important;
   right: 0;
   left: 0;
   z-index: 1030;

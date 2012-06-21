@@ -14,7 +14,7 @@
     <link rel="icon" type="image/png" href="images/hreader_icon2.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
-  <body class="index">
+  <body class="wrapper">
   	<div class="navbar navbar-fixed-top">
   		<div class="navbar-inner">
   			<div class="container">
@@ -29,7 +29,7 @@
 							<li class="active"><a href="index.html">Home</a></li>
 							<li class=""><a href="about.html">About</a></li>
 							<li class=""><a href="screen_shots.html">Screen Shots</a></li>
-							<li class=""><a href="https://github.com/projecthreader">Code</a></li>
+							<li class=""><a href="code.html">Code</a></li>
 							<li class=""><a href="documentation.html">Docs</a></li>
 							<li class=""><a href="participate.html">Participate</a></li>
 							<li class=""><a href="news.html">News</a></li>
@@ -46,26 +46,20 @@
 		</div>
 		<div class="container content" id="index">
 			<div class="row" id="splash">
-				<div class="span5" id="taglines">
-					<h1 class="logo">
+
+				<div class="span4" id="taglines">
+					<span class="logo">
 						<a href="#">
 							<img src="images/hreader_logo.png" alt="hReader" />
 						</a>
-					</h1>
+					</span>
+					<h1 class="tag">The mobile health platform for <strong>all</strong> of your data.</h1>
 					<p class="tagline">
-						<em>ALL</em> your health data.
-					</p>
-					<p class="tagline">
-						In the palm of your hand. 
-					</p>
-					<p class="tagline">
-						Open source app.
-					</p>
-					<p class="tagline">
-						<a href="about.html">Find out more...</a>
+						 <a href="about.html" class="btn btn-large">Learn more
+						 </a>
 					</p>
 				</div>
-				<div class="span7" id="slideshow">
+				<div class="span8" id="slideshow">
 					<!--<img id="shadow" src="images/shadow.png" />-->
 					<div id="slides">
 						<img src="images/hs_summary.png" />
@@ -76,25 +70,34 @@
 				</div>
 			</div>
 			<div class="row" id="sections">
-				<div class="span6" id="applets">
-					<h2 class="section">Develop Applets for hReader!</h2>
+				<div class="span4" id="spotlight">
+					<h2 class="section">Spotlight</h2>
+					<p>
+						hReader will be released to the open source community 
+						and available for free.  The code for hReader will be posted soon at 
+						<a href="https://github.com/projecthreader">GitHub</a> 
+						under the 
+						<a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a> 
+						license.  
+					</p>
+				</div>
+				<div class="span4" id="summary">
+					<h2>What is hReader?</h2>
+					<p>
+						hReader is a patient-centric mobile health data manager that 
+						provides patients and their families with their complete health information securely.  It provides an applet framework to provide hyper-personalized applets to engage patients in their own health status and 
+						how they can improve.  
+					</p>
+				</div>
+				<div class="span4" id="applets">
+					<h2 class="section">Develop Applets</h2>
 					<p>
 						hReader includes an open applet framework that allows anyone to extend its
 						functionality, whether it's an interface to a web site, web service, or 
 						wireless sensor.
 					</p>
 					<p>
-						<a href="applet_dev_guide.html">Find out more...</a>
-					</p>
-				</div>
-				<div class="span6" id="spotlight">
-					<h2 class="section">Spotlight</h2>
-					<p>
-						The code for hReader will be posted soon at 
-						<a href="https://github.com/projecthreader">GitHub</a> 
-						under the 
-						<a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a> 
-						license.  
+						<a class="btn" href="applet_dev_guide.html">Learn more</a>
 					</p>
 				</div>
  			</div>
@@ -118,22 +121,23 @@
  				<div class="span4" id="contact">
  					<h3><a href="contact.html">CONTACT</a></h3>
 					<ul>
-						<li><a href="mailto:talk@hreader.org">Talk list</a></li>
-						<li><a href="mailto:dev@hreader.org">Developer list</a></li>
+						<li>Join the Announcement List</li>
 					</ul>
  				</div>
  			</div>
  			<div class="row" id="postscript">
- 				<div class="span6" id="host">
+ 				<div class="span1" id="host">
  					<a href="http://github.com/">
  						<img src="images/github_icon.png" alt="GitHub Logo"/>
  					</a>
  				</div>
- 				<div class="span6" id="disclaimer">
- 					<em>
- 						All data and information in hReader screen shots are associated with 
- 						fictional individuals.
- 					</em>
+ 				<div class="span4">
+ 					<p>hReader is funded by <a href="http://www.mitre.org/">the MITRE Corporation</a></p>
+ 				</div>
+ 				<div class="span7">
+ 					<p>
+ 						*All health data and information in the screen shots is synthetic.
+ 					</p>
  				</div>
  			</div>
 		</div>
