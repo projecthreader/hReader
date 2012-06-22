@@ -111,13 +111,14 @@
 
 - (void)performLaunchSteps {
     
-#if !DEBUG
+#if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR
+#define PEACE_OUT() raise(SIGKILL); abort(); exit(EXIT_FAILURE);
     
     // fork test
     pid_t child = fork();
     if (child == 0) { exit(0); } // child process should exit
-    if (child != 0) { // fork succeeded, compromised!
-        raise(SIGKILL);
+    if (child > 0) { // fork succeeded, compromised!
+        PEACE_OUT();
     }
     
     // mobile substrate test
@@ -128,7 +129,7 @@
     };
     struct stat s1;
     if (stat(path1, &s1) == 0) { // file exists
-        raise(SIGKILL);
+        PEACE_OUT();
     };
     
     // sshd test
@@ -137,7 +138,7 @@
     };
     struct stat s2;
     if (stat(path2, &s2) == 0) { // file exists
-        raise(SIGKILL);
+        PEACE_OUT();
     };
     
 #endif
