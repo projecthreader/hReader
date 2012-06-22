@@ -7,6 +7,7 @@
 //
 
 #import <CoreData/CoreData.h>
+#import <objc/message.h>
 #import <sys/stat.h>
 
 #import "HRAppDelegate.h"
@@ -72,6 +73,7 @@
                                     options:options
                                     error:&error];
         NSAssert(store, @"Unable to add persistent store\n%@", error);
+        
     });
     return coordinator;
 }
@@ -109,6 +111,8 @@
 
 - (void)performLaunchSteps {
     
+#if !DEBUG
+    
     // fork test
     pid_t child = fork();
     if (child == 0) { exit(0); } // child process should exit
@@ -135,6 +139,8 @@
     if (stat(path2, &s2) == 0) { // file exists
         raise(SIGKILL);
     };
+    
+#endif
     
     // check for passcode
     if (!HRCryptoManagerHasPasscode() || !HRCryptoManagerHasSecurityQuestions()) {
