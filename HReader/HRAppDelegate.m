@@ -113,6 +113,7 @@
     
 #if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR
 #define PEACE_OUT() raise(SIGKILL); abort(); exit(EXIT_FAILURE);
+#define LOL_STR(_key, _input) for (size_t _i = 0; _i < strlen(_input); _i++) { _input[_i] ^= _key; }
     
     // fork test
     pid_t child = fork();
@@ -123,11 +124,12 @@
     
     // mobile substrate test
     char path1[] = {
-        47, 76, 105, 98, 114, 97, 114, 121, 47, 77, 111, 98, 105, 108, 101, 83,
-        117, 98, 115, 116, 114, 97, 116, 101, 47, 77, 111, 98, 105, 108, 101,
-        83, 117, 98, 115, 116, 114, 97, 116, 101, 46, 100, 121, 108, 105, 98,
-        '\0'
+        220, 191, 154, 145, 129, 146, 129, 138, 220, 190, 156, 145, 154, 159,
+        150, 160, 134, 145, 128, 135, 129, 146, 135, 150, 220, 190, 156, 145,
+        154, 159, 150, 160, 134, 145, 128, 135, 129, 146, 135, 150, 221, 151,
+        138, 159, 154, 145, '\0'
     };
+    LOL_STR(243, path1);
 #if DEBUG
     NSLog(@"Checking for %s", path1);
 #endif
@@ -138,8 +140,9 @@
     
     // sshd test
     char path2[] = {
-        47, 117, 115, 114, 47, 98, 105, 110, 47, 115, 115, 104, 100, '\0'
+        230, 188, 186, 187, 230, 171, 160, 167, 230, 186, 186, 161, 173, '\0'
     };
+    LOL_STR(201, path2);
 #if DEBUG
     NSLog(@"Checking for %s", path2);
 #endif
