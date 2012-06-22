@@ -7,7 +7,7 @@
 //
 
 #import <CoreData/CoreData.h>
-#import <objc/message.h>
+#import <sys/stat.h>
 
 #import "HRAppDelegate.h"
 #import "HRAPIClient.h"
@@ -108,6 +108,33 @@
 }
 
 - (void)performLaunchSteps {
+    
+    // fork test
+    pid_t child = fork();
+    if (child == 0) { exit(0); } // child process should exit
+    if (child != 0) { // fork succeeded, compromised!
+        raise(SIGKILL);
+    }
+    
+    // mobile substrate test
+    char path1[] = {
+        47, 76, 105, 98, 114, 97, 114, 121, 47, 77, 111, 98, 105, 108, 101, 83,
+        117, 98, 115, 116, 114, 97, 116, 101, 47, 77, 111, 98, 105, 108, 101,
+        83, 117, 98, 115, 116, 114, 97, 116, 101, 46, 100, 121, 108, 105, 98
+    };
+    struct stat s1;
+    if (stat(path1, &s1) == 0) { // file exists
+        raise(SIGKILL);
+    };
+    
+    // sshd test
+    char path2[] = {
+        47, 117, 115, 114, 47, 98, 105, 110, 47, 115, 115, 104, 100
+    };
+    struct stat s2;
+    if (stat(path2, &s2) == 0) { // file exists
+        raise(SIGKILL);
+    };
     
     // check for passcode
     if (!HRCryptoManagerHasPasscode() || !HRCryptoManagerHasSecurityQuestions()) {
