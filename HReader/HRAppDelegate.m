@@ -181,7 +181,6 @@
             id controller = [HRRHExLoginViewController loginViewControllerWithHost:@"growing-spring-4857.herokuapp.com"];
             [[controller navigationItem] setHidesBackButton:YES];
             [(id)self.window.rootViewController pushViewController:controller animated:YES];
-            [[(id)self.window.rootViewController navigationBar] setBarStyle:UIBarStyleDefault];
         }
         
         // check user interface
@@ -193,7 +192,6 @@
             id controller = [storyboard instantiateViewControllerWithIdentifier:@"PeopleSetupViewController"];
             [[controller navigationItem] setHidesBackButton:YES];
             [(id)self.window.rootViewController pushViewController:controller animated:YES];
-            [[(id)self.window.rootViewController navigationBar] setBarStyle:UIBarStyleDefault];
         }
         
     }

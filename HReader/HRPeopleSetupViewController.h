@@ -26,5 +26,6 @@
 - (IBAction)spouseButtonPress:(id)sender;
 - (IBAction)childButtonPress:(id)sender;
 - (IBAction)familyMemberButtonPress:(id)sender;
+- (IBAction)viewInMainInterface:(id)sender;
 
 @end

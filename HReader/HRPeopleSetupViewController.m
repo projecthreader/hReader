@@ -203,6 +203,7 @@
     // colors
     self.gridView.backgroundColor = [UIColor clearColor];
     self.firstView.backgroundColor = [UIColor clearColor];
+    self.emptyCellView.backgroundColor = [UIColor clearColor];
     
     // empty cell view
     UIImage *normal = [[UIImage imageNamed:@"GradientButton"] stretchableImageWithLeftCapWidth:11.0 topCapHeight:0.0];
@@ -252,6 +253,15 @@
 
 - (IBAction)familyMemberButtonPress:(id)sender {
     [self presentPopoverFromButton:sender withTitle:@"Add Family Member" relationship:HRMPatientRelationshipFamily completion:nil];
+}
+
+- (IBAction)viewInMainInterface:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    SVPanelViewController *panel = [storyboard instantiateInitialViewController];
+    panel.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"RootViewController"];
+    panel.rightAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"AppletsConfigurationViewController"];
+    panel.leftAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"PeoplePickerViewController"];
+    [self presentViewController:panel animated:YES completion:nil];
 }
 
 - (void)deleteButtonPress:(UIButton *)button {
@@ -348,8 +358,6 @@
     if (index < [info numberOfObjects]) {
         [HRPeoplePickerViewController setSelectedPatientIndex:index];
         [self showMainApplicationInterface];
-//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-//        HRMPatient *patient = [fetchedResultsController objectAtIndexPath:indexPath];
     }
 }
 
