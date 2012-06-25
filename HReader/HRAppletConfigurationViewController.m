@@ -94,7 +94,6 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return MAX((section == 0) ? [installedApplets count] : [availableApplets count], (NSUInteger)1);
     return (section == 0) ? [installedApplets count] : [availableApplets count];
 }
 
@@ -104,7 +103,23 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
     NSDictionary *applet = ([array count]) ? [array objectAtIndex:indexPath.row] : nil;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     cell.textLabel.text = (applet) ? [applet objectForKey:@"display_name"] : @"No Applets";
+    cell.selectionStyle = (indexPath.section == 0) ? UITableViewCellSelectionStyleNone : UITableViewCellSelectionStyleBlue;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 1) {
+        NSMutableArray *array = [self.patient.applets mutableCopy];
+        NSDictionary *applet = [availableApplets objectAtIndex:indexPath.row];
+        [array addObject:[applet objectForKey:@"identifier"]];
+        self.patient.applets = array;
+        [[self.patient managedObjectContext] save:nil];
+        NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:[installedApplets indexOfObject:applet] inSection:0];
+        [tableView beginUpdates];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [tableView endUpdates];
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
