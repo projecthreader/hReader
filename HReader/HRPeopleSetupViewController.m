@@ -309,6 +309,7 @@
         tile.layer.shadowOffset = CGSizeMake(0.0, 3.0);
         tile.layer.shouldRasterize = YES;
         tile.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+        tile.layer.cornerRadius = 20.0;
         
         // edit mode
         if (self.isEditing && ![tile viewWithTag:kDeleteButtonViewTag]) {
