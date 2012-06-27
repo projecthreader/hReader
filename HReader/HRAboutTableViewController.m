@@ -10,6 +10,7 @@
 #import "HRPasscodeWarningViewController.h"
 #import "HRKeychainManager.h"
 #import "HRAppDelegate.h"
+#import "HRPasscodeViewController.h"
 
 #import "GCAlertView.h"
 
@@ -103,21 +104,17 @@
     
     // passcode cell
     else if ([cell.reuseIdentifier isEqualToString:@"ChangePasscodeCell"]) {
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
-//        PINCodeViewController *PIN = [storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
-//        PIN.mode = PINCodeViewControllerModeVerify;
-//        PIN.title = @"Enter Passcode";
-//        PIN.messageText = @"Enter your passcode";
-//        PIN.errorText = @"Incorrect passcode";
-//        PIN.delegate = (HRAppDelegate *)[[UIApplication sharedApplication] delegate];
-//        PIN.userInfo = @"change_passcode";
-//        PIN.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
-//                                                initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-//                                                target:[[UIApplication sharedApplication] delegate]
-//                                                action:@selector(dismissModalViewController)];
-//        UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:PIN];
-//        navigation.navigationBar.barStyle = UIBarStyleBlack;
-//        [self presentModalViewController:navigation animated:YES];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
+        HRPasscodeViewController *passcode = [storyboard instantiateViewControllerWithIdentifier:@"VerifyPasscodeViewController"];
+        passcode.mode = HRPasscodeViewControllerModeVerify;
+        passcode.target = [[UIApplication sharedApplication] delegate];
+        passcode.action = @selector(verifyPasscodeOnChange::);
+        passcode.title = @"Enter Passcode";
+        UINavigationController *securityNavigationController = [[UINavigationController alloc] initWithRootViewController:passcode];
+        UIViewController *controller = self.presentingViewController;
+        [controller dismissViewControllerAnimated:YES completion:^{
+            [controller presentModalViewController:securityNavigationController animated:YES];
+        }];
     }
     
     // questions cell
@@ -146,6 +143,9 @@
         
     }
 
+}
+
+- (BOOL)verifyPasscodeOnVerify:(HRPasscodeViewController *)controller :(NSString *)passcode {
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate

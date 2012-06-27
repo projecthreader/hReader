@@ -355,6 +355,35 @@
     }
 }
 
+- (BOOL)verifyPasscodeOnChange:(HRPasscodeViewController *)controller :(NSString *)passcode {
+    if (HRCryptoManagerUnlockWithPasscode(passcode)) {
+        HRPasscodeViewController *passcode = [controller.storyboard instantiateViewControllerWithIdentifier:@"CreatePasscodeViewController"];
+        passcode.mode = HRPasscodeViewControllerModeCreate;
+        passcode.target = self;
+        passcode.action = @selector(resetPasscode::);
+        passcode.title = @"Enter New Passcode";
+        passcode.navigationItem.hidesBackButton = YES;
+        [controller.navigationController pushViewController:passcode animated:YES];
+//        [controller dismissViewControllerAnimated:YES completion:^{
+//            [controller presentModalViewController:securityNavigationController animated:YES];
+//        }];
+        return YES;
+    }
+    else {
+        [[[UIAlertView alloc]
+          initWithTitle:@"The passcode you provided is not correct."
+          message:nil
+          delegate:nil
+          cancelButtonTitle:@"OK"
+          otherButtonTitles:nil]
+         show];
+        return NO;
+    }
+}
+
+
+
+
 //- (void)PINCodeViewController:(PINCodeViewController *)controller didCreatePIN:(NSString *)PIN {
 ////    [HRKeychainManager setPasscode:PIN];
 //    if ([controller.userInfo isEqualToString:@"change_passcode"] || [controller.userInfo isEqualToString:@"reset_passcode"]) {
