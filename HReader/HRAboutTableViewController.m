@@ -104,54 +104,49 @@
     
     // passcode cell
     else if ([cell.reuseIdentifier isEqualToString:@"ChangePasscodeCell"]) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
-        HRPasscodeViewController *passcode = [storyboard instantiateViewControllerWithIdentifier:@"VerifyPasscodeViewController"];
-        passcode.mode = HRPasscodeViewControllerModeVerify;
-        passcode.target = [[UIApplication sharedApplication] delegate];
-        passcode.action = @selector(verifyPasscodeOnChange::);
-        passcode.title = @"Enter Passcode";
+        HRPasscodeViewController *passcode = 
+        [self verifyingPasscodeViewControllerWithTarget:[[UIApplication sharedApplication] delegate] 
+                                                 action:@selector(verifyPasscodeOnChange::)];
         UINavigationController *securityNavigationController = [[UINavigationController alloc] initWithRootViewController:passcode];
         UIViewController *controller = self.presentingViewController;
         [controller dismissViewControllerAnimated:YES completion:^{
             [controller presentModalViewController:securityNavigationController animated:YES];
         }];
+
     }
     
     // questions cell
     else if ([cell.reuseIdentifier isEqualToString:@"ChangeQuestionsCell"]) {
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PINCodeStoryboard" bundle:nil];
-//        PINCodeViewController *PIN = [storyboard instantiateViewControllerWithIdentifier:@"PINCodeViewController"];
-//        PIN.mode = PINCodeViewControllerModeVerify;
-//        PIN.title = @"Enter Passcode";
-//        PIN.messageText = @"Enter your passcode";
-//        PIN.errorText = @"Incorrect passcode";
-//        PIN.delegate = (HRAppDelegate *)[[UIApplication sharedApplication] delegate];
-//        PIN.userInfo = @"change_questions";
-//        PIN.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
-//                                                initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-//                                                target:[[UIApplication sharedApplication] delegate]
-//                                                action:@selector(dismissModalViewController)];
-//        UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:PIN];
-//        navigation.navigationBar.barStyle = UIBarStyleBlack;
-//        navigation.definesPresentationContext = YES;
-//        
-//        // show
-//        UIViewController *controller = self.presentingViewController;
-//        [self dismissViewControllerAnimated:YES completion:^{
-//            [controller presentModalViewController:navigation animated:YES];
-//        }];
+        HRPasscodeViewController *passcode = 
+        [self verifyingPasscodeViewControllerWithTarget:[[UIApplication sharedApplication] delegate] 
+                                                 action:@selector(verifyPasscodeOnQuestionsChange::)];
+        UINavigationController *securityNavigationController = [[UINavigationController alloc] initWithRootViewController:passcode];
+        UIViewController *controller = self.presentingViewController;
+        [controller dismissViewControllerAnimated:YES completion:^{
+            [controller presentModalViewController:securityNavigationController animated:YES];
+        }];
         
     }
 
 }
 
-- (BOOL)verifyPasscodeOnVerify:(HRPasscodeViewController *)controller :(NSString *)passcode {
-}
 
 #pragma mark - MFMailComposeViewControllerDelegate
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
 	[self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - private
+
+- (HRPasscodeViewController *)verifyingPasscodeViewControllerWithTarget:(id)target action:(SEL)action {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
+    HRPasscodeViewController *passcode = [storyboard instantiateViewControllerWithIdentifier:@"VerifyPasscodeViewController"];
+    passcode.mode = HRPasscodeViewControllerModeVerify;
+    passcode.target = target;
+    passcode.action = action;
+    passcode.title = @"Enter Passcode";
+    return passcode;
 }
 
 
