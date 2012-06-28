@@ -104,28 +104,12 @@
     
     // passcode cell
     else if ([cell.reuseIdentifier isEqualToString:@"ChangePasscodeCell"]) {
-        HRPasscodeViewController *passcode = 
-        [self verifyingPasscodeViewControllerWithTarget:[[UIApplication sharedApplication] delegate] 
-                                                 action:@selector(verifyPasscodeOnChange::)];
-        UINavigationController *securityNavigationController = [[UINavigationController alloc] initWithRootViewController:passcode];
-        UIViewController *controller = self.presentingViewController;
-        [controller dismissViewControllerAnimated:YES completion:^{
-            [controller presentModalViewController:securityNavigationController animated:YES];
-        }];
-
+        [self presentPasscodeVerificationControllerWithAction:@selector(verifyPasscodeOnPasscodeChange::)];
     }
     
     // questions cell
     else if ([cell.reuseIdentifier isEqualToString:@"ChangeQuestionsCell"]) {
-        HRPasscodeViewController *passcode = 
-        [self verifyingPasscodeViewControllerWithTarget:[[UIApplication sharedApplication] delegate] 
-                                                 action:@selector(verifyPasscodeOnQuestionsChange::)];
-        UINavigationController *securityNavigationController = [[UINavigationController alloc] initWithRootViewController:passcode];
-        UIViewController *controller = self.presentingViewController;
-        [controller dismissViewControllerAnimated:YES completion:^{
-            [controller presentModalViewController:securityNavigationController animated:YES];
-        }];
-        
+        [self presentPasscodeVerificationControllerWithAction:@selector(verifyPasscodeOnQuestionsChange::)];
     }
 
 }
@@ -139,15 +123,23 @@
 
 #pragma mark - private
 
-- (HRPasscodeViewController *)verifyingPasscodeViewControllerWithTarget:(id)target action:(SEL)action {
+- (void)presentPasscodeVerificationControllerWithAction:(SEL)action {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
     HRPasscodeViewController *passcode = [storyboard instantiateViewControllerWithIdentifier:@"VerifyPasscodeViewController"];
     passcode.mode = HRPasscodeViewControllerModeVerify;
-    passcode.target = target;
+    passcode.target = [[UIApplication sharedApplication] delegate];
     passcode.action = action;
     passcode.title = @"Enter Passcode";
-    return passcode;
+    passcode.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                                  initWithTitle:@"Next"
+                                                  style:UIBarButtonItemStyleDone
+                                                  target:passcode
+                                                  action:@selector(verify:)];
+    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:passcode];
+    UIViewController *presenting = self.presentingViewController;
+    [presenting dismissViewControllerAnimated:YES completion:^{
+        [presenting presentViewController:navigation animated:YES completion:nil];
+    }];
 }
-
 
 @end
