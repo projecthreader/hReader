@@ -19,6 +19,7 @@
 NSMutableArray *pages;
 UIStoryboard *mocaTest;
 int currentPage;
+bool loadOnce = YES;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,212 +33,215 @@ int currentPage;
 
 
 - (void) viewDidLoad {
-    mocaTest = [UIStoryboard storyboardWithName:@"MoCATest" bundle:nil];
     
-    pages = [[NSMutableArray alloc] init];
-    
-    //Add all pages to array
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Executive",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"trace"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Executive",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"cubeDraw"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Naming",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"turtle"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Naming",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"lion"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Naming",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"dog"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Clock Draw",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"clockDraw"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Clock Read",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"clockRead"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Memory",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"wordsPlay"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Attention",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"numberRemember"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Attention",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"numberWrite"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Attention",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"letterF"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Attention",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"letterA"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Attention",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"letterFinal"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Attention",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"subtract7"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Language",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"typeAudio"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Language",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"typeLetterF"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Abstraction",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"similarFruit"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Abstraction",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"similarTransport"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Abstraction",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"similarMeasure"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Delayed Recall",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"recallWords"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Orientation",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"todayDate"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Orientation",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"whereAreYou"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-    
-    /*
-    [pages addObject:[[NSMutableDictionary alloc] 
-                      initWithObjects: [NSArray arrayWithObjects:@"Results",
-                                        [mocaTest instantiateViewControllerWithIdentifier:@"results"]
-                                        ,nil] 
-                      forKeys:[NSArray arrayWithObjects:@"Name",
-                               @"ViewController",
-                               nil]
-                      ]];
-     */
-    
-    currentPage = -1;
-    [self nextClicked:nil];
-    /*[[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWasShown:) 
-                                                 name:UIKeyboardDidShowNotification 
-                                               object:nil];
-    [self nextClicked:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:) 
-                                                 name:UIKeyboardWillHideNotification 
-                                               object:nil];*/
-    
-    
+    if (loadOnce) {
+        mocaTest = [UIStoryboard storyboardWithName:@"MoCATest" bundle:nil];
+        
+        pages = [[NSMutableArray alloc] init];
+        
+        //Add all pages to array
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Executive",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"trace"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Executive",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"cubeDraw"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Naming",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"turtle"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Naming",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"lion"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Naming",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"dog"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Clock Draw",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"clockDraw"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Clock Read",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"clockRead"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Memory",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"wordsPlay"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Attention",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"numberRemember"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Attention",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"numberWrite"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Attention",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"letterF"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Attention",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"letterA"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Attention",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"letterFinal"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Attention",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"subtract7"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Language",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"typeAudio"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Language",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"typeLetterF"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Abstraction",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"similarFruit"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Abstraction",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"similarTransport"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Abstraction",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"similarMeasure"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Delayed Recall",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"recallWords"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Orientation",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"todayDate"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Orientation",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"whereAreYou"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+        
+        /*
+        [pages addObject:[[NSMutableDictionary alloc] 
+                          initWithObjects: [NSArray arrayWithObjects:@"Results",
+                                            [mocaTest instantiateViewControllerWithIdentifier:@"results"]
+                                            ,nil] 
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
+         */
+        
+        currentPage = -1;
+        [self nextClicked:nil];
+        /*[[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWasShown:) 
+                                                     name:UIKeyboardDidShowNotification 
+                                                   object:nil];
+        [self nextClicked:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(keyboardWillHide:) 
+                                                     name:UIKeyboardWillHideNotification 
+                                                   object:nil];*/
+        loadOnce = NO;
+    }
+        
 }
 
 - (void)didReceiveMemoryWarning
