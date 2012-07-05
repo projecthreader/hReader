@@ -76,6 +76,10 @@
     return self;
 }
 
+- (void)dealloc {
+    fetchedResultsController.delegate = nil;
+}
+
 - (void)presentPopoverFromButton:(UIButton *)button
                        withTitle:(NSString *)title
                     relationship:(HRMPatientRelationship)relationship
