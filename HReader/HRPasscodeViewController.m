@@ -60,7 +60,7 @@
     CALayer *layer = self.passcodeOneField.superview.layer;
     layer.shadowColor = [[UIColor blackColor] CGColor];
     layer.shadowOffset = CGSizeMake(0.0, 0.0);
-    layer.shadowOpacity = 0.2;
+    layer.shadowOpacity = 0.1;
     layer.shadowRadius = 5.0;
     layer.borderColor = [[UIColor colorWithWhite:0.79 alpha:1.0] CGColor];
     layer.borderWidth = 1.0;
