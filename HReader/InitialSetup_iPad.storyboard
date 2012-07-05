@@ -43,6 +43,77 @@
             </objects>
             <point key="canvasLocation" x="-218" y="-515"/>
         </scene>
+        <!--Message View Controller - HIPPA Notice-->
+        <scene sceneID="deV-Y0-t10">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VJU-l9-J7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="HIPPAViewController" id="kxF-Il-2Le" customClass="HRHIPPAMessageViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KRU-xL-BQf">
+                        <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" id="WIb-kd-7xo">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="627"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" id="ORS-4b-wl9">
+                                <rect key="frame" x="-20" y="627" width="1064" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xoX-cC-xiT">
+                                        <rect key="frame" x="824" y="20" width="200" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Accept &amp; Continue">
+                                            <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="acceptButtonPressed:" destination="kxF-Il-2Le" eventType="touchUpInside" id="FSc-gM-ek6"/>
+                                            <action selector="viewInMainInterface:" destination="flO-yV-wuk" eventType="touchUpInside" id="lQQ-Pf-fZf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="op9-YY-8oT">
+                                        <rect key="frame" x="604" y="20" width="200" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="I Do Not Accept">
+                                            <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="doNotWant:" destination="kxF-Il-2Le" eventType="touchUpInside" id="Td1-AX-FiU"/>
+                                            <action selector="viewInMainInterface:" destination="flO-yV-wuk" eventType="touchUpInside" id="tfZ-dT-9TY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.92000000000000004" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="HIPPA Notice" id="q3D-1M-vmS"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="textView" destination="WIb-kd-7xo" id="Krc-fK-ndK"/>
+                        <outletCollection property="buttons" destination="xoX-cC-xiT" id="sM0-SJ-99R"/>
+                        <outletCollection property="buttons" destination="op9-YY-8oT" id="cad-ms-Mlc"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-218" y="434"/>
+        </scene>
         <!--Passcode View Controller - Title-->
         <scene sceneID="N3K-w8-E5b">
             <objects>
@@ -376,6 +447,15 @@
             <relationships>
                 <relationship kind="outlet" name="gridViewDataSource"/>
                 <relationship kind="outlet" name="gridViewDelegate"/>
+            </relationships>
+        </class>
+        <class className="HRHIPPAMessageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRHIPPAMessageViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="acceptButtonPressed:"/>
+                <relationship kind="action" name="doNotWant:"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+                <relationship kind="outletCollection" name="buttons" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="HRPasscodeViewController" superclassName="UIViewController">

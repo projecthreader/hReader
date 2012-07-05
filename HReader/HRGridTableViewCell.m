@@ -39,14 +39,14 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    CGFloat totalColumnWidth = self.contentView.bounds.size.width - ((self.numberOfColumns + 1) * self.horizontalPadding);
+    CGFloat totalColumnWidth = self.contentView.bounds.size.width - (self.numberOfColumns + 1) * self.horizontalPadding;
     CGFloat columnWidth = totalColumnWidth / self.numberOfColumns;
     CGFloat rowHeight = self.contentView.bounds.size.height - self.verticalPadding;
     [self.contentView.subviews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
         view.frame = CGRectMake(floor(self.horizontalPadding + ((self.horizontalPadding + columnWidth) * idx)),
                                 0.0,
-                                columnWidth,
-                                rowHeight);
+                                floor(columnWidth),
+                                floor(rowHeight));
     }];
 }
 

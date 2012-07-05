@@ -17,8 +17,7 @@
 #import "HRCryptoManager.h"
 #import "HRSplashScreenViewController.h"
 #import "HRPasscodeViewController.h"
-
-#import "HRKeychainManager.h"
+#import "HRHIPPAMessageViewController.h"
 #import "HRAppletConfigurationViewController.h"
 
 #import "TestFlight.h"
@@ -134,8 +133,20 @@
     
 #endif
     
+    // check for hippa message
+    if (![HRHIPPAMessageViewController hasAcceptedHIPPAMessage]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
+        HRHIPPAMessageViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"HIPPAViewController"];
+        controller.navigationItem.hidesBackButton = YES;
+        controller.target = self;
+        controller.action = _cmd;
+        UINavigationController *navigation = (id)self.window.rootViewController;
+        [navigation popToRootViewControllerAnimated:NO];
+        [navigation pushViewController:controller animated:YES];
+    }
+    
     // check for passcode
-    if (!HRCryptoManagerHasPasscode() || !HRCryptoManagerHasSecurityQuestions()) {
+    else if (!HRCryptoManagerHasPasscode() || !HRCryptoManagerHasSecurityQuestions()) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
         HRPasscodeViewController *passcode = [storyboard instantiateViewControllerWithIdentifier:@"CreatePasscodeViewController"];
         passcode.mode = HRPasscodeViewControllerModeCreate;
@@ -156,6 +167,7 @@
     // unlocked
     else if (HRCryptoManagerIsUnlocked()) {
         NSArray *hosts = [HRAPIClient hosts];
+        UIViewController *controller = [(id)self.window.rootViewController topViewController];
         
         // check for accounts
         if ([hosts count] == 0) {
@@ -165,7 +177,8 @@
         }
         
         // check user interface
-        else if ([[(id)self.window.rootViewController topViewController] isKindOfClass:[HRSplashScreenViewController class]]) {
+        else if ([controller isKindOfClass:[HRSplashScreenViewController class]] ||
+                 [controller isKindOfClass:[HRHIPPAMessageViewController class]]) {
             NSString *host = [hosts lastObject];
             [[HRAPIClient clientWithHost:host] patientFeed:nil];
             [HRMPatient performSync];
@@ -274,7 +287,7 @@
     [self presentPasscodeVerificationController:NO];
 }
 
-#pragma security scenario one
+#pragma mark - security scenario one
 
 /*
  

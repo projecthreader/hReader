@@ -124,6 +124,8 @@
 		3BB16A99158FB7B100CF34A6 /* HRSecurityQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB16A97158FB7B000CF34A6 /* HRSecurityQuestionsViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BB3F0C015823AFB00C1EC1D /* HRPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB3F0BF15823AFB00C1EC1D /* HRPasscodeViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BB9C27F151B8AEF00527C20 /* HRKeychainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		3BC6A68C15A5D0DC00FA0C3A /* hippa.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3BC6A68B15A5D0DC00FA0C3A /* hippa.txt */; };
+		3BC6A69015A5D17E00FA0C3A /* HRHIPPAMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC6A68F15A5D17E00FA0C3A /* HRHIPPAMessageViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; };
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
 		3BD16EF614E1B5EE00F2249E /* GCManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16EE514E1B5EE00F2249E /* GCManagedObject.m */; };
@@ -375,6 +377,9 @@
 		3BB3F0BF15823AFB00C1EC1D /* HRPasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPasscodeViewController.m; sourceTree = "<group>"; };
 		3BB9C27D151B8AEF00527C20 /* HRKeychainManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRKeychainManager.h; sourceTree = "<group>"; };
 		3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRKeychainManager.m; sourceTree = "<group>"; };
+		3BC6A68B15A5D0DC00FA0C3A /* hippa.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hippa.txt; sourceTree = "<group>"; };
+		3BC6A68E15A5D17E00FA0C3A /* HRHIPPAMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRHIPPAMessageViewController.h; sourceTree = "<group>"; };
+		3BC6A68F15A5D17E00FA0C3A /* HRHIPPAMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRHIPPAMessageViewController.m; sourceTree = "<group>"; };
 		3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hReader.xcdatamodel; sourceTree = "<group>"; };
 		3BD16ED514E1B32400F2249E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3BD16EE414E1B5EE00F2249E /* GCManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCManagedObject.h; sourceTree = "<group>"; };
@@ -612,6 +617,8 @@
 				3BB16A95158FB7B000CF34A6 /* HRSecurityQuestionsTextField.m */,
 				3BB16A96158FB7B000CF34A6 /* HRSecurityQuestionsViewController.h */,
 				3BB16A97158FB7B000CF34A6 /* HRSecurityQuestionsViewController.m */,
+				3BC6A68E15A5D17E00FA0C3A /* HRHIPPAMessageViewController.h */,
+				3BC6A68F15A5D17E00FA0C3A /* HRHIPPAMessageViewController.m */,
 			);
 			name = "Initial Setup";
 			sourceTree = "<group>";
@@ -885,6 +892,7 @@
 				3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */,
 				3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */,
 				3B001D3D157519DB00762FB0 /* InitialSetup_iPad.storyboard */,
+				3BC6A68B15A5D0DC00FA0C3A /* hippa.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1422,6 +1430,7 @@
 				3B651F80157FC8B50007817C /* interstitial_closebox-down@2x.png in Resources */,
 				3B651F81157FC8B50007817C /* interstitial_closebox.png in Resources */,
 				3B651F82157FC8B50007817C /* interstitial_closebox@2x.png in Resources */,
+				3BC6A68C15A5D0DC00FA0C3A /* hippa.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1521,6 +1530,7 @@
 				3BB3F0C015823AFB00C1EC1D /* HRPasscodeViewController.m in Sources */,
 				3BB16A98158FB7B100CF34A6 /* HRSecurityQuestionsTextField.m in Sources */,
 				3BB16A99158FB7B100CF34A6 /* HRSecurityQuestionsViewController.m in Sources */,
+				3BC6A69015A5D17E00FA0C3A /* HRHIPPAMessageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
