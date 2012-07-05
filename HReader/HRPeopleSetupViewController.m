@@ -318,12 +318,14 @@
         
         // shadow
         tile.layer.shadowColor = [[UIColor blackColor] CGColor];
-        tile.layer.shadowOpacity = 0.35;
+        tile.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+        tile.layer.shadowOpacity = 0.1;
         tile.layer.shadowRadius = 5.0;
-        tile.layer.shadowOffset = CGSizeMake(0.0, 3.0);
         tile.layer.shouldRasterize = YES;
         tile.layer.rasterizationScale = [[UIScreen mainScreen] scale];
         tile.layer.cornerRadius = 20.0;
+        tile.layer.borderColor = [[UIColor colorWithWhite:0.79 alpha:1.0] CGColor];
+        tile.layer.borderWidth = 1.0;
         
         // edit mode
         if (self.isEditing && ![tile viewWithTag:kDeleteButtonViewTag]) {
