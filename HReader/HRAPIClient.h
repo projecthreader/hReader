@@ -31,7 +31,7 @@
  
  The completion accepts an array of dictionaries each having two keys: id and
  name. Should an error occur, `patients` will be nil. It will be executed on
- the thread which initiated the call.
+ the main queue.
  
  */
 - (void)patientFeed:(void (^) (NSArray *patients))completion;
@@ -47,7 +47,7 @@
  
  `startBlock` simply notifies the caller that the operation is about to begin.
  
- Both blocks will be executed on the thread which initiated the call.
+ Both blocks will be executed on the main queue.
  
  */
 - (void)JSONForPatientWithIdentifier:(NSString *)identifier finishBlock:(void (^) (NSDictionary *payload))block;

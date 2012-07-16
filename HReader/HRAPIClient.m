@@ -129,57 +129,49 @@ static NSString * const HROAuthKeychainService = @"org.hreader.oauth.2";
 }
 
 - (void)patientFeed:(void (^)(NSArray *))completion ignoreCache:(BOOL)ignore {
-    dispatch_queue_t queue = dispatch_get_current_queue();
     dispatch_async(_requestQueue, ^{
+        NSArray *feed = _patientFeed;
         
         // check time stamp
         NSTimeInterval interval = ABS([_patientFeedLastFetchDate timeIntervalSinceNow]);
         if (interval > 60 * 5 || _patientFeedLastFetchDate == nil || ignore) {
             
+            // get the request
             NSMutableURLRequest *request = [self GETRequestWithPath:@"/"];
-            NSMutableArray *patients = nil;
-            if (request) {
-                
-                // run request
-                NSError *error = nil;
-                NSHTTPURLResponse *response = nil;
-                NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-                
-                // get ids
-                DDXMLDocument *document = [[DDXMLDocument alloc] initWithData:data options:0 error:nil];
-                [[document rootElement] addNamespace:[DDXMLNode namespaceWithName:@"atom" stringValue:@"http://www.w3.org/2005/Atom"]];
-                NSArray *IDs = [[document nodesForXPath:@"/atom:feed/atom:entry/atom:id" error:nil] valueForKey:@"stringValue"];
-                NSArray *names = [[document nodesForXPath:@"/atom:feed/atom:entry/atom:title" error:nil] valueForKey:@"stringValue"];
-                
-                // build array
-                if ([IDs count] == [names count]) {
-                    patients = [[NSMutableArray alloc] initWithCapacity:[IDs count]];
-                    [IDs enumerateObjectsUsingBlock:^(NSString *patientID, NSUInteger index, BOOL *stop) {
-                        NSDictionary *dict = 
-                        [NSDictionary dictionaryWithObjectsAndKeys:
-                         patientID, @"id", 
-                         [names objectAtIndex:index], @"name",
-                         nil];
-                        [patients addObject:dict];
-                    }];
-                    _patientFeed = [patients copy];
-                    _patientFeedLastFetchDate = [NSDate date];
-                }
-            }
             
-            // call completion handler
-            if (completion) {
-                dispatch_async(queue, ^{
-                    completion(_patientFeed);
-                });
+            // run request
+            NSError *error = nil;
+            NSHTTPURLResponse *response = nil;
+            NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+            
+            // get ids
+            DDXMLDocument *document = [[DDXMLDocument alloc] initWithData:data options:0 error:nil];
+            [[document rootElement] addNamespace:[DDXMLNode namespaceWithName:@"atom" stringValue:@"http://www.w3.org/2005/Atom"]];
+            NSArray *IDs = [[document nodesForXPath:@"/atom:feed/atom:entry/atom:id" error:nil] valueForKey:@"stringValue"];
+            NSArray *names = [[document nodesForXPath:@"/atom:feed/atom:entry/atom:title" error:nil] valueForKey:@"stringValue"];
+            
+            // build array
+            if (IDs && [IDs count] == [names count]) {
+                NSMutableArray *patients = [[NSMutableArray alloc] initWithCapacity:[IDs count]];
+                [IDs enumerateObjectsUsingBlock:^(NSString *patientID, NSUInteger index, BOOL *stop) {
+                    NSDictionary *dict = 
+                    [NSDictionary dictionaryWithObjectsAndKeys:
+                     patientID, @"id", 
+                     [names objectAtIndex:index], @"name",
+                     nil];
+                    [patients addObject:dict];
+                }];
+                _patientFeed = feed = [patients copy];
+                _patientFeedLastFetchDate = [NSDate date];
             }
+            else { feed = nil; }
             
         }
         
         // call completion handler
         if (completion) {
-            dispatch_async(queue, ^{
-                completion(_patientFeed);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(feed);
             });
         }
         
@@ -305,11 +297,10 @@ static NSString * const HROAuthKeychainService = @"org.hreader.oauth.2";
 }
 
 - (void)JSONForPatientWithIdentifier:(NSString *)identifier startBlock:(void (^) (void))startBlock finishBlock:(void (^) (NSDictionary *payload))finishBlock {
-    dispatch_queue_t queue = dispatch_get_current_queue();
     dispatch_async(_requestQueue, ^{
         
         // start block
-        if (startBlock) { dispatch_async(queue, startBlock); }
+        if (startBlock) { dispatch_async(dispatch_get_main_queue(), startBlock); }
         
         // create request
         NSString *path = [NSString stringWithFormat:@"/records/%@/c32/%@", identifier, identifier];
@@ -323,10 +314,11 @@ static NSString * const HROAuthKeychainService = @"org.hreader.oauth.2";
         
         // create patient
         NSError *JSONError = nil;
-        NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
+        NSDictionary *dictionary = nil;
+        if (data) { dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError]; }
         
         // return
-        if (finishBlock) { dispatch_async(queue, ^{ finishBlock(dictionary); }); }
+        if (finishBlock) { dispatch_async(dispatch_get_main_queue(), ^{ finishBlock(dictionary); }); }
         
     });
 }

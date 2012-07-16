@@ -42,7 +42,7 @@
  
  The completion accepts an array of dictionaries each having two keys: id and
  name. Should an error occur, `patients` will be nil. It will be executed on
- the thread which initiated the call.
+ the main queue.
  
  The `ignoreCache` parameter allows the caller to bust the local cache in favor
  of data from the server. This method does NOT invalidate the local cache, it
