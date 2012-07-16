@@ -94,17 +94,17 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
 - (void)reloadApplets {
     
     // load system applets
-    NSURL *URL = [[NSBundle mainBundle] URLForResource:@"HReaderApplets" withExtension:@"plist"];
-    availableApplets = [[NSArray arrayWithContentsOfURL:URL] mutableCopy];
+    availableApplets = [[HRAppletConfigurationViewController availableApplets] mutableCopy];
     
     // load patient applets
     NSArray *identifiers = self.patient.applets;
     installedApplets = [NSMutableArray arrayWithCapacity:[identifiers count]];
     [identifiers enumerateObjectsUsingBlock:^(NSString *identifier, NSUInteger index, BOOL *stop) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier like %@", identifier];
-        NSDictionary *applet = [[availableApplets filteredArrayUsingPredicate:predicate] lastObject];
-        [(NSMutableArray *)installedApplets addObject:applet];
-        [(NSMutableArray *)availableApplets removeObject:applet];
+        NSDictionary *applet = [HRAppletConfigurationViewController appletWithIdentifier:identifier];
+        if (applet) {
+            [(NSMutableArray *)installedApplets addObject:applet];
+            [(NSMutableArray *)availableApplets removeObject:applet];
+        }
     }];
     
     // sort system applets
