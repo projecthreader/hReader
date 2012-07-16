@@ -59,11 +59,7 @@
         nib = [UINib nibWithNibName:@"HRPeopleSetupTileView" bundle:nil];
         managedObjectContext = [HRAppDelegate managedObjectContext];
         NSFetchRequest *request = [HRMPatient fetchRequestInContext:managedObjectContext];
-        NSArray *descriptors = [NSArray arrayWithObjects:
-                                [NSSortDescriptor sortDescriptorWithKey:@"displayOrder" ascending:YES],
-                                [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES],
-                                [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES],
-                                nil];
+        NSArray *descriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:YES]];
         [request setSortDescriptors:descriptors];
         fetchedResultsController = [[NSFetchedResultsController alloc]
                                     initWithFetchRequest:request
@@ -360,11 +356,11 @@
 }
 
 - (void)gridView:(HRGridTableView *)gridView didSelectViewAtIndex:(NSUInteger)index {
-    id<NSFetchedResultsSectionInfo> info = [[fetchedResultsController sections] objectAtIndex:0];
-    if (index < [info numberOfObjects]) {
-        [HRPeoplePickerViewController setSelectedPatientIndex:index];
-        [self showMainApplicationInterface];
-    }
+//    id<NSFetchedResultsSectionInfo> info = [[fetchedResultsController sections] objectAtIndex:0];
+//    if (index < [info numberOfObjects]) {
+//        [HRPeoplePickerViewController setSelectedPatientIndex:index];
+//        [self showMainApplicationInterface];
+//    }
 }
 
 #pragma mark - fetched results controller
