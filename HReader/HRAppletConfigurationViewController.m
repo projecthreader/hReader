@@ -26,6 +26,33 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
 
 @synthesize patient = _patient;
 
+#pragma mark - class methods
+
++ (NSArray *)availableApplets {
+    static dispatch_once_t token;
+    static NSArray *applets = nil;
+    dispatch_once(&token, ^{
+        NSURL *URL = [[NSBundle mainBundle] URLForResource:@"HReaderApplets" withExtension:@"plist"];
+        applets = [NSArray arrayWithContentsOfURL:URL];
+#if DEBUG
+        [applets enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSString *class = [obj objectForKey:@"class_name"];
+            NSAssert([obj objectForKey:@"identifier"], @"Applet payload is invalid.\n%@", obj);
+            NSAssert(class, @"Applet \"%@\" has no declared class name.", [obj objectForKey:@"identifier"]);
+            NSAssert(NSClassFromString(class), @"Class \"%@\" for applet \"%@\" does not exist.",
+                     class,
+                     [obj objectForKey:@"identifier"]);
+        }];
+#endif
+    });
+    return applets;
+}
+
++ (NSDictionary *)appletWithIdentifier:(NSString *)identifier {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier == %@", identifier];
+    return [[[self availableApplets] filteredArrayUsingPredicate:predicate] lastObject];
+}
+
 #pragma mark - object methods
 
 - (id)initWithCoder:(NSCoder *)coder {

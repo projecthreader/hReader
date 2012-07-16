@@ -16,4 +16,17 @@ extern NSString * const HRAppletConfigurationDidChangeNotification;
 
 @property (nonatomic, retain) HRMPatient *patient;
 
+/*
+ 
+ 
+ */
++ (NSArray *)availableApplets;
+
+/*
+ 
+ 
+ 
+ */
++ (NSDictionary *)appletWithIdentifier:(NSString *)identifier;
+
 @end

@@ -237,28 +237,19 @@
         
         // grid view
         {
-            
-            // get list of applets for this patient
             NSMutableArray *views = [NSMutableArray array];
-            NSURL *URL = [[NSBundle mainBundle] URLForResource:@"HReaderApplets" withExtension:@"plist"];
-            NSArray *applets = [NSArray arrayWithContentsOfURL:URL];
             NSArray *identifiers = patient.applets;
-            
-            // load applets
-            [identifiers enumerateObjectsUsingBlock:^(NSString *identifier, NSUInteger index, BOOL *stop) {
-                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier like %@", identifier];
-                NSDictionary *dictionary = [[applets filteredArrayUsingPredicate:predicate] lastObject];
-                if (dictionary) {
-                    Class c = NSClassFromString([dictionary objectForKey:@"class_name"]);
-                    [views addObject:[c tileWithPatient:patient userInfo:dictionary]];
+            [identifiers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                NSDictionary *applet = [HRAppletConfigurationViewController appletWithIdentifier:obj];
+                if (applet) {
+                    Class c = NSClassFromString([applet objectForKey:@"class_name"]);
+                    [views addObject:[c tileWithPatient:patient userInfo:applet]];
                 }
-                else { NSLog(@"Unable to find applet with identifier %@", identifier); }
+                else { NSLog(@"Unable to load applet with identifier %@", obj); }
             }];
-            
-            // save and reload
             __gridViews = views;
             [self.gridView reloadData];
-            
+        
         }
         
         {
