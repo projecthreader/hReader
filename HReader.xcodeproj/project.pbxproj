@@ -138,7 +138,6 @@
 		3BB16A98158FB7B100CF34A6 /* HRSecurityQuestionsTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB16A95158FB7B000CF34A6 /* HRSecurityQuestionsTextField.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BB16A99158FB7B100CF34A6 /* HRSecurityQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB16A97158FB7B000CF34A6 /* HRSecurityQuestionsViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BB3F0C015823AFB00C1EC1D /* HRPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB3F0BF15823AFB00C1EC1D /* HRPasscodeViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		3BB9C27F151B8AEF00527C20 /* HRKeychainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BC6A68C15A5D0DC00FA0C3A /* hippa.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3BC6A68B15A5D0DC00FA0C3A /* hippa.txt */; };
 		3BC6A69015A5D17E00FA0C3A /* HRHIPPAMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC6A68F15A5D17E00FA0C3A /* HRHIPPAMessageViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; };
@@ -436,8 +435,6 @@
 		3BB16A97158FB7B000CF34A6 /* HRSecurityQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSecurityQuestionsViewController.m; sourceTree = "<group>"; };
 		3BB3F0BE15823AFB00C1EC1D /* HRPasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPasscodeViewController.h; sourceTree = "<group>"; };
 		3BB3F0BF15823AFB00C1EC1D /* HRPasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPasscodeViewController.m; sourceTree = "<group>"; };
-		3BB9C27D151B8AEF00527C20 /* HRKeychainManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRKeychainManager.h; sourceTree = "<group>"; };
-		3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRKeychainManager.m; sourceTree = "<group>"; };
 		3BC6A68B15A5D0DC00FA0C3A /* hippa.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hippa.txt; sourceTree = "<group>"; };
 		3BC6A68E15A5D17E00FA0C3A /* HRHIPPAMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRHIPPAMessageViewController.h; sourceTree = "<group>"; };
 		3BC6A68F15A5D17E00FA0C3A /* HRHIPPAMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRHIPPAMessageViewController.m; sourceTree = "<group>"; };
@@ -749,8 +746,6 @@
 				3BB8D9A7157D206E00124A57 /* Crypto */,
 				94E3BB581472E0DE00E05D4D /* HRConfig.h */,
 				DD8BD9F1148D2BDC0090F729 /* HRConfig.m */,
-				3BB9C27D151B8AEF00527C20 /* HRKeychainManager.h */,
-				3BB9C27E151B8AEF00527C20 /* HRKeychainManager.m */,
 				3BFBEE181534BEAA009EBA2D /* HRAppletTile.h */,
 				3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */,
 			);
@@ -1688,7 +1683,6 @@
 				3B3C919514F69F61005CD5C5 /* NSDate+FormattedDate.m in Sources */,
 				9452D7F714FC16DF00021E69 /* HRProviderView.m in Sources */,
 				94E84E7014FEBC390091B0A1 /* NSArray+Collect.m in Sources */,
-				3BB9C27F151B8AEF00527C20 /* HRKeychainManager.m in Sources */,
 				94AEA7401529F2DC00D9C67D /* GCActionSheet.m in Sources */,
 				94334ACC152A249F00B4C904 /* HRKeyValueTableViewController.m in Sources */,
 				94AACF96153330A2005E3851 /* HRGridTableViewCell.m in Sources */,

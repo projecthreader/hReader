@@ -8,7 +8,6 @@
 
 #import "HRAboutTableViewController.h"
 #import "HRPasscodeWarningViewController.h"
-#import "HRKeychainManager.h"
 #import "HRAppDelegate.h"
 #import "HRPasscodeViewController.h"
 

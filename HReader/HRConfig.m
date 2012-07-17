@@ -509,39 +509,39 @@ NSString * const HRPPrivacyWarningConfirmed     = @"privacy_warning_confirmed";
 
 #pragma mark - System settings
 
-+ (BOOL)hasLaunched {
-    BOOL hasLaunched = [[NSUserDefaults standardUserDefaults] boolForKey:HRHasLaunched];
-    if (hasLaunched) {
-        return YES;
-    } else {
-        return NO;
-    }
-}
-+ (void)setHasLaunched:(BOOL)hasLaunched {
-    [[NSUserDefaults standardUserDefaults] setBool:hasLaunched forKey:HRHasLaunched];
-}
-+ (BOOL)passcodeEnabled {
-    BOOL passcodeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:HRPasscodeEnabled];
-    if (passcodeEnabled) {
-        return YES;
-    } else {
-        return NO;
-    }    
-}
-+ (void)setPasscodeEnabled:(BOOL)passcodeEnabled {
-    [[NSUserDefaults standardUserDefaults] setBool:passcodeEnabled forKey:HRPasscodeEnabled];
-}
-+ (BOOL)privacyWarningConfirmed {
-    BOOL passcodeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:HRPPrivacyWarningConfirmed];
-    if (passcodeEnabled) {
-        return YES;
-    } else {
-        return NO;
-    }        
-}
-+ (void)setPrivacyWarningConfirmed:(BOOL)confirmed {
-    [[NSUserDefaults standardUserDefaults] setBool:confirmed forKey:HRPPrivacyWarningConfirmed];
-}
+//+ (BOOL)hasLaunched {
+//    BOOL hasLaunched = [[NSUserDefaults standardUserDefaults] boolForKey:HRHasLaunched];
+//    if (hasLaunched) {
+//        return YES;
+//    } else {
+//        return NO;
+//    }
+//}
+//+ (void)setHasLaunched:(BOOL)hasLaunched {
+//    [[NSUserDefaults standardUserDefaults] setBool:hasLaunched forKey:HRHasLaunched];
+//}
+//+ (BOOL)passcodeEnabled {
+//    BOOL passcodeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:HRPasscodeEnabled];
+//    if (passcodeEnabled) {
+//        return YES;
+//    } else {
+//        return NO;
+//    }    
+//}
+//+ (void)setPasscodeEnabled:(BOOL)passcodeEnabled {
+//    [[NSUserDefaults standardUserDefaults] setBool:passcodeEnabled forKey:HRPasscodeEnabled];
+//}
+//+ (BOOL)privacyWarningConfirmed {
+//    BOOL passcodeEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:HRPPrivacyWarningConfirmed];
+//    if (passcodeEnabled) {
+//        return YES;
+//    } else {
+//        return NO;
+//    }        
+//}
+//+ (void)setPrivacyWarningConfirmed:(BOOL)confirmed {
+//    [[NSUserDefaults standardUserDefaults] setBool:confirmed forKey:HRPPrivacyWarningConfirmed];
+//}
 
 #pragma mark - Helper methods
 

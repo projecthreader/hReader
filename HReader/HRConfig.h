@@ -26,12 +26,12 @@ extern NSString * const HRPatientKey;
 + (UIColor *)redGradientTopColor;
 + (UIColor *)redGradientBottomColor;
 
-+ (BOOL)hasLaunched;
-+ (void)setHasLaunched:(BOOL)hasLaunched;
-+ (BOOL)passcodeEnabled;
-+ (void)setPasscodeEnabled:(BOOL)passcodeEnabled;
-+ (BOOL)privacyWarningConfirmed;
-+ (void)setPrivacyWarningConfirmed:(BOOL)confirmed;
+//+ (BOOL)hasLaunched;
+//+ (void)setHasLaunched:(BOOL)hasLaunched;
+//+ (BOOL)passcodeEnabled;
+//+ (void)setPasscodeEnabled:(BOOL)passcodeEnabled;
+//+ (BOOL)privacyWarningConfirmed;
+//+ (void)setPrivacyWarningConfirmed:(BOOL)confirmed;
 
 
 //+ (NSDate *)dateForString:(NSString *)birthday;
