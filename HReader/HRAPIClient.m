@@ -151,7 +151,7 @@ static NSString * const HROAuthKeychainService = @"org.hreader.oauth.2";
             NSArray *names = [[document nodesForXPath:@"/atom:feed/atom:entry/atom:title" error:nil] valueForKey:@"stringValue"];
             
             // build array
-            if (IDs && [IDs count] == [names count]) {
+            if ([response statusCode] == 200 && IDs && [IDs count] == [names count]) {
                 NSMutableArray *patients = [[NSMutableArray alloc] initWithCapacity:[IDs count]];
                 [IDs enumerateObjectsUsingBlock:^(NSString *patientID, NSUInteger index, BOOL *stop) {
                     NSDictionary *dict = 
@@ -315,7 +315,9 @@ static NSString * const HROAuthKeychainService = @"org.hreader.oauth.2";
         // create patient
         NSError *JSONError = nil;
         NSDictionary *dictionary = nil;
-        if (data) { dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError]; }
+        if (data && [response statusCode] == 200) {
+            dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
+        }
         
         // return
         if (finishBlock) { dispatch_async(dispatch_get_main_queue(), ^{ finishBlock(dictionary); }); }
