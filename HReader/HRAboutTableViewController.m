@@ -33,7 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.versionLabel.text = [HRConfig formattedVersion];
-    self.buildDateLabel.text = [NSString stringWithFormat:@"%s, %s", __DATE__, __TIME__];
+    self.buildDateLabel.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CMDBundleBuildTime"];
 }
 
 - (void)viewDidUnload {

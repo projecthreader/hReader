@@ -1395,6 +1395,7 @@
 				941DB0A51471B32D00A96B8B /* Frameworks */,
 				941DB0A61471B32D00A96B8B /* Resources */,
 				9464C58414769EFB0076B991 /* Set Bundle Version */,
+				3B30B86B15B84D0300FF4630 /* Set build date and time */,
 			);
 			buildRules = (
 			);
@@ -1630,6 +1631,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3B30B86B15B84D0300FF4630 /* Set build date and time */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Set build date and time";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/bin/ruby;
+			shellScript = "#!/usr/bin/ruby\n\n# plist gem\nrequire \"rubygems\"\nbegin\nrequire \"plist\"\nrescue LoadError => e\nputs \"You need to install the 'Plist' gem: [sudo] gem install plist\"\nexit 1\nend\n\n# xcode check\nraise \"Must be run from Xcode\" unless ENV[\"XCODE_VERSION_ACTUAL\"]\n\n# gather constants\nPRODUCT_PLIST = File.join(ENV[\"BUILT_PRODUCTS_DIR\"], ENV[\"INFOPLIST_PATH\"])\nBUILD_TIME_VALUE = Time.now.strftime(\"%b %e, %y at %I:%M %p\")\nBUILD_TIME_KEY = \"CMDBundleBuildTime\"\n\n# update product plist\nif File.file?(PRODUCT_PLIST)\n`/usr/bin/plutil -convert xml1 \\\"#{PRODUCT_PLIST}\\\"`\ninfo = Plist::parse_xml(PRODUCT_PLIST)\nif info\ninfo[BUILD_TIME_KEY] = BUILD_TIME_VALUE\ninfo.save_plist(PRODUCT_PLIST)\nputs \"Set #{BUILD_TIME_KEY} to #{BUILD_TIME_VALUE}\"\nend\n`/usr/bin/plutil -convert binary1 \\\"#{PRODUCT_PLIST}\\\"`\nend\n";
+		};
 		9464C58414769EFB0076B991 /* Set Bundle Version */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
