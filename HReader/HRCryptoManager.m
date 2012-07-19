@@ -15,13 +15,14 @@
 
 // keychain keys
 
-static NSString * const HRKeychainService = @"org.hreader.security.2";
-static NSString * const HRSecurityQuestionsKeychainAccount = @"security_questions";
-static NSString * const HRSecurityAnswersKeychainAccount = @"security_answers";
-static NSString * const HRPasscodeKeychainAccount = @"passcode";
-static NSString * const HRSharedKeyPasscodeKeychainAccount = @"shared_key_passcode";
-static NSString * const HRSharedKeySecurityAnswersKeychainAccount = @"shared_key_security_answers";
-static NSString * const HRKeychainIdentifierFlag = @"org.hreader.security.flag";
+static NSString * const HRKeychainService                           = @"org.hreader.security.2";
+static NSString * const HRSecurityQuestionsKeychainAccount          = @"security_questions";
+static NSString * const HRSecurityAnswersKeychainAccount            = @"security_answers";
+static NSString * const HRPasscodeKeychainAccount                   = @"passcode";
+static NSString * const HRSharedKeyPasscodeKeychainAccount          = @"shared_key_passcode";
+static NSString * const HRSharedKeySecurityAnswersKeychainAccount   = @"shared_key_security_answers";
+static NSString * const HRKeychainIdentifierFlag                    = @"org.hreader.security.flag";
+static const int HRSecurityQuestionsXORKey                          = 156;
 
 // static variables
 
@@ -249,7 +250,10 @@ void HRCryptoManagerUpdateSecurityQuestionsAndAnswers(NSArray *questions, NSArra
         NSString *answersString = [answers componentsJoinedByString:@""];
         
         // write clear questions
-        NSData *questionsData = [NSJSONSerialization dataWithJSONObject:questions options:0 error:nil];
+        NSMutableData *questionsData = [[NSJSONSerialization dataWithJSONObject:questions options:0 error:nil] mutableCopy];
+        NSUInteger length = [questionsData length];
+        char *bytes = [questionsData mutableBytes];
+        XOR(HRSecurityQuestionsXORKey, bytes, length);
         [SSKeychain setPasswordData:questionsData forService:HRKeychainService account:HRSecurityQuestionsKeychainAccount];
         
         // write  encrypted shared key
@@ -291,6 +295,9 @@ void HRCryptoManagerSetKeychainItemString(NSString *service, NSString *account, 
 }
 
 NSArray * HRCryptoManagerSecurityQuestions(void) {
-    NSData *questions = [SSKeychain passwordDataForService:HRKeychainService account:HRSecurityQuestionsKeychainAccount];
+    NSMutableData *questions = [[SSKeychain passwordDataForService:HRKeychainService account:HRSecurityQuestionsKeychainAccount] mutableCopy];
+    NSUInteger length = [questions length];
+    char *bytes = [questions mutableBytes];
+    XOR(HRSecurityQuestionsXORKey, bytes, length);
     return [NSJSONSerialization JSONObjectWithData:questions options:0 error:nil];
 }

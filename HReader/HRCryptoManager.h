@@ -13,6 +13,13 @@
  
  
  */
+#define XOR(_key, _input, _length) for (size_t _i = 0; _i < _length; _i++) { _input[_i] ^= _key; }
+
+/*
+ 
+ 
+ 
+ */
 BOOL HRCryptoManagerHasPasscode(void);
 
 /*
