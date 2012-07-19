@@ -261,7 +261,7 @@ static NSString * const HROAuthKeychainService = @"org.hreader.oauth.2";
     NSHTTPURLResponse *response = nil;
     NSData *body = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&connectionError];
     if (connectionError) { NSLog(@"%@", connectionError); }
-    if (body) {
+    if (body && [response statusCode] == 200) {
         NSError *JSONError = nil;
         payload = [NSJSONSerialization JSONObjectWithData:body options:0 error:&JSONError];
         if (JSONError) { NSLog(@"%@", connectionError); }

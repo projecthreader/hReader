@@ -68,12 +68,21 @@
                                     cacheName:nil];
         fetchedResultsController.delegate = self;
         [fetchedResultsController performFetch:nil];
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(applicationDidEnterBackground)
+         name:UIApplicationDidEnterBackgroundNotification
+         object:nil];
     }
     return self;
 }
 
 - (void)dealloc {
     fetchedResultsController.delegate = nil;
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:UIApplicationDidEnterBackgroundNotification
+     object:nil];
 }
 
 - (void)presentPopoverFromButton:(UIButton *)button
@@ -187,6 +196,11 @@
     else {
         animations();
     }
+}
+
+- (void)applicationDidEnterBackground {
+    [_popoverController dismissPopoverAnimated:NO];
+    _popoverController = nil;
 }
 
 #pragma mark - view lifecycle
