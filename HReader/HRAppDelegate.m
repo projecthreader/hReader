@@ -175,16 +175,23 @@
             [(id)self.window.rootViewController pushViewController:controller animated:YES];
         }
         
-        // check user interface
-        else if ([controller isKindOfClass:[HRSplashScreenViewController class]] ||
-                 [controller isKindOfClass:[HRHIPPAMessageViewController class]]) {
+        // carry on
+        else {
+            
+            // update local data
             NSString *host = [hosts lastObject];
             [[HRAPIClient clientWithHost:host] patientFeed:nil];
             [HRMPatient performSync];
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
-            id controller = [storyboard instantiateViewControllerWithIdentifier:@"PeopleSetupViewController"];
-            [[controller navigationItem] setHidesBackButton:YES];
-            [(id)self.window.rootViewController pushViewController:controller animated:YES];
+            
+            // push storyboard if we need to
+            if ([controller isKindOfClass:[HRSplashScreenViewController class]] ||
+                [controller isKindOfClass:[HRHIPPAMessageViewController class]]) {
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
+                id controller = [storyboard instantiateViewControllerWithIdentifier:@"PeopleSetupViewController"];
+                [[controller navigationItem] setHidesBackButton:YES];
+                [(id)self.window.rootViewController pushViewController:controller animated:YES];
+            }
+            
         }
         
     }
