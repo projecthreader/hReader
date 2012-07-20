@@ -125,6 +125,10 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
     [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
 }
 
+- (IBAction)showManageFamilyInterface:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - view lifecycle
 
 - (void)viewDidLoad {

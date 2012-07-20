@@ -218,9 +218,5 @@ static int HRRootViewControllerTitleContext;
 - (IBAction)people:(id)sender {
     [self.panelViewController exposeLeftAccessoryViewController:YES];
 }
-
-- (IBAction)showManageFamilyInterface:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
      
 @end

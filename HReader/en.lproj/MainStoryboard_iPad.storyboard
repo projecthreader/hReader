@@ -109,7 +109,13 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="kyb-Co-aV5">
                                 <rect key="frame" x="0.0" y="704" width="1024" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items/>
+                                <items>
+                                    <barButtonItem title="Manage Family" id="6Fx-Zr-I3n">
+                                        <connections>
+                                            <action selector="showManageFamilyInterface:" destination="Zdm-jY-vjc" id="Txf-DM-zmc"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -161,11 +167,6 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="Manage Family" id="GiK-aN-5dF">
-                            <connections>
-                                <action selector="showManageFamilyInterface:" destination="GW8-lK-xxa" id="8HR-9u-Fdb"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="XO8-go-ylK"/>
                         <barButtonItem title="About" id="yvk-UI-KfQ">
                             <connections>
@@ -1004,6 +1005,7 @@
         <class className="HRPeoplePickerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRPeoplePickerViewController.h"/>
             <relationships>
+                <relationship kind="action" name="showManageFamilyInterface:"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
             </relationships>
@@ -1013,7 +1015,6 @@
             <relationships>
                 <relationship kind="action" name="applets:"/>
                 <relationship kind="action" name="people:"/>
-                <relationship kind="action" name="showManageFamilyInterface:"/>
             </relationships>
         </class>
         <class className="HRTimelineViewController" superclassName="UIViewController">

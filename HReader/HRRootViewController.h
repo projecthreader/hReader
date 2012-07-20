@@ -12,6 +12,5 @@
 
 - (IBAction)applets:(id)sender;
 - (IBAction)people:(id)sender;
-- (IBAction)showManageFamilyInterface:(id)sender;
 
 @end

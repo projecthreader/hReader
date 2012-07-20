@@ -19,8 +19,10 @@ extern NSString * const HRPatientDidChangeNotification;
 NSFetchedResultsControllerDelegate,
 UISearchDisplayDelegate, UISearchBarDelegate>
 
+// user interface
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIToolbar *toolbar;
+- (IBAction)showManageFamilyInterface:(id)sender;
 
 /*
  
