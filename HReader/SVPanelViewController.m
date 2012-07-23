@@ -1,9 +1,8 @@
 //
 //  SVViewController.m
-//  SlidyView
 //
 //  Created by Caleb Davenport on 4/16/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 The MITRE Corporation. All rights reserved.
 //
 
 #import <QuartzCore/QuartzCore.h>
@@ -15,9 +14,8 @@
 #define kAccessoryViewWidth 335.0
 
 @interface SVPanelViewController () {
-@private
-    NSInteger state;
     UIView * __strong mask;
+    NSInteger state;
 }
 
 /*
@@ -47,66 +45,66 @@
 
 @implementation SVPanelViewController
 
-@synthesize mainViewController = __mainViewController;
-@synthesize leftAccessoryViewController = __leftViewController;
-@synthesize rightAccessoryViewController = __rightViewController;
+@synthesize mainViewController = _mainViewController;
+@synthesize leftAccessoryViewController = _leftViewController;
+@synthesize rightAccessoryViewController = _rightViewController;
 
 #pragma mark - property overrides
 
 - (void)setMainViewController:(UIViewController *)controller {
-    [__mainViewController removeFromParentViewController];
-    if ([__mainViewController isViewLoaded]) {
-        [__mainViewController viewWillDisappear:NO];
-        [__mainViewController.view removeFromSuperview];
-        [__mainViewController viewDidDisappear:NO];
+    [_mainViewController removeFromParentViewController];
+    if ([_mainViewController isViewLoaded]) {
+        [_mainViewController viewWillDisappear:NO];
+        [_mainViewController.view removeFromSuperview];
+        [_mainViewController viewDidDisappear:NO];
     }
     [self addChildViewController:controller];
     [controller didMoveToParentViewController:self];
-    __mainViewController = controller;
+    _mainViewController = controller;
     if ([self isViewLoaded]) {
-        [self.view addSubview:__mainViewController.view];
+        [self.view addSubview:_mainViewController.view];
     }
     [self configureSubviews];
 }
 
 - (void)setLeftAccessoryViewController:(UIViewController *)controller {
-    [__leftViewController removeFromParentViewController];
-    if ([__leftViewController isViewLoaded]) {
+    [_leftViewController removeFromParentViewController];
+    if ([_leftViewController isViewLoaded]) {
         if (state < 0) {
-            [__leftViewController viewWillDisappear:NO];
+            [_leftViewController viewWillDisappear:NO];
         }
-        [__leftViewController.view removeFromSuperview];
+        [_leftViewController.view removeFromSuperview];
         if (state < 0) {
-            [__leftViewController viewDidDisappear:NO];
+            [_leftViewController viewDidDisappear:NO];
         }
         state = 0;
     }
     [self addChildViewController:controller];
     [controller didMoveToParentViewController:self];
-    __leftViewController = controller;
+    _leftViewController = controller;
     if ([self isViewLoaded]) {
-        [self.view addSubview:__leftViewController.view];
+        [self.view addSubview:_leftViewController.view];
     }
     [self configureSubviews];
 }
 
 - (void)setRightAccessoryViewController:(UIViewController *)controller {
-    [__rightViewController removeFromParentViewController];
-    if ([__rightViewController isViewLoaded]) {
+    [_rightViewController removeFromParentViewController];
+    if ([_rightViewController isViewLoaded]) {
         if (state > 0) {
-            [__rightViewController viewWillDisappear:NO];
+            [_rightViewController viewWillDisappear:NO];
         }
-        [__rightViewController.view removeFromSuperview];
+        [_rightViewController.view removeFromSuperview];
         if (state > 0) {
-            [__rightViewController viewDidDisappear:NO];
+            [_rightViewController viewDidDisappear:NO];
         }
         state = 0;
     }
     [self addChildViewController:controller];
     [controller didMoveToParentViewController:self];
-    __rightViewController = controller;
+    _rightViewController = controller;
     if ([self isViewLoaded]) {
-        [self.view addSubview:__rightViewController.view];
+        [self.view addSubview:_rightViewController.view];
     }
     [self configureSubviews];
 }
@@ -163,7 +161,6 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
-//    return [self.mainViewController shouldAutorotateToInterfaceOrientation:orientation];
     return UIInterfaceOrientationIsLandscape(orientation);
 }
 

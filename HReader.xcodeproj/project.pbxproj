@@ -47,7 +47,6 @@
 		3B108CDD1579199F00888E30 /* AppLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B108CDC1579199F00888E30 /* AppLogo.png */; };
 		3B108CE115791A0C00888E30 /* HRSplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B108CE015791A0C00888E30 /* HRSplashScreenViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B108CE3157929FA00888E30 /* AppLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B108CE2157929FA00888E30 /* AppLogo@2x.png */; };
-		3B19651B14EEA6200045F827 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651A14EEA6200045F827 /* Logo.png */; };
 		3B19652014EEAB970045F827 /* C32-Smith-Henry.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651C14EEAB970045F827 /* C32-Smith-Henry.html */; };
 		3B19652114EEAB970045F827 /* C32-Smith-Molly.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */; };
 		3B19652214EEAB970045F827 /* C32-Smith-Sarah.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */; };
@@ -332,7 +331,6 @@
 		3B108CDF15791A0C00888E30 /* HRSplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSplashScreenViewController.h; sourceTree = "<group>"; };
 		3B108CE015791A0C00888E30 /* HRSplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSplashScreenViewController.m; sourceTree = "<group>"; };
 		3B108CE2157929FA00888E30 /* AppLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppLogo@2x.png"; sourceTree = "<group>"; };
-		3B19651A14EEA6200045F827 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		3B19651C14EEAB970045F827 /* C32-Smith-Henry.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Henry.html"; sourceTree = "<group>"; };
 		3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Molly.html"; sourceTree = "<group>"; };
 		3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Sarah.html"; sourceTree = "<group>"; };
@@ -804,7 +802,6 @@
 				3B001D5115755BA900762FB0 /* GradientButtonHighlighted.png */,
 				3B001D4C157550F800762FB0 /* GradientButton@2x.png */,
 				3B001D4D157550F800762FB0 /* GradientButtonHighlighted@2x.png */,
-				3B19651A14EEA6200045F827 /* Logo.png */,
 				3BFE7A2D14DAE5910037738D /* Icon-72.png */,
 				3B0977EC1553217F006392E2 /* people-picker.png */,
 				DD124DAD148D3EF300E23A44 /* Doctor.png */,
@@ -1461,7 +1458,6 @@
 				3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */,
 				941F254114E2EC7E0077D6D1 /* HRVitalAppletTile.xib in Resources */,
 				9413C74914EC0B7800BFA521 /* HRPatientSwipeControl.xib in Resources */,
-				3B19651B14EEA6200045F827 /* Logo.png in Resources */,
 				3B19652014EEAB970045F827 /* C32-Smith-Henry.html in Resources */,
 				3B19652114EEAB970045F827 /* C32-Smith-Molly.html in Resources */,
 				3B19652214EEAB970045F827 /* C32-Smith-Sarah.html in Resources */,

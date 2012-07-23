@@ -17,25 +17,22 @@
 #import "HRAppletConfigurationViewController.h"
 #import "HRPeoplePickerViewController.h"
 
-#import "HRMPatient.h"
-
 #import "SVPanelViewController.h"
 
 static int HRRootViewControllerTitleContext;
 
-@interface HRRootViewController ()
+@interface HRRootViewController () {
+    UISegmentedControl *segmentedControl;
+    UILabel *lastUpdatedLabel;
+}
 
-@property (nonatomic, strong) UISegmentedControl *segmentedControl;
 @property (nonatomic, strong) UIViewController *visibleViewController;
-@property (nonatomic, strong) UILabel *lastUpdatedLabel;
 
 @end
 
 @implementation HRRootViewController
 
-@synthesize visibleViewController   = __visibleViewController;
-@synthesize segmentedControl        = __segmentedControl;
-@synthesize lastUpdatedLabel        = __lastUpdatedLabel;
+@synthesize visibleViewController = _visibleViewController;
 
 #pragma mark - object methods
 
@@ -83,22 +80,20 @@ static int HRRootViewControllerTitleContext;
 }
 
 - (void)setVisibleViewController:(UIViewController *)controller {
-
     controller.view.frame = self.view.bounds;
     controller.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     [self
-     transitionFromViewController:__visibleViewController
+     transitionFromViewController:_visibleViewController
      toViewController:controller
      duration:0.0
      options:0
      animations:^{}
      completion:^(BOOL finished) {
-         __visibleViewController = controller;
-         self.title = __visibleViewController.title;
-         [TestFlight passCheckpoint:[NSString stringWithFormat:@"Navigation - %@", __visibleViewController.title]];
-         [__visibleViewController didMoveToParentViewController:self];
+         _visibleViewController = controller;
+         self.title = _visibleViewController.title;
+         [TestFlight passCheckpoint:[NSString stringWithFormat:@"Navigation - %@", _visibleViewController.title]];
+         [_visibleViewController didMoveToParentViewController:self];
      }];
-
 }
 
 #pragma mark - kvo
@@ -107,7 +102,7 @@ static int HRRootViewControllerTitleContext;
     if (context == &HRRootViewControllerTitleContext) {
         UIViewController *controller = (id)object;
         NSUInteger index = [self.childViewControllers indexOfObject:controller];
-        [self.segmentedControl setTitle:controller.title forSegmentAtIndex:index];
+        [segmentedControl setTitle:controller.title forSegmentAtIndex:index];
         if (controller == self.visibleViewController) {
             self.title = controller.title;
         }
@@ -118,6 +113,37 @@ static int HRRootViewControllerTitleContext;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // configure segmented control
+    {
+        NSArray *titles = [self.childViewControllers valueForKey:@"title"];
+        UISegmentedControl *control = [[UISegmentedControl alloc] initWithItems:titles];
+        control.segmentedControlStyle = UISegmentedControlStyleBar;
+        control.selectedSegmentIndex = 0;
+        NSUInteger count = [titles count];
+        for (NSUInteger i = 0; i < count; i++) {
+            [control setWidth:(600.0 / count) forSegmentAtIndex:i];
+        }
+        [control addTarget:self action:@selector(segmentSelected) forControlEvents:UIControlEventValueChanged];  
+        self.navigationItem.titleView = control;
+        segmentedControl = control;
+    }
+    
+    // configure first view
+    {
+        UIViewController *controller = [self.childViewControllers objectAtIndex:0];
+        _visibleViewController = controller;
+        self.title = _visibleViewController.title;
+        controller.view.frame = self.view.bounds;
+        controller.view.frame = self.view.bounds;
+        controller.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+        [self.view addSubview:controller.view];
+        [controller didMoveToParentViewController:self];
+    }
+    
+    
+    
+    
     
     // configure toolbar
     {
@@ -152,20 +178,7 @@ static int HRRootViewControllerTitleContext;
 //        self.navigationItem.leftBarButtonItem = logoItem;
 //    }
     
-    // configure segmented control
-    {
-        NSArray *titles = [self.childViewControllers valueForKey:@"title"];
-        UISegmentedControl *control = [[UISegmentedControl alloc] initWithItems:titles];
-        control.segmentedControlStyle = UISegmentedControlStyleBar;
-        control.selectedSegmentIndex = 0;
-        NSUInteger count = [titles count];
-        for (NSUInteger i = 0; i < count; i++) {
-            [control setWidth:(600.0 / count) forSegmentAtIndex:i];
-        }
-        [control addTarget:self action:@selector(segmentSelected) forControlEvents:UIControlEventValueChanged];  
-        self.navigationItem.titleView = control;
-        self.segmentedControl = control;
-    }
+
     
     // add bar button items to right
     /*
@@ -174,24 +187,14 @@ static int HRRootViewControllerTitleContext;
     }
      */
     
-    // configure first view
-    {
-        id controller = [self.childViewControllers objectAtIndex:0];
-        __visibleViewController = controller;
-        self.title = __visibleViewController.title;
-        [controller view].frame = self.view.bounds;
-        [controller view].autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-        [self.view addSubview:[controller view]];
-        [controller didMoveToParentViewController:self];
-    }
+
     
     // set last updated text
 //    self.lastUpdatedLabel.text = @"Last Updated: 05 May by Joseph Yang, M.D. (Columbia Pediatric Associates)";
 
 }
+
 - (void)viewDidUnload {
-    self.lastUpdatedLabel = nil;
-    self.segmentedControl = nil;
     self.visibleViewController = nil;
     [super viewDidUnload];
 }
@@ -203,7 +206,7 @@ static int HRRootViewControllerTitleContext;
 #pragma mark - button actions
 
 - (void)segmentSelected {
-    NSInteger index = self.segmentedControl.selectedSegmentIndex;
+    NSInteger index = segmentedControl.selectedSegmentIndex;
     self.visibleViewController = [self.childViewControllers objectAtIndex:index];
 }
 
