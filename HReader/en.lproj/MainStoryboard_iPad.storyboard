@@ -805,10 +805,33 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="lAj-ya-QXq">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RHExLogoutCell" textLabel="QtU-RY-FcW" style="IBUITableViewCellStyleDefault" id="6oz-W5-WeB">
+                                        <rect key="frame" x="0.0" y="206" width="540" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="31" y="1" width="458" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Logout of RHEx Account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="QtU-RY-FcW">
+                                                    <rect key="frame" x="10" y="0.0" width="438" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="About" footerTitle="The MITRE Corporation © 2012" id="Sn1-ug-z15">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Xtt-rv-9qB" detailTextLabel="vS6-de-HAa" style="IBUITableViewCellStyleValue1" id="Yg1-Ty-Tx2">
-                                        <rect key="frame" x="0.0" y="230" width="540" height="45"/>
+                                        <rect key="frame" x="0.0" y="296" width="540" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="31" y="1" width="478" height="43"/>
@@ -834,7 +857,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DateCell" textLabel="zZl-vc-Tg9" detailTextLabel="lcE-Ls-XNx" style="IBUITableViewCellStyleValue1" id="Zgo-be-pNd">
-                                        <rect key="frame" x="0.0" y="275" width="540" height="44"/>
+                                        <rect key="frame" x="0.0" y="341" width="540" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="31" y="0.0" width="478" height="43"/>
@@ -860,7 +883,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DateCell" textLabel="69W-P4-5gF" style="IBUITableViewCellStyleDefault" id="MQO-PX-DoE">
-                                        <rect key="frame" x="0.0" y="319" width="540" height="45"/>
+                                        <rect key="frame" x="0.0" y="385" width="540" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="31" y="0.0" width="458" height="43"/>
@@ -943,98 +966,6 @@
         <image name="chevron.png" width="25" height="25"/>
         <image name="people-picker.png" width="24" height="17"/>
     </resources>
-    <classes>
-        <class className="HRAboutTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRAboutTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="done"/>
-                <relationship kind="outlet" name="buildDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="versionLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="HRAppletConfigurationViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRAppletConfigurationViewController.h"/>
-        </class>
-        <class className="HRDoctorsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRDoctorsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="gridTableView" candidateClass="HRGridTableView"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="patientImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="HRGridTableView" superclassName="UITableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRGridTableView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="gridViewDataSource"/>
-                <relationship kind="outlet" name="gridViewDelegate"/>
-            </relationships>
-        </class>
-        <class className="HRPatientSummaryViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRPatientSummaryViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="advanceDirectivesLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="allergiesLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="conditionsContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="dateOfBirthLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="dateOfBirthTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="diagnosisDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="diagnosisLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="eventsContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="followUpAppointmentDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="followUpAppointmentNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="functionalStatusDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="functionalStatusProblemLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="functionalStatusStatusLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="functionalStatusTypeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="gridView" candidateClass="HRGridTableView"/>
-                <relationship kind="outlet" name="headerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="medicationRefillDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="medicationRefillNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="patientImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="patientNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="planOfCareLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pulseDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pulseImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="pulseLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pulseNormalLabel" candidateClass="UILabel"/>
-                <relationship kind="outletCollection" name="conditionDateLabels" candidateClass="UILabel"/>
-                <relationship kind="outletCollection" name="conditionNameLabels" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="HRPeoplePickerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRPeoplePickerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="showManageFamilyInterface:"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
-            </relationships>
-        </class>
-        <class className="HRRootViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRRootViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="applets:"/>
-                <relationship kind="action" name="people:"/>
-            </relationships>
-        </class>
-        <class className="HRTimelineViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRTimelineViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="headerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="patientImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="SVPanelViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SVPanelViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="leftAccessoryViewController" candidateClass="UIViewController"/>
-                <relationship kind="outlet" name="mainViewController" candidateClass="UIViewController"/>
-                <relationship kind="outlet" name="rightAccessoryViewController" candidateClass="UIViewController"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation" orientation="landscapeRight"/>
