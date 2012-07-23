@@ -10,8 +10,13 @@
 #import "HRPasscodeWarningViewController.h"
 #import "HRAppDelegate.h"
 #import "HRPasscodeViewController.h"
+#import "HRAPIClient_private.h"
 
 #import "GCAlertView.h"
+
+#import "CMDActivityHUD.h"
+
+#import "HRMPatient.h"
 
 #if !__has_feature(objc_arc)
 #error This class requires ARC
@@ -93,14 +98,6 @@
         });
     }
     
-    // privacy demo
-    else if ([cell.reuseIdentifier isEqualToString:@"PrivacyDemoCell"]) {
-//        HRPasscodeWarningViewController *warningViewController = [[HRPasscodeWarningViewController alloc] initWithNibName:nil bundle:nil];
-//        warningViewController.demoMode = YES;
-//        [self presentModalViewController:warningViewController animated:YES];
-//        [warningViewController release];
-    }
-    
     // passcode cell
     else if ([cell.reuseIdentifier isEqualToString:@"ChangePasscodeCell"]) {
         [self presentPasscodeVerificationControllerWithAction:@selector(verifyPasscodeOnPasscodeChange::)];
@@ -109,6 +106,47 @@
     // questions cell
     else if ([cell.reuseIdentifier isEqualToString:@"ChangeQuestionsCell"]) {
         [self presentPasscodeVerificationControllerWithAction:@selector(verifyPasscodeOnQuestionsChange::)];
+    }
+    
+    // logout cell
+    else if ([cell.reuseIdentifier isEqualToString:@"RHExLogoutCell"]) {
+        GCAlertView *alert = [[GCAlertView alloc]
+                              initWithTitle:@"Logout"
+                              message:@"This will delete all data synced with RHEx and cannot be undone."];
+        [alert addButtonWithTitle:@"Cancel" block:nil];
+        [alert addButtonWithTitle:@"Logout" block:^{
+            [CMDActivityHUD show];
+            dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
+            dispatch_after(time, dispatch_get_main_queue(), ^(void){
+                
+                // destroy client
+                NSString *host = [[HRAPIClient hosts] lastObject];
+                HRAPIClient *client = [HRAPIClient clientWithHost:host];
+                [client destroy];
+                
+                // destroy patients
+                NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
+                NSFetchRequest *request = [HRMPatient fetchRequestInContext:context];
+                [request setIncludesPropertyValues:NO];
+                [request setIncludesSubentities:NO];
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"host == %@", host];
+                [request setPredicate:predicate];
+                NSArray *matching = [context executeFetchRequest:request error:nil];
+                [matching enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                    [context deleteObject:obj];
+                }];
+                [context save:nil];
+                
+                // clear ui
+                [self.view.window.rootViewController dismissViewControllerAnimated:NO completion:nil];
+                [(id)self.view.window.rootViewController popToRootViewControllerAnimated:NO];
+                HRAppDelegate *delegate = (id)[[UIApplication sharedApplication] delegate];
+                [delegate performSelector:@selector(performLaunchSteps)];
+                
+            });
+        }];
+        [alert setCancelButtonIndex:0];
+        [alert show];
     }
 
 }
