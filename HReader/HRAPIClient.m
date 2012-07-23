@@ -17,6 +17,7 @@
 static NSString * const HROAuthClientIdentifier = @"c367aa7b8c87ce239981140511a7d158";
 static NSString * const HROAuthClientSecret = @"bc121c529fcd1689704a24460b91f98b";
 static NSString * const HROAuthKeychainService = @"org.hreader.oauth.2";
+static NSMutableDictionary *allClients = nil;
 
 @interface NSString (HROAuthControllerAdditions)
 
@@ -43,7 +44,6 @@ static NSString * const HROAuthKeychainService = @"org.hreader.oauth.2";
 @end
 
 @interface HRAPIClient () {
-@private
     NSString *_host;
     NSString *_accessToken;
     NSDate *_accessTokenExiprationDate;
@@ -78,15 +78,14 @@ static NSString * const HROAuthKeychainService = @"org.hreader.oauth.2";
 #pragma mark - class methods
 
 + (HRAPIClient *)clientWithHost:(NSString *)host {
-    static NSMutableDictionary *dictionary = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
-        dictionary = [[NSMutableDictionary alloc] initWithCapacity:1];
+        allClients = [[NSMutableDictionary alloc] initWithCapacity:1];
     });
-    HRAPIClient *client = [dictionary objectForKey:host];
+    HRAPIClient *client = [allClients objectForKey:host];
     if (client == nil) {
         client = [[HRAPIClient alloc] initWithHost:host];
-        [dictionary setObject:client forKey:host];
+        [allClients setObject:client forKey:host];
     }
     return client;
 }
@@ -126,6 +125,11 @@ static NSString * const HROAuthKeychainService = @"org.hreader.oauth.2";
         _requestQueue = dispatch_queue_create([name UTF8String], DISPATCH_QUEUE_SERIAL);
     }
     return self;
+}
+
+- (void)destroy {
+    [SSKeychain deletePasswordForService:HROAuthKeychainService account:_host];
+    [allClients removeObjectForKey:_host];
 }
 
 - (void)patientFeed:(void (^)(NSArray *))completion ignoreCache:(BOOL)ignore {
