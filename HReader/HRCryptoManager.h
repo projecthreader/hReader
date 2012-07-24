@@ -92,3 +92,19 @@ void HRCryptoManagerSetKeychainItemString(NSString *service, NSString *account, 
  
  */
 NSArray * HRCryptoManagerSecurityQuestions(void);
+
+/*
+ 
+ 
+ 
+ */
+NSData * HRCryptoManagerDecryptData(NSData *data);
+NSData * HRCryptoManagerEncryptData(NSData *data);
+
+/*
+ 
+ 
+ 
+ */
+NSData * HRCryptoManagerEncryptPropertyListObject(id object);
+id HRCryptoManagerDecryptPropertyListObject(NSData *data);

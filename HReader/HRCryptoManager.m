@@ -31,14 +31,14 @@ static NSString *_temporaryKey = nil;
 static NSArray *_temporaryQuestions = nil;
 static NSArray *_temporaryAnswers = nil;
 
-// function prototypes
+// private function prototypes
 
 static NSData * HRCryptoManagerHashString(NSString *string);
 static NSData * HRCryptoManagerHashData(NSData *data);
 static NSData * HRCryptoManagerEncrypt_private(NSData *data, NSString *key);
 static NSData * HRCryptoManagerDecrypt_private(NSData *data, NSString *key);
 
-// function definitions
+#pragma mark - private encryption methods
 
 static NSData * HRCryptoManagerHashString(NSString *string) {
     NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
@@ -141,7 +141,7 @@ static NSData * HRCryptoManagerDecrypt_private(NSData *data, NSString *key) {
     
 }
 
-#pragma mark - public methods
+#pragma mark - check state of stored encryption resources
 
 BOOL HRCryptoManagerHasPasscode(void) {
     return ([SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount] != nil &&
@@ -154,17 +154,21 @@ BOOL HRCryptoManagerHasSecurityQuestions(void) {
             [SSKeychain passwordDataForService:HRKeychainService account:HRSecurityAnswersKeychainAccount]);
 }
 
+#pragma mark - setup app encryption
+
 void HRCryptoManagerStoreTemporarySecurityQuestionsAndAnswers(NSArray *questions, NSArray *answers) {
-    NSCAssert([questions count] == [answers count], @"The number of questions and answers must be equal");
+    NSCAssert([questions count] > 0 && [questions count] == [answers count], @"The number of questions and answers must be equal");
     _temporaryQuestions = [questions copy];
     _temporaryAnswers = [answers copy];
 }
 
 void HRCryptoManagerStoreTemporaryPasscode(NSString *code) {
+    NSCAssert([code length], @"The passcode must not be blank");
     _temporaryPasscode = [code copy];
 }
 
 void HRCryptoManagerFinalize(void) {
+    NSCAssert(_temporaryAnswers && _temporaryQuestions && _temporaryPasscode, @"HRCryptoManagerFinalize() was called before all encryption setup was done");
     
     // generate shared key
     _temporaryKey = [[NSProcessInfo processInfo] globallyUniqueString];
@@ -188,6 +192,8 @@ void HRCryptoManagerPurge(void) {
     _temporaryPasscode = nil;
     _temporaryKey = nil;
 }
+
+#pragma mark - handle unlock state of the app
 
 BOOL HRCryptoManagerUnlockWithPasscode(NSString *passcode) {
     NSCAssert(passcode, @"The passcode must not be nil");
@@ -225,6 +231,8 @@ BOOL HRCryptoManagerUnlockWithAnswersForSecurityQuestions(NSArray *answers) {
 BOOL HRCryptoManagerIsUnlocked(void) {
     return (_temporaryKey != nil);
 }
+
+#pragma mark - update encryption resources
 
 void HRCryptoManagerUpdatePasscode(NSString *passcode) {
     NSCAssert(passcode, @"The passcode must not be nil");
@@ -269,12 +277,11 @@ void HRCryptoManagerUpdateSecurityQuestionsAndAnswers(NSArray *questions, NSArra
     }
 }
 
+#pragma mark - keychain data
+
 NSData * HRCryptoManagerKeychainItemData(NSString *service, NSString *account) {
-    if (_temporaryKey) {
-        NSData *value = [SSKeychain passwordDataForService:service account:account];
-        return HRCryptoManagerDecrypt_private(value, _temporaryKey);
-    }
-    return nil;
+    NSData *data = [SSKeychain passwordDataForService:service account:account];
+    return HRCryptoManagerDecryptData(data);
 }
 
 NSString * HRCryptoManagerKeychainItemString(NSString *service, NSString *account) {
@@ -283,8 +290,8 @@ NSString * HRCryptoManagerKeychainItemString(NSString *service, NSString *accoun
 }
 
 void HRCryptoManagerSetKeychainItemData(NSString *service, NSString *account, NSData *value) {
-    if (_temporaryKey) {
-        NSData *encrypted = HRCryptoManagerEncrypt_private(value, _temporaryKey);
+    NSData *encrypted = HRCryptoManagerEncryptData(value);
+    if (encrypted) {
         [SSKeychain setPasswordData:encrypted forService:service account:account];
     }
 }
@@ -294,10 +301,55 @@ void HRCryptoManagerSetKeychainItemString(NSString *service, NSString *account, 
     HRCryptoManagerSetKeychainItemData(service, account, valueData);
 }
 
+#pragma mark - get security questions
+
 NSArray * HRCryptoManagerSecurityQuestions(void) {
     NSMutableData *questions = [[SSKeychain passwordDataForService:HRKeychainService account:HRSecurityQuestionsKeychainAccount] mutableCopy];
     NSUInteger length = [questions length];
     char *bytes = [questions mutableBytes];
     XOR(HRSecurityQuestionsXORKey, bytes, length);
     return [NSJSONSerialization JSONObjectWithData:questions options:0 error:nil];
+}
+
+#pragma mark - public methods for dealing with binary data
+
+NSData * HRCryptoManagerDecryptData(NSData *data) {
+    if (data && _temporaryKey) {
+        return HRCryptoManagerDecrypt_private(data, _temporaryKey);
+    }
+    return nil;
+}
+
+NSData * HRCryptoManagerEncryptData(NSData *data) {
+    if (data && _temporaryKey) {
+        return HRCryptoManagerEncrypt_private(data, _temporaryKey);
+    }
+    return nil;
+}
+
+#pragma mark - encrypt and decrypt property list objects
+
+NSData * HRCryptoManagerEncryptPropertyListObject(id object) {
+    if (object && _temporaryKey) {
+        CFDataRef data = CFPropertyListCreateData(kCFAllocatorDefault,
+                                                  (__bridge CFPropertyListRef)object,
+                                                  kCFPropertyListBinaryFormat_v1_0,
+                                                  0,
+                                                  NULL);
+        return HRCryptoManagerEncrypt_private((__bridge_transfer NSData *)data, _temporaryKey);
+    }
+    return nil;
+}
+
+id HRCryptoManagerDecryptPropertyListObject(NSData *data) {
+    if (data && _temporaryKey) {
+        NSData *decrypted = HRCryptoManagerDecrypt_private(data, _temporaryKey);
+        CFPropertyListRef list = CFPropertyListCreateWithData(kCFAllocatorDefault,
+                                                              (__bridge CFDataRef)decrypted,
+                                                              0,
+                                                              NULL,
+                                                              NULL);
+        return (__bridge_transfer id)list;
+    }
+    return nil;
 }
