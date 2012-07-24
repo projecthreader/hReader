@@ -56,21 +56,27 @@ static NSString * const HROAuthURLHost = @"oauth";
                           @"authorization_code", @"grant_type",
                           nil];
             if ([client refreshAccessTokenWithParameters:parameters]) {
-                HRPeopleSetupViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"PeopleSetupViewController"];
-                controller.navigationItem.hidesBackButton = YES;
-                [self.navigationController pushViewController:controller animated:YES];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    HRPeopleSetupViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"PeopleSetupViewController"];
+                    controller.navigationItem.hidesBackButton = YES;
+                    [self.navigationController pushViewController:controller animated:YES];
+                });
             }
             else {
                 NSLog(@"Error %@ %d", NSStringFromClass([self class]), __LINE__);
-                [[[UIAlertView alloc]
-                  initWithTitle:@"Unable to get access tokens from server"
-                  message:nil
-                  delegate:nil
-                  cancelButtonTitle:@"OK"
-                  otherButtonTitles:nil]
-                 show];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[[UIAlertView alloc]
+                      initWithTitle:@"Unable to get access tokens from server"
+                      message:nil
+                      delegate:nil
+                      cancelButtonTitle:@"OK"
+                      otherButtonTitles:nil]
+                     show];
+                });
             }
-            [CMDActivityHUD dismiss];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [CMDActivityHUD dismiss];
+            });
         });
     }
     return YES;
