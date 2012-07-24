@@ -105,7 +105,9 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
                  [self setSyncStatus:[NSString stringWithFormat:@"Syncing %@…", [obj compositeName]]];
              }
              finishBlock:^(NSDictionary *payload) {
-                 if (payload) { [obj populateWithContentsOfDictionary:payload]; }
+                 if (payload && ![obj isDeleted]) {
+                     [obj populateWithContentsOfDictionary:payload];
+                 }
                  else { NSLog(@"Unable to sync %@", [obj compositeName]); }
                  if (idx == (count - 1)) {
                      [context save:nil];
