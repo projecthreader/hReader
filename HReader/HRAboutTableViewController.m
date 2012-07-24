@@ -113,36 +113,41 @@
         GCAlertView *alert = [[GCAlertView alloc]
                               initWithTitle:@"Logout"
                               message:@"This will delete all data synced with RHEx and cannot be undone."];
-        [alert addButtonWithTitle:@"Cancel" block:nil];
+        [alert addButtonWithTitle:@"Cancel" block:^{
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }];
         [alert addButtonWithTitle:@"Logout" block:^{
             [CMDActivityHUD show];
-            dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
-            dispatch_after(time, dispatch_get_main_queue(), ^(void){
-                
-                // destroy client
-                NSString *host = [[HRAPIClient hosts] lastObject];
-                HRAPIClient *client = [HRAPIClient clientWithHost:host];
-                [client destroy];
-                
-                // destroy patients
-                NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
-                NSFetchRequest *request = [HRMPatient fetchRequestInContext:context];
-                [request setIncludesPropertyValues:NO];
-                [request setIncludesSubentities:NO];
-                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"host == %@", host];
-                [request setPredicate:predicate];
-                NSArray *matching = [context executeFetchRequest:request error:nil];
-                [matching enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                    [context deleteObject:obj];
-                }];
-                [context save:nil];
-                
-                // clear ui
+            dispatch_time_t oneTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
+            dispatch_after(oneTime, dispatch_get_main_queue(), ^(void){
                 [self.view.window.rootViewController dismissViewControllerAnimated:NO completion:nil];
                 [(id)self.view.window.rootViewController popToRootViewControllerAnimated:NO];
-                HRAppDelegate *delegate = (id)[[UIApplication sharedApplication] delegate];
-                [delegate performSelector:@selector(performLaunchSteps)];
-                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    // destroy client
+                    NSString *host = [[HRAPIClient hosts] lastObject];
+                    HRAPIClient *client = [HRAPIClient clientWithHost:host];
+                    [client destroy];
+                    
+                    // destroy patients
+                    NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
+                    NSFetchRequest *request = [HRMPatient fetchRequestInContext:context];
+                    [request setIncludesPropertyValues:NO];
+                    [request setIncludesSubentities:NO];
+                    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"host == %@", host];
+                    [request setPredicate:predicate];
+                    NSArray *matching = [context executeFetchRequest:request error:nil];
+                    [matching enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                        [context deleteObject:obj];
+                    }];
+                    [context save:nil];
+                    
+                    // clear ui
+                    HRAppDelegate *delegate = (id)[[UIApplication sharedApplication] delegate];
+                    [delegate performSelector:@selector(performLaunchSteps)];
+                    [CMDActivityHUD dismiss];
+                    
+                });
             });
         }];
         [alert setCancelButtonIndex:0];
