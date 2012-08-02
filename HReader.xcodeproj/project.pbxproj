@@ -268,7 +268,6 @@
 		94E078C71538A4570051DC01 /* pophealth-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078C01538A4570051DC01 /* pophealth-summary.png */; };
 		94E84E7014FEBC390091B0A1 /* NSArray+Collect.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E84E6F14FEBC390091B0A1 /* NSArray+Collect.m */; };
 		94F871F41535D9F60018AF13 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F871F31535D9F60018AF13 /* libz.dylib */; };
-		C3390523155D536B00E77EBF /* HReaderConfig.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */; };
 		DD124DAE148D3EF300E23A44 /* Doctor.png in Resources */ = {isa = PBXBuildFile; fileRef = DD124DAD148D3EF300E23A44 /* Doctor.png */; };
 		DD5597C114897DE2006A0D1D /* HRDoctorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5597BF14897DE2006A0D1D /* HRDoctorsViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DD5597C214897DE2006A0D1D /* HRDoctorsViewController_old.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5597C014897DE2006A0D1D /* HRDoctorsViewController_old.xib */; };
@@ -1415,7 +1414,7 @@
 		941DB09F1471B32D00A96B8B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = "MITRE Corporation";
 			};
 			buildConfigurationList = 941DB0A21471B32D00A96B8B /* Build configuration list for PBXProject "HReader" */;
@@ -1570,7 +1569,6 @@
 				3B74E5DB155482E700593ECF /* ts-condition-full.png in Resources */,
 				3B74E5DC155482E700593ECF /* ts-events-full.png in Resources */,
 				3B74E5DE1554854000593ECF /* ns-synthetic.json in Resources */,
-				C3390523155D536B00E77EBF /* HReaderConfig.xcconfig in Resources */,
 				9483F67115669E5400867CFC /* female-bmi-chart.json in Resources */,
 				9483F67315669EE000867CFC /* male-bmi-chart.json in Resources */,
 				3B001D3E157519DB00762FB0 /* InitialSetup_iPad.storyboard in Resources */,

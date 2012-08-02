@@ -108,12 +108,13 @@ static NSData * HRCryptoManagerDecrypt_private(NSData *data, NSString *key) {
     
     // determine total needed space
     size_t length;
-    CCCryptorStatus status = CCCrypt(kCCDecrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
-                                     [key_data bytes], [key_data length],
-                                     [data bytes],
-                                     [data bytes] + kCCBlockSizeAES128, [data length] - kCCBlockSizeAES128,
-                                     NULL, 0,
-                                     &length);
+    CCCryptorStatus status;
+    CCCrypt(kCCDecrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
+            [key_data bytes], [key_data length],
+            [data bytes],
+            [data bytes] + kCCBlockSizeAES128, [data length] - kCCBlockSizeAES128,
+            NULL, 0,
+            &length);
     
     // create buffer
     void *buffer = malloc(length);
