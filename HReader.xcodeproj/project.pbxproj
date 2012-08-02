@@ -723,7 +723,6 @@
 		3B19651414EE9DCB0045F827 /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				3B5ADF6314E1C5D50025E069 /* Core Data */,
 				3BB8D9A7157D206E00124A57 /* Crypto */,
 				3B001D3F15751B0D00762FB0 /* App Delegate */,
 				3B364FAC156D669B00DDB201 /* API Interaction */,
@@ -753,6 +752,7 @@
 				3BD16F0414E1C5B700F2249E /* HRMPatient.m */,
 				3BE9A40314E40EBB00F87B60 /* HRMEntry.h */,
 				3BE9A40414E40EBB00F87B60 /* HRMEntry.m */,
+				3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -1025,6 +1025,7 @@
 				3BA11F9F15C0608200ABB012 /* Vendor Applets */,
 				3BCAC50415404AC8007C874B /* View Controllers */,
 				9454C35E1551789B0024C2EF /* Sparklines */,
+				3B5ADF6314E1C5D50025E069 /* Core Data */,
 				3B19651414EE9DCB0045F827 /* Global */,
 				9492CA4F1535F8EC009DE7F2 /* System Applets */,
 				3BFBEE1D1534C0AE009EBA2D /* Patient Data */,
@@ -1044,7 +1045,6 @@
 				941DB0B51471B32D00A96B8B /* InfoPlist.strings */,
 				941DB0B81471B32D00A96B8B /* main.m */,
 				941DB0BA1471B32D00A96B8B /* HReader-Prefix.pch */,
-				3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */,
 				3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */,
 				3B001D3D157519DB00762FB0 /* InitialSetup_iPad.storyboard */,
 				3BC6A68B15A5D0DC00FA0C3A /* hippa.txt */,

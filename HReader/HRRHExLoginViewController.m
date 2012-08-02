@@ -16,7 +16,6 @@ static NSString * const HROAuthURLScheme = @"x-org-mitre-hreader";
 static NSString * const HROAuthURLHost = @"oauth";
 
 @interface HRRHExLoginViewController () {
-@private
     NSString *_host;
 }
 
@@ -45,6 +44,18 @@ static NSString * const HROAuthURLHost = @"oauth";
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    
+    // check headers
+    static NSString *targetHeaderFieldValue = @"ipad";
+    static NSString *headerFieldKey = @"x-org-mitre-hreader";
+    NSString *currentFieldValue = [request valueForHTTPHeaderField:headerFieldKey];
+    if (![currentFieldValue isEqualToString:targetHeaderFieldValue]) {
+        NSMutableURLRequest *mutableRequest = [request mutableCopy];
+        [mutableRequest setValue:targetHeaderFieldValue forHTTPHeaderField:headerFieldKey];
+        [webView loadRequest:mutableRequest];
+        return NO;
+    }
+    
     NSURL *URL = [request URL];
     if ([[URL scheme] isEqualToString:HROAuthURLScheme] && [[URL host] isEqualToString:HROAuthURLHost]) {
         [CMDActivityHUD show];
