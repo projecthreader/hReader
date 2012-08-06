@@ -10,6 +10,6 @@
 
 @interface HRPeoplePickerViewController ()
 
-+ (void)setSelectedPatientIndex:(NSInteger)index;
++ (void)setSelectedPatient:(HRMPatient *)patient;
 
 @end

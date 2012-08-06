@@ -16,14 +16,14 @@
 #import "SVPanelViewController.h"
 
 NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
-static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
+static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
 
-@interface HRPeoplePickerViewController () {
+@implementation HRPeoplePickerViewController {
     
     // support showing the main patient list
     NSManagedObjectContext *managedObjectContext;
     NSFetchedResultsController *fetchedResultsController;
-    NSInteger selectedPatientIndex;
+    HRMPatient *selectedPatient;
     BOOL shouldIgnoreUpdatesFromFetchedResultsController;
     
     // support people search
@@ -32,58 +32,18 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
     
 }
 
-- (void)updateTableViewSelection;
-
-- (void)persistSelectedPatientIndex;
-
-@end
-
-@implementation HRPeoplePickerViewController
-
-@synthesize tableView = _tableView;
-@synthesize toolbar = _toolbar;
-
 #pragma mark - class methods
 
-+ (void)setSelectedPatientIndex:(NSInteger)index {
-    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
-    [settings setInteger:index forKey:HRSelectedPatientIndexKey];
-    [settings synchronize];
-}
-
-#pragma mark - public methods
-
-- (HRMPatient *)selectedPatient {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selectedPatientIndex inSection:0];
-    return [fetchedResultsController objectAtIndexPath:indexPath];
-}
-
-- (void)selectNextPatient {
-    selectedPatientIndex++;
-    if (selectedPatientIndex >= (NSInteger)[[fetchedResultsController fetchedObjects] count]) {
-        selectedPatientIndex = 0;
++ (void)setSelectedPatient:(HRMPatient *)patient {
+    @synchronized(self) {
+        NSString *string = [[[patient objectID] URIRepresentation] absoluteString];
+        NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+        [settings setObject:string forKey:HRSelectedPatientURIKey];
+        [settings synchronize];
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:HRPatientDidChangeNotification
+         object:self];
     }
-    [self updateTableViewSelection];
-    [self persistSelectedPatientIndex];
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:HRPatientDidChangeNotification
-     object:self];
-}
-
-- (void)selectPreviousPatient {
-    selectedPatientIndex--;
-    if (selectedPatientIndex <= 0) {
-        selectedPatientIndex = (NSInteger)([[fetchedResultsController fetchedObjects] count] - 1);
-    }
-    [self updateTableViewSelection];
-    [self persistSelectedPatientIndex];
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:HRPatientDidChangeNotification
-     object:self];
-}
-
-- (void)persistSelectedPatientIndex {
-    [HRPeoplePickerViewController setSelectedPatientIndex:selectedPatientIndex];
 }
 
 #pragma mark - object methods
@@ -94,10 +54,10 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
         
         // load data from core data
         managedObjectContext = [HRAppDelegate managedObjectContext];
-        sortDescriptors = [NSArray arrayWithObjects:
-                           [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES],
-                           [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES],
-                           nil];
+        sortDescriptors = @[
+            [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES],
+            [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES],
+        ];
         NSMutableArray *descriptors = [sortDescriptors mutableCopy];
         [descriptors insertObject:[NSSortDescriptor sortDescriptorWithKey:@"displayOrder" ascending:YES] atIndex:0];
         NSFetchRequest *request = [HRMPatient fetchRequestInContext:managedObjectContext];
@@ -112,21 +72,66 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
         BOOL fetch = [fetchedResultsController performFetch:&error];
         NSAssert(fetch, @"Unable to fetch patients\n%@", error);
         
-        // selected index
-        selectedPatientIndex = MIN([[NSUserDefaults standardUserDefaults] integerForKey:HRSelectedPatientIndexKey],
-                                   (NSInteger)[[fetchedResultsController fetchedObjects] count]);
+        // notifications
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(selectedPatientDidChange)
+         name:HRPatientDidChangeNotification
+         object:nil];
+        
+        // cache selected patient
+        @synchronized([HRPeoplePickerViewController class]) {
+            NSString *string = [[NSUserDefaults standardUserDefaults] objectForKey:HRSelectedPatientURIKey];
+            NSURL *URL = [NSURL URLWithString:string];
+            NSPersistentStoreCoordinator *coordinator = [managedObjectContext persistentStoreCoordinator];
+            NSManagedObjectID *objectID = [coordinator managedObjectIDForURIRepresentation:URL];
+            if (objectID) { selectedPatient = (id)[managedObjectContext existingObjectWithID:objectID error:nil]; }
+            if (selectedPatient == nil) {
+                selectedPatient = [[fetchedResultsController fetchedObjects] objectAtIndex:0];
+            }
+        }
         
     }
     return self;
 }
 
-- (void)updateTableViewSelection {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selectedPatientIndex inSection:0];
-    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+- (void)selectedPatientDidChange {
+    [self updateTableViewSelection];
 }
 
 - (IBAction)showManageFamilyInterface:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (HRMPatient *)selectedPatient {
+    return selectedPatient;
+}
+
+- (void)selectNextPatient {
+    NSIndexPath *indexPath = [fetchedResultsController indexPathForObject:selectedPatient];
+    NSInteger newIndex = indexPath.row + 1;
+    if (newIndex >= (NSInteger)[[fetchedResultsController fetchedObjects] count]) {
+        newIndex = 0;
+    }
+    indexPath = [NSIndexPath indexPathForRow:newIndex inSection:0];
+    selectedPatient = [fetchedResultsController objectAtIndexPath:indexPath];
+    [HRPeoplePickerViewController setSelectedPatient:selectedPatient];
+}
+
+- (void)selectPreviousPatient {
+    NSIndexPath *indexPath = [fetchedResultsController indexPathForObject:selectedPatient];
+    NSInteger newIndex = indexPath.row + 1;
+    if (newIndex < 0) {
+        newIndex = (NSInteger)([[fetchedResultsController fetchedObjects] count] - 1);
+    }
+    indexPath = [NSIndexPath indexPathForRow:newIndex inSection:0];
+    selectedPatient = [fetchedResultsController objectAtIndexPath:indexPath];
+    [HRPeoplePickerViewController setSelectedPatient:selectedPatient];
+}
+
+- (void)updateTableViewSelection {
+    NSIndexPath *indexPath = [fetchedResultsController indexPathForObject:selectedPatient];
+    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionMiddle];
 }
 
 #pragma mark - view lifecycle
@@ -136,6 +141,10 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
     shouldIgnoreUpdatesFromFetchedResultsController = NO;
     self.tableView.editing = YES;
     [self.tableView reloadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self updateTableViewSelection];
 }
 
@@ -156,10 +165,10 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    NSPredicate *predicateOne = [NSPredicate predicateWithFormat:@"firstName contains[cd] %@", searchText];
-    NSPredicate *predicateTwo = [NSPredicate predicateWithFormat:@"lastName contains[cd] %@", searchText];
-    NSPredicate *predicate = [NSCompoundPredicate orPredicateWithSubpredicates:
-                              [NSArray arrayWithObjects:predicateOne, predicateTwo, nil]];
+    NSPredicate *predicate = [NSCompoundPredicate orPredicateWithSubpredicates:@[
+                                  [NSPredicate predicateWithFormat:@"firstName contains[cd] %@", searchText],
+                                  [NSPredicate predicateWithFormat:@"lastName contains[cd] %@", searchText]
+                              ]];
     searchResults = [HRMPatient
                      allInContext:managedObjectContext
                      withPredicate:predicate
@@ -199,21 +208,17 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == self.tableView) {
-        selectedPatientIndex = indexPath.row;
-    }
-    else {
-        HRMPatient *patient = [searchResults objectAtIndex:indexPath.row];
-        selectedPatientIndex = [fetchedResultsController indexPathForObject:patient].row;
-        [self updateTableViewSelection];
-    }
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    HRMPatient *patient = nil;
+    if (tableView == self.tableView) { patient = [fetchedResultsController objectAtIndexPath:indexPath]; }
+    else { patient = [searchResults objectAtIndex:indexPath.row]; }
     double delay = 0.15;
     dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
     dispatch_after(time, dispatch_get_main_queue(), ^(void){
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:HRPatientDidChangeNotification
-         object:self];
+        selectedPatient = patient;
+        [HRPeoplePickerViewController setSelectedPatient:patient];
         [self.panelViewController hideAccessoryViewControllers:YES];
+        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     });
 }
 
@@ -246,14 +251,6 @@ static NSString * const HRSelectedPatientIndexKey = @"HRSelectedPatientIndex";
         [obj setDisplayOrder:number];
         if ((NSInteger)idx >= max) { *stop = YES; }
     }];
-    
-    // update selected index
-    if (fromIndexPath.row == selectedPatientIndex) { selectedPatientIndex = toIndexPath.row; }
-    else if (max >= selectedPatientIndex) {
-        if (fromIndexPath.row <= selectedPatientIndex) { selectedPatientIndex--; }
-        else if (toIndexPath.row <= selectedPatientIndex) { selectedPatientIndex++; }
-    }
-    [self persistSelectedPatientIndex];
     
     // save
     shouldIgnoreUpdatesFromFetchedResultsController = YES;
