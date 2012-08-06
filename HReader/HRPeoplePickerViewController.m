@@ -72,13 +72,6 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
         BOOL fetch = [fetchedResultsController performFetch:&error];
         NSAssert(fetch, @"Unable to fetch patients\n%@", error);
         
-        // notifications
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self
-         selector:@selector(selectedPatientDidChange)
-         name:HRPatientDidChangeNotification
-         object:nil];
-        
         // cache selected patient
         @synchronized([HRPeoplePickerViewController class]) {
             NSString *string = [[NSUserDefaults standardUserDefaults] objectForKey:HRSelectedPatientURIKey];
@@ -93,10 +86,6 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
         
     }
     return self;
-}
-
-- (void)selectedPatientDidChange {
-    [self updateTableViewSelection];
 }
 
 - (IBAction)showManageFamilyInterface:(id)sender {
@@ -116,6 +105,7 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
     indexPath = [NSIndexPath indexPathForRow:newIndex inSection:0];
     selectedPatient = [fetchedResultsController objectAtIndexPath:indexPath];
     [HRPeoplePickerViewController setSelectedPatient:selectedPatient];
+    [self updateTableViewSelection];
 }
 
 - (void)selectPreviousPatient {
@@ -127,6 +117,7 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
     indexPath = [NSIndexPath indexPathForRow:newIndex inSection:0];
     selectedPatient = [fetchedResultsController objectAtIndexPath:indexPath];
     [HRPeoplePickerViewController setSelectedPatient:selectedPatient];
+    [self updateTableViewSelection];
 }
 
 - (void)updateTableViewSelection {
