@@ -264,11 +264,11 @@ static NSMutableDictionary *allClients = nil;
     NSError *connectionError = nil;
     NSHTTPURLResponse *response = nil;
     NSData *body = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&connectionError];
-    if (connectionError) { NSLog(@"%@", connectionError); }
-    if (body && [response statusCode] == 200) {
+    if (connectionError) { NSLog(@"[API] %@", connectionError); }
+    if (body) {
         NSError *JSONError = nil;
         payload = [NSJSONSerialization JSONObjectWithData:body options:0 error:&JSONError];
-        if (JSONError) { NSLog(@"%@", connectionError); }
+        if (JSONError) { NSLog(@"[API] %@", JSONError); }
     }
     
     // parse payload
@@ -278,6 +278,11 @@ static NSMutableDictionary *allClients = nil;
         _accessTokenExiprationDate = [NSDate dateWithTimeIntervalSinceNow:interval];
         _accessToken = [payload objectForKey:@"access_token"];
         return YES;
+    }
+    
+    // payload error
+    else {
+        NSLog(@"[API] Error Payload: %@", payload);
     }
     
     // last ditch return
