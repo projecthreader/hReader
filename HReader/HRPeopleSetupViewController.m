@@ -370,11 +370,10 @@
 }
 
 - (void)gridView:(HRGridTableView *)gridView didSelectViewAtIndex:(NSUInteger)index {
-//    id<NSFetchedResultsSectionInfo> info = [[fetchedResultsController sections] objectAtIndex:0];
-//    if (index < [info numberOfObjects]) {
-//        [HRPeoplePickerViewController setSelectedPatientIndex:index];
-//        [self showMainApplicationInterface];
-//    }
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    id object = [fetchedResultsController objectAtIndexPath:indexPath];
+    [HRPeoplePickerViewController setSelectedPatient:object];
+    [self showMainApplicationInterface];
 }
 
 #pragma mark - fetched results controller
