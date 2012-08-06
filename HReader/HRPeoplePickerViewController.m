@@ -110,7 +110,7 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
 
 - (void)selectPreviousPatient {
     NSIndexPath *indexPath = [fetchedResultsController indexPathForObject:selectedPatient];
-    NSInteger newIndex = indexPath.row + 1;
+    NSInteger newIndex = indexPath.row - 1;
     if (newIndex < 0) {
         newIndex = (NSInteger)([[fetchedResultsController fetchedObjects] count] - 1);
     }
