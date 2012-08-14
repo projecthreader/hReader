@@ -170,8 +170,11 @@
         
         // check for accounts
         if ([hosts count] == 0) {
-            id controller = [HRRHExLoginViewController loginViewControllerWithHost:@"growing-spring-4857.herokuapp.com"];
-            [[controller navigationItem] setHidesBackButton:YES];
+            HRAPIClient *client = [HRAPIClient clientWithHost:@"growing-spring-4857.herokuapp.com"];
+            HRRHExLoginViewController *controller = [HRRHExLoginViewController loginViewControllerForClient:client];
+            controller.navigationItem.hidesBackButton = YES;
+            controller.target = self;
+            controller.action = @selector(initialLoginDidSucceed:);
             [(id)self.window.rootViewController pushViewController:controller animated:YES];
         }
         
@@ -480,6 +483,14 @@
 - (void)updateSecurityQuestions :(HRSecurityQuestionsViewController *)controller :(NSArray *)questions :(NSArray *)answers {
     HRCryptoManagerUpdateSecurityQuestionsAndAnswers(questions, answers);
     [controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - security scenario five
+
+- (void)initialLoginDidSucceed :(HRRHExLoginViewController *)login {
+    HRPeopleSetupViewController *setup = [login.storyboard instantiateViewControllerWithIdentifier:@"PeopleSetupViewController"];
+    setup.navigationItem.hidesBackButton = YES;
+    [login.navigationController pushViewController:setup animated:YES];
 }
 
 #pragma mark - passcode
