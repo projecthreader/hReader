@@ -8,10 +8,39 @@
 
 #import <UIKit/UIKit.h>
 
+@class HRAPIClient;
+
 @interface HRRHExLoginViewController : UIViewController <UIWebViewDelegate>
 
+/*
+ 
+ Web view used for user authentication.
+ 
+ */
 @property (nonatomic, weak) IBOutlet UIWebView *webView;
 
-+ (HRRHExLoginViewController *)loginViewControllerWithHost:(NSString *)host;
+/*
+ 
+ Target-action pair to call when authentication is successful. Must take one
+ argument that is an instance of this class. This action will be called on the
+ main thread.
+ 
+ */
+@property (nonatomic, assign) id target;
+@property (nonatomic, assign) SEL action;
+
+/*
+ 
+ 
+ 
+ */
++ (HRRHExLoginViewController *)loginViewControllerForClient:(HRAPIClient *)client;
+
+/*
+ 
+ This method is reserved for internal use.
+ 
+ */
+- (void)setQueue:(dispatch_queue_t)queue;
 
 @end

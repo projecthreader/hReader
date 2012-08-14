@@ -9,39 +9,52 @@
 #import "HRRHExLoginViewController.h"
 #import "HRAPIClient_private.h"
 #import "HRPeopleSetupViewController.h"
+#import "HRAPIClient_private.h"
 
 #import "CMDActivityHUD.h"
 
-static NSString * const HROAuthURLScheme = @"x-org-mitre-hreader";
-static NSString * const HROAuthURLHost = @"oauth";
+static NSString *HROAuthURLScheme = @"x-org-mitre-hreader";
+static NSString *HROAuthURLHost = @"oauth";
 
-@interface HRRHExLoginViewController () {
-    NSString *_host;
+@implementation HRRHExLoginViewController {
+    HRAPIClient *_client;
+    dispatch_queue_t _queue;
 }
 
-@end
-
-@implementation HRRHExLoginViewController
-
-@synthesize webView = _webView;
-
-+ (HRRHExLoginViewController *)loginViewControllerWithHost:(NSString *)host {
++ (HRRHExLoginViewController *)loginViewControllerForClient:(HRAPIClient *)client {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
     HRRHExLoginViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"RHExLoginViewController"];
-    controller->_host = [host copy];
+    controller->_client = client;
     return controller;
 }
+
+#pragma mark - object methods
+
+- (void)setQueue:(dispatch_queue_t)queue {
+    if (_queue != queue) {
+        if (_queue) { dispatch_release(_queue); }
+        dispatch_retain(queue);
+        _queue = queue;
+    }
+}
+
+- (void)dealloc {
+    dispatch_release(_queue);
+}
+
+#pragma mark - view methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [CMDActivityHUD show];
-    HRAPIClient *client = [HRAPIClient clientWithHost:_host];
-    [self.webView loadRequest:[client authorizationRequest]];
+    [self.webView loadRequest:[_client authorizationRequest]];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
     return UIInterfaceOrientationIsLandscape(orientation);
 }
+
+#pragma mark - web view delegate
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
@@ -59,18 +72,21 @@ static NSString * const HROAuthURLHost = @"oauth";
     NSURL *URL = [request URL];
     if ([[URL scheme] isEqualToString:HROAuthURLScheme] && [[URL host] isEqualToString:HROAuthURLHost]) {
         [CMDActivityHUD show];
-        HRAPIClient *client = [HRAPIClient clientWithHost:_host];
-        dispatch_async(client->_requestQueue, ^{
-            NSDictionary *parameters = [HRAPIClient parametersFromQueryString:[URL query]];
-            parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                          [parameters objectForKey:@"code"], @"code",
-                          @"authorization_code", @"grant_type",
-                          nil];
-            if ([client refreshAccessTokenWithParameters:parameters]) {
+        
+        // get parameters
+        NSDictionary *parameters = [HRAPIClient parametersFromQueryString:[URL query]];
+        parameters = @{
+            @"code" : [parameters objectForKey:@"code"],
+            @"grant_type" : @"authorization_code"
+        };
+        
+        dispatch_async(_queue ?: _client->_requestQueue, ^{
+            if ([_client refreshAccessTokenWithParameters:parameters]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    HRPeopleSetupViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"PeopleSetupViewController"];
-                    controller.navigationItem.hidesBackButton = YES;
-                    [self.navigationController pushViewController:controller animated:YES];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                    [self.target performSelector:self.action withObject:self];
+#pragma clang diagnostic pop
                 });
             }
             else {
@@ -89,6 +105,7 @@ static NSString * const HROAuthURLHost = @"oauth";
                 [CMDActivityHUD dismiss];
             });
         });
+        
     }
     return YES;
 }
