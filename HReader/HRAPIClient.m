@@ -8,6 +8,7 @@
 
 #import "HRAPIClient_private.h"
 #import "HRCryptoManager.h"
+#import "HRRHExLoginViewController.h"
 
 #import "DDXML.h"
 
@@ -19,20 +20,24 @@ static NSString * const HROAuthClientSecret = @"bc121c529fcd1689704a24460b91f98b
 static NSString * const HROAuthKeychainService = @"org.hreader.oauth.2";
 static NSMutableDictionary *allClients = nil;
 
-@interface NSString (HROAuthControllerAdditions)
+//
+static NSLock *HRAPIClientThreadLock;
+static NSConditionLock *HRAPIClientWaitLock;
+
+@interface NSString (HRAPIClientAdditions)
 
 /*
  
  
  
  */
-- (NSString *)percentEncodedString;
+- (NSString *)hr_percentEncodedString;
 
 @end
 
-@implementation NSString (HROAuthControllerAdditions)
+@implementation NSString (HRAPIClientAdditions)
 
-- (NSString *)percentEncodedString {
+- (NSString *)hr_percentEncodedString {
     CFStringRef string = CFURLCreateStringByAddingPercentEscapes(NULL,
                                                                  (__bridge CFStringRef)self,
                                                                  NULL,
@@ -77,6 +82,13 @@ static NSMutableDictionary *allClients = nil;
 
 #pragma mark - class methods
 
++ (void)initialize {
+    if (self == [HRAPIClient class]) {
+        HRAPIClientThreadLock = [[NSLock alloc] init];
+        HRAPIClientWaitLock = [[NSConditionLock alloc] initWithCondition:0];
+    }
+}
+
 + (HRAPIClient *)clientWithHost:(NSString *)host {
     static dispatch_once_t token;
     dispatch_once(&token, ^{
@@ -98,7 +110,7 @@ static NSMutableDictionary *allClients = nil;
 + (NSString *)queryStringWithParameters:(NSDictionary *)parameters {
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:[parameters count]];
     [parameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        [array addObject:[NSString stringWithFormat:@"%@=%@", [key percentEncodedString], [obj percentEncodedString]]];
+        [array addObject:[NSString stringWithFormat:@"%@=%@", [key hr_percentEncodedString], [obj hr_percentEncodedString]]];
     }];
     return [array componentsJoinedByString:@"&"];
 }
@@ -193,7 +205,7 @@ static NSMutableDictionary *allClients = nil;
     
     // make sure we have a refresh token
     NSString *refresh = [self refreshToken];
-    if (!refresh) {
+    if (refresh == nil) {
         NSLog(@"[%@] No refresh token is present", self);
         return nil;
     }
@@ -201,13 +213,13 @@ static NSMutableDictionary *allClients = nil;
     // used to refresh the access token
     NSTimeInterval interval = [_accessTokenExiprationDate timeIntervalSinceNow];
     if (_accessTokenExiprationDate) { NSLog(@"[%@] Access token expires in %f minutes", self, interval / 60.0); }
-    NSDictionary *refreshParameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                       refresh, @"refresh_token",
-                                       @"refresh_token", @"grant_type",
-                                       nil];
+    NSDictionary *refreshParameters = @{
+        @"refresh_token" : refresh,
+        @"grant_type" : @"refresh_token"
+    };
     
     // make sure we have both required elements
-    if (!_accessToken || !_accessTokenExiprationDate || interval < 60.0) {
+    if (_accessToken == nil || _accessTokenExiprationDate == nil || interval < 60.0) {
         NSLog(@"[%@] Access token is invalid -- refreshing...", self);
         if (![self refreshAccessTokenWithParameters:refreshParameters]) {
             return nil;
@@ -272,12 +284,33 @@ static NSMutableDictionary *allClients = nil;
     }
     
     // parse payload
-    if ([payload objectForKey:@"refresh_token"] && [payload objectForKey:@"expires_in"] && [payload objectForKey:@"access_token"]) {
-        HRCryptoManagerSetKeychainItemString(HROAuthKeychainService, _host, [payload objectForKey:@"refresh_token"]);
+    if ([payload objectForKey:@"expires_in"] && [payload objectForKey:@"access_token"]) {
+        if ([payload objectForKey:@"refresh_token"]) {
+            HRCryptoManagerSetKeychainItemString(HROAuthKeychainService, _host, [payload objectForKey:@"refresh_token"]);
+        }
         NSTimeInterval interval = [[payload objectForKey:@"expires_in"] doubleValue];
         _accessTokenExiprationDate = [NSDate dateWithTimeIntervalSinceNow:interval];
         _accessToken = [payload objectForKey:@"access_token"];
         return YES;
+    }
+    
+    // unauthorized
+    else if ([[payload objectForKey:@"error"] isEqualToString:@"invalid_grant"]) {
+        [HRAPIClientThreadLock lock];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            HRRHExLoginViewController *controller = [HRRHExLoginViewController loginViewControllerForClient:self];
+            controller.target = self;
+            controller.action = @selector(loginControllerDidAuthenticate:);
+            [controller setQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
+            UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:controller];
+            id<UIApplicationDelegate> delegate = [[UIApplication sharedApplication] delegate];
+            [[[delegate window] rootViewController] presentViewController:navigation animated:YES completion:nil];
+        });
+        [HRAPIClientWaitLock lockWhenCondition:1];
+        [HRAPIClientWaitLock unlockWithCondition:0];
+        [HRAPIClientThreadLock unlock];
+        return YES;
+        
     }
     
     // payload error
@@ -295,10 +328,10 @@ static NSMutableDictionary *allClients = nil;
 }
 
 - (NSURLRequest *)authorizationRequest {
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                HROAuthClientIdentifier, @"client_id",
-                                @"code", @"response_type",
-                                nil];
+    NSDictionary *parameters = @{
+        @"client_id" : HROAuthClientIdentifier,
+        @"response_type" : @"code"
+    };
     NSString *query = [HRAPIClient queryStringWithParameters:parameters];
     NSString *URLString = [NSString stringWithFormat:@"https://%@/oauth2/authorize?%@", _host, query];
     NSURL *URL = [NSURL URLWithString:URLString];
@@ -336,6 +369,15 @@ static NSMutableDictionary *allClients = nil;
 
 - (void)JSONForPatientWithIdentifier:(NSString *)identifier finishBlock:(void (^) (NSDictionary *payload))block {
     [self JSONForPatientWithIdentifier:identifier startBlock:nil finishBlock:block];
+}
+
+#pragma mark - login callback
+
+- (void)loginControllerDidAuthenticate:(HRRHExLoginViewController *)controller {
+    [controller dismissViewControllerAnimated:YES completion:^{
+        [HRAPIClientWaitLock lock];
+        [HRAPIClientWaitLock unlockWithCondition:1];
+    }];
 }
 
 @end
