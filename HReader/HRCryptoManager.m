@@ -31,28 +31,21 @@ static NSString *_temporaryKey = nil;
 static NSArray *_temporaryQuestions = nil;
 static NSArray *_temporaryAnswers = nil;
 
-// private function prototypes
-
-static NSData * HRCryptoManagerHashString(NSString *string);
-static NSData * HRCryptoManagerHashData(NSData *data);
-static NSData * HRCryptoManagerEncrypt_private(NSData *data, NSString *key);
-static NSData * HRCryptoManagerDecrypt_private(NSData *data, NSString *key);
-
 #pragma mark - private encryption methods
 
-static NSData * HRCryptoManagerHashString(NSString *string) {
+NSData * HRCryptoManagerHashString(NSString *string) {
     NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
     return HRCryptoManagerHashData(data);
 }
 
-static NSData * HRCryptoManagerHashData(NSData *data) {
+NSData * HRCryptoManagerHashData(NSData *data) {
     void *buffer = malloc(CC_SHA512_DIGEST_LENGTH);
     if (buffer == nil) { return nil; }
     CC_SHA512([data bytes], [data length], buffer);
     return [NSData dataWithBytesNoCopy:buffer length:CC_SHA512_DIGEST_LENGTH];
 }
 
-static NSData * HRCryptoManagerEncrypt_private(NSData *data, NSString *key) {
+NSData * HRCryptoManagerEncryptDataWithKey(NSData *data, NSString *key) {
     
     // get key bytes
     NSRange key_range = NSMakeRange(0, kCCKeySizeAES256);
@@ -100,7 +93,7 @@ static NSData * HRCryptoManagerEncrypt_private(NSData *data, NSString *key) {
     
 }
 
-static NSData * HRCryptoManagerDecrypt_private(NSData *data, NSString *key) {
+NSData * HRCryptoManagerDecryptDataWithKey(NSData *data, NSString *key) {
     
     // get key bytes
     NSRange key_range = NSMakeRange(0, kCCKeySizeAES256);
@@ -199,11 +192,11 @@ void HRCryptoManagerPurge(void) {
 BOOL HRCryptoManagerUnlockWithPasscode(NSString *passcode) {
     NSCAssert(passcode, @"The passcode must not be nil");
     NSData *encryptedIdentifierData = [SSKeychain passwordDataForService:HRKeychainService account:HRPasscodeKeychainAccount];
-    NSData *identifierData = HRCryptoManagerDecrypt_private(encryptedIdentifierData, passcode);
+    NSData *identifierData = HRCryptoManagerDecryptDataWithKey(encryptedIdentifierData, passcode);
     NSString *identifier = [[NSString alloc] initWithData:identifierData encoding:NSUTF8StringEncoding];
     if ([identifier isEqualToString:HRKeychainIdentifierFlag]) {
         NSData *encryptedKey = [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount];
-        NSData *decryptedKey = HRCryptoManagerDecrypt_private(encryptedKey, passcode);
+        NSData *decryptedKey = HRCryptoManagerDecryptDataWithKey(encryptedKey, passcode);
         if (decryptedKey) {
             _temporaryKey = [[NSString alloc] initWithData:decryptedKey encoding:NSUTF8StringEncoding];
             return YES;
@@ -216,11 +209,11 @@ BOOL HRCryptoManagerUnlockWithAnswersForSecurityQuestions(NSArray *answers) {
     NSCAssert(answers, @"The answers must not be nil");
     NSString *answersString = [answers componentsJoinedByString:@""];
     NSData *encryptedIdentifierData = [SSKeychain passwordDataForService:HRKeychainService account:HRSecurityAnswersKeychainAccount];
-    NSData *identifierData = HRCryptoManagerDecrypt_private(encryptedIdentifierData, answersString);
+    NSData *identifierData = HRCryptoManagerDecryptDataWithKey(encryptedIdentifierData, answersString);
     NSString *identifier = [[NSString alloc] initWithData:identifierData encoding:NSUTF8StringEncoding];
     if ([identifier isEqualToString:HRKeychainIdentifierFlag]) {
         NSData *encryptedKey = [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount];
-        NSData *decryptedKey = HRCryptoManagerDecrypt_private(encryptedKey, [answers componentsJoinedByString:@""]);
+        NSData *decryptedKey = HRCryptoManagerDecryptDataWithKey(encryptedKey, [answers componentsJoinedByString:@""]);
         if (decryptedKey) {
             _temporaryKey = [[NSString alloc] initWithData:decryptedKey encoding:NSUTF8StringEncoding];
             return YES;
@@ -241,12 +234,12 @@ void HRCryptoManagerUpdatePasscode(NSString *passcode) {
         
         // write encrypted shared key
         NSData *keyData = [_temporaryKey dataUsingEncoding:NSUTF8StringEncoding];
-        NSData *encryptedKeyData = HRCryptoManagerEncrypt_private(keyData, passcode);
+        NSData *encryptedKeyData = HRCryptoManagerEncryptDataWithKey(keyData, passcode);
         [SSKeychain setPasswordData:encryptedKeyData forService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount];
         
         // write encrypted identifier
         NSData *identifierData = [HRKeychainIdentifierFlag dataUsingEncoding:NSUTF8StringEncoding];
-        NSData *encryptedIdentifierData = HRCryptoManagerEncrypt_private(identifierData, passcode);
+        NSData *encryptedIdentifierData = HRCryptoManagerEncryptDataWithKey(identifierData, passcode);
         [SSKeychain setPasswordData:encryptedIdentifierData forService:HRKeychainService account:HRPasscodeKeychainAccount];
         
     }
@@ -267,12 +260,12 @@ void HRCryptoManagerUpdateSecurityQuestionsAndAnswers(NSArray *questions, NSArra
         
         // write  encrypted shared key
         NSData *keyData = [_temporaryKey dataUsingEncoding:NSUTF8StringEncoding];
-        NSData *encryptedData = HRCryptoManagerEncrypt_private(keyData, answersString);
-        [SSKeychain setPasswordData:encryptedData forService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount];
+        NSData *encryptedKeyData = HRCryptoManagerEncryptDataWithKey(keyData, answersString);
+        [SSKeychain setPasswordData:encryptedKeyData forService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount];
         
         // write encrypted identifier
         NSData *identifierData = [HRKeychainIdentifierFlag dataUsingEncoding:NSUTF8StringEncoding];
-        NSData *encryptedIdentifierData = HRCryptoManagerEncrypt_private(identifierData, answersString);
+        NSData *encryptedIdentifierData = HRCryptoManagerEncryptDataWithKey(identifierData, answersString);
         [SSKeychain setPasswordData:encryptedIdentifierData forService:HRKeychainService account:HRSecurityAnswersKeychainAccount];
         
     }
@@ -316,41 +309,14 @@ NSArray * HRCryptoManagerSecurityQuestions(void) {
 
 NSData * HRCryptoManagerDecryptData(NSData *data) {
     if (data && _temporaryKey) {
-        return HRCryptoManagerDecrypt_private(data, _temporaryKey);
+        return HRCryptoManagerDecryptDataWithKey(data, _temporaryKey);
     }
     return nil;
 }
 
 NSData * HRCryptoManagerEncryptData(NSData *data) {
     if (data && _temporaryKey) {
-        return HRCryptoManagerEncrypt_private(data, _temporaryKey);
-    }
-    return nil;
-}
-
-#pragma mark - encrypt and decrypt property list objects
-
-NSData * HRCryptoManagerEncryptPropertyListObject(id object) {
-    if (object && _temporaryKey) {
-        CFDataRef data = CFPropertyListCreateData(kCFAllocatorDefault,
-                                                  (__bridge CFPropertyListRef)object,
-                                                  kCFPropertyListBinaryFormat_v1_0,
-                                                  0,
-                                                  NULL);
-        return HRCryptoManagerEncrypt_private((__bridge_transfer NSData *)data, _temporaryKey);
-    }
-    return nil;
-}
-
-id HRCryptoManagerDecryptPropertyListObject(NSData *data) {
-    if (data && _temporaryKey) {
-        NSData *decrypted = HRCryptoManagerDecrypt_private(data, _temporaryKey);
-        CFPropertyListRef list = CFPropertyListCreateWithData(kCFAllocatorDefault,
-                                                              (__bridge CFDataRef)decrypted,
-                                                              0,
-                                                              NULL,
-                                                              NULL);
-        return (__bridge_transfer id)list;
+        return HRCryptoManagerEncryptDataWithKey(data, _temporaryKey);
     }
     return nil;
 }

@@ -100,11 +100,13 @@ NSArray * HRCryptoManagerSecurityQuestions(void);
  */
 NSData * HRCryptoManagerDecryptData(NSData *data);
 NSData * HRCryptoManagerEncryptData(NSData *data);
+NSData * HRCryptoManagerEncryptDataWithKey(NSData *data, NSString *key);
+NSData * HRCryptoManagerDecryptDataWithKey(NSData *data, NSString *key);
 
 /*
  
  
  
  */
-NSData * HRCryptoManagerEncryptPropertyListObject(id object);
-id HRCryptoManagerDecryptPropertyListObject(NSData *data);
+NSData *HRCryptoManagerHashString(NSString *string);
+NSData *HRCryptoManagerHashData(NSData *data);
