@@ -2,7 +2,7 @@
 <meta charset=utf-8>
 <html>
   <head> 
-    <title>hReader - Mobile Family Health Manager</title>
+    <title>How to Participate in hReader</title>
     <!-- Enable IE9 Standards mode -->
     <meta http-equiv="X-UA-Compatible" content="IE=9" >
     <!--[if lt IE 9]>
@@ -14,7 +14,7 @@
     <link rel="icon" type="image/png" href="images/hreader_icon2.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
-  <body class="wrapper">
+  <body>
   	<div class="navbar navbar-fixed-top">
   		<div class="navbar-inner">
   			<div class="container">
@@ -26,12 +26,12 @@
       		<a class="brand" href="index.html"><img src="images/hreader_logo_small.png" alt="hReader Logo" /></a>
       		<div class="nav-collapse collapse">
 						<ul class="nav">
-							<li class="active"><a href="index.html">Home</a></li>
+							<li class=""><a href="index.html">Home</a></li>
 							<li class=""><a href="about.html">About</a></li>
 							<li class=""><a href="screen_shots.html">Screen Shots</a></li>
 							<li class=""><a href="code.html">Code</a></li>
 							<li class=""><a href="documentation.html">Docs</a></li>
-							<li class=""><a href="participate.html">Participate</a></li>
+							<li class="active"><a href="participate.html">Participate</a></li>
 							<li class=""><a href="news.html">News</a></li>
 							<li class=""><a href="faq.html">FAQ</a></li>
 							<li class=""><a href="contact.html">Contact</a></li>
@@ -44,63 +44,51 @@
 				</div>
 			</div>
 		</div>
-		<div class="container content" id="index">
-			<div class="row" id="splash">
-
-				<div class="span4" id="taglines">
-					<span class="logo">
-						<a href="#">
-							<img src="images/hreader_logo.png" alt="hReader" />
-						</a>
-					</span>
-					<h1 class="tag">The mobile health platform for <strong>all</strong> of your data.</h1>
-					<p class="tagline">
-						 <a href="about.html" class="btn btn-large">Learn more
-						 </a>
+		<div class="container content" id="participate">
+			<h1>How to Participate</h1>
+			<div class="row">
+				<div class="span4">
+					<h2>Developers</h2>
+					<h3>GitHub</h3>
+					<p>
+						Code contributions, bug fixes, ideas for new features, are all welcome for 
+						the hReader user interface and to the applet code framework.  Visit our
+						<a href="https://github.com/projecthreader">GitHub</a> site to offer your ideas!
+					</p>
+					<h3>Pivotal Tracker</h3>
+					<p>
+						The hReader Team uses 
+						<a href="https://www.pivotaltracker.com/projects/508081">Pivotal Tracker</a> 
+						for feature/bug tracking using agile project management and planning.
 					</p>
 				</div>
-				<div class="span8" id="slideshow">
-					<!--<img id="shadow" src="images/shadow.png" />-->
-					<div id="slides">
-						<img src="images/hs_summary.png" />
-						<img src="images/hs_conditions.png" />
-						<img src="images/hs_providers.png" />
-						<img src="images/js_timeline.png" />
-					</div>
+				<div class="span4">
+					<h2>Community Feedback</h2>
+					<h3>Announcement List</h3>
+					<p>
+						Join the 
+						<a href="">hReader Announcement List</a> 
+						to receive information about new developments in the project.
+					</p>
+					<h3>Developer List</h3>
+					<p>
+						<a href="http://">Communicate</a> with the hReader developers!
+					</p>
+				</div>
+				<div class="span4">
+					<h2>Self Service</h2>
+					<h3>Instructions</h3>
+					<p>
+						The hReader <a href="documentation.html">documentation</a> provides
+						instructions for setting up and extending hReader.
+					</p>
+					<h3>Contact</h3>
+					<p>
+						<a href="mailto:talk@hreader.org">Email</a>
+						the Talk List with questions for a response within 24 hours!
+					</p>
 				</div>
 			</div>
-			<div class="row" id="sections">
-				<div class="span4" id="spotlight">
-					<h2 class="section">Spotlight</h2>
-					<p>
-						hReader will be released to the open source community 
-						and available for free.  The code for hReader will be posted soon at 
-						<a href="https://github.com/projecthreader">GitHub</a> 
-						under the 
-						<a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a> 
-						license.  
-					</p>
-				</div>
-				<div class="span4" id="summary">
-					<h2>What is hReader?</h2>
-					<p>
-						hReader is a patient-centric mobile health data manager that 
-						provides patients and their families with their complete health information securely.  It provides an applet framework to provide hyper-personalized applets to engage patients in their own health status and 
-						how they can improve.  
-					</p>
-				</div>
-				<div class="span4" id="applets">
-					<h2 class="section">Develop Applets</h2>
-					<p>
-						hReader includes an open applet framework that allows anyone to extend its
-						functionality, whether it's an interface to a web site, web service, or 
-						wireless sensor.
-					</p>
-					<p>
-						<a class="btn" href="applet_dev_guide.html">Learn more</a>
-					</p>
-				</div>
- 			</div>
  			<div class="row" id="footer">
  				<div class="span4" id="twitter">
  					<h3><a href="http://www.twitter.com/projecthreader">TWITTER UPDATES</a></h3>
@@ -121,11 +109,12 @@
  				<div class="span4" id="contact">
  					<h3><a href="contact.html">CONTACT</a></h3>
 					<ul>
-						<li>Join the Announcement List</li>
+						<li><a href="mailto:talk@hreader.org">Talk list</a></li>
+						<li><a href="mailto:dev@hreader.org">Developer list</a></li>
 					</ul>
  				</div>
  			</div>
- 			 			<div class="row" id="postscript">
+ 			<div class="row" id="postscript">
  				<div class="span1" id="host">
  					<a href="http://github.com/">
  						<img src="images/github_icon.png" alt="GitHub Logo"/>

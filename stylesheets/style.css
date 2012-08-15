@@ -1,0 +1,318 @@
+body {
+   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+   font-weight: 300;
+}
+
+#taglines {	
+	text-align: left;
+	vertical-align: center;
+}
+#taglines h1 {
+	font-weight: 200;
+	padding: 40px 0;
+}
+h1 {
+	text-align: left;
+	color: #444444;
+	padding: 20px 0;
+}
+
+h2 {
+	font-weight: bold;
+	text-align: left;
+	color: #D61F29;
+	padding-top: 10px;
+	margin-bottom: 20px;
+	font-size: 1.6em;
+	color: #999;
+	border-bottom: 1px solid #ccc;
+	text-transform: uppercase;
+}
+h3 {
+	font-weight: 200;
+	font-size: 20px;
+	margin-bottom: 5px;
+}
+h4 {
+	font-weight: 100;
+	font-size: 24px;
+	margin-bottom: 5px;
+
+}
+.tagline {
+	align: left;
+}
+a {
+	color: #D61F29;
+}
+
+a:hover {
+	color: #999;
+}
+ul {
+	list-style-type: none;
+	margin-left: 0;
+}
+
+h1.logo {
+	text-align: left;
+	width: 100%;
+}
+
+#openid a {
+	border: none !important;
+}
+.navbar-inner {
+  background: #EEE;
+}
+
+.navbar .navbar-fixed-top{
+	overflow: hidden;
+	width: 100%;
+}
+.navbar .nav > li > a {
+	margin-top: 10px;
+	font-size: 18px;
+	padding: 5px 10px;
+	text-shadow: none;
+	color: #444444;
+}
+
+.navbar .nav > li > a.soon {
+}
+
+.navbar .nav > li > a.right {
+	padding: 0px;
+	margin-top: 3px;
+}
+
+.navbar .nav .active > a, .navbar .nav .active > a:hover {
+  background: white;
+  border-radius: 5px 5px 0 0;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  color: black;
+  font-weight: 800;
+  border-bottom: 3px solid white;
+  margin-bottom: -10px;
+  padding-bottom: 10px;
+}
+
+.navbar .nav > li > a:hover {
+	color: #D61F29;
+}
+
+#slideshow {
+}
+ 
+#slides {
+	position:relative; 
+	width:100%; 
+}
+
+#slides img {
+	 position:absolute; left:0; top:0;  
+}
+#shadow {
+	z-index: -1000;
+	position: relative;
+	left: 0px;
+	top: 565px;
+}
+
+#splash {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+myCarousel {
+		overflow: hidden;
+}
+#sections {
+  padding-bottom: 10px;
+}
+
+#spotlight, #applets {
+	border-right: 0px solid gray;
+}
+
+#screen_shots .row {
+	padding-top: 30px;
+}
+
+.caption {
+	padding-top: 10px;
+	text-align: left;
+}
+
+#footer {
+  margin-top: 40px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow:    3px 3px 5px #ccc;
+  -webkit-box-shadow: 3px 3px 5px #ccc;
+  box-shadow:         3px 3px 5px #ccc;
+  background: #EEE;
+}
+
+#footer.row {
+	margin-left: 0;
+}
+#footer h3 {
+	font-weight: normal;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+#footer ul {
+	list-style-type: none;
+	font-size: 14px;
+}
+
+#footer a {
+}
+
+h2.section {
+}
+
+ul, p, dd {
+	font-size: 16px;
+	line-height: 24px;
+	color: #444444;
+}
+
+li {
+	line-height: 24px;
+}
+
+dl {
+	padding-top: 40px;
+}
+
+dt {
+	padding-top: 60px;
+	padding-bottom: 10px;
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	font-size: 1.6em;
+	color: #999;
+	border-bottom: 1px solid #ccc;
+	text-transform: uppercase;
+}
+dd { 
+	margin-left: 0;
+}
+#taglines .btn {
+	font-size: 18px;
+}
+
+#taglines h1 {
+	padding: 20px 0;
+}
+
+.tagline {
+	color: #999;
+	font-weight: normal;
+	text-align: left;
+	font-size: 28px;
+	line-height: 60px;
+}
+
+div.content {
+	padding-top: 75px;
+}
+
+div#index {
+	padding-top: 75px;
+}
+
+em {
+	color: #444;
+	text-transform: uppercase;
+}
+
+a.brand {
+	margin-top: 1px;
+}
+
+#postscript {
+	padding-top: 10px;
+}
+
+#participate h2 {
+	padding-bottom: 0px;
+}
+
+#participate ul, #footer ul, #contact ul {
+	list-style-type: none;
+}
+
+#participate li, #footer li, #contact li {
+}
+
+#pdf {
+	padding-top: 30px;
+}
+
+a.top {
+	display: block;
+	padding-top: 10px;
+}
+
+a.handle {
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+#date .month {
+	display: block;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+#date .year {
+	display: block;
+	color: #999;
+	font-size: 36px;
+}
+
+#documents li {
+	padding-bottom: 15px;
+}
+
+#faq img {
+	text-align: center;
+}
+
+p.after-rhex {
+	margin-top: 20px;
+}
+
+table.contact-list {
+	padding: 20px 0;
+	width: 75%;
+	text-align: left;
+}
+.contact-list th {
+	padding: 10px 0;
+}
+
+h1.tag {
+	font-weight: 100 !important;
+	font-size: 42px;
+}
+h1.tag strong {
+	color: #D61F29;
+	font-weight: 100;
+}
+
+.MITRE {
+	height: 25px;
+	margin-bottom: 5px;
+}
+#menu {
+	margin-left:0;
+}
