@@ -118,6 +118,7 @@
 		3B77F04E15546ABD003C2DBD /* HROxygenSaturationAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F04D15546ABD003C2DBD /* HROxygenSaturationAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B77F05215546AD2003C2DBD /* HRRespiratoryRateAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B77F054155474DE003C2DBD /* HRBMIVitalAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */; };
+		3B9A757915DBE0CB00705A52 /* timeline in Resources */ = {isa = PBXBuildFile; fileRef = 3B9A757815DBE0CB00705A52 /* timeline */; };
 		3BA11FD315C0608200ABB012 /* circle-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FA215C0608200ABB012 /* circle-2.png */; };
 		3BA11FD415C0608200ABB012 /* circle-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FA315C0608200ABB012 /* circle-3.png */; };
 		3BA11FD515C0608200ABB012 /* circle-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FA415C0608200ABB012 /* circle-4.png */; };
@@ -184,7 +185,6 @@
 		3BFBEE1A1534BEAA009EBA2D /* HRAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BFBEE1C1534BF32009EBA2D /* HReaderApplets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */; };
 		3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2D14DAE5910037738D /* Icon-72.png */; };
-		94026FB414B4A8A600F40185 /* timeline in Resources */ = {isa = PBXBuildFile; fileRef = 94026FB314B4A8A600F40185 /* timeline */; };
 		940C046C152B6ADF00834416 /* hs-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C0467152B6ADF00834416 /* hs-synthetic.json */; };
 		940C046D152B6ADF00834416 /* js-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C0468152B6ADF00834416 /* js-synthetic.json */; };
 		940C046E152B6ADF00834416 /* ms-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C0469152B6ADF00834416 /* ms-synthetic.json */; };
@@ -407,6 +407,7 @@
 		3B77F05015546AD2003C2DBD /* HRRespiratoryRateAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRRespiratoryRateAppletTile.h; sourceTree = "<group>"; };
 		3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRRespiratoryRateAppletTile.m; sourceTree = "<group>"; };
 		3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRBMIVitalAppletTile.xib; sourceTree = "<group>"; };
+		3B9A757815DBE0CB00705A52 /* timeline */ = {isa = PBXFileReference; lastKnownFileType = folder; path = timeline; sourceTree = "<group>"; };
 		3BA11FA215C0608200ABB012 /* circle-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-2.png"; sourceTree = "<group>"; };
 		3BA11FA315C0608200ABB012 /* circle-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-3.png"; sourceTree = "<group>"; };
 		3BA11FA415C0608200ABB012 /* circle-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-4.png"; sourceTree = "<group>"; };
@@ -499,7 +500,6 @@
 		3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAppletTile.m; sourceTree = "<group>"; };
 		3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HReaderApplets.plist; sourceTree = "<group>"; };
 		3BFE7A2D14DAE5910037738D /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		94026FB314B4A8A600F40185 /* timeline */ = {isa = PBXFileReference; lastKnownFileType = folder; path = timeline; sourceTree = "<group>"; };
 		940C0467152B6ADF00834416 /* hs-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "hs-synthetic.json"; sourceTree = "<group>"; };
 		940C0468152B6ADF00834416 /* js-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "js-synthetic.json"; sourceTree = "<group>"; };
 		940C0469152B6ADF00834416 /* ms-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ms-synthetic.json"; sourceTree = "<group>"; };
@@ -986,7 +986,6 @@
 				3B2B7B55156A863C003B3B77 /* CHANGELOG */,
 				C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */,
 				94689ABC14964BBF00E1FCA6 /* Vendor */,
-				94026FB314B4A8A600F40185 /* timeline */,
 				941DB0B21471B32D00A96B8B /* HReader */,
 				941DB0AB1471B32D00A96B8B /* Frameworks */,
 				941DB0A91471B32D00A96B8B /* Products */,
@@ -1031,6 +1030,7 @@
 				9424C156147A9C95008BF5CE /* Categories */,
 				941DB0B31471B32D00A96B8B /* Supporting Files */,
 				3B8D14FE157E3EB700A5B84E /* Images */,
+				3B9A757815DBE0CB00705A52 /* timeline */,
 			);
 			path = HReader;
 			sourceTree = "<group>";
@@ -1457,7 +1457,6 @@
 				9415152314AA3A7B009FF674 /* fail.png in Resources */,
 				9415152414AA3A7B009FF674 /* win.png in Resources */,
 				9415152614AA3F9F009FF674 /* question_mark.png in Resources */,
-				94026FB414B4A8A600F40185 /* timeline in Resources */,
 				947FCE4614B4C18600C716FD /* chevron-left.png in Resources */,
 				947FCE4C14B4C76700C716FD /* HRPrivacyViewController.xib in Resources */,
 				3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */,
@@ -1627,6 +1626,7 @@
 				3BA11FFB15C0608200ABB012 /* TBITrackerAppletTile.xib in Resources */,
 				3BA11FFD15C0608200ABB012 /* TBITrackerDashboard.xib in Resources */,
 				3BA11FFF15C0608200ABB012 /* TBITrackerLearn.xib in Resources */,
+				3B9A757915DBE0CB00705A52 /* timeline in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
