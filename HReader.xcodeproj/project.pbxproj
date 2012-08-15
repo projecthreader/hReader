@@ -114,6 +114,7 @@
 		3B77F05215546AD2003C2DBD /* HRRespiratoryRateAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B77F054155474DE003C2DBD /* HRBMIVitalAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */; };
 		3B9A757915DBE0CB00705A52 /* timeline in Resources */ = {isa = PBXBuildFile; fileRef = 3B9A757815DBE0CB00705A52 /* timeline */; };
+		3B9A758115DC040F00705A52 /* HRAppletUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9A758015DC040F00705A52 /* HRAppletUtilities.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BA11FD315C0608200ABB012 /* circle-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FA215C0608200ABB012 /* circle-2.png */; };
 		3BA11FD415C0608200ABB012 /* circle-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FA315C0608200ABB012 /* circle-3.png */; };
 		3BA11FD515C0608200ABB012 /* circle-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FA415C0608200ABB012 /* circle-4.png */; };
@@ -395,6 +396,8 @@
 		3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRRespiratoryRateAppletTile.m; sourceTree = "<group>"; };
 		3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRBMIVitalAppletTile.xib; sourceTree = "<group>"; };
 		3B9A757815DBE0CB00705A52 /* timeline */ = {isa = PBXFileReference; lastKnownFileType = folder; path = timeline; sourceTree = "<group>"; };
+		3B9A757F15DC040F00705A52 /* HRAppletUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAppletUtilities.h; sourceTree = "<group>"; };
+		3B9A758015DC040F00705A52 /* HRAppletUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAppletUtilities.m; sourceTree = "<group>"; };
 		3BA11FA215C0608200ABB012 /* circle-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-2.png"; sourceTree = "<group>"; };
 		3BA11FA315C0608200ABB012 /* circle-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-3.png"; sourceTree = "<group>"; };
 		3BA11FA415C0608200ABB012 /* circle-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-4.png"; sourceTree = "<group>"; };
@@ -709,14 +712,16 @@
 		3B19651414EE9DCB0045F827 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				3BFBEE181534BEAA009EBA2D /* HRAppletTile.h */,
+				3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */,
+				3B9A757F15DC040F00705A52 /* HRAppletUtilities.h */,
+				3B9A758015DC040F00705A52 /* HRAppletUtilities.m */,
 				3BB8D9A7157D206E00124A57 /* Crypto */,
 				3B001D3F15751B0D00762FB0 /* App Delegate */,
 				3B364FAC156D669B00DDB201 /* API Interaction */,
 				3B77F041155457E5003C2DBD /* Grid View */,
 				94E3BB581472E0DE00E05D4D /* HRConfig.h */,
 				DD8BD9F1148D2BDC0090F729 /* HRConfig.m */,
-				3BFBEE181534BEAA009EBA2D /* HRAppletTile.h */,
-				3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -1716,6 +1721,7 @@
 				3BA11FFA15C0608200ABB012 /* TBITrackerAppletTile.m in Sources */,
 				3BA11FFC15C0608200ABB012 /* TBITrackerDashboard.m in Sources */,
 				3BA11FFE15C0608200ABB012 /* TBITrackerLearn.m in Sources */,
+				3B9A758115DC040F00705A52 /* HRAppletUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
