@@ -29,13 +29,9 @@
 		3B0FE40315386B7000BEC21C /* wakemate-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3FB15386B7000BEC21C /* wakemate-overview.png */; };
 		3B0FE40415386B7000BEC21C /* wakemate-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3FC15386B7000BEC21C /* wakemate-summary.png */; };
 		3B0FE4081538755300BEC21C /* HRAppletConfigurationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0FE4071538755300BEC21C /* HRAppletConfigurationViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		3B108CDD1579199F00888E30 /* AppLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B108CDC1579199F00888E30 /* AppLogo.png */; };
+		3B108CDD1579199F00888E30 /* logo_splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B108CDC1579199F00888E30 /* logo_splash.png */; };
 		3B108CE115791A0C00888E30 /* HRSplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B108CE015791A0C00888E30 /* HRSplashScreenViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		3B108CE3157929FA00888E30 /* AppLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B108CE2157929FA00888E30 /* AppLogo@2x.png */; };
-		3B19652014EEAB970045F827 /* C32-Smith-Henry.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651C14EEAB970045F827 /* C32-Smith-Henry.html */; };
-		3B19652114EEAB970045F827 /* C32-Smith-Molly.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */; };
-		3B19652214EEAB970045F827 /* C32-Smith-Sarah.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */; };
-		3B19652314EEAB970045F827 /* C32-Smith-Tom.html in Resources */ = {isa = PBXBuildFile; fileRef = 3B19651F14EEAB970045F827 /* C32-Smith-Tom.html */; };
+		3B108CE3157929FA00888E30 /* logo_splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B108CE2157929FA00888E30 /* logo_splash@2x.png */; };
 		3B3C919514F69F61005CD5C5 /* NSDate+FormattedDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C919414F69F61005CD5C5 /* NSDate+FormattedDate.m */; };
 		3B4365D61540A2890009F892 /* hs-0-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365A31540A2890009F892 /* hs-0-tile.png */; };
 		3B4365D71540A2890009F892 /* hs-1-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365A41540A2890009F892 /* hs-1-overview.png */; };
@@ -109,7 +105,6 @@
 		3B74E5DA155482E700593ECF /* ss-events-full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5D0155482E700593ECF /* ss-events-full.png */; };
 		3B74E5DB155482E700593ECF /* ts-condition-full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5D1155482E700593ECF /* ts-condition-full.png */; };
 		3B74E5DC155482E700593ECF /* ts-events-full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5D2155482E700593ECF /* ts-events-full.png */; };
-		3B74E5DE1554854000593ECF /* ns-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5DD1554854000593ECF /* ns-synthetic.json */; };
 		3B77F03A15544F18003C2DBD /* UserImage-Smith-Nancy.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03915544F18003C2DBD /* UserImage-Smith-Nancy.png */; };
 		3B77F03D15545452003C2DBD /* Glaucoma_Overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03B15545452003C2DBD /* Glaucoma_Overview.png */; };
 		3B77F03E15545452003C2DBD /* Glaucoma_Summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03C15545452003C2DBD /* Glaucoma_Summary.png */; };
@@ -185,11 +180,6 @@
 		3BFBEE1A1534BEAA009EBA2D /* HRAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BFBEE1C1534BF32009EBA2D /* HReaderApplets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */; };
 		3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2D14DAE5910037738D /* Icon-72.png */; };
-		940C046C152B6ADF00834416 /* hs-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C0467152B6ADF00834416 /* hs-synthetic.json */; };
-		940C046D152B6ADF00834416 /* js-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C0468152B6ADF00834416 /* js-synthetic.json */; };
-		940C046E152B6ADF00834416 /* ms-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C0469152B6ADF00834416 /* ms-synthetic.json */; };
-		940C046F152B6ADF00834416 /* ss-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C046A152B6ADF00834416 /* ss-synthetic.json */; };
-		940C0470152B6ADF00834416 /* ts-synthetic.json in Resources */ = {isa = PBXBuildFile; fileRef = 940C046B152B6ADF00834416 /* ts-synthetic.json */; };
 		940D3D3C14E056B800FE41E6 /* HRVital.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D3B14E056B800FE41E6 /* HRVital.m */; };
 		940D3D4114E0706C00FE41E6 /* HRWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D4014E0706C00FE41E6 /* HRWeight.m */; };
 		940D3D4414E077A500FE41E6 /* HRBloodPressure.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D4314E077A500FE41E6 /* HRBloodPressure.m */; };
@@ -220,7 +210,6 @@
 		945560D214BB892100A3DC43 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560C914BB892100A3DC43 /* DDXMLDocument.m */; };
 		945560D314BB892100A3DC43 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560CB14BB892100A3DC43 /* DDXMLElement.m */; };
 		945560D414BB892100A3DC43 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 945560CD14BB892100A3DC43 /* DDXMLNode.m */; };
-		9464C5881476BDAE0076B991 /* C32-Smith-Johnny.html in Resources */ = {isa = PBXBuildFile; fileRef = 9464C5861476BDAE0076B991 /* C32-Smith-Johnny.html */; };
 		94650033153C8F7D003255AF /* HRSparkLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94650032153C8F7D003255AF /* HRSparkLineView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9465003E153CA369003255AF /* HRBloodPressureAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9465003D153CA369003255AF /* HRBloodPressureAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94650043153CA3AA003255AF /* HRBloodPressureAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94650042153CA3AA003255AF /* HRBloodPressureAppletTile.xib */; };
@@ -229,8 +218,6 @@
 		9467077914E31A6200ACEA67 /* HRBMI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077814E31A6200ACEA67 /* HRBMI.m */; };
 		9467077C14E31CD400ACEA67 /* HRGlucose.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077B14E31CD300ACEA67 /* HRGlucose.m */; };
 		94689AC314964BE400E1FCA6 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94689ABF14964BE400E1FCA6 /* libTestFlight.a */; };
-		94689AC414964BE400E1FCA6 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 94689AC014964BE400E1FCA6 /* README.txt */; };
-		94689AC514964BE400E1FCA6 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 94689AC114964BE400E1FCA6 /* release_notes.txt */; };
 		94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94689ACA1496560C00E1FCA6 /* HRAboutTableViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		947FCE4614B4C18600C716FD /* chevron-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE4514B4C18600C716FD /* chevron-left.png */; };
 		947FCE4B14B4C76700C716FD /* HRPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947FCE4914B4C76700C716FD /* HRPrivacyViewController.m */; };
@@ -310,10 +297,10 @@
 		3B0FE3FC15386B7000BEC21C /* wakemate-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wakemate-summary.png"; sourceTree = "<group>"; };
 		3B0FE4061538755300BEC21C /* HRAppletConfigurationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAppletConfigurationViewController.h; sourceTree = "<group>"; };
 		3B0FE4071538755300BEC21C /* HRAppletConfigurationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAppletConfigurationViewController.m; sourceTree = "<group>"; };
-		3B108CDC1579199F00888E30 /* AppLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo.png; sourceTree = "<group>"; };
+		3B108CDC1579199F00888E30 /* logo_splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_splash.png; sourceTree = "<group>"; };
 		3B108CDF15791A0C00888E30 /* HRSplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSplashScreenViewController.h; sourceTree = "<group>"; };
 		3B108CE015791A0C00888E30 /* HRSplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSplashScreenViewController.m; sourceTree = "<group>"; };
-		3B108CE2157929FA00888E30 /* AppLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppLogo@2x.png"; sourceTree = "<group>"; };
+		3B108CE2157929FA00888E30 /* logo_splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_splash@2x.png"; sourceTree = "<group>"; };
 		3B19651C14EEAB970045F827 /* C32-Smith-Henry.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Henry.html"; sourceTree = "<group>"; };
 		3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Molly.html"; sourceTree = "<group>"; };
 		3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Sarah.html"; sourceTree = "<group>"; };
@@ -751,7 +738,6 @@
 				3BD16F0414E1C5B700F2249E /* HRMPatient.m */,
 				3BE9A40314E40EBB00F87B60 /* HRMEntry.h */,
 				3BE9A40414E40EBB00F87B60 /* HRMEntry.m */,
-				3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -781,8 +767,8 @@
 			children = (
 				3B581D3215BDC68200ED2A63 /* logo_login.png */,
 				3B581D3315BDC68200ED2A63 /* logo_login@2x.png */,
-				3B108CDC1579199F00888E30 /* AppLogo.png */,
-				3B108CE2157929FA00888E30 /* AppLogo@2x.png */,
+				3B108CDC1579199F00888E30 /* logo_splash.png */,
+				3B108CE2157929FA00888E30 /* logo_splash@2x.png */,
 				3B001D5015755BA900762FB0 /* GradientButton.png */,
 				3B001D5115755BA900762FB0 /* GradientButtonHighlighted.png */,
 				3B001D4C157550F800762FB0 /* GradientButton@2x.png */,
@@ -1038,6 +1024,7 @@
 		941DB0B31471B32D00A96B8B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */,
 				941DB0C11471B32D00A96B8B /* MainStoryboard_iPad.storyboard */,
 				3BFBEE161534BD33009EBA2D /* HReader.entitlements */,
 				941DB0B41471B32D00A96B8B /* HReader-Info.plist */,
@@ -1441,7 +1428,6 @@
 			files = (
 				941DB0B71471B32D00A96B8B /* InfoPlist.strings in Resources */,
 				941DB0C31471B32D00A96B8B /* MainStoryboard_iPad.storyboard in Resources */,
-				9464C5881476BDAE0076B991 /* C32-Smith-Johnny.html in Resources */,
 				94AEAE11148690DA00C005B2 /* HRPatientSummaryViewController.xib in Resources */,
 				DD695D8614897C2200E4E2E1 /* HRMessagesViewController.xib in Resources */,
 				DD5597C214897DE2006A0D1D /* HRDoctorsViewController_old.xib in Resources */,
@@ -1451,8 +1437,6 @@
 				DD8BD9E5148D1D660090F729 /* UserImage-4.png in Resources */,
 				DD8BD9E6148D1D660090F729 /* UserImage-2.png in Resources */,
 				DD124DAE148D3EF300E23A44 /* Doctor.png in Resources */,
-				94689AC414964BE400E1FCA6 /* README.txt in Resources */,
-				94689AC514964BE400E1FCA6 /* release_notes.txt in Resources */,
 				94BB032D149BB393009B2FCC /* HRPasscodeWarningViewController.xib in Resources */,
 				9415152314AA3A7B009FF674 /* fail.png in Resources */,
 				9415152414AA3A7B009FF674 /* win.png in Resources */,
@@ -1462,16 +1446,7 @@
 				3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */,
 				941F254114E2EC7E0077D6D1 /* HRVitalAppletTile.xib in Resources */,
 				9413C74914EC0B7800BFA521 /* HRPatientSwipeControl.xib in Resources */,
-				3B19652014EEAB970045F827 /* C32-Smith-Henry.html in Resources */,
-				3B19652114EEAB970045F827 /* C32-Smith-Molly.html in Resources */,
-				3B19652214EEAB970045F827 /* C32-Smith-Sarah.html in Resources */,
-				3B19652314EEAB970045F827 /* C32-Smith-Tom.html in Resources */,
 				9452D7F414FC167200021E69 /* HRProviderView.xib in Resources */,
-				940C046C152B6ADF00834416 /* hs-synthetic.json in Resources */,
-				940C046D152B6ADF00834416 /* js-synthetic.json in Resources */,
-				940C046E152B6ADF00834416 /* ms-synthetic.json in Resources */,
-				940C046F152B6ADF00834416 /* ss-synthetic.json in Resources */,
-				940C0470152B6ADF00834416 /* ts-synthetic.json in Resources */,
 				3BFBEE1C1534BF32009EBA2D /* HReaderApplets.plist in Resources */,
 				94AACFB01535D080005E3851 /* HRMedicationsAppletTile.xib in Resources */,
 				9492CA531535F90E009DE7F2 /* tbi-fullscreen.png in Resources */,
@@ -1567,7 +1542,6 @@
 				3B74E5DA155482E700593ECF /* ss-events-full.png in Resources */,
 				3B74E5DB155482E700593ECF /* ts-condition-full.png in Resources */,
 				3B74E5DC155482E700593ECF /* ts-events-full.png in Resources */,
-				3B74E5DE1554854000593ECF /* ns-synthetic.json in Resources */,
 				9483F67115669E5400867CFC /* female-bmi-chart.json in Resources */,
 				9483F67315669EE000867CFC /* male-bmi-chart.json in Resources */,
 				3B001D3E157519DB00762FB0 /* InitialSetup_iPad.storyboard in Resources */,
@@ -1576,8 +1550,8 @@
 				3B001D4F157550F800762FB0 /* GradientButtonHighlighted@2x.png in Resources */,
 				3B001D5215755BA900762FB0 /* GradientButton.png in Resources */,
 				3B001D5315755BA900762FB0 /* GradientButtonHighlighted.png in Resources */,
-				3B108CDD1579199F00888E30 /* AppLogo.png in Resources */,
-				3B108CE3157929FA00888E30 /* AppLogo@2x.png in Resources */,
+				3B108CDD1579199F00888E30 /* logo_splash.png in Resources */,
+				3B108CE3157929FA00888E30 /* logo_splash@2x.png in Resources */,
 				3B651F7F157FC8B50007817C /* interstitial_closebox-down.png in Resources */,
 				3B651F80157FC8B50007817C /* interstitial_closebox-down@2x.png in Resources */,
 				3B651F81157FC8B50007817C /* interstitial_closebox.png in Resources */,
