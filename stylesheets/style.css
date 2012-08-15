@@ -28,6 +28,17 @@ h2 {
 	border-bottom: 1px solid #ccc;
 	text-transform: uppercase;
 }
+h3 {
+	font-weight: 200;
+	font-size: 20px;
+	margin-bottom: 5px;
+}
+h4 {
+	font-weight: 100;
+	font-size: 24px;
+	margin-bottom: 5px;
+
+}
 .tagline {
 	align: left;
 }
@@ -48,6 +59,9 @@ h1.logo {
 	width: 100%;
 }
 
+#openid a {
+	border: none !important;
+}
 .navbar-inner {
   background: #EEE;
 }
@@ -142,6 +156,9 @@ myCarousel {
   background: #EEE;
 }
 
+#footer.row {
+	margin-left: 0;
+}
 #footer h3 {
 	font-weight: normal;
 	padding-top: 15px;
@@ -187,9 +204,8 @@ dt {
 dd { 
 	margin-left: 0;
 }
-#taglines a {
+#taglines .btn {
 	font-size: 18px;
-	float: right;
 }
 
 #taglines h1 {
@@ -291,4 +307,12 @@ h1.tag {
 h1.tag strong {
 	color: #D61F29;
 	font-weight: 100;
+}
+
+.MITRE {
+	height: 25px;
+	margin-bottom: 5px;
+}
+#menu {
+	margin-left:0;
 }
