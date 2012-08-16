@@ -13,8 +13,6 @@
 
 static NSString *HRAppletKeysKeychainService = @"org.mitre.hreader.applet-keys";
 
-static NSCache *keyCache = nil;
-
 @implementation HRAppletUtilities
 
 + (void)load {
@@ -51,43 +49,65 @@ static NSCache *keyCache = nil;
     }
 }
 
-+ (void)initialize {
-    if (self == [HRAppletUtilities class]) {
-        keyCache = [[NSCache alloc] init];
-    }
-}
-
 + (NSString *)keyForAppletWithIdentifier:(NSString *)identifier {
-    NSString *key = [keyCache objectForKey:identifier];
-    if (key == nil) {
-        key = HRCryptoManagerKeychainItemString(HRAppletKeysKeychainService, identifier);
+    
+    // build cache
+    static NSCache *cache = nil;
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        cache = [[NSCache alloc] init];
+    });
+    
+    @synchronized(self) {
+        
+        // build key
+        NSString *key = [cache objectForKey:identifier];
+        if (key == nil) {
+            key = HRCryptoManagerKeychainItemString(HRAppletKeysKeychainService, identifier);
+        }
+        if (key == nil) {
+            key = [[NSProcessInfo processInfo] globallyUniqueString];
+            HRCryptoManagerSetKeychainItemString(HRAppletKeysKeychainService, identifier, key);
+        }
+        [cache setObject:key forKey:identifier];
+        return key;
+        
     }
-    if (key == nil) {
-        key = [[NSProcessInfo processInfo] globallyUniqueString];
-        HRCryptoManagerSetKeychainItemString(HRAppletKeysKeychainService, identifier, key);
-        [keyCache setObject:key forKey:identifier];
-    }
-    return key;
+    
 }
 
 + (NSURL *)URLForAppletContainer:(NSString *)identifier {
-    NSFileManager *manager = [NSFileManager defaultManager];
-    NSArray *folders = [manager URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask];
-    NSURL *URL = [folders objectAtIndex:0];
-    URL = [URL URLByAppendingPathComponent:@"Applets"];
-    // TODO: hash identifier so it isn't necessarily predictable
-    URL = [URL URLByAppendingPathComponent:identifier];
     
-    // create folders
-    NSError *error = nil;
-    if (![manager createDirectoryAtURL:URL withIntermediateDirectories:YES attributes:nil error:&error]) {
-        if ([error code] != NSFileWriteFileExistsError) {
-            return nil;
+    // build cache
+    static NSCache *cache = nil;
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        cache = [[NSCache alloc] init];
+    });
+    
+    @synchronized(self) {
+        
+        // create url
+        NSURL *URL = [cache objectForKey:identifier];
+        if (URL == nil) {
+            NSFileManager *manager = [NSFileManager defaultManager];
+            NSArray *folders = [manager URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask];
+            URL = [folders objectAtIndex:0];
+            URL = [URL URLByAppendingPathComponent:@"Applets"];
+            // TODO: hash identifier so it isn't necessarily predictable
+            URL = [URL URLByAppendingPathComponent:identifier];
+            NSError *error = nil;
+            if (![manager createDirectoryAtURL:URL withIntermediateDirectories:YES attributes:nil error:&error]) {
+                if ([error code] != NSFileWriteFileExistsError) {
+                    return nil;
+                }
+            }
         }
+        
+        // return
+        return URL;
+        
     }
-    
-    // return
-    return URL;
     
 }
 
