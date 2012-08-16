@@ -31,119 +31,158 @@ static NSString *_temporaryKey = nil;
 static NSArray *_temporaryQuestions = nil;
 static NSArray *_temporaryAnswers = nil;
 
-#pragma mark - private encryption methods
+#pragma mark - encrypt and decrypt data
+
+NSData * HRCryptoManagerDecryptData(NSData *data) {
+    return HRCryptoManagerDecryptDataWithKey(data, _temporaryKey);
+}
+NSData * HRCryptoManagerEncryptData(NSData *data) {
+    return HRCryptoManagerEncryptDataWithKey(data, _temporaryKey);
+}
+NSData * HRCryptoManagerEncryptDataWithKey(NSData *data, NSString *key) {
+    if (data && key) {
+        
+        // get key bytes
+        NSRange key_range = NSMakeRange(0, kCCKeySizeAES256);
+        NSData *key_data = [HRCryptoManagerHashString(key) subdataWithRange:key_range];
+        
+        // get initialization vector
+        NSString *iv_string = [[NSProcessInfo processInfo] globallyUniqueString];
+        NSRange iv_range = NSMakeRange(0, kCCBlockSizeAES128);
+        NSData *iv_data = [HRCryptoManagerHashString(iv_string) subdataWithRange:iv_range];
+        
+        // determine total needed space
+        size_t length;
+        CCCryptorStatus status = CCCrypt(kCCEncrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
+                                         [key_data bytes], [key_data length],
+                                         [iv_data bytes],
+                                         [data bytes], [data length],
+                                         NULL, 0,
+                                         &length);
+        if (status != kCCBufferTooSmall) { return nil; }
+        
+        // create buffer
+        void *buffer = malloc(length + [iv_data length]);
+        if (buffer == nil) { return nil; }
+        memcpy(buffer, [iv_data bytes], [iv_data length]);
+        
+        // perform encryption
+        status = CCCrypt(kCCEncrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
+                         [key_data bytes], [key_data length],
+                         [iv_data bytes],
+                         [data bytes], [data length],
+                         (buffer + [iv_data length]), length,
+                         &length);
+        
+        // cleanup and return
+        if (status == kCCSuccess) {
+            return [NSData dataWithBytesNoCopy:buffer length:(length + [iv_data length])];
+        }
+        else {
+            free(buffer);
+#if DEBUG
+            NSLog(@"%s %d", __PRETTY_FUNCTION__, status);
+#endif
+        }
+        
+    }
+    return nil;
+}
+NSData * HRCryptoManagerDecryptDataWithKey(NSData *data, NSString *key) {
+    if (data && key) {
+        
+        // get key bytes
+        NSRange key_range = NSMakeRange(0, kCCKeySizeAES256);
+        NSData *key_data = [HRCryptoManagerHashString(key) subdataWithRange:key_range];
+        
+        // determine total needed space
+        size_t length;
+        CCCryptorStatus status;
+        CCCrypt(kCCDecrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
+                [key_data bytes], [key_data length],
+                [data bytes],
+                [data bytes] + kCCBlockSizeAES128, [data length] - kCCBlockSizeAES128,
+                NULL, 0,
+                &length);
+        
+        // create buffer
+        void *buffer = malloc(length);
+        if (buffer == nil) { return nil; }
+        
+        // perform decryption
+        status = CCCrypt(kCCDecrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
+                         [key_data bytes], [key_data length],
+                         [data bytes],
+                         [data bytes] + kCCBlockSizeAES128, [data length] - kCCBlockSizeAES128,
+                         buffer, length,
+                         &length);
+        
+        // cleanup and return
+        if (status == kCCSuccess) {
+            return [NSData dataWithBytesNoCopy:buffer length:length];
+        }
+        else {
+            free(buffer);
+#if DEBUG
+            NSLog(@"%s %d", __PRETTY_FUNCTION__, status);
+#endif
+        }
+        
+    }
+    return nil;
+}
+
+#pragma mark - perform hash on given objects
 
 NSData * HRCryptoManagerHashString(NSString *string) {
-    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
-    return HRCryptoManagerHashData(data);
+    if (string) {
+        NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+        return HRCryptoManagerHashData(data);
+    }
+    return nil;
 }
-
 NSData * HRCryptoManagerHashData(NSData *data) {
-    void *buffer = malloc(CC_SHA512_DIGEST_LENGTH);
-    if (buffer == nil) { return nil; }
-    CC_SHA512([data bytes], [data length], buffer);
-    return [NSData dataWithBytesNoCopy:buffer length:CC_SHA512_DIGEST_LENGTH];
+    if (data) {
+        void *buffer = malloc(CC_SHA512_DIGEST_LENGTH);
+        if (buffer == nil) { return nil; }
+        CC_SHA512([data bytes], [data length], buffer);
+        return [NSData dataWithBytesNoCopy:buffer length:CC_SHA512_DIGEST_LENGTH];
+    }
+    return nil;
 }
 
-NSData * HRCryptoManagerEncryptDataWithKey(NSData *data, NSString *key) {
-    
-    // get key bytes
-    NSRange key_range = NSMakeRange(0, kCCKeySizeAES256);
-    NSData *key_data = [HRCryptoManagerHashString(key) subdataWithRange:key_range];
-    
-    // get initialization vector
-    NSString *iv_string = [[NSProcessInfo processInfo] globallyUniqueString];
-    NSRange iv_range = NSMakeRange(0, kCCBlockSizeAES128);
-    NSData *iv_data = [HRCryptoManagerHashString(iv_string) subdataWithRange:iv_range];
-    
-    // determine total needed space
-    size_t length;
-    CCCryptorStatus status = CCCrypt(kCCEncrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
-                                     [key_data bytes], [key_data length],
-                                     [iv_data bytes],
-                                     [data bytes], [data length],
-                                     NULL, 0,
-                                     &length);
-    if (status != kCCBufferTooSmall) { return nil; }
-    
-    // create buffer
-    void *buffer = malloc(length + [iv_data length]);
-    if (buffer == nil) { return nil; }
-    memcpy(buffer, [iv_data bytes], [iv_data length]);
-    
-    // perform encryption
-    status = CCCrypt(kCCEncrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
-                     [key_data bytes], [key_data length],
-                     [iv_data bytes],
-                     [data bytes], [data length],
-                     (buffer + [iv_data length]), length,
-                     &length);
-    
-    // cleanup and return
-    if (status == kCCSuccess) {
-        return [NSData dataWithBytesNoCopy:buffer length:(length + [iv_data length])];
-    }
-    else {
-        free(buffer);
-#if DEBUG
-        NSLog(@"%s %d", __PRETTY_FUNCTION__, status);
-#endif
-        return nil;
-    }
-    
-}
+#pragma mark - set and get keychain data
 
-NSData * HRCryptoManagerDecryptDataWithKey(NSData *data, NSString *key) {
-    
-    // get key bytes
-    NSRange key_range = NSMakeRange(0, kCCKeySizeAES256);
-    NSData *key_data = [HRCryptoManagerHashString(key) subdataWithRange:key_range];
-    
-    // determine total needed space
-    size_t length;
-    CCCryptorStatus status;
-    CCCrypt(kCCDecrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
-            [key_data bytes], [key_data length],
-            [data bytes],
-            [data bytes] + kCCBlockSizeAES128, [data length] - kCCBlockSizeAES128,
-            NULL, 0,
-            &length);
-    
-    // create buffer
-    void *buffer = malloc(length);
-    if (buffer == nil) { return nil; }
-    
-    // perform decryption
-    status = CCCrypt(kCCDecrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
-                     [key_data bytes], [key_data length],
-                     [data bytes],
-                     [data bytes] + kCCBlockSizeAES128, [data length] - kCCBlockSizeAES128,
-                     buffer, length,
-                     &length);
-    
-    // cleanup and return
-    if (status == kCCSuccess) {
-        return [NSData dataWithBytesNoCopy:buffer length:length];
+void HRCryptoManagerSetKeychainItemString(NSString *service, NSString *account, NSString *value) {
+    if (value) {
+        NSData *valueData = [value dataUsingEncoding:NSUTF8StringEncoding];
+        HRCryptoManagerSetKeychainItemData(service, account, valueData);
     }
-    else {
-        free(buffer);
-#if DEBUG
-        NSLog(@"%s %d", __PRETTY_FUNCTION__, status);
-#endif
-        return nil;
+}
+void HRCryptoManagerSetKeychainItemData(NSString *service, NSString *account, NSData *value) {
+    NSData *encrypted = HRCryptoManagerEncryptData(value);
+    [SSKeychain setPasswordData:encrypted forService:service account:account];
+}
+NSString * HRCryptoManagerKeychainItemString(NSString *service, NSString *account) {
+    NSData *value = HRCryptoManagerKeychainItemData(service, account);
+    if (value) {
+        return [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
     }
-    
+    return nil;
+}
+NSData * HRCryptoManagerKeychainItemData(NSString *service, NSString *account) {
+    NSData *data = [SSKeychain passwordDataForService:service account:account];
+    return HRCryptoManagerDecryptData(data);
 }
 
 #pragma mark - check state of stored encryption resources
 
 BOOL HRCryptoManagerHasPasscode(void) {
-    return ([SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount] != nil &&
+    return ([SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount] &&
             [SSKeychain passwordDataForService:HRKeychainService account:HRPasscodeKeychainAccount]);
 }
-
 BOOL HRCryptoManagerHasSecurityQuestions(void) {
-    return ([SSKeychain passwordDataForService:HRKeychainService account:HRSecurityQuestionsKeychainAccount] != nil &&
+    return ([SSKeychain passwordDataForService:HRKeychainService account:HRSecurityQuestionsKeychainAccount] &&
             [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount] &&
             [SSKeychain passwordDataForService:HRKeychainService account:HRSecurityAnswersKeychainAccount]);
 }
@@ -271,30 +310,6 @@ void HRCryptoManagerUpdateSecurityQuestionsAndAnswers(NSArray *questions, NSArra
     }
 }
 
-#pragma mark - keychain data
-
-NSData * HRCryptoManagerKeychainItemData(NSString *service, NSString *account) {
-    NSData *data = [SSKeychain passwordDataForService:service account:account];
-    return HRCryptoManagerDecryptData(data);
-}
-
-NSString * HRCryptoManagerKeychainItemString(NSString *service, NSString *account) {
-    NSData *value = HRCryptoManagerKeychainItemData(service, account);
-    return [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
-}
-
-void HRCryptoManagerSetKeychainItemData(NSString *service, NSString *account, NSData *value) {
-    NSData *encrypted = HRCryptoManagerEncryptData(value);
-    if (encrypted) {
-        [SSKeychain setPasswordData:encrypted forService:service account:account];
-    }
-}
-
-void HRCryptoManagerSetKeychainItemString(NSString *service, NSString *account, NSString *value) {
-    NSData *valueData = [value dataUsingEncoding:NSUTF8StringEncoding];
-    HRCryptoManagerSetKeychainItemData(service, account, valueData);
-}
-
 #pragma mark - get security questions
 
 NSArray * HRCryptoManagerSecurityQuestions(void) {
@@ -303,20 +318,4 @@ NSArray * HRCryptoManagerSecurityQuestions(void) {
     char *bytes = [questions mutableBytes];
     XOR(HRSecurityQuestionsXORKey, bytes, length);
     return [NSJSONSerialization JSONObjectWithData:questions options:0 error:nil];
-}
-
-#pragma mark - public methods for dealing with binary data
-
-NSData * HRCryptoManagerDecryptData(NSData *data) {
-    if (data && _temporaryKey) {
-        return HRCryptoManagerDecryptDataWithKey(data, _temporaryKey);
-    }
-    return nil;
-}
-
-NSData * HRCryptoManagerEncryptData(NSData *data) {
-    if (data && _temporaryKey) {
-        return HRCryptoManagerEncryptDataWithKey(data, _temporaryKey);
-    }
-    return nil;
 }

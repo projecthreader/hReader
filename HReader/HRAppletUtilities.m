@@ -18,39 +18,37 @@ static NSCache *keyCache = nil;
 @implementation HRAppletUtilities
 
 + (void)load {
-    
-    // encryption
-    {
-        NSArray *methods = @[
-            @"encryptString:identifier:",
-            @"encryptArray:identifier:",
-            @"encryptDictionary:identifier:"
-        ];
-        SEL encrypt = @selector(encryptPropertyListObject:identifier:);
-        [methods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            Method m = class_getClassMethod(self, NSSelectorFromString(obj));
+    @autoreleasepool {
+        
+        // encryption
+        {
+            NSArray *methods = @[
+                @"encryptString:identifier:",
+                @"encryptArray:identifier:",
+                @"encryptDictionary:identifier:"
+            ];
+            Method m = class_getClassMethod(self, @selector(encryptPropertyListObject:identifier:));
             IMP i = method_getImplementation(m);
-            m = class_getClassMethod(self, encrypt);
-            method_setImplementation(m, i);
-        }];
-    }
-    
-    // decryption
-    {
-        NSArray *methods = @[
-            @"decryptString:identifier:",
-            @"decryptArray:identifier:",
-            @"decryptDictionary:identifier:"
-        ];
-        SEL encrypt = @selector(decryptPropertyListObject:identifier:);
-        [methods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            Method m = class_getClassMethod(self, NSSelectorFromString(obj));
+            [methods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                method_setImplementation(class_getClassMethod(self, NSSelectorFromString(obj)), i);
+            }];
+        }
+        
+        // decryption
+        {
+            NSArray *methods = @[
+                @"decryptString:identifier:",
+                @"decryptArray:identifier:",
+                @"decryptDictionary:identifier:"
+            ];
+            Method m = class_getClassMethod(self, @selector(decryptPropertyListObject:identifier:));
             IMP i = method_getImplementation(m);
-            m = class_getClassMethod(self, encrypt);
-            method_setImplementation(m, i);
-        }];
+            [methods enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                method_setImplementation(class_getClassMethod(self, NSSelectorFromString(obj)), i);
+            }];
+        }
+        
     }
-    
 }
 
 + (void)initialize {
@@ -116,7 +114,7 @@ static NSCache *keyCache = nil;
 
 + (NSData *)decryptData:(NSData *)data identifier:(NSString *)identifier {
     NSString *key = [self keyForAppletWithIdentifier:identifier];
-    return HRCryptoManagerEncryptDataWithKey(data, key);
+    return HRCryptoManagerDecryptDataWithKey(data, key);
 }
 
 + (id)decryptPropertyListObject:(NSData *)data identifier:(NSString *)identifier {

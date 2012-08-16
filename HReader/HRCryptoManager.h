@@ -17,6 +17,45 @@
 
 /*
  
+ Encrypt and decrypt data with the application shared key. These methods will
+ return data on success or `nil` if `data` is `nil` or the
+ application is locked.
+ 
+ */
+NSData * HRCryptoManagerDecryptData(NSData *data);
+NSData * HRCryptoManagerEncryptData(NSData *data);
+
+/*
+ 
+ Encrypt and decrypt data with the given key. These methods will return data on
+ success or `nil` if `data` or `key` is nil. These may be used while the
+ application is locked.
+ 
+ */
+NSData * HRCryptoManagerEncryptDataWithKey(NSData *data, NSString *key);
+NSData * HRCryptoManagerDecryptDataWithKey(NSData *data, NSString *key);
+
+/*
+ 
+ Perform a hash of the input.
+ 
+ */
+NSData *HRCryptoManagerHashString(NSString *string);
+NSData *HRCryptoManagerHashData(NSData *data);
+
+/*
+ 
+ Store data in the keychain. This data is first encrypted using the application
+ shared key. All parameters are required.
+ 
+ */
+NSData * HRCryptoManagerKeychainItemData(NSString *service, NSString *account);
+NSString * HRCryptoManagerKeychainItemString(NSString *service, NSString *account);
+void HRCryptoManagerSetKeychainItemData(NSString *service, NSString *account, NSData *value);
+void HRCryptoManagerSetKeychainItemString(NSString *service, NSString *account, NSString *value);
+
+/*
+ 
  
  
  */
@@ -78,35 +117,7 @@ void HRCryptoManagerUpdateSecurityQuestionsAndAnswers(NSArray *questions, NSArra
 
 /*
  
- 
- 
- */
-NSData * HRCryptoManagerKeychainItemData(NSString *service, NSString *account);
-NSString * HRCryptoManagerKeychainItemString(NSString *service, NSString *account);
-void HRCryptoManagerSetKeychainItemData(NSString *service, NSString *account, NSData *value);
-void HRCryptoManagerSetKeychainItemString(NSString *service, NSString *account, NSString *value);
-
-/*
- 
  Access the stored security questions.
  
  */
 NSArray * HRCryptoManagerSecurityQuestions(void);
-
-/*
- 
- 
- 
- */
-NSData * HRCryptoManagerDecryptData(NSData *data);
-NSData * HRCryptoManagerEncryptData(NSData *data);
-NSData * HRCryptoManagerEncryptDataWithKey(NSData *data, NSString *key);
-NSData * HRCryptoManagerDecryptDataWithKey(NSData *data, NSString *key);
-
-/*
- 
- 
- 
- */
-NSData *HRCryptoManagerHashString(NSString *string);
-NSData *HRCryptoManagerHashData(NSData *data);
