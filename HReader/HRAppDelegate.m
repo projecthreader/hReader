@@ -242,39 +242,6 @@
      name:NSManagedObjectContextDidSaveNotification
      object:nil];
     
-    // load patients if we don't have any yet
-//    NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
-//    if ([HRMPatient countInContext:context] == 0) {
-//        NSArray *names = [NSArray arrayWithObjects:@"hs", @"js", @"ms", @"ss", @"ts", @"ns", nil];
-//        [names enumerateObjectsUsingBlock:^(NSString *name, NSUInteger idx, BOOL *stop) {
-//            
-//            // load real data
-//            NSURL *URL = [[NSBundle mainBundle] URLForResource:name withExtension:@"json"];
-//            NSData *data = [NSData dataWithContentsOfURL:URL];
-//            NSError *JSONError = nil;
-//            HRMPatient *patient = nil;
-//            id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
-//            if (object) { patient = [HRMPatient instanceWithDictionary:object inContext:context]; }
-//            else { NSLog(@"%@: %@", name, JSONError); }
-//            
-//            // load synthetic data
-//            NSURL *syntheticURL = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@-synthetic", name] withExtension:@"json"];
-//            NSData *syntheticData = [NSData dataWithContentsOfURL:syntheticURL];
-//            if (syntheticData) {
-//                NSError *error = nil;
-//                patient.syntheticInfo = [NSJSONSerialization JSONObjectWithData:syntheticData options:0 error:&error];
-//                patient.applets = [patient.syntheticInfo objectForKey:@"applets"];
-//                if (error) {
-//                    NSLog(@"Unable to load synthetic patient file %@\n%@", name, error);
-//                }
-//            }
-//            
-//        }];
-//        NSError *error = nil;
-//        BOOL save = [context save:&error];
-//        NSAssert(save, @"Unable to import patients\n%@", error);
-//    }
-    
     double delay = 1.0;
     dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
     dispatch_after(time, dispatch_get_main_queue(), ^(void){

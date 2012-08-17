@@ -7,6 +7,7 @@
 //
 
 #import <objc/runtime.h>
+#import <CommonCrypto/CommonDigest.h>
 
 #import "HRAppletUtilities.h"
 #import "HRCryptoManager.h"
@@ -90,12 +91,24 @@ static NSString *HRAppletKeysKeychainService = @"org.mitre.hreader.applet-keys";
         // create url
         NSURL *URL = [cache objectForKey:identifier];
         if (URL == nil) {
+            
+            // generate applet folder
+            NSMutableString *appletFolder = [NSMutableString string];
+            NSData *identifierData = [identifier dataUsingEncoding:NSUTF8StringEncoding];
+            unsigned char *buffer = malloc(CC_MD5_DIGEST_LENGTH);
+            CC_MD5([identifierData bytes], [identifierData length], buffer);
+            XOR(153, buffer, CC_MD5_DIGEST_LENGTH);
+            for (NSUInteger i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+                [appletFolder appendFormat:@"%02x", (unsigned int)buffer[i]];
+            }
+            free(buffer);
+            
+            // create and return
             NSFileManager *manager = [NSFileManager defaultManager];
             NSArray *folders = [manager URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask];
             URL = [folders objectAtIndex:0];
             URL = [URL URLByAppendingPathComponent:@"Applets"];
-            // TODO: hash identifier so it isn't necessarily predictable
-            URL = [URL URLByAppendingPathComponent:identifier];
+            URL = [URL URLByAppendingPathComponent:appletFolder];
             NSError *error = nil;
             if (![manager createDirectoryAtURL:URL withIntermediateDirectories:YES attributes:nil error:&error]) {
                 if ([error code] != NSFileWriteFileExistsError) {
