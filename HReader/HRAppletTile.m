@@ -7,67 +7,44 @@
 //
 
 #import "HRAppletTile.h"
-#import "HRMPatient.h"
 
-@interface HRAppletTile () {
-@private
-    HRMPatient * __strong __patient;
-    NSDictionary * __strong __userInfo;
-}
-
-- (void)commonInit;
-
-@end
+NSString *HRAppletTilePatientIdentifierKey = @"HRAppletTilePatientIdentifierKey";
 
 @implementation HRAppletTile
 
 #pragma mark - class methods
 
-+ (id)tileWithPatient:(HRMPatient *)patient userInfo:(NSDictionary *)userInfo {
++ (id)tileWithUserInfo:(NSDictionary *)userInfo {
     HRAppletTile *tile = nil;
     
     // load the tile
-    NSString *nibName = [userInfo objectForKey:@"nib_name"];
-    if (nibName == nil) {
-        nibName = NSStringFromClass(self);
+    NSString *name = [userInfo objectForKey:@"nib_name"];
+    if (name == nil) {
+        name = NSStringFromClass(self);
     }
-    NSURL *nibURL = [[NSBundle mainBundle] URLForResource:nibName withExtension:@"nib"];
-    NSData *nibData = [NSData dataWithContentsOfURL:nibURL];
-    if (nibData) {
-//        NSLog(@"Loading %@.nib for %@", nibName, NSStringFromClass(self));
-        UINib *nib = [UINib nibWithData:nibData bundle:nil];
+    NSURL *URL = [[NSBundle mainBundle] URLForResource:name withExtension:@"nib"];
+    NSData *data = [NSData dataWithContentsOfURL:URL];
+    if (data) {
+        UINib *nib = [UINib nibWithData:data bundle:nil];
         tile = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
     }
     else {
-//        NSLog(@"Loading %@ with no nib", NSStringFromClass(self));
         tile = [[self alloc] init];
     }
     
     // configure
-    tile->__patient = patient;
-    tile->__userInfo = userInfo;
+    [[NSNotificationCenter defaultCenter]
+     addObserver:tile
+     selector:@selector(applicationDidEnterBackground)
+     name:UIApplicationDidEnterBackgroundNotification
+     object:nil];
+    tile->_userInfo = [userInfo copy];
     [tile tileDidLoad];
     
     return tile;
 }
 
 #pragma mark - object methods
-
-- (id)initWithCoder:(NSCoder *)coder {
-    self = [super initWithCoder:coder];
-    if (self) {
-        [self commonInit];
-    }
-    return self;
-}
-
-- (id)init {
-    self = [super init];
-    if (self) {
-        [self commonInit];
-    }
-    return self;
-}
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter]
@@ -76,20 +53,8 @@
      object:nil];
 }
 
-- (void)commonInit {
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(applicationDidEnterBackground)
-     name:UIApplicationDidEnterBackgroundNotification
-     object:nil];
-}
-
-- (HRMPatient *)patient {
-    return __patient;
-}
-
-- (NSDictionary *)userInfo {
-    return __userInfo;
+- (NSString *)patientIdentifier {
+    return [self.userInfo objectForKey:HRAppletTilePatientIdentifierKey];
 }
 
 # pragma mark - tile lifecycle

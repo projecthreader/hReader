@@ -22,7 +22,7 @@ typedef enum {
     HRMPatientRelationshipOther
 } HRMPatientRelationship;
 
-extern NSString * const HRMPatientSyncStatusDidChangeNotification;
+extern NSString *HRMPatientSyncStatusDidChangeNotification;
 
 @class HRMEntry;
 @class DDXMLElement;
@@ -51,6 +51,7 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 @property (nonatomic, readonly) NSString *initials;
 @property (nonatomic, readonly) NSString *genderString;
 @property (nonatomic, readonly) NSString *relationshipString;
+@property (nonatomic, readonly) NSString *identityToken;
 
 #pragma mark - fetched properties
 
@@ -64,10 +65,21 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 
 #pragma mark - class methods
 
-//+ (NSString *)syncStatus;
+/*
+ 
+ 
+ 
+ */
++ (NSString *)syncStatus;
+
+/*
+ 
+ 
+ 
+ */
 + (void)performSync;
 
-#pragma mark - instance methods
+#pragma mark - object methods
 
 /*
  

@@ -178,7 +178,7 @@
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
 		3BD16EF614E1B5EE00F2249E /* GCManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16EE514E1B5EE00F2249E /* GCManagedObject.m */; };
 		3BD16F0514E1C5B700F2249E /* HRMPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16F0414E1C5B700F2249E /* HRMPatient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		3BE9A40514E40EBB00F87B60 /* HRMEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9A40414E40EBB00F87B60 /* HRMEntry.m */; };
+		3BE9A40514E40EBB00F87B60 /* HRMEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9A40414E40EBB00F87B60 /* HRMEntry.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BEBAE6215766C3700E4CB33 /* HRAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBAE6115766C3700E4CB33 /* HRAPIClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BEBAE661576771400E4CB33 /* HRRHExLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBAE651576771400E4CB33 /* HRRHExLoginViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BEBAE6A15769ED400E4CB33 /* HRPeopleFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBAE6915769ED400E4CB33 /* HRPeopleFeedViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
