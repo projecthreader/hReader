@@ -7,7 +7,9 @@
 //
 
 #import "HRImmunizationsAppletTile.h"
+
 #import "HRMEntry.h"
+#import "HRMPatient.h"
 
 #import "NSArray+Collect.h"
 #import "NSString+SentenceCapitalization.h"
@@ -15,12 +17,10 @@
 
 @implementation HRImmunizationsAppletTile
 
-@synthesize immunizationLabels  = _immunizationLabels;
-@synthesize dateLabels          = _dateLabels;
-
 - (void)tileDidLoad {
     [super tileDidLoad];
-    NSArray *immunizations = [[self patient] immunizations];
+    HRMPatient *patient = [self.userInfo objectForKey:@"__private_patient__"];
+    NSArray *immunizations = patient.immunizations;
     NSArray *immunizationLabels = [self.immunizationLabels sortedArrayUsingKey:@"tag" ascending:YES];
     NSArray *dateLabels = [self.dateLabels sortedArrayUsingKey:@"tag" ascending:YES];
     NSUInteger immunizationsCount = [immunizations count];
@@ -31,7 +31,7 @@
         
         // this is the last label and we should show count
         if (index == labelCount - 1 && showCountLabel) {
-            label.text = [NSString stringWithFormat:@"%lu more…", immunizationsCount - labelCount + 1];
+            label.text = [NSString stringWithFormat:@"%lu more…", (unsigned long)(immunizationsCount - labelCount + 1)];
         }
         
         // normal condition label

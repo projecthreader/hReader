@@ -6,10 +6,11 @@
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 #import "HRAppletTile.h"
+
 #import "HRSparkLineView.h"
+
+@class HRMPatient;
 
 @interface HRVitalAppletTile : HRAppletTile
 
@@ -21,6 +22,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *middleValueLabel;
 @property (nonatomic, strong) IBOutlet UILabel *rightValueLabel;
 @property (nonatomic, strong) IBOutlet HRSparkLineView *sparkLineView;
+@property (nonatomic, readonly) HRMPatient *patient;
 
 - (NSArray *)dataForKeyValueTable;
 - (NSString *)titleForKeyValueTable;

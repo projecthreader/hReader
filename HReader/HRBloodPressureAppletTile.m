@@ -7,30 +7,20 @@
 //
 
 #import "HRBloodPressureAppletTile.h"
+
 #import "HRMEntry.h"
+#import "HRMPatient.h"
+
 #import "HRSparkLineView.h"
 #import "HRKeyValueTableViewController.h"
 
 #import "NSDate+FormattedDate.h"
 #import "NSArray+Collect.h"
 
-@interface HRBloodPressureAppletTile () {
-@private
-    NSArray * __strong __systolicDataPoints;
-    NSArray * __strong __diastolicDataPoints;
+@implementation HRBloodPressureAppletTile {
+    NSArray *_systolicDataPoints;
+    NSArray *_diastolicDataPoints;
 }
-
-- (double)normalSystolicLow;
-- (double)normalSystolicHigh;
-- (double)normalDiastolicLow;
-- (double)normalDiastolicHigh;
-- (BOOL)isSystolicValueNormal:(double)value;
-- (BOOL)isDiastolicValueNormal:(double)value;
-- (NSArray *)sparklinePointsForEntries:(NSArray *)entries;
-
-@end
-
-@implementation HRBloodPressureAppletTile
 
 - (NSArray *)sparklinePointsForEntries:(NSArray *)entries {
     NSMutableArray *points = [[NSMutableArray alloc] initWithCapacity:[entries count]];
@@ -48,12 +38,12 @@
 }
 
 - (NSArray *)dataForKeyValueTable {
-    NSMutableArray *points = [NSMutableArray arrayWithCapacity:[__systolicDataPoints count]];
-    [__systolicDataPoints enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
+    NSMutableArray *points = [NSMutableArray arrayWithCapacity:[_systolicDataPoints count]];
+    [_systolicDataPoints enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
         double systolicValue = [[entry.value objectForKey:@"scalar"] doubleValue];
         double diastolicValue = 0;
-        if (index < [__diastolicDataPoints count]) {
-            HRMEntry *diastolicEntry = [__diastolicDataPoints objectAtIndex:index];
+        if (index < [_diastolicDataPoints count]) {
+            HRMEntry *diastolicEntry = [_diastolicDataPoints objectAtIndex:index];
             diastolicValue = [[diastolicEntry.value objectForKey:@"scalar"] doubleValue];
         }
         BOOL isNormal = [self isSystolicValueNormal:systolicValue];
@@ -72,10 +62,10 @@
     [super tileDidLoad];
     
     // save points
-    __systolicDataPoints = [self.patient vitalSignsWithType:@"systolic blood pressure"];
-    __diastolicDataPoints = [self.patient vitalSignsWithType:@"diastolic blood pressure"];
-    HRMEntry *lastestSystolic = [__systolicDataPoints lastObject];
-    HRMEntry *lastestDiastolic = [__diastolicDataPoints lastObject];
+    _systolicDataPoints = [self.patient vitalSignsWithType:@"systolic blood pressure"];
+    _diastolicDataPoints = [self.patient vitalSignsWithType:@"diastolic blood pressure"];
+    HRMEntry *lastestSystolic = [_systolicDataPoints lastObject];
+    HRMEntry *lastestDiastolic = [_diastolicDataPoints lastObject];
     
     // set labels
     double lastestSystolicValue = [[lastestSystolic valueForKeyPath:@"value.scalar"] doubleValue];
@@ -94,14 +84,14 @@
     HRSparkLineLine *systolicLine = [[HRSparkLineLine alloc] init];
     systolicLine.outOfRangeDotColor = [HRConfig redColor];
     systolicLine.weight = 4.0;
-    systolicLine.points = [self sparklinePointsForEntries:__systolicDataPoints];
+    systolicLine.points = [self sparklinePointsForEntries:_systolicDataPoints];
     systolicLine.range = HRMakeRange([self normalSystolicLow], [self normalSystolicHigh] - [self normalSystolicLow]);
     
     // diastolic range
     HRSparkLineLine *diastolicLine = [[HRSparkLineLine alloc] init];
     diastolicLine.outOfRangeDotColor = [HRConfig redColor];
     diastolicLine.weight = 4.0;
-    diastolicLine.points = [self sparklinePointsForEntries:__diastolicDataPoints];
+    diastolicLine.points = [self sparklinePointsForEntries:_diastolicDataPoints];
     diastolicLine.range = HRMakeRange([self normalDiastolicLow], [self normalDiastolicHigh] - [self normalDiastolicLow]);
     
     // sparkline

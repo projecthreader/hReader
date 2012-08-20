@@ -8,31 +8,21 @@
 
 #import "HRVitalAppletTile.h"
 #import "HRKeyValueTableViewController.h"
-
 #import "HRSparkLineView.h"
 
 #import "NSArray+Collect.h"
 #import "NSDate+FormattedDate.h"
 
 @implementation HRVitalAppletTile {
-@private
-    UIPopoverController * __strong popoverController;
+    UIPopoverController *_popoverController;
 }
-
-@synthesize leftTitleLabel = __leftTitleLabel;
-@synthesize leftValueLabel = __leftValueLabel;
-@synthesize middleTitleLabel = __middleTitleLabel;
-@synthesize middleValueLabel = __middleValueLabel;
-@synthesize rightTitleLabel = __rightTitleLabel;
-@synthesize rightValueLabel = __rightValueLabel;
-@synthesize sparkLineView   = __sparkLineView;
-@synthesize titleLabel = __titleLabel;
 
 #pragma mark object methods
 
 - (void)tileDidLoad {
     [super tileDidLoad];
     self.sparkLineView.backgroundColor = [UIColor whiteColor];
+    _patient = [self.userInfo objectForKey:@"__private_patient__"];
 }
 
 - (NSArray *)dataForKeyValueTable {
@@ -53,11 +43,11 @@
     UITableViewController *controller = [[HRKeyValueTableViewController alloc] initWithDataPoints:[self dataForKeyValueTable]];
     controller.title = [self titleForKeyValueTable];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-    if (popoverController == nil) {
-        popoverController = [[UIPopoverController alloc] initWithContentViewController:navController];
+    if (_popoverController == nil) {
+        _popoverController = [[UIPopoverController alloc] initWithContentViewController:navController];
     }
-    else { popoverController.contentViewController = navController; }
-    [popoverController
+    else { _popoverController.contentViewController = navController; }
+    [_popoverController
      presentPopoverFromRect:rect
      inView:sender.view
      permittedArrowDirections:UIPopoverArrowDirectionAny
@@ -67,7 +57,7 @@
 #pragma mark - notifications
 
 - (void)applicationDidEnterBackground {
-    [popoverController dismissPopoverAnimated:NO];
+    [_popoverController dismissPopoverAnimated:NO];
 }
 
 @end

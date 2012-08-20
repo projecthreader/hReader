@@ -6,7 +6,6 @@
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "HRAppletTile.h"
 
 @interface HRWebViewAppletTile : HRAppletTile <UIWebViewDelegate>

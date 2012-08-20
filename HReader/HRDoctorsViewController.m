@@ -19,19 +19,9 @@
 
 #import "SVPanelViewController.h"
 
-@interface HRDoctorsViewController ()
-
-- (void)reloadData;
-
-@end
-
 @implementation HRDoctorsViewController {
     NSArray *_providerViews;
 }
-
-@synthesize nameLabel = _nameLabel;
-@synthesize gridTableView = _gridTableView;
-@synthesize patientImageView = _patientImageView;
 
 #pragma mark - object methods
 
@@ -124,12 +114,11 @@
     NSMutableArray *views = [[NSMutableArray alloc] init];
     for (int i = 0; i < 6; i++) {
         NSString *imagePrefix = [NSString stringWithFormat:@"%@-%d", [patient initials], i];
-        NSDictionary *userInfo = 
-        [NSDictionary dictionaryWithObjectsAndKeys:
-         [NSString stringWithFormat:@"%@-tile", imagePrefix], @"tile_image", 
-         [NSString stringWithFormat:@"%@-overview", imagePrefix], @"fullscreen_image",
-         nil];
-        HRImageAppletTile *tile = [HRImageAppletTile tileWithPatient:patient userInfo:userInfo];
+        NSDictionary *userInfo = @{
+            @"tile_image" : [NSString stringWithFormat:@"%@-tile", imagePrefix],
+            @"fullscreen_image" : [NSString stringWithFormat:@"%@-overview", imagePrefix]
+        };
+        HRImageAppletTile *tile = [HRImageAppletTile tileWithUserInfo:userInfo];
         [views addObject:tile];
     }
     

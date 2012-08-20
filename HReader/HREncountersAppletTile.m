@@ -7,20 +7,19 @@
 //
 
 #import "HREncountersAppletTile.h"
+
 #import "HRMEntry.h"
+#import "HRMPatient.h"
 
 #import "NSDate+FormattedDate.h"
 #import "NSString+SentenceCapitalization.h"
 
 @implementation HREncountersAppletTile
 
-@synthesize dateLabel           = __dateLabel;
-@synthesize typeLabel           = __typeLabel;
-@synthesize descriptionLabel    = __descriptionLabel;
-
 - (void)tileDidLoad {
     [super tileDidLoad];
-    HRMEntry *encounter = [[self.patient encounters] lastObject];
+    HRMPatient *patient = [self.userInfo objectForKey:@"__private_patient__"];
+    HRMEntry *encounter = [patient.encounters lastObject];
     if (encounter) {
         self.dateLabel.text = [encounter.date mediumStyleDate];
         self.descriptionLabel.text = [encounter.desc sentenceCapitalizedString];

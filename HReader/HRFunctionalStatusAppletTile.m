@@ -8,18 +8,16 @@
 
 #import "HRFunctionalStatusAppletTile.h"
 
+#import "HRMPatient.h"
+
 #import "NSDate+FormattedDate.h"
 
 @implementation HRFunctionalStatusAppletTile
 
-@synthesize dateLabel       = __dateLabel;
-@synthesize problemLabel    = __problemLabel;
-@synthesize typeLabel       = __typeLabel;
-@synthesize statusLabel     = __statusLabel;
-
 - (void)tileDidLoad {
     [super tileDidLoad];
-    NSDictionary *functionalStatus = [self.patient.syntheticInfo objectForKey:@"functional_status"];
+    HRMPatient *patient = [self.userInfo objectForKey:@"__private_patient__"];
+    NSDictionary *functionalStatus = [patient.syntheticInfo objectForKey:@"functional_status"];
     if (functionalStatus) {
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[functionalStatus objectForKey:@"date"] doubleValue]];
         self.dateLabel.text = [date mediumStyleDate];
@@ -33,10 +31,6 @@
         self.problemLabel.text = nil;
         self.statusLabel.text = nil;
     }
-}
-
-- (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect {
-    
 }
 
 @end
