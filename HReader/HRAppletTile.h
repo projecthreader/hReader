@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString *HRAppletTilePatientIdentifierKey;
+extern NSString *HRAppletTilePatientIdentityTokenKey;
 
 /*
  
@@ -37,7 +37,7 @@ extern NSString *HRAppletTilePatientIdentifierKey;
  
  
  */
-@property (nonatomic, readonly) NSString *patientIdentifier;
+@property (nonatomic, readonly) NSString *patientIdentityToken;
 
 /*
  

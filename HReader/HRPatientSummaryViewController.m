@@ -219,7 +219,7 @@
             NSString *token = patient.identityToken;
             [identifiers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 NSMutableDictionary *applet = [[HRAppletConfigurationViewController appletWithIdentifier:obj] mutableCopy];
-                [applet setObject:token forKey:HRAppletTilePatientIdentifierKey];
+                [applet setObject:token forKey:HRAppletTilePatientIdentityTokenKey];
                 if ([obj rangeOfString:@"org.mitre.hreader"].location == 0) {
                     [applet setObject:patient forKey:@"__private_patient__"];
                 }

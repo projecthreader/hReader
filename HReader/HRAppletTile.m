@@ -8,7 +8,7 @@
 
 #import "HRAppletTile.h"
 
-NSString *HRAppletTilePatientIdentifierKey = @"HRAppletTilePatientIdentifierKey";
+NSString *HRAppletTilePatientIdentityTokenKey = @"HRAppletTilePatientIdentityToken";
 
 @implementation HRAppletTile
 
@@ -53,8 +53,8 @@ NSString *HRAppletTilePatientIdentifierKey = @"HRAppletTilePatientIdentifierKey"
      object:nil];
 }
 
-- (NSString *)patientIdentifier {
-    return [self.userInfo objectForKey:HRAppletTilePatientIdentifierKey];
+- (NSString *)patientIdentityToken {
+    return [self.userInfo objectForKey:HRAppletTilePatientIdentityTokenKey];
 }
 
 # pragma mark - tile lifecycle
