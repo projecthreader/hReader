@@ -10,6 +10,8 @@
 #import <objc/message.h>
 #import <sys/stat.h>
 
+#import "CMDEncryptedSQLiteStore.h"
+
 #import "HRAppDelegate.h"
 #import "HRAPIClient.h"
 #import "HRRHExLoginViewController.h"
@@ -59,15 +61,15 @@
         NSFileManager *fileManager = [NSFileManager defaultManager];
         NSURL *applicationSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
         [fileManager createDirectoryAtURL:applicationSupportURL withIntermediateDirectories:NO attributes:nil error:nil];
-        NSURL *databaseURL = [applicationSupportURL URLByAppendingPathComponent:@"database.sqlite"];
-        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 NSFileProtectionComplete, NSPersistentStoreFileProtectionKey,
-                                 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
-                                 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption,
-                                 nil];
+        NSURL *databaseURL = [applicationSupportURL URLByAppendingPathComponent:@"database.sqlite.encrypted"];
+        NSDictionary *options = @{
+            NSPersistentStoreFileProtectionKey : NSFileProtectionComplete,
+            NSMigratePersistentStoresAutomaticallyOption : @(YES),
+            NSInferMappingModelAutomaticallyOption : @(YES)
+        };
         NSError *error = nil;
         NSPersistentStore *store = [coordinator
-                                    addPersistentStoreWithType:NSSQLiteStoreType
+                                    addPersistentStoreWithType:CMDEncryptedSQLiteStoreType
                                     configuration:nil
                                     URL:databaseURL
                                     options:options
