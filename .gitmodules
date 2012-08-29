@@ -7,3 +7,9 @@
 [submodule "vendor/activityhud"]
 	path = vendor/activityhud
 	url = https://github.com/calebmdavenport/activityhud.git
+[submodule "vendor/openssl"]
+	path = vendor/openssl
+	url = https://github.com/sqlcipher/openssl-xcode.git
+[submodule "vendor/sqlcipher"]
+	path = vendor/sqlcipher
+	url = https://github.com/sqlcipher/sqlcipher.git

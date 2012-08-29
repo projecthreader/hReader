@@ -306,7 +306,6 @@
 		3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Molly.html"; sourceTree = "<group>"; };
 		3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Sarah.html"; sourceTree = "<group>"; };
 		3B19651F14EEAB970045F827 /* C32-Smith-Tom.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Tom.html"; sourceTree = "<group>"; };
-		3B2B7B55156A863C003B3B77 /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
 		3B305F19157D4F2900FC03E6 /* HRPeoplePickerViewController_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPeoplePickerViewController_private.h; sourceTree = "<group>"; };
 		3B3C919314F69F61005CD5C5 /* NSDate+FormattedDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FormattedDate.h"; sourceTree = "<group>"; };
 		3B3C919414F69F61005CD5C5 /* NSDate+FormattedDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FormattedDate.m"; sourceTree = "<group>"; };
@@ -481,6 +480,7 @@
 		3BD16EE514E1B5EE00F2249E /* GCManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCManagedObject.m; sourceTree = "<group>"; };
 		3BD16F0314E1C5B700F2249E /* HRMPatient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMPatient.h; sourceTree = "<group>"; };
 		3BD16F0414E1C5B700F2249E /* HRMPatient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMPatient.m; sourceTree = "<group>"; };
+		3BD5F08F15EE767200333320 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		3BE9A40314E40EBB00F87B60 /* HRMEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMEntry.h; sourceTree = "<group>"; };
 		3BE9A40414E40EBB00F87B60 /* HRMEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMEntry.m; sourceTree = "<group>"; };
 		3BE9A42814E42A3800F87B60 /* hs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hs.json; sourceTree = "<group>"; };
@@ -1025,7 +1025,7 @@
 		941DB09D1471B32D00A96B8B = {
 			isa = PBXGroup;
 			children = (
-				3B2B7B55156A863C003B3B77 /* CHANGELOG */,
+				3BD5F08F15EE767200333320 /* README.md */,
 				C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */,
 				94689ABC14964BBF00E1FCA6 /* Vendor */,
 				941DB0B21471B32D00A96B8B /* HReader */,
