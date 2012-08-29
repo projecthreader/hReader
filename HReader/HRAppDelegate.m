@@ -49,7 +49,8 @@
     dispatch_once(&token, ^{
         
         // get the model
-        NSManagedObjectModel *model = [NSManagedObjectModel mergedModelFromBundles:nil];
+        NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"hReader" withExtension:@"momd"];
+        NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
         
         // get the coordinator
         coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
