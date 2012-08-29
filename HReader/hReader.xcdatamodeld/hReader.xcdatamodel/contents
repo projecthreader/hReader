@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1487" systemVersion="11E53" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="HRMEntry" representedClassName="HRMEntry" syncable="YES">
+    <entity name="Entry" representedClassName="HRMEntry" syncable="YES">
         <attribute name="codes" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
@@ -13,9 +13,9 @@
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="HRMPatient" inverseName="entries" inverseEntity="HRMPatient" syncable="YES"/>
+        <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="entries" inverseEntity="Patient" syncable="YES"/>
     </entity>
-    <entity name="HRMPatient" representedClassName="HRMPatient" syncable="YES">
+    <entity name="Patient" representedClassName="HRMPatient" syncable="YES">
         <attribute name="applets" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="compositeName" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -32,10 +32,10 @@
         <attribute name="relationship" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="serverID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="syntheticInfo" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HRMEntry" inverseName="patient" inverseEntity="HRMEntry" syncable="YES"/>
+        <relationship name="entries" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Entry" inverseName="patient" inverseEntity="Entry" syncable="YES"/>
     </entity>
     <elements>
-        <element name="HRMEntry" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="HRMPatient" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Entry" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Patient" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

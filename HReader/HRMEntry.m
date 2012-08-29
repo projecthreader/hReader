@@ -84,6 +84,10 @@
     
 }
 
++ (NSString *)modelName {
+    return @"Entry";
+}
+
 - (DDXMLElement *)timelineXMLElement {
     
     // get date formatter

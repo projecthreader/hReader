@@ -104,6 +104,10 @@ NSString *HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncStatusDidC
     });
 }
 
++ (NSString *)modelName {
+    return @"Patient";
+}
+
 #pragma mark - attribute overrides
 
 - (NSString *)identityToken {
