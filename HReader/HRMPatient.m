@@ -91,7 +91,10 @@ NSString *HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncStatusDidC
                  }
                  else { NSLog(@"Unable to sync %@", [obj compositeName]); }
                  if (idx == (count - 1)) {
-                     [context save:nil];
+                     NSError *error = nil;
+                     if (![context save:&error]) {
+                         NSLog(@"Unable to save changes to %@.\n%@", obj.compositeName, error);
+                     }
                      [self setSyncStatus:nil];
                  }
              }];
@@ -273,7 +276,9 @@ NSString *HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncStatusDidC
     else { self.gender = [NSNumber numberWithShort:HRMPatientGenderUnknown]; }
     
     // objects conforming to the "entry" type
-    [self removeEntries:self.entries];
+    [self.entries enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+        [context deleteObject:obj];
+    }];
     void (^collectionBlock) (HRMEntryType, NSString *) = ^(HRMEntryType type, NSString *key) {
         object = [dictionary objectForKey:key];
         if (object && [object isKindOfClass:[NSArray class]]) {
