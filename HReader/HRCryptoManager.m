@@ -13,6 +13,8 @@
 
 #import "SSKeychain.h"
 
+#import "CMDEncryptedSQLiteStore.h"
+
 // keychain keys
 
 static NSString * const HRKeychainService                           = @"org.hreader.security.2";
@@ -318,4 +320,24 @@ NSArray * HRCryptoManagerSecurityQuestions(void) {
     char *bytes = [questions mutableBytes];
     XOR(HRSecurityQuestionsXORKey, bytes, length);
     return [NSJSONSerialization JSONObjectWithData:questions options:0 error:nil];
+}
+
+#pragma mark - core data encryption
+
+NSPersistentStore *HRCryptoManagerAddEncryptedStoreToCoordinator(NSPersistentStoreCoordinator *coordinator,
+                                                                 NSString *configuration,
+                                                                 NSURL *URL,
+                                                                 NSDictionary *options,
+                                                                 NSError **error) {
+    if (HRCryptoManagerIsUnlocked()) {
+        NSMutableDictionary *mutableOptions = [options mutableCopy];
+        [mutableOptions setObject:_temporaryKey forKey:CMDEncryptedSQLiteStorePassphraseKey];
+        return [coordinator
+                addPersistentStoreWithType:CMDEncryptedSQLiteStoreType
+                configuration:configuration
+                URL:URL
+                options:mutableOptions
+                error:error];
+    }
+    return nil;
 }

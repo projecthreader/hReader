@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
 /*
  
@@ -121,3 +122,16 @@ void HRCryptoManagerUpdateSecurityQuestionsAndAnswers(NSArray *questions, NSArra
  
  */
 NSArray * HRCryptoManagerSecurityQuestions(void);
+
+/*
+ 
+ Adds an encrypted persistent store to the given NSPersistentStoreCoordinator.
+ The store is encrypted with the applicatioin's master encryption key. This
+ may only be called with the app is unlocked.
+ 
+ */
+NSPersistentStore *HRCryptoManagerAddEncryptedStoreToCoordinator(NSPersistentStoreCoordinator *coordinator,
+                                                                 NSString *configuration,
+                                                                 NSURL *URL,
+                                                                 NSDictionary *options,
+                                                                 NSError **error);
