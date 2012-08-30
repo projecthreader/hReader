@@ -396,7 +396,7 @@
                                                     <rect key="frame" x="10" y="15" width="508" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
                                                         <action selector="valueChanged:" destination="HXH-Vd-1VY" eventType="editingChanged" id="qGL-GV-UZF"/>
                                                     </connections>
