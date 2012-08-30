@@ -17,6 +17,10 @@ h1 {
 	padding: 20px 0;
 }
 
+h1.tag {
+	line-height: 120%;
+}
+
 h2 {
 	font-weight: bold;
 	text-align: left;
