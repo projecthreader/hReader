@@ -32,16 +32,11 @@
 
 #import "SSKeychain.h"
 
-@interface HRAppDelegate () {
+@implementation HRAppDelegate {
     NSUInteger passcodeAttempts;
     UINavigationController *securityNavigationController;
+    NSPersistentStore *persistentStore;
 }
-
-@end
-
-@implementation HRAppDelegate
-
-@synthesize window = _window;
 
 #pragma mark - class methods
 
@@ -49,33 +44,9 @@
     static NSPersistentStoreCoordinator *coordinator = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
-        
-        // get the model
         NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"hReader" withExtension:@"momd"];
         NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-        
-        // get the coordinator
         coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
-        
-        // add store
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        NSURL *applicationSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
-        [fileManager createDirectoryAtURL:applicationSupportURL withIntermediateDirectories:NO attributes:nil error:nil];
-        NSURL *databaseURL = [applicationSupportURL URLByAppendingPathComponent:@"database.sqlite.encrypted"];
-        NSDictionary *options = @{
-            NSPersistentStoreFileProtectionKey : NSFileProtectionComplete,
-            NSMigratePersistentStoresAutomaticallyOption : @(YES),
-            NSInferMappingModelAutomaticallyOption : @(YES)
-        };
-        NSError *error = nil;
-        NSPersistentStore *store = [coordinator
-                                    addPersistentStoreWithType:CMDEncryptedSQLiteStoreType
-                                    configuration:nil
-                                    URL:databaseURL
-                                    options:options
-                                    error:&error];
-        NSAssert(store, @"Unable to add persistent store\n%@", error);
-        
     });
     return coordinator;
 }
@@ -91,6 +62,33 @@
 }
 
 #pragma mark - object methods
+
+- (void)addPersistentStoreIfNeeded {
+    if (persistentStore == nil) {
+        NSError *error = nil;
+        NSPersistentStoreCoordinator *coordinator = [HRAppDelegate persistentStoreCoordinator];
+        
+        // store configuration
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSURL *applicationSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
+        [fileManager createDirectoryAtURL:applicationSupportURL withIntermediateDirectories:NO attributes:nil error:nil];
+        NSURL *databaseURL = [applicationSupportURL URLByAppendingPathComponent:@"database.sqlite3"];
+        NSDictionary *options = @{
+        NSPersistentStoreFileProtectionKey : NSFileProtectionComplete,
+        NSMigratePersistentStoresAutomaticallyOption : @(YES),
+        NSInferMappingModelAutomaticallyOption : @(YES)
+        };
+        
+        // add store
+        persistentStore = HRCryptoManagerAddEncryptedStoreToCoordinator(coordinator,
+                                                                        nil,
+                                                                        databaseURL,
+                                                                        options,
+                                                                        &error);
+        NSAssert(persistentStore, @"Unable to add persistent store\n%@", error);
+        
+    }
+}
 
 - (void)performLaunchSteps {
     
@@ -171,6 +169,9 @@
         NSArray *hosts = [HRAPIClient hosts];
         UIViewController *controller = [(id)self.window.rootViewController topViewController];
         
+        // load persistent store
+        [self addPersistentStoreIfNeeded];
+        
         // check for accounts
         if ([hosts count] == 0) {
             HRAPIClient *client = [HRAPIClient clientWithHost:@"growing-spring-4857.herokuapp.com"];
@@ -245,8 +246,7 @@
      name:NSManagedObjectContextDidSaveNotification
      object:nil];
     
-    double delay = 1.0;
-    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
+    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
     dispatch_after(time, dispatch_get_main_queue(), ^(void){
         [self performLaunchSteps];
     });
@@ -257,13 +257,25 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    
+    // remove persistent store
+//    NSPersistentStoreCoordinator *coordinator = [HRAppDelegate persistentStoreCoordinator];
+//    if ([coordinator removePersistentStore:persistentStore error:nil]) {
+//        persistentStore = nil;
+//        [[HRAppDelegate managedObjectContext] reset];
+//    }
+    
+    // destroy encryption keys
     HRCryptoManagerPurge();
+    
+    // reset interface
     if (!HRCryptoManagerHasPasscode() || !HRCryptoManagerHasSecurityQuestions()) {
         [(id)self.window.rootViewController popToRootViewControllerAnimated:NO];
     }
     [securityNavigationController dismissModalViewControllerAnimated:NO];
     securityNavigationController = nil;
     [self presentPasscodeVerificationController:NO];
+    
 }
 
 #pragma mark - security scenario one
@@ -320,6 +332,7 @@
 
 - (BOOL)verifyPasscodeOnLaunch :(HRPasscodeViewController *)controller :(NSString *)passcode {
     if (HRCryptoManagerUnlockWithPasscode(passcode)) {
+        [self addPersistentStoreIfNeeded];
         [controller dismissViewControllerAnimated:YES completion:^{
             securityNavigationController = nil;
             [self performLaunchSteps];
@@ -461,12 +474,6 @@
     HRPeopleSetupViewController *setup = [login.storyboard instantiateViewControllerWithIdentifier:@"PeopleSetupViewController"];
     setup.navigationItem.hidesBackButton = YES;
     [login.navigationController pushViewController:setup animated:YES];
-}
-
-#pragma mark - passcode
-
-- (NSUInteger)PINCodeLength {
-    return 6;
 }
 
 #pragma mark - security questions delegate

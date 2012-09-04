@@ -23,6 +23,7 @@ static NSString * const HRSecurityAnswersKeychainAccount            = @"security
 static NSString * const HRPasscodeKeychainAccount                   = @"passcode";
 static NSString * const HRSharedKeyPasscodeKeychainAccount          = @"shared_key_passcode";
 static NSString * const HRSharedKeySecurityAnswersKeychainAccount   = @"shared_key_security_answers";
+static NSString * const HRDatabaseKeyKeychainAccount                = @"database_key";
 static NSString * const HRKeychainIdentifierFlag                    = @"org.hreader.security.flag";
 static const int HRSecurityQuestionsXORKey                          = 156;
 
@@ -329,13 +330,19 @@ NSPersistentStore *HRCryptoManagerAddEncryptedStoreToCoordinator(NSPersistentSto
                                                                  NSURL *URL,
                                                                  NSDictionary *options,
                                                                  NSError **error) {
+    static BOOL ENCRYPTED_STORE = YES;
     if (HRCryptoManagerIsUnlocked()) {
+        NSString *key = HRCryptoManagerKeychainItemString(HRKeychainService, HRDatabaseKeyKeychainAccount);
+        if (key == nil) {
+            key = [[NSProcessInfo processInfo] globallyUniqueString];
+            HRCryptoManagerSetKeychainItemString(HRKeychainService, HRDatabaseKeyKeychainAccount, key);
+        }
         NSMutableDictionary *mutableOptions = [options mutableCopy];
-        [mutableOptions setObject:_temporaryKey forKey:CMDEncryptedSQLiteStorePassphraseKey];
+        [mutableOptions setObject:key forKey:CMDEncryptedSQLiteStorePassphraseKey];
         return [coordinator
-                addPersistentStoreWithType:CMDEncryptedSQLiteStoreType
+                addPersistentStoreWithType:(ENCRYPTED_STORE ? CMDEncryptedSQLiteStoreType : NSSQLiteStoreType)
                 configuration:configuration
-                URL:URL
+                URL:(ENCRYPTED_STORE ? [URL URLByAppendingPathExtension:@"encrypted"] : URL)
                 options:mutableOptions
                 error:error];
     }
