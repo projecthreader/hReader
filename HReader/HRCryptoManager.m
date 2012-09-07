@@ -13,6 +13,8 @@
 
 #import "SSKeychain.h"
 
+#import "CMDEncryptedSQLiteStore.h"
+
 // keychain keys
 
 static NSString * const HRKeychainService                           = @"org.hreader.security.2";
@@ -21,6 +23,7 @@ static NSString * const HRSecurityAnswersKeychainAccount            = @"security
 static NSString * const HRPasscodeKeychainAccount                   = @"passcode";
 static NSString * const HRSharedKeyPasscodeKeychainAccount          = @"shared_key_passcode";
 static NSString * const HRSharedKeySecurityAnswersKeychainAccount   = @"shared_key_security_answers";
+static NSString * const HRDatabaseKeyKeychainAccount                = @"database_key";
 static NSString * const HRKeychainIdentifierFlag                    = @"org.hreader.security.flag";
 static const int HRSecurityQuestionsXORKey                          = 156;
 
@@ -31,126 +34,158 @@ static NSString *_temporaryKey = nil;
 static NSArray *_temporaryQuestions = nil;
 static NSArray *_temporaryAnswers = nil;
 
-// private function prototypes
+#pragma mark - encrypt and decrypt data
 
-static NSData * HRCryptoManagerHashString(NSString *string);
-static NSData * HRCryptoManagerHashData(NSData *data);
-static NSData * HRCryptoManagerEncrypt_private(NSData *data, NSString *key);
-static NSData * HRCryptoManagerDecrypt_private(NSData *data, NSString *key);
-
-#pragma mark - private encryption methods
-
-static NSData * HRCryptoManagerHashString(NSString *string) {
-    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
-    return HRCryptoManagerHashData(data);
+NSData * HRCryptoManagerDecryptData(NSData *data) {
+    return HRCryptoManagerDecryptDataWithKey(data, _temporaryKey);
 }
-
-static NSData * HRCryptoManagerHashData(NSData *data) {
-    void *buffer = malloc(CC_SHA512_DIGEST_LENGTH);
-    if (buffer == nil) { return nil; }
-    CC_SHA512([data bytes], [data length], buffer);
-    return [NSData dataWithBytesNoCopy:buffer length:CC_SHA512_DIGEST_LENGTH];
+NSData * HRCryptoManagerEncryptData(NSData *data) {
+    return HRCryptoManagerEncryptDataWithKey(data, _temporaryKey);
 }
-
-static NSData * HRCryptoManagerEncrypt_private(NSData *data, NSString *key) {
-    
-    // get key bytes
-    NSRange key_range = NSMakeRange(0, kCCKeySizeAES256);
-    NSData *key_data = [HRCryptoManagerHashString(key) subdataWithRange:key_range];
-    
-    // get initialization vector
-    NSString *iv_string = [[NSProcessInfo processInfo] globallyUniqueString];
-    NSRange iv_range = NSMakeRange(0, kCCBlockSizeAES128);
-    NSData *iv_data = [HRCryptoManagerHashString(iv_string) subdataWithRange:iv_range];
-    
-    // determine total needed space
-    size_t length;
-    CCCryptorStatus status = CCCrypt(kCCEncrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
-                                     [key_data bytes], [key_data length],
-                                     [iv_data bytes],
-                                     [data bytes], [data length],
-                                     NULL, 0,
-                                     &length);
-    if (status != kCCBufferTooSmall) { return nil; }
-    
-    // create buffer
-    void *buffer = malloc(length + [iv_data length]);
-    if (buffer == nil) { return nil; }
-    memcpy(buffer, [iv_data bytes], [iv_data length]);
-    
-    // perform encryption
-    status = CCCrypt(kCCEncrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
-                     [key_data bytes], [key_data length],
-                     [iv_data bytes],
-                     [data bytes], [data length],
-                     (buffer + [iv_data length]), length,
-                     &length);
-    
-    // cleanup and return
-    if (status == kCCSuccess) {
-        return [NSData dataWithBytesNoCopy:buffer length:(length + [iv_data length])];
-    }
-    else {
-        free(buffer);
+NSData * HRCryptoManagerEncryptDataWithKey(NSData *data, NSString *key) {
+    if (data && key) {
+        
+        // get key bytes
+        NSRange key_range = NSMakeRange(0, kCCKeySizeAES256);
+        NSData *key_data = [HRCryptoManagerHashString(key) subdataWithRange:key_range];
+        
+        // get initialization vector
+        NSString *iv_string = [[NSProcessInfo processInfo] globallyUniqueString];
+        NSRange iv_range = NSMakeRange(0, kCCBlockSizeAES128);
+        NSData *iv_data = [HRCryptoManagerHashString(iv_string) subdataWithRange:iv_range];
+        
+        // determine total needed space
+        size_t length;
+        CCCryptorStatus status = CCCrypt(kCCEncrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
+                                         [key_data bytes], [key_data length],
+                                         [iv_data bytes],
+                                         [data bytes], [data length],
+                                         NULL, 0,
+                                         &length);
+        if (status != kCCBufferTooSmall) { return nil; }
+        
+        // create buffer
+        void *buffer = malloc(length + [iv_data length]);
+        if (buffer == nil) { return nil; }
+        memcpy(buffer, [iv_data bytes], [iv_data length]);
+        
+        // perform encryption
+        status = CCCrypt(kCCEncrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
+                         [key_data bytes], [key_data length],
+                         [iv_data bytes],
+                         [data bytes], [data length],
+                         (buffer + [iv_data length]), length,
+                         &length);
+        
+        // cleanup and return
+        if (status == kCCSuccess) {
+            return [NSData dataWithBytesNoCopy:buffer length:(length + [iv_data length])];
+        }
+        else {
+            free(buffer);
 #if DEBUG
-        NSLog(@"%s %d", __PRETTY_FUNCTION__, status);
+            NSLog(@"%s %d", __PRETTY_FUNCTION__, status);
 #endif
-        return nil;
+        }
+        
     }
-    
+    return nil;
+}
+NSData * HRCryptoManagerDecryptDataWithKey(NSData *data, NSString *key) {
+    if (data && key) {
+        
+        // get key bytes
+        NSRange key_range = NSMakeRange(0, kCCKeySizeAES256);
+        NSData *key_data = [HRCryptoManagerHashString(key) subdataWithRange:key_range];
+        
+        // determine total needed space
+        size_t length;
+        CCCryptorStatus status;
+        CCCrypt(kCCDecrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
+                [key_data bytes], [key_data length],
+                [data bytes],
+                [data bytes] + kCCBlockSizeAES128, [data length] - kCCBlockSizeAES128,
+                NULL, 0,
+                &length);
+        
+        // create buffer
+        void *buffer = malloc(length);
+        if (buffer == nil) { return nil; }
+        
+        // perform decryption
+        status = CCCrypt(kCCDecrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
+                         [key_data bytes], [key_data length],
+                         [data bytes],
+                         [data bytes] + kCCBlockSizeAES128, [data length] - kCCBlockSizeAES128,
+                         buffer, length,
+                         &length);
+        
+        // cleanup and return
+        if (status == kCCSuccess) {
+            return [NSData dataWithBytesNoCopy:buffer length:length];
+        }
+        else {
+            free(buffer);
+#if DEBUG
+            NSLog(@"%s %d", __PRETTY_FUNCTION__, status);
+#endif
+        }
+        
+    }
+    return nil;
 }
 
-static NSData * HRCryptoManagerDecrypt_private(NSData *data, NSString *key) {
-    
-    // get key bytes
-    NSRange key_range = NSMakeRange(0, kCCKeySizeAES256);
-    NSData *key_data = [HRCryptoManagerHashString(key) subdataWithRange:key_range];
-    
-    // determine total needed space
-    size_t length;
-    CCCryptorStatus status;
-    CCCrypt(kCCDecrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
-            [key_data bytes], [key_data length],
-            [data bytes],
-            [data bytes] + kCCBlockSizeAES128, [data length] - kCCBlockSizeAES128,
-            NULL, 0,
-            &length);
-    
-    // create buffer
-    void *buffer = malloc(length);
-    if (buffer == nil) { return nil; }
-    
-    // perform decryption
-    status = CCCrypt(kCCDecrypt, kCCAlgorithmAES128, kCCOptionPKCS7Padding,
-                     [key_data bytes], [key_data length],
-                     [data bytes],
-                     [data bytes] + kCCBlockSizeAES128, [data length] - kCCBlockSizeAES128,
-                     buffer, length,
-                     &length);
-    
-    // cleanup and return
-    if (status == kCCSuccess) {
-        return [NSData dataWithBytesNoCopy:buffer length:length];
+#pragma mark - perform hash on given objects
+
+NSData * HRCryptoManagerHashString(NSString *string) {
+    if (string) {
+        NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+        return HRCryptoManagerHashData(data);
     }
-    else {
-        free(buffer);
-#if DEBUG
-        NSLog(@"%s %d", __PRETTY_FUNCTION__, status);
-#endif
-        return nil;
+    return nil;
+}
+NSData * HRCryptoManagerHashData(NSData *data) {
+    if (data) {
+        void *buffer = malloc(CC_SHA512_DIGEST_LENGTH);
+        if (buffer == nil) { return nil; }
+        CC_SHA512([data bytes], [data length], buffer);
+        return [NSData dataWithBytesNoCopy:buffer length:CC_SHA512_DIGEST_LENGTH];
     }
-    
+    return nil;
+}
+
+#pragma mark - set and get keychain data
+
+void HRCryptoManagerSetKeychainItemString(NSString *service, NSString *account, NSString *value) {
+    if (value) {
+        NSData *valueData = [value dataUsingEncoding:NSUTF8StringEncoding];
+        HRCryptoManagerSetKeychainItemData(service, account, valueData);
+    }
+}
+void HRCryptoManagerSetKeychainItemData(NSString *service, NSString *account, NSData *value) {
+    NSData *encrypted = HRCryptoManagerEncryptData(value);
+    [SSKeychain setPasswordData:encrypted forService:service account:account];
+}
+NSString * HRCryptoManagerKeychainItemString(NSString *service, NSString *account) {
+    NSData *value = HRCryptoManagerKeychainItemData(service, account);
+    if (value) {
+        return [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
+    }
+    return nil;
+}
+NSData * HRCryptoManagerKeychainItemData(NSString *service, NSString *account) {
+    NSData *data = [SSKeychain passwordDataForService:service account:account];
+    return HRCryptoManagerDecryptData(data);
 }
 
 #pragma mark - check state of stored encryption resources
 
 BOOL HRCryptoManagerHasPasscode(void) {
-    return ([SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount] != nil &&
+    return ([SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount] &&
             [SSKeychain passwordDataForService:HRKeychainService account:HRPasscodeKeychainAccount]);
 }
-
 BOOL HRCryptoManagerHasSecurityQuestions(void) {
-    return ([SSKeychain passwordDataForService:HRKeychainService account:HRSecurityQuestionsKeychainAccount] != nil &&
+    return ([SSKeychain passwordDataForService:HRKeychainService account:HRSecurityQuestionsKeychainAccount] &&
             [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount] &&
             [SSKeychain passwordDataForService:HRKeychainService account:HRSecurityAnswersKeychainAccount]);
 }
@@ -199,11 +234,11 @@ void HRCryptoManagerPurge(void) {
 BOOL HRCryptoManagerUnlockWithPasscode(NSString *passcode) {
     NSCAssert(passcode, @"The passcode must not be nil");
     NSData *encryptedIdentifierData = [SSKeychain passwordDataForService:HRKeychainService account:HRPasscodeKeychainAccount];
-    NSData *identifierData = HRCryptoManagerDecrypt_private(encryptedIdentifierData, passcode);
+    NSData *identifierData = HRCryptoManagerDecryptDataWithKey(encryptedIdentifierData, passcode);
     NSString *identifier = [[NSString alloc] initWithData:identifierData encoding:NSUTF8StringEncoding];
     if ([identifier isEqualToString:HRKeychainIdentifierFlag]) {
         NSData *encryptedKey = [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount];
-        NSData *decryptedKey = HRCryptoManagerDecrypt_private(encryptedKey, passcode);
+        NSData *decryptedKey = HRCryptoManagerDecryptDataWithKey(encryptedKey, passcode);
         if (decryptedKey) {
             _temporaryKey = [[NSString alloc] initWithData:decryptedKey encoding:NSUTF8StringEncoding];
             return YES;
@@ -216,11 +251,11 @@ BOOL HRCryptoManagerUnlockWithAnswersForSecurityQuestions(NSArray *answers) {
     NSCAssert(answers, @"The answers must not be nil");
     NSString *answersString = [answers componentsJoinedByString:@""];
     NSData *encryptedIdentifierData = [SSKeychain passwordDataForService:HRKeychainService account:HRSecurityAnswersKeychainAccount];
-    NSData *identifierData = HRCryptoManagerDecrypt_private(encryptedIdentifierData, answersString);
+    NSData *identifierData = HRCryptoManagerDecryptDataWithKey(encryptedIdentifierData, answersString);
     NSString *identifier = [[NSString alloc] initWithData:identifierData encoding:NSUTF8StringEncoding];
     if ([identifier isEqualToString:HRKeychainIdentifierFlag]) {
         NSData *encryptedKey = [SSKeychain passwordDataForService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount];
-        NSData *decryptedKey = HRCryptoManagerDecrypt_private(encryptedKey, [answers componentsJoinedByString:@""]);
+        NSData *decryptedKey = HRCryptoManagerDecryptDataWithKey(encryptedKey, [answers componentsJoinedByString:@""]);
         if (decryptedKey) {
             _temporaryKey = [[NSString alloc] initWithData:decryptedKey encoding:NSUTF8StringEncoding];
             return YES;
@@ -241,12 +276,12 @@ void HRCryptoManagerUpdatePasscode(NSString *passcode) {
         
         // write encrypted shared key
         NSData *keyData = [_temporaryKey dataUsingEncoding:NSUTF8StringEncoding];
-        NSData *encryptedKeyData = HRCryptoManagerEncrypt_private(keyData, passcode);
+        NSData *encryptedKeyData = HRCryptoManagerEncryptDataWithKey(keyData, passcode);
         [SSKeychain setPasswordData:encryptedKeyData forService:HRKeychainService account:HRSharedKeyPasscodeKeychainAccount];
         
         // write encrypted identifier
         NSData *identifierData = [HRKeychainIdentifierFlag dataUsingEncoding:NSUTF8StringEncoding];
-        NSData *encryptedIdentifierData = HRCryptoManagerEncrypt_private(identifierData, passcode);
+        NSData *encryptedIdentifierData = HRCryptoManagerEncryptDataWithKey(identifierData, passcode);
         [SSKeychain setPasswordData:encryptedIdentifierData forService:HRKeychainService account:HRPasscodeKeychainAccount];
         
     }
@@ -267,39 +302,15 @@ void HRCryptoManagerUpdateSecurityQuestionsAndAnswers(NSArray *questions, NSArra
         
         // write  encrypted shared key
         NSData *keyData = [_temporaryKey dataUsingEncoding:NSUTF8StringEncoding];
-        NSData *encryptedData = HRCryptoManagerEncrypt_private(keyData, answersString);
-        [SSKeychain setPasswordData:encryptedData forService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount];
+        NSData *encryptedKeyData = HRCryptoManagerEncryptDataWithKey(keyData, answersString);
+        [SSKeychain setPasswordData:encryptedKeyData forService:HRKeychainService account:HRSharedKeySecurityAnswersKeychainAccount];
         
         // write encrypted identifier
         NSData *identifierData = [HRKeychainIdentifierFlag dataUsingEncoding:NSUTF8StringEncoding];
-        NSData *encryptedIdentifierData = HRCryptoManagerEncrypt_private(identifierData, answersString);
+        NSData *encryptedIdentifierData = HRCryptoManagerEncryptDataWithKey(identifierData, answersString);
         [SSKeychain setPasswordData:encryptedIdentifierData forService:HRKeychainService account:HRSecurityAnswersKeychainAccount];
         
     }
-}
-
-#pragma mark - keychain data
-
-NSData * HRCryptoManagerKeychainItemData(NSString *service, NSString *account) {
-    NSData *data = [SSKeychain passwordDataForService:service account:account];
-    return HRCryptoManagerDecryptData(data);
-}
-
-NSString * HRCryptoManagerKeychainItemString(NSString *service, NSString *account) {
-    NSData *value = HRCryptoManagerKeychainItemData(service, account);
-    return [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
-}
-
-void HRCryptoManagerSetKeychainItemData(NSString *service, NSString *account, NSData *value) {
-    NSData *encrypted = HRCryptoManagerEncryptData(value);
-    if (encrypted) {
-        [SSKeychain setPasswordData:encrypted forService:service account:account];
-    }
-}
-
-void HRCryptoManagerSetKeychainItemString(NSString *service, NSString *account, NSString *value) {
-    NSData *valueData = [value dataUsingEncoding:NSUTF8StringEncoding];
-    HRCryptoManagerSetKeychainItemData(service, account, valueData);
 }
 
 #pragma mark - get security questions
@@ -312,45 +323,28 @@ NSArray * HRCryptoManagerSecurityQuestions(void) {
     return [NSJSONSerialization JSONObjectWithData:questions options:0 error:nil];
 }
 
-#pragma mark - public methods for dealing with binary data
+#pragma mark - core data encryption
 
-NSData * HRCryptoManagerDecryptData(NSData *data) {
-    if (data && _temporaryKey) {
-        return HRCryptoManagerDecrypt_private(data, _temporaryKey);
-    }
-    return nil;
-}
-
-NSData * HRCryptoManagerEncryptData(NSData *data) {
-    if (data && _temporaryKey) {
-        return HRCryptoManagerEncrypt_private(data, _temporaryKey);
-    }
-    return nil;
-}
-
-#pragma mark - encrypt and decrypt property list objects
-
-NSData * HRCryptoManagerEncryptPropertyListObject(id object) {
-    if (object && _temporaryKey) {
-        CFDataRef data = CFPropertyListCreateData(kCFAllocatorDefault,
-                                                  (__bridge CFPropertyListRef)object,
-                                                  kCFPropertyListBinaryFormat_v1_0,
-                                                  0,
-                                                  NULL);
-        return HRCryptoManagerEncrypt_private((__bridge_transfer NSData *)data, _temporaryKey);
-    }
-    return nil;
-}
-
-id HRCryptoManagerDecryptPropertyListObject(NSData *data) {
-    if (data && _temporaryKey) {
-        NSData *decrypted = HRCryptoManagerDecrypt_private(data, _temporaryKey);
-        CFPropertyListRef list = CFPropertyListCreateWithData(kCFAllocatorDefault,
-                                                              (__bridge CFDataRef)decrypted,
-                                                              0,
-                                                              NULL,
-                                                              NULL);
-        return (__bridge_transfer id)list;
+NSPersistentStore *HRCryptoManagerAddEncryptedStoreToCoordinator(NSPersistentStoreCoordinator *coordinator,
+                                                                 NSString *configuration,
+                                                                 NSURL *URL,
+                                                                 NSDictionary *options,
+                                                                 NSError **error) {
+    static BOOL ENCRYPTED_STORE = YES;
+    if (HRCryptoManagerIsUnlocked()) {
+        NSString *key = HRCryptoManagerKeychainItemString(HRKeychainService, HRDatabaseKeyKeychainAccount);
+        if (key == nil) {
+            key = [[NSProcessInfo processInfo] globallyUniqueString];
+            HRCryptoManagerSetKeychainItemString(HRKeychainService, HRDatabaseKeyKeychainAccount, key);
+        }
+        NSMutableDictionary *mutableOptions = [options mutableCopy];
+        [mutableOptions setObject:key forKey:CMDEncryptedSQLiteStorePassphraseKey];
+        return [coordinator
+                addPersistentStoreWithType:(ENCRYPTED_STORE ? CMDEncryptedSQLiteStoreType : NSSQLiteStoreType)
+                configuration:configuration
+                URL:(ENCRYPTED_STORE ? [URL URLByAppendingPathExtension:@"encrypted"] : URL)
+                options:mutableOptions
+                error:error];
     }
     return nil;
 }

@@ -14,5 +14,4 @@
 @property (retain, nonatomic) IBOutlet UILabel *typeLabel;
 @property (retain, nonatomic) IBOutlet UILabel *descriptionLabel;
 
-
 @end

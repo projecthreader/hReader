@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "HRMPatient.h"
+extern NSString *HRAppletTilePatientIdentityTokenKey;
 
 /*
  
@@ -22,7 +22,7 @@
  
  
  */
-+ (id)tileWithPatient:(HRMPatient *)patient userInfo:(NSDictionary *)userInfo;
++ (id)tileWithUserInfo:(NSDictionary *)userInfo;
 
 /*
  
@@ -34,10 +34,10 @@
 
 /*
  
- Access the patient that is being displayed.
+ 
  
  */
-@property (nonatomic, readonly) HRMPatient *patient;
+@property (nonatomic, readonly) NSString *patientIdentityToken;
 
 /*
  

@@ -9,6 +9,7 @@
 #import "HROxygenSaturationAppletTile.h"
 
 #import "HRMEntry.h"
+#import "HRMPatient.h"
 
 #import "NSDate+FormattedDate.h"
 
@@ -16,25 +17,16 @@
 #error This class requires ARC
 #endif
 
-@interface HROxygenSaturationAppletTile ()  {
-@private
-    NSArray * __strong __entries;
+@implementation HROxygenSaturationAppletTile {
+    NSArray *_entries;
 }
-
-- (double)normalLow;
-- (double)normalHigh;
-- (BOOL)isValueNormal:(double)value;
-
-@end
-
-@implementation HROxygenSaturationAppletTile
 
 - (void)tileDidLoad {
     [super tileDidLoad];
     
     // save points
-    __entries = [self.patient vitalSignsWithType:@"Oxygen Saturation"];
-    HRMEntry *latest = [__entries lastObject];
+    _entries = [self.patient vitalSignsWithType:@"Oxygen Saturation"];
+    HRMEntry *latest = [_entries lastObject];
     
     // set labels
     float latestValue = [[latest valueForKeyPath:@"value.scalar"] floatValue];
@@ -56,8 +48,8 @@
 }
 
 - (NSArray *)dataForKeyValueTable {
-    NSMutableArray *entries = [NSMutableArray arrayWithCapacity:[__entries count]];
-    [__entries enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
+    NSMutableArray *entries = [NSMutableArray arrayWithCapacity:[_entries count]];
+    [_entries enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
         double value = [[entry.value objectForKey:@"scalar"] doubleValue];
         BOOL isNormal = [self isValueNormal:value];
         UIColor *color = isNormal ? [UIColor blackColor] : [HRConfig redColor];
@@ -72,8 +64,8 @@
 }
 
 - (NSArray *)dataForSparkLineView {
-    NSMutableArray *points = [[NSMutableArray alloc] initWithCapacity:[__entries count]];
-    [__entries enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
+    NSMutableArray *points = [[NSMutableArray alloc] initWithCapacity:[_entries count]];
+    [_entries enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
         NSTimeInterval timeInterval = [entry.date timeIntervalSince1970];
         NSString *scalarString = [entry.value objectForKey:@"scalar"];
         CGFloat value = 0.0;

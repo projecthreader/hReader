@@ -157,7 +157,7 @@
                 
                 // this is the last label and we should show count
                 if (index == labelCount - 1 && showCountLabel) {
-                    label.text = [NSString stringWithFormat:@"%lu more…", conditionsCount - labelCount + 1];
+                    label.text = [NSString stringWithFormat:@"%lu more…", (unsigned long)(conditionsCount - labelCount + 1)];
                 }
                 
                 // normal condition label
@@ -212,6 +212,28 @@
             }
         }
         
+        // applets
+        {
+            NSMutableArray *views = [NSMutableArray array];
+            NSArray *identifiers = patient.applets;
+            NSString *token = patient.identityToken;
+            [identifiers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                NSMutableDictionary *applet = [[HRAppletConfigurationViewController appletWithIdentifier:obj] mutableCopy];
+                [applet setObject:token forKey:HRAppletTilePatientIdentityTokenKey];
+                if ([obj rangeOfString:@"org.mitre.hreader"].location == 0) {
+                    [applet setObject:patient forKey:@"__private_patient__"];
+                }
+                if (applet) {
+                    Class c = NSClassFromString([applet objectForKey:@"class_name"]);
+                    [views addObject:[c tileWithUserInfo:applet]];
+                }
+                else { NSLog(@"Unable to load applet with identifier %@", obj); }
+            }];
+            __gridViews = views;
+            [self.gridView reloadData];
+            
+        }
+        
         /*
          {
          NSArray *allergies = patient.allergies;
@@ -235,22 +257,7 @@
         
 
         
-        // grid view
-        {
-            NSMutableArray *views = [NSMutableArray array];
-            NSArray *identifiers = patient.applets;
-            [identifiers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                NSDictionary *applet = [HRAppletConfigurationViewController appletWithIdentifier:obj];
-                if (applet) {
-                    Class c = NSClassFromString([applet objectForKey:@"class_name"]);
-                    [views addObject:[c tileWithPatient:patient userInfo:applet]];
-                }
-                else { NSLog(@"Unable to load applet with identifier %@", obj); }
-            }];
-            __gridViews = views;
-            [self.gridView reloadData];
-        
-        }
+
         
         {
             

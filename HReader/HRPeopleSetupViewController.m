@@ -285,18 +285,19 @@
     HRMPatient *patient = tile.patient;
     
     // prompt user to confirm
+    NSString *message = [NSString stringWithFormat:@"Are you sure you want to delete %@?", [patient compositeName]];
     GCAlertView *alert = [[GCAlertView alloc]
                           initWithTitle:@"Delete"
-                          message:[NSString stringWithFormat:@"Are you sure you want to delete %@?", [patient compositeName]]];
-    [alert addButtonWithTitle:@"Yes" block:^{
+                          message:message];
+    [alert addButtonWithTitle:@"Cancel" block:nil];
+    [alert addButtonWithTitle:@"Delete" block:^{
         NSManagedObjectContext *context = [patient managedObjectContext];
         [context deleteObject:patient];
         [context save:nil];
         [self.gridView reloadData];
         
     }];
-    [alert addButtonWithTitle:@"No" block:nil];
-    [alert setCancelButtonIndex:1];
+    [alert setCancelButtonIndex:0];
     [alert show];
     
 }
@@ -370,10 +371,12 @@
 }
 
 - (void)gridView:(HRGridTableView *)gridView didSelectViewAtIndex:(NSUInteger)index {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    id object = [fetchedResultsController objectAtIndexPath:indexPath];
-    [HRPeoplePickerViewController setSelectedPatient:object];
-    [self showMainApplicationInterface];
+    if (index < [[fetchedResultsController fetchedObjects] count]) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        id object = [fetchedResultsController objectAtIndexPath:indexPath];
+        [HRPeoplePickerViewController setSelectedPatient:object];
+        [self showMainApplicationInterface];
+    }
 }
 
 #pragma mark - fetched results controller

@@ -6,40 +6,19 @@
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
+#import <CommonCrypto/CommonDigest.h>
+
 #import "HRMPatient.h"
 #import "HRMEntry.h"
 
 #import "HRAppDelegate.h"
 #import "HRAPIClient.h"
+#import "HRCryptoManager.h"
 
 #import "DDXML.h"
 
-#if !__has_feature(objc_arc)
-#error This class requires ARC
-#endif
-
 static NSString *HRMPatientSyncStatus = nil;
-NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncStatusDidChange";
-
-@interface HRMPatient ()
-
-/*
- 
- Fetch an array of entries belonging to the receiver sorted and filtered with
- the provided parameters.
- 
- */
-- (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptor:(NSSortDescriptor *)sortDescriptor;
-- (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptor:(NSSortDescriptor *)sortDescriptor predicate:(NSPredicate *)predicate;
-
-/*
- 
- 
- 
- */
-+ (void)setSyncStatus:(NSString *)status;
-
-@end
+NSString *HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncStatusDidChange";
 
 @implementation HRMPatient
 
@@ -56,6 +35,8 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
 @dynamic applets;
 @dynamic displayOrder;
 @dynamic relationship;
+
+@synthesize identityToken = _identityToken;
 
 #pragma mark - class methods
 
@@ -110,7 +91,10 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
                  }
                  else { NSLog(@"Unable to sync %@", [obj compositeName]); }
                  if (idx == (count - 1)) {
-                     [context save:nil];
+                     NSError *error = nil;
+                     if (![context save:&error]) {
+                         NSLog(@"Unable to save changes to %@.\n%@", obj.compositeName, error);
+                     }
                      [self setSyncStatus:nil];
                  }
              }];
@@ -120,7 +104,28 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     });
 }
 
++ (NSString *)modelName {
+    return @"Patient";
+}
+
 #pragma mark - attribute overrides
+
+- (NSString *)identityToken {
+    if (_identityToken == nil) {
+        NSMutableString *token = [NSMutableString string];
+        NSString *identity = [NSString stringWithFormat:@"%@%@", self.host, self.serverID];
+        NSData *identityData = [identity dataUsingEncoding:NSUTF8StringEncoding];
+        unsigned char *buffer = malloc(CC_MD5_DIGEST_LENGTH);
+        CC_MD5([identityData bytes], [identityData length], buffer);
+        XOR(236, buffer, CC_MD5_DIGEST_LENGTH);
+        for (NSUInteger i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+            [token appendFormat:@"%02x", (unsigned int)buffer[i]];
+        }
+        free(buffer);
+        _identityToken = [token copy];
+    }
+    return _identityToken;
+}
 
 - (NSString *)compositeName {
     [self willAccessValueForKey:@"compositeName"];
@@ -275,7 +280,9 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     else { self.gender = [NSNumber numberWithShort:HRMPatientGenderUnknown]; }
     
     // objects conforming to the "entry" type
-    [self removeEntries:self.entries];
+    [self.entries enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+        [context deleteObject:obj];
+    }];
     void (^collectionBlock) (HRMEntryType, NSString *) = ^(HRMEntryType type, NSString *key) {
         object = [dictionary objectForKey:key];
         if (object && [object isKindOfClass:[NSArray class]]) {

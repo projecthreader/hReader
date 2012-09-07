@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
 /*
  
@@ -14,6 +15,45 @@
  
  */
 #define XOR(_key, _input, _length) for (size_t _i = 0; _i < _length; _i++) { _input[_i] ^= _key; }
+
+/*
+ 
+ Encrypt and decrypt data with the application shared key. These methods will
+ return data on success or `nil` if `data` is `nil` or the
+ application is locked.
+ 
+ */
+NSData * HRCryptoManagerDecryptData(NSData *data);
+NSData * HRCryptoManagerEncryptData(NSData *data);
+
+/*
+ 
+ Encrypt and decrypt data with the given key. These methods will return data on
+ success or `nil` if `data` or `key` is nil. These may be used while the
+ application is locked.
+ 
+ */
+NSData * HRCryptoManagerEncryptDataWithKey(NSData *data, NSString *key);
+NSData * HRCryptoManagerDecryptDataWithKey(NSData *data, NSString *key);
+
+/*
+ 
+ Perform a hash of the input.
+ 
+ */
+NSData *HRCryptoManagerHashString(NSString *string);
+NSData *HRCryptoManagerHashData(NSData *data);
+
+/*
+ 
+ Store data in the keychain. This data is first encrypted using the application
+ shared key. All parameters are required.
+ 
+ */
+NSData * HRCryptoManagerKeychainItemData(NSString *service, NSString *account);
+NSString * HRCryptoManagerKeychainItemString(NSString *service, NSString *account);
+void HRCryptoManagerSetKeychainItemData(NSString *service, NSString *account, NSData *value);
+void HRCryptoManagerSetKeychainItemString(NSString *service, NSString *account, NSString *value);
 
 /*
  
@@ -78,16 +118,6 @@ void HRCryptoManagerUpdateSecurityQuestionsAndAnswers(NSArray *questions, NSArra
 
 /*
  
- 
- 
- */
-NSData * HRCryptoManagerKeychainItemData(NSString *service, NSString *account);
-NSString * HRCryptoManagerKeychainItemString(NSString *service, NSString *account);
-void HRCryptoManagerSetKeychainItemData(NSString *service, NSString *account, NSData *value);
-void HRCryptoManagerSetKeychainItemString(NSString *service, NSString *account, NSString *value);
-
-/*
- 
  Access the stored security questions.
  
  */
@@ -95,16 +125,13 @@ NSArray * HRCryptoManagerSecurityQuestions(void);
 
 /*
  
- 
- 
- */
-NSData * HRCryptoManagerDecryptData(NSData *data);
-NSData * HRCryptoManagerEncryptData(NSData *data);
-
-/*
- 
- 
+ Adds an encrypted persistent store to the given NSPersistentStoreCoordinator.
+ The store is encrypted with the applicatioin's master encryption key. This
+ may only be called with the app is unlocked.
  
  */
-NSData * HRCryptoManagerEncryptPropertyListObject(id object);
-id HRCryptoManagerDecryptPropertyListObject(NSData *data);
+NSPersistentStore *HRCryptoManagerAddEncryptedStoreToCoordinator(NSPersistentStoreCoordinator *coordinator,
+                                                                 NSString *configuration,
+                                                                 NSURL *URL,
+                                                                 NSDictionary *options,
+                                                                 NSError **error);

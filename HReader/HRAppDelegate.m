@@ -10,6 +10,8 @@
 #import <objc/message.h>
 #import <sys/stat.h>
 
+#import "CMDEncryptedSQLiteStore.h"
+
 #import "HRAppDelegate.h"
 #import "HRAPIClient.h"
 #import "HRRHExLoginViewController.h"
@@ -30,16 +32,11 @@
 
 #import "SSKeychain.h"
 
-@interface HRAppDelegate () {
+@implementation HRAppDelegate {
     NSUInteger passcodeAttempts;
     UINavigationController *securityNavigationController;
+    NSPersistentStore *persistentStore;
 }
-
-@end
-
-@implementation HRAppDelegate
-
-@synthesize window = _window;
 
 #pragma mark - class methods
 
@@ -47,32 +44,9 @@
     static NSPersistentStoreCoordinator *coordinator = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
-        
-        // get the model
-        NSManagedObjectModel *model = [NSManagedObjectModel mergedModelFromBundles:nil];
-        
-        // get the coordinator
+        NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"hReader" withExtension:@"momd"];
+        NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
         coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
-        
-        // add store
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        NSURL *applicationSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
-        [fileManager createDirectoryAtURL:applicationSupportURL withIntermediateDirectories:NO attributes:nil error:nil];
-        NSURL *databaseURL = [applicationSupportURL URLByAppendingPathComponent:@"database.sqlite"];
-        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 NSFileProtectionComplete, NSPersistentStoreFileProtectionKey,
-                                 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
-                                 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption,
-                                 nil];
-        NSError *error = nil;
-        NSPersistentStore *store = [coordinator
-                                    addPersistentStoreWithType:NSSQLiteStoreType
-                                    configuration:nil
-                                    URL:databaseURL
-                                    options:options
-                                    error:&error];
-        NSAssert(store, @"Unable to add persistent store\n%@", error);
-        
     });
     return coordinator;
 }
@@ -88,6 +62,33 @@
 }
 
 #pragma mark - object methods
+
+- (void)addPersistentStoreIfNeeded {
+    if (persistentStore == nil) {
+        NSError *error = nil;
+        NSPersistentStoreCoordinator *coordinator = [HRAppDelegate persistentStoreCoordinator];
+        
+        // store configuration
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSURL *applicationSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
+        [fileManager createDirectoryAtURL:applicationSupportURL withIntermediateDirectories:NO attributes:nil error:nil];
+        NSURL *databaseURL = [applicationSupportURL URLByAppendingPathComponent:@"database.sqlite3"];
+        NSDictionary *options = @{
+        NSPersistentStoreFileProtectionKey : NSFileProtectionComplete,
+        NSMigratePersistentStoresAutomaticallyOption : @(YES),
+        NSInferMappingModelAutomaticallyOption : @(YES)
+        };
+        
+        // add store
+        persistentStore = HRCryptoManagerAddEncryptedStoreToCoordinator(coordinator,
+                                                                        nil,
+                                                                        databaseURL,
+                                                                        options,
+                                                                        &error);
+        NSAssert(persistentStore, @"Unable to add persistent store\n%@", error);
+        
+    }
+}
 
 - (void)performLaunchSteps {
     
@@ -168,10 +169,16 @@
         NSArray *hosts = [HRAPIClient hosts];
         UIViewController *controller = [(id)self.window.rootViewController topViewController];
         
+        // load persistent store
+        [self addPersistentStoreIfNeeded];
+        
         // check for accounts
         if ([hosts count] == 0) {
-            id controller = [HRRHExLoginViewController loginViewControllerWithHost:@"growing-spring-4857.herokuapp.com"];
-            [[controller navigationItem] setHidesBackButton:YES];
+            HRAPIClient *client = [HRAPIClient clientWithHost:@"growing-spring-4857.herokuapp.com"];
+            HRRHExLoginViewController *controller = [HRRHExLoginViewController loginViewControllerForClient:client];
+            controller.navigationItem.hidesBackButton = YES;
+            controller.target = self;
+            controller.action = @selector(initialLoginDidSucceed:);
             [(id)self.window.rootViewController pushViewController:controller animated:YES];
         }
         
@@ -239,41 +246,7 @@
      name:NSManagedObjectContextDidSaveNotification
      object:nil];
     
-    // load patients if we don't have any yet
-//    NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
-//    if ([HRMPatient countInContext:context] == 0) {
-//        NSArray *names = [NSArray arrayWithObjects:@"hs", @"js", @"ms", @"ss", @"ts", @"ns", nil];
-//        [names enumerateObjectsUsingBlock:^(NSString *name, NSUInteger idx, BOOL *stop) {
-//            
-//            // load real data
-//            NSURL *URL = [[NSBundle mainBundle] URLForResource:name withExtension:@"json"];
-//            NSData *data = [NSData dataWithContentsOfURL:URL];
-//            NSError *JSONError = nil;
-//            HRMPatient *patient = nil;
-//            id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
-//            if (object) { patient = [HRMPatient instanceWithDictionary:object inContext:context]; }
-//            else { NSLog(@"%@: %@", name, JSONError); }
-//            
-//            // load synthetic data
-//            NSURL *syntheticURL = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%@-synthetic", name] withExtension:@"json"];
-//            NSData *syntheticData = [NSData dataWithContentsOfURL:syntheticURL];
-//            if (syntheticData) {
-//                NSError *error = nil;
-//                patient.syntheticInfo = [NSJSONSerialization JSONObjectWithData:syntheticData options:0 error:&error];
-//                patient.applets = [patient.syntheticInfo objectForKey:@"applets"];
-//                if (error) {
-//                    NSLog(@"Unable to load synthetic patient file %@\n%@", name, error);
-//                }
-//            }
-//            
-//        }];
-//        NSError *error = nil;
-//        BOOL save = [context save:&error];
-//        NSAssert(save, @"Unable to import patients\n%@", error);
-//    }
-    
-    double delay = 1.0;
-    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
+    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
     dispatch_after(time, dispatch_get_main_queue(), ^(void){
         [self performLaunchSteps];
     });
@@ -284,13 +257,25 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    
+    // remove persistent store
+//    NSPersistentStoreCoordinator *coordinator = [HRAppDelegate persistentStoreCoordinator];
+//    if ([coordinator removePersistentStore:persistentStore error:nil]) {
+//        persistentStore = nil;
+//        [[HRAppDelegate managedObjectContext] reset];
+//    }
+    
+    // destroy encryption keys
     HRCryptoManagerPurge();
+    
+    // reset interface
     if (!HRCryptoManagerHasPasscode() || !HRCryptoManagerHasSecurityQuestions()) {
         [(id)self.window.rootViewController popToRootViewControllerAnimated:NO];
     }
     [securityNavigationController dismissModalViewControllerAnimated:NO];
     securityNavigationController = nil;
     [self presentPasscodeVerificationController:NO];
+    
 }
 
 #pragma mark - security scenario one
@@ -347,6 +332,7 @@
 
 - (BOOL)verifyPasscodeOnLaunch :(HRPasscodeViewController *)controller :(NSString *)passcode {
     if (HRCryptoManagerUnlockWithPasscode(passcode)) {
+        [self addPersistentStoreIfNeeded];
         [controller dismissViewControllerAnimated:YES completion:^{
             securityNavigationController = nil;
             [self performLaunchSteps];
@@ -482,10 +468,12 @@
     [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - passcode
+#pragma mark - security scenario five
 
-- (NSUInteger)PINCodeLength {
-    return 6;
+- (void)initialLoginDidSucceed :(HRRHExLoginViewController *)login {
+    HRPeopleSetupViewController *setup = [login.storyboard instantiateViewControllerWithIdentifier:@"PeopleSetupViewController"];
+    setup.navigationItem.hidesBackButton = YES;
+    [login.navigationController pushViewController:setup animated:YES];
 }
 
 #pragma mark - security questions delegate

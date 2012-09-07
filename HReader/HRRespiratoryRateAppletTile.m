@@ -9,28 +9,20 @@
 #import "HRRespiratoryRateAppletTile.h"
 
 #import "HRMEntry.h"
+#import "HRMPatient.h"
 
 #import "NSDate+FormattedDate.h"
 
-@interface HRRespiratoryRateAppletTile ()  {
-@private
-    NSArray * __strong __entries;
+@implementation HRRespiratoryRateAppletTile {
+    NSArray *_entries;
 }
-
-- (NSInteger)normalLow;
-- (NSInteger)normalHigh;
-- (BOOL)isValueNormal:(NSInteger)value;
-
-@end
-
-@implementation HRRespiratoryRateAppletTile
 
 - (void)tileDidLoad {
     [super tileDidLoad];
     
     // save points
-    __entries = [self.patient vitalSignsWithType:@"Respiration"];
-    HRMEntry *latest = [__entries lastObject];
+    _entries = [self.patient vitalSignsWithType:@"Respiration"];
+    HRMEntry *latest = [_entries lastObject];
     
     // set labels
     NSInteger latestValue = [[latest valueForKeyPath:@"value.scalar"] integerValue];
@@ -38,8 +30,8 @@
     self.leftValueLabel.textColor = [self isValueNormal:latestValue] ? [UIColor blackColor] : [HRConfig redColor];
     self.middleValueLabel.text = [latest.date shortStyleDate];
     self.rightValueLabel.text = [NSString stringWithFormat:@"%lu-%lu",
-                                 [self normalLow],
-                                 [self normalHigh]];
+                                 (unsigned long)[self normalLow],
+                                 (unsigned long)[self normalHigh]];
     
     // sparkline    
     HRSparkLineRange range = HRMakeRange([self normalLow], [self normalHigh] - [self normalLow]);
@@ -51,13 +43,13 @@
 }
 
 - (NSArray *)dataForKeyValueTable {
-    NSMutableArray *entries = [NSMutableArray arrayWithCapacity:[__entries count]];
-    [__entries enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
+    NSMutableArray *entries = [NSMutableArray arrayWithCapacity:[_entries count]];
+    [_entries enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
         NSInteger value = [[entry.value objectForKey:@"scalar"] integerValue];
         BOOL normal = [self isValueNormal:value];
         UIColor *color = normal ? [UIColor blackColor] : [HRConfig redColor];
         NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [NSString stringWithFormat:@"%lu", value], @"detail",
+                                    [NSString stringWithFormat:@"%lu", (unsigned long)value], @"detail",
                                     [entry.date mediumStyleDate], @"title",
                                     color, @"detail_color",
                                     nil];
@@ -67,8 +59,8 @@
 }
 
 - (NSArray *)dataForSparkLineView {
-    NSMutableArray *points = [[NSMutableArray alloc] initWithCapacity:[__entries count]];
-    [__entries enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
+    NSMutableArray *points = [[NSMutableArray alloc] initWithCapacity:[_entries count]];
+    [_entries enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
         NSTimeInterval timeInterval = [entry.date timeIntervalSince1970];
         NSInteger value = [[entry.value objectForKey:@"scalar"] integerValue];
         HRSparkLinePoint *point = [HRSparkLinePoint pointWithX:timeInterval y:value];
