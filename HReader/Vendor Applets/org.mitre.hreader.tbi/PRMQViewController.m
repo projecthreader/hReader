@@ -54,6 +54,7 @@
     //[self.segmentedControl setEnabled:YES forSegmentAtIndex:4];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    //NSLog(@"my parentVC is: %@", [self parentViewController]); //doesn't work, use delegate instead
 }
 
 - (void)viewDidUnload

@@ -29,9 +29,10 @@
     //NSLog(@"%@", [[self view] recursiveDescription]);
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    NSLog(@"My view is: %@", [self view]);
+    //NSLog(@"My view is: %@", [self view]);
     //NSLog(@"%@", [[self view] recursiveDescription]);
     self.view.frame = CGRectMake(0, 0, 976, 1024);
+    self.view.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.0]; //transparent
     
 }
 

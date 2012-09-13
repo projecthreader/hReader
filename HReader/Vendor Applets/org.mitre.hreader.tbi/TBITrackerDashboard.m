@@ -53,7 +53,7 @@
     
     UIStoryboard *tbiTest = [UIStoryboard storyboardWithName:@"tbiTest" bundle:nil];
     UIViewController *controller = [tbiTest instantiateInitialViewController];
-    controller.title = @"TBI Test";
+    controller.title = @"Self-Assessment";
     [self.navigationController pushViewController:controller animated:YES];
     //[self.parentViewController.navigationController pushViewController:controller animated:YES];
 }

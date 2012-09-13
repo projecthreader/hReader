@@ -338,7 +338,7 @@ bool loadOnce = YES;
             else{
                 finalScore += (int)[[[pages objectAtIndex:i] valueForKey:@"ViewController"] result];
             }
-            NSLog(@"So far: %i and %i", finalScore, prmqScore);
+            //NSLog(@"So far: %i and %i", finalScore, prmqScore);
         }
         [[self finalScoreLabel] setText:[NSString stringWithFormat:@"%i/5",finalScore]];
         [[self PRMQScoreLabel] setText:[NSString stringWithFormat:@"%i",prmqScore]];
@@ -431,7 +431,7 @@ bool loadOnce = YES;
         return;
     }
     
-    NSLog(@"Setting progress to: %i/%i = %f", currentPage+1, [pages count], (float)(currentPage+1)/(float)[pages count]);
+    //NSLog(@"Setting progress to: %i/%i = %f", currentPage+1, [pages count], (float)(currentPage+1)/(float)[pages count]);
     [[self progressBar] setProgress:(float)(currentPage+1)/(float)[pages count] animated:YES];
     
     currentPage++;

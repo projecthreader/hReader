@@ -14,7 +14,7 @@
                         <rect key="frame" x="0.0" y="64" width="1024" height="660"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="visuospatial" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Vub-PH-5NH">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="placeholder" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Vub-PH-5NH">
                                 <rect key="frame" x="219" y="68" width="473" height="92"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -34,15 +34,15 @@
                                 <rect key="frame" x="0.0" y="150" width="1024" height="539"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="a8V-lk-kja">
-                                        <rect key="frame" x="839" y="430" width="109" height="57"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="a8V-lk-kja">
+                                        <rect key="frame" x="785" y="417" width="167" height="88"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <state key="normal" title="Next">
+                                        <state key="normal" title="Next" image="next-btn.png">
                                             <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="highlighted">
+                                        <state key="highlighted" image="next-btn-pressed.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -65,18 +65,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" title="MoCA Test" id="740-Jh-hsI"/>
+                    <navigationItem key="navigationItem" title="Self-Assessment" id="740-Jh-hsI"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="displayArea" destination="Olz-IR-qgB" id="3iP-ER-ydG"/>
-                        <outlet property="nextButton" destination="a8V-lk-kja" id="dXy-St-xiN"/>
                         <outlet property="progressBar" destination="Pzh-iD-NYK" id="QGV-We-vcs"/>
                         <outlet property="testLabel" destination="Vub-PH-5NH" id="99o-j5-mFA"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-2493" y="-2116"/>
+            <point key="canvasLocation" x="-2493" y="-2124"/>
         </scene>
         <!--MoCA Test View Controller-->
         <scene sceneID="JEK-Ne-MTn">
@@ -1153,66 +1152,30 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Test Score:" lineBreakMode="tailTruncation" minimumFontSize="60" id="C89-1x-cSd">
-                                                <rect key="frame" x="337" y="54" width="337" height="70"/>
+                                                <rect key="frame" x="20" y="54" width="337" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="?" lineBreakMode="tailTruncation" minimumFontSize="60" id="yXu-Qo-BRu">
-                                                <rect key="frame" x="651" y="54" width="94" height="70"/>
+                                                <rect key="frame" x="365" y="54" width="94" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PRMQ Score:" lineBreakMode="tailTruncation" minimumFontSize="60" id="gUG-ih-c9P">
-                                                <rect key="frame" x="279" y="132" width="395" height="70"/>
+                                                <rect key="frame" x="20" y="132" width="395" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="?" lineBreakMode="tailTruncation" minimumFontSize="60" id="3b6-7k-dWB">
-                                                <rect key="frame" x="651" y="132" width="94" height="70"/>
+                                                <rect key="frame" x="423" y="132" width="94" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="version-2-images_37.png" id="KLq-gj-Yyy">
-                                                <rect key="frame" x="46" y="54" width="161" height="265"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="version-2-images_30.png" id="civ-HS-CJg">
-                                                <rect key="frame" x="55" y="317" width="28" height="28"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="DETAILS" lineBreakMode="tailTruncation" minimumFontSize="10" id="361-it-AF3">
-                                                <rect key="frame" x="91" y="320" width="71" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Current focus:" lineBreakMode="tailTruncation" minimumFontSize="10" id="1kT-AL-uKN">
-                                                <rect key="frame" x="337" y="243" width="109" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="- Task Planning" lineBreakMode="tailTruncation" minimumFontSize="10" id="nyi-me-czb">
-                                                <rect key="frame" x="370" y="272" width="119" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="- Time Management" lineBreakMode="tailTruncation" minimumFontSize="10" id="yLy-cY-UiR">
-                                                <rect key="frame" x="370" y="298" width="154" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1235,7 +1198,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="visuospatial" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="DRz-W7-01V">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Results" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="DRz-W7-01V">
                                 <rect key="frame" x="219" y="69" width="473" height="92"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -1259,7 +1222,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" title="MoCA Results" id="THD-6J-6zv"/>
+                    <navigationItem key="navigationItem" title="Results" id="THD-6J-6zv"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -2091,6 +2054,8 @@
         <image name="circle-d.png" width="94" height="97"/>
         <image name="circle-e.png" width="99" height="132"/>
         <image name="logo-swoosh.png" width="183" height="62"/>
+        <image name="next-btn-pressed.png" width="359" height="190"/>
+        <image name="next-btn.png" width="359" height="190"/>
         <image name="version-2-images_17.png" width="173" height="86"/>
         <image name="version-2-images_18.png" width="191" height="86"/>
         <image name="version-2-images_24.png" width="252" height="239"/>

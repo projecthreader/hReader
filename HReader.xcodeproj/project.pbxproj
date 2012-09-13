@@ -158,8 +158,6 @@
 		3BA11FF515C0608200ABB012 /* version-2-images_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FC415C0608200ABB012 /* version-2-images_76.png */; };
 		3BA11FF615C0608200ABB012 /* version-2-images_79.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FC515C0608200ABB012 /* version-2-images_79.png */; };
 		3BA11FF715C0608200ABB012 /* version-2-images_81.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FC615C0608200ABB012 /* version-2-images_81.png */; };
-		3BA11FF815C0608200ABB012 /* MoCATest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA11FC815C0608200ABB012 /* MoCATest.m */; };
-		3BA11FF915C0608200ABB012 /* MoCATest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FC915C0608200ABB012 /* MoCATest.storyboard */; };
 		3BA11FFA15C0608200ABB012 /* TBITrackerAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA11FCB15C0608200ABB012 /* TBITrackerAppletTile.m */; };
 		3BA11FFB15C0608200ABB012 /* TBITrackerAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FCC15C0608200ABB012 /* TBITrackerAppletTile.xib */; };
 		3BA11FFC15C0608200ABB012 /* TBITrackerDashboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA11FCE15C0608200ABB012 /* TBITrackerDashboard.m */; };
@@ -259,6 +257,23 @@
 		94E078C71538A4570051DC01 /* pophealth-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078C01538A4570051DC01 /* pophealth-summary.png */; };
 		94E84E7014FEBC390091B0A1 /* NSArray+Collect.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E84E6F14FEBC390091B0A1 /* NSArray+Collect.m */; };
 		94F871F41535D9F60018AF13 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F871F31535D9F60018AF13 /* libz.dylib */; };
+		D8665A3715FE705F002CD855 /* logo-swoosh.png in Resources */ = {isa = PBXBuildFile; fileRef = D8665A3615FE705F002CD855 /* logo-swoosh.png */; };
+		D8665A3A15FE708C002CD855 /* tbiTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8665A3915FE708C002CD855 /* tbiTest.storyboard */; };
+		D8665A3D15FE70CE002CD855 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8665A3C15FE70CE002CD855 /* TestViewController.m */; };
+		D8665A4015FE70DA002CD855 /* tbiTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D8665A3F15FE70DA002CD855 /* tbiTest.m */; };
+		D8665A4515FE70FE002CD855 /* PRMQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8665A4215FE70FE002CD855 /* PRMQViewController.m */; };
+		D8665A4615FE70FE002CD855 /* tbiTestMemoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8665A4415FE70FE002CD855 /* tbiTestMemoryViewController.m */; };
+		D8665A50160230D5002CD855 /* buttons-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D8665A47160230D5002CD855 /* buttons-pressed.png */; };
+		D8665A51160230D5002CD855 /* learning.png in Resources */ = {isa = PBXBuildFile; fileRef = D8665A48160230D5002CD855 /* learning.png */; };
+		D8665A52160230D5002CD855 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D8665A49160230D5002CD855 /* logo.png */; };
+		D8665A53160230D5002CD855 /* next-btn-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D8665A4A160230D5002CD855 /* next-btn-pressed.png */; };
+		D8665A54160230D5002CD855 /* next-btn.png in Resources */ = {isa = PBXBuildFile; fileRef = D8665A4B160230D5002CD855 /* next-btn.png */; };
+		D8665A55160230D5002CD855 /* results-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D8665A4C160230D5002CD855 /* results-pressed.png */; };
+		D8665A56160230D5002CD855 /* results.png in Resources */ = {isa = PBXBuildFile; fileRef = D8665A4D160230D5002CD855 /* results.png */; };
+		D8665A57160230D5002CD855 /* task.png in Resources */ = {isa = PBXBuildFile; fileRef = D8665A4E160230D5002CD855 /* task.png */; };
+		D8665A58160230D5002CD855 /* tasks-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D8665A4F160230D5002CD855 /* tasks-pressed.png */; };
+		D8665A5A16023452002CD855 /* home_background.png in Resources */ = {isa = PBXBuildFile; fileRef = D8665A5916023452002CD855 /* home_background.png */; };
+		D8665A5D16025BB1002CD855 /* Memory_List1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D8665A5C16025BB1002CD855 /* Memory_List1.m4a */; };
 		DD124DAE148D3EF300E23A44 /* Doctor.png in Resources */ = {isa = PBXBuildFile; fileRef = DD124DAD148D3EF300E23A44 /* Doctor.png */; };
 		DD5597C114897DE2006A0D1D /* HRDoctorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5597BF14897DE2006A0D1D /* HRDoctorsViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DD5597C214897DE2006A0D1D /* HRDoctorsViewController_old.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD5597C014897DE2006A0D1D /* HRDoctorsViewController_old.xib */; };
@@ -482,9 +497,6 @@
 		3BA11FC415C0608200ABB012 /* version-2-images_76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "version-2-images_76.png"; sourceTree = "<group>"; };
 		3BA11FC515C0608200ABB012 /* version-2-images_79.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "version-2-images_79.png"; sourceTree = "<group>"; };
 		3BA11FC615C0608200ABB012 /* version-2-images_81.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "version-2-images_81.png"; sourceTree = "<group>"; };
-		3BA11FC715C0608200ABB012 /* MoCATest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoCATest.h; sourceTree = "<group>"; };
-		3BA11FC815C0608200ABB012 /* MoCATest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoCATest.m; sourceTree = "<group>"; };
-		3BA11FC915C0608200ABB012 /* MoCATest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MoCATest.storyboard; sourceTree = "<group>"; };
 		3BA11FCA15C0608200ABB012 /* TBITrackerAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBITrackerAppletTile.h; sourceTree = "<group>"; };
 		3BA11FCB15C0608200ABB012 /* TBITrackerAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBITrackerAppletTile.m; sourceTree = "<group>"; };
 		3BA11FCC15C0608200ABB012 /* TBITrackerAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBITrackerAppletTile.xib; sourceTree = "<group>"; };
@@ -659,6 +671,27 @@
 		94E84E6F14FEBC390091B0A1 /* NSArray+Collect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Collect.m"; sourceTree = "<group>"; };
 		94F871F31535D9F60018AF13 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HReaderConfig.xcconfig; sourceTree = "<group>"; };
+		D8665A3615FE705F002CD855 /* logo-swoosh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-swoosh.png"; sourceTree = "<group>"; };
+		D8665A3915FE708C002CD855 /* tbiTest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = tbiTest.storyboard; sourceTree = "<group>"; };
+		D8665A3B15FE70CE002CD855 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		D8665A3C15FE70CE002CD855 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		D8665A3E15FE70DA002CD855 /* tbiTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tbiTest.h; sourceTree = "<group>"; };
+		D8665A3F15FE70DA002CD855 /* tbiTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tbiTest.m; sourceTree = "<group>"; };
+		D8665A4115FE70FE002CD855 /* PRMQViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRMQViewController.h; sourceTree = "<group>"; };
+		D8665A4215FE70FE002CD855 /* PRMQViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRMQViewController.m; sourceTree = "<group>"; };
+		D8665A4315FE70FE002CD855 /* tbiTestMemoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tbiTestMemoryViewController.h; sourceTree = "<group>"; };
+		D8665A4415FE70FE002CD855 /* tbiTestMemoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tbiTestMemoryViewController.m; sourceTree = "<group>"; };
+		D8665A47160230D5002CD855 /* buttons-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttons-pressed.png"; sourceTree = "<group>"; };
+		D8665A48160230D5002CD855 /* learning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = learning.png; sourceTree = "<group>"; };
+		D8665A49160230D5002CD855 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		D8665A4A160230D5002CD855 /* next-btn-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next-btn-pressed.png"; sourceTree = "<group>"; };
+		D8665A4B160230D5002CD855 /* next-btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next-btn.png"; sourceTree = "<group>"; };
+		D8665A4C160230D5002CD855 /* results-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "results-pressed.png"; sourceTree = "<group>"; };
+		D8665A4D160230D5002CD855 /* results.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = results.png; sourceTree = "<group>"; };
+		D8665A4E160230D5002CD855 /* task.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = task.png; sourceTree = "<group>"; };
+		D8665A4F160230D5002CD855 /* tasks-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tasks-pressed.png"; sourceTree = "<group>"; };
+		D8665A5916023452002CD855 /* home_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_background.png; sourceTree = "<group>"; };
+		D8665A5C16025BB1002CD855 /* Memory_List1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Memory_List1.m4a; sourceTree = "<group>"; };
 		DD124DAD148D3EF300E23A44 /* Doctor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Doctor.png; sourceTree = "<group>"; };
 		DD5597BE14897DE2006A0D1D /* HRDoctorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRDoctorsViewController.h; sourceTree = "<group>"; };
 		DD5597BF14897DE2006A0D1D /* HRDoctorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRDoctorsViewController.m; sourceTree = "<group>"; };
@@ -897,10 +930,12 @@
 		3BA11FA015C0608200ABB012 /* org.mitre.hreader.tbi */ = {
 			isa = PBXGroup;
 			children = (
-				3BA11FA115C0608200ABB012 /* Images */,
-				3BA11FC715C0608200ABB012 /* MoCATest.h */,
-				3BA11FC815C0608200ABB012 /* MoCATest.m */,
-				3BA11FC915C0608200ABB012 /* MoCATest.storyboard */,
+				D8665A3E15FE70DA002CD855 /* tbiTest.h */,
+				D8665A3F15FE70DA002CD855 /* tbiTest.m */,
+				D8665A3B15FE70CE002CD855 /* TestViewController.h */,
+				D8665A3C15FE70CE002CD855 /* TestViewController.m */,
+				D8665A3815FE7074002CD855 /* Test ViewControllers */,
+				D8665A3915FE708C002CD855 /* tbiTest.storyboard */,
 				3BA11FCA15C0608200ABB012 /* TBITrackerAppletTile.h */,
 				3BA11FCB15C0608200ABB012 /* TBITrackerAppletTile.m */,
 				3BA11FCC15C0608200ABB012 /* TBITrackerAppletTile.xib */,
@@ -910,6 +945,8 @@
 				3BA11FD015C0608200ABB012 /* TBITrackerLearn.h */,
 				3BA11FD115C0608200ABB012 /* TBITrackerLearn.m */,
 				3BA11FD215C0608200ABB012 /* TBITrackerLearn.xib */,
+				D8665A5B16025B98002CD855 /* Audio */,
+				3BA11FA115C0608200ABB012 /* Images */,
 			);
 			path = org.mitre.hreader.tbi;
 			sourceTree = "<group>";
@@ -917,6 +954,17 @@
 		3BA11FA115C0608200ABB012 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D8665A47160230D5002CD855 /* buttons-pressed.png */,
+				D8665A48160230D5002CD855 /* learning.png */,
+				D8665A49160230D5002CD855 /* logo.png */,
+				D8665A4A160230D5002CD855 /* next-btn-pressed.png */,
+				D8665A4B160230D5002CD855 /* next-btn.png */,
+				D8665A4C160230D5002CD855 /* results-pressed.png */,
+				D8665A4D160230D5002CD855 /* results.png */,
+				D8665A4E160230D5002CD855 /* task.png */,
+				D8665A4F160230D5002CD855 /* tasks-pressed.png */,
+				D8665A3615FE705F002CD855 /* logo-swoosh.png */,
+				D8665A5916023452002CD855 /* home_background.png */,
 				3BA11FA215C0608200ABB012 /* circle-2.png */,
 				3BA11FA315C0608200ABB012 /* circle-3.png */,
 				3BA11FA415C0608200ABB012 /* circle-4.png */,
@@ -1365,6 +1413,25 @@
 			name = "Passcode Warning";
 			sourceTree = "<group>";
 		};
+		D8665A3815FE7074002CD855 /* Test ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D8665A4115FE70FE002CD855 /* PRMQViewController.h */,
+				D8665A4215FE70FE002CD855 /* PRMQViewController.m */,
+				D8665A4315FE70FE002CD855 /* tbiTestMemoryViewController.h */,
+				D8665A4415FE70FE002CD855 /* tbiTestMemoryViewController.m */,
+			);
+			name = "Test ViewControllers";
+			sourceTree = "<group>";
+		};
+		D8665A5B16025B98002CD855 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				D8665A5C16025BB1002CD855 /* Memory_List1.m4a */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
 		DD7037B014900E5900F58A83 /* Patient Swipe */ = {
 			isa = PBXGroup;
 			children = (
@@ -1693,11 +1760,23 @@
 				3BA11FF515C0608200ABB012 /* version-2-images_76.png in Resources */,
 				3BA11FF615C0608200ABB012 /* version-2-images_79.png in Resources */,
 				3BA11FF715C0608200ABB012 /* version-2-images_81.png in Resources */,
-				3BA11FF915C0608200ABB012 /* MoCATest.storyboard in Resources */,
 				3BA11FFB15C0608200ABB012 /* TBITrackerAppletTile.xib in Resources */,
 				3BA11FFD15C0608200ABB012 /* TBITrackerDashboard.xib in Resources */,
 				3BA11FFF15C0608200ABB012 /* TBITrackerLearn.xib in Resources */,
 				3B9A757915DBE0CB00705A52 /* timeline in Resources */,
+				D8665A3715FE705F002CD855 /* logo-swoosh.png in Resources */,
+				D8665A3A15FE708C002CD855 /* tbiTest.storyboard in Resources */,
+				D8665A50160230D5002CD855 /* buttons-pressed.png in Resources */,
+				D8665A51160230D5002CD855 /* learning.png in Resources */,
+				D8665A52160230D5002CD855 /* logo.png in Resources */,
+				D8665A53160230D5002CD855 /* next-btn-pressed.png in Resources */,
+				D8665A54160230D5002CD855 /* next-btn.png in Resources */,
+				D8665A55160230D5002CD855 /* results-pressed.png in Resources */,
+				D8665A56160230D5002CD855 /* results.png in Resources */,
+				D8665A57160230D5002CD855 /* task.png in Resources */,
+				D8665A58160230D5002CD855 /* tasks-pressed.png in Resources */,
+				D8665A5A16023452002CD855 /* home_background.png in Resources */,
+				D8665A5D16025BB1002CD855 /* Memory_List1.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1803,7 +1882,6 @@
 				3BB16A98158FB7B100CF34A6 /* HRSecurityQuestionsTextField.m in Sources */,
 				3BB16A99158FB7B100CF34A6 /* HRSecurityQuestionsViewController.m in Sources */,
 				3BC6A69015A5D17E00FA0C3A /* HRHIPPAMessageViewController.m in Sources */,
-				3BA11FF815C0608200ABB012 /* MoCATest.m in Sources */,
 				3BA11FFA15C0608200ABB012 /* TBITrackerAppletTile.m in Sources */,
 				3BA11FFC15C0608200ABB012 /* TBITrackerDashboard.m in Sources */,
 				3BA11FFE15C0608200ABB012 /* TBITrackerLearn.m in Sources */,
@@ -1815,6 +1893,10 @@
 				3B708F0615DE86D3004D2B1D /* DDXMLNode.m in Sources */,
 				3B708F0D15DE870C004D2B1D /* CMDActivityHUD.m in Sources */,
 				3BD5F0AF15EE8F6F00333320 /* CMDEncryptedSQLiteStore.m in Sources */,
+				D8665A3D15FE70CE002CD855 /* TestViewController.m in Sources */,
+				D8665A4015FE70DA002CD855 /* tbiTest.m in Sources */,
+				D8665A4515FE70FE002CD855 /* PRMQViewController.m in Sources */,
+				D8665A4615FE70FE002CD855 /* tbiTestMemoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
