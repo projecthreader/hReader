@@ -2,7 +2,7 @@
 //  CMDEncryptedSQLiteStore.m
 //
 //  Created by Caleb Davenport on 7/26/12.
-//  Copyright (c) 2012 Caleb Davenport. All rights reserved.
+//  Copyright (c) 2012 The MITRE Corporation.
 //
 
 #if !__has_feature(objc_arc)
@@ -196,7 +196,7 @@ NSString * const CMDEncryptedSQLiteStoreErrorMessageKey = @"CMDEncryptedSQLiteSt
         NSIncrementalStoreNode *node = [nodeCache objectForKey:objectID];
         if (node) { return node; }
     }
-
+    
     // prepare values
     NSEntityDescription *entity = [objectID entity];
     NSMutableArray *columns = [NSMutableArray array];
@@ -479,6 +479,7 @@ NSString * const CMDEncryptedSQLiteStoreErrorMessageKey = @"CMDEncryptedSQLiteSt
         
         // finish up
         if (!success) {
+            if (*error == nil) { *error = [self databaseError]; }
             sqlite3_close(database);
             database = NULL;
             return NO;
@@ -845,13 +846,17 @@ NSString * const CMDEncryptedSQLiteStoreErrorMessageKey = @"CMDEncryptedSQLiteSt
 # pragma mark - SQL helpers
 
 - (NSError *)databaseError {
-    NSDictionary *userInfo = @{
-        CMDEncryptedSQLiteStoreErrorMessageKey : [NSString stringWithUTF8String:sqlite3_errmsg(database)]
-    };
-    return [NSError
-            errorWithDomain:NSSQLiteErrorDomain
-            code:sqlite3_errcode(database)
-            userInfo:userInfo];
+    int code = sqlite3_errcode(database);
+    if (code) {
+        NSDictionary *userInfo = @{
+            CMDEncryptedSQLiteStoreErrorMessageKey : [NSString stringWithUTF8String:sqlite3_errmsg(database)]
+        };
+        return [NSError
+                errorWithDomain:NSSQLiteErrorDomain
+                code:code
+                userInfo:userInfo];
+    }
+    return nil;
 }
 
 - (BOOL)performInTransaction:(BOOL (^) ())block {
