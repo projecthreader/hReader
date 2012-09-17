@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="11E53" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="Th4-PJ-N8t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11E53" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="Th4-PJ-N8t">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="nJN-oa-evn">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="N2l-53-6y7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="Th4-PJ-N8t" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DdA-aN-8nw">
                         <autoresizingMask key="autoresizingMask"/>
@@ -17,13 +16,13 @@
                         <segue destination="rpX-aG-JwA" kind="relationship" relationship="rootViewController" id="mtb-Xz-Xmn"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N2l-53-6y7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1434" y="-515"/>
         </scene>
         <!--Splash Screen View Controller-->
         <scene sceneID="qM1-29-SQA">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wsl-ft-eIS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="rpX-aG-JwA" customClass="HRSplashScreenViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ucr-V6-N3T">
                         <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
@@ -39,13 +38,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="RC9-jG-kLl"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wsl-ft-eIS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-218" y="-515"/>
         </scene>
         <!--Message View Controller - HIPPA Notice-->
         <scene sceneID="deV-Y0-t10">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VJU-l9-J7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="HIPPAViewController" id="kxF-Il-2Le" customClass="HRHIPPAMessageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KRU-xL-BQf">
                         <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
@@ -110,13 +109,13 @@
                         <outletCollection property="buttons" destination="op9-YY-8oT" id="cad-ms-Mlc"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VJU-l9-J7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-218" y="434"/>
         </scene>
         <!--Passcode View Controller - Title-->
         <scene sceneID="N3K-w8-E5b">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QU7-G2-qI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="CreatePasscodeViewController" id="4zr-1M-trb" customClass="HRPasscodeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z3i-Nr-DEi">
                         <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
@@ -182,13 +181,13 @@
                         <outlet property="passcodeTwoField" destination="a9A-pq-hwx" id="9im-gk-lef"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QU7-G2-qI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-218" y="1390"/>
         </scene>
         <!--People Setup View Controller - Manage Family-->
         <scene sceneID="fzF-xi-oDW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rDL-HO-jR4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="PeopleSetupViewController" id="flO-yV-wuk" customClass="HRPeopleSetupViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f5x-7R-9Uu">
                         <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
@@ -254,6 +253,7 @@
                         <outletCollection property="emptyCellButtons" destination="o5u-Bm-ZWx" id="SnR-1c-4lL"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rDL-HO-jR4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="2UP-rs-FNG" customClass="HRPeopleSetupPlaceHolderView">
                     <rect key="frame" x="0.0" y="0.0" width="373" height="191"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -297,7 +297,6 @@
         <!--Ex Login View Controller - Login-->
         <scene sceneID="R5L-eq-XO7">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3FX-KD-MUG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="RHExLoginViewController" title="Login" id="CxS-pO-YDU" customClass="HRRHExLoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Jk-0H-Oeb">
                         <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
@@ -319,13 +318,13 @@
                         <outlet property="webView" destination="OM6-89-p9X" id="sGY-aH-jUL"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3FX-KD-MUG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1004" y="-106"/>
         </scene>
         <!--Passcode View Controller - Title-->
         <scene sceneID="rSU-lD-Yx8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Yd-97-KjL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="VerifyPasscodeViewController" id="HUK-hN-tT9" customClass="HRPasscodeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SdH-Qh-4Yx">
                         <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
@@ -368,13 +367,13 @@
                         <outlet property="passcodeOneField" destination="SCb-Wh-Sjs" id="BjD-Tg-KEl"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Yd-97-KjL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1004" y="1390"/>
         </scene>
         <!--Security Questions View Controller - Title-->
         <scene sceneID="4SV-Kk-DIT">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jhe-03-OQT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SecurityQuestionsController" id="HXH-Vd-1VY" customClass="HRSecurityQuestionsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="etU-nl-wPh">
                         <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
@@ -427,6 +426,7 @@
                         <outlet property="tableView" destination="BXf-O4-AqO" id="ogf-QW-Obj"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jhe-03-OQT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2218" y="1390"/>
         </scene>
