@@ -188,10 +188,6 @@
 		3BFBEE1A1534BEAA009EBA2D /* HRAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BFBEE1C1534BF32009EBA2D /* HReaderApplets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */; };
 		3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2D14DAE5910037738D /* Icon-72.png */; };
-		940D3D3C14E056B800FE41E6 /* HRVital.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D3B14E056B800FE41E6 /* HRVital.m */; };
-		940D3D4114E0706C00FE41E6 /* HRWeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D4014E0706C00FE41E6 /* HRWeight.m */; };
-		940D3D4414E077A500FE41E6 /* HRBloodPressure.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D4314E077A500FE41E6 /* HRBloodPressure.m */; };
-		940D3D4A14E07CEA00FE41E6 /* HRCholesterol.m in Sources */ = {isa = PBXBuildFile; fileRef = 940D3D4914E07CEA00FE41E6 /* HRCholesterol.m */; };
 		9413C74914EC0B7800BFA521 /* HRPatientSwipeControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9413C74814EC0B7800BFA521 /* HRPatientSwipeControl.xib */; };
 		9415152314AA3A7B009FF674 /* fail.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152114AA3A7B009FF674 /* fail.png */; };
 		9415152414AA3A7B009FF674 /* win.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152214AA3A7B009FF674 /* win.png */; };
@@ -216,10 +212,6 @@
 		94650033153C8F7D003255AF /* HRSparkLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94650032153C8F7D003255AF /* HRSparkLineView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9465003E153CA369003255AF /* HRBloodPressureAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9465003D153CA369003255AF /* HRBloodPressureAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		94650043153CA3AA003255AF /* HRBloodPressureAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94650042153CA3AA003255AF /* HRBloodPressureAppletTile.xib */; };
-		9467077314E3182E00ACEA67 /* HRPeakFlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077214E3182D00ACEA67 /* HRPeakFlow.m */; };
-		9467077614E318ED00ACEA67 /* HRHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077514E318ED00ACEA67 /* HRHeight.m */; };
-		9467077914E31A6200ACEA67 /* HRBMI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077814E31A6200ACEA67 /* HRBMI.m */; };
-		9467077C14E31CD400ACEA67 /* HRGlucose.m in Sources */ = {isa = PBXBuildFile; fileRef = 9467077B14E31CD300ACEA67 /* HRGlucose.m */; };
 		94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94689ACA1496560C00E1FCA6 /* HRAboutTableViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		947FCE4614B4C18600C716FD /* chevron-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE4514B4C18600C716FD /* chevron-left.png */; };
 		947FCE4B14B4C76700C716FD /* HRPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947FCE4914B4C76700C716FD /* HRPrivacyViewController.m */; };
@@ -559,14 +551,6 @@
 		940C0469152B6ADF00834416 /* ms-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ms-synthetic.json"; sourceTree = "<group>"; };
 		940C046A152B6ADF00834416 /* ss-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ss-synthetic.json"; sourceTree = "<group>"; };
 		940C046B152B6ADF00834416 /* ts-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ts-synthetic.json"; sourceTree = "<group>"; };
-		940D3D3A14E056B800FE41E6 /* HRVital.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRVital.h; sourceTree = "<group>"; };
-		940D3D3B14E056B800FE41E6 /* HRVital.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRVital.m; sourceTree = "<group>"; };
-		940D3D3F14E0706C00FE41E6 /* HRWeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRWeight.h; sourceTree = "<group>"; };
-		940D3D4014E0706C00FE41E6 /* HRWeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRWeight.m; sourceTree = "<group>"; };
-		940D3D4214E077A500FE41E6 /* HRBloodPressure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBloodPressure.h; sourceTree = "<group>"; };
-		940D3D4314E077A500FE41E6 /* HRBloodPressure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRBloodPressure.m; sourceTree = "<group>"; };
-		940D3D4814E07CEA00FE41E6 /* HRCholesterol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCholesterol.h; sourceTree = "<group>"; };
-		940D3D4914E07CEA00FE41E6 /* HRCholesterol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCholesterol.m; sourceTree = "<group>"; };
 		9413C74414EC08AA00BFA521 /* HRPatientSwipeControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPatientSwipeControl.h; sourceTree = "<group>"; };
 		9413C74514EC08AA00BFA521 /* HRPatientSwipeControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPatientSwipeControl.m; sourceTree = "<group>"; };
 		9413C74814EC0B7800BFA521 /* HRPatientSwipeControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPatientSwipeControl.xib; sourceTree = "<group>"; };
@@ -608,14 +592,6 @@
 		9465003C153CA369003255AF /* HRBloodPressureAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBloodPressureAppletTile.h; sourceTree = "<group>"; };
 		9465003D153CA369003255AF /* HRBloodPressureAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRBloodPressureAppletTile.m; sourceTree = "<group>"; };
 		94650042153CA3AA003255AF /* HRBloodPressureAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRBloodPressureAppletTile.xib; sourceTree = "<group>"; };
-		9467077114E3182D00ACEA67 /* HRPeakFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPeakFlow.h; sourceTree = "<group>"; };
-		9467077214E3182D00ACEA67 /* HRPeakFlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeakFlow.m; sourceTree = "<group>"; };
-		9467077414E318ED00ACEA67 /* HRHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRHeight.h; sourceTree = "<group>"; };
-		9467077514E318ED00ACEA67 /* HRHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRHeight.m; sourceTree = "<group>"; };
-		9467077714E31A6200ACEA67 /* HRBMI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBMI.h; sourceTree = "<group>"; };
-		9467077814E31A6200ACEA67 /* HRBMI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRBMI.m; sourceTree = "<group>"; };
-		9467077A14E31CD300ACEA67 /* HRGlucose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRGlucose.h; sourceTree = "<group>"; };
-		9467077B14E31CD300ACEA67 /* HRGlucose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRGlucose.m; sourceTree = "<group>"; };
 		94689AC91496560C00E1FCA6 /* HRAboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAboutTableViewController.h; sourceTree = "<group>"; };
 		94689ACA1496560C00E1FCA6 /* HRAboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAboutTableViewController.m; sourceTree = "<group>"; };
 		94689AD414967E3600E1FCA6 /* HRC32ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRC32ViewController.h; sourceTree = "<group>"; };
@@ -783,10 +759,8 @@
 		3B19651414EE9DCB0045F827 /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				3BFBEE181534BEAA009EBA2D /* HRAppletTile.h */,
-				3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */,
-				3B9A757F15DC040F00705A52 /* HRAppletUtilities.h */,
-				3B9A758015DC040F00705A52 /* HRAppletUtilities.m */,
+				9424C156147A9C95008BF5CE /* Categories */,
+				3B24052C1608E1E1007E043E /* Applet Utilities */,
 				3B5ADF6314E1C5D50025E069 /* Core Data */,
 				3BB8D9A7157D206E00124A57 /* Crypto */,
 				3B001D3F15751B0D00762FB0 /* App Delegate */,
@@ -796,6 +770,17 @@
 				DD8BD9F1148D2BDC0090F729 /* HRConfig.m */,
 			);
 			name = Global;
+			sourceTree = "<group>";
+		};
+		3B24052C1608E1E1007E043E /* Applet Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3BFBEE181534BEAA009EBA2D /* HRAppletTile.h */,
+				3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */,
+				3B9A757F15DC040F00705A52 /* HRAppletUtilities.h */,
+				3B9A758015DC040F00705A52 /* HRAppletUtilities.m */,
+			);
+			name = "Applet Utilities";
 			sourceTree = "<group>";
 		};
 		3B364FAC156D669B00DDB201 /* API Interaction */ = {
@@ -1112,29 +1097,6 @@
 			name = "Patient Data";
 			sourceTree = "<group>";
 		};
-		940D3D3E14E0704E00FE41E6 /* Vitals */ = {
-			isa = PBXGroup;
-			children = (
-				940D3D3A14E056B800FE41E6 /* HRVital.h */,
-				940D3D3B14E056B800FE41E6 /* HRVital.m */,
-				9467077714E31A6200ACEA67 /* HRBMI.h */,
-				9467077814E31A6200ACEA67 /* HRBMI.m */,
-				940D3D3F14E0706C00FE41E6 /* HRWeight.h */,
-				940D3D4014E0706C00FE41E6 /* HRWeight.m */,
-				940D3D4214E077A500FE41E6 /* HRBloodPressure.h */,
-				940D3D4314E077A500FE41E6 /* HRBloodPressure.m */,
-				940D3D4814E07CEA00FE41E6 /* HRCholesterol.h */,
-				940D3D4914E07CEA00FE41E6 /* HRCholesterol.m */,
-				9467077114E3182D00ACEA67 /* HRPeakFlow.h */,
-				9467077214E3182D00ACEA67 /* HRPeakFlow.m */,
-				9467077414E318ED00ACEA67 /* HRHeight.h */,
-				9467077514E318ED00ACEA67 /* HRHeight.m */,
-				9467077A14E31CD300ACEA67 /* HRGlucose.h */,
-				9467077B14E31CD300ACEA67 /* HRGlucose.m */,
-			);
-			name = Vitals;
-			sourceTree = "<group>";
-		};
 		941DB09D1471B32D00A96B8B = {
 			isa = PBXGroup;
 			children = (
@@ -1183,7 +1145,6 @@
 				3B19651414EE9DCB0045F827 /* Global */,
 				9492CA4F1535F8EC009DE7F2 /* System Applets */,
 				3BFBEE1D1534C0AE009EBA2D /* Patient Data */,
-				9424C156147A9C95008BF5CE /* Categories */,
 				941DB0B31471B32D00A96B8B /* Supporting Files */,
 				3B8D14FE157E3EB700A5B84E /* Images */,
 				3B9A757815DBE0CB00705A52 /* timeline */,
@@ -1469,7 +1430,6 @@
 				94AEAE0F148690DA00C005B2 /* HRPatientSummaryViewController.xib */,
 				94334ACA152A249F00B4C904 /* HRKeyValueTableViewController.h */,
 				94334ACB152A249F00B4C904 /* HRKeyValueTableViewController.m */,
-				940D3D3E14E0704E00FE41E6 /* Vitals */,
 			);
 			name = "Patient Summary";
 			sourceTree = "<group>";
@@ -1828,20 +1788,12 @@
 				94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */,
 				94BB032C149BB393009B2FCC /* HRPasscodeWarningViewController.m in Sources */,
 				947FCE4B14B4C76700C716FD /* HRPrivacyViewController.m in Sources */,
-				940D3D3C14E056B800FE41E6 /* HRVital.m in Sources */,
-				940D3D4114E0706C00FE41E6 /* HRWeight.m in Sources */,
-				940D3D4414E077A500FE41E6 /* HRBloodPressure.m in Sources */,
-				940D3D4A14E07CEA00FE41E6 /* HRCholesterol.m in Sources */,
 				3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */,
 				3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */,
 				3BD16EF614E1B5EE00F2249E /* GCManagedObject.m in Sources */,
 				3BD16F0514E1C5B700F2249E /* HRMPatient.m in Sources */,
 				3BE9A40514E40EBB00F87B60 /* HRMEntry.m in Sources */,
 				941F253F14E2EC5D0077D6D1 /* HRVitalAppletTile.m in Sources */,
-				9467077314E3182E00ACEA67 /* HRPeakFlow.m in Sources */,
-				9467077614E318ED00ACEA67 /* HRHeight.m in Sources */,
-				9467077914E31A6200ACEA67 /* HRBMI.m in Sources */,
-				9467077C14E31CD400ACEA67 /* HRGlucose.m in Sources */,
 				3B3C919514F69F61005CD5C5 /* NSDate+FormattedDate.m in Sources */,
 				9452D7F714FC16DF00021E69 /* HRProviderView.m in Sources */,
 				94E84E7014FEBC390091B0A1 /* NSArray+Collect.m in Sources */,
