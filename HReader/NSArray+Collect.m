@@ -10,19 +10,6 @@
 
 @implementation NSArray (Collect)
 
-- (NSArray *)collect:(id (^) (id object, NSUInteger idx))block {
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity:[self count]];
-    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        id retVal = block(obj, idx);
-        if (retVal) {
-            [array addObject:retVal];
-        }
-        else {
-            [array addObject:[NSNull null]];
-        }
-    }];
-    return array;
-}
 
 - (NSArray *)sortedArrayUsingKey:(NSString *)key ascending:(BOOL)ascending {
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:key ascending:ascending];

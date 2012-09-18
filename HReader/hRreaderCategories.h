@@ -11,5 +11,7 @@
 
 #import "UIColor+hReaderAdditions.h"
 #import "NSBundle+hRreaderAdditions.h"
+#import "NSArray+hReaderAdditions.h"
+#import "NSSet+hReaderAdditions.h"
 
 #endif

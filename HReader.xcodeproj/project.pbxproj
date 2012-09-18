@@ -34,6 +34,8 @@
 		3B108CE3157929FA00888E30 /* logo_splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B108CE2157929FA00888E30 /* logo_splash@2x.png */; };
 		3B2405321608E52E007E043E /* NSBundle+hRreaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2405311608E52E007E043E /* NSBundle+hRreaderAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B2405351608E707007E043E /* UIColor+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2405341608E707007E043E /* UIColor+hReaderAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		3B2405391608F5B2007E043E /* NSArray+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2405381608F5B2007E043E /* NSArray+hReaderAdditions.m */; };
+		3B24053C1608F644007E043E /* NSSet+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B24053B1608F644007E043E /* NSSet+hReaderAdditions.m */; };
 		3B3C919514F69F61005CD5C5 /* NSDate+FormattedDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C919414F69F61005CD5C5 /* NSDate+FormattedDate.m */; };
 		3B4365D61540A2890009F892 /* hs-0-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365A31540A2890009F892 /* hs-0-tile.png */; };
 		3B4365D71540A2890009F892 /* hs-1-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365A41540A2890009F892 /* hs-1-overview.png */; };
@@ -353,6 +355,10 @@
 		3B2405331608E707007E043E /* UIColor+hReaderAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+hReaderAdditions.h"; sourceTree = "<group>"; };
 		3B2405341608E707007E043E /* UIColor+hReaderAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+hReaderAdditions.m"; sourceTree = "<group>"; };
 		3B2405361608E83D007E043E /* hRreaderCategories.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hRreaderCategories.h; sourceTree = "<group>"; };
+		3B2405371608F5B2007E043E /* NSArray+hReaderAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+hReaderAdditions.h"; sourceTree = "<group>"; };
+		3B2405381608F5B2007E043E /* NSArray+hReaderAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+hReaderAdditions.m"; sourceTree = "<group>"; };
+		3B24053A1608F643007E043E /* NSSet+hReaderAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+hReaderAdditions.h"; sourceTree = "<group>"; };
+		3B24053B1608F644007E043E /* NSSet+hReaderAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+hReaderAdditions.m"; sourceTree = "<group>"; };
 		3B305F19157D4F2900FC03E6 /* HRPeoplePickerViewController_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPeoplePickerViewController_private.h; sourceTree = "<group>"; };
 		3B3C919314F69F61005CD5C5 /* NSDate+FormattedDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FormattedDate.h"; sourceTree = "<group>"; };
 		3B3C919414F69F61005CD5C5 /* NSDate+FormattedDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FormattedDate.m"; sourceTree = "<group>"; };
@@ -1175,6 +1181,10 @@
 			isa = PBXGroup;
 			children = (
 				3B2405361608E83D007E043E /* hRreaderCategories.h */,
+				3B24053A1608F643007E043E /* NSSet+hReaderAdditions.h */,
+				3B24053B1608F644007E043E /* NSSet+hReaderAdditions.m */,
+				3B2405371608F5B2007E043E /* NSArray+hReaderAdditions.h */,
+				3B2405381608F5B2007E043E /* NSArray+hReaderAdditions.m */,
 				3B3C919314F69F61005CD5C5 /* NSDate+FormattedDate.h */,
 				3B3C919414F69F61005CD5C5 /* NSDate+FormattedDate.m */,
 				94E84E6E14FEBC390091B0A1 /* NSArray+Collect.h */,
@@ -1857,6 +1867,8 @@
 				D8665A4615FE70FE002CD855 /* tbiTestMemoryViewController.m in Sources */,
 				3B2405321608E52E007E043E /* NSBundle+hRreaderAdditions.m in Sources */,
 				3B2405351608E707007E043E /* UIColor+hReaderAdditions.m in Sources */,
+				3B2405391608F5B2007E043E /* NSArray+hReaderAdditions.m in Sources */,
+				3B24053C1608F644007E043E /* NSSet+hReaderAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

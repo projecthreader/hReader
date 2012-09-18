@@ -10,7 +10,6 @@
 
 @interface NSArray (Collect)
 
-- (NSArray *)collect:(id (^) (id object, NSUInteger idx))block;
 
 - (NSArray *)sortedArrayUsingKey:(NSString *)key ascending:(BOOL)ascending;
 
