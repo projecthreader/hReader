@@ -309,7 +309,7 @@ NSString *HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncStatusDidC
     return [UIImage imageNamed:[NSString stringWithFormat:@"UserImage-%@", self.serverID]];
 }
 
-- (DDXMLElement *)timelineXMLDocument {
+- (DDXMLElement *)timelineXMLPayload {
     
     // create root
     DDXMLElement *data = [DDXMLElement elementWithName:@"data"];
@@ -324,6 +324,59 @@ NSString *HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncStatusDidC
     
     // return
     return data;
+    
+}
+
+- (NSString *)timelineJSONPayload {
+
+    // type
+    static NSDictionary *types = nil;
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        types = @{
+            @(HRMEntryTypeAllergy) : @"allergies",
+            @(HRMEntryTypeCondition) : @"conditions",
+            @(HRMEntryTypeResult) : @"results",
+            @(HRMEntryTypeEncounter) : @"encounters",
+            @(HRMEntryTypeVitalSign) : @"vitals",
+            @(HRMEntryTypeImmunization) : @"immunizations",
+            @(HRMEntryTypeMedication) : @"medications",
+            @(HRMEntryTypeProcedure) : @"procedures"
+        };
+    });
+    
+    // gather entries
+    NSArray *entries = [self.entries hr_collect:^id(HRMEntry *entry) {
+        
+        // get date
+        NSDate *date = nil;
+        if (entry.date)             { date = entry.date; }
+        else if (entry.startDate)   { date = entry.startDate; }
+        else if (entry.endDate)     { date = entry.endDate; }
+        
+        // get scalar
+        id scalar = [entry.value objectForKey:@"scalar"];
+        if ([scalar respondsToSelector:@selector(floatValue)]) {
+            scalar = @([scalar floatValue]);
+        }
+        
+        // build payload
+        return @{
+            @"type" : ([types objectForKey:entry.type] ?: @"unkonwn"),
+            @"description" : (entry.desc ?: [NSNull null]),
+            @"date" : @([date timeIntervalSince1970]),
+            @"measurement" : @{
+                @"value" : (scalar ?: [NSNull null]),
+                @"unit" : ([entry.value objectForKey:@"units"] ?: [NSNull null])
+            }
+        };
+        
+    }];
+    
+    // build json data
+    NSData *data = [NSJSONSerialization dataWithJSONObject:entries options:0 error:nil];
+    if (data) { return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]; }
+    else { return nil; }
     
 }
 

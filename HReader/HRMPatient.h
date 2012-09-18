@@ -94,7 +94,14 @@ extern NSString *HRMPatientSyncStatusDidChangeNotification;
  Generate the XML document that is used to render the patient timeline.
  
  */
-- (DDXMLElement *)timelineXMLDocument;
+- (DDXMLElement *)timelineXMLPayload;
+
+/*
+ 
+ 
+ 
+ */
+- (NSString *)timelineJSONPayload;
 
 /*
  

@@ -52,6 +52,9 @@
         HRMPatient *patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
         self.patientImageView.image = [patient patientImage];
         self.nameLabel.text = [patient.compositeName uppercaseString];
+#if DEBUG
+        NSLog(@"%@", [patient timelineJSONPayload]);
+#endif
         
 #if HR_TIMELINE_XML
         NSURL *URL = [[[NSFileManager defaultManager]
@@ -59,7 +62,7 @@
                        inDomains:NSUserDomainMask]
                       lastObject];
         URL = [URL URLByAppendingPathComponent:@"hReader.xml"];
-        NSString *XMLString = [[[patient timelineXMLDocument] XMLString] copy];
+        NSString *XMLString = [[[patient timelineXMLPayload] XMLString] copy];
         NSData *XMLData = [XMLString dataUsingEncoding:NSUTF8StringEncoding];
         BOOL write = [XMLData
                       writeToURL:URL
