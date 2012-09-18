@@ -47,7 +47,7 @@
             diastolicValue = [[diastolicEntry.value objectForKey:@"scalar"] doubleValue];
         }
         BOOL isNormal = [self isSystolicValueNormal:systolicValue];
-        UIColor *color = isNormal ? [UIColor blackColor] : [HRConfig redColor];
+        UIColor *color = (isNormal ? [UIColor blackColor] : [UIColor hr_redColor]);
         NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSString stringWithFormat:@"%.0f/%.0f", systolicValue, diastolicValue], @"detail",
                                     [entry.date mediumStyleDate], @"title",
@@ -82,14 +82,14 @@
     
     // systolic line
     HRSparkLineLine *systolicLine = [[HRSparkLineLine alloc] init];
-    systolicLine.outOfRangeDotColor = [HRConfig redColor];
+    systolicLine.outOfRangeDotColor = [UIColor hr_redColor];
     systolicLine.weight = 4.0;
     systolicLine.points = [self sparklinePointsForEntries:_systolicDataPoints];
     systolicLine.range = HRMakeRange([self normalSystolicLow], [self normalSystolicHigh] - [self normalSystolicLow]);
     
     // diastolic range
     HRSparkLineLine *diastolicLine = [[HRSparkLineLine alloc] init];
-    diastolicLine.outOfRangeDotColor = [HRConfig redColor];
+    diastolicLine.outOfRangeDotColor = [UIColor hr_redColor];
     diastolicLine.weight = 4.0;
     diastolicLine.points = [self sparklinePointsForEntries:_diastolicDataPoints];
     diastolicLine.range = HRMakeRange([self normalDiastolicLow], [self normalDiastolicHigh] - [self normalDiastolicLow]);
@@ -100,7 +100,7 @@
     // display normal value
     float systolicValue = [[lastestSystolic valueForKeyPath:@"value.scalar"] floatValue];
     if ([self isSystolicValueNormal:systolicValue]) { self.leftValueLabel.textColor = [UIColor blackColor]; }
-    else { self.leftValueLabel.textColor = [HRConfig redColor]; }
+    else { self.leftValueLabel.textColor = [UIColor hr_redColor]; }
     
 }
 

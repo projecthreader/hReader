@@ -32,6 +32,8 @@
 		3B108CDD1579199F00888E30 /* logo_splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B108CDC1579199F00888E30 /* logo_splash.png */; };
 		3B108CE115791A0C00888E30 /* HRSplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B108CE015791A0C00888E30 /* HRSplashScreenViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B108CE3157929FA00888E30 /* logo_splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B108CE2157929FA00888E30 /* logo_splash@2x.png */; };
+		3B2405321608E52E007E043E /* NSBundle+hRreaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2405311608E52E007E043E /* NSBundle+hRreaderAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		3B2405351608E707007E043E /* UIColor+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2405341608E707007E043E /* UIColor+hReaderAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B3C919514F69F61005CD5C5 /* NSDate+FormattedDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C919414F69F61005CD5C5 /* NSDate+FormattedDate.m */; };
 		3B4365D61540A2890009F892 /* hs-0-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365A31540A2890009F892 /* hs-0-tile.png */; };
 		3B4365D71540A2890009F892 /* hs-1-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365A41540A2890009F892 /* hs-1-overview.png */; };
@@ -91,7 +93,6 @@
 		3B651F81157FC8B50007817C /* interstitial_closebox.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B651F7D157FC8B50007817C /* interstitial_closebox.png */; };
 		3B651F82157FC8B50007817C /* interstitial_closebox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B651F7E157FC8B50007817C /* interstitial_closebox@2x.png */; };
 		3B6FAF8F153F259E002C9EF5 /* HRPeoplePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		3B6FAF95153F4796002C9EF5 /* HRConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8BD9F1148D2BDC0090F729 /* HRConfig.m */; };
 		3B708F0215DE86D3004D2B1D /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B708EF515DE86D2004D2B1D /* DDXMLElementAdditions.m */; };
 		3B708F0315DE86D3004D2B1D /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B708EF815DE86D2004D2B1D /* NSString+DDXML.m */; };
 		3B708F0415DE86D3004D2B1D /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B708EFB15DE86D2004D2B1D /* DDXMLDocument.m */; };
@@ -347,6 +348,11 @@
 		3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Molly.html"; sourceTree = "<group>"; };
 		3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Sarah.html"; sourceTree = "<group>"; };
 		3B19651F14EEAB970045F827 /* C32-Smith-Tom.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Tom.html"; sourceTree = "<group>"; };
+		3B2405301608E52E007E043E /* NSBundle+hRreaderAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+hRreaderAdditions.h"; sourceTree = "<group>"; };
+		3B2405311608E52E007E043E /* NSBundle+hRreaderAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+hRreaderAdditions.m"; sourceTree = "<group>"; };
+		3B2405331608E707007E043E /* UIColor+hReaderAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+hReaderAdditions.h"; sourceTree = "<group>"; };
+		3B2405341608E707007E043E /* UIColor+hReaderAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+hReaderAdditions.m"; sourceTree = "<group>"; };
+		3B2405361608E83D007E043E /* hRreaderCategories.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hRreaderCategories.h; sourceTree = "<group>"; };
 		3B305F19157D4F2900FC03E6 /* HRPeoplePickerViewController_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPeoplePickerViewController_private.h; sourceTree = "<group>"; };
 		3B3C919314F69F61005CD5C5 /* NSDate+FormattedDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FormattedDate.h"; sourceTree = "<group>"; };
 		3B3C919414F69F61005CD5C5 /* NSDate+FormattedDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FormattedDate.m"; sourceTree = "<group>"; };
@@ -642,7 +648,6 @@
 		94E078BE1538A4570051DC01 /* multiple_sclerosis_overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multiple_sclerosis_overview.png; sourceTree = "<group>"; };
 		94E078BF1538A4570051DC01 /* multiple_sclerosis_summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multiple_sclerosis_summary.png; sourceTree = "<group>"; };
 		94E078C01538A4570051DC01 /* pophealth-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pophealth-summary.png"; sourceTree = "<group>"; };
-		94E3BB581472E0DE00E05D4D /* HRConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRConfig.h; sourceTree = "<group>"; };
 		94E84E6E14FEBC390091B0A1 /* NSArray+Collect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Collect.h"; sourceTree = "<group>"; };
 		94E84E6F14FEBC390091B0A1 /* NSArray+Collect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Collect.m"; sourceTree = "<group>"; };
 		94F871F31535D9F60018AF13 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -683,7 +688,6 @@
 		DD8BD9DF148D1D660090F729 /* UserImage-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-1.png"; sourceTree = "<group>"; };
 		DD8BD9E0148D1D660090F729 /* UserImage-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-4.png"; sourceTree = "<group>"; };
 		DD8BD9E1148D1D660090F729 /* UserImage-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-2.png"; sourceTree = "<group>"; };
-		DD8BD9F1148D2BDC0090F729 /* HRConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -766,8 +770,6 @@
 				3B001D3F15751B0D00762FB0 /* App Delegate */,
 				3B364FAC156D669B00DDB201 /* API Interaction */,
 				3B77F041155457E5003C2DBD /* Grid View */,
-				94E3BB581472E0DE00E05D4D /* HRConfig.h */,
-				DD8BD9F1148D2BDC0090F729 /* HRConfig.m */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -1172,12 +1174,17 @@
 		9424C156147A9C95008BF5CE /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				3B2405361608E83D007E043E /* hRreaderCategories.h */,
 				3B3C919314F69F61005CD5C5 /* NSDate+FormattedDate.h */,
 				3B3C919414F69F61005CD5C5 /* NSDate+FormattedDate.m */,
 				94E84E6E14FEBC390091B0A1 /* NSArray+Collect.h */,
 				94E84E6F14FEBC390091B0A1 /* NSArray+Collect.m */,
 				3B77F04515546051003C2DBD /* NSString+SentenceCapitalization.h */,
 				3B77F04615546051003C2DBD /* NSString+SentenceCapitalization.m */,
+				3B2405301608E52E007E043E /* NSBundle+hRreaderAdditions.h */,
+				3B2405311608E52E007E043E /* NSBundle+hRreaderAdditions.m */,
+				3B2405331608E707007E043E /* UIColor+hReaderAdditions.h */,
+				3B2405341608E707007E043E /* UIColor+hReaderAdditions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1814,7 +1821,6 @@
 				3BF32213153CA32400757060 /* SVPanelViewController.m in Sources */,
 				3BF32214153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.m in Sources */,
 				3B6FAF8F153F259E002C9EF5 /* HRPeoplePickerViewController.m in Sources */,
-				3B6FAF95153F4796002C9EF5 /* HRConfig.m in Sources */,
 				9454C36F1551797A0024C2EF /* HRSparkLineLine.m in Sources */,
 				9454C3701551797A0024C2EF /* HRSparkLinePoint.m in Sources */,
 				3B77F04715546051003C2DBD /* NSString+SentenceCapitalization.m in Sources */,
@@ -1849,6 +1855,8 @@
 				D8665A4015FE70DA002CD855 /* tbiTest.m in Sources */,
 				D8665A4515FE70FE002CD855 /* PRMQViewController.m in Sources */,
 				D8665A4615FE70FE002CD855 /* tbiTestMemoryViewController.m in Sources */,
+				3B2405321608E52E007E043E /* NSBundle+hRreaderAdditions.m in Sources */,
+				3B2405351608E707007E043E /* UIColor+hReaderAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
