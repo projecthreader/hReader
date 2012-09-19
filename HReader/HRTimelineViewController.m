@@ -14,6 +14,7 @@
 #import "HRTimelineViewController.h"
 #import "HRPatientSwipeControl.h"
 #import "HRPeoplePickerViewController.h"
+#import "HRAPIClient.h"
 
 #import "SVPanelViewController.h"
 
@@ -158,6 +159,18 @@
     if (gesture.state == UIGestureRecognizerStateRecognized) {
         [(id)self.panelViewController.leftAccessoryViewController selectNextPatient];
     }
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    NSURL *URL = [request URL];
+    NSDictionary *query = [HRAPIClient parametersFromQueryString:[URL query]];
+    if ([[URL scheme] isEqualToString:@"x-org-mitre-hreader"] &&
+        [[URL host] isEqualToString:@"timeline"] &&
+        [query objectForKey:@"date"]) {
+//        NSTimeInterval interval = [[query objectForKey:@"date"] doubleValue];
+        return NO;
+    }
+    return YES;
 }
 
 @end

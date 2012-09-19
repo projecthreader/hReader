@@ -18,7 +18,7 @@
 #import "DDXML.h"
 
 static NSString *HRMPatientSyncStatus = nil;
-NSString *HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncStatusDidChange";
+NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncStatusDidChange";
 
 @implementation HRMPatient
 
