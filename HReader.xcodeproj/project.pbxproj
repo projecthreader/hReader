@@ -521,7 +521,7 @@
 		3BB16A97158FB7B000CF34A6 /* HRSecurityQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSecurityQuestionsViewController.m; sourceTree = "<group>"; };
 		3BB3F0BE15823AFB00C1EC1D /* HRPasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPasscodeViewController.h; sourceTree = "<group>"; };
 		3BB3F0BF15823AFB00C1EC1D /* HRPasscodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPasscodeViewController.m; sourceTree = "<group>"; };
-		3BC6A68B15A5D0DC00FA0C3A /* hippa.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hippa.txt; sourceTree = "<group>"; };
+		3BC6A68B15A5D0DC00FA0C3A /* hippa.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hippa.txt; sourceTree = "<group>"; wrapsLines = 1; };
 		3BC6A68E15A5D17E00FA0C3A /* HRHIPPAMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRHIPPAMessageViewController.h; sourceTree = "<group>"; };
 		3BC6A68F15A5D17E00FA0C3A /* HRHIPPAMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRHIPPAMessageViewController.m; sourceTree = "<group>"; };
 		3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hReader.xcdatamodel; sourceTree = "<group>"; };

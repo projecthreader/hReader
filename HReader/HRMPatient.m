@@ -346,13 +346,11 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     });
     
     // gather entries
-    NSArray *entries = [self.entries hr_collect:^id(HRMEntry *entry) {
-        
-        // get date
-        NSDate *date = nil;
-        if (entry.date)             { date = entry.date; }
-        else if (entry.startDate)   { date = entry.startDate; }
-        else if (entry.endDate)     { date = entry.endDate; }
+    NSArray *entries = [HRMEntry
+                        allInContext:[self managedObjectContext]
+                        sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[entries count]];
+    [entries enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger idx, BOOL *stop) {
         
         // get scalar
         id scalar = [entry.value objectForKey:@"scalar"];
@@ -360,21 +358,52 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
             scalar = @([scalar floatValue]);
         }
         
-        // build payload
-        return @{
-            @"type" : ([types objectForKey:entry.type] ?: @"unkonwn"),
-            @"description" : (entry.desc ?: [NSNull null]),
-            @"date" : @([date timeIntervalSince1970]),
-            @"measurement" : @{
-                @"value" : (scalar ?: [NSNull null]),
-                @"unit" : ([entry.value objectForKey:@"units"] ?: [NSNull null])
+        // vital signs grouped by description
+        if ([entry.type isEqualToNumber:@(HRMEntryTypeVitalSign)]) {
+            NSMutableArray *array = [dictionary objectForKey:entry.desc];
+            if (array == nil) {
+                array = [NSMutableArray array];
+                [dictionary setObject:array forKey:entry.desc];
             }
-        };
+            if (scalar) { [array addObject:scalar]; }
+        }
         
+        // entries grouped by type
+        else {
+            
+            // get target array
+            NSString *type = [types objectForKey:entry.type];
+            NSMutableArray *array = [dictionary objectForKey:type];
+            if (array == nil) {
+                array = [NSMutableArray array];
+                [dictionary setObject:array forKey:type];
+            }
+            
+            // get date
+            NSDate *date = nil;
+            if (entry.date)             { date = entry.date; }
+            else if (entry.startDate)   { date = entry.startDate; }
+            else if (entry.endDate)     { date = entry.endDate; }
+            
+            // build payload
+            NSDictionary *dictionary = @{
+                @"type" : ([types objectForKey:entry.type] ?: @"unkonwn"),
+                @"description" : (entry.desc ?: [NSNull null]),
+                @"date" : @([date timeIntervalSince1970]),
+                @"measurement" : @{
+                    @"value" : (scalar ?: [NSNull null]),
+                    @"unit" : ([entry.value objectForKey:@"units"] ?: [NSNull null])
+                }
+            };
+            
+            // save
+            [array addObject:dictionary];
+            
+        }
     }];
     
     // build json data
-    NSData *data = [NSJSONSerialization dataWithJSONObject:entries options:0 error:nil];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:nil];
     if (data) { return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]; }
     else { return nil; }
     
