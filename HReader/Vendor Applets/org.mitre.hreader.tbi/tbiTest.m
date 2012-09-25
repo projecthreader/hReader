@@ -78,6 +78,8 @@ NSDate *startTime;
     }
     */
     
+    NSLog(@"loadOnce = %i", loadOnce);
+    
     if (loadOnce) {
         tbiTestStoryboard = [UIStoryboard storyboardWithName:@"tbiTest" bundle:nil];
         
