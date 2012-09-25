@@ -25,5 +25,6 @@
 
 @property (retain, nonatomic) IBOutlet UILabel *finalScoreLabel;
 @property (retain, nonatomic) IBOutlet UILabel *PRMQScoreLabel;
+@property (retain, nonatomic) IBOutlet UILabel *timeLabel;
 
 @end

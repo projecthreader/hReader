@@ -16,13 +16,15 @@
 @synthesize prevButton;
 @synthesize progressBar;
 
-@synthesize finalScoreLabel;
+//@synthesize finalScoreLabel;
+//@synthesize timeLabel;
 
 NSMutableArray *pages;
 UIStoryboard *tbiTestStoryboard;
 //UILabel *finalScoreLabel;
 int currentPage;
 bool loadOnce = YES;
+NSDate *startTime;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -323,10 +325,25 @@ bool loadOnce = YES;
                                                  selector:@selector(keyboardWillHide:) 
                                                      name:UIKeyboardWillHideNotification 
                                                    object:nil];*/
+        startTime = [NSDate new];
+        //NSLog(@"startTime: %@", startTime);
         loadOnce = NO;
     }
     
     if (currentPage == (int)[pages count]) {
+        NSCalendar *sysCalendar = [NSCalendar currentCalendar];
+        NSDate *endTime = [[NSDate alloc] init];
+        unsigned int unitFlags = NSMinuteCalendarUnit | NSSecondCalendarUnit;
+        
+        NSDateComponents *conversionInfo = [sysCalendar components:unitFlags fromDate:startTime  toDate:endTime  options:0];
+
+        [[self timeLabel] setText:[NSString stringWithFormat:@"Total time: %d minutes, %d seconds",[conversionInfo minute], [conversionInfo second]]];
+        
+        //NSLog(@"startTime: %@", startTime);
+        //NSLog(@"endTime: %@", endTime);
+        //NSLog(@"%d minutes, %d seconds",[conversionInfo minute], [conversionInfo second]);
+         
+        
         int finalScore = 0;
         int prmqScore = 0;
         UIViewController *currentVC;
@@ -388,6 +405,7 @@ bool loadOnce = YES;
 
 - (void)viewDidUnload
 {
+    loadOnce = YES;
     [self setTestLabel:nil];
     [self setDisplayArea:nil];
     [self setNextButton:nil];

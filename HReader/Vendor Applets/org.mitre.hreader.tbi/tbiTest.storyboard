@@ -1172,6 +1172,13 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Total Time: ? minutes, ?? seconds" lineBreakMode="tailTruncation" minimumFontSize="30" id="2xc-UE-kY1">
+                                                <rect key="frame" x="20" y="294" width="536" height="70"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="?" lineBreakMode="tailTruncation" minimumFontSize="60" id="3b6-7k-dWB">
                                                 <rect key="frame" x="423" y="132" width="94" height="70"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1228,6 +1235,7 @@
                     <connections>
                         <outlet property="PRMQScoreLabel" destination="3b6-7k-dWB" id="yvV-aZ-rzc"/>
                         <outlet property="finalScoreLabel" destination="yXu-Qo-BRu" id="BeU-Db-xJK"/>
+                        <outlet property="timeLabel" destination="2xc-UE-kY1" id="A6L-ig-0x8"/>
                     </connections>
                 </viewController>
             </objects>
@@ -2093,6 +2101,7 @@
                 <relationship kind="outlet" name="prevButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="progressBar" candidateClass="UIProgressView"/>
                 <relationship kind="outlet" name="testLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="tbiTestMemoryViewController" superclassName="TestViewController">
