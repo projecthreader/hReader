@@ -58,5 +58,14 @@
     //[self.parentViewController.navigationController pushViewController:controller animated:YES];
 }
 
+- (IBAction) taskButtonTap: (id) sender {
+    //Note sender is the button
+    
+    UIStoryboard *taskStoryboard = [UIStoryboard storyboardWithName:@"taskStoryboard" bundle:nil];
+    UIViewController *controller = [taskStoryboard instantiateInitialViewController];
+    controller.title = @"Prospective Memory Task";
+    [self.navigationController pushViewController:controller animated:YES];
+    //[self.parentViewController.navigationController pushViewController:controller animated:YES];
+}
 
 @end

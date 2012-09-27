@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "PRMQViewController.h"
+#import "tbiTestMemoryViewController.h"
+#import "ResultViewController.h"
 
 #import <QuartzCore/QuartzCore.h> //for debugging only
 

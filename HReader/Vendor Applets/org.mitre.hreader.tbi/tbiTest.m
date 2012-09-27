@@ -23,6 +23,9 @@ UIStoryboard *tbiTestStoryboard;
 //UILabel *finalScoreLabel;
 int currentPage;
 bool loadOnce = YES;
+UIViewController *currentVC;
+
+UIView *topView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,7 +49,7 @@ bool loadOnce = YES;
 }
 
 - (void) viewDidLoad {
-    NSLog(@"viewDidLoad called");
+    NSLog(@"viewDidLoad called, with loadOnce = %i", loadOnce);
     
     //debugging
     /*
@@ -77,6 +80,7 @@ bool loadOnce = YES;
     */
     
     if (loadOnce) {
+        
         tbiTestStoryboard = [UIStoryboard storyboardWithName:@"tbiTest" bundle:nil];
         
         pages = [[NSMutableArray alloc] init];
@@ -148,8 +152,8 @@ bool loadOnce = YES;
                                    @"ViewController",
                                    nil]
                           ]];
+        
         for(int i=1; i<16; i++){
-            
             [pages addObject:[[NSMutableDictionary alloc]
                               initWithObjects: [NSArray arrayWithObjects:[NSString stringWithFormat:@"PRMQ Question #%i", i],
                                                 [tbiTestStoryboard instantiateViewControllerWithIdentifier:[NSString stringWithFormat:@"prmq%i", i]]
@@ -159,6 +163,14 @@ bool loadOnce = YES;
                                        nil]
                               ]];
         }
+        [pages addObject:[[NSMutableDictionary alloc]
+                          initWithObjects: [NSArray arrayWithObjects:@"Results",
+                                            [tbiTestStoryboard instantiateViewControllerWithIdentifier:@"resultsPage"]
+                                            ,nil]
+                          forKeys:[NSArray arrayWithObjects:@"Name",
+                                   @"ViewController",
+                                   nil]
+                          ]];
         /*
         [pages addObject:[[NSMutableDictionary alloc]
                           initWithObjects: [NSArray arrayWithObjects:@"PRMQ #1",
@@ -314,6 +326,9 @@ bool loadOnce = YES;
         
         currentPage = -1;
         [self nextClicked:nil];
+
+
+        
         /*[[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(keyboardWasShown:) 
                                                      name:UIKeyboardDidShowNotification 
@@ -326,10 +341,10 @@ bool loadOnce = YES;
         loadOnce = NO;
     }
     
+    /*
     if (currentPage == (int)[pages count]) {
         int finalScore = 0;
         int prmqScore = 0;
-        UIViewController *currentVC;
         for(int i = 0; i<(int)[pages count]; i++){
             currentVC = [[pages objectAtIndex:i] valueForKey:@"ViewController"];
             if ([currentVC isKindOfClass:[PRMQViewController class]]) {
@@ -343,23 +358,23 @@ bool loadOnce = YES;
         [[self finalScoreLabel] setText:[NSString stringWithFormat:@"%i/5",finalScore]];
         [[self PRMQScoreLabel] setText:[NSString stringWithFormat:@"%i",prmqScore]];
     }
-    
+    */
     //NSLog(@"%@", [[self view] recursiveDescription]);
     
     /*
     self.view.layer.borderColor = [UIColor redColor].CGColor;
-    self.view.layer.borderWidth = 5.0;
+    self.view.layer.borderWidth = 3.0;
     for (UIView *subview in self.view.subviews)
     {
         subview.layer.borderColor = [UIColor blueColor].CGColor;
-        subview.layer.borderWidth = 4.0;
+        subview.layer.borderWidth = 2.0;
         //subview.layer.bounds = CGRectMake(textfield.frame.origin.x, (textfield.frame.origin.y + 100.0), textfield.frame.size.width, textfield.frame.size.height);
         for (UIView *subview2 in subview.subviews){
             subview2.layer.borderColor = [UIColor greenColor].CGColor;
-            subview2.layer.borderWidth = 3.0;
+            subview2.layer.borderWidth = 1.0;
             for (UIView *subview3 in subview2.subviews){
                 subview3.layer.borderColor = [UIColor redColor].CGColor;
-                subview3.layer.borderWidth = 2.0;
+                subview3.layer.borderWidth = 1.0;
                 //subview3.layer.frame = CGRectMake(0, 0, 976, 384);
                 for (UIView *subview4 in subview3.subviews){
                     subview4.layer.borderColor = [UIColor blueColor].CGColor;
@@ -372,8 +387,15 @@ bool loadOnce = YES;
             }
         }
     }
-    */
+     */
     
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    self.progressBar.frame = CGRectMake(700, 100, 300, 50);
+    self.progressBar.transform = CGAffineTransformScale(self.progressBar.transform, 1.0, 2.0);
+    //NSLog(@"size of frame is: %f, %f", self.progressBar.frame.size.width, self.progressBar.frame.size.height);
 }
 
 - (void)didReceiveMemoryWarning
@@ -405,44 +427,67 @@ bool loadOnce = YES;
 }
 
 - (IBAction) nextClicked: (id)sender {
+    currentPage++;
+    NSLog(@"Current page is: %i, [pages count] is: %i", currentPage, [pages count]);
+
     
-    //NSLog(@"nextClicked");
-    
-    if (currentPage == (int)[pages count] - 1 ) {
-        currentPage++;
-        NSLog(@"resultsPage");
+    if (currentPage == (int)[pages count] - 0 ) {
+        /*
+        //currentPage++;
+        NSLog(@"nextClicked called. Returning Results. CurrentPage = %i", currentPage);
         
         tbiTest* resultViewController = [[self storyboard] instantiateViewControllerWithIdentifier:@"results"];
 
-        /*
-        int finalScore = 0;
-        for(int i = 0; i<(int)[pages count]; i++){
-            finalScore += (int)[[[pages objectAtIndex:i] valueForKey:@"ViewController"] result];
-        }
-        [[resultViewController finalScoreLabel] setText:[NSString stringWithFormat:@"%i/5",finalScore]];
-        */
          
         [[self navigationController] pushViewController:resultViewController animated:YES];
         return;
+         */
+        [[self navigationController] popViewControllerAnimated:YES];
+        return;
     }
     
-    if (currentPage > (int)[pages count] - 2 ) {
+    if (currentPage > (int)[pages count] - 1 ) {
         NSLog(@"Tried to open a page that was too large");
         return;
     }
     
     //NSLog(@"Setting progress to: %i/%i = %f", currentPage+1, [pages count], (float)(currentPage+1)/(float)[pages count]);
-    [[self progressBar] setProgress:(float)(currentPage+1)/(float)[pages count] animated:YES];
+    [[self progressBar] setProgress:(float)(currentPage+1)/(float)([pages count]-1) animated:YES];
     
-    currentPage++;
+    
+    NSLog(@"nextClicked called. Returning next page. CurrentPage = %i", currentPage);
     
     if ([[[self displayArea] subviews] count] > 0)
          [[[[self displayArea] subviews] objectAtIndex:0] removeFromSuperview];
     
     [[self displayArea] addSubview:[[[pages objectAtIndex:currentPage] objectForKey:@"ViewController"] view]];
     [[self testLabel] setText:[[pages objectAtIndex:currentPage] objectForKey:@"Name"]];
+    if (currentPage == (int)[pages count] - 1) {
+        NSLog(@"This is the results page.");
+        //topView = [[[[UIApplication sharedApplication] keyWindow] subviews] lastObject];
+        //NSLog(@"topview = %@", topView);
+        currentVC = [[pages objectAtIndex:currentPage] valueForKey:@"ViewController"];
+        if ([currentVC isKindOfClass:[ResultViewController class]]) {
+            int testScore = 0;
+            int prmqScore = 0;
+            for(int i = 0; i<(int)[pages count]; i++){
+                currentVC = [[pages objectAtIndex:i] valueForKey:@"ViewController"];
+                if ([currentVC isKindOfClass:[PRMQViewController class]]) {
+                    prmqScore += (int)[[[pages objectAtIndex:i] valueForKey:@"ViewController"] result];
+                }
+                else if ([currentVC isKindOfClass:[tbiTestMemoryViewController class]]){
+                    testScore += (int)[[[pages objectAtIndex:i] valueForKey:@"ViewController"] result];
+                }
+                NSLog(@"So far: %i and %i", testScore, prmqScore);
+            }
+            [(ResultViewController *)currentVC setTestResult:testScore outOf:5 andPRMQResult:prmqScore];
+        }
+        
+    }
     
     [[self prevButton] setEnabled:YES];
+    
+    
     
     /*
     if (currentPage == (int)[pages count]) {
@@ -450,8 +495,7 @@ bool loadOnce = YES;
         [[self nextButton] setEnabled:NO];
     }
     */
-    
-    
+
     //Things which don't work...
     //[self setView:[[[pages objectAtIndex:0] objectForKey:@"ViewController"] view]];
     //[[self view] addSubview:[[[pages objectAtIndex:0] objectForKey:@"ViewController"] view]];
@@ -461,15 +505,15 @@ bool loadOnce = YES;
 }
 
 - (IBAction) prevClicked: (id)sender {
-    
     if (currentPage < 1 ) {
         NSLog(@"Tried to open a page that was too small");
         return;
     }
     
     currentPage--;
+    NSLog(@"prevClicked called. CurrentPage = %i", currentPage);
     
-    if ([[[self displayArea] subviews] count] > 0)
+    if ([[[self displayArea] subviews] count] <= 0)
         [[[[self displayArea] subviews] objectAtIndex:0] removeFromSuperview];
     
     [[self displayArea] addSubview:[[[pages objectAtIndex:currentPage] objectForKey:@"ViewController"] view]];
@@ -523,6 +567,8 @@ bool loadOnce = YES;
 
 
 - (void)dealloc {
+    NSLog(@"dealloc called");
+    loadOnce = YES;
     [testLabel release];
     [displayArea release];
     [nextButton release];

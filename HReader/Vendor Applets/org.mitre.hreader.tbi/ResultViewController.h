@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TestViewController.h"
 
-@interface ResultViewController : UIViewController
+@interface ResultViewController : TestViewController 
+
+@property (retain, nonatomic) IBOutlet UILabel *testResultLabel;
+@property (retain, nonatomic) IBOutlet UILabel *PRMQResultLabel;
+
+- (void) setTestResult:(int)testScore outOf:(int)testMax andPRMQResult:(int)prmqResult;
 
 @end
