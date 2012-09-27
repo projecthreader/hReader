@@ -179,7 +179,7 @@
     self.patientImageView.image = [patient patientImage];
     
     self.messagesArray = [[patient valueForKeyPath:@"syntheticInfo.messages"] sortedArrayUsingKey:@"date" ascending:NO];
-    self.title = [NSString stringWithFormat:@"Messages (%lu)", [self.messagesArray count]];
+    self.title = [NSString stringWithFormat:@"Messages (%lu)", (unsigned long)[self.messagesArray count]];
 }
 
 - (void)setHeaderViewShadow {

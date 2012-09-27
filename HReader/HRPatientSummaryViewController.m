@@ -130,11 +130,11 @@
             if (count) {
                 NSMutableString *string = [[allergies objectAtIndex:0] mutableCopy];
                 if (count > 1) {
-                    self.allergiesLabel.textColor = [HRConfig redColor];
+                    self.allergiesLabel.textColor = [UIColor hr_redColor];
                     [string appendFormat:@", %lu more", (unsigned long)(count - 1)];
                 }
                 if ([string length] > 0) {
-                    self.allergiesLabel.textColor = [HRConfig redColor];
+                    self.allergiesLabel.textColor = [UIColor hr_redColor];
                     self.allergiesLabel.text = string;
                 }
                 else {

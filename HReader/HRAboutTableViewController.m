@@ -18,14 +18,7 @@
 
 #import "HRMPatient.h"
 
-#if !__has_feature(objc_arc)
-#error This class requires ARC
-#endif
-
 @implementation HRAboutTableViewController
-
-@synthesize versionLabel = _versionLabel;
-@synthesize buildDateLabel = _buildDateLabel;
 
 #pragma mark - button actions
 
@@ -37,8 +30,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.versionLabel.text = [HRConfig formattedVersion];
-    self.buildDateLabel.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CMDBundleBuildTime"];
+    self.versionLabel.text = [[NSBundle mainBundle] hr_displayVersion];
+    self.buildDateLabel.text = [[NSBundle mainBundle] hr_buildTime];
 }
 
 - (void)viewDidUnload {
@@ -61,12 +54,12 @@
         if ([MFMailComposeViewController canSendMail]) {
             MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
             controller.mailComposeDelegate = self;
-            [controller setToRecipients:[NSArray arrayWithObject:[HRConfig feedbackEmailAddress]]];
+            [controller setToRecipients:@[ @"hReader Feedback <hreader@googlegroups.com>" ]];
             [controller setSubject:@"hReader Feedback"];
             [controller
              setMessageBody:[NSString stringWithFormat:
                              @"\n\nApp Version: %@\n",
-                             [HRConfig formattedVersion]]
+                             [[NSBundle mainBundle] hr_displayVersion]]
              isHTML:NO];
             [self presentModalViewController:controller animated:YES];
         }

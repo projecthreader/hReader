@@ -12,6 +12,13 @@
 
 /*
  
+ Decode the given query string into a set of parameters.
+ 
+ */
++ (NSDictionary *)parametersFromQueryString:(NSString *)string;
+
+/*
+ 
  Set the host name (or IP address) of the RHEx server.
  
  */
