@@ -327,7 +327,7 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     
 }
 
-- (NSData *)timelineJSONPayload:(NSError **)error {
+- (NSData *)timelineJSONPayloadWithPredicate:(NSPredicate *)predicate error:(NSError **)error {
 
     // type
     static NSDictionary *types = nil;
@@ -390,19 +390,20 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
         
     }];
     
-    
-    
     // build json data
-    dictionary[@"vitals"] = [[self timelineVitalsCategorizedByDescription] allValues];
+    dictionary[@"vitals"] = [[self timelineVitalsCategorizedByDescriptionWithPredicate:predicate] allValues];
     return [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:error];
     
 }
 
-- (NSDictionary *)timelineVitalsCategorizedByDescription {
+- (NSDictionary *)timelineVitalsCategorizedByDescriptionWithPredicate:(NSPredicate *)predicate {
     NSMutableDictionary *vitals = [NSMutableDictionary dictionary];
+    NSMutableArray *predicates = [NSMutableArray array];
+    [predicates addObject:[NSPredicate predicateWithFormat:@"type = %@", @(HRMEntryTypeVitalSign)]];
+    if (predicate) { [predicates addObject:predicate]; }
     NSArray *entries = [HRMEntry
                         allInContext:[self managedObjectContext]
-                        withPredicate:[NSPredicate predicateWithFormat:@"type = %@", @(HRMEntryTypeVitalSign)]
+                        withPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:predicates]
                         sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]];
     [entries enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger idx, BOOL *stop) {
         

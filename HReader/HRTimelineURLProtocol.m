@@ -10,6 +10,7 @@
 #import "HRPeoplePickerViewController_private.h"
 #import "HRMPatient.h"
 #import "HRAppDelegate.h"
+#import "HRAPIClient.h"
 
 @implementation HRTimelineURLProtocol
 
@@ -44,23 +45,51 @@
 - (void)startLoading {
     NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
     [context performBlock:^{
+        NSURL *URL = [[self request] URL];
         HRMPatient *patient = [HRPeoplePickerViewController selectedPatientInContext:context];
+        
+        // load calendar
+        static NSCalendar *calendar = nil;
+        static dispatch_once_t token;
+        dispatch_once(&token, ^{
+            calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        });
+        
+        // determine scope
+        NSDate *date = [NSDate date];
+        NSDictionary *parameters = [HRAPIClient parametersFromQueryString:[URL query]];
+        NSPredicate *predicate = nil;
+        NSDateComponents *components = [[NSDateComponents alloc] init];
+        NSString *page = [parameters objectForKey:@"page"];
+        if ([page isEqualToString:@"day"]) { [components setDay:-1]; }
+        else if ([page isEqualToString:@"week"]) { [components setWeek:-1]; }
+        else if ([page isEqualToString:@"month"]) { [components setMonth:-1]; }
+        else if ([page isEqualToString:@"year"]) { [components setYear:-1]; }
+        else if ([page isEqualToString:@"decade"]) { [components setYear:-10]; }
+        else { components = nil; }
+        if (components) {
+            date = [calendar dateByAddingComponents:components toDate:date options:0];
+            predicate = [NSPredicate predicateWithFormat:@"date >= %@", date];
+        }
+        
+        // load data
+        id<NSURLProtocolClient> client = [self client];
         NSError *error = nil;
-        NSData *data = [patient timelineJSONPayload:&error];
-//        NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        NSData *data = [patient timelineJSONPayloadWithPredicate:predicate error:&error];
         if ([data length]) {
             NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc]
                                            initWithURL:[[self request] URL]
                                            MIMEType:@"text/json"
                                            expectedContentLength:[data length]
                                            textEncodingName:nil];
-            [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
-            [[self client] URLProtocol:self didLoadData:data];
-            [[self client] URLProtocolDidFinishLoading:self];
+            [client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+            [client URLProtocol:self didLoadData:data];
+            [client URLProtocolDidFinishLoading:self];
         }
         else {
-            [[self client] URLProtocol:self didFailWithError:error];
+            [client URLProtocol:self didFailWithError:error];
         }
+        
     }];
 }
 

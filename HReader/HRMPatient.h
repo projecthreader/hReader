@@ -101,7 +101,7 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
  
  
  */
-- (NSData *)timelineJSONPayload:(NSError **)error;
+- (NSData *)timelineJSONPayloadWithPredicate:(NSPredicate *)predicate error:(NSError **)error;
 
 /*
  
