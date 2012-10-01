@@ -59,10 +59,10 @@
         NSURL *URL = nil;
         
 #if HR_TIMELINE_XML
-        NSURL *URL = [[[NSFileManager defaultManager]
-                       URLsForDirectory:NSDocumentDirectory
-                       inDomains:NSUserDomainMask]
-                      lastObject];
+        URL = [[[NSFileManager defaultManager]
+                URLsForDirectory:NSDocumentDirectory
+                inDomains:NSUserDomainMask]
+               lastObject];
         URL = [URL URLByAppendingPathComponent:@"hReader.xml"];
         NSString *XMLString = [[[patient timelineXMLPayload] XMLString] copy];
         NSData *XMLData = [XMLString dataUsingEncoding:NSUTF8StringEncoding];
