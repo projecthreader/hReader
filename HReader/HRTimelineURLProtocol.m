@@ -24,7 +24,7 @@
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         path = [[NSBundle mainBundle] bundlePath];
-        path = [path stringByAppendingPathComponent:@"timeline-angular/app/records/timeline.json"];
+        path = [path stringByAppendingPathComponent:@"timeline-angular/app/timeline.json"];
     });
     return path;
 }
