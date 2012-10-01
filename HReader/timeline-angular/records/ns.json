@@ -1,0 +1,3495 @@
+{
+    "_id": "4fa1a927dfef6146b5000001", 
+    "allergies": [
+        {
+            "_id": "4fa1a928dfef6146b500004b", 
+            "codes": {
+                "Unknown": [
+                    "000476"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1256218090, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b500004c", 
+            "codes": {
+                "Unknown": [
+                    "22"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1256218091, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b500004d", 
+            "codes": {
+                "RxNorm": [
+                    "1291"
+                ], 
+                "Unknown": [
+                    "2798"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1256218080, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b500004e", 
+            "codes": {
+                "RxNorm": [
+                    "4603"
+                ], 
+                "Unknown": [
+                    "2307"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1256218086, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b500004f", 
+            "codes": {
+                "Unknown": [
+                    "28"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1256218084, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000050", 
+            "codes": {
+                "Unknown": [
+                    "000007"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1256218087, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000051", 
+            "codes": {
+                "RxNorm": [
+                    "6754"
+                ], 
+                "Unknown": [
+                    "4620"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1256218083, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000052", 
+            "codes": {
+                "RxNorm": [
+                    "2002"
+                ], 
+                "Unknown": [
+                    "1634"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1256218082, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000053", 
+            "codes": {}, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1256218091, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000054", 
+            "codes": {
+                "Unknown": [
+                    "000007"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1256218088, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000055", 
+            "codes": {
+                "Unknown": [
+                    "N0000000181", 
+                    "000147"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1256218080, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000056", 
+            "codes": {
+                "Unknown": [
+                    "000479"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1256218085, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000057", 
+            "codes": {}, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1256218092, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000058", 
+            "codes": {}, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1256218086, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000059", 
+            "codes": {
+                "Unknown": [
+                    "29"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1256218089, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b500005a", 
+            "codes": {
+                "Unknown": [
+                    "900194"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1256218082, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b500005b", 
+            "codes": {
+                "Unknown": [
+                    "900508"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1025611758, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b500005c", 
+            "codes": {
+                "RxNorm": [
+                    "10180", 
+                    "10829"
+                ], 
+                "Unknown": [
+                    "2827", 
+                    "2873"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1065543431, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b500005d", 
+            "codes": {
+                "RxNorm": [
+                    "198283"
+                ], 
+                "Unknown": [
+                    "1856", 
+                    "4741"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1065543431, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b500005e", 
+            "codes": {}, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1065543431, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b500005f", 
+            "codes": {
+                "Unknown": [
+                    "27"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1031154357, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000060", 
+            "codes": {
+                "RxNorm": [
+                    "1191"
+                ], 
+                "Unknown": [
+                    "1587"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1031154357, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000061", 
+            "codes": {
+                "Unknown": [
+                    "16"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1055237381, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000062", 
+            "codes": {
+                "RxNorm": [
+                    "7804"
+                ], 
+                "Unknown": [
+                    "1558"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1065543431, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000063", 
+            "codes": {
+                "RxNorm": [
+                    "2670"
+                ], 
+                "Unknown": [
+                    "1550"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1065543431, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000064", 
+            "codes": {
+                "Unknown": [
+                    "31"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1050401339, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000065", 
+            "codes": {}, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1065543431, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000066", 
+            "codes": {
+                "Unknown": [
+                    "31"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1065543430, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000067", 
+            "codes": {
+                "Unknown": [
+                    "25"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1069147059, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000068", 
+            "codes": {
+                "RxNorm": [
+                    "1191"
+                ], 
+                "Unknown": [
+                    "1587"
+                ]
+            }, 
+            "created_at": null, 
+            "description": null, 
+            "end_time": null, 
+            "reaction": {
+                "code": null, 
+                "codeSystem": "Unknown", 
+                "codeSystemOid": null
+            }, 
+            "severity": null, 
+            "start_time": 1236869865, 
+            "status": null, 
+            "time": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }
+    ], 
+    "birthdate": -1636156800, 
+    "conditions": [
+        {
+            "_id": "4fa1a927dfef6146b500002f", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "266257000"
+                ], 
+                "Unknown": [
+                    "428"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Transient ischemic attack", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000030", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "52448006"
+                ], 
+                "Unknown": [
+                    "99"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "demen", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000031", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "271809000"
+                ], 
+                "Unknown": [
+                    "319"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "H/O Peripheral edema", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000032", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "238131007"
+                ], 
+                "Unknown": [
+                    "833"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "H/O Overweight", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000033", 
+            "causeOfDeath": false, 
+            "codes": {}, 
+            "created_at": null, 
+            "description": "chronic pain", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000034", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "279039007"
+                ], 
+                "Unknown": [
+                    "226"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Low back pain", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000035", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "64859006"
+                ], 
+                "Unknown": [
+                    "299"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Osteoporosis", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000036", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "428061005"
+                ], 
+                "Unknown": [
+                    "596"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Brain cancer", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000037", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "48694002"
+                ], 
+                "Unknown": [
+                    "519"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Anxiety", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000038", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "372130007"
+                ], 
+                "Unknown": [
+                    "390"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "S/P skin cancer", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": 1052697600, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000039", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "128613002"
+                ], 
+                "Unknown": [
+                    "736"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Seizure disorder", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500003a", 
+            "causeOfDeath": false, 
+            "codes": {}, 
+            "created_at": null, 
+            "description": "bullous pemphigoid", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": 1055203200, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500003b", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "43116000"
+                ], 
+                "Unknown": [
+                    "509"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Eczema", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500003c", 
+            "causeOfDeath": false, 
+            "codes": {}, 
+            "created_at": null, 
+            "description": "rosacea", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b500003d", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "9014002"
+                ], 
+                "Unknown": [
+                    "357"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Psoriasis", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b500003e", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "40275004"
+                ], 
+                "Unknown": [
+                    "749"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Contact dermatitis", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b500003f", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "38341003"
+                ], 
+                "Unknown": [
+                    "196"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Hypertension", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000040", 
+            "causeOfDeath": false, 
+            "codes": {}, 
+            "created_at": null, 
+            "description": "private", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000041", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "254837009"
+                ], 
+                "Unknown": [
+                    "49"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Breast cancer", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000042", 
+            "causeOfDeath": false, 
+            "codes": {}, 
+            "created_at": null, 
+            "description": "sore throat", 
+            "end_time": 1068681600, 
+            "name": null, 
+            "start_time": 1068249600, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000043", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "37796009"
+                ], 
+                "Unknown": [
+                    "258"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Migraine headache", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000044", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "80182007"
+                ], 
+                "Unknown": [
+                    "909"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Irregular menstrual bleeding", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000045", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "166603001"
+                ], 
+                "Unknown": [
+                    "6"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Abnormal liver function tests", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000046", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "405729008"
+                ], 
+                "Unknown": [
+                    "53"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Bright red blood per rectum", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000047", 
+            "causeOfDeath": false, 
+            "codes": {}, 
+            "created_at": null, 
+            "description": "mestastatic disease", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000048", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "00000101000037001"
+                ], 
+                "Unknown": [
+                    "249"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Melanoma risk", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b5000049", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "35489007"
+                ], 
+                "Unknown": [
+                    "101"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "PR Depression", 
+            "end_time": 1176163200, 
+            "name": null, 
+            "start_time": 1155081600, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a928dfef6146b500004a", 
+            "causeOfDeath": false, 
+            "codes": {
+                "SNOMED-CT": [
+                    "23056005"
+                ], 
+                "Unknown": [
+                    "462"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Sciatica", 
+            "end_time": null, 
+            "name": null, 
+            "start_time": 1207094400, 
+            "status": null, 
+            "time": null, 
+            "type": "Problem", 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }
+    ], 
+    "created_at": "2012-05-02T17:37:44-04:00", 
+    "deathdate": null, 
+    "effective_time": 1327402730, 
+    "ethnicity": null, 
+    "first": "Nancy", 
+    "gender": "F", 
+    "languages": null, 
+    "last": "Smith", 
+    "medical_record_number": "1", 
+    "medications": [
+        {
+            "_id": "4fa1a927dfef6146b500001b", 
+            "administrationTiming": null, 
+            "brandName": null, 
+            "codes": {
+                "RxNorm": [
+                    "866514"
+                ]
+            }, 
+            "created_at": null, 
+            "deliveryMethod": null, 
+            "description": "LOPRESSOR (METOPROLOL TARTRATE) 50MG TABLET", 
+            "dose": null, 
+            "doseRestriction": null, 
+            "end_time": 1106006400, 
+            "freeTextSig": "LOPRESSOR (METOPROLOL TARTRATE) 50MG TABLET", 
+            "fulfillmentInstructions": null, 
+            "indication": null, 
+            "patientInstructions": null, 
+            "productForm": null, 
+            "reaction": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1087862400, 
+            "status": null, 
+            "statusOfMedication": null, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500001c", 
+            "administrationTiming": null, 
+            "brandName": null, 
+            "codes": {
+                "RxNorm": [
+                    "197901"
+                ]
+            }, 
+            "created_at": null, 
+            "deliveryMethod": null, 
+            "description": "LORAZEPAM 1MG TABLET", 
+            "dose": null, 
+            "doseRestriction": null, 
+            "end_time": null, 
+            "freeTextSig": "LORAZEPAM 1MG TABLET", 
+            "fulfillmentInstructions": null, 
+            "indication": null, 
+            "patientInstructions": null, 
+            "productForm": null, 
+            "reaction": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1100131200, 
+            "status": null, 
+            "statusOfMedication": null, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500001d", 
+            "administrationTiming": null, 
+            "brandName": null, 
+            "codes": {
+                "RxNorm": [
+                    "4493"
+                ]
+            }, 
+            "created_at": null, 
+            "deliveryMethod": null, 
+            "description": "FLUOXETINE HCL 40MG CAPSULE", 
+            "dose": null, 
+            "doseRestriction": null, 
+            "end_time": 1199664000, 
+            "freeTextSig": "FLUOXETINE HCL 40MG CAPSULE", 
+            "fulfillmentInstructions": null, 
+            "indication": null, 
+            "patientInstructions": null, 
+            "productForm": null, 
+            "reaction": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1184112000, 
+            "status": null, 
+            "statusOfMedication": null, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500001e", 
+            "administrationTiming": null, 
+            "brandName": null, 
+            "codes": {
+                "RxNorm": [
+                    "371288"
+                ]
+            }, 
+            "created_at": null, 
+            "deliveryMethod": null, 
+            "description": "CARISOPRODOL", 
+            "dose": null, 
+            "doseRestriction": null, 
+            "end_time": null, 
+            "freeTextSig": "CARISOPRODOL", 
+            "fulfillmentInstructions": null, 
+            "indication": null, 
+            "patientInstructions": null, 
+            "productForm": null, 
+            "reaction": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1106179200, 
+            "status": null, 
+            "statusOfMedication": null, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500001f", 
+            "administrationTiming": null, 
+            "brandName": null, 
+            "codes": {
+                "RxNorm": [
+                    "310670"
+                ]
+            }, 
+            "created_at": null, 
+            "deliveryMethod": null, 
+            "description": "HALOPERIDOL 0.5MG TABLET", 
+            "dose": null, 
+            "doseRestriction": null, 
+            "end_time": null, 
+            "freeTextSig": "HALOPERIDOL 0.5MG TABLET", 
+            "fulfillmentInstructions": null, 
+            "indication": null, 
+            "patientInstructions": null, 
+            "productForm": null, 
+            "reaction": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1106179200, 
+            "status": null, 
+            "statusOfMedication": null, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000020", 
+            "administrationTiming": null, 
+            "brandName": null, 
+            "codes": {
+                "RxNorm": [
+                    "746199"
+                ]
+            }, 
+            "created_at": null, 
+            "deliveryMethod": null, 
+            "description": "NASONEX (MOMETASONE FUROATE)", 
+            "dose": null, 
+            "doseRestriction": null, 
+            "end_time": 1165795200, 
+            "freeTextSig": "NASONEX (MOMETASONE FUROATE)", 
+            "fulfillmentInstructions": null, 
+            "indication": null, 
+            "patientInstructions": null, 
+            "productForm": null, 
+            "reaction": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1158019200, 
+            "status": null, 
+            "statusOfMedication": null, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000021", 
+            "administrationTiming": null, 
+            "brandName": null, 
+            "codes": {
+                "RxNorm": [
+                    "896321"
+                ]
+            }, 
+            "created_at": null, 
+            "deliveryMethod": null, 
+            "description": "FLONASE NASAL SPRAY (FLUTICASONE NASAL SPRAY)", 
+            "dose": null, 
+            "doseRestriction": null, 
+            "end_time": 1161475200, 
+            "freeTextSig": "FLONASE NASAL SPRAY (FLUTICASONE NASAL SPRAY)", 
+            "fulfillmentInstructions": null, 
+            "indication": null, 
+            "patientInstructions": null, 
+            "productForm": null, 
+            "reaction": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1158019200, 
+            "status": null, 
+            "statusOfMedication": null, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000024", 
+            "administrationTiming": null, 
+            "brandName": null, 
+            "codes": {
+                "RxNorm": [
+                    "243670"
+                ]
+            }, 
+            "created_at": null, 
+            "deliveryMethod": null, 
+            "description": "ASPIRIN (ACETYLSALICYLIC ACID) 81MG TABLET", 
+            "dose": null, 
+            "doseRestriction": null, 
+            "end_time": 1178323200, 
+            "freeTextSig": "ASPIRIN (ACETYLSALICYLIC ACID) 81MG TABLET", 
+            "fulfillmentInstructions": null, 
+            "indication": null, 
+            "patientInstructions": null, 
+            "productForm": null, 
+            "reaction": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1174867200, 
+            "status": null, 
+            "statusOfMedication": null, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000025", 
+            "administrationTiming": null, 
+            "brandName": null, 
+            "codes": {
+                "RxNorm": [
+                    "848768"
+                ]
+            }, 
+            "created_at": null, 
+            "deliveryMethod": null, 
+            "description": "OXYCODONE + ASPIRIN (PERCODAN)", 
+            "dose": null, 
+            "doseRestriction": null, 
+            "end_time": 1243987200, 
+            "freeTextSig": "OXYCODONE + ASPIRIN (PERCODAN)", 
+            "fulfillmentInstructions": null, 
+            "indication": null, 
+            "patientInstructions": null, 
+            "productForm": null, 
+            "reaction": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1174867200, 
+            "status": null, 
+            "statusOfMedication": null, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000026", 
+            "administrationTiming": null, 
+            "brandName": null, 
+            "codes": {
+                "RxNorm": [
+                    "312961"
+                ]
+            }, 
+            "created_at": null, 
+            "deliveryMethod": null, 
+            "description": "SIMVASTATIN (SIMVASTATIN) 20MG TABLET", 
+            "dose": null, 
+            "doseRestriction": null, 
+            "end_time": null, 
+            "freeTextSig": "SIMVASTATIN (SIMVASTATIN) 20MG TABLET", 
+            "fulfillmentInstructions": null, 
+            "indication": null, 
+            "patientInstructions": null, 
+            "productForm": null, 
+            "reaction": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1174867200, 
+            "status": null, 
+            "statusOfMedication": null, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000027", 
+            "administrationTiming": null, 
+            "brandName": null, 
+            "codes": {
+                "RxNorm": [
+                    "310142"
+                ]
+            }, 
+            "created_at": null, 
+            "deliveryMethod": null, 
+            "description": "VITAMIN D2  (ERGOCALCIFEROL) 50000 UNIT TABLET", 
+            "dose": null, 
+            "doseRestriction": null, 
+            "end_time": null, 
+            "freeTextSig": "VITAMIN D2  (ERGOCALCIFEROL) 50000 UNIT TABLET", 
+            "fulfillmentInstructions": null, 
+            "indication": null, 
+            "patientInstructions": null, 
+            "productForm": null, 
+            "reaction": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1182816000, 
+            "status": null, 
+            "statusOfMedication": null, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000028", 
+            "administrationTiming": null, 
+            "brandName": null, 
+            "codes": {
+                "RxNorm": [
+                    "4018"
+                ]
+            }, 
+            "created_at": null, 
+            "deliveryMethod": null, 
+            "description": "VITAMIN D2  (ERGOCALCIFEROL) 50000 UNIT TABLET", 
+            "dose": null, 
+            "doseRestriction": null, 
+            "end_time": null, 
+            "freeTextSig": "VITAMIN D2  (ERGOCALCIFEROL) 50000 UNIT TABLET", 
+            "fulfillmentInstructions": null, 
+            "indication": null, 
+            "patientInstructions": null, 
+            "productForm": null, 
+            "reaction": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1182816000, 
+            "status": null, 
+            "statusOfMedication": null, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000029", 
+            "administrationTiming": null, 
+            "brandName": null, 
+            "codes": {
+                "RxNorm": [
+                    "199889"
+                ]
+            }, 
+            "created_at": null, 
+            "deliveryMethod": null, 
+            "description": "TOPIRAMATE 100MG TABLET", 
+            "dose": null, 
+            "doseRestriction": null, 
+            "end_time": 1205020800, 
+            "freeTextSig": "TOPIRAMATE 100MG TABLET", 
+            "fulfillmentInstructions": null, 
+            "indication": null, 
+            "patientInstructions": null, 
+            "productForm": null, 
+            "reaction": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1184284800, 
+            "status": null, 
+            "statusOfMedication": null, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500002a", 
+            "administrationTiming": null, 
+            "brandName": null, 
+            "codes": {
+                "RxNorm": [
+                    "197890"
+                ]
+            }, 
+            "created_at": null, 
+            "deliveryMethod": null, 
+            "description": "LITHIUM CARBONATE 300MG TABLET", 
+            "dose": null, 
+            "doseRestriction": null, 
+            "end_time": null, 
+            "freeTextSig": "LITHIUM CARBONATE 300MG TABLET", 
+            "fulfillmentInstructions": null, 
+            "indication": null, 
+            "patientInstructions": null, 
+            "productForm": null, 
+            "reaction": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1251849600, 
+            "status": null, 
+            "statusOfMedication": null, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500002b", 
+            "administrationTiming": null, 
+            "brandName": null, 
+            "codes": {
+                "RxNorm": [
+                    "198322"
+                ]
+            }, 
+            "created_at": null, 
+            "deliveryMethod": null, 
+            "description": "TRIFLUOPERAZINE HCL 1MG TABLET", 
+            "dose": null, 
+            "doseRestriction": null, 
+            "end_time": null, 
+            "freeTextSig": "TRIFLUOPERAZINE HCL 1MG TABLET", 
+            "fulfillmentInstructions": null, 
+            "indication": null, 
+            "patientInstructions": null, 
+            "productForm": null, 
+            "reaction": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1221436800, 
+            "status": null, 
+            "statusOfMedication": null, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500002c", 
+            "administrationTiming": null, 
+            "brandName": null, 
+            "codes": {
+                "RxNorm": [
+                    "749804"
+                ]
+            }, 
+            "created_at": null, 
+            "deliveryMethod": null, 
+            "description": "FENOFIBRATE (FENOGLIDE) 40MG TABLET", 
+            "dose": null, 
+            "doseRestriction": null, 
+            "end_time": null, 
+            "freeTextSig": "FENOFIBRATE (FENOGLIDE) 40MG TABLET", 
+            "fulfillmentInstructions": null, 
+            "indication": null, 
+            "patientInstructions": null, 
+            "productForm": null, 
+            "reaction": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1248652800, 
+            "status": null, 
+            "statusOfMedication": null, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500002d", 
+            "administrationTiming": null, 
+            "brandName": null, 
+            "codes": {
+                "RxNorm": [
+                    "379818"
+                ]
+            }, 
+            "created_at": null, 
+            "deliveryMethod": null, 
+            "description": "TRICOR (FENOFIBRATE (TRICOR)) 48MG TABLET", 
+            "dose": null, 
+            "doseRestriction": null, 
+            "end_time": null, 
+            "freeTextSig": "TRICOR (FENOFIBRATE (TRICOR)) 48MG TABLET", 
+            "fulfillmentInstructions": null, 
+            "indication": null, 
+            "patientInstructions": null, 
+            "productForm": null, 
+            "reaction": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1248652800, 
+            "status": null, 
+            "statusOfMedication": null, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500002e", 
+            "administrationTiming": null, 
+            "brandName": null, 
+            "codes": {
+                "RxNorm": [
+                    "861007"
+                ]
+            }, 
+            "created_at": null, 
+            "deliveryMethod": null, 
+            "description": "METFORMIN 500 MG TABLET", 
+            "dose": null, 
+            "doseRestriction": null, 
+            "end_time": null, 
+            "freeTextSig": "METFORMIN 500 MG TABLET", 
+            "fulfillmentInstructions": null, 
+            "indication": null, 
+            "patientInstructions": null, 
+            "productForm": null, 
+            "reaction": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1270771200, 
+            "status": null, 
+            "statusOfMedication": null, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }
+    ], 
+    "procedures": [
+        {
+            "_id": "4fa1a927dfef6146b5000002", 
+            "codes": {
+                "SNOMED-CT": [
+                    "80146002"
+                ], 
+                "Unknown": [
+                    "24"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Appendectomy", 
+            "end_time": null, 
+            "performer_id": null, 
+            "site": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": 1025568000, 
+            "type": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000006", 
+            "codes": {
+                "SNOMED-CT": [
+                    "43878008"
+                ], 
+                "Unknown": [
+                    "405"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Strep pharyngitis", 
+            "end_time": null, 
+            "performer_id": null, 
+            "site": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": 1070841600, 
+            "type": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000007", 
+            "codes": {
+                "LOINC": [
+                    "6690-2"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "WBC", 
+            "end_time": null, 
+            "performer_id": null, 
+            "site": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": 1024385400, 
+            "type": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000008", 
+            "codes": {
+                "LOINC": [
+                    "4544-3"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "HCT", 
+            "end_time": null, 
+            "performer_id": null, 
+            "site": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": 1024385400, 
+            "type": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000009", 
+            "codes": {
+                "LOINC": [
+                    "718-7"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "HGB", 
+            "end_time": null, 
+            "performer_id": null, 
+            "site": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": 1024385400, 
+            "type": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500000a", 
+            "codes": {
+                "LOINC": [
+                    "789-8"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "RBC", 
+            "end_time": null, 
+            "performer_id": null, 
+            "site": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": 1024385400, 
+            "type": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500000b", 
+            "codes": {
+                "LOINC": [
+                    "777-3"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "PLT", 
+            "end_time": null, 
+            "performer_id": null, 
+            "site": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": 1024385400, 
+            "type": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500000c", 
+            "codes": {
+                "LOINC": [
+                    "787-2"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "MCV", 
+            "end_time": null, 
+            "performer_id": null, 
+            "site": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": 1024385400, 
+            "type": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500000d", 
+            "codes": {
+                "LOINC": [
+                    "785-6"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "MCH", 
+            "end_time": null, 
+            "performer_id": null, 
+            "site": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": 1024385400, 
+            "type": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500000e", 
+            "codes": {
+                "LOINC": [
+                    "786-4"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "MCHC", 
+            "end_time": null, 
+            "performer_id": null, 
+            "site": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": 1024385400, 
+            "type": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500000f", 
+            "codes": {
+                "LOINC": [
+                    "788-0"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "RDW", 
+            "end_time": null, 
+            "performer_id": null, 
+            "site": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": 1024385400, 
+            "type": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000010", 
+            "codes": {
+                "LOINC": [
+                    "4679-7"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "Retic", 
+            "end_time": null, 
+            "performer_id": null, 
+            "site": null, 
+            "start_time": null, 
+            "status": null, 
+            "time": 1024385400, 
+            "type": null, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }
+    ], 
+    "race": null, 
+    "results": [
+        {
+            "_id": "4fa1a927dfef6146b5000011", 
+            "codes": {
+                "LOINC": [
+                    "6690-2"
+                ], 
+                "Unknown": [
+                    "194"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "REFUSED", 
+            "end_time": null, 
+            "interpretation": null, 
+            "referenceRange": null, 
+            "start_time": null, 
+            "status": "completed", 
+            "time": 1024385940, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000012", 
+            "codes": {
+                "LOINC": [
+                    "4544-3"
+                ], 
+                "Unknown": [
+                    "196"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "REFUSED", 
+            "end_time": null, 
+            "interpretation": null, 
+            "referenceRange": null, 
+            "start_time": null, 
+            "status": "completed", 
+            "time": 1024385940, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000013", 
+            "codes": {
+                "LOINC": [
+                    "718-7"
+                ], 
+                "Unknown": [
+                    "198"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "REFUSED", 
+            "end_time": null, 
+            "interpretation": null, 
+            "referenceRange": null, 
+            "start_time": null, 
+            "status": "completed", 
+            "time": 1024385940, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000014", 
+            "codes": {
+                "LOINC": [
+                    "789-8"
+                ], 
+                "Unknown": [
+                    "200"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "REFUSED", 
+            "end_time": null, 
+            "interpretation": null, 
+            "referenceRange": null, 
+            "start_time": null, 
+            "status": "completed", 
+            "time": 1024385940, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000015", 
+            "codes": {
+                "LOINC": [
+                    "777-3"
+                ], 
+                "Unknown": [
+                    "201"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "REFUSED", 
+            "end_time": null, 
+            "interpretation": null, 
+            "referenceRange": null, 
+            "start_time": null, 
+            "status": "completed", 
+            "time": 1024385940, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000016", 
+            "codes": {
+                "LOINC": [
+                    "787-2"
+                ], 
+                "Unknown": [
+                    "203"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "REFUSED", 
+            "end_time": null, 
+            "interpretation": null, 
+            "referenceRange": null, 
+            "start_time": null, 
+            "status": "completed", 
+            "time": 1024385940, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000017", 
+            "codes": {
+                "LOINC": [
+                    "785-6"
+                ], 
+                "Unknown": [
+                    "204"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "REFUSED", 
+            "end_time": null, 
+            "interpretation": null, 
+            "referenceRange": null, 
+            "start_time": null, 
+            "status": "completed", 
+            "time": 1024385940, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000018", 
+            "codes": {
+                "LOINC": [
+                    "786-4"
+                ], 
+                "Unknown": [
+                    "205"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "REFUSED", 
+            "end_time": null, 
+            "interpretation": null, 
+            "referenceRange": null, 
+            "start_time": null, 
+            "status": "completed", 
+            "time": 1024385940, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b5000019", 
+            "codes": {
+                "LOINC": [
+                    "788-0"
+                ], 
+                "Unknown": [
+                    "206"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "REFUSED", 
+            "end_time": null, 
+            "interpretation": null, 
+            "referenceRange": null, 
+            "start_time": null, 
+            "status": "completed", 
+            "time": 1024385940, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4fa1a927dfef6146b500001a", 
+            "codes": {
+                "LOINC": [
+                    "4679-7"
+                ], 
+                "Unknown": [
+                    "277"
+                ]
+            }, 
+            "created_at": null, 
+            "description": "REFUSED", 
+            "end_time": null, 
+            "interpretation": null, 
+            "referenceRange": null, 
+            "start_time": null, 
+            "status": "completed", 
+            "time": 1024385940, 
+            "updated_at": null, 
+            "value": {}, 
+            "version": 1
+        }
+    ], 
+    "test_id": null, 
+    "updated_at": "2012-05-02T17:37:44-04:00", 
+    "version": 1,
+    "vital_signs": [
+        {
+            "_id": "4f4e9fcdb615219f0a0000ef", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1327899600, 
+            "value": {
+                "scalar": "125.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a0000f0", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1327899600, 
+            "value": {
+                "scalar": "80.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a0000f1", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1326949200, 
+            "value": {
+                "scalar": "132.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a0000f2", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1326949200, 
+            "value": {
+                "scalar": "84.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a0000f3", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1318651200, 
+            "value": {
+                "scalar": "126.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a0000f4", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1318651200, 
+            "value": {
+                "scalar": "78.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a0000f5", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1311652800, 
+            "value": {
+                "scalar": "130.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a0000f6", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1311652800, 
+            "value": {
+                "scalar": "80.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a0000f7", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1297227600, 
+            "value": {
+                "scalar": "142.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a0000f8", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1297227600, 
+            "value": {
+                "scalar": "85.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a0000f9", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1289538000, 
+            "value": {
+                "scalar": "153.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a0000fa", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1289538000, 
+            "value": {
+                "scalar": "93.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a0000fb", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1284523200, 
+            "value": {
+                "scalar": "148.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a0000fc", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1284523200, 
+            "value": {
+                "scalar": "85.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a0000fd", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1280462400, 
+            "value": {
+                "scalar": "154.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a0000fe", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1280462400, 
+            "value": {
+                "scalar": "97.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a0000ff", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1270008000, 
+            "value": {
+                "scalar": "147.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000100", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1270008000, 
+            "value": {
+                "scalar": "95.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000101", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1249876800, 
+            "value": {
+                "scalar": "138.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000102", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1249876800, 
+            "value": {
+                "scalar": "82.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000103", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1249185600, 
+            "value": {
+                "scalar": "140.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000104", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1249185600, 
+            "value": {
+                "scalar": "86.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000105", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1184817600, 
+            "value": {
+                "scalar": "143.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000106", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1184817600, 
+            "value": {
+                "scalar": "90.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000107", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1163394000, 
+            "value": {
+                "scalar": "138.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000108", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1163394000, 
+            "value": {
+                "scalar": "88.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000109", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1154404800, 
+            "value": {
+                "scalar": "121.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a00010a", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1154404800, 
+            "value": {
+                "scalar": "77.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a00010b", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1122350400, 
+            "value": {
+                "scalar": "131.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a00010c", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1122350400, 
+            "value": {
+                "scalar": "79.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a00010d", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1107925200, 
+            "value": {
+                "scalar": "128.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a00010e", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1107925200, 
+            "value": {
+                "scalar": "85.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a00010f", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1097294400, 
+            "value": {
+                "scalar": "121.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000110", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1097294400, 
+            "value": {
+                "scalar": "70.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000111", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1085976000, 
+            "value": {
+                "scalar": "123.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000112", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1085976000, 
+            "value": {
+                "scalar": "72.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000113", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1079326800, 
+            "value": {
+                "scalar": "120.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000114", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1079326800, 
+            "value": {
+                "scalar": "72.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000115", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1038718800, 
+            "value": {
+                "scalar": "110.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000116", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1038718800, 
+            "value": {
+                "scalar": "68.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000117", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1326603600, 
+            "value": {
+                "scalar": "26.5", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000118", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1307937600, 
+            "value": {
+                "scalar": "26.8", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000119", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1292389200, 
+            "value": {
+                "scalar": "27.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a00011a", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1289797200, 
+            "value": {
+                "scalar": "27.5", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a00011b", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1280635200, 
+            "value": {
+                "scalar": "27.6", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a00011c", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1280462400, 
+            "value": {
+                "scalar": "27.9", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a00011d", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1249876800, 
+            "value": {
+                "scalar": "28.3", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a00011e", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1217649600, 
+            "value": {
+                "scalar": "28.5", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a00011f", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1270008000, 
+            "value": {
+                "scalar": "28.3", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000120", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1184817600, 
+            "value": {
+                "scalar": "29.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000121", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1163394000, 
+            "value": {
+                "scalar": "29.3", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000122", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1119931200, 
+            "value": {
+                "scalar": "29.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000123", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1110862800, 
+            "value": {
+                "scalar": "29.2", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000124", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1106974800, 
+            "value": {
+                "scalar": "29.5", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000125", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1099108800, 
+            "value": {
+                "scalar": "29.7", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000126", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1091073600, 
+            "value": {
+                "scalar": "30.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000127", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1084593600, 
+            "value": {
+                "scalar": "30.5", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000128", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1079067600, 
+            "value": {
+                "scalar": "30.7", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a000129", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1070600400, 
+            "value": {
+                "scalar": "31.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a00012a", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1066190400, 
+            "value": {
+                "scalar": "31.2", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcdb615219f0a00012b", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1063598400, 
+            "value": {
+                "scalar": "31.6", 
+                "units": null
+            }, 
+            "version": 1
+        }
+    ]
+}

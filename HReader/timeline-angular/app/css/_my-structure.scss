@@ -1,0 +1,69 @@
+
+/*structure*/
+
+section.well {
+	background-color: #fff !important;
+}
+
+.green {
+	border: 1px solid $border;
+}
+
+
+
+.background {
+	border: 1px solid $border;
+	border-radius: 10px;
+	box-shadow: inset 1px 2px 4px #888;
+	overflow:scroll;
+	background-color: #fff;
+	
+	ul{
+		padding-left: 0;
+		border-bottom: 1px solid #ccc;
+
+		li {
+			list-style-type: none;
+			padding: 5px;
+
+			span {
+				position: relative;
+				left: 200px;
+			}
+
+			h1 {
+				display: inline-block;
+			}
+			span {
+				font-size: 1.5em;
+			}
+			
+			h2 {
+				color: #999;
+			}
+
+			.result {
+				font-size: 3em;
+			}
+			.measurement {
+				font-size: 1em;
+				color: #999;
+				font-weight: 100;
+			}
+
+		}
+	}
+}
+
+.row span1{
+	height: 100%;
+}
+
+hr {
+	border-bottom: 3px solid white;
+	border-top: 1px solid #D1D3D4;
+}
+
+.row {
+	vertical-align: baseline;
+}

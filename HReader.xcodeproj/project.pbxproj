@@ -32,10 +32,11 @@
 		3B108CDD1579199F00888E30 /* logo_splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B108CDC1579199F00888E30 /* logo_splash.png */; };
 		3B108CE115791A0C00888E30 /* HRSplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B108CE015791A0C00888E30 /* HRSplashScreenViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B108CE3157929FA00888E30 /* logo_splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B108CE2157929FA00888E30 /* logo_splash@2x.png */; };
+		3B1925A91619DDDA0024E9BD /* timeline-angular in Resources */ = {isa = PBXBuildFile; fileRef = 3B1925A81619DDDA0024E9BD /* timeline-angular */; };
 		3B2405321608E52E007E043E /* NSBundle+hRreaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2405311608E52E007E043E /* NSBundle+hRreaderAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B2405351608E707007E043E /* UIColor+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2405341608E707007E043E /* UIColor+hReaderAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		3B2405391608F5B2007E043E /* NSArray+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2405381608F5B2007E043E /* NSArray+hReaderAdditions.m */; };
-		3B24053C1608F644007E043E /* NSSet+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B24053B1608F644007E043E /* NSSet+hReaderAdditions.m */; };
+		3B2405391608F5B2007E043E /* NSArray+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2405381608F5B2007E043E /* NSArray+hReaderAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		3B24053C1608F644007E043E /* NSSet+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B24053B1608F644007E043E /* NSSet+hReaderAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B3C919514F69F61005CD5C5 /* NSDate+FormattedDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C919414F69F61005CD5C5 /* NSDate+FormattedDate.m */; };
 		3B4365D61540A2890009F892 /* hs-0-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365A31540A2890009F892 /* hs-0-tile.png */; };
 		3B4365D71540A2890009F892 /* hs-1-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365A41540A2890009F892 /* hs-1-overview.png */; };
@@ -122,6 +123,7 @@
 		3B77F04E15546ABD003C2DBD /* HROxygenSaturationAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F04D15546ABD003C2DBD /* HROxygenSaturationAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B77F05215546AD2003C2DBD /* HRRespiratoryRateAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B77F054155474DE003C2DBD /* HRBMIVitalAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */; };
+		3B7FF9FD1613483F009033AD /* HRTimelineURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7FF9FC1613483F009033AD /* HRTimelineURLProtocol.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B9A757915DBE0CB00705A52 /* timeline in Resources */ = {isa = PBXBuildFile; fileRef = 3B9A757815DBE0CB00705A52 /* timeline */; };
 		3B9A758115DC040F00705A52 /* HRAppletUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9A758015DC040F00705A52 /* HRAppletUtilities.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BA11FD315C0608200ABB012 /* circle-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FA215C0608200ABB012 /* circle-2.png */; };
@@ -346,6 +348,7 @@
 		3B108CDF15791A0C00888E30 /* HRSplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSplashScreenViewController.h; sourceTree = "<group>"; };
 		3B108CE015791A0C00888E30 /* HRSplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSplashScreenViewController.m; sourceTree = "<group>"; };
 		3B108CE2157929FA00888E30 /* logo_splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_splash@2x.png"; sourceTree = "<group>"; };
+		3B1925A81619DDDA0024E9BD /* timeline-angular */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "timeline-angular"; sourceTree = "<group>"; };
 		3B19651C14EEAB970045F827 /* C32-Smith-Henry.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Henry.html"; sourceTree = "<group>"; };
 		3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Molly.html"; sourceTree = "<group>"; };
 		3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Sarah.html"; sourceTree = "<group>"; };
@@ -461,6 +464,8 @@
 		3B77F05015546AD2003C2DBD /* HRRespiratoryRateAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRRespiratoryRateAppletTile.h; sourceTree = "<group>"; };
 		3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRRespiratoryRateAppletTile.m; sourceTree = "<group>"; };
 		3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRBMIVitalAppletTile.xib; sourceTree = "<group>"; };
+		3B7FF9FB1613483F009033AD /* HRTimelineURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRTimelineURLProtocol.h; sourceTree = "<group>"; };
+		3B7FF9FC1613483F009033AD /* HRTimelineURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRTimelineURLProtocol.m; sourceTree = "<group>"; };
 		3B9A757815DBE0CB00705A52 /* timeline */ = {isa = PBXFileReference; lastKnownFileType = folder; path = timeline; sourceTree = "<group>"; };
 		3B9A757F15DC040F00705A52 /* HRAppletUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAppletUtilities.h; sourceTree = "<group>"; };
 		3B9A758015DC040F00705A52 /* HRAppletUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAppletUtilities.m; sourceTree = "<group>"; };
@@ -1155,6 +1160,7 @@
 				3BFBEE1D1534C0AE009EBA2D /* Patient Data */,
 				941DB0B31471B32D00A96B8B /* Supporting Files */,
 				3B8D14FE157E3EB700A5B84E /* Images */,
+				3B1925A81619DDDA0024E9BD /* timeline-angular */,
 				3B9A757815DBE0CB00705A52 /* timeline */,
 			);
 			path = HReader;
@@ -1456,6 +1462,8 @@
 			children = (
 				DD695D791489439100E4E2E1 /* HRTimelineViewController.h */,
 				DD695D7A1489439100E4E2E1 /* HRTimelineViewController.m */,
+				3B7FF9FB1613483F009033AD /* HRTimelineURLProtocol.h */,
+				3B7FF9FC1613483F009033AD /* HRTimelineURLProtocol.m */,
 			);
 			name = Timeline;
 			sourceTree = "<group>";
@@ -1754,6 +1762,7 @@
 				D8665A58160230D5002CD855 /* tasks-pressed.png in Resources */,
 				D8665A5A16023452002CD855 /* home_background.png in Resources */,
 				D8665A5D16025BB1002CD855 /* Memory_List1.m4a in Resources */,
+				3B1925A91619DDDA0024E9BD /* timeline-angular in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1869,6 +1878,7 @@
 				3B2405351608E707007E043E /* UIColor+hReaderAdditions.m in Sources */,
 				3B2405391608F5B2007E043E /* NSArray+hReaderAdditions.m in Sources */,
 				3B24053C1608F644007E043E /* NSSet+hReaderAdditions.m in Sources */,
+				3B7FF9FD1613483F009033AD /* HRTimelineURLProtocol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

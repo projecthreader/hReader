@@ -1,0 +1,56 @@
+/*
+Syntax error: File to import not found or unreadable: ../../../sass-twitter-bootstrap/lib/variables.
+              Load path: /Users/jeffersonmccloud/Documents/PROJECTS/hreader-assets/Timeline-angular/app/css
+        on line 12 of master.scss
+
+7:  *
+8:  * Designed and built with all the love in the world @twitter by @mdo and @fat.
+9:  */
+10: 
+11: // Core variables and mixins
+12: @import "../../../sass-twitter-bootstrap/lib/variables"; // Modify this for custom colors, font-sizes, etc
+13: @import "../../../sass-twitter-bootstrap/lib/mixins";
+14: @import "my-variables";
+15: 
+16: // CSS Reset
+17: @import "../../../sass-twitter-bootstrap/lib/reset";
+
+Backtrace:
+master.scss:12
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/import_node.rb:64:in `rescue in import'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/import_node.rb:42:in `import'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/import_node.rb:25:in `imported_file'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/visitors/perform.rb:227:in `rescue in visit_import'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/visitors/perform.rb:232:in `visit_import'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/visitors/perform.rb:98:in `visit'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/visitors/perform.rb:107:in `block in visit_children'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/visitors/perform.rb:119:in `with_environment'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/visitors/perform.rb:106:in `visit_children'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/visitors/perform.rb:126:in `visit_root'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/visitors/perform.rb:98:in `visit'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/tree/root_node.rb:20:in `render'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/engine.rb:315:in `_render'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/engine.rb:262:in `render'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/plugin/compiler.rb:200:in `each'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/lib/sass/plugin/compiler.rb:298:in `block in watch'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/vendor/listen/lib/listen/multi_listener.rb:86:in `call'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/vendor/listen/lib/listen/multi_listener.rb:86:in `on_change'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/vendor/listen/lib/listen/multi_listener.rb:95:in `block in initialize_adapter'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/vendor/listen/lib/listen/adapters/polling.rb:55:in `call'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/vendor/listen/lib/listen/adapters/polling.rb:55:in `poll'
+/Users/jeffersonmccloud/.rvm/gems/ruby-1.9.2-p180/gems/sass-3.2.1/vendor/listen/lib/listen/adapters/polling.rb:31:in `block in start'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: ../../../sass-twitter-bootstrap/lib/variables.\A               Load path: /Users/jeffersonmccloud/Documents/PROJECTS/hreader-assets/Timeline-angular/app/css\A         on line 12 of master.scss\A \A 7:  *\A 8:  * Designed and built with all the love in the world @twitter by @mdo and @fat.\A 9:  */\A 10: \A 11: // Core variables and mixins\A 12: @import \"../../../sass-twitter-bootstrap/lib/variables\"; // Modify this for custom colors, font-sizes, etc\A 13: @import \"../../../sass-twitter-bootstrap/lib/mixins\";\A 14: @import \"my-variables\";\A 15: \A 16: // CSS Reset\A 17: @import \"../../../sass-twitter-bootstrap/lib/reset\";"; }

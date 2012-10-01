@@ -1,0 +1,2710 @@
+{
+    "_id": "4f4e9fcbb615219f0a000001", 
+    "allergies": [
+        {
+            "_id": "4f4e9fccb615219f0a000078", 
+            "_type": "Allergy", 
+            "codes": {}, 
+            "reaction": null, 
+            "severity": null, 
+            "start_time": null, 
+            "time": null, 
+            "value": {}, 
+            "version": 1
+        }
+    ], 
+    "birthdate": -972586800, 
+    "care_goals": [
+        {
+            "_id": "4f4e9fccb615219f0a000077", 
+            "_type": "Entry", 
+            "codes": {
+                "CPT": [
+                    "97804"
+                ], 
+                "HCPCS": [
+                    "S9470"
+                ], 
+                "ICD-9-CM": [
+                    "V65.3"
+                ], 
+                "SNOMED-CT": [
+                    "305849009"
+                ]
+            }, 
+            "time": 1277438400, 
+            "value": {}, 
+            "version": 1
+        }
+    ], 
+    "conditions": [
+        {
+            "_id": "4f4e9fccb615219f0a000072", 
+            "_type": "Entry", 
+            "codes": {
+                "ICD-10-CM": [
+                    "C61"
+                ], 
+                "ICD-9-CM": [
+                    "185"
+                ], 
+                "SNOMED-CT": [
+                    "399068003"
+                ]
+            }, 
+            "description": "Prostate Cancer", 
+            "start_time": 1273204800, 
+            "time": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000073", 
+            "_type": "Entry", 
+            "codes": {
+                "ICD-10-CM": [
+                    "I10"
+                ], 
+                "ICD-9-CM": [
+                    "401.9"
+                ], 
+                "SNOMED-CT": [
+                    "59621000"
+                ]
+            }, 
+            "description": "Hypertension", 
+            "start_time": 1251172800, 
+            "time": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000074", 
+            "_type": "Entry", 
+            "codes": {
+                "ICD-10-CM": [
+                    "I50.9"
+                ], 
+                "ICD-9-CM": [
+                    "428.9"
+                ], 
+                "SNOMED-CT": [
+                    "84114007"
+                ]
+            }, 
+            "description": "Heart Failure", 
+            "start_time": 1279598400, 
+            "time": null, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000075", 
+            "_type": "Entry", 
+            "codes": {
+                "ICD-10-CM": [
+                    "H40.13"
+                ], 
+                "ICD-9-CM": [
+                    "365.10"
+                ], 
+                "SNOMED-CT": [
+                    "84494001"
+                ]
+            }, 
+            "description": "Primary Open Angle Glaucoma (POAG)", 
+            "start_time": 1277438400, 
+            "time": null, 
+            "value": {}, 
+            "version": 1
+        }
+    ], 
+    "created_at": "2012-02-29T21:59:40Z", 
+    "deathdate": null, 
+    "effective_time": 1330540531, 
+    "encounters": [
+        {
+            "_id": "4f4e9fcbb615219f0a000002", 
+            "_type": "Encounter", 
+            "admitType": null, 
+            "codes": {
+                "CPT": [
+                    "99213"
+                ], 
+                "ICD-9-CM": [
+                    "V70.0"
+                ]
+            }, 
+            "description": "Encounter Outpatient", 
+            "facility": {}, 
+            "time": 1291266000, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000003", 
+            "_type": "Encounter", 
+            "admitType": null, 
+            "codes": {
+                "CPT": [
+                    "99213"
+                ], 
+                "ICD-9-CM": [
+                    "V70.0"
+                ]
+            }, 
+            "description": "Encounter Outpatient", 
+            "facility": {}, 
+            "time": 1283832000, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000004", 
+            "_type": "Encounter", 
+            "admitType": null, 
+            "codes": {
+                "CPT": [
+                    "99238"
+                ]
+            }, 
+            "description": "Encounter Inpatient Discharge", 
+            "facility": {}, 
+            "time": 1282449600, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000005", 
+            "_type": "Encounter", 
+            "admitType": null, 
+            "codes": {
+                "CPT": [
+                    "99324"
+                ]
+            }, 
+            "description": "encounter non-acute inpatient", 
+            "facility": {}, 
+            "time": 1282104000, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000006", 
+            "_type": "Encounter", 
+            "admitType": null, 
+            "codes": {
+                "CPT": [
+                    "99213"
+                ], 
+                "ICD-9-CM": [
+                    "V70.0"
+                ]
+            }, 
+            "description": "Encounter Outpatient", 
+            "facility": {}, 
+            "time": 1279598400, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000007", 
+            "_type": "Encounter", 
+            "admitType": null, 
+            "codes": {
+                "CPT": [
+                    "99213"
+                ], 
+                "ICD-9-CM": [
+                    "V70.0"
+                ]
+            }, 
+            "description": "Encounter Outpatient", 
+            "facility": {}, 
+            "time": 1277438400, 
+            "value": {}, 
+            "version": 1
+        }
+    ], 
+    "ethnicity": {
+        "code": "", 
+        "code_set": "CDC-RE"
+    }, 
+    "first": "Henry", 
+    "gender": "M", 
+    "immunizations": [
+        {
+            "_id": "4f4e9fccb615219f0a000079", 
+            "_type": "Immunization", 
+            "codes": {
+                "RxNorm": [
+                    "857942"
+                ]
+            }, 
+            "description": "Influenza Vaccine", 
+            "refusalInd": false, 
+            "time": 1291266000, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00007a", 
+            "_type": "Immunization", 
+            "codes": {
+                "RxNorm": [
+                    "854969"
+                ]
+            }, 
+            "description": "Pneumococcal Vaccine", 
+            "refusalInd": false, 
+            "time": 1291266000, 
+            "value": {}, 
+            "version": 1
+        }
+    ], 
+    "languages": [
+        "en-US"
+    ], 
+    "last": "Smith", 
+    "medical_record_number": "1", 
+    "medications": [
+        {
+            "_id": "4f4e9fccb615219f0a000070", 
+            "_type": "Medication", 
+            "codes": {
+                "RxNorm": [
+                    "314076"
+                ]
+            }, 
+            "deliveryMethod": null, 
+            "description": "Lisinopril", 
+            "dose": "20mg", 
+            "end_time": null, 
+            "freeTextSig": "ACE inhibitor", 
+            "indication": null, 
+            "productForm": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1277438400, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000071", 
+            "_type": "Medication", 
+            "codes": {
+                "RxNorm": [
+                    "866924"
+                ]
+            }, 
+            "deliveryMethod": null, 
+            "description": "Metoprolol XL (once daily)", 
+            "dose": "25mg", 
+            "end_time": null, 
+            "freeTextSig": "Beta Blocker Therapy", 
+            "indication": null, 
+            "productForm": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1279598400, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        },
+        {
+            "_id": "4f4e9fccb615219f0a000072", 
+            "_type": "Medication", 
+            "codes": {
+                "RxNorm": [
+                    "197730"
+                ]
+            }, 
+            "deliveryMethod": null, 
+            "description": "Furosemide", 
+            "dose": "10mg", 
+            "end_time": null, 
+            "freeTextSig": "Diuretic for CHF", 
+            "indication": null, 
+            "productForm": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1279598400, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        },
+        {
+            "_id": "4f4e9fccb615219f0a000073", 
+            "_type": "Medication", 
+            "codes": {
+                "RxNorm": [
+                    "243670"
+                ]
+            }, 
+            "deliveryMethod": null, 
+            "description": "Aspirin", 
+            "dose": "81mg", 
+            "end_time": null, 
+            "freeTextSig": "Beta Blocker Therapy", 
+            "indication": null, 
+            "productForm": null, 
+            "route": null, 
+            "site": null, 
+            "start_time": 1279598400, 
+            "time": null, 
+            "typeOfMedication": null, 
+            "value": {}, 
+            "vehicle": null, 
+            "version": 1
+        }
+    ], 
+    "procedures": [
+        {
+            "_id": "4f4e9fcbb615219f0a000008", 
+            "_type": "Procedure", 
+            "codes": {
+                "CPT": [
+                    "97802"
+                ], 
+                "HCPCS": [
+                    "S9470"
+                ], 
+                "ICD-10-CM": [
+                    "Z00.8"
+                ], 
+                "ICD-9-CM": [
+                    "V65.3"
+                ]
+            }, 
+            "description": "Counseling for nutrition", 
+            "site": null, 
+            "time": 1277438400, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000009", 
+            "_type": "Procedure", 
+            "codes": {
+                "HCPCS": [
+                    "S9451"
+                ], 
+                "ICD-10-CM": [
+                    "Z71.3"
+                ], 
+                "ICD-9-CM": [
+                    "V65.41"
+                ]
+            }, 
+            "description": "Counseling for physical activity", 
+            "site": null, 
+            "time": 1277438400, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00000a", 
+            "_type": "Procedure", 
+            "codes": {
+                "CPT": [
+                    "55810"
+                ], 
+                "SNOMED-CT": [
+                    "176259004"
+                ]
+            }, 
+            "description": "Prostate Cancer Treatment", 
+            "site": null, 
+            "time": 1282104000, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00000b", 
+            "_type": "Procedure", 
+            "codes": {
+                "SNOMED-CT": [
+                    "261650005"
+                ]
+            }, 
+            "description": "AJCC Cancer Stage Low Risk Recurrence Prostate Cancer", 
+            "site": null, 
+            "time": 1282104000, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00000c", 
+            "_type": "Procedure", 
+            "codes": {
+                "SNOMED-CT": [
+                    "36228007"
+                ]
+            }, 
+            "description": "Optic Nerve Head Evaluation", 
+            "site": null, 
+            "time": 1277438400, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00000d", 
+            "_type": "Procedure", 
+            "codes": {
+                "CPT": [
+                    "78300"
+                ], 
+                "SNOMED-CT": [
+                    "3998005"
+                ]
+            }, 
+            "description": "Bone Scan", 
+            "site": null, 
+            "time": 1282104000, 
+            "value": {}, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00000e", 
+            "_type": "Procedure", 
+            "codes": {
+                "SNOMED-CT": [
+                    "70822001"
+                ]
+            }, 
+            "description": "Ejection Fraction", 
+            "site": null, 
+            "time": 1279598400, 
+            "value": {}, 
+            "version": 1
+        },
+        {
+            "_id": "4f4e9fcbb615219f0a00000f", 
+            "_type": "Procedure", 
+            "codes": {
+                "SNOMED-CT": [
+                    "70822001"
+                ]
+            }, 
+            "description": "Echocardiogram", 
+            "site": null, 
+            "time": 1279598400, 
+            "value": {}, 
+            "version": 1
+        },
+        {
+            "_id": "4f4e9fcbb615219f0a000010", 
+            "_type": "Procedure", 
+            "codes": {
+                "SNOMED-CT": [
+                    "70822001"
+                ]
+            }, 
+            "description": "Stress test and EKG", 
+            "site": null, 
+            "time": 1279598400, 
+            "value": {}, 
+            "version": 1
+        },
+        {
+            "_id": "4f4e9fcbb615219f0a000010", 
+            "_type": "Procedure", 
+            "codes": {
+                "SNOMED-CT": [
+                    "70822001"
+                ]
+            }, 
+            "description": "Stress test and EKG", 
+            "site": null, 
+            "time": 1279598400, 
+            "value": {}, 
+            "version": 1
+        }
+    ], 
+    "race": {
+        "code": "", 
+        "code_set": "CDC-RE"
+    }, 
+    "results": [
+        {
+            "_id": "4f4e9fcbb615219f0a000010", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84153"
+                ], 
+                "LOINC": [
+                    "19195-7"
+                ], 
+                "SNOMED-CT": [
+                    "63476009"
+                ]
+            }, 
+            "description": "Prostate Specific Antigen Test", 
+            "status": "completed", 
+            "time": 1279598400, 
+            "value": {
+                "scalar": "6.3", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000011", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "35266-6"
+                ], 
+                "SNOMED-CT": [
+                    "384997002"
+                ]
+            }, 
+            "description": "Gleason Score", 
+            "status": "completed", 
+            "time": 1279598400, 
+            "value": {
+                "scalar": "4.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000012", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1326603600, 
+            "value": {
+                "scalar": "220.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000013", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1307937600, 
+            "value": {
+                "scalar": "220.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000014", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1292389200, 
+            "value": {
+                "scalar": "230.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000015", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1289797200, 
+            "value": {
+                "scalar": "210.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000016", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1280635200, 
+            "value": {
+                "scalar": "165.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000017", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1275364800, 
+            "value": {
+                "scalar": "142.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000018", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1269748800, 
+            "value": {
+                "scalar": "160.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000019", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1264741200, 
+            "value": {
+                "scalar": "179.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00001a", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1251604800, 
+            "value": {
+                "scalar": "150.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00001b", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1242100800, 
+            "value": {
+                "scalar": "146.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00001c", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1238212800, 
+            "value": {
+                "scalar": "200.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00001d", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1231304400, 
+            "value": {
+                "scalar": "210.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00001e", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1230181200, 
+            "value": {
+                "scalar": "210.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00001f", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1220155200, 
+            "value": {
+                "scalar": "200.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000020", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1210132800, 
+            "value": {
+                "scalar": "201.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000021", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1207022400, 
+            "value": {
+                "scalar": "210.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000022", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1201842000, 
+            "value": {
+                "scalar": "220.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000023", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1229317200, 
+            "value": {
+                "scalar": "211.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000024", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1224216000, 
+            "value": {
+                "scalar": "209.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000025", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1212206400, 
+            "value": {
+                "scalar": "200.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000026", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "82465"
+                ], 
+                "LOINC": [
+                    "2093-3"
+                ], 
+                "SNOMED-CT": [
+                    "121868005"
+                ]
+            }, 
+            "description": "Total Cholesterol", 
+            "status": "completed", 
+            "time": 1199509200, 
+            "value": {
+                "scalar": "180.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000027", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1326603600, 
+            "value": {
+                "scalar": "190.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000028", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1307937600, 
+            "value": {
+                "scalar": "198.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000029", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1292389200, 
+            "value": {
+                "scalar": "201.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00002a", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1289797200, 
+            "value": {
+                "scalar": "203.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00002b", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1280635200, 
+            "value": {
+                "scalar": "206.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00002c", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1275364800, 
+            "value": {
+                "scalar": "190.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00002d", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1269748800, 
+            "value": {
+                "scalar": "165.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00002e", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1264741200, 
+            "value": {
+                "scalar": "190.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00002f", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1251604800, 
+            "value": {
+                "scalar": "191.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000030", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1242100800, 
+            "value": {
+                "scalar": "179.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000031", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1238212800, 
+            "value": {
+                "scalar": "175.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000032", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1231304400, 
+            "value": {
+                "scalar": "180.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000033", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1230181200, 
+            "value": {
+                "scalar": "191.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000034", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1220155200, 
+            "value": {
+                "scalar": "150.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000035", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1210132800, 
+            "value": {
+                "scalar": "149.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000036", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1207022400, 
+            "value": {
+                "scalar": "185.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000037", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1201842000, 
+            "value": {
+                "scalar": "201.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000038", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1229317200, 
+            "value": {
+                "scalar": "198.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000039", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1224216000, 
+            "value": {
+                "scalar": "178.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00003a", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1212206400, 
+            "value": {
+                "scalar": "165.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00003b", 
+            "_type": "LabResult", 
+            "codes": {
+                "CPT": [
+                    "84478"
+                ], 
+                "LOINC": [
+                    "12951-0"
+                ], 
+                "SNOMED-CT": [
+                    "14740000"
+                ]
+            }, 
+            "description": "Triglycerides", 
+            "status": "completed", 
+            "time": 1199509200, 
+            "value": {
+                "scalar": "150.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00003c", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "261650005"
+                ]
+            }, 
+            "description": "AJCC Cancer Stage Low Risk Recurrence Prostate Cancer", 
+            "status": "completed", 
+            "time": 1282104000, 
+            "value": {
+                "scalar": "", 
+                "units": null
+            }, 
+            "version": 1
+        },
+                {
+            "_id": "4f4e9fccb615219f0a00003d", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "261650005"
+                ]
+            }, 
+            "description": "BNP", 
+            "status": "completed", 
+            "time": 1282104000, 
+            "value": {
+                "scalar": "585", 
+                "units": null
+            }, 
+            "version": 1
+        },
+        {
+            "_id": "4f4e9fccb615219f0a00003e", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "261650005"
+                ]
+            }, 
+            "description": "Troponin", 
+            "status": "completed", 
+            "time": 1282104000, 
+            "value": {
+                "scalar": "0.12", 
+                "units": null
+            }, 
+            "version": 1
+        },
+        {
+            "_id": "4f4e9fccb615219f0a00003f", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "261650005"
+                ]
+            }, 
+            "description": "Bilateral 3+ pitting edema", 
+            "status": "completed", 
+            "time": 1282104000, 
+            "value": {
+                "scalar": "", 
+                "units": null
+            }, 
+            "version": 1
+        },
+        {
+            "_id": "4f4e9fccb615219f0a000040", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "261650005"
+                ]
+            }, 
+            "description": "Diminished pedal pulses 1+ bilaterally", 
+            "status": "completed", 
+            "time": 1282104000, 
+            "value": {
+                "scalar": "", 
+                "units": null
+            }, 
+            "version": 1
+        },
+        {
+            "_id": "4f4e9fccb615219f0a000041", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "261650005"
+                ]
+            }, 
+            "description": "Crackles heard bilaterally in lung bases, elevated BP, oliguria, hyperventilation, PaO2 86%", 
+            "status": "completed", 
+            "time": 1282104000, 
+            "value": {
+                "scalar": "", 
+                "units": null
+            }, 
+            "version": 1
+        }
+    ], 
+    "social_history": [
+        {
+            "_id": "4f4e9fccb615219f0a000076", 
+            "_type": "Entry", 
+            "codes": {
+                "SNOMED-CT": [
+                    "160618006"
+                ]
+            }, 
+            "time": 1277438400, 
+            "value": {}, 
+            "version": 1
+        }
+    ], 
+    "test_id": null, 
+    "updated_at": "2012-02-29T21:59:40Z", 
+    "version": 1, 
+    "vital_signs": [
+        {
+            "_id": "4f4e9fcbb615219f0a00003d", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1291266000, 
+            "value": {
+                "scalar": "118.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00003e", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1291266000, 
+            "value": {
+                "scalar": "68.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a00003f", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "364075005"
+                ]
+            }, 
+            "description": "Heart Rate", 
+            "status": "completed", 
+            "time": 1291266000, 
+            "value": {
+                "scalar": "72.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000040", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1277438400, 
+            "value": {
+                "scalar": "120.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000041", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1277438400, 
+            "value": {
+                "scalar": "70.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000042", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "364075005"
+                ]
+            }, 
+            "description": "Heart Rate", 
+            "status": "completed", 
+            "time": 1277438400, 
+            "value": {
+                "scalar": "74.0", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000043", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1326603600, 
+            "value": {
+                "scalar": "126.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000044", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1307937600, 
+            "value": {
+                "scalar": "128.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000045", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1292389200, 
+            "value": {
+                "scalar": "142.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000046", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1289797200, 
+            "value": {
+                "scalar": "120.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000047", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1280635200, 
+            "value": {
+                "scalar": "110.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000048", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1275364800, 
+            "value": {
+                "scalar": "122.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000049", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1269748800, 
+            "value": {
+                "scalar": "100.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00004a", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1264741200, 
+            "value": {
+                "scalar": "120.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00004b", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1251604800, 
+            "value": {
+                "scalar": "140.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00004c", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1242100800, 
+            "value": {
+                "scalar": "123.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00004d", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1238212800, 
+            "value": {
+                "scalar": "130.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00004e", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1231304400, 
+            "value": {
+                "scalar": "110.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00004f", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1230181200, 
+            "value": {
+                "scalar": "140.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000050", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1220155200, 
+            "value": {
+                "scalar": "140.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000051", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1210132800, 
+            "value": {
+                "scalar": "121.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000052", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1207022400, 
+            "value": {
+                "scalar": "120.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000053", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1201842000, 
+            "value": {
+                "scalar": "118.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000054", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1229317200, 
+            "value": {
+                "scalar": "112.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000055", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1224216000, 
+            "value": {
+                "scalar": "125.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000056", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1212206400, 
+            "value": {
+                "scalar": "122.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000057", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Systolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1199509200, 
+            "value": {
+                "scalar": "120.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000058", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1326603600, 
+            "value": {
+                "scalar": "75.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000059", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1307937600, 
+            "value": {
+                "scalar": "78.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00005a", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1292389200, 
+            "value": {
+                "scalar": "74.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00005b", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1289797200, 
+            "value": {
+                "scalar": "72.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00005c", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1280635200, 
+            "value": {
+                "scalar": "79.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00005d", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1275364800, 
+            "value": {
+                "scalar": "70.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00005e", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1269748800, 
+            "value": {
+                "scalar": "71.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00005f", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1264741200, 
+            "value": {
+                "scalar": "74.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000060", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1251604800, 
+            "value": {
+                "scalar": "74.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000061", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1242100800, 
+            "value": {
+                "scalar": "73.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000062", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1238212800, 
+            "value": {
+                "scalar": "70.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000063", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1231304400, 
+            "value": {
+                "scalar": "72.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000064", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1230181200, 
+            "value": {
+                "scalar": "73.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000065", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1220155200, 
+            "value": {
+                "scalar": "72.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000066", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1210132800, 
+            "value": {
+                "scalar": "79.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000067", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1207022400, 
+            "value": {
+                "scalar": "71.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000068", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1201842000, 
+            "value": {
+                "scalar": "70.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000069", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1229317200, 
+            "value": {
+                "scalar": "74.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00006a", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1224216000, 
+            "value": {
+                "scalar": "75.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00006b", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1212206400, 
+            "value": {
+                "scalar": "72.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00006c", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271650006"
+                ]
+            }, 
+            "description": "Diastolic Blood Pressure", 
+            "status": "completed", 
+            "time": 1199509200, 
+            "value": {
+                "scalar": "75.0", 
+                "units": "mm[Hg]"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00006d", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1291266000, 
+            "value": {
+                "scalar": "22.466216216216218", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00006e", 
+            "_type": "LabResult", 
+            "codes": {
+                "LOINC": [
+                    "39156-5"
+                ], 
+                "SNOMED-CT": [
+                    "60621009"
+                ]
+            }, 
+            "description": "BMI", 
+            "status": "completed", 
+            "time": 1277438400, 
+            "value": {
+                "scalar": "23.10810810810811", 
+                "units": null
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a00006f", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "261650005"
+                ]
+            }, 
+            "description": "AJCC Cancer Stage Low Risk Recurrence Prostate Cancer", 
+            "status": "completed", 
+            "time": 1282104000, 
+            "value": {
+                "scalar": "", 
+                "units": null
+            }, 
+            "version": 1
+        },
+        {
+            "_id": "4f4e9fcbb615219f0a000070", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Oxygen Saturation", 
+            "status": "completed", 
+            "time": 1326603600, 
+            "value": {
+                "scalar": "92.1", 
+                "units": "%"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000071", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Oxygen Saturation", 
+            "status": "completed", 
+            "time": 1307937600, 
+            "value": {
+                "scalar": "91.7", 
+                "units": "%"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000072", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Oxygen Saturation", 
+            "status": "completed", 
+            "time": 1292389200, 
+            "value": {
+                "scalar": "92.5", 
+                "units": "%"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000073", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Oxygen Saturation", 
+            "status": "completed", 
+            "time": 1289797200, 
+            "value": {
+                "scalar": "90.3", 
+                "units": "%"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000074", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Oxygen Saturation", 
+            "status": "completed", 
+            "time": 1280635200, 
+            "value": {
+                "scalar": "90.1", 
+                "units": "%"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fcbb615219f0a000070", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Respiration", 
+            "status": "completed", 
+            "time": 1326603600, 
+            "value": {
+                "scalar": "17", 
+                "units": "breaths/min"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000071", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Respiration", 
+            "status": "completed", 
+            "time": 1307937600, 
+            "value": {
+                "scalar": "18", 
+                "units": "breaths/min"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000072", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Respiration", 
+            "status": "completed", 
+            "time": 1292389200, 
+            "value": {
+                "scalar": "20", 
+                "units": "breaths/min"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000073", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Respiration", 
+            "status": "completed", 
+            "time": 1289797200, 
+            "value": {
+                "scalar": "19", 
+                "units": "breaths/min"
+            }, 
+            "version": 1
+        }, 
+        {
+            "_id": "4f4e9fccb615219f0a000074", 
+            "_type": "LabResult", 
+            "codes": {
+                "SNOMED-CT": [
+                    "271649006"
+                ]
+            }, 
+            "description": "Respiration", 
+            "status": "completed", 
+            "time": 1280635200, 
+            "value": {
+                "scalar": "22", 
+                "units": "breaths/min"
+            }, 
+            "version": 1
+        } 
+    ]
+}
