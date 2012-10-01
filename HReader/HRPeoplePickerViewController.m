@@ -172,21 +172,20 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     
     // prepare variables
-    static NSPredicate *predicate = nil;
     static NSArray *descriptors = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        predicate = [NSCompoundPredicate orPredicateWithSubpredicates:@[
-                         [NSPredicate predicateWithFormat:@"firstName contains[cd] %@", searchText],
-                         [NSPredicate predicateWithFormat:@"lastName contains[cd] %@", searchText]
-                     ]];
         descriptors = @[
             [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES],
             [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES]
         ];
     });
     
-    // save
+    // perform search
+    NSPredicate *predicate = [NSCompoundPredicate orPredicateWithSubpredicates:@[
+                              [NSPredicate predicateWithFormat:@"firstName contains[cd] %@", searchText],
+                              [NSPredicate predicateWithFormat:@"lastName contains[cd] %@", searchText]
+                              ]];
     searchResults = [HRMPatient
                      allInContext:managedObjectContext
                      withPredicate:predicate
