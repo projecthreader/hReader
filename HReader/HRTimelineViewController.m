@@ -6,7 +6,7 @@
 //  Copyright (c) 2011 MITRE Corporation. All rights reserved.
 //
 
-#define HR_TIMELINE_XML 1
+#define HR_TIMELINE_XML 0
 #define HR_TIMELINE_JSON !HR_TIMELINE_XML
 
 #import <QuartzCore/QuartzCore.h>
@@ -22,7 +22,9 @@
 
 #import "DDXML.h"
 
-@implementation HRTimelineViewController
+@implementation HRTimelineViewController {
+    NSString *_viewName;
+}
 
 #pragma mark - object methods
 
@@ -30,6 +32,7 @@
     self = [super initWithCoder:coder];
     if (self) {
         self.title = @"Timeline";
+        _viewName = @"index.html";
         [[NSNotificationCenter defaultCenter]
          addObserver:self
          selector:@selector(reloadData)
@@ -53,9 +56,7 @@
         HRMPatient *patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
         self.patientImageView.image = [patient patientImage];
         self.nameLabel.text = [patient.compositeName uppercaseString];
-#if DEBUG
-        NSLog(@"%@", [patient timelineJSONPayload]);
-#endif
+        NSURL *URL = nil;
         
 #if HR_TIMELINE_XML
         NSURL *URL = [[[NSFileManager defaultManager]
@@ -80,12 +81,12 @@
         [self.webView loadRequest:request];
 #endif
 #if HR_TIMELINE_JSON
-        NSError *error = nil;
-        NSDictionary *dictionary = nil;
-        NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];
-        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        string = [NSString stringWithFormat:@"function(%@);", string];
-        [self.webView stringByEvaluatingJavaScriptFromString:string];
+        URL = [[NSBundle mainBundle]
+               URLForResource:[_viewName stringByDeletingPathExtension]
+               withExtension:[_viewName pathExtension]
+               subdirectory:@"timeline-angular/app"];
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+        [self.webView loadRequest:request];
 #endif
         
     }
@@ -124,16 +125,6 @@
         [self.patientImageView.superview addGestureRecognizer:gesture];
     }
     
-    // load html document
-#if HR_TIMELINE_JSON
-    NSURL *URL = [[NSBundle mainBundle]
-                  URLForResource:@"hReader"
-                  withExtension:@"html"
-                  subdirectory:@"timeline/hReader"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    [self.webView loadRequest:request];
-#endif
-    
 }
 
 - (void)viewDidUnload {
@@ -162,14 +153,11 @@
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+#if HR_TIMELINE_JSON
     NSURL *URL = [request URL];
-    NSDictionary *query = [HRAPIClient parametersFromQueryString:[URL query]];
-    if ([[URL scheme] isEqualToString:@"x-org-mitre-hreader"] &&
-        [[URL host] isEqualToString:@"timeline"] &&
-        [query objectForKey:@"date"]) {
-//        NSTimeInterval interval = [[query objectForKey:@"date"] doubleValue];
-        return NO;
-    }
+    NSString *file = [URL lastPathComponent];
+    _viewName = file;
+#endif
     return YES;
 }
 
