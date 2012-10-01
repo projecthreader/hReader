@@ -20,4 +20,9 @@
     return array;
 }
 
+- (NSArray *)hr_sortedArrayUsingKey:(NSString *)key ascending:(BOOL)ascending {
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:key ascending:ascending];
+    return [self sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];
+}
+
 @end

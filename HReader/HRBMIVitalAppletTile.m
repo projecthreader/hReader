@@ -15,7 +15,6 @@
 #import "HRMPatient.h"
 
 #import "NSDate+FormattedDate.h"
-#import "NSArray+Collect.h"
 
 @implementation HRBMIVitalAppletTile {
     NSArray *_entries;

@@ -15,8 +15,6 @@
 #import "HRImageAppletTile.h"
 #import "HRPeoplePickerViewController.h"
 
-#import "NSArray+Collect.h"
-
 #import "SVPanelViewController.h"
 
 @implementation HRDoctorsViewController {

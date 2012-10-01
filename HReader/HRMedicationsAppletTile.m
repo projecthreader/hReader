@@ -11,7 +11,6 @@
 #import "HRMEntry.h"
 #import "HRMPatient.h"
 
-#import "NSArray+Collect.h"
 #import "NSString+SentenceCapitalization.h"
 
 @implementation HRMedicationsAppletTile
@@ -20,8 +19,8 @@
     [super tileDidLoad];
     HRMPatient *patient = [self.userInfo objectForKey:@"__private_patient__"];
     NSArray *medications = patient.medications;
-    NSArray *nameLabels = [self.medicationLabels sortedArrayUsingKey:@"tag" ascending:YES];
-    NSArray *dosageLabels = [self.dosageLabels sortedArrayUsingKey:@"tag" ascending:YES];
+    NSArray *nameLabels = [self.medicationLabels hr_sortedArrayUsingKey:@"tag" ascending:YES];
+    NSArray *dosageLabels = [self.dosageLabels hr_sortedArrayUsingKey:@"tag" ascending:YES];
     NSUInteger medicationsCount = [medications count];
     NSUInteger labelCount = [nameLabels count];
     BOOL showCountLabel = (medicationsCount > labelCount);
