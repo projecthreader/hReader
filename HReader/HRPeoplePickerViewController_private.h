@@ -10,6 +10,18 @@
 
 @interface HRPeoplePickerViewController ()
 
+/*
+ 
+ 
+ 
+ */
++ (HRMPatient *)selectedPatientInContext:(NSManagedObjectContext *)context;
+
+/*
+ 
+ 
+ 
+ */
 + (void)setSelectedPatient:(HRMPatient *)patient;
 
 @end
