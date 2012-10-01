@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" ng-app="Timeline"  ng-controller="VitalsListCtrl">
+<html lang="en" ng-app="Timeline"  ng-controller="DayListCtrl">
 	<head>
 		<title ng-bind-template="{{query}}"></title>
 		<meta charset="utf-8">
@@ -202,15 +202,15 @@
 					<h2 class="span2">Result</h2>
 					<h2 class="span6">Trends</h2>
 			  	</div>
-				<div class="row data" ngChange:false ng-repeat="vital in vitals | orderBy:orderProp">
+				<div class="row data" ngChange:false ng-repeat="vital in vitals">
 					<div class="span4">
-						<h2>{{vitals.description}}</h2>		
+						<h2>{{vital.description}}</h2>		
 					</div>
 					<div class="span2"> 
-						<h2>{{vitals.value[0]}}</h2>{{vitals.units}}
+						<h2>{{vital.values[0]}}</h2>{{vital.units}}
 					</div>
 					<div class="span6 graph">		
-						<p><sparkline exp="data" class="sparkline">{{vitals.value.join(', ')}}</sparkline></p>
+						<p><sparkline exp="data" class="sparkline">{{vital.values.join(', ')}}</sparkline></p>
 					</div>
 				</div>
 			</article>

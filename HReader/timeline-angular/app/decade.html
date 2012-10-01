@@ -203,15 +203,15 @@
 					<h2 class="span2">Result</h2>
 					<h2 class="span6">Trends</h2>
 			  	</div>
-				<div class="row data" ngChange:false ng-repeat="vital in vitals | orderBy:orderProp">
+				<div class="row data" ngChange:false ng-repeat="vital in vitals">
 					<div class="span4">
-						<h2>{{data[0]}}</h2>		
+						<h2>{{vital.description}}</h2>		
 					</div>
 					<div class="span2"> 
-						<h2>{{vital[0]}}</h2>{{units}}
+						<h2>{{vital.values[0]}}</h2>{{vital.units}}
 					</div>
 					<div class="span6 graph">		
-						<p><sparkline exp="data" class="sparkline">{{vital.join(', ')}}</sparkline></p>
+						<p><sparkline exp="data" class="sparkline">{{vital.values.join(', ')}}</sparkline></p>
 					</div>
 				</div>
 			</article>
