@@ -31,7 +31,7 @@
     // set labels
     float latestValue = [[latest valueForKeyPath:@"value.scalar"] floatValue];
     self.leftValueLabel.text = [NSString stringWithFormat:@"%0.1f", latestValue];
-    self.leftValueLabel.textColor = ([self isValueNormal:latestValue]) ? [UIColor blackColor] : [HRConfig redColor];
+    self.leftValueLabel.textColor = ([self isValueNormal:latestValue] ? [UIColor blackColor] : [UIColor hr_redColor]);
     
     self.middleValueLabel.text = [latest.date shortStyleDate];
     self.rightValueLabel.text = [NSString stringWithFormat:@"%d%%-%d%%",
@@ -52,7 +52,7 @@
     [_entries enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
         double value = [[entry.value objectForKey:@"scalar"] doubleValue];
         BOOL isNormal = [self isValueNormal:value];
-        UIColor *color = isNormal ? [UIColor blackColor] : [HRConfig redColor];
+        UIColor *color = (isNormal ? [UIColor blackColor] : [UIColor hr_redColor]);
         NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSString stringWithFormat:@"%0.1f", value], @"detail",
                                     [entry.date mediumStyleDate], @"title",

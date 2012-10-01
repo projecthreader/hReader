@@ -18,7 +18,7 @@
 #import "DDXML.h"
 
 static NSString *HRMPatientSyncStatus = nil;
-NSString *HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncStatusDidChange";
+NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncStatusDidChange";
 
 @implementation HRMPatient
 
@@ -309,7 +309,7 @@ NSString *HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncStatusDidC
     return [UIImage imageNamed:[NSString stringWithFormat:@"UserImage-%@", self.serverID]];
 }
 
-- (DDXMLElement *)timelineXMLDocument {
+- (DDXMLElement *)timelineXMLPayload {
     
     // create root
     DDXMLElement *data = [DDXMLElement elementWithName:@"data"];
@@ -324,6 +324,88 @@ NSString *HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncStatusDidC
     
     // return
     return data;
+    
+}
+
+- (NSString *)timelineJSONPayload {
+
+    // type
+    static NSDictionary *types = nil;
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        types = @{
+            @(HRMEntryTypeAllergy) : @"allergies",
+            @(HRMEntryTypeCondition) : @"conditions",
+            @(HRMEntryTypeResult) : @"results",
+            @(HRMEntryTypeEncounter) : @"encounters",
+            @(HRMEntryTypeVitalSign) : @"vitals",
+            @(HRMEntryTypeImmunization) : @"immunizations",
+            @(HRMEntryTypeMedication) : @"medications",
+            @(HRMEntryTypeProcedure) : @"procedures"
+        };
+    });
+    
+    // gather entries
+    NSArray *entries = [HRMEntry
+                        allInContext:[self managedObjectContext]
+                        sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[entries count]];
+    [entries enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger idx, BOOL *stop) {
+        
+        // get scalar
+        id scalar = [entry.value objectForKey:@"scalar"];
+        if ([scalar respondsToSelector:@selector(floatValue)]) {
+            scalar = @([scalar floatValue]);
+        }
+        
+        // vital signs grouped by description
+        if ([entry.type isEqualToNumber:@(HRMEntryTypeVitalSign)]) {
+            NSMutableArray *array = [dictionary objectForKey:entry.desc];
+            if (array == nil) {
+                array = [NSMutableArray array];
+                [dictionary setObject:array forKey:entry.desc];
+            }
+            if (scalar) { [array addObject:scalar]; }
+        }
+        
+        // entries grouped by type
+        else {
+            
+            // get target array
+            NSString *type = [types objectForKey:entry.type];
+            NSMutableArray *array = [dictionary objectForKey:type];
+            if (array == nil) {
+                array = [NSMutableArray array];
+                [dictionary setObject:array forKey:type];
+            }
+            
+            // get date
+            NSDate *date = nil;
+            if (entry.date)             { date = entry.date; }
+            else if (entry.startDate)   { date = entry.startDate; }
+            else if (entry.endDate)     { date = entry.endDate; }
+            
+            // build payload
+            NSDictionary *dictionary = @{
+                @"type" : ([types objectForKey:entry.type] ?: @"unkonwn"),
+                @"description" : (entry.desc ?: [NSNull null]),
+                @"date" : @([date timeIntervalSince1970]),
+                @"measurement" : @{
+                    @"value" : (scalar ?: [NSNull null]),
+                    @"unit" : ([entry.value objectForKey:@"units"] ?: [NSNull null])
+                }
+            };
+            
+            // save
+            [array addObject:dictionary];
+            
+        }
+    }];
+    
+    // build json data
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:nil];
+    if (data) { return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]; }
+    else { return nil; }
     
 }
 

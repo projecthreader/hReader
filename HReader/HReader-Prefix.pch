@@ -11,6 +11,6 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
-    #import "HRConfig.h"
+    #import "hRreaderCategories.h"
     #import "TestFlight.h"
 #endif

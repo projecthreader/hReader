@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "PRMQViewController.h"
+#import "tbiTestMemoryViewController.h"
+#import "ResultViewController.h"
 
 #import <QuartzCore/QuartzCore.h> //for debugging only
 
@@ -25,6 +27,5 @@
 
 @property (retain, nonatomic) IBOutlet UILabel *finalScoreLabel;
 @property (retain, nonatomic) IBOutlet UILabel *PRMQScoreLabel;
-@property (retain, nonatomic) IBOutlet UILabel *timeLabel;
 
 @end

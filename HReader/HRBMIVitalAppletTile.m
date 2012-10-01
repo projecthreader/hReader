@@ -30,12 +30,12 @@
     
     // set labels
     float latestValue = [[latest valueForKeyPath:@"value.scalar"] floatValue];
-    self.leftValueLabel.textColor = ([self isValueNormal:latestValue]) ? [UIColor blackColor] : [HRConfig redColor];
+    self.leftValueLabel.textColor = ([self isValueNormal:latestValue]) ? [UIColor blackColor] : [UIColor hr_redColor];
     self.middleValueLabel.text = [latest.date shortStyleDate];
     
     HRSparkLineRange range;
     HRSparkLineLine *line = [[HRSparkLineLine alloc] init];
-    line.outOfRangeDotColor = [HRConfig redColor];
+    line.outOfRangeDotColor = [UIColor hr_redColor];
     line.weight = 4.0;
     line.points = [self dataForSparkLineView];
     
@@ -52,7 +52,7 @@
             self.rightValueLabel.textColor = [UIColor blackColor];
         }
         else {
-            self.rightValueLabel.textColor = [HRConfig redColor];
+            self.rightValueLabel.textColor = [UIColor hr_redColor];
         }
         
         range = HRMakeRange(25.0, 75.0 - 25.0);
@@ -63,7 +63,7 @@
         self.rightValueLabel.text = [NSString stringWithFormat:@"%0.0f-%0.0f", [self normalLow], [self normalHigh]];
         
         // display normal value
-        self.rightValueLabel.textColor = ([self isValueNormal:val]) ? [UIColor blackColor] : [HRConfig redColor];
+        self.rightValueLabel.textColor = ([self isValueNormal:val]) ? [UIColor blackColor] : [UIColor hr_redColor];
         
         range = HRMakeRange([self normalLow], [self normalHigh] - [self normalLow]);
     }
@@ -79,7 +79,7 @@
     [_entries enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(HRMEntry *entry, NSUInteger index, BOOL *stop) {
         double value = [[entry.value objectForKey:@"scalar"] doubleValue];
         BOOL isNormal = [self isValueNormal:value];
-        UIColor *color = isNormal ? [UIColor blackColor] : [HRConfig redColor];
+        UIColor *color = isNormal ? [UIColor blackColor] : [UIColor hr_redColor];
         NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSString stringWithFormat:@"%0.1f", value], @"detail",
                                     [entry.date mediumStyleDate], @"title",

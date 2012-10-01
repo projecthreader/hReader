@@ -16,13 +16,6 @@
 
 /*
  
- Decode the given query string into a set of parameters.
- 
- */
-+ (NSDictionary *)parametersFromQueryString:(NSString *)string;
-
-/*
- 
  Build the authorization request that is presented to the user through a web
  view.
  
