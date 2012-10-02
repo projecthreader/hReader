@@ -534,7 +534,7 @@
 		3BD16EE514E1B5EE00F2249E /* GCManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCManagedObject.m; sourceTree = "<group>"; };
 		3BD16F0314E1C5B700F2249E /* HRMPatient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMPatient.h; sourceTree = "<group>"; };
 		3BD16F0414E1C5B700F2249E /* HRMPatient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMPatient.m; sourceTree = "<group>"; };
-		3BD5F08F15EE767200333320 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		3BD5F08F15EE767200333320 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; wrapsLines = 1; };
 		3BD5F09015EE772300333320 /* sqlcipher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = sqlcipher.xcodeproj; path = vendor/sqlcipher/sqlcipher.xcodeproj; sourceTree = "<group>"; };
 		3BD5F09A15EE772700333320 /* openssl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openssl.xcodeproj; path = vendor/openssl/openssl.xcodeproj; sourceTree = "<group>"; };
 		3BD5F0AD15EE8F6F00333320 /* CMDEncryptedSQLiteStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDEncryptedSQLiteStore.h; sourceTree = "<group>"; };
