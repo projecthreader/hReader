@@ -2,7 +2,7 @@
 //  TestViewController.m
 //  HReader
 //
-//  Created by Saltzman, Shep on 8/17/12.
+//  Created by Saltzman, Shep on 8/17/12.//
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
