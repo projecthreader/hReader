@@ -79,7 +79,7 @@
         if ([data length]) {
             NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc]
                                            initWithURL:[[self request] URL]
-                                           MIMEType:@"text/json"
+                                           MIMEType:@"application/json"
                                            expectedContentLength:[data length]
                                            textEncodingName:nil];
             [client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
