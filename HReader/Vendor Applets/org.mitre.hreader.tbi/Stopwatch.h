@@ -10,4 +10,13 @@
 
 @interface Stopwatch : NSObject
 
+- (Stopwatch *) init;
+
+- (void) start;
+- (void) checkpoint;
+- (void) stop;
+
+- (NSString *) description;
+
+
 @end
