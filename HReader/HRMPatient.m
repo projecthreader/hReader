@@ -349,7 +349,7 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     NSArray *entries = [HRMEntry
                         allInContext:[self managedObjectContext]
                         withPredicate:[NSPredicate predicateWithFormat:@"type != %@", @(HRMEntryTypeVitalSign)]
-                        sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]];
+                        sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     [entries enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger idx, BOOL *stop) {
         
@@ -404,7 +404,7 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     NSArray *entries = [HRMEntry
                         allInContext:[self managedObjectContext]
                         withPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:predicates]
-                        sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]];
+                        sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
     [entries enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger idx, BOOL *stop) {
         
         NSDictionary *value = entry.value;
