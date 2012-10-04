@@ -22,8 +22,28 @@
 
 #import "DDXML.h"
 
-@implementation HRTimelineViewController {
-    NSString *_viewName;
+@implementation HRTimelineViewController
+
+#pragma mark - class methods
+
+- (NSString *)viewName {
+    NSInteger index = self.scopeSelector.selectedSegmentIndex;
+    if (index == 0) {
+        return @"decade.html";
+    }
+    else if (index == 1) {
+        return @"year.html";
+    }
+    else if (index == 2) {
+        return @"month.html";
+    }
+    else if (index == 3) {
+        return @"week.html";
+    }
+    else if (index == 4) {
+        return @"index.html";
+    }
+    return nil;
 }
 
 #pragma mark - object methods
@@ -32,7 +52,6 @@
     self = [super initWithCoder:coder];
     if (self) {
         self.title = @"Timeline";
-        _viewName = @"index.html";
         [[NSNotificationCenter defaultCenter]
          addObserver:self
          selector:@selector(reloadData)
@@ -81,15 +100,20 @@
         [self.webView loadRequest:request];
 #endif
 #if HR_TIMELINE_JSON
+        NSString *viewName = [self viewName];
         URL = [[NSBundle mainBundle]
-               URLForResource:[_viewName stringByDeletingPathExtension]
-               withExtension:[_viewName pathExtension]
+               URLForResource:[viewName stringByDeletingPathExtension]
+               withExtension:[viewName pathExtension]
                subdirectory:@"timeline-angular/app"];
         NSURLRequest *request = [NSURLRequest requestWithURL:URL];
         [self.webView loadRequest:request];
 #endif
         
     }
+}
+
+- (IBAction)scopeSelectorValueDidChange:(UISegmentedControl *)sender {
+    [self reloadData];
 }
 
 #pragma mark - view lifecycle
@@ -154,9 +178,9 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
 #if HR_TIMELINE_JSON
-    NSURL *URL = [request URL];
-    NSString *file = [URL lastPathComponent];
-    _viewName = file;
+//    NSURL *URL = [request URL];
+//    NSString *file = [URL lastPathComponent];
+//    _viewName = file;
 #endif
     return YES;
 }

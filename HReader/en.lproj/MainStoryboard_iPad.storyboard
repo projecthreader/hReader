@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11E53" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="YyO-eZ-YiQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11G56" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="YyO-eZ-YiQ">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
         <!--Applet Configuration View Controller - Applets-->
@@ -669,6 +669,20 @@
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="4" id="vVR-Rp-fdq">
+                                        <rect key="frame" x="604" y="156" width="400" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="Decade"/>
+                                            <segment title="Year"/>
+                                            <segment title="Month"/>
+                                            <segment title="Week"/>
+                                            <segment title="Day"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="scopeSelectorValueDidChange:" destination="QXE-Hg-Wyh" eventType="valueChanged" id="zXP-Bo-k1e"/>
+                                        </connections>
+                                    </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -682,6 +696,7 @@
                         <outlet property="headerView" destination="UtL-in-pC5" id="awe-p1-g0n"/>
                         <outlet property="nameLabel" destination="BKo-0p-ryd" id="2Gk-8t-x8M"/>
                         <outlet property="patientImageView" destination="61A-C8-5PC" id="cQS-HC-Upx"/>
+                        <outlet property="scopeSelector" destination="vVR-Rp-fdq" id="Srz-Z7-9O0"/>
                         <outlet property="webView" destination="XBs-eI-NA5" id="g0K-Ny-g2N"/>
                     </connections>
                 </viewController>
@@ -969,6 +984,100 @@
         <image name="chevron.png" width="25" height="25"/>
         <image name="people-picker.png" width="24" height="17"/>
     </resources>
+    <classes>
+        <class className="HRAboutTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRAboutTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="done"/>
+                <relationship kind="outlet" name="buildDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="versionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="HRAppletConfigurationViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRAppletConfigurationViewController.h"/>
+        </class>
+        <class className="HRDoctorsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRDoctorsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="gridTableView" candidateClass="HRGridTableView"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="patientImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="HRGridTableView" superclassName="UITableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRGridTableView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="gridViewDataSource"/>
+                <relationship kind="outlet" name="gridViewDelegate"/>
+            </relationships>
+        </class>
+        <class className="HRPatientSummaryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRPatientSummaryViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="advanceDirectivesLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="allergiesLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="conditionsContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="dateOfBirthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dateOfBirthTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="diagnosisDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="diagnosisLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventsContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="followUpAppointmentDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="followUpAppointmentNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="functionalStatusDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="functionalStatusProblemLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="functionalStatusStatusLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="functionalStatusTypeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="gridView" candidateClass="HRGridTableView"/>
+                <relationship kind="outlet" name="headerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="medicationRefillDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="medicationRefillNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="patientImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="patientNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="planOfCareLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pulseDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pulseImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="pulseLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pulseNormalLabel" candidateClass="UILabel"/>
+                <relationship kind="outletCollection" name="conditionDateLabels" candidateClass="UILabel"/>
+                <relationship kind="outletCollection" name="conditionNameLabels" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="HRPeoplePickerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRPeoplePickerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showManageFamilyInterface:"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="HRRootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRRootViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="applets:"/>
+                <relationship kind="action" name="people:"/>
+            </relationships>
+        </class>
+        <class className="HRTimelineViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRTimelineViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="scopeSelectorValueDidChange:" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="headerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="patientImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scopeSelector" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="SVPanelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SVPanelViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="leftAccessoryViewController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="mainViewController" candidateClass="UIViewController"/>
+                <relationship kind="outlet" name="rightAccessoryViewController" candidateClass="UIViewController"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation" orientation="landscapeRight"/>

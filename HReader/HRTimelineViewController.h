@@ -14,5 +14,8 @@
 @property (nonatomic, weak) IBOutlet UIView *headerView;
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *patientImageView;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *scopeSelector;
+
+- (IBAction)scopeSelectorValueDidChange:(UISegmentedControl *)sender;
 
 @end
