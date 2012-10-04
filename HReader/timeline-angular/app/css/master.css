@@ -4435,13 +4435,10 @@ div.ui-slider {
   background-color: #fff;
   margin-bottom: 20px; }
 
-.data {
-  background-colro: #fff; }
-
 .green {
   border: 1px solid #888888; }
 
-.titles .span1 {
+.titles .span1, .title .span4 {
   position: relative;
   bottom: 0; }
 
@@ -4483,18 +4480,48 @@ hr {
 .row {
   vertical-align: baseline; }
 
+h1 {
+  font-size: 60px;
+  font-weight: 600;
+  color: black;
+  text-transform: uppercase; }
+
+h2 {
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #AAAAAA; }
+
+h3 {
+  font-size: 17px;
+  color: #AAAAAA;
+  text-transform: uppercase;
+  font-weight: 200; }
+
+h4, p {
+  font-size: 17px;
+  font-weight: bold;
+  color: black; }
+
+h1, h4, p {
+  vertical-align: baseline;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 60px; }
+
+h2, h3, .row .span1 {
+  line-height: 40px;
+  vertical-align: baseline;
+  margin-top: 0;
+  margin-bottom: 0; }
+
+.row .span1 {
+  margin-top: 0;
+  margin-bottom: 0; }
+
 h1, h2, h3 {
   display: inline-block;
   vertical-align: baseline; }
-
-h1 {
-  color: #888;
-  font-weight: 100;
-  text-transform: uppercase;
-  margin-bottom: 20px; }
-
-h2 {
-  font-weight: 800; }
 
 .name {
   font-weight: bold;
@@ -4507,18 +4534,6 @@ svg {
   fill: none;
   stroke: #000;
   stroke-width: 2px; }
-
-.titles h2 {
-  font-weight: 200;
-  text-transform: uppercase; }
-
-h2 {
-  overflow: hidden;
-  height: 75px;
-  line: 56px; }
-
-.span2 h2 {
-  font-size: 3em; }
 
 .current-date {
   font-size: 2.5em;
@@ -6653,9 +6668,6 @@ div.wijmo-wijmenu .wijmo-wijmenu-child .wijmo-wijmenu-text {
 
 header {
   margin-bottom: 20px; }
-
-.titles .span1 {
-  margin-top: 13px; }
 
 li.current-date {
   padding-left: 20px;

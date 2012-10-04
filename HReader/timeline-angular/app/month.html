@@ -47,41 +47,19 @@
 		</script>
 	</head>
 	<body >
-		<header>
-			<div id="time" class="row">
-				<span id="MyTab" class="row btn-group span6">
-					<a href="decade.html" class="btn" data-toggle="tab">Decade</a>
-					<a href="year.html" class="btn" data-toggle="tab">Year</a>
-					<a href="month.html" class="btn active"  data-toggle="tab">Month</a>
-					<a href="week.html" class="btn" data-toggle="tab">Week</a>
-					<a href="index.html" class="btn" data-toggle="tab">Day</a>
-				</span>
-				<ul class="row pager ng-controller="time" span5 offset2">
-					<div class="row">
-						<li class="previous">
-							<a class="older" ng-click="yesterday()">&larr; Older</a>
-						</li>
-						<li class="current-date">This Month</li>
-						<li class="next">
-    					<a class="newer" href="#">Newer &rarr;</a>
-  					</li>
-  				</div>
-				</ul>
-			</div>
-		</header>
 		<section class="well">
 			<article>
 				<div class="titles row">
-					<h1 class="span3">Encounter</h1>
+					<h2 class="span3">Encounter</h2>
 					<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
-					<h2 class="span2">Type</h2>
-					<h2 class="span1">Edit</h2>
-					<h2 class="span3">Week1</h2>
-					<h2 class="span2">Week4</h2>
+					<h3 class="span2">Type</h3>
+					<h3 class="span1">Edit</h3>
+					<h3 class="span3">Week1</h3>
+					<h3 class="span2">Week4</h3>
 				</div>
 				<div class="row">
-					<h2 class="titles span4">{{encounter}}</h2>
-					<p class="span2">{{details}}</p>
+					<h4 class="titles span4">Outpatient Visit*</h4>
+					<p class="span2">PCP*</p>
 					<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span>
 					<div class="progress schedule span5">
 						<div class="span1">
@@ -99,16 +77,16 @@
 			<hr>
 			<article>
 				<div class="titles row">
-					<h1 class="span3">Prescription</h1>
+					<h2 class="span3">Prescription</h2>
 					<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
-					<h2 class="span2"></h2>
-					<h2 class="span1">Edit</h2>
-					<h2 class="span3">Week1</h2>
-					<h2 class="span2">Week4</h2>
+					<h3 class="span2"></h3>
+					<h3 class="span1">Edit</h3>
+					<h3 class="span3">Week1</h3>
+					<h3 class="span2">Week4</h3>
 				</div>
 				<div class="row">
-					<h2 class="titles span4">{{medications}}</h2>
-					<p class="span2">{{instructions}}</p>
+					<h4 class="titles span4">Medications*</h4>
+					<p class="span2">Instructions*</p>
 					<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span>
 					<div class="progress schedule span5">
 						<div class="span1">
@@ -221,20 +199,20 @@
 	 -->
 			<article class="vitals">
 				<div class="row titles">
-					<h1 class="titles span3">Vital Trends</h1>
+					<h2 class="titles span3">Vital Trends</h2>
 					<span class="span1">
 						<a class="btn" data-toggle="dropdown">
 						<i class="icon-plus"></i>
 						</a></span>
-					<h2 class="span2">Result</h2>
-					<h2 class="span6">Trends</h2>
+					<h3 class="span2">Result</h3>
+					<h3 class="span6">Trends</h3>
 			  	</div>
 				<div class="row data" ngChange:false ng-repeat="vital in vitals">
 					<div class="span4">
-						<h2>{{vital.description}}</h2>		
+						<h4>{{vital.description}}</h4>		
 					</div>
 					<div class="span2"> 
-						<h2>{{vital.values[0]}}</h2>{{vital.units}}
+						<h1>{{vital.values[vital.values.length-1]}}</h1>{{vital.units}}
 					</div>
 					<div class="span6 graph">		
 						<p><sparkline exp="data" class="sparkline">{{vital.values.join(', ')}}</sparkline></p>
