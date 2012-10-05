@@ -149,19 +149,9 @@
         [self.patientImageView.superview addGestureRecognizer:gesture];
     }
     
-}
-
-- (void)viewDidUnload {
-    self.headerView = nil;
-    self.webView = nil;
-    self.patientImageView = nil;
-    self.nameLabel = nil;
-    [super viewDidUnload];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+    // reload
     [self reloadData];
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -174,15 +164,6 @@
     if (gesture.state == UIGestureRecognizerStateRecognized) {
         [(id)self.panelViewController.leftAccessoryViewController selectNextPatient];
     }
-}
-
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-#if HR_TIMELINE_JSON
-//    NSURL *URL = [request URL];
-//    NSString *file = [URL lastPathComponent];
-//    _viewName = file;
-#endif
-    return YES;
 }
 
 @end
