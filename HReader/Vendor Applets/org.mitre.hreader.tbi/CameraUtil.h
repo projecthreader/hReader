@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CameraUtil : NSObject
+@interface CameraUtil : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+
+-(IBAction)useCamera: (id) sender;
+-(IBAction)useCamerRoll:(id)sender;
++(void)saveImage:(UIImage*)image;
++(NSArray*)getAllImages;
 
 @end

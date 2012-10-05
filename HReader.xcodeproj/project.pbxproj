@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06FD2AF81610BE55004A54C1 /* CameraUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD2AF71610BE55004A54C1 /* CameraUtil.m */; };
+		06FD2B071610D6A9004A54C1 /* TBIPages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06FD2B061610D6A9004A54C1 /* TBIPages.storyboard */; };
+		06FD2B0A1610D9AE004A54C1 /* SpeakPictureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FD2B091610D9AE004A54C1 /* SpeakPictureType.m */; };
+		06FD2B0C1611D4FA004A54C1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FD2B0B1611D4FA004A54C1 /* MobileCoreServices.framework */; };
 		3B001D3E157519DB00762FB0 /* InitialSetup_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B001D3D157519DB00762FB0 /* InitialSetup_iPad.storyboard */; };
 		3B001D4315751D0300762FB0 /* HRPeopleSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B001D4215751D0300762FB0 /* HRPeopleSetupViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B001D46157522C300762FB0 /* HRPeopleSetupPlaceHolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B001D45157522C300762FB0 /* HRPeopleSetupPlaceHolderView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -314,6 +318,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06FD2AF61610BE55004A54C1 /* CameraUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraUtil.h; sourceTree = "<group>"; };
+		06FD2AF71610BE55004A54C1 /* CameraUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraUtil.m; sourceTree = "<group>"; };
+		06FD2B061610D6A9004A54C1 /* TBIPages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TBIPages.storyboard; sourceTree = "<group>"; };
+		06FD2B081610D9AD004A54C1 /* SpeakPictureType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeakPictureType.h; sourceTree = "<group>"; };
+		06FD2B091610D9AE004A54C1 /* SpeakPictureType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeakPictureType.m; sourceTree = "<group>"; };
+		06FD2B0B1611D4FA004A54C1 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3B001D3D157519DB00762FB0 /* InitialSetup_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InitialSetup_iPad.storyboard; sourceTree = "<group>"; };
 		3B001D4115751D0300762FB0 /* HRPeopleSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPeopleSetupViewController.h; sourceTree = "<group>"; };
 		3B001D4215751D0300762FB0 /* HRPeopleSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeopleSetupViewController.m; sourceTree = "<group>"; };
@@ -706,6 +716,7 @@
 				3BA529ED1594AF400011E246 /* libxml2.dylib in Frameworks */,
 				945286B0155844C600CF5EA3 /* MessageUI.framework in Frameworks */,
 				94F871F41535D9F60018AF13 /* libz.dylib in Frameworks */,
+				06FD2B0C1611D4FA004A54C1 /* MobileCoreServices.framework in Frameworks */,
 				3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */,
 				3B04A56914E06A3A00AD91F9 /* Security.framework in Frameworks */,
 				947FCE5914B4D7E400C716FD /* AudioToolbox.framework in Frameworks */,
@@ -719,6 +730,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06FD2AF51610BCC4004A54C1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				06FD2AF61610BE55004A54C1 /* CameraUtil.h */,
+				06FD2AF71610BE55004A54C1 /* CameraUtil.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		06FD2B0D1612144A004A54C1 /* TaskMaker */ = {
+			isa = PBXGroup;
+			children = (
+				06FD2B081610D9AD004A54C1 /* SpeakPictureType.h */,
+				06FD2B091610D9AE004A54C1 /* SpeakPictureType.m */,
+				06FD2B061610D6A9004A54C1 /* TBIPages.storyboard */,
+			);
+			name = TaskMaker;
+			sourceTree = "<group>";
+		};
 		3B001D3F15751B0D00762FB0 /* App Delegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -938,6 +968,8 @@
 				3BA11FD015C0608200ABB012 /* TBITrackerLearn.h */,
 				3BA11FD115C0608200ABB012 /* TBITrackerLearn.m */,
 				3BA11FD215C0608200ABB012 /* TBITrackerLearn.xib */,
+				06FD2B0D1612144A004A54C1 /* TaskMaker */,
+				06FD2AF51610BCC4004A54C1 /* Utils */,
 				D8665A5B16025B98002CD855 /* Audio */,
 				3BA11FA115C0608200ABB012 /* Images */,
 			);
@@ -1108,6 +1140,7 @@
 		941DB09D1471B32D00A96B8B = {
 			isa = PBXGroup;
 			children = (
+				06FD2B0B1611D4FA004A54C1 /* MobileCoreServices.framework */,
 				3BD5F09A15EE772700333320 /* openssl.xcodeproj */,
 				3BD5F09015EE772300333320 /* sqlcipher.xcodeproj */,
 				3BD5F08F15EE767200333320 /* README.md */,
@@ -1754,6 +1787,7 @@
 				D8665A58160230D5002CD855 /* tasks-pressed.png in Resources */,
 				D8665A5A16023452002CD855 /* home_background.png in Resources */,
 				D8665A5D16025BB1002CD855 /* Memory_List1.m4a in Resources */,
+				06FD2B071610D6A9004A54C1 /* TBIPages.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1869,6 +1903,8 @@
 				3B2405351608E707007E043E /* UIColor+hReaderAdditions.m in Sources */,
 				3B2405391608F5B2007E043E /* NSArray+hReaderAdditions.m in Sources */,
 				3B24053C1608F644007E043E /* NSSet+hReaderAdditions.m in Sources */,
+				06FD2AF81610BE55004A54C1 /* CameraUtil.m in Sources */,
+				06FD2B0A1610D9AE004A54C1 /* SpeakPictureType.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

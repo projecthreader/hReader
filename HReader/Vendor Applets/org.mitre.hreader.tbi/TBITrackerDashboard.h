@@ -12,4 +12,6 @@
 
 - (IBAction) mocaButtonTap: (id) sender;
 
+- (IBAction) taskTap: (id) sender;
+
 @end

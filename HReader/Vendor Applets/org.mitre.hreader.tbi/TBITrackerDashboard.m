@@ -48,6 +48,13 @@
 	return YES;
 }
 
+- (IBAction) taskTap:(id)sender {
+    UIStoryboard *tbiTask = [UIStoryboard storyboardWithName:@"TBIPages" bundle:nil];
+    UIViewController *controller = [tbiTask instantiateInitialViewController];
+    controller.title = @"Tasks";
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 - (IBAction) mocaButtonTap: (id) sender {
     //Note sender is the button
     
