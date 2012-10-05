@@ -174,7 +174,8 @@
         
         // check for accounts
         if ([hosts count] == 0) {
-            HRAPIClient *client = [HRAPIClient clientWithHost:@"growing-spring-4857.herokuapp.com"];
+//            HRAPIClient *client = [HRAPIClient clientWithHost:@"growing-spring-4857.herokuapp.com"];
+            HRAPIClient *client = [HRAPIClient clientWithHost:@"hreader-rhex-staging.herokuapp.com"];
             HRRHExLoginViewController *controller = [HRRHExLoginViewController loginViewControllerForClient:client];
             controller.navigationItem.hidesBackButton = YES;
             controller.target = self;

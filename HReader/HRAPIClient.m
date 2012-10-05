@@ -15,9 +15,9 @@
 #import "SSKeychain.h"
 
 // oauth client resources
-static NSString * const HROAuthClientIdentifier = @"c367aa7b8c87ce239981140511a7d158";
-static NSString * const HROAuthClientSecret = @"bc121c529fcd1689704a24460b91f98b";
-static NSString * const HROAuthKeychainService = @"org.hreader.oauth.2";
+static NSString * const HROAuthClientIdentifier = @"c0b6b6139ff056f343f05c58c5b90a00";
+static NSString * const HROAuthClientSecret = @"784c95bb6fc64143ea116966db065f55";
+static NSString * const HROAuthKeychainService = @"org.hreader.oauth.2.staging";
 static NSMutableDictionary *allClients = nil;
 
 //
