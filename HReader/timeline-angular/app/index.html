@@ -58,8 +58,8 @@
 					<h3 class="span1">PM</h3>
 				</div>
 				<div class="row">
-					<h4 class="titles span4">Med1</h4>
-					<h4 class="span2">Take 3x Daily</h4>
+					<h4 class="titles span4">Med1*</h4>
+					<h4 class="span2">Take 3x Daily*</h4>
 					<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span>
 					<div class="progress schedule span5">
 						<div class="span1">
@@ -185,7 +185,7 @@
 						<h4>{{vital.description}}</h4>		
 					</div>
 					<div class="span2"> 
-						<h1>{{vital.values[vital.values.length-1]}}</h1>{{vital.units}}
+						<h1>{{vital.values[vital.values.length-1]| number:0}}</h1>{{vital.units}}
 					</div>
 					<div class="span6 graph">		
 						<p><sparkline exp="data" class="sparkline">{{vital.values.join(', ')}}</sparkline></p>
