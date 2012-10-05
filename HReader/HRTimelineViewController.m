@@ -128,6 +128,7 @@
     layer.shadowOffset = CGSizeMake(0.0, 0.0);
     layer.shadowRadius = 5.0;
     layer.shouldRasterize = YES;
+    layer.rasterizationScale = [[UIScreen mainScreen] scale];
     [self.view bringSubviewToFront:self.headerView];
     
     // patient image shadow
