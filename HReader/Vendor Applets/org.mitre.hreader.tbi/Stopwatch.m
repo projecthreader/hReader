@@ -8,59 +8,71 @@
 
 #import "Stopwatch.h"
 
-NSCalendar *calendar;
 bool running;
-NSDate *startDate;
+NSDate *startTime;
+NSDate *stopTime;
+NSMutableArray *stopTimes;
+unsigned int unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit; 
 
 @implementation Stopwatch
 
 - (Stopwatch *) init{
-    calendar = [NSCalendar currentCalendar];
+    NSLog(@"initializing Stopwatch");
+    //calendar = [NSCalendar currentCalendar];
+    //[calendar retain]; //this is necessary, but there's probably a better way
     running = NO;
     return [Stopwatch alloc];
 }
 
 - (void) start{
+    NSLog(@"starting Stopwatch");
     if(running){
-        NSLog(@"already running"); //should this be an error?
+        NSLog(@"already running"); //should this be an error? or perhaps restart the stopwatch?
         return;
     }
-    startDate = [NSDate new];
+    else{
+        startTime = [NSDate new];
+        running = YES;
+        stopTime = nil;
+    }
 }
 
 - (void) checkpoint{}
-- (void) stop{}
+
+- (void) stop{
+    if(running){
+        stopTime = [NSDate new];
+        running = NO;
+    }
+    else{
+        NSLog(@"wasn't running"); //throw error?
+    }
+}
 
 - (NSString *) description{
-    return @"Stopwatch object";
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *conversionInfo;
+    if (!startTime){
+        return @"0 seconds";
+    }
+    if (stopTime){
+        conversionInfo = [calendar components:unitFlags fromDate:startTime toDate:stopTime options:0];
+    }
+    else{
+        conversionInfo = [calendar components:unitFlags fromDate:startTime toDate:[[NSDate alloc] init] options:0];
+    }
+    if ([conversionInfo hour] > 0){
+        return [NSString stringWithFormat:@"%d hours, %d minutes, %d seconds", [conversionInfo hour], [conversionInfo minute], [conversionInfo second]];
+    }
+    else{
+        return [NSString stringWithFormat:@"%d minutes, %d seconds", [conversionInfo minute], [conversionInfo second]];
+    }
 }
 
 - (void) dealloc {
-    [calendar dealloc];
-    [startDate dealloc];
+    [startTime dealloc];
+    [stopTime dealloc];
     [super dealloc];
 }
 
-/*
-
- 
- NSDate *date1 = [[NSDate alloc] init];
- 
- NSDate *date2 = [[NSDate alloc] initWithTimeInterval:theTimeInterval sinceDate:date1];
- 
- // Get conversion to months, days, hours, minutes
- 
- unsigned int unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSDayCalendarUnit | NSMonthCalendarUnit;
- 
- NSDateComponents *conversionInfo = [sysCalendar components:unitFlags fromDate:date1  toDate:date2  options:0];
- 
- 
- NSLog(@"Conversion: %dmin %dhours %ddays %dmoths",[conversionInfo minute], [conversionInfo hour], [conversionInfo day], [conversionInfo month]);
- 
- 
- [date1 release];
- 
- 
- [date2 release];
- */
 @end

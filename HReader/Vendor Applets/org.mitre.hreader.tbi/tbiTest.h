@@ -10,6 +10,7 @@
 #import "PRMQViewController.h"
 #import "tbiTestMemoryViewController.h"
 #import "ResultViewController.h"
+#import "Stopwatch.h"
 
 #import <QuartzCore/QuartzCore.h> //for debugging only
 
