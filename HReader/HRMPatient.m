@@ -409,8 +409,8 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
         
         NSDictionary *value = entry.value;
         id scalar = [value objectForKey:@"scalar"];
-        if ([scalar respondsToSelector:@selector(floatValue)]) {
-            scalar = @([scalar floatValue]);
+        if ([scalar respondsToSelector:@selector(integerValue)]) {
+            scalar = @([scalar integerValue]);
         }
         
         // get target collection
