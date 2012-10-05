@@ -25,4 +25,15 @@
     return [self sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];
 }
 
+- (NSArray *)hr_flatten {
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:[self count]];
+    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isKindOfClass:[NSArray class]]) {
+            [array addObjectsFromArray:[obj hr_flatten]];
+        }
+        else { [array addObject:obj]; }
+    }];
+    return array;
+}
+
 @end

@@ -14,4 +14,6 @@
 
 - (NSArray *)hr_sortedArrayUsingKey:(NSString *)key ascending:(BOOL)ascending;
 
+- (NSArray *)hr_flatten;
+
 @end

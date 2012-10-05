@@ -391,12 +391,14 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     }];
     
     // build json data
-    dictionary[@"vitals"] = [[self timelineVitalsCategorizedByDescriptionWithPredicate:predicate] allValues];
+    dictionary[@"vitals"] = [self timelineVitalsCategorizedByDescriptionWithPredicate:predicate];
     return [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:error];
     
 }
 
-- (NSDictionary *)timelineVitalsCategorizedByDescriptionWithPredicate:(NSPredicate *)predicate {
+- (NSArray *)timelineVitalsCategorizedByDescriptionWithPredicate:(NSPredicate *)predicate {
+    
+    // gather vitals
     NSMutableDictionary *vitals = [NSMutableDictionary dictionary];
     NSMutableArray *predicates = [NSMutableArray array];
     [predicates addObject:[NSPredicate predicateWithFormat:@"type = %@", @(HRMEntryTypeVitalSign)]];
@@ -428,7 +430,22 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
         if (scalar) { [values addObject:scalar]; }
         
     }];
-    return vitals;
+    
+    // sort and group blood pressure
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"description" ascending:YES];
+    NSMutableArray *wrappers = [[vitals allValues] mutableCopy];
+    NSIndexSet *set = [wrappers indexesOfObjectsPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString *description = [obj objectForKey:@"description"];
+        return (BOOL)([description rangeOfString:@"blood pressure" options:NSCaseInsensitiveSearch].location != NSNotFound);
+    }];
+    NSArray *bloodPressure = [wrappers objectsAtIndexes:set];
+    bloodPressure = [bloodPressure hr_sortedArrayUsingKey:@"description" ascending:NO];
+    [wrappers removeObjectsAtIndexes:set];
+    [wrappers sortUsingDescriptors:@[ sort ]];
+    [wrappers addObject:bloodPressure];
+    wrappers = (id)[wrappers hr_flatten];
+    return wrappers;
+    
 }
 
 - (NSURL *)C32HTMLURL {
