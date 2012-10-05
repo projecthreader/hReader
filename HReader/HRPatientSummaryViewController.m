@@ -19,7 +19,6 @@
 #import "HRMEntry.h"
 
 #import "NSDate+FormattedDate.h"
-#import "NSArray+Collect.h"
 #import "NSString+SentenceCapitalization.h"
 
 #import "SVPanelViewController.h"
@@ -147,8 +146,8 @@
         // conditions
         {
             NSArray *conditions = [patient conditions];
-            NSArray *nameLabels = [self.conditionNameLabels sortedArrayUsingKey:@"tag" ascending:YES];
-            NSArray *dateLabels = [self.conditionDateLabels sortedArrayUsingKey:@"tag" ascending:YES];
+            NSArray *nameLabels = [self.conditionNameLabels hr_sortedArrayUsingKey:@"tag" ascending:YES];
+            NSArray *dateLabels = [self.conditionDateLabels hr_sortedArrayUsingKey:@"tag" ascending:YES];
             NSUInteger conditionsCount = [conditions count];
             NSUInteger labelCount = [nameLabels count];
             BOOL showCountLabel = (conditionsCount > labelCount);

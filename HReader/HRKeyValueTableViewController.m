@@ -8,55 +8,46 @@
 
 #import "HRKeyValueTableViewController.h"
 
-
 @implementation HRKeyValueTableViewController {
-    NSArray *__dataPoints;
+    NSArray *_dataPoints;
 }
+
+#pragma mark - object methods
 
 - (id)initWithDataPoints:(NSArray *)dataPoints {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
-        __dataPoints = [dataPoints copy];
+        _dataPoints = [dataPoints copy];
     }
-    
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.tableView.allowsSelection = NO;
 }
 
-#pragma mark - Table view data source
+#pragma mark - table view
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [__dataPoints count];
+    return [_dataPoints count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
+    static NSString * const identifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
     }
-    
-    NSDictionary *dataPoint = [__dataPoints objectAtIndex:indexPath.row];
-    cell.textLabel.text = [dataPoint objectForKey:@"title"];
-    cell.detailTextLabel.text = [dataPoint objectForKey:@"detail"];
-    cell.detailTextLabel.textColor = [dataPoint objectForKey:@"detail_color"];
-    
+    NSDictionary *point = [_dataPoints objectAtIndex:indexPath.row];
+    cell.textLabel.text = [point objectForKey:@"title"];
+    cell.detailTextLabel.text = [point objectForKey:@"detail"];
+    cell.detailTextLabel.textColor = [point objectForKey:@"detail_color"];
     return cell;
-}
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 @end

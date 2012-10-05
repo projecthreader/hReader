@@ -15,7 +15,6 @@
 #import "HRKeyValueTableViewController.h"
 
 #import "NSDate+FormattedDate.h"
-#import "NSArray+Collect.h"
 
 @implementation HRBloodPressureAppletTile {
     NSArray *_systolicDataPoints;

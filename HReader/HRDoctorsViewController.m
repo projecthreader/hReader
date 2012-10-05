@@ -15,8 +15,6 @@
 #import "HRImageAppletTile.h"
 #import "HRPeoplePickerViewController.h"
 
-#import "NSArray+Collect.h"
-
 #import "SVPanelViewController.h"
 
 @implementation HRDoctorsViewController {
@@ -113,7 +111,7 @@
     // load mockup tiles
     NSMutableArray *views = [[NSMutableArray alloc] init];
     for (int i = 0; i < 6; i++) {
-        NSString *imagePrefix = [NSString stringWithFormat:@"%@-%d", [patient initials], i];
+        NSString *imagePrefix = [NSString stringWithFormat:@"%@-%d", [[patient initials] lowercaseString], i];
         NSDictionary *userInfo = @{
             @"tile_image" : [NSString stringWithFormat:@"%@-tile", imagePrefix],
             @"fullscreen_image" : [NSString stringWithFormat:@"%@-overview", imagePrefix]

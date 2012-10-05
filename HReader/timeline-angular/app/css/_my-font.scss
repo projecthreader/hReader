@@ -1,0 +1,30 @@
+h1, h2, h3 {
+	display: inline-block;
+}
+
+h1{
+	color: #888;
+	font-weight: 100;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+}
+
+.name  {
+	font-weight: bold;
+	color: black;
+	
+}
+
+svg {
+  font-family: "Helvetica Neue", Helvetica;
+}
+
+.line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 2px;
+}
+
+
+
+

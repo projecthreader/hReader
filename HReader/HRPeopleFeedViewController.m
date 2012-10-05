@@ -9,8 +9,6 @@
 #import "HRPeopleFeedViewController.h"
 #import "HRAPIClient_private.h"
 
-#import "NSArray+Collect.h"
-
 @interface HRPeopleFeedViewController (){
 @private
     NSString *_host;
@@ -96,7 +94,7 @@
               otherButtonTitles:nil]
              show];
         }
-        _patients = [patients sortedArrayUsingKey:@"name" ascending:YES];
+        _patients = [patients hr_sortedArrayUsingKey:@"name" ascending:YES];
         [self.tableView reloadData];
     } ignoreCache:ignoreCache];
 }

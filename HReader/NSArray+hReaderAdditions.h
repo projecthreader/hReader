@@ -12,4 +12,8 @@
 
 - (NSArray *)hr_collect:(id (^) (id object, NSUInteger idx))block;
 
+- (NSArray *)hr_sortedArrayUsingKey:(NSString *)key ascending:(BOOL)ascending;
+
+- (NSArray *)hr_flatten;
+
 @end

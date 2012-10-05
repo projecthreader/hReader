@@ -1,0 +1,71 @@
+
+#time {
+	ul{
+		padding-left: 0;
+		display: inline;
+		li {
+			display: inline;
+			a {
+				text-decoration: none;
+				color: #ccc;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				padding: 5px 5px 6px 5px;
+			}
+			a.active {
+				display: inline;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				padding: 5px;
+				color: #fff;
+				background-color: #ccc;
+			}
+		}	
+	}
+}
+
+
+.ui-btn-down-c {
+
+
+	
+}
+
+.ui-field-contain div.ui-slider {
+}
+
+div.ui-slider {
+	position: relative;
+	display: inline-block;
+	overflow: visible;
+	height: 15px;
+	padding: 0;
+	margin: 0 2% 0 20px;
+	top: 4px;
+	width: 100% !important;
+}
+
+.ui-btn-corner-all {
+	webkit-border-radius: .25em;
+	border-radius: .25em;
+}
+
+.ui-btn-up-a {
+	background-image: -webkit-gradient(linear, left top, left bottom, from( white /*{a-bup-background-start}*/), to( #E6E6E6 /*{a-bup-background-end}*/)) !important;
+	background-image: -webkit-linear-gradient( white /*{a-bup-background-start}*/, #E6E6E6 /*{a-bup-background-end}*/) !important;
+	background-image: linear-gradient( white /*{a-bup-background-start}*/, #E6E6E6 /*{a-bup-background-end}*/) !important;
+}
+
+.ui-btn-down-a {
+	border: 1px solid #CCC /*{a-bdown-border}*/ !important;
+	background: #D6D6D6 /*{a-bdown-background-color}*/ !important;
+	color: #333 /*{a-bdown-color}*/ !important;	
+}
+
+.ui-bar, .ui-body {
+	clear: none;
+}
+
+.ui-slider .ui-slider-range {
+ 	background-color: #0064CD !important;
+}

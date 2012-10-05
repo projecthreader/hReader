@@ -6,7 +6,7 @@
 //  Copyright (c) 2011 MITRE Corporation. All rights reserved.
 //
 
-#define HR_TIMELINE_XML 1
+#define HR_TIMELINE_XML 0
 #define HR_TIMELINE_JSON !HR_TIMELINE_XML
 
 #import <QuartzCore/QuartzCore.h>
@@ -23,6 +23,28 @@
 #import "DDXML.h"
 
 @implementation HRTimelineViewController
+
+#pragma mark - class methods
+
+- (NSString *)viewName {
+    NSInteger index = self.scopeSelector.selectedSegmentIndex;
+    if (index == 0) {
+        return @"decade.html";
+    }
+    else if (index == 1) {
+        return @"year.html";
+    }
+    else if (index == 2) {
+        return @"month.html";
+    }
+    else if (index == 3) {
+        return @"week.html";
+    }
+    else if (index == 4) {
+        return @"index.html";
+    }
+    return nil;
+}
 
 #pragma mark - object methods
 
@@ -53,15 +75,13 @@
         HRMPatient *patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
         self.patientImageView.image = [patient patientImage];
         self.nameLabel.text = [patient.compositeName uppercaseString];
-#if DEBUG
-        NSLog(@"%@", [patient timelineJSONPayload]);
-#endif
+        NSURL *URL = nil;
         
 #if HR_TIMELINE_XML
-        NSURL *URL = [[[NSFileManager defaultManager]
-                       URLsForDirectory:NSDocumentDirectory
-                       inDomains:NSUserDomainMask]
-                      lastObject];
+        URL = [[[NSFileManager defaultManager]
+                URLsForDirectory:NSDocumentDirectory
+                inDomains:NSUserDomainMask]
+               lastObject];
         URL = [URL URLByAppendingPathComponent:@"hReader.xml"];
         NSString *XMLString = [[[patient timelineXMLPayload] XMLString] copy];
         NSData *XMLData = [XMLString dataUsingEncoding:NSUTF8StringEncoding];
@@ -80,15 +100,20 @@
         [self.webView loadRequest:request];
 #endif
 #if HR_TIMELINE_JSON
-        NSError *error = nil;
-        NSDictionary *dictionary = nil;
-        NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];
-        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        string = [NSString stringWithFormat:@"function(%@);", string];
-        [self.webView stringByEvaluatingJavaScriptFromString:string];
+        NSString *viewName = [self viewName];
+        URL = [[NSBundle mainBundle]
+               URLForResource:[viewName stringByDeletingPathExtension]
+               withExtension:[viewName pathExtension]
+               subdirectory:@"timeline-angular/app"];
+        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+        [self.webView loadRequest:request];
 #endif
         
     }
+}
+
+- (IBAction)scopeSelectorValueDidChange:(UISegmentedControl *)sender {
+    [self reloadData];
 }
 
 #pragma mark - view lifecycle
@@ -103,6 +128,7 @@
     layer.shadowOffset = CGSizeMake(0.0, 0.0);
     layer.shadowRadius = 5.0;
     layer.shouldRasterize = YES;
+    layer.rasterizationScale = [[UIScreen mainScreen] scale];
     [self.view bringSubviewToFront:self.headerView];
     
     // patient image shadow
@@ -124,29 +150,9 @@
         [self.patientImageView.superview addGestureRecognizer:gesture];
     }
     
-    // load html document
-#if HR_TIMELINE_JSON
-    NSURL *URL = [[NSBundle mainBundle]
-                  URLForResource:@"hReader"
-                  withExtension:@"html"
-                  subdirectory:@"timeline/hReader"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    [self.webView loadRequest:request];
-#endif
-    
-}
-
-- (void)viewDidUnload {
-    self.headerView = nil;
-    self.webView = nil;
-    self.patientImageView = nil;
-    self.nameLabel = nil;
-    [super viewDidUnload];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+    // reload
     [self reloadData];
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -159,18 +165,6 @@
     if (gesture.state == UIGestureRecognizerStateRecognized) {
         [(id)self.panelViewController.leftAccessoryViewController selectNextPatient];
     }
-}
-
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    NSURL *URL = [request URL];
-    NSDictionary *query = [HRAPIClient parametersFromQueryString:[URL query]];
-    if ([[URL scheme] isEqualToString:@"x-org-mitre-hreader"] &&
-        [[URL host] isEqualToString:@"timeline"] &&
-        [query objectForKey:@"date"]) {
-//        NSTimeInterval interval = [[query objectForKey:@"date"] doubleValue];
-        return NO;
-    }
-    return YES;
 }
 
 @end

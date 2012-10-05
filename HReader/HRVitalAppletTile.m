@@ -10,7 +10,6 @@
 #import "HRKeyValueTableViewController.h"
 #import "HRSparkLineView.h"
 
-#import "NSArray+Collect.h"
 #import "NSDate+FormattedDate.h"
 
 @implementation HRVitalAppletTile {

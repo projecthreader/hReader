@@ -28,7 +28,6 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
     
     // support people search
     NSArray *searchResults;
-    NSArray *sortDescriptors;
     
 }
 
@@ -46,6 +45,37 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
     }
 }
 
++ (NSFetchRequest *)allPatientsFetchRequestInContext:(NSManagedObjectContext *)context {
+    static NSFetchRequest *request = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSArray *descriptors = @[
+            [NSSortDescriptor sortDescriptorWithKey:@"displayOrder" ascending:YES],
+            [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES],
+            [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES]
+        ];
+        request = [HRMPatient fetchRequestInContext:context];
+        [request setSortDescriptors:descriptors];
+    });
+    return request;
+}
+
++ (HRMPatient *)selectedPatientInContext:(NSManagedObjectContext *)context {
+    @synchronized(self) {
+        NSString *string = [[NSUserDefaults standardUserDefaults] objectForKey:HRSelectedPatientURIKey];
+        NSURL *URL = [NSURL URLWithString:string];
+        NSPersistentStoreCoordinator *coordinator = [context persistentStoreCoordinator];
+        NSManagedObjectID *objectID = [coordinator managedObjectIDForURIRepresentation:URL];
+        id selectedPatient = nil;
+        if (objectID) { selectedPatient = [context existingObjectWithID:objectID error:nil]; }
+        if (selectedPatient == nil) {
+            NSFetchRequest *request = [HRPeoplePickerViewController allPatientsFetchRequestInContext:context];
+            selectedPatient = [[context executeFetchRequest:request error:nil] objectAtIndex:0];
+        }
+        return selectedPatient;
+    }
+}
+
 #pragma mark - object methods
 
 - (id)initWithCoder:(NSCoder *)coder {
@@ -54,14 +84,7 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
         
         // load data from core data
         managedObjectContext = [HRAppDelegate managedObjectContext];
-        sortDescriptors = @[
-            [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES],
-            [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES],
-        ];
-        NSMutableArray *descriptors = [sortDescriptors mutableCopy];
-        [descriptors insertObject:[NSSortDescriptor sortDescriptorWithKey:@"displayOrder" ascending:YES] atIndex:0];
-        NSFetchRequest *request = [HRMPatient fetchRequestInContext:managedObjectContext];
-        [request setSortDescriptors:descriptors];
+        NSFetchRequest *request = [HRPeoplePickerViewController allPatientsFetchRequestInContext:managedObjectContext];
         fetchedResultsController = [[NSFetchedResultsController alloc]
                                     initWithFetchRequest:request
                                     managedObjectContext:managedObjectContext
@@ -73,16 +96,7 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
         NSAssert(fetch, @"Unable to fetch patients\n%@", error);
         
         // cache selected patient
-        @synchronized([HRPeoplePickerViewController class]) {
-            NSString *string = [[NSUserDefaults standardUserDefaults] objectForKey:HRSelectedPatientURIKey];
-            NSURL *URL = [NSURL URLWithString:string];
-            NSPersistentStoreCoordinator *coordinator = [managedObjectContext persistentStoreCoordinator];
-            NSManagedObjectID *objectID = [coordinator managedObjectIDForURIRepresentation:URL];
-            if (objectID) { selectedPatient = (id)[managedObjectContext existingObjectWithID:objectID error:nil]; }
-            if (selectedPatient == nil) {
-                selectedPatient = [[fetchedResultsController fetchedObjects] objectAtIndex:0];
-            }
-        }
+        selectedPatient = [HRPeoplePickerViewController selectedPatientInContext:managedObjectContext];
         
     }
     return self;
@@ -156,14 +170,27 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    
+    // prepare variables
+    static NSArray *descriptors = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        descriptors = @[
+            [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES],
+            [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES]
+        ];
+    });
+    
+    // perform search
     NSPredicate *predicate = [NSCompoundPredicate orPredicateWithSubpredicates:@[
-                                  [NSPredicate predicateWithFormat:@"firstName contains[cd] %@", searchText],
-                                  [NSPredicate predicateWithFormat:@"lastName contains[cd] %@", searchText]
+                              [NSPredicate predicateWithFormat:@"firstName contains[cd] %@", searchText],
+                              [NSPredicate predicateWithFormat:@"lastName contains[cd] %@", searchText]
                               ]];
     searchResults = [HRMPatient
                      allInContext:managedObjectContext
                      withPredicate:predicate
-                     sortDescriptors:sortDescriptors];
+                     sortDescriptors:descriptors];
+    
 }
 
 #pragma mark - table view methods
@@ -177,9 +204,7 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
         id<NSFetchedResultsSectionInfo> info = [[fetchedResultsController sections] objectAtIndex:section];
         return [info numberOfObjects];
     }
-    else {
-        return [searchResults count];
-    }
+    else { return [searchResults count]; }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -203,8 +228,7 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
     HRMPatient *patient = nil;
     if (tableView == self.tableView) { patient = [fetchedResultsController objectAtIndexPath:indexPath]; }
     else { patient = [searchResults objectAtIndex:indexPath.row]; }
-    double delay = 0.15;
-    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
+    dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 0.15 * NSEC_PER_SEC);
     dispatch_after(time, dispatch_get_main_queue(), ^(void){
         selectedPatient = patient;
         [HRPeoplePickerViewController setSelectedPatient:patient];

@@ -15,7 +15,6 @@
 #import "HRPeoplePickerViewController.h"
 
 #import "NSDate+FormattedDate.h"
-#import "NSArray+Collect.h"
 
 #import "SVPanelViewController.h"
 
@@ -178,7 +177,7 @@
     HRMPatient *patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
     self.patientImageView.image = [patient patientImage];
     
-    self.messagesArray = [[patient valueForKeyPath:@"syntheticInfo.messages"] sortedArrayUsingKey:@"date" ascending:NO];
+    self.messagesArray = [[patient valueForKeyPath:@"syntheticInfo.messages"] hr_sortedArrayUsingKey:@"date" ascending:NO];
     self.title = [NSString stringWithFormat:@"Messages (%lu)", (unsigned long)[self.messagesArray count]];
 }
 
