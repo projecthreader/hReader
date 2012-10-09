@@ -10,7 +10,7 @@
 
 @implementation NSDate (hReaderAdditions)
 
-- (NSString *)mediumStyleDate {
+- (NSString *)hr_mediumStyleDate {
     static NSDateFormatter *formatter = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
@@ -21,7 +21,7 @@
     return [formatter stringFromDate:self];
 }
 
-- (NSString *)shortStyleDate {
+- (NSString *)hr_shortStyleDate {
     static NSDateFormatter *formatter = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
@@ -33,7 +33,7 @@
     
 }
 
-- (NSString *)ageString {
+- (NSString *)hr_ageString {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *monthComponents = [calendar components:NSMonthCalendarUnit fromDate:self toDate:[NSDate date] options:0];
     NSInteger months = [monthComponents month];

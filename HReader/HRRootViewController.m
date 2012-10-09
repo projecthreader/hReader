@@ -75,10 +75,6 @@ static int HRRootViewControllerTitleContext;
     }];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [TestFlight passCheckpoint:segue.identifier];
-}
-
 - (void)setVisibleViewController:(UIViewController *)controller {
     controller.view.frame = self.view.bounds;
     controller.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
@@ -91,7 +87,6 @@ static int HRRootViewControllerTitleContext;
      completion:^(BOOL finished) {
          _visibleViewController = controller;
          self.title = _visibleViewController.title;
-         [TestFlight passCheckpoint:[NSString stringWithFormat:@"Navigation - %@", _visibleViewController.title]];
          [_visibleViewController didMoveToParentViewController:self];
      }];
 }

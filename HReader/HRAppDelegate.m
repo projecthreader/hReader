@@ -21,14 +21,10 @@
 #import "HRPasscodeViewController.h"
 #import "HRHIPPAMessageViewController.h"
 #import "HRAppletConfigurationViewController.h"
-
-#import "TestFlight.h"
-
+#import "HRCryptoManager.h"
 #import "HRMPatient.h"
 
 #import "SVPanelViewController.h"
-
-#import "HRCryptoManager.h"
 
 #import "SSKeychain.h"
 

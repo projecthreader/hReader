@@ -96,7 +96,6 @@
 		3B651F82157FC8B50007817C /* interstitial_closebox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B651F7E157FC8B50007817C /* interstitial_closebox@2x.png */; };
 		3B6FAF8F153F259E002C9EF5 /* HRPeoplePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B708F0D15DE870C004D2B1D /* CMDActivityHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B708F0A15DE870C004D2B1D /* CMDActivityHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		3B708F1415DE911E004D2B1D /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B708F1015DE911E004D2B1D /* libTestFlight.a */; };
 		3B74E5C5155477C400593ECF /* HROxygenSaturationAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5C4155477C400593ECF /* HROxygenSaturationAppletTile.xib */; };
 		3B74E5C815547DA200593ECF /* HRRespiratoryRateAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5C715547DA200593ECF /* HRRespiratoryRateAppletTile.xib */; };
 		3B74E5D3155482E700593ECF /* hs-condition-full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5C9155482E700593ECF /* hs-condition-full.png */; };
@@ -423,8 +422,6 @@
 		3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeoplePickerViewController.m; sourceTree = "<group>"; };
 		3B708F0915DE870C004D2B1D /* CMDActivityHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDActivityHUD.h; sourceTree = "<group>"; };
 		3B708F0A15DE870C004D2B1D /* CMDActivityHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMDActivityHUD.m; sourceTree = "<group>"; };
-		3B708F1015DE911E004D2B1D /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		3B708F1315DE911E004D2B1D /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		3B74E5C4155477C400593ECF /* HROxygenSaturationAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HROxygenSaturationAppletTile.xib; sourceTree = "<group>"; };
 		3B74E5C715547DA200593ECF /* HRRespiratoryRateAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRRespiratoryRateAppletTile.xib; sourceTree = "<group>"; };
 		3B74E5C9155482E700593ECF /* hs-condition-full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hs-condition-full.png"; sourceTree = "<group>"; };
@@ -714,7 +711,6 @@
 				941DB0AD1471B32D00A96B8B /* UIKit.framework in Frameworks */,
 				941DB0AF1471B32D00A96B8B /* Foundation.framework in Frameworks */,
 				941DB0B11471B32D00A96B8B /* CoreGraphics.framework in Frameworks */,
-				3B708F1415DE911E004D2B1D /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,15 +817,6 @@
 				3B708F0A15DE870C004D2B1D /* CMDActivityHUD.m */,
 			);
 			path = activityhud;
-			sourceTree = "<group>";
-		};
-		3B708F0F15DE911E004D2B1D /* TestFlight */ = {
-			isa = PBXGroup;
-			children = (
-				3B708F1015DE911E004D2B1D /* libTestFlight.a */,
-				3B708F1315DE911E004D2B1D /* TestFlight.h */,
-			);
-			path = TestFlight;
 			sourceTree = "<group>";
 		};
 		3B77F041155457E5003C2DBD /* Grid View */ = {
@@ -1288,7 +1275,6 @@
 				3B708F0715DE870C004D2B1D /* activityhud */,
 				3BD16ED714E1B5EE00F2249E /* guicocoa-common-code */,
 				3B04A54C14E0692600AD91F9 /* keychain */,
-				3B708F0F15DE911E004D2B1D /* TestFlight */,
 			);
 			name = Vendor;
 			path = vendor;
@@ -1923,15 +1909,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = armv7;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				GCC_UNROLL_LOOPS = YES;
 				OTHER_CFLAGS = "-DSQLITE_HAS_CODEC";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = armv7;
@@ -1942,11 +1928,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = armv7;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				GCC_UNROLL_LOOPS = YES;
 				OTHER_CFLAGS = (
 					"-DNS_BLOCK_ASSERTIONS=1",
 					"-DSQLITE_HAS_CODEC",
@@ -1967,10 +1953,6 @@
 				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2/**";
 				INFOPLIST_FILE = "HReader/HReader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/vendor/TestFlight\"",
-					"\"$(SDKROOT)/usr/lib/system\"",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -1983,64 +1965,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = HReader/HReader.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "HReader/HReader-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2/**";
-				INFOPLIST_FILE = "HReader/HReader-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/vendor/TestFlight\"",
-					"\"$(SDKROOT)/usr/lib/system\"",
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				STRIP_INSTALLED_PRODUCT = YES;
-				TARGETED_DEVICE_FAMILY = 2;
-				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		94231792147AFE2500268377 /* Ad Hoc */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = armv7;
-				GCC_PREPROCESSOR_DEFINITIONS = "ADHOC=1";
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				GCC_UNROLL_LOOPS = YES;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"-DSQLITE_HAS_CODEC",
-				);
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = armv7;
-			};
-			name = "Ad Hoc";
-		};
-		94231793147AFE2500268377 /* Ad Hoc */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = HReader/HReader.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: The MITRE Corporation";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HReader/HReader-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2/**";
 				INFOPLIST_FILE = "HReader/HReader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/vendor/TestFlight\"",
-					"\"$(SDKROOT)/usr/lib/system\"",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "FD81F18D-E45A-4105-B97C-6F640DAA047A";
+				PROVISIONING_PROFILE = "B0CECA52-3D26-4DED-9577-8C98A922800C";
 				STRIP_INSTALLED_PRODUCT = YES;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
-			name = "Ad Hoc";
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -2050,7 +1987,6 @@
 			buildConfigurations = (
 				941DB0CA1471B32D00A96B8B /* Debug */,
 				941DB0CB1471B32D00A96B8B /* Release */,
-				94231792147AFE2500268377 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2060,7 +1996,6 @@
 			buildConfigurations = (
 				941DB0CD1471B32D00A96B8B /* Debug */,
 				941DB0CE1471B32D00A96B8B /* Release */,
-				94231793147AFE2500268377 /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

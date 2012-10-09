@@ -127,9 +127,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *message = [self.messagesArray objectAtIndex:indexPath.row];
-    
-    [TestFlight passCheckpoint:[NSString stringWithFormat:@"View Message"]];
-    
     self.subjectLabel.text = [message objectForKey:@"subject"];
     self.bodyLabel.text = [message objectForKey:@"body"];
 }
