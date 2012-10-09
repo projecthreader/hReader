@@ -7,11 +7,8 @@
 //
 
 #import "HROxygenSaturationAppletTile.h"
-
 #import "HRMEntry.h"
 #import "HRMPatient.h"
-
-#import "NSDate+FormattedDate.h"
 
 #if !__has_feature(objc_arc)
 #error This class requires ARC
@@ -33,7 +30,7 @@
     self.leftValueLabel.text = [NSString stringWithFormat:@"%0.1f", latestValue];
     self.leftValueLabel.textColor = ([self isValueNormal:latestValue] ? [UIColor blackColor] : [UIColor hr_redColor]);
     
-    self.middleValueLabel.text = [latest.date shortStyleDate];
+    self.middleValueLabel.text = [latest.date hr_shortStyleDate];
     self.rightValueLabel.text = [NSString stringWithFormat:@"%d%%-%d%%",
                                  (NSInteger)[self normalLow],
                                  (NSInteger)[self normalHigh]];
@@ -55,7 +52,7 @@
         UIColor *color = (isNormal ? [UIColor blackColor] : [UIColor hr_redColor]);
         NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSString stringWithFormat:@"%0.1f", value], @"detail",
-                                    [entry.date mediumStyleDate], @"title",
+                                    [entry.date hr_mediumStyleDate], @"title",
                                     color, @"detail_color",
                                     nil];
         [entries addObject:dictionary];

@@ -7,12 +7,10 @@
 //
 
 #import "HRImmunizationsAppletTile.h"
-
 #import "HRMEntry.h"
 #import "HRMPatient.h"
 
 #import "NSString+SentenceCapitalization.h"
-#import "NSDate+FormattedDate.h"
 
 @implementation HRImmunizationsAppletTile
 
@@ -52,7 +50,7 @@
         }
         else if (index < immunizationsCount) {
             HRMEntry *immunization = [immunizations objectAtIndex:index];
-            label.text = [immunization.date mediumStyleDate];
+            label.text = [immunization.date hr_mediumStyleDate];
         }
         else { label.text = nil; }
     }];

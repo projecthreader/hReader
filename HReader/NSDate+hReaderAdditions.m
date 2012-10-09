@@ -1,39 +1,39 @@
 //
-//  NSDate+HReaderAdditions.m
+//  NSDate+hReaderAdditions.m
 //  HReader
 //
-//  Created by Caleb Davenport on 2/23/12.
+//  Created by Caleb Davenport on 10/9/12.
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
-#import "NSDate+FormattedDate.h"
+#import "NSDate+hReaderAdditions.h"
 
-@implementation NSDate (FormattedDate)
+@implementation NSDate (hReaderAdditions)
 
-- (NSString *)mediumStyleDate {
+- (NSString *)hr_mediumStyleDate {
     static NSDateFormatter *formatter = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         formatter = [[NSDateFormatter alloc] init];
-//        [formatter setDateStyle:NSDateFormatterMediumStyle];
+        //        [formatter setDateStyle:NSDateFormatterMediumStyle];
         [formatter setDateFormat:@"d MMM y"];
     });
     return [formatter stringFromDate:self];
 }
 
-- (NSString *)shortStyleDate {
+- (NSString *)hr_shortStyleDate {
     static NSDateFormatter *formatter = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         formatter = [[NSDateFormatter alloc] init];
-//        [formatter setDateStyle:NSDateFormatterShortStyle];
+        //        [formatter setDateStyle:NSDateFormatterShortStyle];
         [formatter setDateFormat:@"dMMMy"];
     });
     return [formatter stringFromDate:self];
     
 }
 
-- (NSString *)ageString {
+- (NSString *)hr_ageString {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *monthComponents = [calendar components:NSMonthCalendarUnit fromDate:self toDate:[NSDate date] options:0];
     NSInteger months = [monthComponents month];

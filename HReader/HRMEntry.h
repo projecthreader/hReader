@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
-#import "GCManagedObject.h"
+#import "CMDManagedObject.h"
 
 typedef enum {
     HRMEntryTypeCondition = 0,
@@ -22,7 +22,7 @@ typedef enum {
 @class HRMPatient;
 @class DDXMLElement;
 
-@interface HRMEntry : GCManagedObject
+@interface HRMEntry : CMDManagedObject
 
 @property (nonatomic, retain) NSString *desc;
 @property (nonatomic, retain) NSString *status;

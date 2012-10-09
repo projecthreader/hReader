@@ -14,8 +14,6 @@
 #import "HRPatientSwipeControl.h"
 #import "HRPeoplePickerViewController.h"
 
-#import "NSDate+FormattedDate.h"
-
 #import "SVPanelViewController.h"
 
 @interface HRMessagesViewController ()
@@ -129,9 +127,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *message = [self.messagesArray objectAtIndex:indexPath.row];
-    
-    [TestFlight passCheckpoint:[NSString stringWithFormat:@"View Message"]];
-    
     self.subjectLabel.text = [message objectForKey:@"subject"];
     self.bodyLabel.text = [message objectForKey:@"body"];
 }
@@ -155,7 +150,7 @@
     
     NSDictionary *message = [self.messagesArray objectAtIndex:indexPath.row];
     NSTimeInterval interval = [[message objectForKey:@"date"] doubleValue];
-    cell.textLabel.text = [[NSDate dateWithTimeIntervalSince1970:interval] mediumStyleDate];
+    cell.textLabel.text = [[NSDate dateWithTimeIntervalSince1970:interval] hr_mediumStyleDate];
 
     return cell;
 }

@@ -7,14 +7,10 @@
 //
 
 #import "HRBloodPressureAppletTile.h"
-
 #import "HRMEntry.h"
 #import "HRMPatient.h"
-
 #import "HRSparkLineView.h"
 #import "HRKeyValueTableViewController.h"
-
-#import "NSDate+FormattedDate.h"
 
 @implementation HRBloodPressureAppletTile {
     NSArray *_systolicDataPoints;
@@ -49,7 +45,7 @@
         UIColor *color = (isNormal ? [UIColor blackColor] : [UIColor hr_redColor]);
         NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSString stringWithFormat:@"%.0f/%.0f", systolicValue, diastolicValue], @"detail",
-                                    [entry.date mediumStyleDate], @"title",
+                                    [entry.date hr_mediumStyleDate], @"title",
                                     color, @"detail_color",
                                     nil];
         [points addObject:dictionary];
@@ -69,7 +65,7 @@
     // set labels
     double lastestSystolicValue = [[lastestSystolic valueForKeyPath:@"value.scalar"] doubleValue];
     double lastestDiastolicValue = [[lastestDiastolic valueForKeyPath:@"value.scalar"] doubleValue];
-    self.middleValueLabel.text = [lastestSystolic.date shortStyleDate];
+    self.middleValueLabel.text = [lastestSystolic.date hr_shortStyleDate];
     self.middleValueLabel.adjustsFontSizeToFitWidth = YES;
     self.leftValueLabel.text = [NSString stringWithFormat:@"%.0f/%.0f", lastestSystolicValue, lastestDiastolicValue];
     self.rightValueLabel.text = [NSString stringWithFormat:

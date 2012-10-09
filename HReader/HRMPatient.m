@@ -230,7 +230,7 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     NSPredicate *andPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
     return [HRMEntry
             allInContext:[self managedObjectContext]
-            withPredicate:andPredicate
+            predicate:andPredicate
             sortDescriptor:sortDescriptor];
 }
 
@@ -346,9 +346,13 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     });
     
     // gather entries
+    NSMutableArray *predicates = [NSMutableArray array];
+    [predicates addObject:[NSPredicate predicateWithFormat:@"patient = %@", self]];
+    [predicates addObject:[NSPredicate predicateWithFormat:@"type != %@", @(HRMEntryTypeVitalSign)]];
+    if (predicate) { [predicates addObject:predicate]; }
     NSArray *entries = [HRMEntry
                         allInContext:[self managedObjectContext]
-                        withPredicate:[NSPredicate predicateWithFormat:@"type != %@", @(HRMEntryTypeVitalSign)]
+                        predicate:[NSCompoundPredicate andPredicateWithSubpredicates:predicates]
                         sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     [entries enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger idx, BOOL *stop) {
@@ -402,10 +406,11 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     NSMutableDictionary *vitals = [NSMutableDictionary dictionary];
     NSMutableArray *predicates = [NSMutableArray array];
     [predicates addObject:[NSPredicate predicateWithFormat:@"type = %@", @(HRMEntryTypeVitalSign)]];
+    [predicates addObject:[NSPredicate predicateWithFormat:@"patient = %@", self]];
     if (predicate) { [predicates addObject:predicate]; }
     NSArray *entries = [HRMEntry
                         allInContext:[self managedObjectContext]
-                        withPredicate:[NSCompoundPredicate andPredicateWithSubpredicates:predicates]
+                        predicate:[NSCompoundPredicate andPredicateWithSubpredicates:predicates]
                         sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
     [entries enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger idx, BOOL *stop) {
         

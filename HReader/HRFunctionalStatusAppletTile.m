@@ -7,10 +7,7 @@
 //
 
 #import "HRFunctionalStatusAppletTile.h"
-
 #import "HRMPatient.h"
-
-#import "NSDate+FormattedDate.h"
 
 @implementation HRFunctionalStatusAppletTile
 
@@ -20,7 +17,7 @@
     NSDictionary *functionalStatus = [patient.syntheticInfo objectForKey:@"functional_status"];
     if (functionalStatus) {
         NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[functionalStatus objectForKey:@"date"] doubleValue]];
-        self.dateLabel.text = [date mediumStyleDate];
+        self.dateLabel.text = [date hr_mediumStyleDate];
         self.typeLabel.text = [functionalStatus objectForKey:@"type"];
         self.problemLabel.text = [functionalStatus objectForKey:@"problem"];
         self.statusLabel.text = [functionalStatus objectForKey:@"status"];
