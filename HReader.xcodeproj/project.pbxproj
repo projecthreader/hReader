@@ -172,6 +172,7 @@
 		3BABEC2C16246CA50057D3B8 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BABEC2416246CA50057D3B8 /* DDXMLElement.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BABEC2D16246CA50057D3B8 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BABEC2616246CA50057D3B8 /* DDXMLNode.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BABEC3E1624769B0057D3B8 /* NSDate+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BABEC3D1624769B0057D3B8 /* NSDate+hReaderAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		3BABEC46162479090057D3B8 /* CMDManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BABEC42162479090057D3B8 /* CMDManagedObject.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BB16A98158FB7B100CF34A6 /* HRSecurityQuestionsTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB16A95158FB7B000CF34A6 /* HRSecurityQuestionsTextField.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BB16A99158FB7B100CF34A6 /* HRSecurityQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB16A97158FB7B000CF34A6 /* HRSecurityQuestionsViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BB3F0C015823AFB00C1EC1D /* HRPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB3F0BF15823AFB00C1EC1D /* HRPasscodeViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -179,7 +180,6 @@
 		3BC6A69015A5D17E00FA0C3A /* HRHIPPAMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC6A68F15A5D17E00FA0C3A /* HRHIPPAMessageViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; };
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
-		3BD16EF614E1B5EE00F2249E /* GCManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16EE514E1B5EE00F2249E /* GCManagedObject.m */; };
 		3BD16F0514E1C5B700F2249E /* HRMPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16F0414E1C5B700F2249E /* HRMPatient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BD5F0A715EE774600333320 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD5F0A215EE772700333320 /* libcrypto.a */; };
 		3BD5F0A815EE774900333320 /* libsqlcipher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD5F09915EE772300333320 /* libsqlcipher.a */; };
@@ -519,6 +519,8 @@
 		3BABEC2816246CA50057D3B8 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
 		3BABEC3C1624769B0057D3B8 /* NSDate+hReaderAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+hReaderAdditions.h"; sourceTree = "<group>"; };
 		3BABEC3D1624769B0057D3B8 /* NSDate+hReaderAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+hReaderAdditions.m"; sourceTree = "<group>"; };
+		3BABEC41162479090057D3B8 /* CMDManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDManagedObject.h; sourceTree = "<group>"; };
+		3BABEC42162479090057D3B8 /* CMDManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMDManagedObject.m; sourceTree = "<group>"; };
 		3BB16A94158FB7B000CF34A6 /* HRSecurityQuestionsTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSecurityQuestionsTextField.h; sourceTree = "<group>"; };
 		3BB16A95158FB7B000CF34A6 /* HRSecurityQuestionsTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSecurityQuestionsTextField.m; sourceTree = "<group>"; };
 		3BB16A96158FB7B000CF34A6 /* HRSecurityQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSecurityQuestionsViewController.h; sourceTree = "<group>"; };
@@ -530,8 +532,6 @@
 		3BC6A68F15A5D17E00FA0C3A /* HRHIPPAMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRHIPPAMessageViewController.m; sourceTree = "<group>"; };
 		3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hReader.xcdatamodel; sourceTree = "<group>"; };
 		3BD16ED514E1B32400F2249E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		3BD16EE414E1B5EE00F2249E /* GCManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCManagedObject.h; sourceTree = "<group>"; };
-		3BD16EE514E1B5EE00F2249E /* GCManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCManagedObject.m; sourceTree = "<group>"; };
 		3BD16F0314E1C5B700F2249E /* HRMPatient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMPatient.h; sourceTree = "<group>"; };
 		3BD16F0414E1C5B700F2249E /* HRMPatient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMPatient.m; sourceTree = "<group>"; };
 		3BD5F08F15EE767200333320 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; wrapsLines = 1; };
@@ -1001,6 +1001,15 @@
 			path = Private;
 			sourceTree = "<group>";
 		};
+		3BABEC3F162479090057D3B8 /* managedobject */ = {
+			isa = PBXGroup;
+			children = (
+				3BABEC41162479090057D3B8 /* CMDManagedObject.h */,
+				3BABEC42162479090057D3B8 /* CMDManagedObject.m */,
+			);
+			path = managedobject;
+			sourceTree = "<group>";
+		};
 		3BB8D9A7157D206E00124A57 /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
@@ -1030,8 +1039,6 @@
 		3BD16ED714E1B5EE00F2249E /* guicocoa-common-code */ = {
 			isa = PBXGroup;
 			children = (
-				3BD16EE414E1B5EE00F2249E /* GCManagedObject.h */,
-				3BD16EE514E1B5EE00F2249E /* GCManagedObject.m */,
 				94AEA73E1529F2DC00D9C67D /* GCActionSheet.h */,
 				94AEA73F1529F2DC00D9C67D /* GCActionSheet.m */,
 				3BA3E7DC15595F090095A5CC /* GCAlertView.h */,
@@ -1275,6 +1282,7 @@
 		94689ABC14964BBF00E1FCA6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				3BABEC3F162479090057D3B8 /* managedobject */,
 				3BABEC1916246CA50057D3B8 /* KissXML */,
 				3BD5F0AC15EE8F6F00333320 /* Incremental Store */,
 				3B708F0715DE870C004D2B1D /* activityhud */,
@@ -1811,7 +1819,6 @@
 				947FCE4B14B4C76700C716FD /* HRPrivacyViewController.m in Sources */,
 				3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */,
 				3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */,
-				3BD16EF614E1B5EE00F2249E /* GCManagedObject.m in Sources */,
 				3BD16F0514E1C5B700F2249E /* HRMPatient.m in Sources */,
 				3BE9A40514E40EBB00F87B60 /* HRMEntry.m in Sources */,
 				941F253F14E2EC5D0077D6D1 /* HRVitalAppletTile.m in Sources */,
@@ -1873,6 +1880,7 @@
 				3BABEC2C16246CA50057D3B8 /* DDXMLElement.m in Sources */,
 				3BABEC2D16246CA50057D3B8 /* DDXMLNode.m in Sources */,
 				3BABEC3E1624769B0057D3B8 /* NSDate+hReaderAdditions.m in Sources */,
+				3BABEC46162479090057D3B8 /* CMDManagedObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

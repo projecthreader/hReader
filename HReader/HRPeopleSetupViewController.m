@@ -158,7 +158,7 @@
 - (void)adjustUserInterfaceForPatients:(BOOL)animated {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationship = %d", HRMPatientRelationshipMe];
     void (^animations) (void) = nil;
-    if ([HRMPatient countInContext:[HRAppDelegate managedObjectContext] withPredicate:predicate] == 0) {
+    if ([HRMPatient countInContext:[HRAppDelegate managedObjectContext] predicate:predicate] == 0) {
         self.navigationItem.rightBarButtonItem = nil;
         self.editing = NO;
         animations = ^{
@@ -383,7 +383,7 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"relationship = %d", HRMPatientRelationshipSpouse];
-    NSUInteger count = [HRMPatient countInContext:managedObjectContext withPredicate:predicate];
+    NSUInteger count = [HRMPatient countInContext:managedObjectContext predicate:predicate];
     self.spouseButton.enabled = (count == 0);
     [self.gridView reloadData];
     [self adjustUserInterfaceForPatients:YES];

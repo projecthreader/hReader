@@ -16,3 +16,6 @@
 [submodule "vendor/KissXML2"]
 	path = vendor/KissXML2
 	url = https://github.com/robbiehanson/KissXML.git
+[submodule "vendor/managedobject"]
+	path = vendor/managedobject
+	url = https://github.com/calebmdavenport/managedobject.git

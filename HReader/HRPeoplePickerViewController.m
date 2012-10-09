@@ -188,7 +188,7 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
                               ]];
     searchResults = [HRMPatient
                      allInContext:managedObjectContext
-                     withPredicate:predicate
+                     predicate:predicate
                      sortDescriptors:descriptors];
     
 }

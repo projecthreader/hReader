@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
-#import "GCManagedObject.h"
+#import "CMDManagedObject.h"
 
 typedef enum {
     HRMPatientGenderMale = 0,
@@ -27,7 +27,7 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 @class HRMEntry;
 @class DDXMLElement;
 
-@interface HRMPatient : GCManagedObject
+@interface HRMPatient : CMDManagedObject
 
 #pragma mark - core data properties
 
