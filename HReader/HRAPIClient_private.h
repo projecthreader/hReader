@@ -10,7 +10,6 @@
 
 @interface HRAPIClient () {
 @public
-    dispatch_queue_t _requestQueue;
     NSDate *_patientFeedLastFetchDate;
 }
 
@@ -49,11 +48,11 @@
  simply ignores it.
  
  */
-- (void)patientFeed:(void (^) (NSArray *))completion ignoreCache:(BOOL)ignore;
+- (void)patientFeed:(void (^) (NSArray *patients))completion ignoreCache:(BOOL)ignore;
 
 /*
  
- 
+ Force the client to logout and destroy all keychain items.
  
  */
 - (void)destroy;

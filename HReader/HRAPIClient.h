@@ -46,18 +46,19 @@
 /*
  
  Fetch a given patient payload from the receiver. This method returns
- imediately and notifes the caller upon completion using the completion block
- and optionally on start with the start block.
+ imediately and notifes the caller of progress using the `startBlock` and
+ `finishBlock` parameters.
+ 
+ `startBlock` simply notifies the caller that the operation is about to begin.
  
  `finishBlock` accepts a dictionary that represents the patient payload. This
  will be `nil` should an error occur.
  
- `startBlock` simply notifies the caller that the operation is about to begin.
- 
  Both blocks will be executed on the main queue.
  
  */
-- (void)JSONForPatientWithIdentifier:(NSString *)identifier finishBlock:(void (^) (NSDictionary *payload))block;
-- (void)JSONForPatientWithIdentifier:(NSString *)identifier startBlock:(void (^) (void))startBlock finishBlock:(void (^) (NSDictionary *payload))finishBlock;
+- (void)JSONForPatientWithIdentifier:(NSString *)identifier
+                          startBlock:(void (^) (void))startBlock
+                         finishBlock:(void (^) (NSDictionary *payload))finishBlock;
 
 @end

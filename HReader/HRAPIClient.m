@@ -14,38 +14,21 @@
 
 #import "SSKeychain.h"
 
+#define hr_dispatch_main(block) dispatch_async(dispatch_get_main_queue(), block)
+#if DEBUG
+#define hr_api_log(fmt, args...) NSLog(@"%@ " fmt, self, ##args)
+#else
+#define hr_api_log(fmt, args...)
+#endif
+
 // oauth client resources
 static NSString * const HROAuthClientIdentifier = @"c367aa7b8c87ce239981140511a7d158";
 static NSString * const HROAuthClientSecret = @"bc121c529fcd1689704a24460b91f98b";
 static NSString * const HROAuthKeychainService = @"org.hreader.oauth.2";
 static NSMutableDictionary *allClients = nil;
 
-//
-static NSLock *HRAPIClientThreadLock;
-static NSConditionLock *HRAPIClientWaitLock;
-
 @interface NSString (HRAPIClientAdditions)
-
-/*
- 
- 
- 
- */
 - (NSString *)hr_percentEncodedString;
-
-@end
-
-@implementation NSString (HRAPIClientAdditions)
-
-- (NSString *)hr_percentEncodedString {
-    CFStringRef string = CFURLCreateStringByAddingPercentEscapes(NULL,
-                                                                 (__bridge CFStringRef)self,
-                                                                 NULL,
-                                                                 CFSTR("!*'();:@&=+$,/?%#[]"),
-                                                                 kCFStringEncodingUTF8);
-    return (__bridge_transfer NSString *)string;
-}
-
 @end
 
 @interface HRAPIClient () {
@@ -53,28 +36,9 @@ static NSConditionLock *HRAPIClientWaitLock;
     NSString *_accessToken;
     NSDate *_accessTokenExiprationDate;
     NSArray *_patientFeed;
+    NSConditionLock *_authorizationLock;
+    dispatch_queue_t _requestQueue;
 }
-
-/*
- 
- Create an API client centered around the given host.
- 
- */
-- (id)initWithHost:(NSString *)host;
-
-/*
- 
- Fetch a URL request configured to perform a GET for the provided path.
- 
- */
-- (NSMutableURLRequest *)GETRequestWithPath:(NSString *)path;
-
-/*
- 
- Build a form-encoded query string with the given parameters.
- 
- */
-+ (NSString *)queryStringWithParameters:(NSDictionary *)parameters;
 
 @end
 
@@ -82,11 +46,13 @@ static NSConditionLock *HRAPIClientWaitLock;
 
 #pragma mark - class methods
 
-+ (void)initialize {
-    if (self == [HRAPIClient class]) {
-        HRAPIClientThreadLock = [[NSLock alloc] init];
-        HRAPIClientWaitLock = [[NSConditionLock alloc] initWithCondition:0];
-    }
++ (NSLock *)authorizationLock {
+    static NSLock *lock = nil;
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        lock = [[NSLock alloc] init];
+    });
+    return lock;
 }
 
 + (HRAPIClient *)clientWithHost:(NSString *)host {
@@ -105,7 +71,6 @@ static NSConditionLock *HRAPIClientWaitLock;
 + (NSArray *)hosts {
     return [[SSKeychain accountsForService:HROAuthKeychainService] valueForKey:(__bridge NSString *)kSecAttrAccount];
 }
-
 
 + (NSString *)queryStringWithParameters:(NSDictionary *)parameters {
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:[parameters count]];
@@ -127,30 +92,15 @@ static NSConditionLock *HRAPIClientWaitLock;
     return dictionary;
 }
 
-#pragma mark - object methods
+#pragma mark - retrieve data from the api
 
-- (id)initWithHost:(NSString *)host {
-    self = [super init];
-    if (self) {
-        _host = [host copy];
-        NSString *name = [NSString stringWithFormat:@"org.mitre.hreader.oauth-request-queue.%@", _host];
-        _requestQueue = dispatch_queue_create([name UTF8String], DISPATCH_QUEUE_SERIAL);
-    }
-    return self;
-}
-
-- (void)destroy {
-    [SSKeychain deletePasswordForService:HROAuthKeychainService account:_host];
-    [allClients removeObjectForKey:_host];
-}
-
-- (void)patientFeed:(void (^)(NSArray *))completion ignoreCache:(BOOL)ignore {
+- (void)patientFeed:(void (^)(NSArray *patients))completion ignoreCache:(BOOL)ignore {
     dispatch_async(_requestQueue, ^{
         NSArray *feed = _patientFeed;
         
         // check time stamp
         NSTimeInterval interval = ABS([_patientFeedLastFetchDate timeIntervalSinceNow]);
-        if (interval > 60 * 5 || _patientFeedLastFetchDate == nil || ignore) {
+        if (interval > 50 * 5 || _patientFeedLastFetchDate == nil || ignore) {
             
             // get the request
             NSMutableURLRequest *request = [self GETRequestWithPath:@"/"];
@@ -169,12 +119,11 @@ static NSConditionLock *HRAPIClientWaitLock;
             // build array
             if ([response statusCode] == 200 && IDs && [IDs count] == [names count]) {
                 NSMutableArray *patients = [[NSMutableArray alloc] initWithCapacity:[IDs count]];
-                [IDs enumerateObjectsUsingBlock:^(NSString *patientID, NSUInteger index, BOOL *stop) {
-                    NSDictionary *dict = 
-                    [NSDictionary dictionaryWithObjectsAndKeys:
-                     patientID, @"id", 
-                     [names objectAtIndex:index], @"name",
-                     nil];
+                [IDs enumerateObjectsUsingBlock:^(NSString *patientID, NSUInteger idx, BOOL *stop) {
+                    NSDictionary *dict = @{
+                        @"id" : patientID,
+                        @"name" : [names objectAtIndex:idx]
+                    };
                     [patients addObject:dict];
                 }];
                 _patientFeed = feed = [patients copy];
@@ -186,9 +135,7 @@ static NSConditionLock *HRAPIClientWaitLock;
         
         // call completion handler
         if (completion) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completion(feed);
-            });
+            hr_dispatch_main(^{ completion(feed); });
         }
         
     });
@@ -198,21 +145,52 @@ static NSConditionLock *HRAPIClientWaitLock;
     [self patientFeed:completion ignoreCache:NO];
 }
 
-- (NSMutableURLRequest *)GETRequestWithPath:(NSString *)path {
+- (void)JSONForPatientWithIdentifier:(NSString *)identifier startBlock:(void (^) (void))startBlock finishBlock:(void (^) (NSDictionary *payload))finishBlock {
+    dispatch_async(_requestQueue, ^{
+        
+        // start block
+        if (startBlock) { hr_dispatch_main(startBlock); }
+        
+        // create request
+        NSString *path = [NSString stringWithFormat:@"/records/%@/c32/%@", identifier, identifier];
+        NSMutableURLRequest *request = [self GETRequestWithPath:path];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        
+        // run request
+        NSError *connectionError = nil;
+        NSHTTPURLResponse *response = nil;
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&connectionError];
+        
+        // create patient
+        NSError *JSONError = nil;
+        NSDictionary *dictionary = nil;
+        if (data && [response statusCode] == 200) {
+            dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
+        }
+        
+        // return
+        if (finishBlock) { hr_dispatch_main(^{ finishBlock(dictionary); }); }
+        
+    });
+}
 
+#pragma mark - build requests
+
+- (NSMutableURLRequest *)GETRequestWithPath:(NSString *)path {
+    
     // log initial statement
-    NSLog(@"[%@] Building request", self);
+    hr_api_log(@"Building request");
     
     // make sure we have a refresh token
-    NSString *refresh = [self refreshToken];
+    NSString *refresh = HRCryptoManagerKeychainItemString(HROAuthKeychainService, _host);
     if (refresh == nil) {
-        NSLog(@"[%@] No refresh token is present", self);
+        hr_api_log(@"No refresh token is present");
         return nil;
     }
     
     // used to refresh the access token
     NSTimeInterval interval = [_accessTokenExiprationDate timeIntervalSinceNow];
-    if (_accessTokenExiprationDate) { NSLog(@"[%@] Access token expires in %f minutes", self, interval / 60.0); }
+    if (_accessTokenExiprationDate) { hr_api_log(@"Access token expires in %f minutes", interval / 60.0); }
     NSDictionary *refreshParameters = @{
         @"refresh_token" : refresh,
         @"grant_type" : @"refresh_token"
@@ -220,7 +198,7 @@ static NSConditionLock *HRAPIClientWaitLock;
     
     // make sure we have both required elements
     if (_accessToken == nil || _accessTokenExiprationDate == nil || interval < 60.0) {
-        NSLog(@"[%@] Access token is invalid -- refreshing...", self);
+        hr_api_log(@"Access token is invalid -- refreshing...");
         if (![self refreshAccessTokenWithParameters:refreshParameters]) {
             return nil;
         }
@@ -228,7 +206,7 @@ static NSConditionLock *HRAPIClientWaitLock;
     
     // check if our access token will expire soon
     else if (interval < 60.0 * 3.0) {
-        NSLog(@"[%@] Access token will expire soon -- refreshing", self);
+        hr_api_log(@"Access token will expire soon -- refreshing later");
         dispatch_async(_requestQueue, ^{
             [self refreshAccessTokenWithParameters:refreshParameters];
         });
@@ -248,6 +226,34 @@ static NSConditionLock *HRAPIClientWaitLock;
     // return
     return request;
     
+}
+
+- (NSURLRequest *)authorizationRequest {
+    NSDictionary *parameters = @{
+        @"client_id" : HROAuthClientIdentifier,
+        @"response_type" : @"code"
+    };
+    NSString *query = [HRAPIClient queryStringWithParameters:parameters];
+    NSString *URLString = [NSString stringWithFormat:@"https://%@/oauth2/authorize?%@", _host, query];
+    NSURL *URL = [NSURL URLWithString:URLString];
+    return [[NSURLRequest alloc] initWithURL:URL];
+}
+
+#pragma mark - object methods
+
+- (id)initWithHost:(NSString *)host {
+    self = [super init];
+    if (self) {
+        _host = [host copy];
+        NSString *name = [NSString stringWithFormat:@"org.mitre.hreader.rhex-queue.%@", _host];
+        _requestQueue = dispatch_queue_create([name UTF8String], DISPATCH_QUEUE_SERIAL);
+    }
+    return self;
+}
+
+- (void)destroy {
+    [SSKeychain deletePasswordForService:HROAuthKeychainService account:_host];
+    [allClients removeObjectForKey:_host];
 }
 
 - (BOOL)refreshAccessTokenWithParameters:(NSDictionary *)parameters {
@@ -276,11 +282,11 @@ static NSConditionLock *HRAPIClientWaitLock;
     NSError *connectionError = nil;
     NSHTTPURLResponse *response = nil;
     NSData *body = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&connectionError];
-    if (connectionError) { NSLog(@"[API] %@", connectionError); }
+    if (connectionError) { hr_api_log(@"%@", connectionError); }
     if (body) {
         NSError *JSONError = nil;
         payload = [NSJSONSerialization JSONObjectWithData:body options:0 error:&JSONError];
-        if (JSONError) { NSLog(@"[API] %@", JSONError); }
+        if (JSONError) { hr_api_log(@"%@", JSONError); }
     }
     
     // parse payload
@@ -296,26 +302,27 @@ static NSConditionLock *HRAPIClientWaitLock;
     
     // unauthorized
     else if ([[payload objectForKey:@"error"] isEqualToString:@"invalid_grant"]) {
-        [HRAPIClientThreadLock lock];
+        [[HRAPIClient authorizationLock] lock];
         dispatch_async(dispatch_get_main_queue(), ^{
             HRRHExLoginViewController *controller = [HRRHExLoginViewController loginViewControllerForClient:self];
             controller.target = self;
             controller.action = @selector(loginControllerDidAuthenticate:);
-            [controller setQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
             UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:controller];
             id<UIApplicationDelegate> delegate = [[UIApplication sharedApplication] delegate];
             [[[delegate window] rootViewController] presentViewController:navigation animated:YES completion:nil];
         });
-        [HRAPIClientWaitLock lockWhenCondition:1];
-        [HRAPIClientWaitLock unlockWithCondition:0];
-        [HRAPIClientThreadLock unlock];
+        _authorizationLock = [[NSConditionLock alloc] initWithCondition:0];
+        [_authorizationLock lockWhenCondition:1];
+        [_authorizationLock unlock];
+        _authorizationLock = nil;
+        [[HRAPIClient authorizationLock] unlock];
         return YES;
         
     }
     
     // payload error
     else {
-        NSLog(@"[API] Error Payload: %@", payload);
+        hr_api_log(@"%@", payload);
     }
     
     // last ditch return
@@ -323,61 +330,26 @@ static NSConditionLock *HRAPIClientWaitLock;
     
 }
 
-- (NSString *)refreshToken {
-    return HRCryptoManagerKeychainItemString(HROAuthKeychainService, _host);
-}
-
-- (NSURLRequest *)authorizationRequest {
-    NSDictionary *parameters = @{
-        @"client_id" : HROAuthClientIdentifier,
-        @"response_type" : @"code"
-    };
-    NSString *query = [HRAPIClient queryStringWithParameters:parameters];
-    NSString *URLString = [NSString stringWithFormat:@"https://%@/oauth2/authorize?%@", _host, query];
-    NSURL *URL = [NSURL URLWithString:URLString];
-    return [[NSURLRequest alloc] initWithURL:URL];
-}
-
-- (void)JSONForPatientWithIdentifier:(NSString *)identifier startBlock:(void (^) (void))startBlock finishBlock:(void (^) (NSDictionary *payload))finishBlock {
-    dispatch_async(_requestQueue, ^{
-        
-        // start block
-        if (startBlock) { dispatch_async(dispatch_get_main_queue(), startBlock); }
-        
-        // create request
-        NSString *path = [NSString stringWithFormat:@"/records/%@/c32/%@", identifier, identifier];
-        NSMutableURLRequest *request = [self GETRequestWithPath:path];
-        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-        
-        // run request
-        NSError *connectionError = nil;
-        NSHTTPURLResponse *response = nil;
-        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&connectionError];
-        
-        // create patient
-        NSError *JSONError = nil;
-        NSDictionary *dictionary = nil;
-        if (data && [response statusCode] == 200) {
-            dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
-        }
-        
-        // return
-        if (finishBlock) { dispatch_async(dispatch_get_main_queue(), ^{ finishBlock(dictionary); }); }
-        
-    });
-}
-
-- (void)JSONForPatientWithIdentifier:(NSString *)identifier finishBlock:(void (^) (NSDictionary *payload))block {
-    [self JSONForPatientWithIdentifier:identifier startBlock:nil finishBlock:block];
-}
-
 #pragma mark - login callback
 
 - (void)loginControllerDidAuthenticate:(HRRHExLoginViewController *)controller {
     [controller dismissViewControllerAnimated:YES completion:^{
-        [HRAPIClientWaitLock lock];
-        [HRAPIClientWaitLock unlockWithCondition:1];
+        [_authorizationLock lock];
+        [_authorizationLock unlockWithCondition:1];
     }];
+}
+
+@end
+
+@implementation NSString (HRAPIClientAdditions)
+
+- (NSString *)hr_percentEncodedString {
+    CFStringRef string = CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                 (__bridge CFStringRef)self,
+                                                                 NULL,
+                                                                 CFSTR("!*'();:@&=+$,/?%#[]"),
+                                                                 kCFStringEncodingUTF8);
+    return (__bridge_transfer NSString *)string;
 }
 
 @end
