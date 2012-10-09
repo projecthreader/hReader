@@ -163,19 +163,19 @@ static NSConditionLock *HRAPIClientWaitLock;
             // get ids
             DDXMLDocument *document = [[DDXMLDocument alloc] initWithData:data options:0 error:nil];
             [[document rootElement] addNamespace:[DDXMLNode namespaceWithName:@"atom" stringValue:@"http://www.w3.org/2005/Atom"]];
-            NSArray *IDs = [[document nodesForXPath:@"/atom:feed/atom:entry/atom:id" error:nil] valueForKey:@"stringValue"];
+            NSArray *IDs = [document nodesForXPath:@"/atom:feed/atom:entry/atom:link[1]" error:nil];
             NSArray *names = [[document nodesForXPath:@"/atom:feed/atom:entry/atom:title" error:nil] valueForKey:@"stringValue"];
             
             // build array
             if ([response statusCode] == 200 && IDs && [IDs count] == [names count]) {
                 NSMutableArray *patients = [[NSMutableArray alloc] initWithCapacity:[IDs count]];
-                [IDs enumerateObjectsUsingBlock:^(NSString *patientID, NSUInteger index, BOOL *stop) {
-                    NSDictionary *dict = 
-                    [NSDictionary dictionaryWithObjectsAndKeys:
-                     patientID, @"id", 
-                     [names objectAtIndex:index], @"name",
-                     nil];
-                    [patients addObject:dict];
+                [IDs enumerateObjectsUsingBlock:^(DDXMLElement *element, NSUInteger idx, BOOL *stop) {
+                    NSString *href = [[element attributeForName:@"href"] stringValue];
+                    NSDictionary *dictionary = @{
+                        @"name" : [names objectAtIndex:idx],
+                        @"id" : [href lastPathComponent]
+                    };
+                    [patients addObject:dictionary];
                 }];
                 _patientFeed = feed = [patients copy];
                 _patientFeedLastFetchDate = [NSDate date];
