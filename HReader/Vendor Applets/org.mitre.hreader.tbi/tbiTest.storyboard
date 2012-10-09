@@ -2105,7 +2105,6 @@
         <image name="version-2-images_47.png" width="273" height="191"/>
         <image name="version-2-images_61.png" width="110" height="100"/>
     </resources>
-<<<<<<< HEAD
     <classes>
         <class className="PRMQViewController" superclassName="TestViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PRMQViewController.h"/>
@@ -2154,8 +2153,6 @@
             </relationships>
         </class>
     </classes>
-=======
->>>>>>> sync
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation" orientation="landscapeRight"/>
