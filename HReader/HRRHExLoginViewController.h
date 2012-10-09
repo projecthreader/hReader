@@ -36,11 +36,4 @@
  */
 + (HRRHExLoginViewController *)loginViewControllerForClient:(HRAPIClient *)client;
 
-/*
- 
- This method is reserved for internal use.
- 
- */
-- (void)setQueue:(dispatch_queue_t)queue;
-
 @end

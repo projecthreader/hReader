@@ -70,13 +70,6 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
  
  
  */
-+ (NSString *)syncStatus;
-
-/*
- 
- 
- 
- */
 + (void)performSync;
 
 #pragma mark - object methods

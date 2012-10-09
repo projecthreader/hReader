@@ -18,7 +18,6 @@ static NSString *HROAuthURLHost = @"oauth";
 
 @implementation HRRHExLoginViewController {
     HRAPIClient *_client;
-    dispatch_queue_t _queue;
 }
 
 + (HRRHExLoginViewController *)loginViewControllerForClient:(HRAPIClient *)client {
@@ -26,20 +25,6 @@ static NSString *HROAuthURLHost = @"oauth";
     HRRHExLoginViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"RHExLoginViewController"];
     controller->_client = client;
     return controller;
-}
-
-#pragma mark - object methods
-
-- (void)setQueue:(dispatch_queue_t)queue {
-    if (_queue != queue) {
-        if (_queue) { dispatch_release(_queue); }
-        dispatch_retain(queue);
-        _queue = queue;
-    }
-}
-
-- (void)dealloc {
-    dispatch_release(_queue);
 }
 
 #pragma mark - view methods
@@ -79,8 +64,7 @@ static NSString *HROAuthURLHost = @"oauth";
             @"code" : [parameters objectForKey:@"code"],
             @"grant_type" : @"authorization_code"
         };
-        
-        dispatch_async(_queue ?: _client->_requestQueue, ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             if ([_client refreshAccessTokenWithParameters:parameters]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
 #pragma clang diagnostic push
