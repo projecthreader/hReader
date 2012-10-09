@@ -74,29 +74,31 @@
 - (void)refresh:(BOOL)ignoreCache {
     HRAPIClient *client = [HRAPIClient clientWithHost:_host];
     _statusLabel.text = @"Loading…";
-    [client patientFeed:^(NSArray *patients) {
-        if (patients) {
-            NSString *message = [NSString stringWithFormat:
-                                 @"Updated: %@",
-                                 [_dateFormatter stringFromDate:client->_patientFeedLastFetchDate]];
-            _statusLabel.text = message;
-        }
-        else {
-            _statusLabel.text = @"Error";
-            NSString *message = [NSString stringWithFormat:
-                                 @"An error occurred while fetching the patient list from %@",
-                                 _host];
-            [[[UIAlertView alloc]
-              initWithTitle:@"Error"
-              message:message
-              delegate:nil
-              cancelButtonTitle:@"OK"
-              otherButtonTitles:nil]
-             show];
-        }
-        _patients = [patients hr_sortedArrayUsingKey:@"name" ascending:YES];
-        [self.tableView reloadData];
-    } ignoreCache:ignoreCache];
+    [client
+     patientFeed:^(NSArray *patients) {
+         if (patients) {
+             NSString *message = [NSString stringWithFormat:
+                                  @"Updated: %@",
+                                  [_dateFormatter stringFromDate:client->_patientFeedLastFetchDate]];
+             _statusLabel.text = message;
+         }
+         else {
+             _statusLabel.text = @"Error";
+             NSString *message = [NSString stringWithFormat:
+                                  @"An error occurred while fetching the patient list from %@",
+                                  _host];
+             [[[UIAlertView alloc]
+               initWithTitle:@"Error"
+               message:message
+               delegate:nil
+               cancelButtonTitle:@"OK"
+               otherButtonTitles:nil]
+              show];
+         }
+         _patients = [patients hr_sortedArrayUsingKey:@"name" ascending:YES];
+         [self.tableView reloadData];
+     }
+     ignoreCache:ignoreCache];
 }
 
 #pragma mark - Table view data source

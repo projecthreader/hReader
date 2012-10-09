@@ -98,30 +98,33 @@
     HRPeopleFeedViewController *controller = [[HRPeopleFeedViewController alloc] initWithHost:host];
     controller.title = title;
     controller.didFinishBlock = ^(NSString *identifier) {
-        [client JSONForPatientWithIdentifier:identifier finishBlock:^(NSDictionary *payload) {
-            if (payload) {
-                NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
-                [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
-                HRMPatient *patient = [HRMPatient instanceInContext:context];
-                [patient populateWithContentsOfDictionary:payload];
-                patient.serverID = identifier;
-                patient.host = host;
-                patient.relationship = [NSNumber numberWithShort:relationship];
-                [context save:nil];
-            }
-            else {
-                NSString *message = [NSString stringWithFormat:
-                                     @"An error occurred while fetching the patient from %@",
-                                     host];
-                [[[UIAlertView alloc]
-                  initWithTitle:@"Error"
-                  message:message
-                  delegate:nil
-                  cancelButtonTitle:@"OK"
-                  otherButtonTitles:nil]
-                 show];
-            }
-        }];
+        [client
+         JSONForPatientWithIdentifier:identifier
+         startBlock:nil
+         finishBlock:^(NSDictionary *payload) {
+             if (payload) {
+                 NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
+                 [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
+                 HRMPatient *patient = [HRMPatient instanceInContext:context];
+                 [patient populateWithContentsOfDictionary:payload];
+                 patient.serverID = identifier;
+                 patient.host = host;
+                 patient.relationship = [NSNumber numberWithShort:relationship];
+                 [context save:nil];
+             }
+             else {
+                 NSString *message = [NSString stringWithFormat:
+                                      @"An error occurred while fetching the patient from %@",
+                                      host];
+                 [[[UIAlertView alloc]
+                   initWithTitle:@"Error"
+                   message:message
+                   delegate:nil
+                   cancelButtonTitle:@"OK"
+                   otherButtonTitles:nil]
+                  show];
+             }
+         }];
         [_popoverController dismissPopoverAnimated:YES];
         if (completion) { completion(); }
     };
