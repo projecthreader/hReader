@@ -1863,7 +1863,6 @@
 				D8665A58160230D5002CD855 /* tasks-pressed.png in Resources */,
 				D8665A5A16023452002CD855 /* home_background.png in Resources */,
 				D8665A5D16025BB1002CD855 /* Memory_List1.m4a in Resources */,
-<<<<<<< .merge_file_P63Pur
 				D834C6C8161B36BD00D1B82D /* taskStoryboard.storyboard in Resources */,
 				D834C6D6161B36F300D1B82D /* scene1.png in Resources */,
 				D834C6D7161B36F300D1B82D /* scene2.png in Resources */,
