@@ -13,3 +13,6 @@
 [submodule "vendor/sqlcipher"]
 	path = vendor/sqlcipher
 	url = https://github.com/sqlcipher/sqlcipher.git
+[submodule "vendor/KissXML2"]
+	path = vendor/KissXML2
+	url = https://github.com/robbiehanson/KissXML.git
