@@ -95,7 +95,7 @@
 		3B651F81157FC8B50007817C /* interstitial_closebox.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B651F7D157FC8B50007817C /* interstitial_closebox.png */; };
 		3B651F82157FC8B50007817C /* interstitial_closebox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B651F7E157FC8B50007817C /* interstitial_closebox@2x.png */; };
 		3B6FAF8F153F259E002C9EF5 /* HRPeoplePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		3B708F0D15DE870C004D2B1D /* CMDActivityHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B708F0A15DE870C004D2B1D /* CMDActivityHUD.m */; };
+		3B708F0D15DE870C004D2B1D /* CMDActivityHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B708F0A15DE870C004D2B1D /* CMDActivityHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B708F1415DE911E004D2B1D /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B708F1015DE911E004D2B1D /* libTestFlight.a */; };
 		3B74E5C5155477C400593ECF /* HROxygenSaturationAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5C4155477C400593ECF /* HROxygenSaturationAppletTile.xib */; };
 		3B74E5C815547DA200593ECF /* HRRespiratoryRateAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B74E5C715547DA200593ECF /* HRRespiratoryRateAppletTile.xib */; };
