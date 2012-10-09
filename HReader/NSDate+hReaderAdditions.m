@@ -1,21 +1,21 @@
 //
-//  NSDate+HReaderAdditions.m
+//  NSDate+hReaderAdditions.m
 //  HReader
 //
-//  Created by Caleb Davenport on 2/23/12.
+//  Created by Caleb Davenport on 10/9/12.
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
-#import "NSDate+FormattedDate.h"
+#import "NSDate+hReaderAdditions.h"
 
-@implementation NSDate (FormattedDate)
+@implementation NSDate (hReaderAdditions)
 
 - (NSString *)mediumStyleDate {
     static NSDateFormatter *formatter = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         formatter = [[NSDateFormatter alloc] init];
-//        [formatter setDateStyle:NSDateFormatterMediumStyle];
+        //        [formatter setDateStyle:NSDateFormatterMediumStyle];
         [formatter setDateFormat:@"d MMM y"];
     });
     return [formatter stringFromDate:self];
@@ -26,7 +26,7 @@
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         formatter = [[NSDateFormatter alloc] init];
-//        [formatter setDateStyle:NSDateFormatterShortStyle];
+        //        [formatter setDateStyle:NSDateFormatterShortStyle];
         [formatter setDateFormat:@"dMMMy"];
     });
     return [formatter stringFromDate:self];

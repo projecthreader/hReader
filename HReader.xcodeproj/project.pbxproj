@@ -37,7 +37,6 @@
 		3B2405351608E707007E043E /* UIColor+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2405341608E707007E043E /* UIColor+hReaderAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B2405391608F5B2007E043E /* NSArray+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2405381608F5B2007E043E /* NSArray+hReaderAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B24053C1608F644007E043E /* NSSet+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B24053B1608F644007E043E /* NSSet+hReaderAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		3B3C919514F69F61005CD5C5 /* NSDate+FormattedDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3C919414F69F61005CD5C5 /* NSDate+FormattedDate.m */; };
 		3B4365D61540A2890009F892 /* hs-0-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365A31540A2890009F892 /* hs-0-tile.png */; };
 		3B4365D71540A2890009F892 /* hs-1-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365A41540A2890009F892 /* hs-1-overview.png */; };
 		3B4365D81540A2890009F892 /* hs-1-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365A51540A2890009F892 /* hs-1-tile.png */; };
@@ -172,6 +171,7 @@
 		3BABEC2B16246CA50057D3B8 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BABEC2216246CA50057D3B8 /* DDXMLDocument.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BABEC2C16246CA50057D3B8 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BABEC2416246CA50057D3B8 /* DDXMLElement.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BABEC2D16246CA50057D3B8 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BABEC2616246CA50057D3B8 /* DDXMLNode.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		3BABEC3E1624769B0057D3B8 /* NSDate+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BABEC3D1624769B0057D3B8 /* NSDate+hReaderAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BB16A98158FB7B100CF34A6 /* HRSecurityQuestionsTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB16A95158FB7B000CF34A6 /* HRSecurityQuestionsTextField.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BB16A99158FB7B100CF34A6 /* HRSecurityQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB16A97158FB7B000CF34A6 /* HRSecurityQuestionsViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BB3F0C015823AFB00C1EC1D /* HRPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB3F0BF15823AFB00C1EC1D /* HRPasscodeViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -362,8 +362,6 @@
 		3B24053A1608F643007E043E /* NSSet+hReaderAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+hReaderAdditions.h"; sourceTree = "<group>"; };
 		3B24053B1608F644007E043E /* NSSet+hReaderAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+hReaderAdditions.m"; sourceTree = "<group>"; };
 		3B305F19157D4F2900FC03E6 /* HRPeoplePickerViewController_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPeoplePickerViewController_private.h; sourceTree = "<group>"; };
-		3B3C919314F69F61005CD5C5 /* NSDate+FormattedDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+FormattedDate.h"; sourceTree = "<group>"; };
-		3B3C919414F69F61005CD5C5 /* NSDate+FormattedDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+FormattedDate.m"; sourceTree = "<group>"; };
 		3B4365A31540A2890009F892 /* hs-0-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hs-0-tile.png"; sourceTree = "<group>"; };
 		3B4365A41540A2890009F892 /* hs-1-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hs-1-overview.png"; sourceTree = "<group>"; };
 		3B4365A51540A2890009F892 /* hs-1-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hs-1-tile.png"; sourceTree = "<group>"; };
@@ -519,6 +517,8 @@
 		3BABEC2516246CA50057D3B8 /* DDXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLNode.h; sourceTree = "<group>"; };
 		3BABEC2616246CA50057D3B8 /* DDXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLNode.m; sourceTree = "<group>"; };
 		3BABEC2816246CA50057D3B8 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
+		3BABEC3C1624769B0057D3B8 /* NSDate+hReaderAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+hReaderAdditions.h"; sourceTree = "<group>"; };
+		3BABEC3D1624769B0057D3B8 /* NSDate+hReaderAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+hReaderAdditions.m"; sourceTree = "<group>"; };
 		3BB16A94158FB7B000CF34A6 /* HRSecurityQuestionsTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSecurityQuestionsTextField.h; sourceTree = "<group>"; };
 		3BB16A95158FB7B000CF34A6 /* HRSecurityQuestionsTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSecurityQuestionsTextField.m; sourceTree = "<group>"; };
 		3BB16A96158FB7B000CF34A6 /* HRSecurityQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSecurityQuestionsViewController.h; sourceTree = "<group>"; };
@@ -1188,14 +1188,14 @@
 				3B24053B1608F644007E043E /* NSSet+hReaderAdditions.m */,
 				3B2405371608F5B2007E043E /* NSArray+hReaderAdditions.h */,
 				3B2405381608F5B2007E043E /* NSArray+hReaderAdditions.m */,
-				3B3C919314F69F61005CD5C5 /* NSDate+FormattedDate.h */,
-				3B3C919414F69F61005CD5C5 /* NSDate+FormattedDate.m */,
 				3B77F04515546051003C2DBD /* NSString+SentenceCapitalization.h */,
 				3B77F04615546051003C2DBD /* NSString+SentenceCapitalization.m */,
 				3B2405301608E52E007E043E /* NSBundle+hRreaderAdditions.h */,
 				3B2405311608E52E007E043E /* NSBundle+hRreaderAdditions.m */,
 				3B2405331608E707007E043E /* UIColor+hReaderAdditions.h */,
 				3B2405341608E707007E043E /* UIColor+hReaderAdditions.m */,
+				3BABEC3C1624769B0057D3B8 /* NSDate+hReaderAdditions.h */,
+				3BABEC3D1624769B0057D3B8 /* NSDate+hReaderAdditions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1815,7 +1815,6 @@
 				3BD16F0514E1C5B700F2249E /* HRMPatient.m in Sources */,
 				3BE9A40514E40EBB00F87B60 /* HRMEntry.m in Sources */,
 				941F253F14E2EC5D0077D6D1 /* HRVitalAppletTile.m in Sources */,
-				3B3C919514F69F61005CD5C5 /* NSDate+FormattedDate.m in Sources */,
 				9452D7F714FC16DF00021E69 /* HRProviderView.m in Sources */,
 				94AEA7401529F2DC00D9C67D /* GCActionSheet.m in Sources */,
 				94334ACC152A249F00B4C904 /* HRKeyValueTableViewController.m in Sources */,
@@ -1873,6 +1872,7 @@
 				3BABEC2B16246CA50057D3B8 /* DDXMLDocument.m in Sources */,
 				3BABEC2C16246CA50057D3B8 /* DDXMLElement.m in Sources */,
 				3BABEC2D16246CA50057D3B8 /* DDXMLNode.m in Sources */,
+				3BABEC3E1624769B0057D3B8 /* NSDate+hReaderAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

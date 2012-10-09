@@ -13,5 +13,6 @@
 #import "NSBundle+hRreaderAdditions.h"
 #import "NSArray+hReaderAdditions.h"
 #import "NSSet+hReaderAdditions.h"
+#import "NSDate+hReaderAdditions.h"
 
 #endif

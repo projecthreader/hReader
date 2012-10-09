@@ -7,11 +7,9 @@
 //
 
 #import "HREncountersAppletTile.h"
-
 #import "HRMEntry.h"
 #import "HRMPatient.h"
 
-#import "NSDate+FormattedDate.h"
 #import "NSString+SentenceCapitalization.h"
 
 @implementation HREncountersAppletTile
@@ -21,7 +19,7 @@
     HRMPatient *patient = [self.userInfo objectForKey:@"__private_patient__"];
     HRMEntry *encounter = [patient.encounters lastObject];
     if (encounter) {
-        self.dateLabel.text = [encounter.date mediumStyleDate];
+        self.dateLabel.text = [encounter.date hr_mediumStyleDate];
         self.descriptionLabel.text = [encounter.desc sentenceCapitalizedString];
         NSDictionary *codes = encounter.codes;
         NSDictionary *codeType = [[codes allKeys] lastObject];

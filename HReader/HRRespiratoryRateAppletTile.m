@@ -7,11 +7,8 @@
 //
 
 #import "HRRespiratoryRateAppletTile.h"
-
 #import "HRMEntry.h"
 #import "HRMPatient.h"
-
-#import "NSDate+FormattedDate.h"
 
 @implementation HRRespiratoryRateAppletTile {
     NSArray *_entries;
@@ -28,7 +25,7 @@
     NSInteger latestValue = [[latest valueForKeyPath:@"value.scalar"] integerValue];
     self.leftValueLabel.text = [NSString stringWithFormat:@"%lu", (long)latestValue];
     self.leftValueLabel.textColor = ([self isValueNormal:latestValue] ? [UIColor blackColor] : [UIColor hr_redColor]);
-    self.middleValueLabel.text = [latest.date shortStyleDate];
+    self.middleValueLabel.text = [latest.date hr_shortStyleDate];
     self.rightValueLabel.text = [NSString stringWithFormat:@"%lu-%lu",
                                  (unsigned long)[self normalLow],
                                  (unsigned long)[self normalHigh]];
@@ -50,7 +47,7 @@
         UIColor *color = (normal ? [UIColor blackColor] : [UIColor hr_redColor]);
         NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSString stringWithFormat:@"%lu", (unsigned long)value], @"detail",
-                                    [entry.date mediumStyleDate], @"title",
+                                    [entry.date hr_mediumStyleDate], @"title",
                                     color, @"detail_color",
                                     nil];
         [entries addObject:dictionary];

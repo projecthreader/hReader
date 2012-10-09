@@ -14,11 +14,9 @@
 #import "HRPeoplePickerViewController.h"
 #import "HRAppletTile.h"
 #import "HRAppDelegate.h"
-
 #import "HRMPatient.h"
 #import "HRMEntry.h"
 
-#import "NSDate+FormattedDate.h"
 #import "NSString+SentenceCapitalization.h"
 
 #import "SVPanelViewController.h"
@@ -115,10 +113,10 @@
         // date of birth
         self.patientNameLabel.text = [[patient compositeName] uppercaseString];
         if ([self.dateOfBirthTitleLabel.text isEqualToString:@"DOB:"]) {
-            self.dateOfBirthLabel.text = [patient.dateOfBirth mediumStyleDate];
+            self.dateOfBirthLabel.text = [patient.dateOfBirth hr_mediumStyleDate];
         }
         else {
-            self.dateOfBirthLabel.text = [patient.dateOfBirth ageString];
+            self.dateOfBirthLabel.text = [patient.dateOfBirth hr_ageString];
         }
         
         // allergies
@@ -178,7 +176,7 @@
                 }
                 else if (index < conditionsCount) {
                     HRMEntry *condition = [conditions objectAtIndex:index];
-                    label.text = [condition.startDate mediumStyleDate];
+                    label.text = [condition.startDate hr_mediumStyleDate];
                 }
                 else { label.text = nil; }
             }];
@@ -191,7 +189,7 @@
             if (name) {
                 self.followUpAppointmentNameLabel.text = name;
                 NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[event objectForKey:@"follow_up_appointment_date"] doubleValue]];
-                self.followUpAppointmentDateLabel.text = ([date mediumStyleDate]) ?: nil;
+                self.followUpAppointmentDateLabel.text = ([date hr_mediumStyleDate]) ?: nil;
             }
             else {
                 self.followUpAppointmentDateLabel.text = nil;
@@ -202,7 +200,7 @@
             NSDictionary *medication = [[event objectForKey:@"medication_refill"] lastObject];
             if (medication) {
                 NSDate *date = [NSDate dateWithTimeIntervalSince1970:[[medication objectForKey:@"date"] doubleValue]];
-                self.medicationRefillDateLabel.text = [date mediumStyleDate];
+                self.medicationRefillDateLabel.text = [date hr_mediumStyleDate];
                 self.medicationRefillNameLabel.text = [[medication objectForKey:@"medication"] sentenceCapitalizedString];
             }
             else {
@@ -495,7 +493,7 @@
 
 - (NSString *)formattedDate:(double)interval {
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
-    return [date mediumStyleDate];
+    return [date hr_mediumStyleDate];
 }
 
 @end

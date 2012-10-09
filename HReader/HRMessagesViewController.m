@@ -14,8 +14,6 @@
 #import "HRPatientSwipeControl.h"
 #import "HRPeoplePickerViewController.h"
 
-#import "NSDate+FormattedDate.h"
-
 #import "SVPanelViewController.h"
 
 @interface HRMessagesViewController ()
@@ -155,7 +153,7 @@
     
     NSDictionary *message = [self.messagesArray objectAtIndex:indexPath.row];
     NSTimeInterval interval = [[message objectForKey:@"date"] doubleValue];
-    cell.textLabel.text = [[NSDate dateWithTimeIntervalSince1970:interval] mediumStyleDate];
+    cell.textLabel.text = [[NSDate dateWithTimeIntervalSince1970:interval] hr_mediumStyleDate];
 
     return cell;
 }

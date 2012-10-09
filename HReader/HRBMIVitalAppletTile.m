@@ -7,14 +7,10 @@
 //
 
 #import "HRBMIVitalAppletTile.h"
-
 #import "HRKeyValueTableViewController.h"
 #import "HRSparkLineView.h"
-
 #import "HRMEntry.h"
 #import "HRMPatient.h"
-
-#import "NSDate+FormattedDate.h"
 
 @implementation HRBMIVitalAppletTile {
     NSArray *_entries;
@@ -30,7 +26,7 @@
     // set labels
     float latestValue = [[latest valueForKeyPath:@"value.scalar"] floatValue];
     self.leftValueLabel.textColor = ([self isValueNormal:latestValue]) ? [UIColor blackColor] : [UIColor hr_redColor];
-    self.middleValueLabel.text = [latest.date shortStyleDate];
+    self.middleValueLabel.text = [latest.date hr_shortStyleDate];
     
     HRSparkLineRange range;
     HRSparkLineLine *line = [[HRSparkLineLine alloc] init];
@@ -81,7 +77,7 @@
         UIColor *color = isNormal ? [UIColor blackColor] : [UIColor hr_redColor];
         NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [NSString stringWithFormat:@"%0.1f", value], @"detail",
-                                    [entry.date mediumStyleDate], @"title",
+                                    [entry.date hr_mediumStyleDate], @"title",
                                     color, @"detail_color",
                                     nil];
         [entries addObject:dictionary];

@@ -10,8 +10,6 @@
 #import "HRKeyValueTableViewController.h"
 #import "HRSparkLineView.h"
 
-#import "NSDate+FormattedDate.h"
-
 @implementation HRVitalAppletTile {
     UIPopoverController *_popoverController;
 }
