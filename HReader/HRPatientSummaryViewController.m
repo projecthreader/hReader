@@ -9,7 +9,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "HRPatientSummaryViewController.h"
-#import "HRRootViewController.h"
 #import "HRAppletConfigurationViewController.h"
 #import "HRPeoplePickerViewController.h"
 #import "HRAppletTile.h"
