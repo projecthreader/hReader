@@ -7,24 +7,14 @@
 //
 
 #import "HRAppletConfigurationViewController.h"
-
 #import "HRMPatient.h"
 
 NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigurationDidChange";
 
-@interface HRAppletConfigurationViewController () {
-@private
-    NSArray * __strong installedApplets;
-    NSArray * __strong availableApplets;
+@implementation HRAppletConfigurationViewController {
+    NSArray * _installedApplets;
+    NSArray * _availableApplets;
 }
-
-- (void)reloadApplets;
-
-@end
-
-@implementation HRAppletConfigurationViewController
-
-@synthesize patient = _patient;
 
 #pragma mark - class methods
 
@@ -80,8 +70,8 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
 }
 
 - (void)viewDidUnload {
-    availableApplets = nil;
-    installedApplets = nil;
+    _availableApplets = nil;
+    _installedApplets = nil;
     [super viewDidUnload];
 }
 
@@ -94,21 +84,21 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
 - (void)reloadApplets {
     
     // load system applets
-    availableApplets = [[HRAppletConfigurationViewController availableApplets] mutableCopy];
+    _availableApplets = [[HRAppletConfigurationViewController availableApplets] mutableCopy];
     
     // load patient applets
     NSArray *identifiers = self.patient.applets;
-    installedApplets = [NSMutableArray arrayWithCapacity:[identifiers count]];
+    _installedApplets = [NSMutableArray arrayWithCapacity:[identifiers count]];
     [identifiers enumerateObjectsUsingBlock:^(NSString *identifier, NSUInteger index, BOOL *stop) {
         NSDictionary *applet = [HRAppletConfigurationViewController appletWithIdentifier:identifier];
         if (applet) {
-            [(NSMutableArray *)installedApplets addObject:applet];
-            [(NSMutableArray *)availableApplets removeObject:applet];
+            [(NSMutableArray *)_installedApplets addObject:applet];
+            [(NSMutableArray *)_availableApplets removeObject:applet];
         }
     }];
     
     // sort system applets
-    [(NSMutableArray *)availableApplets sortUsingComparator:^NSComparisonResult(NSDictionary *one, NSDictionary *two) {
+    [(NSMutableArray *)_availableApplets sortUsingComparator:^NSComparisonResult(NSDictionary *one, NSDictionary *two) {
         return [[one objectForKey:@"display_name"] caseInsensitiveCompare:[two objectForKey:@"display_name"]];
     }];
     
@@ -121,11 +111,11 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (section == 0) ? [installedApplets count] : [availableApplets count];
+    return (section == 0) ? [_installedApplets count] : [_availableApplets count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSArray *array = (indexPath.section == 0) ? installedApplets : availableApplets;
+    NSArray *array = (indexPath.section == 0) ? _installedApplets : _availableApplets;
     NSString *identifier = ([array count]) ? @"BasicCell" : @"EmptyCell";
     NSDictionary *applet = ([array count]) ? [array objectAtIndex:indexPath.row] : nil;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -137,11 +127,11 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1) {
         NSMutableArray *array = [self.patient.applets mutableCopy];
-        NSDictionary *applet = [availableApplets objectAtIndex:indexPath.row];
+        NSDictionary *applet = [_availableApplets objectAtIndex:indexPath.row];
         [array addObject:[applet objectForKey:@"identifier"]];
         self.patient.applets = array;
         [[self.patient managedObjectContext] save:nil];
-        NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:[installedApplets indexOfObject:applet] inSection:0];
+        NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:[_installedApplets indexOfObject:applet] inSection:0];
         [tableView beginUpdates];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -167,11 +157,11 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
     NSDictionary *applet;
     NSMutableArray *array = [self.patient.applets mutableCopy];
     if (editingStyle == UITableViewCellEditingStyleInsert) {
-        applet = [availableApplets objectAtIndex:indexPath.row];
+        applet = [_availableApplets objectAtIndex:indexPath.row];
         [array addObject:[applet objectForKey:@"identifier"]];
     }
     else {
-        applet = [installedApplets objectAtIndex:indexPath.row];
+        applet = [_installedApplets objectAtIndex:indexPath.row];
         [array removeObject:[applet objectForKey:@"identifier"]];
     }
     self.patient.applets = array;
@@ -180,10 +170,10 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
     // update table view
     NSIndexPath *newIndexPath = nil;
     if (editingStyle == UITableViewCellEditingStyleInsert) {
-        newIndexPath = [NSIndexPath indexPathForRow:[installedApplets indexOfObject:applet] inSection:0];
+        newIndexPath = [NSIndexPath indexPathForRow:[_installedApplets indexOfObject:applet] inSection:0];
     }
     else {
-        newIndexPath = [NSIndexPath indexPathForRow:[availableApplets indexOfObject:applet] inSection:1];
+        newIndexPath = [NSIndexPath indexPathForRow:[_availableApplets indexOfObject:applet] inSection:1];
     }
     [tableView beginUpdates];
     [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -197,12 +187,8 @@ NSString * const HRAppletConfigurationDidChangeNotification = @"HRAppletConfigur
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
-    if (proposedDestinationIndexPath.section == 0) {
-        return proposedDestinationIndexPath;
-    }
-    else {
-        return [NSIndexPath indexPathForRow:([tableView numberOfRowsInSection:0] - 1) inSection:0];
-    }
+    if (proposedDestinationIndexPath.section == 0) { return proposedDestinationIndexPath; }
+    else { return [NSIndexPath indexPathForRow:([tableView numberOfRowsInSection:0] - 1) inSection:0]; }
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {

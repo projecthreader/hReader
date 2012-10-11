@@ -18,13 +18,14 @@ extern NSString * const HRAppletConfigurationDidChangeNotification;
 
 /*
  
+ Get a list of all applet definitions. present in the system.
  
  */
 + (NSArray *)availableApplets;
 
 /*
  
- 
+ Get the applet definition that has the provided identifier.
  
  */
 + (NSDictionary *)appletWithIdentifier:(NSString *)identifier;
