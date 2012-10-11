@@ -53,6 +53,15 @@ static int HRRootViewControllerTitleContext = 0;
     return self;
 }
 
+- (void)dealloc {
+    [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [obj
+         removeObserver:self
+         forKeyPath:@"title"
+         context:&HRRootViewControllerTitleContext];
+    }];
+}
+
 - (void)setVisibleViewController:(UIViewController *)controller {
     
     // declare completion block
@@ -87,12 +96,12 @@ static int HRRootViewControllerTitleContext = 0;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if (context == &HRRootViewControllerTitleContext) {
-//        UIViewController *controller = (id)object;
-//        NSUInteger index = [self.childViewControllers indexOfObject:controller];
-//        [_segmentedControl setTitle:controller.title forSegmentAtIndex:index];
-//        if (controller == self.visibleViewController) {
-//            self.title = controller.title;
-//        }
+        UIViewController *controller = (id)object;
+        NSUInteger index = [self.childViewControllers indexOfObject:controller];
+        [_segmentedControl setTitle:controller.title forSegmentAtIndex:index];
+        if (controller == _visibleViewController) {
+            self.title = controller.title;
+        }
     }
 }
 
