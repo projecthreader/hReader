@@ -6,35 +6,31 @@
 //  Copyright (c) 2011 MITRE Corporation. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
+#import "HRContentViewController.h"
 #import "HRGridTableView.h"
 
-@interface HRPatientSummaryViewController : UIViewController <HRGridTableViewDelegate, HRGridTableViewDataSource>
+@interface HRPatientSummaryViewController : HRContentViewController <HRGridTableViewDelegate, HRGridTableViewDataSource>
 
 // container views
-@property (strong, nonatomic) IBOutlet HRGridTableView *gridView;
-@property (retain, nonatomic) IBOutlet UIView *headerView;
+@property (nonatomic, weak) IBOutlet HRGridTableView *gridView;
 
 // key labels
-@property (strong, nonatomic) IBOutlet UILabel *patientNameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *dateOfBirthLabel;
-@property (strong, nonatomic) IBOutlet UILabel *dateOfBirthTitleLabel;
-@property (strong, nonatomic) IBOutlet UILabel *allergiesLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *patientImageView;
+@property (nonatomic, weak) IBOutlet UILabel *dateOfBirthLabel;
+@property (nonatomic, weak) IBOutlet UILabel *dateOfBirthTitleLabel;
+@property (nonatomic, weak) IBOutlet UILabel *allergiesLabel;
 
 // conditions
-@property (nonatomic, strong) IBOutlet UIView *conditionsContainerView;
+@property (nonatomic, weak) IBOutlet UIView *conditionsContainerView;
 @property (nonatomic, strong) IBOutletCollection(UILabel) NSArray *conditionNameLabels;
 @property (nonatomic, strong) IBOutletCollection(UILabel) NSArray *conditionDateLabels;
 
 // events
-@property (nonatomic, strong) IBOutlet UIView *eventsContainerView;
-@property (strong, nonatomic) IBOutlet UILabel *followUpAppointmentNameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *followUpAppointmentDateLabel;
-@property (strong, nonatomic) IBOutlet UILabel *planOfCareLabel;
-@property (strong, nonatomic) IBOutlet UILabel *medicationRefillNameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *medicationRefillDateLabel;
+@property (nonatomic, weak) IBOutlet UIView *eventsContainerView;
+@property (nonatomic, weak) IBOutlet UILabel *followUpAppointmentNameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *followUpAppointmentDateLabel;
+@property (nonatomic, weak) IBOutlet UILabel *planOfCareLabel;
+@property (nonatomic, weak) IBOutlet UILabel *medicationRefillNameLabel;
+@property (nonatomic, weak) IBOutlet UILabel *medicationRefillDateLabel;
 
 
 
@@ -45,20 +41,14 @@
 
 
 
-@property (retain, nonatomic) IBOutlet UILabel *functionalStatusDateLabel;
-@property (retain, nonatomic) IBOutlet UILabel *functionalStatusTypeLabel;
-@property (retain, nonatomic) IBOutlet UILabel *functionalStatusProblemLabel;
-@property (retain, nonatomic) IBOutlet UILabel *functionalStatusStatusLabel;
+@property (nonatomic, weak) IBOutlet UILabel *functionalStatusDateLabel;
+@property (nonatomic, weak) IBOutlet UILabel *functionalStatusTypeLabel;
+@property (nonatomic, weak) IBOutlet UILabel *functionalStatusProblemLabel;
+@property (nonatomic, weak) IBOutlet UILabel *functionalStatusStatusLabel;
 
-@property (retain, nonatomic) IBOutlet UILabel *pulseLabel;
-@property (retain, nonatomic) IBOutlet UILabel *pulseDateLabel;
-@property (retain, nonatomic) IBOutlet UILabel *pulseNormalLabel;
+@property (nonatomic, weak) IBOutlet UILabel *advanceDirectivesLabel;
 
-@property (retain, nonatomic) IBOutlet UILabel *advanceDirectivesLabel;
-
-@property (retain, nonatomic) IBOutlet UILabel *diagnosisLabel;
-@property (retain, nonatomic) IBOutlet UILabel *diagnosisDateLabel;
-
-@property (retain, nonatomic) IBOutlet UIImageView *pulseImageView;
+@property (nonatomic, weak) IBOutlet UILabel *diagnosisLabel;
+@property (nonatomic, weak) IBOutlet UILabel *diagnosisDateLabel;
 
 @end

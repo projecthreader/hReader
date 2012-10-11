@@ -29,7 +29,7 @@
         [[NSNotificationCenter defaultCenter]
          addObserver:self
          selector:@selector(reloadData)
-         name:HRPatientDidChangeNotification
+         name:HRSelectedPatientDidChangeNotification
          object:nil];
     }
     return self;
@@ -38,7 +38,7 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter]
      removeObserver:self
-     name:HRPatientDidChangeNotification
+     name:HRSelectedPatientDidChangeNotification
      object:nil];
 }
 

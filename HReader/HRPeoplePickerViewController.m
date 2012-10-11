@@ -13,7 +13,8 @@
 #import "HRMPatient.h"
 #import "HRPanelViewController.h"
 
-NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
+NSString * const HRSelectedPatientDidChangeNotification = @"HRSelectedPatientDidChange";
+NSString * const HRSelectedPatientKey = @"HRSelectedPatient";
 static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
 
 @implementation HRPeoplePickerViewController {
@@ -38,8 +39,11 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
         [settings setObject:string forKey:HRSelectedPatientURIKey];
         [settings synchronize];
         [[NSNotificationCenter defaultCenter]
-         postNotificationName:HRPatientDidChangeNotification
-         object:self];
+         postNotificationName:HRSelectedPatientDidChangeNotification
+         object:nil
+         userInfo:@{
+             HRSelectedPatientKey : patient
+         }];
     }
 }
 
