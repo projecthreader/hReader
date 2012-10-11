@@ -15,10 +15,9 @@
 #import "HRAppDelegate.h"
 #import "HRMPatient.h"
 #import "HRMEntry.h"
+#import "HRPanelViewController.h"
 
 #import "NSString+SentenceCapitalization.h"
-
-#import "SVPanelViewController.h"
 
 @interface HRPatientSummaryViewController () {
 @private

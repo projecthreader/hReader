@@ -17,6 +17,7 @@
 		3B001D5215755BA900762FB0 /* GradientButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B001D5015755BA900762FB0 /* GradientButton.png */; };
 		3B001D5315755BA900762FB0 /* GradientButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B001D5115755BA900762FB0 /* GradientButtonHighlighted.png */; };
 		3B00A7B8162730AF000BD5F8 /* HRTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00A7B7162730AF000BD5F8 /* HRTabBarController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		3B00A7BB16273E2F000BD5F8 /* HRPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00A7BA16273E2F000BD5F8 /* HRPanelViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B04A55214E0692600AD91F9 /* SSKeychain.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3B04A56914E06A3A00AD91F9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B04A56814E06A3A00AD91F9 /* Security.framework */; };
 		3B0977E41552D1F2006392E2 /* UserImage-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0977E31552D1F2006392E2 /* UserImage-5.png */; };
@@ -188,8 +189,6 @@
 		3BEBAE6215766C3700E4CB33 /* HRAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBAE6115766C3700E4CB33 /* HRAPIClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BEBAE661576771400E4CB33 /* HRRHExLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBAE651576771400E4CB33 /* HRRHExLoginViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BEBAE6A15769ED400E4CB33 /* HRPeopleFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBAE6915769ED400E4CB33 /* HRPeopleFeedViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		3BF32213153CA32400757060 /* SVPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF32210153CA32400757060 /* SVPanelViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		3BF32214153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF32212153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BFBEE1A1534BEAA009EBA2D /* HRAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3BFBEE1C1534BF32009EBA2D /* HReaderApplets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */; };
 		3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2D14DAE5910037738D /* Icon-72.png */; };
@@ -328,6 +327,8 @@
 		3B001D5115755BA900762FB0 /* GradientButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GradientButtonHighlighted.png; sourceTree = "<group>"; };
 		3B00A7B6162730AF000BD5F8 /* HRTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRTabBarController.h; sourceTree = "<group>"; };
 		3B00A7B7162730AF000BD5F8 /* HRTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRTabBarController.m; sourceTree = "<group>"; };
+		3B00A7B916273E2F000BD5F8 /* HRPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPanelViewController.h; sourceTree = "<group>"; };
+		3B00A7BA16273E2F000BD5F8 /* HRPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPanelViewController.m; sourceTree = "<group>"; };
 		3B04A55114E0692600AD91F9 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
 		3B04A55214E0692600AD91F9 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		3B04A56814E06A3A00AD91F9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -552,10 +553,6 @@
 		3BEBAE6715767CC900E4CB33 /* HRAPIClient_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRAPIClient_private.h; sourceTree = "<group>"; };
 		3BEBAE6815769ED400E4CB33 /* HRPeopleFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPeopleFeedViewController.h; sourceTree = "<group>"; };
 		3BEBAE6915769ED400E4CB33 /* HRPeopleFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeopleFeedViewController.m; sourceTree = "<group>"; };
-		3BF3220F153CA32400757060 /* SVPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPanelViewController.h; sourceTree = "<group>"; };
-		3BF32210153CA32400757060 /* SVPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPanelViewController.m; sourceTree = "<group>"; };
-		3BF32211153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SVPanelViewControllerAdditions.h"; sourceTree = "<group>"; };
-		3BF32212153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SVPanelViewControllerAdditions.m"; sourceTree = "<group>"; };
 		3BFBEE161534BD33009EBA2D /* HReader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HReader.entitlements; sourceTree = "<group>"; };
 		3BFBEE181534BEAA009EBA2D /* HRAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAppletTile.h; sourceTree = "<group>"; };
 		3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAppletTile.m; sourceTree = "<group>"; };
@@ -759,6 +756,8 @@
 			children = (
 				3B00A7B6162730AF000BD5F8 /* HRTabBarController.h */,
 				3B00A7B7162730AF000BD5F8 /* HRTabBarController.m */,
+				3B00A7B916273E2F000BD5F8 /* HRPanelViewController.h */,
+				3B00A7BA16273E2F000BD5F8 /* HRPanelViewController.m */,
 			);
 			name = "Root View Controllers";
 			sourceTree = "<group>";
@@ -1428,10 +1427,6 @@
 		DD8BD9EB148D2B270090F729 /* Root View */ = {
 			isa = PBXGroup;
 			children = (
-				3BF3220F153CA32400757060 /* SVPanelViewController.h */,
-				3BF32210153CA32400757060 /* SVPanelViewController.m */,
-				3BF32211153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.h */,
-				3BF32212153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.m */,
 				3B0FE4061538755300BEC21C /* HRAppletConfigurationViewController.h */,
 				3B0FE4071538755300BEC21C /* HRAppletConfigurationViewController.m */,
 				3B6FAF8D153F259E002C9EF5 /* HRPeoplePickerViewController.h */,
@@ -1830,8 +1825,6 @@
 				9439A9D4153C7303007FE401 /* HRBMIVitalAppletTile.m in Sources */,
 				94650033153C8F7D003255AF /* HRSparkLineView.m in Sources */,
 				9465003E153CA369003255AF /* HRBloodPressureAppletTile.m in Sources */,
-				3BF32213153CA32400757060 /* SVPanelViewController.m in Sources */,
-				3BF32214153CA32400757060 /* UIViewController+SVPanelViewControllerAdditions.m in Sources */,
 				3B6FAF8F153F259E002C9EF5 /* HRPeoplePickerViewController.m in Sources */,
 				9454C36F1551797A0024C2EF /* HRSparkLineLine.m in Sources */,
 				9454C3701551797A0024C2EF /* HRSparkLinePoint.m in Sources */,
@@ -1875,6 +1868,7 @@
 				3BABEC3E1624769B0057D3B8 /* NSDate+hReaderAdditions.m in Sources */,
 				3BABEC46162479090057D3B8 /* CMDManagedObject.m in Sources */,
 				3B00A7B8162730AF000BD5F8 /* HRTabBarController.m in Sources */,
+				3B00A7BB16273E2F000BD5F8 /* HRPanelViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

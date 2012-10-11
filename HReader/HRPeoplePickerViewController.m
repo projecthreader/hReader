@@ -10,10 +10,8 @@
 
 #import "HRPeoplePickerViewController_private.h"
 #import "HRAppDelegate.h"
-
 #import "HRMPatient.h"
-
-#import "SVPanelViewController.h"
+#import "HRPanelViewController.h"
 
 NSString * const HRPatientDidChangeNotification = @"HRPatientDidChange";
 static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
@@ -232,7 +230,7 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
     dispatch_after(time, dispatch_get_main_queue(), ^(void){
         selectedPatient = patient;
         [HRPeoplePickerViewController setSelectedPatient:patient];
-        [self.panelViewController hideAccessoryViewControllers:YES];
+        [self.panelViewController showMainViewController:YES];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     });
 }

@@ -15,9 +15,7 @@
 #import "HRPatientSwipeControl.h"
 #import "HRPeoplePickerViewController.h"
 #import "HRAPIClient.h"
-
-#import "SVPanelViewController.h"
-
+#import "HRPanelViewController.h"
 #import "HRMPatient.h"
 
 #import "DDXML.h"

@@ -24,8 +24,6 @@
 #import "HRCryptoManager.h"
 #import "HRMPatient.h"
 
-#import "SVPanelViewController.h"
-
 #import "SSKeychain.h"
 
 @implementation HRAppDelegate {

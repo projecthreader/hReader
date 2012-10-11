@@ -14,8 +14,7 @@
 #import "HRProviderView.h"
 #import "HRImageAppletTile.h"
 #import "HRPeoplePickerViewController.h"
-
-#import "SVPanelViewController.h"
+#import "HRPanelViewController.h"
 
 @implementation HRDoctorsViewController {
     NSArray *_providerViews;

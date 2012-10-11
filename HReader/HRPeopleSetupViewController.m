@@ -14,10 +14,9 @@
 #import "HRPeopleFeedViewController.h"
 #import "HRAPIClient.h"
 #import "HRPeoplePickerViewController_private.h"
+#import "HRPanelViewController.h"
 
 #import "HRMPatient.h"
-
-#import "SVPanelViewController.h"
 
 #import "GCAlertView.h"
 
@@ -146,7 +145,7 @@
 
 - (void)showMainApplicationInterface {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    SVPanelViewController *panel = [storyboard instantiateInitialViewController];
+    HRPanelViewController *panel = [storyboard instantiateInitialViewController];
     panel.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"RootViewController"];
     panel.rightAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"AppletsConfigurationViewController"];
     panel.leftAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"PeoplePickerViewController"];
@@ -273,12 +272,7 @@
 }
 
 - (IBAction)viewInMainInterface:(id)sender {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-    SVPanelViewController *panel = [storyboard instantiateInitialViewController];
-    panel.mainViewController = [storyboard instantiateViewControllerWithIdentifier:@"RootViewController"];
-    panel.rightAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"AppletsConfigurationViewController"];
-    panel.leftAccessoryViewController = [storyboard instantiateViewControllerWithIdentifier:@"PeoplePickerViewController"];
-    [self presentViewController:panel animated:YES completion:nil];
+    [self showMainApplicationInterface];
 }
 
 - (void)deleteButtonPress:(UIButton *)button {

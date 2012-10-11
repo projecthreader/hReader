@@ -1,53 +1,21 @@
 //
-//  SVViewController.m
+//  HRPanelViewController.m
+//  HReader
 //
-//  Created by Caleb Davenport on 4/16/12.
-//  Copyright (c) 2012 The MITRE Corporation. All rights reserved.
+//  Created by Caleb Davenport on 10/11/12.
+//  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "SVPanelViewController.h"
+#import "HRPanelViewController.h"
 
-#import "UIViewController+SVPanelViewControllerAdditions.h"
-
-#define kAccessoryViewWidth 335.0
-
-@interface SVPanelViewController () {
-    UIView * __strong mask;
-    NSInteger state;
+@implementation HRPanelViewController {
+    UIView *_mask;
+    short _state;
 }
 
-/*
- 
- Configures state so that the main view can transition out to expose an
- accessory view. This adds a mask view, shadow, and gesture handler to the main
- view.
- 
- */
-- (void)prepareMainViewForTransition;
-
-/*
- 
- Resets the view layout to the default with both accessory views hidden.
- 
- */
-- (void)configureSubviews;
-
-/*
- 
- Gets the accessory controller that is currently visible based on the state.
- 
- */
-- (UIViewController *)visibleAccessoryViewController;
-
-@end
-
-@implementation SVPanelViewController
-
-@synthesize mainViewController = _mainViewController;
-@synthesize leftAccessoryViewController = _leftViewController;
-@synthesize rightAccessoryViewController = _rightViewController;
+#pragma mark - object methods
 
 #pragma mark - property overrides
 
@@ -68,45 +36,51 @@
 }
 
 - (void)setLeftAccessoryViewController:(UIViewController *)controller {
-    [_leftViewController removeFromParentViewController];
-    if ([_leftViewController isViewLoaded]) {
-        if (state < 0) {
-            [_leftViewController viewWillDisappear:NO];
+    [_leftAccessoryViewController removeFromParentViewController];
+    if ([_leftAccessoryViewController isViewLoaded]) {
+        if (_state < 0) {
+            [_leftAccessoryViewController viewWillDisappear:NO];
         }
-        [_leftViewController.view removeFromSuperview];
-        if (state < 0) {
-            [_leftViewController viewDidDisappear:NO];
+        [_leftAccessoryViewController.view removeFromSuperview];
+        if (_state < 0) {
+            [_leftAccessoryViewController viewDidDisappear:NO];
         }
-        state = 0;
     }
     [self addChildViewController:controller];
     [controller didMoveToParentViewController:self];
-    _leftViewController = controller;
+    _leftAccessoryViewController = controller;
     if ([self isViewLoaded]) {
-        [self.view addSubview:_leftViewController.view];
+        [self.view addSubview:_leftAccessoryViewController.view];
     }
     [self configureSubviews];
 }
 
 - (void)setRightAccessoryViewController:(UIViewController *)controller {
-    [_rightViewController removeFromParentViewController];
-    if ([_rightViewController isViewLoaded]) {
-        if (state > 0) {
-            [_rightViewController viewWillDisappear:NO];
+    [_rightAccessoryViewController removeFromParentViewController];
+    if ([_rightAccessoryViewController isViewLoaded]) {
+        if (_state > 0) {
+            [_rightAccessoryViewController viewWillDisappear:NO];
         }
-        [_rightViewController.view removeFromSuperview];
-        if (state > 0) {
-            [_rightViewController viewDidDisappear:NO];
+        [_rightAccessoryViewController.view removeFromSuperview];
+        if (_state > 0) {
+            [_rightAccessoryViewController viewDidDisappear:NO];
         }
-        state = 0;
     }
     [self addChildViewController:controller];
     [controller didMoveToParentViewController:self];
-    _rightViewController = controller;
+    _rightAccessoryViewController = controller;
     if ([self isViewLoaded]) {
-        [self.view addSubview:_rightViewController.view];
+        [self.view addSubview:_rightAccessoryViewController.view];
     }
     [self configureSubviews];
+}
+
+#pragma mark - gesture handlers
+
+- (void)maskViewDidReceiveTap:(UITapGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateRecognized) {
+        [self showMainViewController:YES];
+    }
 }
 
 #pragma mark - view lifecycle
@@ -132,32 +106,8 @@
 - (void)viewDidUnload {
     [self.childViewControllers setNilValueForKey:@"view"];
     [self.childViewControllers makeObjectsPerformSelector:@selector(viewDidUnload)];
-    mask = nil;
+    _mask = nil;
     [super viewDidUnload];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self.mainViewController viewWillDisappear:animated];
-    [self.visibleAccessoryViewController viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [self.mainViewController viewDidDisappear:animated];
-    [self.visibleAccessoryViewController viewDidDisappear:animated];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.mainViewController viewWillAppear:animated];
-    [self.visibleAccessoryViewController viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self.mainViewController viewDidAppear:animated];
-    [self.visibleAccessoryViewController viewDidAppear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
@@ -168,22 +118,52 @@
     return NO;
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.mainViewController viewWillDisappear:animated];
+    [[self visibleAccessoryViewController] viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.mainViewController viewDidDisappear:animated];
+    [[self visibleAccessoryViewController] viewDidDisappear:animated];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.mainViewController viewWillAppear:animated];
+    [[self visibleAccessoryViewController] viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.mainViewController viewDidAppear:animated];
+    [[self visibleAccessoryViewController] viewDidAppear:animated];
+}
+
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
     [super willRotateToInterfaceOrientation:orientation duration:duration];
-    [self.mainViewController willRotateToInterfaceOrientation:orientation duration:duration];
+    [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [obj willRotateToInterfaceOrientation:orientation duration:duration];
+    }];
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
     [super willAnimateRotationToInterfaceOrientation:orientation duration:duration];
-    [self.mainViewController willAnimateRotationToInterfaceOrientation:orientation duration:duration];
+    [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [obj willAnimateRotationToInterfaceOrientation:orientation duration:duration];
+    }];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)orientation {
     [super didRotateFromInterfaceOrientation:orientation];
-    [self.mainViewController didRotateFromInterfaceOrientation:orientation];
+    [self.childViewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [obj didRotateFromInterfaceOrientation:orientation];
+    }];
 }
 
-#pragma mark - object methods
+#pragma mark - view layout methods
 
 - (void)prepareMainViewForTransition {
     
@@ -200,13 +180,15 @@
     layer.shadowRadius = 10.0;
     
     // gesture
-    mask = [[UIView alloc] initWithFrame:view.bounds];
-    mask.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-                                   initWithTarget:self
-                                   action:@selector(maskViewDidReceiveTap:)];
-    [mask addGestureRecognizer:tap];
-    [view addSubview:mask];
+    if (_mask == nil) {
+        _mask = [[UIView alloc] initWithFrame:view.bounds];
+        _mask.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                       initWithTarget:self
+                                       action:@selector(maskViewDidReceiveTap:)];
+        [_mask addGestureRecognizer:tap];
+        [view addSubview:_mask];
+    }
     
 }
 
@@ -214,7 +196,7 @@
     
     // reset view ordering
     [self.view bringSubviewToFront:self.mainViewController.view];
-    if (state != 0) {
+    if (_state != 0) {
         self.mainViewController.view.layer.shouldRasterize = NO;
     }
     
@@ -222,7 +204,7 @@
     UIViewController *controller = [self visibleAccessoryViewController];
     UIView *view = nil;
     CGRect bounds = self.view.bounds;
-    state = 0;
+    _state = 0;
     
     // start transition
     [controller viewWillDisappear:NO];
@@ -230,14 +212,17 @@
     // left view
     view = self.leftAccessoryViewController.view;
     if (view) {
-        view.frame = CGRectMake(0.0, 0.0, kAccessoryViewWidth, bounds.size.height);
+        view.frame = CGRectMake(0.0, 0.0, self.leftAccessoryViewWidth, bounds.size.height);
         view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     }
     
     // right view
     view = self.rightAccessoryViewController.view;
     if (view) {
-        view.frame = CGRectMake(bounds.size.width - kAccessoryViewWidth, 0.0, kAccessoryViewWidth, bounds.size.height);
+        view.frame = CGRectMake(bounds.size.width - self.rightAccessoryViewWidth,
+                                0.0,
+                                self.rightAccessoryViewWidth,
+                                bounds.size.height);
         view.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin);
     }
     
@@ -252,21 +237,15 @@
 }
 
 - (UIViewController *)visibleAccessoryViewController {
-    if (state < 0) {
-        return self.leftAccessoryViewController;
-    }
-    else if (state > 0) {
-        return self.rightAccessoryViewController;
-    }
-    else {
-        return nil;
-    }
+    if (_state < 0) { return self.leftAccessoryViewController; }
+    else if (_state > 0) { return self.rightAccessoryViewController; }
+    else { return nil; }
 }
 
-- (void)exposeLeftAccessoryViewController:(BOOL)animated {
+- (void)showLeftAccessoryViewController:(BOOL)animated {
     NSAssert(self.leftAccessoryViewController, @"There is no left view controller");
     [self prepareMainViewForTransition];
-    state = -1;
+    _state = -1;
     CGRect rect = CGRectOffset(self.view.bounds,
                                (self.rightAccessoryViewController.view.bounds.size.width + 1.0),
                                0.0);
@@ -290,10 +269,10 @@
     }
 }
 
-- (void)exposeRightAccessoryViewController:(BOOL)animated {
+- (void)showRightAccessoryViewController:(BOOL)animated {
     NSAssert(self.rightAccessoryViewController, @"There is no right view controller");
     [self prepareMainViewForTransition];
-    state = 1;
+    _state = 1;
     CGRect rect = CGRectOffset(self.view.bounds,
                                (self.rightAccessoryViewController.view.bounds.size.width + 1.0) * -1.0,
                                0.0);
@@ -317,11 +296,11 @@
     }
 }
 
-- (void)hideAccessoryViewControllers:(BOOL)animated {
+- (void)showMainViewController:(BOOL)animated {
     if (animated) {
         UIViewController *controller = [self visibleAccessoryViewController];
         [controller viewWillDisappear:animated];
-        state = 0;
+        _state = 0;
         [UIView
          animateWithDuration:UINavigationControllerHideShowBarDuration
          delay:0.0
@@ -330,25 +309,37 @@
              [self configureSubviews];
          }
          completion:^(BOOL finished) {
-             [mask removeFromSuperview];
-             mask = nil;
+             [_mask removeFromSuperview];
+             _mask = nil;
              [controller viewDidDisappear:animated];
              self.mainViewController.view.layer.shouldRasterize = NO;
          }];
     }
     else {
         [self configureSubviews];
-        [mask removeFromSuperview];
-        mask = nil;
+        [_mask removeFromSuperview];
+        _mask = nil;
     }
 }
 
-#pragma mark - gestures
+@end
 
-- (void)maskViewDidReceiveTap:(UITapGestureRecognizer *)gesture {
-    if (gesture.state == UIGestureRecognizerStateRecognized) {
-        [self hideAccessoryViewControllers:YES];
+@implementation UIViewController (HRPanelViewControllerAdditions)
+
++ (HRPanelViewController *)panelViewControllerContainingViewController:(UIViewController *)controller {
+    if (controller == nil) {
+        return nil;
     }
+    else if ([controller isKindOfClass:[HRPanelViewController class]]) {
+        return (id)controller;
+    }
+    else {
+        return [self panelViewControllerContainingViewController:controller.parentViewController];
+    }
+}
+
+- (HRPanelViewController *)panelViewController {
+    return [UIViewController panelViewControllerContainingViewController:self];
 }
 
 @end

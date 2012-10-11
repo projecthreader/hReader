@@ -10,10 +10,7 @@
 #import "HRMessagesViewController.h"
 #import "HRAppletConfigurationViewController.h"
 #import "HRPeoplePickerViewController.h"
-
-#import "SVPanelViewController.h"
-
-#import "UIViewController+SVPanelViewControllerAdditions.h"
+#import "HRPanelViewController.h"
 
 static int HRRootViewControllerTitleContext = 0;
 
@@ -150,11 +147,11 @@ static int HRRootViewControllerTitleContext = 0;
     HRAppletConfigurationViewController *applets = [navigation.viewControllers objectAtIndex:0];
     applets.patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
     applets.tableView.contentOffset = CGPointZero;
-    [self.panelViewController exposeRightAccessoryViewController:YES];
+    [self.panelViewController showRightAccessoryViewController:YES];
 }
 
 - (IBAction)people:(id)sender {
-    [self.panelViewController exposeLeftAccessoryViewController:YES];
+    [self.panelViewController showLeftAccessoryViewController:YES];
 }
 
 @end
