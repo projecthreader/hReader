@@ -181,12 +181,8 @@ UIView *topView;
     [[self displayArea] addSubview:[[[pages objectAtIndex:currentPage] objectForKey:@"ViewController"] view]];
     [[self testLabel] setText:[[pages objectAtIndex:currentPage] objectForKey:@"Name"]];
     if (currentPage == (int)[pages count] - 1) {
-        NSLog(@"This is the results page.");
-        NSLog(@"Stopwatch status: %@", stopwatch);
-        NSLog(@"Stopwatch says: %@", [stopwatch description]);
         [stopwatch stop];
         NSLog(@"Stopwatch status: %@", stopwatch);
-        NSLog(@"Stopwatch says: %@", [stopwatch description]);
         //topView = [[[[UIApplication sharedApplication] keyWindow] subviews] lastObject];
         //NSLog(@"topview = %@", topView);
         currentVC = [[pages objectAtIndex:currentPage] valueForKey:@"ViewController"];
@@ -206,8 +202,11 @@ UIView *topView;
         }
         
     }
+    else {
+        [stopwatch checkpoint];
+    }
     
-    [[self prevButton] setEnabled:YES];
+    //[[self prevButton] setEnabled:YES];
     
     
     
