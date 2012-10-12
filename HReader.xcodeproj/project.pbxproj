@@ -237,7 +237,6 @@
 		94AACFB01535D080005E3851 /* HRMedicationsAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AACFAF1535D080005E3851 /* HRMedicationsAppletTile.xib */; };
 		94AEA7401529F2DC00D9C67D /* GCActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEA73F1529F2DC00D9C67D /* GCActionSheet.m */; };
 		94AEAE10148690DA00C005B2 /* HRPatientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0E148690DA00C005B2 /* HRPatientSummaryViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		94AEAE11148690DA00C005B2 /* HRPatientSummaryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AEAE0F148690DA00C005B2 /* HRPatientSummaryViewController.xib */; };
 		94BB032C149BB393009B2FCC /* HRPasscodeWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BB032A149BB392009B2FCC /* HRPasscodeWarningViewController.m */; };
 		94BB032D149BB393009B2FCC /* HRPasscodeWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BB032B149BB393009B2FCC /* HRPasscodeWarningViewController.xib */; };
 		94E078B2153885C40051DC01 /* wahoo-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078B0153885C40051DC01 /* wahoo-overview.png */; };
@@ -639,7 +638,6 @@
 		94AEA73F1529F2DC00D9C67D /* GCActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCActionSheet.m; path = "vendor/guicocoa-common-code/GCActionSheet.m"; sourceTree = SOURCE_ROOT; };
 		94AEAE0D148690DA00C005B2 /* HRPatientSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPatientSummaryViewController.h; sourceTree = "<group>"; };
 		94AEAE0E148690DA00C005B2 /* HRPatientSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPatientSummaryViewController.m; sourceTree = "<group>"; };
-		94AEAE0F148690DA00C005B2 /* HRPatientSummaryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPatientSummaryViewController.xib; sourceTree = "<group>"; };
 		94BB0329149BB392009B2FCC /* HRPasscodeWarningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPasscodeWarningViewController.h; sourceTree = "<group>"; };
 		94BB032A149BB392009B2FCC /* HRPasscodeWarningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPasscodeWarningViewController.m; sourceTree = "<group>"; };
 		94BB032B149BB393009B2FCC /* HRPasscodeWarningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPasscodeWarningViewController.xib; sourceTree = "<group>"; };
@@ -1447,7 +1445,6 @@
 			children = (
 				94AEAE0D148690DA00C005B2 /* HRPatientSummaryViewController.h */,
 				94AEAE0E148690DA00C005B2 /* HRPatientSummaryViewController.m */,
-				94AEAE0F148690DA00C005B2 /* HRPatientSummaryViewController.xib */,
 				94334ACA152A249F00B4C904 /* HRKeyValueTableViewController.h */,
 				94334ACB152A249F00B4C904 /* HRKeyValueTableViewController.m */,
 			);
@@ -1574,7 +1571,6 @@
 			files = (
 				941DB0B71471B32D00A96B8B /* InfoPlist.strings in Resources */,
 				941DB0C31471B32D00A96B8B /* MainStoryboard_iPad.storyboard in Resources */,
-				94AEAE11148690DA00C005B2 /* HRPatientSummaryViewController.xib in Resources */,
 				DD695D8614897C2200E4E2E1 /* HRMessagesViewController.xib in Resources */,
 				DD5597C214897DE2006A0D1D /* HRDoctorsViewController_old.xib in Resources */,
 				DD8BD9DB148D13910090F729 /* chevron.png in Resources */,
