@@ -1950,6 +1950,7 @@
 		941DB0CD1471B32D00A96B8B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = HReader/HReader.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1968,6 +1969,7 @@
 		941DB0CE1471B32D00A96B8B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = HReader/HReader.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: The MITRE Corporation";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
