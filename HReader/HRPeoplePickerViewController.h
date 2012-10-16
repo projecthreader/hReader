@@ -29,7 +29,6 @@ extern NSString * const HRSelectedPatientKey;
 @class HRMPatient;
 
 @interface HRPeoplePickerViewController : UIViewController
-
 <UITableViewDelegate,
 UITableViewDataSource,
 NSFetchedResultsControllerDelegate,
