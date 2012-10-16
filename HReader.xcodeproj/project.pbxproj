@@ -120,6 +120,9 @@
 		3B77F05215546AD2003C2DBD /* HRRespiratoryRateAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */; };
 		3B77F054155474DE003C2DBD /* HRBMIVitalAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */; };
 		3B7FF9FD1613483F009033AD /* HRTimelineURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7FF9FC1613483F009033AD /* HRTimelineURLProtocol.m */; };
+		3B8935E8162D9E0F003750B6 /* CMDActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8935DF162D9E0F003750B6 /* CMDActionSheet.m */; };
+		3B8935E9162D9E0F003750B6 /* CMDAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8935E1162D9E0F003750B6 /* CMDAlertView.m */; };
+		3B8935EB162D9E0F003750B6 /* NSArray+CMDBlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8935E5162D9E0F003750B6 /* NSArray+CMDBlocksKit.m */; };
 		3B9A757915DBE0CB00705A52 /* timeline in Resources */ = {isa = PBXBuildFile; fileRef = 3B9A757815DBE0CB00705A52 /* timeline */; };
 		3B9A758115DC040F00705A52 /* HRAppletUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9A758015DC040F00705A52 /* HRAppletUtilities.m */; };
 		3BA11FD315C0608200ABB012 /* circle-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FA215C0608200ABB012 /* circle-2.png */; };
@@ -165,7 +168,6 @@
 		3BA11FFD15C0608200ABB012 /* TBITrackerDashboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FCF15C0608200ABB012 /* TBITrackerDashboard.xib */; };
 		3BA11FFE15C0608200ABB012 /* TBITrackerLearn.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA11FD115C0608200ABB012 /* TBITrackerLearn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3BA11FFF15C0608200ABB012 /* TBITrackerLearn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FD215C0608200ABB012 /* TBITrackerLearn.xib */; };
-		3BA3E7DE15595F090095A5CC /* GCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3E7DD15595F090095A5CC /* GCAlertView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3BA529ED1594AF400011E246 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BA529EC1594AF400011E246 /* libxml2.dylib */; };
 		3BA7F18F1577EFCF00D4EB09 /* HRCryptoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA7F18E1577EFCF00D4EB09 /* HRCryptoManager.m */; };
 		3BABEC2916246CA50057D3B8 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BABEC1C16246CA50057D3B8 /* DDXMLElementAdditions.m */; };
@@ -235,7 +237,6 @@
 		94AACF9D15334A1D005E3851 /* HRGridTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AACF9C15334A1D005E3851 /* HRGridTableView.m */; };
 		94AACFAE1535D05E005E3851 /* HRMedicationsAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AACFAD1535D05E005E3851 /* HRMedicationsAppletTile.m */; };
 		94AACFB01535D080005E3851 /* HRMedicationsAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94AACFAF1535D080005E3851 /* HRMedicationsAppletTile.xib */; };
-		94AEA7401529F2DC00D9C67D /* GCActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEA73F1529F2DC00D9C67D /* GCActionSheet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		94AEAE10148690DA00C005B2 /* HRPatientSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94AEAE0E148690DA00C005B2 /* HRPatientSummaryViewController.m */; };
 		94BB032C149BB393009B2FCC /* HRPasscodeWarningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BB032A149BB392009B2FCC /* HRPasscodeWarningViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		94BB032D149BB393009B2FCC /* HRPasscodeWarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BB032B149BB393009B2FCC /* HRPasscodeWarningViewController.xib */; };
@@ -453,6 +454,13 @@
 		3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRBMIVitalAppletTile.xib; sourceTree = "<group>"; };
 		3B7FF9FB1613483F009033AD /* HRTimelineURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRTimelineURLProtocol.h; sourceTree = "<group>"; };
 		3B7FF9FC1613483F009033AD /* HRTimelineURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRTimelineURLProtocol.m; sourceTree = "<group>"; };
+		3B8935DE162D9E0F003750B6 /* CMDActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDActionSheet.h; sourceTree = "<group>"; };
+		3B8935DF162D9E0F003750B6 /* CMDActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMDActionSheet.m; sourceTree = "<group>"; };
+		3B8935E0162D9E0F003750B6 /* CMDAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDAlertView.h; sourceTree = "<group>"; };
+		3B8935E1162D9E0F003750B6 /* CMDAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMDAlertView.m; sourceTree = "<group>"; };
+		3B8935E2162D9E0F003750B6 /* CMDBlocksKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDBlocksKit.h; sourceTree = "<group>"; };
+		3B8935E4162D9E0F003750B6 /* NSArray+CMDBlocksKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CMDBlocksKit.h"; sourceTree = "<group>"; };
+		3B8935E5162D9E0F003750B6 /* NSArray+CMDBlocksKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CMDBlocksKit.m"; sourceTree = "<group>"; };
 		3B9A757815DBE0CB00705A52 /* timeline */ = {isa = PBXFileReference; lastKnownFileType = folder; path = timeline; sourceTree = "<group>"; };
 		3B9A757F15DC040F00705A52 /* HRAppletUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAppletUtilities.h; sourceTree = "<group>"; };
 		3B9A758015DC040F00705A52 /* HRAppletUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAppletUtilities.m; sourceTree = "<group>"; };
@@ -502,8 +510,6 @@
 		3BA11FD015C0608200ABB012 /* TBITrackerLearn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBITrackerLearn.h; sourceTree = "<group>"; };
 		3BA11FD115C0608200ABB012 /* TBITrackerLearn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBITrackerLearn.m; sourceTree = "<group>"; };
 		3BA11FD215C0608200ABB012 /* TBITrackerLearn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBITrackerLearn.xib; sourceTree = "<group>"; };
-		3BA3E7DC15595F090095A5CC /* GCAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCAlertView.h; sourceTree = "<group>"; };
-		3BA3E7DD15595F090095A5CC /* GCAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCAlertView.m; sourceTree = "<group>"; };
 		3BA529EC1594AF400011E246 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		3BA7F18D1577EFCF00D4EB09 /* HRCryptoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCryptoManager.h; sourceTree = "<group>"; };
 		3BA7F18E1577EFCF00D4EB09 /* HRCryptoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCryptoManager.m; sourceTree = "<group>"; };
@@ -634,8 +640,6 @@
 		94AACFAC1535D05E005E3851 /* HRMedicationsAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMedicationsAppletTile.h; sourceTree = "<group>"; };
 		94AACFAD1535D05E005E3851 /* HRMedicationsAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMedicationsAppletTile.m; sourceTree = "<group>"; };
 		94AACFAF1535D080005E3851 /* HRMedicationsAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRMedicationsAppletTile.xib; sourceTree = "<group>"; };
-		94AEA73E1529F2DC00D9C67D /* GCActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCActionSheet.h; path = "vendor/guicocoa-common-code/GCActionSheet.h"; sourceTree = SOURCE_ROOT; };
-		94AEA73F1529F2DC00D9C67D /* GCActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCActionSheet.m; path = "vendor/guicocoa-common-code/GCActionSheet.m"; sourceTree = SOURCE_ROOT; };
 		94AEAE0D148690DA00C005B2 /* HRPatientSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPatientSummaryViewController.h; sourceTree = "<group>"; };
 		94AEAE0E148690DA00C005B2 /* HRPatientSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPatientSummaryViewController.m; sourceTree = "<group>"; };
 		94BB0329149BB392009B2FCC /* HRPasscodeWarningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPasscodeWarningViewController.h; sourceTree = "<group>"; };
@@ -842,6 +846,20 @@
 			name = "Grid View";
 			sourceTree = "<group>";
 		};
+		3B8935DC162D9E0F003750B6 /* blockskit */ = {
+			isa = PBXGroup;
+			children = (
+				3B8935DE162D9E0F003750B6 /* CMDActionSheet.h */,
+				3B8935DF162D9E0F003750B6 /* CMDActionSheet.m */,
+				3B8935E0162D9E0F003750B6 /* CMDAlertView.h */,
+				3B8935E1162D9E0F003750B6 /* CMDAlertView.m */,
+				3B8935E2162D9E0F003750B6 /* CMDBlocksKit.h */,
+				3B8935E4162D9E0F003750B6 /* NSArray+CMDBlocksKit.h */,
+				3B8935E5162D9E0F003750B6 /* NSArray+CMDBlocksKit.m */,
+			);
+			path = blockskit;
+			sourceTree = "<group>";
+		};
 		3B8D14FE157E3EB700A5B84E /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -1033,17 +1051,6 @@
 				DD8BD9EF148D2B6C0090F729 /* Messages */,
 			);
 			name = "View Controllers";
-			sourceTree = "<group>";
-		};
-		3BD16ED714E1B5EE00F2249E /* guicocoa-common-code */ = {
-			isa = PBXGroup;
-			children = (
-				94AEA73E1529F2DC00D9C67D /* GCActionSheet.h */,
-				94AEA73F1529F2DC00D9C67D /* GCActionSheet.m */,
-				3BA3E7DC15595F090095A5CC /* GCAlertView.h */,
-				3BA3E7DD15595F090095A5CC /* GCAlertView.m */,
-			);
-			path = "guicocoa-common-code";
 			sourceTree = "<group>";
 		};
 		3BD5F09115EE772300333320 /* Products */ = {
@@ -1281,11 +1288,11 @@
 		94689ABC14964BBF00E1FCA6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				3B8935DC162D9E0F003750B6 /* blockskit */,
 				3BABEC3F162479090057D3B8 /* managedobject */,
 				3BABEC1916246CA50057D3B8 /* KissXML */,
 				3BD5F0AC15EE8F6F00333320 /* Incremental Store */,
 				3B708F0715DE870C004D2B1D /* activityhud */,
-				3BD16ED714E1B5EE00F2249E /* guicocoa-common-code */,
 				3B04A54C14E0692600AD91F9 /* keychain */,
 			);
 			name = Vendor;
@@ -1812,7 +1819,6 @@
 				3BE9A40514E40EBB00F87B60 /* HRMEntry.m in Sources */,
 				941F253F14E2EC5D0077D6D1 /* HRVitalAppletTile.m in Sources */,
 				9452D7F714FC16DF00021E69 /* HRProviderView.m in Sources */,
-				94AEA7401529F2DC00D9C67D /* GCActionSheet.m in Sources */,
 				94334ACC152A249F00B4C904 /* HRKeyValueTableViewController.m in Sources */,
 				94AACF96153330A2005E3851 /* HRGridTableViewCell.m in Sources */,
 				94AACF9D15334A1D005E3851 /* HRGridTableView.m in Sources */,
@@ -1832,7 +1838,6 @@
 				3B77F04715546051003C2DBD /* NSString+SentenceCapitalization.m in Sources */,
 				3B77F04E15546ABD003C2DBD /* HROxygenSaturationAppletTile.m in Sources */,
 				3B77F05215546AD2003C2DBD /* HRRespiratoryRateAppletTile.m in Sources */,
-				3BA3E7DE15595F090095A5CC /* GCAlertView.m in Sources */,
 				945286BC156148C500CF5EA3 /* HRWebViewAppletTile.m in Sources */,
 				3B001D4315751D0300762FB0 /* HRPeopleSetupViewController.m in Sources */,
 				3B001D46157522C300762FB0 /* HRPeopleSetupPlaceHolderView.m in Sources */,
@@ -1871,6 +1876,9 @@
 				3B00A7B8162730AF000BD5F8 /* HRTabBarController.m in Sources */,
 				3B00A7BB16273E2F000BD5F8 /* HRPanelViewController.m in Sources */,
 				3B00A7BE16275004000BD5F8 /* HRContentViewController.m in Sources */,
+				3B8935E8162D9E0F003750B6 /* CMDActionSheet.m in Sources */,
+				3B8935E9162D9E0F003750B6 /* CMDAlertView.m in Sources */,
+				3B8935EB162D9E0F003750B6 /* NSArray+CMDBlocksKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

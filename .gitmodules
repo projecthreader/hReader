@@ -19,3 +19,6 @@
 [submodule "vendor/managedobject"]
 	path = vendor/managedobject
 	url = https://github.com/calebmdavenport/managedobject.git
+[submodule "vendor/blockskit"]
+	path = vendor/blockskit
+	url = https://github.com/calebmdavenport/blockskit.git

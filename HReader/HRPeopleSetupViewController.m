@@ -15,10 +15,9 @@
 #import "HRAPIClient.h"
 #import "HRPeoplePickerViewController_private.h"
 #import "HRPanelViewController.h"
-
 #import "HRMPatient.h"
 
-#import "GCAlertView.h"
+#import "CMDBlocksKit.h"
 
 #define kDeleteButtonViewTag 100
 
@@ -283,9 +282,7 @@
     
     // prompt user to confirm
     NSString *message = [NSString stringWithFormat:@"Are you sure you want to delete %@?", [patient compositeName]];
-    GCAlertView *alert = [[GCAlertView alloc]
-                          initWithTitle:@"Delete"
-                          message:message];
+    CMDAlertView *alert = [[CMDAlertView alloc] initWithTitle:@"Delete" message:message];
     [alert addButtonWithTitle:@"Cancel" block:nil];
     [alert addButtonWithTitle:@"Delete" block:^{
         NSManagedObjectContext *context = [patient managedObjectContext];
