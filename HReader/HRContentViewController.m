@@ -115,14 +115,9 @@
 - (void)reloadDataWithNotification:(NSNotification *)notification {
     
     // get patient
-    if (notification) {
-        HRMPatient *patient = [[notification userInfo] objectForKey:HRSelectedPatientKey];
-        if (patient) { _patient = patient; }
-    }
-    else if (_patient == nil) {
-        NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
-        _patient = [HRPeoplePickerViewController selectedPatientInContext:context];
-    }
+    HRMPatient *patient = [[notification userInfo] objectForKey:HRSelectedPatientKey];
+    if (patient) { _patient = patient; }
+    else if (_patient == nil) { _patient = [HRPeoplePickerViewController selectedPatient]; }
     
     // configure views
     self.patientImageView.image = [_patient patientImage];

@@ -43,10 +43,9 @@
 }
 
 - (void)startLoading {
-    NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
-    [context performBlock:^{
+    [[HRAppDelegate managedObjectContext] performBlock:^{
         NSURL *URL = [[self request] URL];
-        HRMPatient *patient = [HRPeoplePickerViewController selectedPatientInContext:context];
+        HRMPatient *patient = [HRPeoplePickerViewController selectedPatient];
         
         // load calendar
         static NSCalendar *calendar = nil;
