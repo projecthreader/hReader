@@ -759,6 +759,11 @@
 		3B00A7B51627305B000BD5F8 /* Root View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3B0FE4061538755300BEC21C /* HRAppletConfigurationViewController.h */,
+				3B0FE4071538755300BEC21C /* HRAppletConfigurationViewController.m */,
+				3B6FAF8D153F259E002C9EF5 /* HRPeoplePickerViewController.h */,
+				3B305F19157D4F2900FC03E6 /* HRPeoplePickerViewController_private.h */,
+				3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */,
 				3B00A7B6162730AF000BD5F8 /* HRTabBarController.h */,
 				3B00A7B7162730AF000BD5F8 /* HRTabBarController.m */,
 				3B00A7B916273E2F000BD5F8 /* HRPanelViewController.h */,
@@ -1437,11 +1442,6 @@
 		DD8BD9EB148D2B270090F729 /* Root View */ = {
 			isa = PBXGroup;
 			children = (
-				3B0FE4061538755300BEC21C /* HRAppletConfigurationViewController.h */,
-				3B0FE4071538755300BEC21C /* HRAppletConfigurationViewController.m */,
-				3B6FAF8D153F259E002C9EF5 /* HRPeoplePickerViewController.h */,
-				3B305F19157D4F2900FC03E6 /* HRPeoplePickerViewController_private.h */,
-				3B6FAF8E153F259E002C9EF5 /* HRPeoplePickerViewController.m */,
 				DD7037B014900E5900F58A83 /* Patient Swipe */,
 			);
 			name = "Root View";

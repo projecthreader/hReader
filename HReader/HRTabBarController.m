@@ -152,10 +152,6 @@ static int HRRootViewControllerTitleContext = 0;
 }
 
 - (IBAction)applets:(id)sender {
-    UINavigationController *navigation = (id)self.panelViewController.rightAccessoryViewController;
-    HRAppletConfigurationViewController *applets = [navigation.viewControllers objectAtIndex:0];
-    applets.patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
-    applets.tableView.contentOffset = CGPointZero;
     [self.panelViewController showRightAccessoryViewController:YES];
 }
 
