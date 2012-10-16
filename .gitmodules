@@ -1,6 +1,3 @@
-[submodule "vendor/guicocoa-common-code"]
-	path = vendor/guicocoa-common-code
-	url = https://github.com/guicocoa/common-code-ios.git
 [submodule "vendor/sskeychain"]
 	path = vendor/sskeychain
 	url = https://github.com/guicocoa/sskeychain.git
