@@ -15,8 +15,6 @@
     short _state;
 }
 
-#pragma mark - object methods
-
 #pragma mark - property overrides
 
 - (void)setMainViewController:(UIViewController *)controller {
