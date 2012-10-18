@@ -9,6 +9,7 @@
 #import "HRAppletConfigurationViewController.h"
 #import "HRMPatient.h"
 #import "HRPeoplePickerViewController.h"
+#import "HRPanelViewController.h"
 
 @implementation HRAppletConfigurationViewController {
     NSArray *_installedApplets;
@@ -115,12 +116,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.editing = YES;
+    _patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
+    [self reloadApplets];
+    [self.tableView reloadData];
 }
 
-- (void)viewDidUnload {
-    _availableApplets = nil;
-    _installedApplets = nil;
-    [super viewDidUnload];
+- (void)didReceiveMemoryWarning {
+    if (![self isViewLoaded] && self.view.window == nil) {
+        _patient = nil;
+        _installedApplets = nil;
+        _availableApplets = nil;
+    }
+    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - table view
