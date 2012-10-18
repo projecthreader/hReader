@@ -12,8 +12,7 @@
 #import "HRPasscodeViewController.h"
 #import "HRAPIClient_private.h"
 
-#import "GCAlertView.h"
-
+#import "CMDBlocksKit.h"
 #import "CMDActivityHUD.h"
 
 #import "HRMPatient.h"
@@ -64,11 +63,10 @@
             [self presentModalViewController:controller animated:YES];
         }
         else {
-            GCAlertView *alert = [[GCAlertView alloc]
-                                  initWithTitle:nil
-                                  message:[NSString stringWithFormat:
-                                           @"No email accounts are configured on this %@. Would you like to add one now?",
-                                           [[UIDevice currentDevice] model]]];
+            NSString *message = [NSString stringWithFormat:
+                                 @"No email accounts are configured on this %@. Would you like to add one now?",
+                                 [[UIDevice currentDevice] model]];
+            CMDAlertView *alert = [[CMDAlertView alloc] initWithTitle:nil message:message];
             [alert addButtonWithTitle:@"Not now" block:nil];
             [alert addButtonWithTitle:@"Yes" block:^{
                 NSURL *URL = [NSURL URLWithString:@"mailto:"];
@@ -103,9 +101,9 @@
     
     // logout cell
     else if ([cell.reuseIdentifier isEqualToString:@"RHExLogoutCell"]) {
-        GCAlertView *alert = [[GCAlertView alloc]
-                              initWithTitle:@"Logout"
-                              message:@"This will delete all data synced with RHEx and cannot be undone."];
+        CMDAlertView *alert = [[CMDAlertView alloc]
+                               initWithTitle:@"Logout"
+                               message:@"This will delete all data synced with RHEx and cannot be undone."];
         [alert addButtonWithTitle:@"Cancel" block:^{
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
         }];

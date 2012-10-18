@@ -6,14 +6,11 @@
 //  Copyright (c) 2011 MITRE Corporation. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "HRContentViewController.h"
 
-@interface HRTimelineViewController : UIViewController <UIWebViewDelegate>
+@interface HRTimelineViewController : HRContentViewController <UIWebViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UIWebView *webView;
-@property (nonatomic, weak) IBOutlet UIView *headerView;
-@property (nonatomic, weak) IBOutlet UILabel *nameLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *patientImageView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *scopeSelector;
 
 - (IBAction)scopeSelectorValueDidChange:(UISegmentedControl *)sender;

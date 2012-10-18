@@ -14,8 +14,7 @@
 #import "HRProviderView.h"
 #import "HRImageAppletTile.h"
 #import "HRPeoplePickerViewController.h"
-
-#import "SVPanelViewController.h"
+#import "HRPanelViewController.h"
 
 @implementation HRDoctorsViewController {
     NSArray *_providerViews;
@@ -30,7 +29,7 @@
         [[NSNotificationCenter defaultCenter]
          addObserver:self
          selector:@selector(reloadData)
-         name:HRPatientDidChangeNotification
+         name:HRSelectedPatientDidChangeNotification
          object:nil];
     }
     return self;
@@ -39,7 +38,7 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter]
      removeObserver:self
-     name:HRPatientDidChangeNotification
+     name:HRSelectedPatientDidChangeNotification
      object:nil];
 }
 

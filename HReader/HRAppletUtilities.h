@@ -8,11 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+/*
+ 
+ Methods to assist with common applet operations. The identifier that is
+ accepted in each of these methods should be the same identifier you provide
+ in hReaderApplets.plist.
+ 
+ */
 @interface HRAppletUtilities : NSObject
 
 /*
  
- 
+ Get a URL to the sandox for the applet with the given identifier.
  
  */
 + (NSURL *)URLForAppletContainer:(NSString *)identifier;
@@ -20,7 +27,7 @@
 
 /*
  
- 
+ Encrypt general binary data and proprty list objects.
  
  */
 + (NSData *)encryptData:(NSData *)object identifier:(NSString *)identifier;
@@ -28,7 +35,7 @@
 
 /*
  
- 
+ Helper methods for encrypting typed property list objects.
  
  */
 + (NSData *)encryptString:(NSData *)object identifier:(NSString *)identifier;
@@ -37,7 +44,7 @@
 
 /*
  
- 
+ Decrypt general binary data and property list objects.
  
  */
 + (NSData *)decryptData:(NSData *)data identifier:(NSString *)identifier;
@@ -45,7 +52,7 @@
 
 /*
  
- 
+ Helper methods for decrypting typed property list objects.
  
  */
 + (NSString *)decryptString:(NSData *)data identifier:(NSString *)identifier;

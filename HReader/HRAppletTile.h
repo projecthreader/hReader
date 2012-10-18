@@ -19,7 +19,8 @@ extern NSString *HRAppletTilePatientIdentityTokenKey;
 
 /*
  
- 
+ Creates a new applet with the given userInfo dictionary. You should never
+ execute this method directly.
  
  */
 + (id)tileWithUserInfo:(NSDictionary *)userInfo;
@@ -34,7 +35,9 @@ extern NSString *HRAppletTilePatientIdentityTokenKey;
 
 /*
  
- 
+ Token that is unique to each patient in the database. You cannot determine
+ which locally stored patient this token belongs to. It is simply here to help
+ you pull your own records and store data based on this token.
  
  */
 @property (nonatomic, readonly) NSString *patientIdentityToken;
@@ -49,7 +52,8 @@ extern NSString *HRAppletTilePatientIdentityTokenKey;
 
 /*
  
- 
+ Tells an applet tile that it has been tapped by the user. Use this to push
+ a new view controller onto the navigation controller or show a popover.
  
  */
 - (void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect;

@@ -8,13 +8,10 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "HRMPatient.h"
-
 #import "HRMessagesViewController.h"
-#import "HRPatientSwipeControl.h"
+#import "HRMPatient.h"
+#import "HRPanelViewController.h"
 #import "HRPeoplePickerViewController.h"
-
-#import "SVPanelViewController.h"
 
 @interface HRMessagesViewController ()
 - (void)reloadData;
@@ -38,7 +35,7 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter]
      removeObserver:self
-     name:HRPatientDidChangeNotification
+     name:HRSelectedPatientDidChangeNotification
      object:nil];
 }
 
@@ -49,7 +46,7 @@
         [[NSNotificationCenter defaultCenter]
          addObserver:self
          selector:@selector(patientDidChange:)
-         name:HRPatientDidChangeNotification
+         name:HRSelectedPatientDidChangeNotification
          object:nil];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
             [self reloadData];

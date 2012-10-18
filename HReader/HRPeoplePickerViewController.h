@@ -9,19 +9,41 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-extern NSString * const HRPatientDidChangeNotification;
+/*
+ 
+ Dispatched to let interested objects know that the selected patient has
+ changed. This will be sent on the main thread.
+ 
+ */
+extern NSString * const HRSelectedPatientDidChangeNotification;
+
+/*
+ 
+ Fetch the selected patient from the `userInfo` of
+ `HRPatientDidChangeNotification`. This object will be fetched from the main
+ application managed object context.
+ 
+ */
+extern NSString * const HRSelectedPatientKey;
 
 @class HRMPatient;
 
 @interface HRPeoplePickerViewController : UIViewController
-
-<UITableViewDelegate, UITableViewDataSource,
+<UITableViewDelegate,
+UITableViewDataSource,
 NSFetchedResultsControllerDelegate,
-UISearchDisplayDelegate, UISearchBarDelegate>
+UISearchDisplayDelegate,
+UISearchBarDelegate>
 
 // user interface
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIToolbar *toolbar;
+
+/*
+ 
+ Present the view that allows the user to add and remove patients.
+ 
+ */
 - (IBAction)showManageFamilyInterface:(id)sender;
 
 /*
