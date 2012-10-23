@@ -4,12 +4,6 @@
 [submodule "vendor/activityhud"]
 	path = vendor/activityhud
 	url = https://github.com/calebmdavenport/activityhud.git
-[submodule "vendor/openssl"]
-	path = vendor/openssl
-	url = https://github.com/sqlcipher/openssl-xcode.git
-[submodule "vendor/sqlcipher"]
-	path = vendor/sqlcipher
-	url = https://github.com/sqlcipher/sqlcipher.git
 [submodule "vendor/KissXML2"]
 	path = vendor/KissXML2
 	url = https://github.com/robbiehanson/KissXML.git
@@ -19,3 +13,6 @@
 [submodule "vendor/blockskit"]
 	path = vendor/blockskit
 	url = https://github.com/calebmdavenport/blockskit.git
+[submodule "vendor/encrypted-core-data"]
+	path = vendor/encrypted-core-data
+	url = https://github.com/calebmdavenport/encrypted-core-data.git
