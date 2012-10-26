@@ -31,6 +31,9 @@
 }
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
+    if (![[request HTTPMethod] isEqualToString:@"GET"]) {
+        return NO;
+    }
     NSURL *URL = [request URL];
     if ([URL isFileURL] && [[URL path] isEqualToString:[self timelineJSONPath]]) {
         return YES;
