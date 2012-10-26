@@ -207,9 +207,12 @@
 #pragma mark - notifications
 
 - (void)managedObjectContextDidSave:(NSNotification *)notification {
-    NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
-    if ([notification object] != context) {
-        [context mergeChangesFromContextDidSaveNotification:notification];
+    NSManagedObjectContext *rootContext = [HRAppDelegate managedObjectContext];
+    NSManagedObjectContext *savingContext = [notification object];
+    if ([savingContext parentContext] == rootContext) {
+        [rootContext performBlock:^{
+            [rootContext save:nil];
+        }];
     }
 }
 

@@ -101,8 +101,7 @@
          startBlock:nil
          finishBlock:^(NSDictionary *payload) {
              if (payload) {
-                 NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSConfinementConcurrencyType];
-                 [context setPersistentStoreCoordinator:[HRAppDelegate persistentStoreCoordinator]];
+                 NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
                  HRMPatient *patient = [HRMPatient instanceInContext:context];
                  [patient populateWithContentsOfDictionary:payload];
                  patient.serverID = identifier;
