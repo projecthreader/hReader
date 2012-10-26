@@ -188,7 +188,7 @@
 						<h4>{{vital.description}}</h4>		
 					</div>
 					<div class="span2"> 
-						<h1>{{vital.values[vital.values.length-1]| number:0}}</h1>{{vital.units}}
+						<h1>{{vital.values[vital.values.length-1]}}</h1>{{vital.units}}
 					</div>
 					<div class="span6 graph">		
 						<p><sparkline exp="data" class="sparkline">{{vital.values.join(', ')}}</sparkline></p>

@@ -16,7 +16,7 @@
 	    <script src="lib/angularUI/animate.js"></script>
 	    <script src="js/app.js"></script>
 	    <script src="js/controllers.js"></script>
-	    
+
 	    <!-- jQuery Mobile -->
 	    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 			<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
@@ -66,40 +66,39 @@
 				</div>
 				<div class="row">
 					<h4 class="titles span4">Medication*</h4>
-					<h4 class="span2">Take 3x Daily*</h4>
-					<form action="timeline.json?page=daily_meds" method="post">
-					<span class="span1"><input type="submit" value="Log" class="btn"></span>
-					<div class="progress schedule span5">
-						<div class=" span1 containing-element">
-							<label for="flip-min">Morning</label>
-							<select name="flip-min" id="flip-min" data-role="slider">
-								<option value="off">Not taken</option>
-								<option value="on">Taken</option>
-							</select>
-						</div>
-						<div class=" span1 containing-element">
-							<label for="flip-min">Lunch</label>
-							<select name="flip-min" id="flip-min" data-role="slider">
-								<option value="off">Not taken</option>
-								<option value="on">Taken</option>
-							</select>
-						</div>
-						<div class=" span1 containing-element">
-							<label for="flip-min">Lunch</label>
-							<select name="flip-min" id="flip-min" data-role="slider">
-								<option value="off">Not taken</option>
-								<option value="on">Taken</option>
-							</select>
-						</div>
+					<h4 class="span2">Take 2x Daily*</h4>
+					<form action="timeline.json?page=daily_meds" method="get">
+						<span class="span1"><input type="submit" value="Log" class="btn"></span>
+
+						<div class="progress schedule span5">
+							<div class=" span2 containing-element">
+								<select name="flip-min" id="flip-min" data-role="slider">
+									<option value="off">Not taken</option>
+									<option value="on">Taken</option>
+								</select>
+							</div>
+							<div class=" span2 containing-element">
+								<select name="flip-min" id="flip-min" data-role="slider">
+									<option value="off">Not taken</option>
+									<option value="on">Taken</option>
+								</select>
+							</div>
 						</form>
 					</div>
+				</div>
+				<hr>
+				<div class="row titles">
+					<h2 class="span3">Overall</h2>
+					<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
+					<h3 class="span2">PLAN</h3>
+					<h3 class="span1">CHANGE</h3>
+					<h3 class="span4">LOG</h3>
 				</div>
 				<div class="row">
 					<h4 class="titles span4">Pain*</h4>
 					<h4 class="span2">Log instances*</h4>
-					<form class="span4" action="timeline.json?page=daily_pain" method="post">
+					<form action="timeline.json?page=daily_pain" class="span6" method="post">
 						<input type="range" name="slider" id="slider-0" value="5" min="0" max="10" data-highlight="true" />
-
 					</form>
 					</div>
 				</div>
@@ -118,6 +117,88 @@
 				</div>
 			</article>
 			<hr>
+			<article>
+				<div class="row titles">
+					<h2 class="span3">Hrt Disease</h2>
+					<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
+					<h3 class="span2">Plan</h3>
+					<h3 class="span2">Log</h3>
+					<h3 class="span2"></h3>
+					<h3 class="span2"></h3>
+				</div>
+				<div class="row">
+					<h4 class="titles span4">Symptom1*</h4>
+					<h4 class="span2">Patient Note*</h4>
+					<div class="span7">
+						<form action="timeline.json?page=daily_pain" method="post" data-role="fieldcontain">
+							<fieldset data-role="controlgroup" data-type="horizontal">
+								<label for="select-choice-sev">SEVERITY</label>
+								<select name="select-choice-sev" id="select-choice-sev">
+								   <option value="none">Severity</option>
+								   <option value="none">None</option>
+								   <option value="mild">Mild</option>
+								   <option value="moderate">Moderate</option>
+								   <option value="severe">Severe</option>
+								</select>
+								<label for="select-choice-freq">FREQUENCY</label>
+								<select name="select-choice-freq" id="select-choice-freq">
+								   <option value="null">Frequency</option>
+								   <option value="0">Never</option>
+								   <option value="1">Rarely</option>
+								   <option value="2">Sometimes</option>
+								   <option value="3">Very Often</option>
+								   <option value="4">Always</option>
+								</select> 
+								<label for="select-choice-dur">DURATION</label>
+								<select name="select-choice-dur" id="select-choice-dur" >
+								   <option value="null">Duration</option>
+								   <option value="seconds">Seconds</option>
+								   <option value="minutes">Minutes</option>
+								   <option value="hours">Hours</option>
+								   <option value="days">Days</option>
+								</select>  
+							<fieldset>
+						</form>
+					</div>
+				</div>
+				<div class="row">
+					<h4 class="titles span4">Symptom2*</h4>
+					<h4 class="span2">Patient Note*</h4>
+										<div class="span7">
+						<form action="timeline.json?page=daily_pain" method="post" data-role="fieldcontain">
+							<fieldset data-role="controlgroup" data-type="horizontal">
+								<label for="select-choice-sev">SEVERITY</label>
+								<select name="select-choice-sev" id="select-choice-sev">
+								   <option value="none">Severity</option>
+								   <option value="none">None</option>
+								   <option value="mild">Mild</option>
+								   <option value="moderate">Moderate</option>
+								   <option value="severe">Severe</option>
+								</select>
+								<label for="select-choice-freq">FREQUENCY</label>
+								<select name="select-choice-freq" id="select-choice-freq">
+								   <option value="null">Frequency</option>
+								   <option value="0">Never</option>
+								   <option value="1">Rarely</option>
+								   <option value="2">Sometimes</option>
+								   <option value="3">Very Often</option>
+								   <option value="4">Always</option>
+								</select> 
+								<label for="select-choice-dur">DURATION</label>
+								<select name="select-choice-dur" id="select-choice-dur" >
+								   <option value="null">Duration</option>
+								   <option value="seconds">Seconds</option>
+								   <option value="minutes">Minutes</option>
+								   <option value="hours">Hours</option>
+								   <option value="days">Days</option>
+								</select>  
+							<fieldset>
+						</form>
+					</div>
+				</div>
+			</article>
+			<hr>
+
 <!--<div class="titles row">
 				<h2 class="span4">Glucose Test</h2>
 				<p class="span2">Take prior to Injection</p>
