@@ -101,13 +101,6 @@
     [self configureSubviews];
 }
 
-- (void)viewDidUnload {
-    [self.childViewControllers setNilValueForKey:@"view"];
-    [self.childViewControllers makeObjectsPerformSelector:@selector(viewDidUnload)];
-    _mask = nil;
-    [super viewDidUnload];
-}
-
 - (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers {
     return NO;
 }

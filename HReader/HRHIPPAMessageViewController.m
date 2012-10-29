@@ -48,11 +48,6 @@ static NSString * const HRHIPPAMessageAcceptedKey = @"HRHIPPAMessageAccepted";
     layer.rasterizationScale = [[UIScreen mainScreen] scale];
 }
 
-- (void)didReceiveMemoryWarning {
-    self.buttons = nil;
-    [super didReceiveMemoryWarning];
-}
-
 - (IBAction)acceptButtonPressed:(id)sender {
     NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
     [settings setBool:YES forKey:HRHIPPAMessageAcceptedKey];

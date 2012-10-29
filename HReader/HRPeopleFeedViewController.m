@@ -47,7 +47,7 @@
     _statusLabel.backgroundColor = [UIColor clearColor];
     _statusLabel.opaque = YES;
     _statusLabel.textColor = [UIColor whiteColor];
-    _statusLabel.textAlignment = UITextAlignmentCenter;
+    _statusLabel.textAlignment = NSTextAlignmentCenter;
     _statusLabel.font = [UIFont boldSystemFontOfSize:14.0];
     _statusLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
     _statusLabel.shadowOffset = CGSizeMake(0.0, -1.0);

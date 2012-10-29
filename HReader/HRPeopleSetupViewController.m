@@ -216,12 +216,6 @@
     
 }
 
-- (void)viewDidUnload {
-    self.emptyCellView = nil;
-    self.emptyCellButtons = nil;
-    [self viewDidUnload];
-}
-
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     self.editing = NO;

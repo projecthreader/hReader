@@ -124,15 +124,6 @@
     [self.tableView reloadData];
 }
 
-- (void)didReceiveMemoryWarning {
-    if (![self isViewLoaded] && self.view.window == nil) {
-        _patient = nil;
-        _installedApplets = nil;
-        _availableApplets = nil;
-    }
-    [super didReceiveMemoryWarning];
-}
-
 #pragma mark - table view
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

@@ -17,6 +17,13 @@
 
 #import "HRMPatient.h"
 
+@interface HRAboutTableViewController ()
+
+@property (nonatomic, weak) IBOutlet UILabel *versionLabel;
+@property (nonatomic, weak) IBOutlet UILabel *buildDateLabel;
+
+@end
+
 @implementation HRAboutTableViewController
 
 #pragma mark - button actions
@@ -31,12 +38,6 @@
     [super viewDidLoad];
     self.versionLabel.text = [[NSBundle mainBundle] hr_displayVersion];
     self.buildDateLabel.text = [[NSBundle mainBundle] hr_buildTime];
-}
-
-- (void)viewDidUnload {
-    self.buildDateLabel = nil;
-    self.versionLabel = nil;
-    [super viewDidUnload];
 }
 
 #pragma mark - table view

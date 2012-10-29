@@ -133,12 +133,6 @@ static int HRRootViewControllerTitleContext = 0;
     
 }
 
-- (void)viewDidUnload {
-    _segmentedControl = nil;
-    _visibleViewController = nil;
-    [super viewDidUnload];
-}
-
 #pragma mark - button events
 
 - (void)segmentedControlValueChanged {

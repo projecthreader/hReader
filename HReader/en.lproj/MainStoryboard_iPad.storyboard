@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11G56" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="YyO-eZ-YiQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11G63" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="YyO-eZ-YiQ">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
@@ -936,7 +935,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="buildDateLabel" destination="lcE-Ls-XNx" id="4U1-mg-MNW"/>
+                        <outlet property="buildDateLabel" destination="lcE-Ls-XNx" id="A6T-C7-l2Y"/>
                         <outlet property="versionLabel" destination="vS6-de-HAa" id="ya1-Ln-dpI"/>
                     </connections>
                 </tableViewController>
@@ -996,7 +995,6 @@
         <class className="HRAboutTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRAboutTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="done"/>
                 <relationship kind="outlet" name="buildDateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="versionLabel" candidateClass="UILabel"/>
             </relationships>
@@ -1033,20 +1031,13 @@
         <class className="HRPatientSummaryViewController" superclassName="HRContentViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRPatientSummaryViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="advanceDirectivesLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="allergiesLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="conditionsContainerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="dateOfBirthLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="dateOfBirthTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="diagnosisDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="diagnosisLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="eventsContainerView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="followUpAppointmentDateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="followUpAppointmentNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="functionalStatusDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="functionalStatusProblemLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="functionalStatusStatusLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="functionalStatusTypeLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="gridView" candidateClass="HRGridTableView"/>
                 <relationship kind="outlet" name="medicationRefillDateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="medicationRefillNameLabel" candidateClass="UILabel"/>
