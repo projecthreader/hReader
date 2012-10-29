@@ -32,23 +32,4 @@
 @property (nonatomic, weak) IBOutlet UILabel *medicationRefillNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *medicationRefillDateLabel;
 
-
-
-
-
-
-
-
-
-
-@property (nonatomic, weak) IBOutlet UILabel *functionalStatusDateLabel;
-@property (nonatomic, weak) IBOutlet UILabel *functionalStatusTypeLabel;
-@property (nonatomic, weak) IBOutlet UILabel *functionalStatusProblemLabel;
-@property (nonatomic, weak) IBOutlet UILabel *functionalStatusStatusLabel;
-
-@property (nonatomic, weak) IBOutlet UILabel *advanceDirectivesLabel;
-
-@property (nonatomic, weak) IBOutlet UILabel *diagnosisLabel;
-@property (nonatomic, weak) IBOutlet UILabel *diagnosisDateLabel;
-
 @end

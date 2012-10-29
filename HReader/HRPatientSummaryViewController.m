@@ -281,10 +281,6 @@
     
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
-}
-
 #pragma mark - grid view delegate
 
 - (NSUInteger)numberOfViewsInGridView:(HRGridTableView *)gridView {

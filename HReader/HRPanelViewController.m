@@ -108,10 +108,6 @@
     [super viewDidUnload];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
-    return UIInterfaceOrientationIsLandscape(orientation);
-}
-
 - (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers {
     return NO;
 }

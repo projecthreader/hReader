@@ -14,11 +14,6 @@ static NSString * const HRHIPPAMessageAcceptedKey = @"HRHIPPAMessageAccepted";
 
 @implementation HRHIPPAMessageViewController
 
-@synthesize textView = _textView;
-@synthesize buttons = _buttons;
-@synthesize target = _target;
-@synthesize action = _action;
-
 + (void)initialize {
     if (self == [HRHIPPAMessageViewController class]) {
         [[NSUserDefaults standardUserDefaults] registerDefaults:
@@ -56,10 +51,6 @@ static NSString * const HRHIPPAMessageAcceptedKey = @"HRHIPPAMessageAccepted";
 - (void)didReceiveMemoryWarning {
     self.buttons = nil;
     [super didReceiveMemoryWarning];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
-    return UIInterfaceOrientationIsLandscape(orientation);
 }
 
 - (IBAction)acceptButtonPressed:(id)sender {

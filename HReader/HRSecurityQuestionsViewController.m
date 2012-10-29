@@ -11,24 +11,9 @@
 #import "HRSecurityQuestionsViewController.h"
 #import "HRSecurityQuestionsTextField.h"
 
-#if !__has_feature(objc_arc)
-#error This class requires ARC
-#endif
-
-@interface HRSecurityQuestionsViewController () {
+@implementation HRSecurityQuestionsViewController {
     NSMutableDictionary *data;
 }
-
-- (void)updateDoneButtonEnabledState;
-
-@end
-
-@implementation HRSecurityQuestionsViewController
-
-@synthesize tableView = _tableView;
-@synthesize mode = _mode;
-@synthesize delegate = _delegate;
-@synthesize action = _action;
 
 #pragma mark - object methods
 
@@ -62,10 +47,6 @@
         }];
     }
     [self updateDoneButtonEnabledState];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
-    return UIInterfaceOrientationIsLandscape(orientation);
 }
 
 #pragma mark - text fields

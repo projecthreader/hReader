@@ -35,10 +35,6 @@ static NSString *HROAuthURLHost = @"oauth";
     [self.webView loadRequest:[_client authorizationRequest]];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
-    return UIInterfaceOrientationIsLandscape(orientation);
-}
-
 #pragma mark - web view delegate
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {

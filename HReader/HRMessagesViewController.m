@@ -13,24 +13,7 @@
 #import "HRPanelViewController.h"
 #import "HRPeoplePickerViewController.h"
 
-@interface HRMessagesViewController ()
-- (void)reloadData;
-- (void)setHeaderViewShadow;
-- (void)patientDidChange:(NSNotification *)notification;
-@end
-
 @implementation HRMessagesViewController
-
-@synthesize patientImageShadowView      = __patientImageShadowView;
-@synthesize patientImageView            = __patientImageView;
-@synthesize messagesArray               = __messagesArray;
-@synthesize scrollView                  = __scrollView;
-@synthesize messageContentView          = __messageContentView;
-@synthesize subjectLabel                = __subjectLabel;
-@synthesize bodyLabel                   = __bodyLabel;
-@synthesize messageView                 = __messageView;
-@synthesize patientView                 = __patientView;
-@synthesize tableView                   = __tableView;
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter]
@@ -114,11 +97,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
-}
-
 
 #pragma mark - UITableViewDelegate
 

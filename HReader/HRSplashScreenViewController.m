@@ -8,14 +8,6 @@
 
 #import "HRSplashScreenViewController.h"
 
-@interface HRSplashScreenViewController ()
-
-@end
-
 @implementation HRSplashScreenViewController
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
-    return UIInterfaceOrientationIsLandscape(orientation);
-}
 
 @end

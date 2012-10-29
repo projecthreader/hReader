@@ -139,10 +139,6 @@ static int HRRootViewControllerTitleContext = 0;
     [super viewDidUnload];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
-    return UIInterfaceOrientationIsLandscape(orientation);
-}
-
 #pragma mark - button events
 
 - (void)segmentedControlValueChanged {

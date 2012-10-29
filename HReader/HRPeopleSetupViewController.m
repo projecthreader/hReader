@@ -21,33 +21,13 @@
 
 #define kDeleteButtonViewTag 100
 
-@interface HRPeopleSetupViewController () {
+@implementation HRPeopleSetupViewController {
 @private
     NSFetchedResultsController *fetchedResultsController;
     NSManagedObjectContext *managedObjectContext;
     UIPopoverController *_popoverController;
     UINib *nib;
 }
-
-- (void)presentPopoverFromButton:(UIButton *)button
-                       withTitle:(NSString *)title
-                    relationship:(HRMPatientRelationship)relationship
-                      completion:(void (^) (void))completion;
-
-- (void)showMainApplicationInterface;
-
-- (void)adjustUserInterfaceForPatients:(BOOL)animated;
-
-@end
-
-@implementation HRPeopleSetupViewController
-
-@synthesize gridView = _gridView;
-@synthesize emptyCellView = _emptyCellView;
-@synthesize spouseButton = _spouseButton;
-@synthesize emptyCellButtons = _emptyCellButtons;
-@synthesize firstView = _firstView;
-@synthesize meButton = _meButton;
 
 #pragma mark - object methods
 
@@ -245,10 +225,6 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     self.editing = NO;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
-	return UIInterfaceOrientationIsLandscape(orientation);
 }
 
 #pragma mark - button actions
