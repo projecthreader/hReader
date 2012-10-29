@@ -22,7 +22,7 @@
 #pragma mark - button actions
 
 - (IBAction)done {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - view lifecycle
@@ -60,7 +60,7 @@
                              @"\n\nApp Version: %@\n",
                              [[NSBundle mainBundle] hr_displayVersion]]
              isHTML:NO];
-            [self presentModalViewController:controller animated:YES];
+            [self presentViewController:controller animated:YES completion:nil];
         }
         else {
             NSString *message = [NSString stringWithFormat:
@@ -151,7 +151,7 @@
 #pragma mark - MFMailComposeViewControllerDelegate
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
-	[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - private
