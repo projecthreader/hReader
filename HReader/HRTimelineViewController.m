@@ -16,7 +16,10 @@
 
 #import "DDXML.h"
 
-@implementation HRTimelineViewController
+@implementation HRTimelineViewController {
+    id _keyboardWillShowObserver;
+    id _keyboardWillHideObserver;
+}
 
 #pragma mark - class methods
 
@@ -46,8 +49,42 @@
     self = [super initWithCoder:coder];
     if (self) {
         self.title = @"Timeline";
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+        __weak HRTimelineViewController *weakSelf = self;
+        [center
+         addObserverForName:UIKeyboardWillShowNotification
+         object:nil
+         queue:[NSOperationQueue mainQueue]
+         usingBlock:^(NSNotification *notification) {
+             HRTimelineViewController *strongSelf = weakSelf;
+             if (strongSelf) {
+                 [strongSelf keyboardWillShow:notification];
+             }
+         }];
+        [center
+         addObserverForName:UIKeyboardWillHideNotification
+         object:nil
+         queue:[NSOperationQueue mainQueue]
+         usingBlock:^(NSNotification *notification) {
+             HRTimelineViewController *strongSelf = weakSelf;
+             if (strongSelf) {
+                 [strongSelf keyboardWillHide:notification];
+             }
+         }];
     }
     return self;
+}
+
+- (void)dealloc {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center
+     removeObserver:_keyboardWillHideObserver
+     name:UIKeyboardWillHideNotification
+     object:nil];
+    [center
+     removeObserver:_keyboardWillShowObserver
+     name:UIKeyboardWillShowNotification
+     object:nil];
 }
 
 - (void)reloadWithPatient:(HRMPatient *)patient {
@@ -92,6 +129,66 @@
 
 - (IBAction)scopeSelectorValueDidChange:(UISegmentedControl *)sender {
     [self reloadData];
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    double duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    NSUInteger options = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] doubleValue];
+    [UIView
+     animateWithDuration:duration
+     delay:0.0
+     options:options
+     animations:^{
+         CGRect rect;
+         
+         // header view
+         rect = self.headerView.frame;
+         rect = CGRectMake(0.0,
+                           -1.0 * rect.size.height,
+                           rect.size.width,
+                           rect.size.height);
+         self.headerView.frame = rect;
+         
+         // web view
+         self.webView.frame = self.view.bounds;
+         
+     }
+     completion:^(BOOL finished) {
+         
+     }];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    double duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    NSUInteger options = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] doubleValue];
+    [UIView
+     animateWithDuration:duration
+     delay:0.0
+     options:options
+     animations:^{
+         CGRect rect;
+         
+         // header view
+         rect = self.headerView.frame;
+         rect = CGRectMake(0.0,
+                           0.0,
+                           rect.size.width,
+                           rect.size.height);
+         self.headerView.frame = rect;
+         
+         // web view
+         rect = CGRectMake(0.0,
+                           rect.size.height,
+                           rect.size.width,
+                           self.view.bounds.size.height - rect.size.height);
+         self.webView.frame = rect;
+         
+     }
+     completion:^(BOOL finished) {
+         
+     }];
 }
 
 #pragma mark - view lifecycle

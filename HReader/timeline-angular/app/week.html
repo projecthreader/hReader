@@ -53,25 +53,33 @@
 					<h2 class="span3">Observations</h2>
 					<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
 					<h3 class="span2">Plan</h3>
-					<h3 class="span1">Edit</h3>
-					<h3 class="span4">Monday</h3>
-					<h3 class="span1">Sunday</h3>
+					<h3 class="span1">Level</h3>
+					<h3 class="span4"></h3>
+					<h3 class="span1"></h3>
 				</div>
 				<div class="row">
-					<h4 class="titles span4">Pain Level*</h4>
-					<p class="span2">Mark time*</p>
-					<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span>
-					<div class="progress schedule span5">
-						<div class="span1">
-							<img src="images/observation.png">
-						</div>
-						<div class="span1">
-							<img src="images/observation.png">
-						</div>
-						<div class="span2">
-							<img src="images/observation.png">
-						</div>
+
+				</div>
+			</article>
+			<hr>
+						<article>
+				<div class="row titles">
+					<h2 class="span3">Hrt Disease</h2>
+					<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
+					<h3 class="span2">Plan</h3>
+					<h3 class="span2">Results</h3>
+					<h3 class="span2"></h3>
+					<h3 class="span2"></h3>
+				</div>
+				<div class="row">
+					<h4 class="titles span4">Symptom1*</h4>
+					<h4 class="span2">Patient Note*</h4>
+					<div class="span7">
 					</div>
+				</div>
+				<div class="row">
+					<h4 class="titles span4">Symptom2*</h4>
+					<h4 class="span2">Patient Note*</h4>
 				</div>
 			</article>
 			<hr>
@@ -185,7 +193,7 @@
 						<h4>{{vital.description}}</h4>		
 					</div>
 					<div class="span2"> 
-						<h1>{{vital.values[vital.values.length-1]| number:0}}</h1>{{vital.units}}
+						<h1>{{vital.values[vital.values.length-1]}}</h1>{{vital.units}}
 					</div>
 					<div class="span6 graph">		
 						<p><sparkline exp="data" class="sparkline">{{vital.values.join(', ')}}</sparkline></p>
