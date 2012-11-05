@@ -14,13 +14,6 @@
 
 /*
  
- Web view used for user authentication.
- 
- */
-@property (nonatomic, weak) IBOutlet UIWebView *webView;
-
-/*
- 
  Target-action pair to call when authentication is successful. Must take one
  argument that is an instance of this class. This action will be called on the
  main thread.
@@ -31,7 +24,7 @@
 
 /*
  
- 
+ Get a new login controller that is setup to talk to the given API client.
  
  */
 + (HRRHExLoginViewController *)loginViewControllerForClient:(HRAPIClient *)client;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11E53" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="Th4-PJ-N8t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11G63" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="Th4-PJ-N8t">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -315,10 +315,34 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="navigationToolbar" destination="vsw-ct-NQZ" id="TQW-hB-f1Z"/>
                         <outlet property="webView" destination="OM6-89-p9X" id="sGY-aH-jUL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3FX-KD-MUG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="vsw-ct-NQZ">
+                    <rect key="frame" x="0.0" y="0.0" width="130" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem enabled="NO" image="UIButtonBarArrowLeft.png" width="32" style="plain" id="pZ0-Nl-qTo">
+                            <inset key="imageInsets" minX="-3" minY="4" maxX="3" maxY="-4"/>
+                            <connections>
+                                <action selector="navigateBack:" destination="CxS-pO-YDU" id="Hmx-6B-Dzn"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem enabled="NO" image="UIButtonBarArrowRight.png" width="34" style="plain" id="sP9-nb-rGp">
+                            <inset key="imageInsets" minX="-4" minY="4" maxX="4" maxY="-4"/>
+                            <connections>
+                                <action selector="navigateForward:" destination="CxS-pO-YDU" id="NCm-Qs-Xxy"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem enabled="NO" width="30" style="plain" systemItem="refresh" id="ylc-Bs-6jv">
+                            <connections>
+                                <action selector="navigateReload:" destination="CxS-pO-YDU" id="bff-bG-Nps"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
             </objects>
             <point key="canvasLocation" x="1004" y="-106"/>
         </scene>
@@ -432,6 +456,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="UIButtonBarArrowLeft.png" width="16" height="19"/>
+        <image name="UIButtonBarArrowRight.png" width="16" height="19"/>
         <image name="logo_login.png" width="233" height="54"/>
         <image name="logo_splash.png" width="448" height="104"/>
     </resources>
@@ -485,6 +511,8 @@
         <class className="HRRHExLoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRRHExLoginViewController.h"/>
             <relationships>
+                <relationship kind="action" name="navigateReload:"/>
+                <relationship kind="outlet" name="navigationToolbar" candidateClass="UIToolbar"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>
