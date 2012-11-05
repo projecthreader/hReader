@@ -14,5 +14,6 @@
 #import "NSArray+hReaderAdditions.h"
 #import "NSSet+hReaderAdditions.h"
 #import "NSDate+hReaderAdditions.h"
+#import "UIApplication+hReaderAdditions.h"
 
 #endif

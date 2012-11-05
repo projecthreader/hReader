@@ -7,7 +7,6 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<link rel="stylesheet" href="css/jquery-ui-1.8.16.custom.css" type="text/css"/> 
 		<link href="http://addyosmani.github.com/jquery-ui-bootstrap/bootstrap/bootstrap.css" rel="stylesheet">
-		<link rel="stylesheet" href="css/master.css" type="text/css"/> 
 		<script type="text/javascript" src="lib/jquery/jquery-1.8.1.js"></script>
 	    <script type="text/javascript" src="lib/jquery/jquery.sparkline2.0.js">
 	    </script>
@@ -52,6 +51,8 @@
 			  };
 			});
 		</script>
+
+		<link rel="stylesheet" href="css/master.css" type="text/css"/> 
 	</head>
 	<body >
 		<section class="well">
@@ -70,7 +71,7 @@
 					<form action="timeline.json?page=daily_meds" method="post">
 						<span class="span1"><input type="submit" value="Log" class="btn"></span>
 
-						<div class="progress schedule span5">
+						<div class="schedule span5">
 							<div class=" span2 containing-element">
 								<select name="flip-min" id="flip-min" data-role="slider">
 									<option value="off">Not taken</option>
@@ -89,7 +90,8 @@
 				<hr>
 				<div class="row titles">
 					<h2 class="span3">Overall</h2>
-					<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
+					<span class="span1"><a class="btn" ng:click="addSymptom()"><i class="icon-plus"></i></a></span>
+
 					<h3 class="span2">PLAN</h3>
 					<h3 class="span1">CHANGE</h3>
 					<h3 class="span4">LOG</h3>
@@ -105,7 +107,7 @@
 				<div class="row">
 					<h4 class="titles span4">Mood*</h4>
 					<h4 class="span2">Log instances*</h4>
-					<form class="span4" action="timeline.json?page=daily_pain" method="post">
+					<form class="span2" action="timeline.json?page=daily_pain" method="post">
 						<select name="select-choice-min" id="select-choice-min" data-mini="true">
 						   <option value="standard">Happy</option>
 						   <option value="rush">Sad</option>
@@ -129,7 +131,7 @@
 				<div class="row">
 					<h4 class="titles span4">Symptom1*</h4>
 					<h4 class="span2">Patient Note*</h4>
-					<div class="span7">
+					<div class="span6">
 						<form action="timeline.json?page=daily_pain" method="post" data-role="fieldcontain">
 							<fieldset data-role="controlgroup" data-type="horizontal">
 								<label for="select-choice-sev">SEVERITY</label>
@@ -140,15 +142,6 @@
 								   <option value="moderate">Moderate</option>
 								   <option value="severe">Severe</option>
 								</select>
-								<label for="select-choice-freq">FREQUENCY</label>
-								<select name="select-choice-freq" id="select-choice-freq">
-								   <option value="null">Frequency</option>
-								   <option value="0">Never</option>
-								   <option value="1">Rarely</option>
-								   <option value="2">Sometimes</option>
-								   <option value="3">Very Often</option>
-								   <option value="4">Always</option>
-								</select> 
 								<label for="select-choice-dur">DURATION</label>
 								<select name="select-choice-dur" id="select-choice-dur" >
 								   <option value="null">Duration</option>
@@ -164,7 +157,7 @@
 				<div class="row">
 					<h4 class="titles span4">Symptom2*</h4>
 					<h4 class="span2">Patient Note*</h4>
-										<div class="span7">
+					<div class="span6">
 						<form action="timeline.json?page=daily_pain" method="post" data-role="fieldcontain">
 							<fieldset data-role="controlgroup" data-type="horizontal">
 								<label for="select-choice-sev">SEVERITY</label>
@@ -175,15 +168,6 @@
 								   <option value="moderate">Moderate</option>
 								   <option value="severe">Severe</option>
 								</select>
-								<label for="select-choice-freq">FREQUENCY</label>
-								<select name="select-choice-freq" id="select-choice-freq">
-								   <option value="null">Frequency</option>
-								   <option value="0">Never</option>
-								   <option value="1">Rarely</option>
-								   <option value="2">Sometimes</option>
-								   <option value="3">Very Often</option>
-								   <option value="4">Always</option>
-								</select> 
 								<label for="select-choice-dur">DURATION</label>
 								<select name="select-choice-dur" id="select-choice-dur" >
 								   <option value="null">Duration</option>
@@ -195,6 +179,18 @@
 							<fieldset>
 						</form>
 					</div>
+				</div>
+				<div class="row">
+					<div class="span4">
+						<form ng-submit="addMessage(message)">
+							<input ng-model="message" class="span4">
+							<button class="span2">Add Symptom</button>
+						</form>
+						<ul>
+							<li ng:repeat="message in messages" class="message" animate="in">{{message}}</li>
+						</ul>
+					</div>
+
 				</div>
 			</article>
 			<hr>
