@@ -4400,16 +4400,6 @@ a.label:hover, a.badge:hover {
       color: #fff;
       background-color: #ccc; }
 
-div.ui-slider {
-  position: relative;
-  display: inline-block;
-  overflow: visible;
-  height: 15px;
-  padding: 0;
-  margin: 0 2% 0 20px;
-  top: 4px;
-  width: 100% !important; }
-
 .ui-btn-corner-all {
   webkit-border-radius: .25em;
   border-radius: .25em; }
@@ -4431,6 +4421,9 @@ div.ui-slider {
   background-color: #0064CD !important; }
 
 /*structure*/
+.span1, .span2, h2.span3, .span4, .span6 form {
+  vertical-align: baseline; }
+
 .graph {
   background-color: #fff;
   margin-bottom: 20px; }
@@ -4438,7 +4431,7 @@ div.ui-slider {
 .green {
   border: 1px solid #888888; }
 
-.titles .span1, .title .span4 {
+.titles .span1 {
   position: relative;
   bottom: 0; }
 
@@ -4541,6 +4534,57 @@ svg {
 
 ui-slider-handle ui-state-default ui-corner-all {
   background-image: url("images/treatment.png"); }
+
+.containing-element .ui-slider-switch {
+  width: 8em !important; }
+
+.ui-field-contain div.ui-slider-switch {
+  width: 9em; }
+
+.ui-slider-inneroffset {
+  background-image: url("images/medication.png") !important;
+  repeat: none; }
+
+.ui-btn-active {
+  border: 1px solid #2373A5;
+  background: #5393C5;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  text-shadow: 0 1px 1px #3373A5;
+  text-decoration: none;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#5393c5), to(#6facd5));
+  background-image: -webkit-linear-gradient(#5393c5, #6facd5);
+  background-image: -moz-linear-gradient(#5393c5, #6facd5);
+  background-image: -ms-linear-gradient(#5393c5, #6facd5);
+  background-image: -o-linear-gradient(#5393c5, #6facd5);
+  background-image: linear-gradient(#5393c5, #6facd5);
+  font-family: Helvetica,Arial,sans-serif; }
+
+form {
+  width: 100%; }
+
+.ui-btn-active {
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#56c4c3), to(#048a82)) !important;
+  background-image: linear-gradient(#56c4c3, #048a82);
+  background-color: #048a82; }
+
+.schedule .ui-btn-inner {
+  background-image: url("../images/med-basic.png");
+  background-position: center 10%;
+  background-repeat: no-repeat;
+  margin-top: -2px; }
+
+.ui-btn-inner {
+  padding: 5px 14px 6px;
+  line-height: 20px; }
+  .ui-btn-inner .ui-btn-text {
+    padding: 0; }
+
+.ui-btn-down-c, .ui-input-text {
+  background-image: -webkit-linear-gradient(white, white);
+  background-color: white;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 4px 0px inset; }
 
 .icon-white {
   background-image: url("../images/glyphicons-halflings-white.png"); }
@@ -4870,11 +4914,6 @@ div.spark {
 /* Icons
 ----------------------------------*/
 /* states and images */
-.ui-icon {
-  width: 16px;
-  height: 16px;
-  background-image: url(images/ui-icons_222222_256x240.png); }
-
 .ui-widget-content .ui-icon {
   background-image: url(images/ui-icons_222222_256x240.png); }
 
