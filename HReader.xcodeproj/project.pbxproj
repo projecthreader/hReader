@@ -91,6 +91,7 @@
 		3B4366061540A2890009F892 /* ts-4-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365D31540A2890009F892 /* ts-4-tile.png */; };
 		3B4366071540A2890009F892 /* ts-5-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365D41540A2890009F892 /* ts-5-overview.png */; };
 		3B4366081540A2890009F892 /* ts-5-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365D51540A2890009F892 /* ts-5-tile.png */; };
+		3B52170A164817CF00DE676A /* UIApplication+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B521709164817CF00DE676A /* UIApplication+hReaderAdditions.m */; };
 		3B581D3415BDC68200ED2A63 /* logo_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B581D3215BDC68200ED2A63 /* logo_login.png */; };
 		3B581D3515BDC68200ED2A63 /* logo_login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B581D3315BDC68200ED2A63 /* logo_login@2x.png */; };
 		3B651F7F157FC8B50007817C /* interstitial_closebox-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B651F7B157FC8B50007817C /* interstitial_closebox-down.png */; };
@@ -422,6 +423,8 @@
 		3B4365D31540A2890009F892 /* ts-4-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-4-tile.png"; sourceTree = "<group>"; };
 		3B4365D41540A2890009F892 /* ts-5-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-5-overview.png"; sourceTree = "<group>"; };
 		3B4365D51540A2890009F892 /* ts-5-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-5-tile.png"; sourceTree = "<group>"; };
+		3B521708164817CF00DE676A /* UIApplication+hReaderAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+hReaderAdditions.h"; sourceTree = "<group>"; };
+		3B521709164817CF00DE676A /* UIApplication+hReaderAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+hReaderAdditions.m"; sourceTree = "<group>"; };
 		3B581D3215BDC68200ED2A63 /* logo_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_login.png; sourceTree = "<group>"; };
 		3B581D3315BDC68200ED2A63 /* logo_login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_login@2x.png"; sourceTree = "<group>"; };
 		3B651F7B157FC8B50007817C /* interstitial_closebox-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "interstitial_closebox-down.png"; sourceTree = "<group>"; };
@@ -1226,6 +1229,8 @@
 				3B2405341608E707007E043E /* UIColor+hReaderAdditions.m */,
 				3BABEC3C1624769B0057D3B8 /* NSDate+hReaderAdditions.h */,
 				3BABEC3D1624769B0057D3B8 /* NSDate+hReaderAdditions.m */,
+				3B521708164817CF00DE676A /* UIApplication+hReaderAdditions.h */,
+				3B521709164817CF00DE676A /* UIApplication+hReaderAdditions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1895,6 +1900,7 @@
 				3B8935E9162D9E0F003750B6 /* CMDAlertView.m in Sources */,
 				3B8935EB162D9E0F003750B6 /* NSArray+CMDBlocksKit.m in Sources */,
 				3BAABBDB1636D830009D3543 /* CMDEncryptedSQLiteStore.m in Sources */,
+				3B52170A164817CF00DE676A /* UIApplication+hReaderAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
