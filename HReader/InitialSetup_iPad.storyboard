@@ -512,7 +512,6 @@
         <class className="HRRHExLoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRRHExLoginViewController.h"/>
             <relationships>
-                <relationship kind="action" name="navigateReload:"/>
                 <relationship kind="outlet" name="navigationToolbar" candidateClass="UIToolbar"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>

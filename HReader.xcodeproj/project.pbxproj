@@ -40,6 +40,7 @@
 		3B2405351608E707007E043E /* UIColor+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2405341608E707007E043E /* UIColor+hReaderAdditions.m */; };
 		3B2405391608F5B2007E043E /* NSArray+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2405381608F5B2007E043E /* NSArray+hReaderAdditions.m */; };
 		3B24053C1608F644007E043E /* NSSet+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B24053B1608F644007E043E /* NSSet+hReaderAdditions.m */; };
+		3B29070B16484E830028C2CE /* HRTimelinePOSTURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B29070A16484E830028C2CE /* HRTimelinePOSTURLProtocol.m */; };
 		3B4365D61540A2890009F892 /* hs-0-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365A31540A2890009F892 /* hs-0-tile.png */; };
 		3B4365D71540A2890009F892 /* hs-1-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365A41540A2890009F892 /* hs-1-overview.png */; };
 		3B4365D81540A2890009F892 /* hs-1-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365A51540A2890009F892 /* hs-1-tile.png */; };
@@ -371,6 +372,8 @@
 		3B2405381608F5B2007E043E /* NSArray+hReaderAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+hReaderAdditions.m"; sourceTree = "<group>"; };
 		3B24053A1608F643007E043E /* NSSet+hReaderAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+hReaderAdditions.h"; sourceTree = "<group>"; };
 		3B24053B1608F644007E043E /* NSSet+hReaderAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+hReaderAdditions.m"; sourceTree = "<group>"; };
+		3B29070916484E830028C2CE /* HRTimelinePOSTURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRTimelinePOSTURLProtocol.h; sourceTree = "<group>"; };
+		3B29070A16484E830028C2CE /* HRTimelinePOSTURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRTimelinePOSTURLProtocol.m; sourceTree = "<group>"; };
 		3B305F19157D4F2900FC03E6 /* HRPeoplePickerViewController_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPeoplePickerViewController_private.h; sourceTree = "<group>"; };
 		3B4365A31540A2890009F892 /* hs-0-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hs-0-tile.png"; sourceTree = "<group>"; };
 		3B4365A41540A2890009F892 /* hs-1-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hs-1-overview.png"; sourceTree = "<group>"; };
@@ -1482,6 +1485,8 @@
 				DD695D7A1489439100E4E2E1 /* HRTimelineViewController.m */,
 				3B7FF9FB1613483F009033AD /* HRTimelineURLProtocol.h */,
 				3B7FF9FC1613483F009033AD /* HRTimelineURLProtocol.m */,
+				3B29070916484E830028C2CE /* HRTimelinePOSTURLProtocol.h */,
+				3B29070A16484E830028C2CE /* HRTimelinePOSTURLProtocol.m */,
 			);
 			name = Timeline;
 			sourceTree = "<group>";
@@ -1901,6 +1906,7 @@
 				3B8935EB162D9E0F003750B6 /* NSArray+CMDBlocksKit.m in Sources */,
 				3BAABBDB1636D830009D3543 /* CMDEncryptedSQLiteStore.m in Sources */,
 				3B52170A164817CF00DE676A /* UIApplication+hReaderAdditions.m in Sources */,
+				3B29070B16484E830028C2CE /* HRTimelinePOSTURLProtocol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
