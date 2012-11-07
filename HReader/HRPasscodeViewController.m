@@ -10,20 +10,7 @@
 
 #import "HRPasscodeViewController.h"
 
-@interface HRPasscodeViewController ()
-
-+ (BOOL)doesPasscodeMeetPolicy:(NSString *)passcode;
-
-@end
-
 @implementation HRPasscodeViewController
-
-@synthesize passcodeOneField = _passcodeOneField;
-@synthesize passcodeTwoField = _passcodeTwoField;
-@synthesize dividerView = _dividerView;
-@synthesize mode = _mode;
-@synthesize target = _target;
-@synthesize action = _action;
 
 #pragma mark - class methods
 
@@ -79,10 +66,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
-    return UIInterfaceOrientationIsLandscape(orientation);
 }
 
 #pragma mark - button actions

@@ -16,27 +16,50 @@
 static NSString *HROAuthURLScheme = @"x-org-mitre-hreader";
 static NSString *HROAuthURLHost = @"oauth";
 
-@implementation HRRHExLoginViewController {
-    HRAPIClient *_client;
-}
+@interface HRRHExLoginViewController ()
+@property (nonatomic, strong) IBOutlet UIToolbar *navigationToolbar;
+@property (nonatomic, weak) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) HRAPIClient *client;
+@end
+
+@implementation HRRHExLoginViewController
+
+#pragma mark - class methods
 
 + (HRRHExLoginViewController *)loginViewControllerForClient:(HRAPIClient *)client {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
     HRRHExLoginViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"RHExLoginViewController"];
-    controller->_client = client;
+    controller.client = client;
     return controller;
+}
+
+#pragma mark - object methods
+
+- (IBAction)navigateBack:(id)sender {
+    [self.webView goBack];
+}
+
+- (IBAction)navigateForward:(id)sender {
+    [self.webView goForward];
+}
+
+- (IBAction)navigateReload:(id)sender {
+    [self.webView reload];
 }
 
 #pragma mark - view methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // toolbar
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:self.navigationToolbar];
+    self.navigationItem.leftBarButtonItem = item;
+    
+    // other
     [CMDActivityHUD show];
-    [self.webView loadRequest:[_client authorizationRequest]];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
-    return UIInterfaceOrientationIsLandscape(orientation);
+    [self.webView loadRequest:[self.client authorizationRequest]];
+    
 }
 
 #pragma mark - web view delegate
@@ -65,7 +88,7 @@ static NSString *HROAuthURLHost = @"oauth";
             @"grant_type" : @"authorization_code"
         };
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            if ([_client refreshAccessTokenWithParameters:parameters]) {
+            if ([self.client refreshAccessTokenWithParameters:parameters]) {
                 dispatch_async(dispatch_get_main_queue(), ^{
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -96,6 +119,10 @@ static NSString *HROAuthURLHost = @"oauth";
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [CMDActivityHUD dismiss];
+    NSArray *buttons = self.navigationToolbar.items;
+    [(UIBarButtonItem *)buttons[0] setEnabled:[webView canGoBack]];
+    [(UIBarButtonItem *)buttons[1] setEnabled:[webView canGoForward]];
+    [(UIBarButtonItem *)buttons[2] setEnabled:YES];
 }
 
 @end

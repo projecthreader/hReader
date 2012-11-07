@@ -94,6 +94,8 @@ function RecordListCtrl($scope) {
 function DayListCtrl($scope, $http) {
   $http.get('timeline.json?page=day').success(function(data) {
     $scope.vitals = data.vitals;
+    $scope.symptoms = 'New Symptom'; 
+
 
   });
 };

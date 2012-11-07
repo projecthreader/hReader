@@ -7,7 +7,6 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<link rel="stylesheet" href="css/jquery-ui-1.8.16.custom.css" type="text/css"/> 
 		<link href="http://addyosmani.github.com/jquery-ui-bootstrap/bootstrap/bootstrap.css" rel="stylesheet">
-		<link rel="stylesheet" href="css/master.css" type="text/css"/> 
 		<script type="text/javascript" src="lib/jquery/jquery-1.8.1.js"></script>
 	    <script type="text/javascript" src="lib/jquery/jquery.sparkline2.0.js">
 	    </script>
@@ -32,33 +31,71 @@
 			      scope.$watch('vitals', function (newVal, oldVal) {
 			      	if (newVal != null) {
 						$(iElement).sparkline('html', { 
-									type: 'line',
-							    lineColor: '#000000',
-							    spotColor: '#000000',
-							    minSpotColor: '#d60D26',
-							    maxSpotColor: '#d60D26',
-							    highlightSpotColor: '#048A82',
-    							highlightLineColor: '#d60D26',
-							    fillColor: false,
-							   	lineWidth: 3,
-    							spotRadius: 5,
-							    width: 460,
-							    height: 75,
-							    drawNormalOnTop: false
-								});
-							}
-			      });
-			    }
+							type: 'line',
+						    lineColor: '#000000',
+						    spotColor: '#000000',
+						    minSpotColor: '#d60D26',
+						    maxSpotColor: '#d60D26',
+						    highlightSpotColor: '#048A82',
+							highlightLineColor: '#d60D26',
+						    fillColor: false,
+						   	lineWidth: 3,
+							spotRadius: 5,
+						    width: 460,
+						    height: 75,
+						    drawNormalOnTop: false
+							});
+						}
+			     	});
+			   	 }
 			  };
 			});
 		</script>
+
+		<script>
+			var myApp = angular.module('Timeline', []);
+				myApp.directive('replybox', function($rootScope) {
+			    var linkFn = function(scope, element, attrs) {
+			        var label = angular.element(element.children()[0]);
+			        scope.showInput = false;
+
+			        label.bind("click", textbox);
+
+			        function textbox() {
+			            console.log('click');
+			            scope.$apply('showInput = true');
+			        }
+			    };
+			    return {
+			        link: linkFn,
+			        restrict: 'E',
+			        scope: {
+			            label: '@'
+			        },
+			        template: '<div class="row" ng-show="showInput">
+						<form ng-submit="addMessage(message)">
+							<input ng-model="message" class="span4">
+							<input ng-model="notes">
+						</form>
+						</div>',
+			        transclude: true
+			    };
+			})
+
+			function MyCtrl($scope) {
+			    $scope.name = 'Superhero';
+			}​
+		</script>
+
+
+		<link rel="stylesheet" href="css/master.css" type="text/css"/> 
 	</head>
 	<body >
 		<section class="well">
 			<article>
 				<div class="row titles">
 					<h2 class="span3">Regiment</h2>
-					<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
+					<span class="span1"><a class="btn" ng-show="showInput"><i class="icon-plus"></i></a></span>
 					<h3 class="span2">Plan</h3>
 					<h3 class="span1">Edit</h3>
 					<h3 class="span4">AM</h3>
@@ -67,10 +104,10 @@
 				<div class="row">
 					<h4 class="titles span4">Medication*</h4>
 					<h4 class="span2">Take 2x Daily*</h4>
-					<form action="timeline.json?page=daily_meds" method="post">
+					<form action="http://hreader.local/timeline.json?key=userData" method="post">
 						<span class="span1"><input type="submit" value="Log" class="btn"></span>
 
-						<div class="progress schedule span5">
+						<div class="schedule span5">
 							<div class=" span2 containing-element">
 								<select name="flip-min" id="flip-min" data-role="slider">
 									<option value="off">Not taken</option>
@@ -89,7 +126,8 @@
 				<hr>
 				<div class="row titles">
 					<h2 class="span3">Overall</h2>
-					<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
+					<span class="span1"><a class="btn" ng:click="addSymptom()"><i class="icon-plus"></i></a></span>
+
 					<h3 class="span2">PLAN</h3>
 					<h3 class="span1">CHANGE</h3>
 					<h3 class="span4">LOG</h3>
@@ -97,7 +135,7 @@
 				<div class="row">
 					<h4 class="titles span4">Pain*</h4>
 					<h4 class="span2">Log instances*</h4>
-					<form action="timeline.json?page=daily_pain" class="span6" method="post">
+					<form action="http://hreader.local/timeline.json?key=userData" class="span6" method="post">
 						<input type="range" name="slider" id="slider-0" value="5" min="0" max="10" data-highlight="true" />
 					</form>
 					</div>
@@ -105,7 +143,7 @@
 				<div class="row">
 					<h4 class="titles span4">Mood*</h4>
 					<h4 class="span2">Log instances*</h4>
-					<form class="span4" action="timeline.json?page=daily_pain" method="post">
+					<form class="span2" action="http://hreader.local/timeline.json?key=userData" method="post">
 						<select name="select-choice-min" id="select-choice-min" data-mini="true">
 						   <option value="standard">Happy</option>
 						   <option value="rush">Sad</option>
@@ -120,17 +158,27 @@
 			<article>
 				<div class="row titles">
 					<h2 class="span3">Hrt Disease</h2>
-					<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
+					<span class="span1"><input type="checkbox" ng-model="checked"></span>
+					<a>{{label}}</a><textarea ng-show="showInput"></textarea>
 					<h3 class="span2">Plan</h3>
 					<h3 class="span2">Log</h3>
 					<h3 class="span2"></h3>
 					<h3 class="span2"></h3>
 				</div>
-				<div class="row">
-					<h4 class="titles span4">Symptom1*</h4>
-					<h4 class="span2">Patient Note*</h4>
-					<div class="span7">
-						<form action="timeline.json?page=daily_pain" method="post" data-role="fieldcontain">
+				
+<!-- 					<form ng-submit="addMessage(message)">
+						<input ng-model="message" class="span4">
+						<input ng-model="notes">
+					</form> -->
+				<!-- 		<ul>
+							<li ng:repeat="message in messages" class="message" animate="in">{{message}}</li>
+							<li>{{care-plan}}</li>
+						</ul> -->
+				<div class="row" ng-hide="checked">
+					<h4 class="titles span4">{{symptoms}}</h4>
+					<h4 class="span2">{{notes}}</h4>
+					<div class="span6">
+						<form action="http://hreader.local/timeline.json?key=userData" method="post" data-role="fieldcontain">
 							<fieldset data-role="controlgroup" data-type="horizontal">
 								<label for="select-choice-sev">SEVERITY</label>
 								<select name="select-choice-sev" id="select-choice-sev">
@@ -140,15 +188,39 @@
 								   <option value="moderate">Moderate</option>
 								   <option value="severe">Severe</option>
 								</select>
-								<label for="select-choice-freq">FREQUENCY</label>
-								<select name="select-choice-freq" id="select-choice-freq">
-								   <option value="null">Frequency</option>
-								   <option value="0">Never</option>
-								   <option value="1">Rarely</option>
-								   <option value="2">Sometimes</option>
-								   <option value="3">Very Often</option>
-								   <option value="4">Always</option>
-								</select> 
+								<label for="select-choice-dur">DURATION</label>
+								<select name="select-choice-dur" id="select-choice-dur" >
+								   <option value="null">Duration</option>
+								   <option value="seconds">Seconds</option>
+								   <option value="minutes">Minutes</option>
+								   <option value="hours">Hours</option>
+								   <option value="days">Days</option>
+								</select>  
+							<fieldset>
+						</form>
+					</div>
+				</div>
+				<div class="row" ng-show="checked">
+					<form ng-submit="addSymptom(symptom)">
+						<input ng-model="symptoms" class="span4" placeholder="New Symptom">
+						<input ng-model="notes" class="span2" placeholder="Notes">
+					
+					</form>
+				</div>
+				<div class="row">
+					<h4 class="titles span4">Symptom1*</h4>
+					<h4 class="span2">Patient Note*</h4>
+					<div class="span6">
+						<form action="http://hreader.local/timeline.json?key=userData" method="post" data-role="fieldcontain">
+							<fieldset data-role="controlgroup" data-type="horizontal">
+								<label for="select-choice-sev">SEVERITY</label>
+								<select name="select-choice-sev" id="select-choice-sev">
+								   <option value="none">Severity</option>
+								   <option value="none">None</option>
+								   <option value="mild">Mild</option>
+								   <option value="moderate">Moderate</option>
+								   <option value="severe">Severe</option>
+								</select>
 								<label for="select-choice-dur">DURATION</label>
 								<select name="select-choice-dur" id="select-choice-dur" >
 								   <option value="null">Duration</option>
@@ -164,8 +236,8 @@
 				<div class="row">
 					<h4 class="titles span4">Symptom2*</h4>
 					<h4 class="span2">Patient Note*</h4>
-										<div class="span7">
-						<form action="timeline.json?page=daily_pain" method="post" data-role="fieldcontain">
+					<div class="span6">
+						<form action="http://hreader.local/timeline.json?key=userData" method="post" data-role="fieldcontain">
 							<fieldset data-role="controlgroup" data-type="horizontal">
 								<label for="select-choice-sev">SEVERITY</label>
 								<select name="select-choice-sev" id="select-choice-sev">
@@ -175,15 +247,6 @@
 								   <option value="moderate">Moderate</option>
 								   <option value="severe">Severe</option>
 								</select>
-								<label for="select-choice-freq">FREQUENCY</label>
-								<select name="select-choice-freq" id="select-choice-freq">
-								   <option value="null">Frequency</option>
-								   <option value="0">Never</option>
-								   <option value="1">Rarely</option>
-								   <option value="2">Sometimes</option>
-								   <option value="3">Very Often</option>
-								   <option value="4">Always</option>
-								</select> 
 								<label for="select-choice-dur">DURATION</label>
 								<select name="select-choice-dur" id="select-choice-dur" >
 								   <option value="null">Duration</option>

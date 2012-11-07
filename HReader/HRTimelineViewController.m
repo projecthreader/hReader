@@ -191,10 +191,4 @@
      }];
 }
 
-#pragma mark - view lifecycle
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
-}
-
 @end

@@ -257,7 +257,7 @@
     if (!HRCryptoManagerHasPasscode() || !HRCryptoManagerHasSecurityQuestions()) {
         [(id)self.window.rootViewController popToRootViewControllerAnimated:NO];
     }
-    [securityNavigationController dismissModalViewControllerAnimated:NO];
+    [securityNavigationController dismissViewControllerAnimated:NO completion:nil];
     securityNavigationController = nil;
     [self presentPasscodeVerificationController:NO];
     

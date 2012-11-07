@@ -15,6 +15,7 @@
     NSArray *_installedApplets;
     NSArray *_availableApplets;
     HRMPatient *_patient;
+    BOOL _shouldReloadTableWhenContextSaves;
 }
 
 #pragma mark - class methods
@@ -101,7 +102,9 @@
 
 - (void)managedObjectContextDidSave {
     [self reloadApplets];
-    [self.tableView reloadData];
+    if (_shouldReloadTableWhenContextSaves) {
+        [self.tableView reloadData];
+    }
 }
 
 - (void)selectedPatientDidChange:(NSNotification *)notification {
@@ -119,15 +122,6 @@
     _patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
     [self reloadApplets];
     [self.tableView reloadData];
-}
-
-- (void)didReceiveMemoryWarning {
-    if (![self isViewLoaded] && self.view.window == nil) {
-        _patient = nil;
-        _installedApplets = nil;
-        _availableApplets = nil;
-    }
-    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - table view
@@ -156,11 +150,13 @@
         NSDictionary *applet = [_availableApplets objectAtIndex:indexPath.row];
         [array addObject:[applet objectForKey:@"identifier"]];
         _patient.applets = array;
+        _shouldReloadTableWhenContextSaves = NO;
         [[_patient managedObjectContext] save:nil];
+        _shouldReloadTableWhenContextSaves = YES;
         NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:[_installedApplets indexOfObject:applet] inSection:0];
         [tableView beginUpdates];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [tableView deleteRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationFade];
+        [tableView insertRowsAtIndexPaths:@[ newIndexPath ] withRowAnimation:UITableViewRowAnimationFade];
         [tableView endUpdates];
     }
 }
@@ -191,7 +187,9 @@
         [array removeObject:[applet objectForKey:@"identifier"]];
     }
     _patient.applets = array;
+    _shouldReloadTableWhenContextSaves = NO;
     [[_patient managedObjectContext] save:nil];
+    _shouldReloadTableWhenContextSaves = YES;
     
     // update table view
     NSIndexPath *newIndexPath = nil;
@@ -202,8 +200,8 @@
         newIndexPath = [NSIndexPath indexPathForRow:[_availableApplets indexOfObject:applet] inSection:1];
     }
     [tableView beginUpdates];
-    [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [tableView deleteRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationFade];
+    [tableView insertRowsAtIndexPaths:@[ newIndexPath ] withRowAnimation:UITableViewRowAnimationFade];
     [tableView endUpdates];
     
 }

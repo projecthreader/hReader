@@ -96,6 +96,9 @@ static NSMutableDictionary *allClients = nil;
 
 - (void)patientFeed:(void (^)(NSArray *patients))completion ignoreCache:(BOOL)ignore {
     dispatch_async(_requestQueue, ^{
+        hr_dispatch_main(^{
+            [[UIApplication sharedApplication] hr_pushNetworkOperation];
+        });
         NSArray *feed = _patientFeed;
         
         // check time stamp
@@ -135,9 +138,10 @@ static NSMutableDictionary *allClients = nil;
         }
         
         // call completion handler
-        if (completion) {
-            hr_dispatch_main(^{ completion(feed); });
-        }
+        hr_dispatch_main(^{
+            [[UIApplication sharedApplication] hr_popNetworkOperation];
+            if (completion) { completion(feed); }
+        });
         
     });
 }
@@ -150,7 +154,10 @@ static NSMutableDictionary *allClients = nil;
     dispatch_async(_requestQueue, ^{
         
         // start block
-        if (startBlock) { hr_dispatch_main(startBlock); }
+        hr_dispatch_main(^{
+            [[UIApplication sharedApplication] hr_pushNetworkOperation];
+            if (startBlock) { startBlock(); }
+        });
         
         // create request
         NSString *path = [NSString stringWithFormat:@"/records/%@/c32/%@", identifier, identifier];
@@ -169,8 +176,11 @@ static NSMutableDictionary *allClients = nil;
             dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
         }
         
-        // return
-        if (finishBlock) { hr_dispatch_main(^{ finishBlock(dictionary); }); }
+        // finish block
+        hr_dispatch_main(^{
+            [[UIApplication sharedApplication] hr_popNetworkOperation];
+            if (finishBlock) { finishBlock(dictionary); }
+        });
         
     });
 }

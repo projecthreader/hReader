@@ -11,9 +11,4 @@
 
 @interface HRAboutTableViewController : UITableViewController <MFMailComposeViewControllerDelegate>
 
-@property (nonatomic, strong) IBOutlet UILabel *versionLabel;
-@property (nonatomic, strong) IBOutlet UILabel *buildDateLabel;
-
-- (IBAction)done;
-
 @end

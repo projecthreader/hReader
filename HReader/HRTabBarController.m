@@ -133,16 +133,6 @@ static int HRRootViewControllerTitleContext = 0;
     
 }
 
-- (void)viewDidUnload {
-    _segmentedControl = nil;
-    _visibleViewController = nil;
-    [super viewDidUnload];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation {
-    return UIInterfaceOrientationIsLandscape(orientation);
-}
-
 #pragma mark - button events
 
 - (void)segmentedControlValueChanged {

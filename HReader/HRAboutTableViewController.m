@@ -17,12 +17,19 @@
 
 #import "HRMPatient.h"
 
+@interface HRAboutTableViewController ()
+
+@property (nonatomic, weak) IBOutlet UILabel *versionLabel;
+@property (nonatomic, weak) IBOutlet UILabel *buildDateLabel;
+
+@end
+
 @implementation HRAboutTableViewController
 
 #pragma mark - button actions
 
 - (IBAction)done {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - view lifecycle
@@ -31,16 +38,6 @@
     [super viewDidLoad];
     self.versionLabel.text = [[NSBundle mainBundle] hr_displayVersion];
     self.buildDateLabel.text = [[NSBundle mainBundle] hr_buildTime];
-}
-
-- (void)viewDidUnload {
-    self.buildDateLabel = nil;
-    self.versionLabel = nil;
-    [super viewDidUnload];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
 }
 
 #pragma mark - table view
@@ -60,7 +57,7 @@
                              @"\n\nApp Version: %@\n",
                              [[NSBundle mainBundle] hr_displayVersion]]
              isHTML:NO];
-            [self presentModalViewController:controller animated:YES];
+            [self presentViewController:controller animated:YES completion:nil];
         }
         else {
             NSString *message = [NSString stringWithFormat:
@@ -151,7 +148,7 @@
 #pragma mark - MFMailComposeViewControllerDelegate
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
-	[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - private
