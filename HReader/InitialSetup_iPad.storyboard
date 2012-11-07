@@ -337,7 +337,7 @@
                                 <action selector="navigateForward:" destination="CxS-pO-YDU" id="NCm-Qs-Xxy"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem enabled="NO" width="30" style="plain" systemItem="refresh" id="ylc-Bs-6jv">
+                        <barButtonItem enabled="NO" style="plain" systemItem="refresh" id="ylc-Bs-6jv">
                             <connections>
                                 <action selector="navigateReload:" destination="CxS-pO-YDU" id="bff-bG-Nps"/>
                             </connections>
