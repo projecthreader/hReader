@@ -31,7 +31,7 @@
     
     // create entry
     HRMEntry *entry = [self instanceInContext:context];
-    entry.type = [NSNumber numberWithShort:type];
+    entry.type = @(type);
     id object = nil;
     
     // set properties

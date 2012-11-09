@@ -191,6 +191,8 @@
 		3BB3F0C015823AFB00C1EC1D /* HRPasscodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB3F0BF15823AFB00C1EC1D /* HRPasscodeViewController.m */; };
 		3BC6A68C15A5D0DC00FA0C3A /* hippa.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3BC6A68B15A5D0DC00FA0C3A /* hippa.txt */; };
 		3BC6A69015A5D17E00FA0C3A /* HRHIPPAMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC6A68F15A5D17E00FA0C3A /* HRHIPPAMessageViewController.m */; };
+		3BCF598A164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF5989164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.m */; };
+		3BCF598C164D8EA700BD0E9C /* HRTotalCholesterolAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCF598B164D8EA700BD0E9C /* HRTotalCholesterolAppletTile.xib */; };
 		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
 		3BD16F0514E1C5B700F2249E /* HRMPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16F0414E1C5B700F2249E /* HRMPatient.m */; };
@@ -556,6 +558,9 @@
 		3BC6A68B15A5D0DC00FA0C3A /* hippa.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hippa.txt; sourceTree = "<group>"; wrapsLines = 1; };
 		3BC6A68E15A5D17E00FA0C3A /* HRHIPPAMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRHIPPAMessageViewController.h; sourceTree = "<group>"; };
 		3BC6A68F15A5D17E00FA0C3A /* HRHIPPAMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRHIPPAMessageViewController.m; sourceTree = "<group>"; };
+		3BCF5988164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRTotalCholesterolAppletTile.h; sourceTree = "<group>"; };
+		3BCF5989164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRTotalCholesterolAppletTile.m; sourceTree = "<group>"; };
+		3BCF598B164D8EA700BD0E9C /* HRTotalCholesterolAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRTotalCholesterolAppletTile.xib; sourceTree = "<group>"; };
 		3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hReader.xcdatamodel; sourceTree = "<group>"; };
 		3BD16ED514E1B32400F2249E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3BD16F0314E1C5B700F2249E /* HRMPatient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMPatient.h; sourceTree = "<group>"; };
@@ -591,7 +596,7 @@
 		9415152114AA3A7B009FF674 /* fail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fail.png; sourceTree = "<group>"; };
 		9415152214AA3A7B009FF674 /* win.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = win.png; sourceTree = "<group>"; };
 		9415152514AA3F9F009FF674 /* question_mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question_mark.png; sourceTree = "<group>"; };
-		941DB0A81471B32D00A96B8B /* hreader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hreader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		941DB0A81471B32D00A96B8B /* HReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		941DB0AC1471B32D00A96B8B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		941DB0AE1471B32D00A96B8B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		941DB0B01471B32D00A96B8B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1160,7 +1165,7 @@
 		941DB0A91471B32D00A96B8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				941DB0A81471B32D00A96B8B /* hreader.app */,
+				941DB0A81471B32D00A96B8B /* HReader.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1387,6 +1392,9 @@
 				3B74E5C715547DA200593ECF /* HRRespiratoryRateAppletTile.xib */,
 				945286BA156148C500CF5EA3 /* HRWebViewAppletTile.h */,
 				945286BB156148C500CF5EA3 /* HRWebViewAppletTile.m */,
+				3BCF5988164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.h */,
+				3BCF5989164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.m */,
+				3BCF598B164D8EA700BD0E9C /* HRTotalCholesterolAppletTile.xib */,
 			);
 			name = "System Applets";
 			sourceTree = "<group>";
@@ -1536,7 +1544,7 @@
 			);
 			name = HReader;
 			productName = HReader;
-			productReference = 941DB0A81471B32D00A96B8B /* hreader.app */;
+			productReference = 941DB0A81471B32D00A96B8B /* HReader.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1789,6 +1797,7 @@
 				3BAB78B81644371400E6EE34 /* UIButtonBarArrowLeft@2x.png in Resources */,
 				3BAB78B91644371400E6EE34 /* UIButtonBarArrowRight.png in Resources */,
 				3BAB78BA1644371400E6EE34 /* UIButtonBarArrowRight@2x.png in Resources */,
+				3BCF598C164D8EA700BD0E9C /* HRTotalCholesterolAppletTile.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1907,6 +1916,7 @@
 				3BAABBDB1636D830009D3543 /* CMDEncryptedSQLiteStore.m in Sources */,
 				3B52170A164817CF00DE676A /* UIApplication+hReaderAdditions.m in Sources */,
 				3B29070B16484E830028C2CE /* HRTimelinePOSTURLProtocol.m in Sources */,
+				3BCF598A164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1994,7 +2004,7 @@
 				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2/**";
 				INFOPLIST_FILE = "HReader/HReader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PRODUCT_NAME = hreader;
+				PRODUCT_NAME = $TARGET_NAME;
 				PROVISIONING_PROFILE = "";
 				STRIP_INSTALLED_PRODUCT = NO;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -2013,7 +2023,7 @@
 				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2/**";
 				INFOPLIST_FILE = "HReader/HReader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PRODUCT_NAME = hreader;
+				PRODUCT_NAME = $TARGET_NAME;
 				PROVISIONING_PROFILE = "B0CECA52-3D26-4DED-9577-8C98A922800C";
 				STRIP_INSTALLED_PRODUCT = YES;
 				TARGETED_DEVICE_FAMILY = 2;

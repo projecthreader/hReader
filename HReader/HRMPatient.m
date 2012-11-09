@@ -192,7 +192,7 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
 }
 
 - (NSArray *)entriesWithType:(HRMEntryType)type sortDescriptor:(NSSortDescriptor *)sortDescriptor predicate:(NSPredicate *)predicate {
-    NSPredicate *typePredicate = [NSPredicate predicateWithFormat:@"type == %@", [NSNumber numberWithShort:type]];
+    NSPredicate *typePredicate = [NSPredicate predicateWithFormat:@"type == %@", @(type)];
     NSPredicate *patientPredicate = [NSPredicate predicateWithFormat:@"patient == %@", self];
     NSMutableArray *predicates = [NSMutableArray arrayWithObjects:typePredicate, patientPredicate, nil];
     if (predicate) { [predicates addObject:predicate]; }
@@ -201,6 +201,15 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
             allInContext:[self managedObjectContext]
             predicate:andPredicate
             sortDescriptor:sortDescriptor];
+}
+
+- (NSArray *)totalCholesterol {
+    NSPredicate *typePredicate = [NSPredicate predicateWithFormat:@"type == %@", @(HRMEntryTypeResult)];
+    NSPredicate *patientPredicate = [NSPredicate predicateWithFormat:@"patient == %@", self];
+    NSArray *predicates = @[ typePredicate, patientPredicate ];
+    NSPredicate *andPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    return [self entriesWithType:HRMEntryTypeResult sortDescriptor:sort predicate:andPredicate];
 }
 
 #pragma mark - object methods
@@ -242,11 +251,11 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     // gender
     object = [dictionary objectForKey:@"gender"];
     if (object && [object isKindOfClass:[NSString class]]) {
-        if ([object isEqualToString:@"M"]) { self.gender = [NSNumber numberWithShort:HRMPatientGenderMale]; }
-        else if ([object isEqualToString:@"F"]) { self.gender = [NSNumber numberWithShort:HRMPatientGenderFemale]; }
-        else { self.gender = [NSNumber numberWithShort:HRMPatientGenderUnknown]; }
+        if ([object isEqualToString:@"M"]) { self.gender = @(HRMPatientGenderMale); }
+        else if ([object isEqualToString:@"F"]) { self.gender = @(HRMPatientGenderFemale); }
+        else { self.gender = @(HRMPatientGenderUnknown); }
     }
-    else { self.gender = [NSNumber numberWithShort:HRMPatientGenderUnknown]; }
+    else { self.gender = @(HRMPatientGenderUnknown); }
     
     // objects conforming to the "entry" type
     [self.entries enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {

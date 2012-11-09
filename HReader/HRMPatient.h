@@ -106,6 +106,13 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 
 /*
  
+ Fetch certain types of data from the entries collection.
+ 
+ */
+- (NSArray *)totalCholesterol;
+
+/*
+ 
  These methods load simulated data from the application bundle.
  
  */

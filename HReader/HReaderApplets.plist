@@ -186,5 +186,13 @@
 		<key>fullscreen_image</key>
 		<string>Glaucoma_Overview</string>
 	</dict>
+	<dict>
+		<key>class_name</key>
+		<string>HRTotalCholesterolAppletTile</string>
+		<key>display_name</key>
+		<string>Total Cholesterol</string>
+		<key>identifier</key>
+		<string>org.mitre.hreader.total-cholesterol</string>
+	</dict>
 </array>
 </plist>
