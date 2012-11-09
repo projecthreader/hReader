@@ -41,11 +41,10 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
 
 + (id)instanceInContext:(NSManagedObjectContext *)context {
     HRMPatient *patient = [super instanceInContext:context];
-    patient.displayOrder = [NSNumber numberWithLong:LONG_MAX];
-    patient.relationship = [NSNumber numberWithShort:HRMPatientRelationshipOther];
-    patient.gender = [NSNumber numberWithShort:HRMPatientGenderUnknown];
-//    patient.applets = [NSArray array];
-    patient.applets = [NSArray arrayWithObjects:@"org.mitre.hreader.medications", @"org.mitre.hreader.bloodpressure", nil];
+    patient.displayOrder = @(LONG_MAX);
+    patient.relationship = @(HRMPatientRelationshipOther);
+    patient.gender = @(HRMPatientGenderUnknown);
+    patient.applets = @[ @"org.mitre.hreader.medications", @"org.mitre.hreader.bloodpressure" ];
     return patient;
 }
 
@@ -183,7 +182,7 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
 }
 
 - (NSArray *)vitalSignsWithType:(NSString *)type {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"desc LIKE[cd] %@", type];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"desc CONTAINS[cd] %@", type];
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
     return [self entriesWithType:HRMEntryTypeVitalSign sortDescriptor:sort predicate:predicate];
 }

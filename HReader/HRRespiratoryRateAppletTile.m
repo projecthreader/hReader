@@ -9,6 +9,7 @@
 #import "HRRespiratoryRateAppletTile.h"
 #import "HRMEntry.h"
 #import "HRMPatient.h"
+#import "HRSparkLineView.h"
 
 @implementation HRRespiratoryRateAppletTile {
     NSArray *_entries;

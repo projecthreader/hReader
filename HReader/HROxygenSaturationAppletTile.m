@@ -9,10 +9,7 @@
 #import "HROxygenSaturationAppletTile.h"
 #import "HRMEntry.h"
 #import "HRMPatient.h"
-
-#if !__has_feature(objc_arc)
-#error This class requires ARC
-#endif
+#import "HRSparkLineView.h"
 
 @implementation HROxygenSaturationAppletTile {
     NSArray *_entries;
