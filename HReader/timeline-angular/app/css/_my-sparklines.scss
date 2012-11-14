@@ -1,4 +1,17 @@
+.schedule {
+  overflow: visible;
+  margin-top: 10px;
+  
+    img {
 
+      margin-top: 0px important;
+    }
+    div.span1, div.span2 {
+      margin-top: -10px;
+
+    }
+
+}
 
 $red: #d60D26;
 $green: #048A82;
@@ -288,7 +301,6 @@ div.spark {
 ----------------------------------*/
 
 /* states and images */
-.ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_222222_256x240.png); }
 .ui-widget-content .ui-icon {background-image: url(images/ui-icons_222222_256x240.png); }
 .ui-widget-header .ui-icon {background-image: url(images/ui-icons_222222_256x240.png); }
 .ui-state-default .ui-icon { background-image: url(images/ui-icons_888888_256x240.png); }

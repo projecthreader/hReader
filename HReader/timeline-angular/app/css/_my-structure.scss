@@ -1,15 +1,35 @@
 
 /*structure*/
 
-section.well {
-	background-color: #fff !important;
+body.ui-mobile-viewport {
+	div.ui-body {
+		background-color: yellow;
+
+	}
 }
+
+.span1, .span2, h2.span3, .span4, .span6 form {
+	vertical-align: baseline;
+}
+
+
+.graph {
+	background-color: #fff;
+	margin-bottom: 20px;
+	padding: 30px;
+}
+
 
 .green {
 	border: 1px solid $border;
 }
 
-
+.titles {
+	.span1 {
+		position: relative;
+		bottom: 0;
+	}
+}
 
 .background {
 	border: 1px solid $border;

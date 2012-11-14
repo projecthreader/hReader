@@ -105,7 +105,7 @@
 					<h4 class="titles span4">Medication*</h4>
 					<h4 class="span2">Take 2x Daily*</h4>
 					<form action="http://hreader.local/timeline.json?key=userData" method="post">
-						<span class="span1"><input type="submit" value="Log" class="btn"></span>
+						<span class="span1"><input type="submit" value="Log" class="button"></span>
 
 						<div class="schedule span5">
 							<div class=" span2 containing-element">
@@ -129,8 +129,7 @@
 					<span class="span1"><a class="btn" ng:click="addSymptom()"><i class="icon-plus"></i></a></span>
 
 					<h3 class="span2">PLAN</h3>
-					<h3 class="span1">CHANGE</h3>
-					<h3 class="span4">LOG</h3>
+					<h3 class="span1">LOG</h3>
 				</div>
 				<div class="row">
 					<h4 class="titles span4">Pain*</h4>
@@ -177,33 +176,17 @@
 				<div class="row" ng-hide="checked">
 					<h4 class="titles span4">{{symptoms}}</h4>
 					<h4 class="span2">{{notes}}</h4>
-					<div class="span6">
-						<form action="http://hreader.local/timeline.json?key=userData" method="post" data-role="fieldcontain">
-							<fieldset data-role="controlgroup" data-type="horizontal">
-								<label for="select-choice-sev">SEVERITY</label>
-								<select name="select-choice-sev" id="select-choice-sev">
-								   <option value="none">Severity</option>
-								   <option value="none">None</option>
-								   <option value="mild">Mild</option>
-								   <option value="moderate">Moderate</option>
-								   <option value="severe">Severe</option>
-								</select>
-								<label for="select-choice-dur">DURATION</label>
-								<select name="select-choice-dur" id="select-choice-dur" >
-								   <option value="null">Duration</option>
-								   <option value="seconds">Seconds</option>
-								   <option value="minutes">Minutes</option>
-								   <option value="hours">Hours</option>
-								   <option value="days">Days</option>
-								</select>  
-							<fieldset>
-						</form>
-					</div>
 				</div>
 				<div class="row" ng-show="checked">
 					<form ng-submit="addSymptom(symptom)">
-						<input ng-model="symptoms" class="span4" placeholder="New Symptom">
-						<input ng-model="notes" class="span2" placeholder="Notes">
+						<span class="span4">
+							<input ng-model="symptoms" class="span4" placeholder="New Symptom">
+						</span>
+						<span class="span4">
+							<input ng-model="notes" placeholder="Notes">
+						</span>
+						<span class="span1"><a ng-model="checked" class="btn" ng:click="addSymptom()" action="http://hreader.local/timeline.json?key=userData" method="post"><i class="icon-plus"></i></a></span>
+						<span class="span1"><a class="btn" input="checked" ng:click="addSymptom()"><i class="icon-minus"></i></a></span>
 					
 					</form>
 				</div>

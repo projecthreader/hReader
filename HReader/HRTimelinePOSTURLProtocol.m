@@ -7,6 +7,7 @@
 //
 
 #import "HRTimelinePOSTURLProtocol.h"
+#import "HRAPIClient.h"
 
 @implementation HRTimelinePOSTURLProtocol
 
@@ -43,6 +44,16 @@
 
 - (void)startLoading {
     id<NSURLProtocolClient> client = [self client];
+    
+    // query string parameters
+    NSString *queryString = [[[self request] URL] query];
+    NSDictionary *queryParameters = [HRAPIClient parametersFromQueryString:queryString];
+    HRDebugLog(@"%@", queryParameters);
+    
+    // body parameters
+    NSString *bodyString = [[NSString alloc] initWithData:[[self request] HTTPBody] encoding:NSUTF8StringEncoding];
+    NSDictionary *bodyParameters = [HRAPIClient parametersFromQueryString:bodyString];
+    HRDebugLog(@"%@", bodyParameters);
     
     // send redirect
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[HRTimelinePOSTURLProtocol indexURL]];
