@@ -92,7 +92,11 @@
 		3B4366061540A2890009F892 /* ts-4-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365D31540A2890009F892 /* ts-4-tile.png */; };
 		3B4366071540A2890009F892 /* ts-5-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365D41540A2890009F892 /* ts-5-overview.png */; };
 		3B4366081540A2890009F892 /* ts-5-tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B4365D51540A2890009F892 /* ts-5-tile.png */; };
-		3B48FA2C165414670071F707 /* js-applets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B48FA2B165414670071F707 /* js-applets.plist */; };
+		3B48FA3316541D4E0071F707 /* applets-hs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B48FA2E16541D4E0071F707 /* applets-hs.plist */; };
+		3B48FA3416541D4E0071F707 /* applets-js.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B48FA2F16541D4E0071F707 /* applets-js.plist */; };
+		3B48FA3516541D4E0071F707 /* applets-ms.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B48FA3016541D4E0071F707 /* applets-ms.plist */; };
+		3B48FA3616541D4E0071F707 /* applets-ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B48FA3116541D4E0071F707 /* applets-ss.plist */; };
+		3B48FA3716541D4E0071F707 /* applets-ts.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B48FA3216541D4E0071F707 /* applets-ts.plist */; };
 		3B52170A164817CF00DE676A /* UIApplication+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B521709164817CF00DE676A /* UIApplication+hReaderAdditions.m */; };
 		3B581D3415BDC68200ED2A63 /* logo_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B581D3215BDC68200ED2A63 /* logo_login.png */; };
 		3B581D3515BDC68200ED2A63 /* logo_login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B581D3315BDC68200ED2A63 /* logo_login@2x.png */; };
@@ -429,8 +433,12 @@
 		3B4365D31540A2890009F892 /* ts-4-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-4-tile.png"; sourceTree = "<group>"; };
 		3B4365D41540A2890009F892 /* ts-5-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-5-overview.png"; sourceTree = "<group>"; };
 		3B4365D51540A2890009F892 /* ts-5-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-5-tile.png"; sourceTree = "<group>"; };
-		3B48FA2B165414670071F707 /* js-applets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "js-applets.plist"; sourceTree = "<group>"; };
 		3B48FA2D165414E00071F707 /* hReader 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hReader 2.xcdatamodel"; sourceTree = "<group>"; };
+		3B48FA2E16541D4E0071F707 /* applets-hs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "applets-hs.plist"; sourceTree = "<group>"; };
+		3B48FA2F16541D4E0071F707 /* applets-js.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "applets-js.plist"; sourceTree = "<group>"; };
+		3B48FA3016541D4E0071F707 /* applets-ms.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "applets-ms.plist"; sourceTree = "<group>"; };
+		3B48FA3116541D4E0071F707 /* applets-ss.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "applets-ss.plist"; sourceTree = "<group>"; };
+		3B48FA3216541D4E0071F707 /* applets-ts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "applets-ts.plist"; sourceTree = "<group>"; };
 		3B521708164817CF00DE676A /* UIApplication+hReaderAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+hReaderAdditions.h"; sourceTree = "<group>"; };
 		3B521709164817CF00DE676A /* UIApplication+hReaderAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+hReaderAdditions.m"; sourceTree = "<group>"; };
 		3B581D3215BDC68200ED2A63 /* logo_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_login.png; sourceTree = "<group>"; };
@@ -1147,7 +1155,11 @@
 				940C046B152B6ADF00834416 /* ts-synthetic.json */,
 				9483F67015669E5400867CFC /* female-bmi-chart.json */,
 				9483F67215669EE000867CFC /* male-bmi-chart.json */,
-				3B48FA2B165414670071F707 /* js-applets.plist */,
+				3B48FA2E16541D4E0071F707 /* applets-hs.plist */,
+				3B48FA2F16541D4E0071F707 /* applets-js.plist */,
+				3B48FA3016541D4E0071F707 /* applets-ms.plist */,
+				3B48FA3116541D4E0071F707 /* applets-ss.plist */,
+				3B48FA3216541D4E0071F707 /* applets-ts.plist */,
 			);
 			name = "Patient Data";
 			sourceTree = "<group>";
@@ -1802,7 +1814,11 @@
 				3BAB78B91644371400E6EE34 /* UIButtonBarArrowRight.png in Resources */,
 				3BAB78BA1644371400E6EE34 /* UIButtonBarArrowRight@2x.png in Resources */,
 				3BCF598C164D8EA700BD0E9C /* HRTotalCholesterolAppletTile.xib in Resources */,
-				3B48FA2C165414670071F707 /* js-applets.plist in Resources */,
+				3B48FA3316541D4E0071F707 /* applets-hs.plist in Resources */,
+				3B48FA3416541D4E0071F707 /* applets-js.plist in Resources */,
+				3B48FA3516541D4E0071F707 /* applets-ms.plist in Resources */,
+				3B48FA3616541D4E0071F707 /* applets-ss.plist in Resources */,
+				3B48FA3716541D4E0071F707 /* applets-ts.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

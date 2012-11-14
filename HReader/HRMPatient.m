@@ -277,7 +277,7 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
         NSString *initials = [self.initials lowercaseString];
         
         // applets
-        resource = [NSString stringWithFormat:@"%@-applets", initials];
+        resource = [NSString stringWithFormat:@"applets-%@", initials];
         URL = [bundle URLForResource:resource withExtension:@"plist"];
         if (URL) {
             self.applets = [NSArray arrayWithContentsOfURL:URL];
