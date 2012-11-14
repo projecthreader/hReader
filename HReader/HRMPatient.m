@@ -97,51 +97,39 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
 }
 
 - (NSString *)compositeName {
-    [self willAccessValueForKey:@"compositeName"];
-    NSString *name = [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
-    [self didAccessValueForKey:@"compositeName"];
-    return name;
+    return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
 }
 
 - (NSString *)initials {
-    [self willAccessValueForKey:NSStringFromSelector(_cmd)];
     NSString *first = [[self.firstName substringToIndex:1] uppercaseString];
     NSString *last = [[self.lastName substringToIndex:1] uppercaseString];
-    NSString *initials = [NSString stringWithFormat:@"%@%@", first, last];
-    [self didAccessValueForKey:NSStringFromSelector(_cmd)];
-    return initials;
+    return [NSString stringWithFormat:@"%@%@", first, last];
 }
 
 - (NSString *)genderString {
-    [self willAccessValueForKey:NSStringFromSelector(_cmd)];
-    NSUInteger value = [self.gender shortValue];
-    NSString *string = @"Unknown";
-    if (value == HRMPatientGenderMale) { string = @"Male"; }
-    else if (value == HRMPatientGenderFemale) { string = @"Female"; }
-    [self didAccessValueForKey:NSStringFromSelector(_cmd)];
-    return string;
+    short value = [self.gender shortValue];
+    if (value == HRMPatientGenderMale) { return @"Male"; }
+    else if (value == HRMPatientGenderFemale) { return @"Female"; }
+    return @"Unknown";
 }
 
 - (NSString *)relationshipString {
-    [self willAccessValueForKey:NSStringFromSelector(_cmd)];
-    NSUInteger value = [self.relationship shortValue];
-    NSString *string = @"Other";
-    if (value == HRMPatientRelationshipMe) { string = @"Me"; }
-    else if (value == HRMPatientRelationshipSpouse) {
-        string = @"Spouse";
-        short value = [self.gender shortValue];
-        if (value == HRMPatientGenderMale) { string = @"Husband"; }
-        else if (value == HRMPatientGenderFemale) { string = @"Wife"; }
+    short relationship = [self.relationship shortValue];
+    if (relationship == HRMPatientRelationshipMe) { return @"Me"; }
+    else if (relationship == HRMPatientRelationshipSpouse) {
+        short gender = [self.gender shortValue];
+        if (gender == HRMPatientGenderMale) { return @"Husband"; }
+        else if (gender == HRMPatientGenderFemale) { return @"Wife"; }
+        return @"Spouse";
     }
-    else if (value == HRMPatientRelationshipChild) {
-        string = @"Child";
-        short value = [self.gender shortValue];
-        if (value == HRMPatientGenderMale) { string = @"Son"; }
-        else if (value == HRMPatientGenderFemale) { string = @"Daughter"; }
+    else if (relationship == HRMPatientRelationshipChild) {
+        short gender = [self.gender shortValue];
+        if (gender == HRMPatientGenderMale) { return @"Son"; }
+        else if (gender == HRMPatientGenderFemale) { return @"Daughter"; }
+        return @"Child";
     }
-    else if (value == HRMPatientRelationshipFamily) { string = @"Family"; }
-    [self didAccessValueForKey:NSStringFromSelector(_cmd)];
-    return string;
+    else if (relationship == HRMPatientRelationshipFamily) { return @"Family"; }
+    return @"Other";
 }
 
 #pragma mark - fetch entries
