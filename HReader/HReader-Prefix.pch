@@ -9,7 +9,15 @@
 #endif
 
 #ifdef __OBJC__
+    
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "hRreaderCategories.h"
+
+    #if DEBUG
+        #define HRDebugLog(fmt, args...) NSLog(@"%@ " fmt, self, ##args)
+    #else
+        #define HRDebugLog(fmt, args...)
+    #endif
+
 #endif

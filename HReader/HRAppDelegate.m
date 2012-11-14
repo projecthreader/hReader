@@ -104,9 +104,7 @@
         138, 159, 154, 145, '\0'
     };
     XOR(243, path1, strlen(path1));
-#if DEBUG
-    NSLog(@"Checking for %s", path1);
-#endif
+    HRDebugLog(@"Checking for %s", path1);
     struct stat s1;
     if (stat(path1, &s1) == 0) { // file exists
         PEACE_OUT();
@@ -117,9 +115,7 @@
         230, 188, 186, 187, 230, 171, 160, 167, 230, 186, 186, 161, 173, '\0'
     };
     XOR(201, path2, strlen(path2));
-#if DEBUG
-    NSLog(@"Checking for %s", path2);
-#endif
+    HRDebugLog(@"Checking for %s", path2);
     struct stat s2;
     if (stat(path2, &s2) == 0) { // file exists
         PEACE_OUT();

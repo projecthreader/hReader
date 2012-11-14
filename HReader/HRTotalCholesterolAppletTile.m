@@ -20,7 +20,6 @@
     
     // save points
     _entries = [self.patient totalCholesterol];
-    NSLog(@"%@", [[NSString alloc] initWithData:[self.patient timelineJSONPayloadWithPredicate:nil error:nil] encoding:NSUTF8StringEncoding]);
     HRMEntry *latest = [_entries lastObject];
     
     // get age

@@ -15,11 +15,6 @@
 #import "SSKeychain.h"
 
 #define hr_dispatch_main(block) dispatch_async(dispatch_get_main_queue(), block)
-#if DEBUG
-#define hr_api_log(fmt, args...) NSLog(@"%@ " fmt, self, ##args)
-#else
-#define hr_api_log(fmt, args...)
-#endif
 
 // oauth client resources
 static NSString * const HROAuthClientIdentifier = @"c367aa7b8c87ce239981140511a7d158";
@@ -189,18 +184,18 @@ static NSMutableDictionary *allClients = nil;
 - (NSMutableURLRequest *)GETRequestWithPath:(NSString *)path {
     
     // log initial statement
-    hr_api_log(@"Building request");
+    HRDebugLog(@"Building request");
     
     // make sure we have a refresh token
     NSString *refresh = HRCryptoManagerKeychainItemString(HROAuthKeychainService, _host);
     if (refresh == nil) {
-        hr_api_log(@"No refresh token is present");
+        HRDebugLog(@"No refresh token is present");
         return nil;
     }
     
     // used to refresh the access token
     NSTimeInterval interval = [_accessTokenExiprationDate timeIntervalSinceNow];
-    if (_accessTokenExiprationDate) { hr_api_log(@"Access token expires in %f minutes", interval / 60.0); }
+    if (_accessTokenExiprationDate) { HRDebugLog(@"Access token expires in %f minutes", interval / 60.0); }
     NSDictionary *refreshParameters = @{
         @"refresh_token" : refresh,
         @"grant_type" : @"refresh_token"
@@ -208,7 +203,7 @@ static NSMutableDictionary *allClients = nil;
     
     // make sure we have both required elements
     if (_accessToken == nil || _accessTokenExiprationDate == nil || interval < 60.0) {
-        hr_api_log(@"Access token is invalid -- refreshing...");
+        HRDebugLog(@"Access token is invalid -- refreshing...");
         if (![self refreshAccessTokenWithParameters:refreshParameters]) {
             return nil;
         }
@@ -216,7 +211,7 @@ static NSMutableDictionary *allClients = nil;
     
     // check if our access token will expire soon
     else if (interval < 60.0 * 3.0) {
-        hr_api_log(@"Access token will expire soon -- refreshing later");
+        HRDebugLog(@"Access token will expire soon -- refreshing later");
         dispatch_async(_requestQueue, ^{
             [self refreshAccessTokenWithParameters:refreshParameters];
         });
@@ -292,11 +287,11 @@ static NSMutableDictionary *allClients = nil;
     NSError *connectionError = nil;
     NSHTTPURLResponse *response = nil;
     NSData *body = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&connectionError];
-    if (connectionError) { hr_api_log(@"%@", connectionError); }
+    if (connectionError) { HRDebugLog(@"%@", connectionError); }
     if (body) {
         NSError *JSONError = nil;
         payload = [NSJSONSerialization JSONObjectWithData:body options:0 error:&JSONError];
-        if (JSONError) { hr_api_log(@"%@", JSONError); }
+        if (JSONError) { HRDebugLog(@"%@", JSONError); }
     }
     
     // parse payload
@@ -332,7 +327,7 @@ static NSMutableDictionary *allClients = nil;
     
     // payload error
     else {
-        hr_api_log(@"%@", payload);
+        HRDebugLog(@"%@", payload);
     }
     
     // last ditch return
