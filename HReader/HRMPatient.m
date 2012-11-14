@@ -269,6 +269,22 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     collectionBlock(HRMEntryTypeVitalSign, @"vital_signs");
     collectionBlock(HRMEntryTypeImmunization, @"immunizations");
     
+    // if we are a new object, try loading sample data
+    if ([[self objectID] isTemporaryID]) {
+        NSURL *URL;
+        NSBundle *bundle = [NSBundle mainBundle];
+        NSString *resource;
+        NSString *initials = [self.initials lowercaseString];
+        
+        // applets
+        resource = [NSString stringWithFormat:@"%@-applets", initials];
+        URL = [bundle URLForResource:resource withExtension:@"plist"];
+        if (URL) {
+            self.applets = [NSArray arrayWithContentsOfURL:URL];
+        }
+        
+    }
+    
 }
 
 - (UIImage *)patientImage {
