@@ -433,7 +433,7 @@
 		3B4365D31540A2890009F892 /* ts-4-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-4-tile.png"; sourceTree = "<group>"; };
 		3B4365D41540A2890009F892 /* ts-5-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-5-overview.png"; sourceTree = "<group>"; };
 		3B4365D51540A2890009F892 /* ts-5-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-5-tile.png"; sourceTree = "<group>"; };
-		3B48FA2D165414E00071F707 /* hReader 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hReader 2.xcdatamodel"; sourceTree = "<group>"; };
+		3B48FA2D165414E00071F707 /* hReader 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "hReader 2.xcdatamodel"; sourceTree = "<group>"; };
 		3B48FA2E16541D4E0071F707 /* applets-hs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "applets-hs.plist"; sourceTree = "<group>"; };
 		3B48FA2F16541D4E0071F707 /* applets-js.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "applets-js.plist"; sourceTree = "<group>"; };
 		3B48FA3016541D4E0071F707 /* applets-ms.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "applets-ms.plist"; sourceTree = "<group>"; };

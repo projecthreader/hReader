@@ -87,3 +87,14 @@ hr {
 .row {
 	vertical-align: baseline;
 }
+
+.hidden {
+	display: none;
+}
+.range {
+	margin-left: 100px;
+	
+	input {
+		display: inline;
+	} 
+}

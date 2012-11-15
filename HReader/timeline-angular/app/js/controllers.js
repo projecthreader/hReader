@@ -94,11 +94,21 @@ function RecordListCtrl($scope) {
 function DayListCtrl($scope, $http) {
   $http.get('timeline.json?page=day').success(function(data) {
     $scope.vitals = data.vitals;
-    $scope.symptoms = 'New Symptom'; 
-
+    $scope.symptoms = data.symptoms; 
+    $scope.pain = data.pain; 
+    $scope.mood = data.mood;
+    $scope.mood = data.energy; 
 
   });
 };
+
+function ItemRepeat ($scope) {
+  $scope.items = data.items;
+}
+
+function ItemRepeat ($scope) {
+  $scope.items = data.items;
+}
 
 function WeekListCtrl($scope, $http) {
   $http.get('timeline.json?page=week').success(function(data) {
