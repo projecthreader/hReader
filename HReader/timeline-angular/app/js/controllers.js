@@ -98,21 +98,21 @@ function DayListCtrl($scope, $http) {
     $scope.pain = data.pain; 
     $scope.mood = data.mood;
     $scope.mood = data.energy; 
-
+    $scope.conditions = data.conditions;
+    $scope.levels = data.levels
   });
 };
 
-function ItemRepeat ($scope) {
-  $scope.items = data.items;
-}
-
-function ItemRepeat ($scope) {
-  $scope.items = data.items;
-}
 
 function WeekListCtrl($scope, $http) {
   $http.get('timeline.json?page=week').success(function(data) {
     $scope.vitals = data.vitals;
+    $scope.symptoms = data.symptoms; 
+    $scope.pain = data.pain; 
+    $scope.mood = data.mood;
+    $scope.mood = data.energy; 
+    $scope.conditions = data.conditions;
+    $scope.levels = data.levels
 
   });
 };
@@ -120,18 +120,35 @@ function WeekListCtrl($scope, $http) {
 function MonthListCtrl($scope, $http) {
   $http.get('timeline.json?page=month').success(function(data) {
     $scope.vitals = data.vitals;
-
+    $scope.symptoms = data.symptoms; 
+    $scope.pain = data.pain; 
+    $scope.mood = data.mood;
+    $scope.mood = data.energy; 
+    $scope.conditions = data.conditions;
+    $scope.levels = data.levels
   });
 };
 function YearListCtrl($scope, $http) {
   $http.get('timeline.json?page=year').success(function(data) {
     $scope.vitals = data.vitals;
+    $scope.symptoms = data.symptoms; 
+    $scope.pain = data.pain; 
+    $scope.mood = data.mood;
+    $scope.mood = data.energy; 
+    $scope.conditions = data.conditions;
+    $scope.levels = data.levels
 
   });
 };
 function DecadeListCtrl($scope, $http) {
   $http.get('timeline.json?page=decade').success(function(data) {
     $scope.vitals = data.vitals;
+    $scope.symptoms = data.symptoms; 
+    $scope.pain = data.pain; 
+    $scope.mood = data.mood;
+    $scope.mood = data.energy; 
+    $scope.conditions = data.conditions;
+    $scope.levels = data.levels
 
   });
 };

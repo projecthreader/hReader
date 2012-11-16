@@ -487,6 +487,7 @@
 		3B9A757815DBE0CB00705A52 /* timeline */ = {isa = PBXFileReference; lastKnownFileType = folder; path = timeline; sourceTree = "<group>"; };
 		3B9A757F15DC040F00705A52 /* HRAppletUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAppletUtilities.h; sourceTree = "<group>"; };
 		3B9A758015DC040F00705A52 /* HRAppletUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAppletUtilities.m; sourceTree = "<group>"; };
+		3B9C379D1656C3CE00CAE751 /* hReader 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hReader 3.xcdatamodel"; sourceTree = "<group>"; };
 		3BA11FA215C0608200ABB012 /* circle-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-2.png"; sourceTree = "<group>"; };
 		3BA11FA315C0608200ABB012 /* circle-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-3.png"; sourceTree = "<group>"; };
 		3BA11FA415C0608200ABB012 /* circle-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-4.png"; sourceTree = "<group>"; };
@@ -2079,10 +2080,11 @@
 		3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				3B9C379D1656C3CE00CAE751 /* hReader 3.xcdatamodel */,
 				3B48FA2D165414E00071F707 /* hReader 2.xcdatamodel */,
 				3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */,
 			);
-			currentVersion = 3B48FA2D165414E00071F707 /* hReader 2.xcdatamodel */;
+			currentVersion = 3B9C379D1656C3CE00CAE751 /* hReader 3.xcdatamodel */;
 			path = hReader.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -4591,10 +4591,6 @@ a.label:hover, a.badge:hover {
       color: #fff;
       background-color: #ccc; }
 
-.ui-btn-corner-all {
-  webkit-border-radius: .25em;
-  border-radius: .25em; }
-
 .ui-btn-up-a {
   background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(#e6e6e6)) !important;
   background-image: -webkit-linear-gradient(white, #e6e6e6) !important;
@@ -4676,6 +4672,9 @@ hr {
   .range input {
     display: inline; }
 
+form input, form fieldset, form span {
+  display: inline; }
+
 h1 {
   font-size: 60px;
   font-weight: 600;
@@ -4750,7 +4749,6 @@ ui-slider-handle ui-state-default ui-corner-all {
   width: 9em; }
 
 .ui-slider-inneroffset {
-  background-image: url("images/medication.png") !important;
   repeat: none; }
 
 .ui-btn-active {
@@ -4778,7 +4776,6 @@ form {
   background-color: #048a82; }
 
 .schedule .ui-btn-inner {
-  background-image: url("../images/med-basic.png");
   background-position: center 10%;
   background-repeat: no-repeat;
   margin-top: -2px; }

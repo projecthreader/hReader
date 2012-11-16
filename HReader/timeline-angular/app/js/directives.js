@@ -23,34 +23,9 @@ var Timeline = angular.module('Timeline', []);
 						    width: 460,
 						    height: 75,
 						    drawNormalOnTop: false
-							});
-						}
-			     	});
-			   	 }
-			  };
+					});
+				}
 			});
-
-var myApp = angular.module('myApp',[]);
-
-	myApp.directive('replybox', function($rootScope) {
-			    var linkFn = function(scope, element, attrs) {
-			        var label = angular.element(element.children()[0]);
-			        scope.showInput = false;
-
-			        label.bind("click", textbox);
-
-			        function textbox() {
-			            console.log('click');
-			            scope.$apply('showInput = true');
-			        }
-			    };
-			    return {
-			        link: linkFn,
-			        restrict: 'E',
-			        scope: {
-			            label: '@'
-			        },
-			        template: '<a ng-hide="showInput">{{label}}</a><textarea ng-show="showInput"></textarea>',
-			        transclude: true
-			    };
-			})
+		}
+	};
+});

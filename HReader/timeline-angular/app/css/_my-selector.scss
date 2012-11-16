@@ -21,7 +21,6 @@ ui-slider-handle ui-state-default ui-corner-all  {
 .ui-field-contain div.ui-slider-switch { width: 9em; }
 
 .ui-slider-inneroffset {
-	background-image: url('images/medication.png') !important;
 	repeat: none;
 }
 
@@ -54,7 +53,7 @@ form {
 
 .schedule {
 	.ui-btn-inner {
-		background-image: url('../images/med-basic.png');
+		
 		background-position: center 10%;
 		background-repeat: no-repeat;
 		margin-top: -2px;

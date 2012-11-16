@@ -34,6 +34,7 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
 @dynamic applets;
 @dynamic displayOrder;
 @dynamic relationship;
+@dynamic timelineLevels;
 
 @synthesize identityToken = _identityToken;
 
@@ -377,6 +378,9 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     }];
     
     // build json data
+    if (self.timelineLevels) {
+        dictionary[@"levels"] = self.timelineLevels;
+    }    
     dictionary[@"vitals"] = [self timelineVitalsCategorizedByDescriptionWithPredicate:predicate];
     return [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:error];
     

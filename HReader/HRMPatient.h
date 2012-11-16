@@ -44,6 +44,7 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 @property (nonatomic, retain) NSArray *applets;
 @property (nonatomic, retain) NSNumber *displayOrder;
 @property (nonatomic, retain) NSNumber *relationship;
+@property (nonatomic, retain) NSDictionary *timelineLevels;
 
 #pragma mark - transient properties
 
