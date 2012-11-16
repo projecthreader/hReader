@@ -175,25 +175,21 @@
 	 -->
 			<article class="vitals">
 				<div class="row titles">
-					<h2 class="titles span3">Vital Trends</h2>
-					<span class="span1">
-						<a class="btn" data-toggle="dropdown">
-						<i class="icon-plus"></i>
-						</a></span>
-					<h3 class="span2">Result</h3>
+					<h2 class="titles span4">Vitals</h2>
 					<h3 class="span6">Trends</h3>
-			  	</div>
+					<h3 class="span2">Result</h3>
 				<div class="row data" ngChange:false ng-repeat="vital in vitals">
-					<div class="span4">
+					<span class="span4">
 						<h4>{{vital.description}}</h4>		
-					</div>
-					<div class="span2"> 
-						<h1>{{vital.values[vital.values.length-1]}}</h1>{{vital.units}}
-					</div>
-					<div class="span6 graph">		
+					</span>
+					<span class="span6 graph">		
 						<p><sparkline exp="data" class="sparkline">{{vital.values.join(', ')}}</sparkline></p>
-					</div>
+					</span>
+					<span class="span2"> 
+						<h1>{{vital.values[vital.values.length-1]| number:0}}</h1>{{vital.units}}
+					</span>
 				</div>
+				<hr>
 			</article>
 		</section>
 	</body>
