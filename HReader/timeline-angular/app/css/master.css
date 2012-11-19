@@ -4607,6 +4607,11 @@ a.label:hover, a.badge:hover {
 .ui-slider .ui-slider-range {
   background-color: #0064CD !important; }
 
+.ui-controlgroup-controls .ui-btn-active {
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#048a82), to(#56c4c3)) !important;
+  background-image: linear-gradient(#048a82, #56c4c3);
+  background-color: #048a82; }
+
 /*structure*/
 body.ui-mobile-viewport div.ui-body {
   background-color: yellow; }
@@ -4617,7 +4622,8 @@ body.ui-mobile-viewport div.ui-body {
 .graph {
   background-color: #fff;
   margin-bottom: 20px;
-  padding: 30px; }
+  padding-top: 30px;
+  padding-bottom: 30px; }
 
 .green {
   border: 1px solid #888888; }

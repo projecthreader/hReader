@@ -62,7 +62,7 @@
 					<h3 class="span2">log</h3>
 				</div>
 				<div class="row" >
-					<form class="hidden" id="newReg" action="http://hreader.local/timeline.json?key=userData">
+					<form class="hidden" id="newReg" action="http://hreader.local/timeline.json?key=NewMedication">
 						<span class="span4">
 							<input ng-model="meds" placeholder="New Medication">
 						</span>
@@ -104,17 +104,23 @@
 					</form>
 				</div>
 				<!-- <div class="row" ngChange:false ng-repeat="medication in medications"> -->
-				<form action="http://hreader.local/timeline.json?key=userData" method="post">
-					<div class="row">
+				<form action="http://hreader.local/timeline.json?key=MedRegiment" method="post">
+					<div class="row  data" ngChange:false ng-repeat="medication in medications">
 						<h4 class="titles span4">{{medication.description}}</h4>
-						
 						<div class="span1"><img src="images/medication.png"></div>
-						<fieldset class="span6" id="medTaken" data-type="horizontal" data-role="controlgroup">
-							<input type="radio" value="notDosed" id="ND"><!-- <label for="ND">None</label> -->
-							<input type="radio" value="underDose" id="UD"><!-- <label for="UD">Less</label> -->
-							<input type="radio" value="Dosed" id="AD"><!-- <label for="AD">As Directed</label> -->
-							<input type="radio" value="overDosed" id="OD"><!-- <label for="OD">More</label> -->
-						<!-- </fieldset> -->
+				    <fieldset data-role="controlgroup" data-type="horizontal">
+				         	<input type="radio" name="medDose" id="No-Dose" value="ND" checked="checked" />
+				         	<label for="No-Dose">None</label>
+
+				         	<input type="radio" name="medDose" id="Under-dosed" value="UD"  />
+				         	<label for="Under-dosed">Less</label>
+
+				         	<input type="radio" name="medDose" id="As-directed" value="AD"  />
+				         	<label for="As-directed">As Directed</label>
+
+				         	<input type="radio" name="medDose" id="Over-dosed" value="OD"  />
+				         	<label for="Over-dosed">More</label>
+				    </fieldset>
 					</div>
 					<div class="row">
 						<div class="span10"></div>
@@ -127,8 +133,8 @@
 			</article>
 			<article>
 				<div class="row titles">
-					<h2 class="span3">Overall</h2>
-					<span class="span1"><a class="btn" onclick="$('#newLevel').show()"><i class="icon-plus"></i></a></span>
+					<h2 class="span4">Overall</h2>
+					<!--   -->
 					<h3 class="span6">levels</h3>
 					<h3 class="span2">log</h3>
 				</div>
@@ -146,7 +152,7 @@
 						</span>			
 					</form>
 				</div> -->
-				<form action="http://hreader.local/timeline.json?key=userData" method="post" ng-model="pain">
+				<form action="http://hreader.local/timeline.json?key=Levels" method="post" ng-model="pain">
 					<div class="row">
 						<h4 class="titles span4">Pain*</h4>
 						<span class="span6">
@@ -187,7 +193,7 @@
 					<h3 class="span2"></h3>
 				</div>
 				<div class="row">
-					<form class="hidden" id="newSymp" action="http://hreader.local/timeline.json?key=userData">
+					<form class="hidden" id="newSymp" action="http://hreader.local/timeline.json?key=ConditionSymptoms">
 						<span class="span4">
 							<fieldset class="span4" data-role="controlgroup" data-type="horizontal">
 								<select name="select-choice-sev" id="select-choice-sev">
@@ -196,7 +202,7 @@
 							</fieldset>
 						</span>
 						<span class="span2">
-							<a class="btn" action="http://hreader.local/timeline.json?key=userData" method="post"><i class="icon-plus"></i></a>
+							<!-- <a class="btn" action="http://hreader.local/timeline.json?key=userData" method="post"><i class="icon-plus"></i></a> -->
 							<a class="btn"  onclick="$('#newSymp').hide()" ><i class="icon-remove"></i></a>
 						</span>			
 					</form>

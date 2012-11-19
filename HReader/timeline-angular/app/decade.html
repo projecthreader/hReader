@@ -50,17 +50,16 @@
 		<section class="well">
 			<article>
 				<div class="titles row">
-					<h2 class="span3">Diagnosis</h2>
-					<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
+					<h2 class="span4">Diagnosis</h2>
+					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span> -->
 					<h3 class="span2">Plan</h3>
-					<h3 class="span1">Edit</h3>
 					<h3 class="span4">2002</h3>
 					<h3 class="span1">2012</h3>
 				</div>
-				<div class="row">
-					<h4 class="titles span4">Stitches*</h4>
-					<p class="span2">ER*</p>			
-					<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span>
+				<div class="row" div class="row  data" ngChange:false ng-repeat="condition in conditions">
+					<h4 class="titles span4">{{condition.description}}</h4>
+					<!-- <p class="span2">ER*</p> -->			
+					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span> -->
 					<div class="progress schedule span5">
 						<div class="span1">
 						</div>
@@ -168,6 +167,81 @@
 		</article>
 		<hr class="soften">
 	 -->
+	 <article ngChange:false ng-repeat="condition in conditions">
+			<!-- <article > -->
+				<div class="row titles">
+					<h2 class="span3">{{condition.description}}</h2>
+					<span class="span1"><a class="btn" onclick="$('#newSymp').show()"><i class="icon-plus"></i></a>
+					</span>
+					<h3 class="span6">Log</h3>
+					<h3 class="span2"></h3>
+				</div>
+				<div class="row">
+					<form class="hidden" id="newSymp" action="http://hreader.local/timeline.json?key=userData">
+						<span class="span4">
+							<fieldset class="span4" data-role="controlgroup" data-type="horizontal">
+								<select name="select-choice-sev" id="select-choice-sev">
+								   <option ngChange:false ng-repeat="vital in vitals">{{vital.description}}</option>
+								</select>
+							</fieldset>
+						</span>
+						<span class="span2">
+							<a class="btn" action="http://hreader.local/timeline.json?key=userData" method="post"><i class="icon-plus"></i></a>
+							<a class="btn"  onclick="$('#newSymp').hide()" ><i class="icon-remove"></i></a>
+						</span>			
+					</form>
+				</div>
+					<div class="row">
+						<h4 class="titles span4">Symptom1*</h4>
+						<span class="span6">
+							<fieldset class="span6" data-role="controlgroup" data-type="horizontal">
+								<select class="" name="select-choice-sev" id="select-choice-sev">
+								   <option value="none">Severity</option>
+								   <option value="none">None</option>
+								   <option value="mild">Mild</option>
+								   <option value="moderate">Moderate</option>
+								   <option value="severe">Severe</option>
+								</select>
+								<select class="" name="select-choice-dur" id="select-choice-dur" >
+								   <option value="null">Duration</option>
+								   <option value="seconds">Seconds</option>
+								   <option value="minutes">Minutes</option>
+								   <option value="hours">Hours</option>
+								   <option value="days">Days</option>
+								</select>  
+							<fieldset>
+						</span>
+					</div>
+					<div class="row">
+						<h4 class="titles span4">Symptom2*</h4>
+						<span class="span6">
+							<fieldset class="span6" data-role="controlgroup" data-type="horizontal">
+								<select name="select-choice-sev" id="select-choice-sev">
+								   <option value="none">Severity</option>
+								   <option value="none">None</option>
+								   <option value="mild">Mild</option>
+								   <option value="moderate">Moderate</option>
+								   <option value="severe">Severe</option>
+								</select>
+								<select name="select-choice-dur" id="select-choice-dur" >
+								   <option value="null">Duration</option>
+								   <option value="seconds">Seconds</option>
+								   <option value="minutes">Minutes</option>
+								   <option value="hours">Hours</option>
+								   <option value="days">Days</option>
+								</select>  
+							<fieldset>
+						</span>
+					</div>
+					<div class="row">
+						<div class="span10"></div>
+						<span class="span2">
+							<input data-role="controlgroup" type="submit" value="submit">
+						</span>
+					</div>
+				</form>
+				<hr>
+			</article>	
 			<article class="vitals">
 				<div class="row titles">
 					<h2 class="titles span4">Vitals</h2>
