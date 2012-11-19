@@ -48,12 +48,23 @@
     // query string parameters
     NSString *queryString = [[[self request] URL] query];
     NSDictionary *queryParameters = [HRAPIClient parametersFromQueryString:queryString];
+    NSString *action = [queryParameters objectForKey:@"key"];
     HRDebugLog(@"%@", queryParameters);
     
     // body parameters
     NSString *bodyString = [[NSString alloc] initWithData:[[self request] HTTPBody] encoding:NSUTF8StringEncoding];
     NSDictionary *bodyParameters = [HRAPIClient parametersFromQueryString:bodyString];
     HRDebugLog(@"%@", bodyParameters);
+    
+    // new medication
+    if ([action isEqualToString:@"Levels"]) {
+        HRDebugLog(@"%@", [bodyParameters objectForKey:@"pain"]);
+        HRDebugLog(@"%@", [bodyParameters objectForKey:@"mood"]);
+        HRDebugLog(@"%@", [bodyParameters objectForKey:@"energy"]);
+    }
+    // NewMedication
+    // MedRegiment
+    // ConditionSymptoms 
     
     // send redirect
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[HRTimelinePOSTURLProtocol indexURL]];
