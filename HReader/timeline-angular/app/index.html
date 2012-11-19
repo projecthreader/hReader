@@ -156,30 +156,34 @@
 					<div class="row">
 						<h4 class="titles span4">Pain*</h4>
 						<span class="span6">
-							<input type="range" name="slider" id="pain" value="5" min="0" max="10" data-highlight="true" />
+							<input type="range" name="pain" id="pain" value="5" min="0" max="10" data-highlight="true" />
 						</span>
 						<h4 class="span2">{{level.pain.value}}</h4>
 					</div>
 					<div class="row">
 						<h4 class="titles span4">Mood*</h4>
 						<span class="span6">
-								<input type="range" name="slider" id="mood" value="5" min="0" max="10" data-highlight="true"/>
+							<input type="range" name="mood" id="mood" value="5" min="0" max="10" data-highlight="true"/>
 						</span>
 						<h4 class="span2">{{level.mood.value}}</h4>
 					</div>
 					<div class="row">
 						<h4 class="titles span4">Energy Level*</h4>
 						<span class="span6">
-							<input type="range" name="slider" id="energy" value="5" min="0" max="10" data-highlight="true" />
+							<input type="range" name="energy" id="energy" value="5" min="0" max="10" data-highlight="true" />
 						</span>
 						<h4 class="span2">{{level.energy.value}}</h4>
 					</div>
 					<div class="row">
 						<div class="span10"></div>
 						<span class="span2">
-							<input data-role="controlgroup" type="submit" value="submit">
+							<input type="submit" value="submit">
 						</span>
 					</div>
+				</form>
+				<form name="input" action="month.html" method="get">
+				Username: <input type="text" name="user">
+				<input type="submit" value="Submit">
 				</form>
 				<hr>
 			</article>	

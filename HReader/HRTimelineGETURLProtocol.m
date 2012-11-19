@@ -8,9 +8,10 @@
 
 #import "HRTimelineGETURLProtocol.h"
 #import "HRPeoplePickerViewController_private.h"
-#import "HRMPatient.h"
 #import "HRAppDelegate.h"
 #import "HRAPIClient.h"
+
+#import "HRMPatient.h"
 
 @implementation HRTimelineGETURLProtocol
 
