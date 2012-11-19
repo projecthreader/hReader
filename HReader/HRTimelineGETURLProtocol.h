@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HRTimelineURLProtocol : NSURLProtocol
+@interface HRTimelineGETURLProtocol : NSURLProtocol
 
 @end

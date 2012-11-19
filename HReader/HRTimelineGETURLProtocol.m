@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
-#import "HRTimelineURLProtocol.h"
+#import "HRTimelineGETURLProtocol.h"
 #import "HRPeoplePickerViewController_private.h"
 #import "HRMPatient.h"
 #import "HRAppDelegate.h"
 #import "HRAPIClient.h"
 
-@implementation HRTimelineURLProtocol
+@implementation HRTimelineGETURLProtocol
 
 + (void)load {
     @autoreleasepool {
