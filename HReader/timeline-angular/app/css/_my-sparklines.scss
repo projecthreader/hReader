@@ -48,11 +48,12 @@ path.area {
   fill: none;
   stroke: #000;
 }
-
-
-
-
-
+// D3 comments
+path {
+  stroke: black;
+  stroke-width: 1.5;
+  fill: none;
+}
 
 #sparkline {
   width: 150px;

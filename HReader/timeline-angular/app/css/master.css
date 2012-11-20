@@ -4612,6 +4612,24 @@ a.label:hover, a.badge:hover {
   background-image: linear-gradient(#048a82, #56c4c3);
   background-color: #048a82; }
 
+<<<<<<< Updated upstream
+=======
+button.btn.symbolBTN.ui-btn-hidden {
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  height: 14px;
+  line-height: 14px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 1px;
+  padding: 0px !important; }
+
+a#remove {
+  border-radius: 4px;
+  -webkit-border-radius: 4px; }
+
+>>>>>>> Stashed changes
 /*structure*/
 body.ui-mobile-viewport div.ui-body {
   background-color: yellow; }
@@ -4834,6 +4852,11 @@ path.area {
 .y.axis line, .y.axis path {
   fill: none;
   stroke: #000; }
+
+path {
+  stroke: black;
+  stroke-width: 1.5;
+  fill: none; }
 
 #sparkline {
   width: 150px; }

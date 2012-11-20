@@ -92,7 +92,8 @@ function RecordListCtrl($scope) {
 /* iPad */
 
 function DayListCtrl($scope, $http) {
-  $http.get('timeline.json?page=day').success(function(data) {
+  $templateCache.removeAll(); 
+  $http.get('timeline.json?page=day', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
     $scope.symptoms = data.symptoms; 
     $scope.pain = data.pain; 
@@ -105,7 +106,7 @@ function DayListCtrl($scope, $http) {
 
 
 function WeekListCtrl($scope, $http) {
-  $http.get('timeline.json?page=week').success(function(data) {
+  $http.get('timeline.json?page=week', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
     $scope.symptoms = data.symptoms; 
     $scope.levels = data.levels;  
@@ -116,7 +117,7 @@ function WeekListCtrl($scope, $http) {
 };
 
 function MonthListCtrl($scope, $http) {
-  $http.get('timeline.json?page=month').success(function(data) {
+  $http.get('timeline.json?page=month', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
     $scope.symptoms = data.symptoms; 
     $scope.medications = data.medications;
@@ -124,8 +125,8 @@ function MonthListCtrl($scope, $http) {
     $scope.encounters = data.encounters
   });
 };
-function YearListCtrl($scope, $http) {
-  $http.get('timeline.json?page=year').success(function(data) {
+function YearListCtrl($scope, $http) { 
+  $http.get('timeline.json?page=year', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
     $scope.symptoms = data.symptoms; 
     $scope.conditions = data.conditions;
@@ -134,7 +135,7 @@ function YearListCtrl($scope, $http) {
   });
 };
 function DecadeListCtrl($scope, $http) {
-  $http.get('timeline.json?page=decade').success(function(data) {
+  $http.get('timeline.json?page=decade', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
     $scope.symptoms = data.symptoms;  
     $scope.conditions = data.conditions;
