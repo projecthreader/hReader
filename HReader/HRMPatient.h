@@ -8,19 +8,19 @@
 
 #import "CMDManagedObject.h"
 
-typedef enum {
-    HRMPatientGenderMale = 0,
+typedef NS_ENUM(short, HRMPatientGender) {
+    HRMPatientGenderMale,
     HRMPatientGenderFemale,
     HRMPatientGenderUnknown
-} HRMPatientGender;
+};
 
-typedef enum {
-    HRMPatientRelationshipMe = 0,
+typedef NS_ENUM(short, HRMPatientRelationship) {
+    HRMPatientRelationshipMe,
     HRMPatientRelationshipSpouse,
     HRMPatientRelationshipChild,
     HRMPatientRelationshipFamily,
     HRMPatientRelationshipOther
-} HRMPatientRelationship;
+};
 
 extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 

@@ -61,3 +61,11 @@
 .ui-slider .ui-slider-range {
  	background-color: #0064CD !important;
 }
+
+.ui-controlgroup-controls {
+	.ui-btn-active {
+		 background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($green), to($green-top-gradient)) !important;
+		 background-image: linear-gradient($green, $green-top-gradient);
+		 background-color: $green;
+}
+}

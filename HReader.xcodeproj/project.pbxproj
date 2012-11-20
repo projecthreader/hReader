@@ -126,7 +126,7 @@
 		3B77F04E15546ABD003C2DBD /* HROxygenSaturationAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F04D15546ABD003C2DBD /* HROxygenSaturationAppletTile.m */; };
 		3B77F05215546AD2003C2DBD /* HRRespiratoryRateAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */; };
 		3B77F054155474DE003C2DBD /* HRBMIVitalAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */; };
-		3B7FF9FD1613483F009033AD /* HRTimelineURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7FF9FC1613483F009033AD /* HRTimelineURLProtocol.m */; };
+		3B7FF9FD1613483F009033AD /* HRTimelineGETURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7FF9FC1613483F009033AD /* HRTimelineGETURLProtocol.m */; };
 		3B8935E8162D9E0F003750B6 /* CMDActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8935DF162D9E0F003750B6 /* CMDActionSheet.m */; };
 		3B8935E9162D9E0F003750B6 /* CMDAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8935E1162D9E0F003750B6 /* CMDAlertView.m */; };
 		3B8935EB162D9E0F003750B6 /* NSArray+CMDBlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8935E5162D9E0F003750B6 /* NSArray+CMDBlocksKit.m */; };
@@ -475,8 +475,8 @@
 		3B77F05015546AD2003C2DBD /* HRRespiratoryRateAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRRespiratoryRateAppletTile.h; sourceTree = "<group>"; };
 		3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRRespiratoryRateAppletTile.m; sourceTree = "<group>"; };
 		3B77F053155474DD003C2DBD /* HRBMIVitalAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRBMIVitalAppletTile.xib; sourceTree = "<group>"; };
-		3B7FF9FB1613483F009033AD /* HRTimelineURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRTimelineURLProtocol.h; sourceTree = "<group>"; };
-		3B7FF9FC1613483F009033AD /* HRTimelineURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRTimelineURLProtocol.m; sourceTree = "<group>"; };
+		3B7FF9FB1613483F009033AD /* HRTimelineGETURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRTimelineGETURLProtocol.h; sourceTree = "<group>"; };
+		3B7FF9FC1613483F009033AD /* HRTimelineGETURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRTimelineGETURLProtocol.m; sourceTree = "<group>"; };
 		3B8935DE162D9E0F003750B6 /* CMDActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDActionSheet.h; sourceTree = "<group>"; };
 		3B8935DF162D9E0F003750B6 /* CMDActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMDActionSheet.m; sourceTree = "<group>"; };
 		3B8935E0162D9E0F003750B6 /* CMDAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDAlertView.h; sourceTree = "<group>"; };
@@ -1508,8 +1508,8 @@
 			children = (
 				DD695D791489439100E4E2E1 /* HRTimelineViewController.h */,
 				DD695D7A1489439100E4E2E1 /* HRTimelineViewController.m */,
-				3B7FF9FB1613483F009033AD /* HRTimelineURLProtocol.h */,
-				3B7FF9FC1613483F009033AD /* HRTimelineURLProtocol.m */,
+				3B7FF9FB1613483F009033AD /* HRTimelineGETURLProtocol.h */,
+				3B7FF9FC1613483F009033AD /* HRTimelineGETURLProtocol.m */,
 				3B29070916484E830028C2CE /* HRTimelinePOSTURLProtocol.h */,
 				3B29070A16484E830028C2CE /* HRTimelinePOSTURLProtocol.m */,
 			);
@@ -1921,7 +1921,7 @@
 				3B2405351608E707007E043E /* UIColor+hReaderAdditions.m in Sources */,
 				3B2405391608F5B2007E043E /* NSArray+hReaderAdditions.m in Sources */,
 				3B24053C1608F644007E043E /* NSSet+hReaderAdditions.m in Sources */,
-				3B7FF9FD1613483F009033AD /* HRTimelineURLProtocol.m in Sources */,
+				3B7FF9FD1613483F009033AD /* HRTimelineGETURLProtocol.m in Sources */,
 				3BABEC2916246CA50057D3B8 /* DDXMLElementAdditions.m in Sources */,
 				3BABEC2A16246CA50057D3B8 /* NSString+DDXML.m in Sources */,
 				3BABEC2B16246CA50057D3B8 /* DDXMLDocument.m in Sources */,
