@@ -92,8 +92,8 @@ function RecordListCtrl($scope) {
 /* iPad */
 
 function DayListCtrl($scope, $http) {
-  $templateCache.removeAll(); 
-  $http.get('timeline.json?page=day', {cache:false}).success(function(data) {
+  //$templateCache.removeAll();
+  $http.get('http://hreader.local/timeline.json?page=day', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
     $scope.symptoms = data.symptoms; 
     $scope.pain = data.pain; 
@@ -106,7 +106,7 @@ function DayListCtrl($scope, $http) {
 
 
 function WeekListCtrl($scope, $http) {
-  $http.get('timeline.json?page=week', {cache:false}).success(function(data) {
+  $http.get('http://hreader.local/timeline.json?page=week', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
     $scope.symptoms = data.symptoms; 
     $scope.levels = data.levels;  
@@ -117,7 +117,7 @@ function WeekListCtrl($scope, $http) {
 };
 
 function MonthListCtrl($scope, $http) {
-  $http.get('timeline.json?page=month', {cache:false}).success(function(data) {
+  $http.get('http://hreader.local/timeline.json?page=month', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
     $scope.symptoms = data.symptoms; 
     $scope.medications = data.medications;
@@ -126,7 +126,7 @@ function MonthListCtrl($scope, $http) {
   });
 };
 function YearListCtrl($scope, $http) { 
-  $http.get('timeline.json?page=year', {cache:false}).success(function(data) {
+  $http.get('http://hreader.local/timeline.json?page=year', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
     $scope.symptoms = data.symptoms; 
     $scope.conditions = data.conditions;
@@ -135,7 +135,7 @@ function YearListCtrl($scope, $http) {
   });
 };
 function DecadeListCtrl($scope, $http) {
-  $http.get('timeline.json?page=decade', {cache:false}).success(function(data) {
+  $http.get('http://hreader.local/timeline.json?page=decade', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
     $scope.symptoms = data.symptoms;  
     $scope.conditions = data.conditions;

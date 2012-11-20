@@ -21,22 +21,13 @@
     }
 }
 
-+ (NSString *)timelineJSONPath {
-    static NSString *path = nil;
-    static dispatch_once_t token;
-    dispatch_once(&token, ^{
-        path = [[NSBundle mainBundle] bundlePath];
-        path = [path stringByAppendingPathComponent:@"timeline-angular/app/timeline.json"];
-    });
-    return path;
-}
-
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
     if (![[request HTTPMethod] isEqualToString:@"GET"]) {
         return NO;
     }
+    static NSString * const location = @"http://hreader.local/timeline.json";
     NSURL *URL = [request URL];
-    if ([URL isFileURL] && [[URL path] isEqualToString:[self timelineJSONPath]]) {
+    if (URL && [[URL absoluteString] rangeOfString:location].location == 0) {
         return YES;
     }
     return NO;

@@ -8,6 +8,10 @@
 
 #import "HRTimelinePOSTURLProtocol.h"
 #import "HRAPIClient.h"
+#import "HRAppDelegate.h"
+#import "HRPeoplePickerViewController_private.h"
+
+#import "HRMPatient.h"
 
 @implementation HRTimelinePOSTURLProtocol
 
@@ -32,7 +36,7 @@
     }
     static NSString * const location = @"http://hreader.local/timeline.json";
     NSURL *URL = [request URL];
-    if ([[URL absoluteString] rangeOfString:location].location == 0) {
+    if (URL && [[URL absoluteString] rangeOfString:location].location == 0) {
         return YES;
     }
     return NO;
@@ -61,6 +65,14 @@
         HRDebugLog(@"%@", [bodyParameters objectForKey:@"pain"]);
         HRDebugLog(@"%@", [bodyParameters objectForKey:@"mood"]);
         HRDebugLog(@"%@", [bodyParameters objectForKey:@"energy"]);
+        
+        NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
+        [context performBlockAndWait:^{
+            HRMPatient *patient = [HRPeoplePickerViewController selectedPatient];
+            patient.timelineLevels = bodyParameters;
+            [context save:nil];
+        }];
+        
     }
     // NewMedication
     // MedRegiment
