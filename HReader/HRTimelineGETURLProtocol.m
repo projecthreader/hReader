@@ -79,12 +79,10 @@
                                        initWithURL:[[self request] URL]
                                        statusCode:200
                                        HTTPVersion:@"HTTP/1.1"
-                                       headerFields:nil];
-//        NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc]
-//                                       initWithURL:[[self request] URL]
-//                                       MIMEType:@"application/json"
-//                                       expectedContentLength:[data length]
-//                                       textEncodingName:nil];
+                                       headerFields:@{
+                                           @"Content-Length" : [NSString stringWithFormat:@"%lu", (unsigned long)[data length]],
+                                           @"Content-Type" : @"application/json"
+                                       }];
         [client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
         [client URLProtocol:self didLoadData:data];
         [client URLProtocolDidFinishLoading:self];
