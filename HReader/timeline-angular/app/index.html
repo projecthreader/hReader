@@ -164,7 +164,7 @@
 					<h3 class="span2"></h3>
 				</div>
 				<div class="row">
-					<form class="hidden" id="newSymp" action="http://hreader.local/timeline.json?key=ConditionSymptoms">
+					<form class="hidden" id="newVitals" action="http://hreader.local/timeline.json?key=ConditionVitals">
 						<fieldset class="span6" data-role="controlgroup" data-type="horizontal">
 							<select name="select-choice-sev" id="select-choice-sev">
 							   <option ngChange:false ng-repeat="vital in vitals">{{vital.description}}</option>
@@ -176,7 +176,8 @@
 						</span>			
 					</form>
 				</div>
-				<form id="{{condition.description}}Symp" action="http://hreader.local/timeline.json?key={{condition.description}}Symptoms">
+				<!-- Add 2 symptoms to each condition-->
+				<!-- <form id="{{condition.description}}Symp" action="http://hreader.local/timeline.json?key={{condition.description}}Symptoms">
 					<div class="row">
 						<h4 class="titles span4">Symptom1*</h4>
 						<span class="span6">
@@ -225,7 +226,7 @@
 							<button type="submit" class="btn">Submit</button>
 						</span>
 					</div>
-				</form>
+				</form> -->
 				<hr>
 			</article>		
 			<article class="vitals">
@@ -242,6 +243,17 @@
 					</span>
 					<span class="span2"> 
 						<h1>{{vital.values[vital.values.length-1]| number:0}}</h1>{{vital.units}}
+					</span>
+				</div>
+				<div class="row data" ngChange:false ng-repeat="result in results">
+					<span class="span4">
+						<h4>{{result.description}}</h4>		
+					</span>
+					<span class="span6 graph">		
+						<p><sparkline exp="data" class="sparkline">{{result.values.join(', ')}}</sparkline></p>
+					</span>
+					<span class="span2"> 
+						<h1>{{result.values[result.values.length-1]| number:0}}</h1>{{result.units}}
 					</span>
 				</div>
 				<hr>

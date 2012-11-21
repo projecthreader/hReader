@@ -93,6 +93,7 @@ function DayListCtrl($scope, $http) {
   //$templateCache.removeAll();
   $http.get('http://hreader.local/timeline.json?page=day', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
+    $score.results = data.results;
     $scope.symptoms = data.symptoms; 
     $scope.pain = data.pain; 
     $scope.mood = data.mood;
