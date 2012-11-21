@@ -31,21 +31,21 @@
 						<span class="span6 graph">		
 							<p><sparkline exp="data" class="sparkline">{{level.pain.values.join(', ')}}</sparkline></p>
 						</span>
-						<h4 class="span2">{{level.pain.values[level.pain.values.length-1]| number:0}}</h4>
+						<h4 class="span2">{{levels.pain [level.pain.length-1]| number:0}}</h4>
 					</div>
 					<div class="row">
 						<h4 class="titles span4">Mood*</h4>
 						<span class="span6 graph">		
 							<p><sparkline exp="data" class="sparkline">{{level.mood.values.join(', ')}}</sparkline></p>
 						</span>
-						<h4 class="span2">{{level.mood.values[level.mood.values.length-1]| number:0}}</h4>
+						<h4 class="span2">{{levels.mood.values[level.mood.length-1]| number:0}}</h4>
 					</div>
 					<div class="row">
 						<h4 class="titles span4">Energy Level*</h4>
 						<span class="span6 graph">		
-							<p><sparkline exp="data" class="sparkline">{{level.energy.values.join(', ')}}</sparkline></p>
+							<p><sparkline exp="data" class="sparkline">{{level.energy.join(', ')}}</sparkline></p>
 						</span>
-						<h4 class="span2">4</h4>
+						<h4 class="span2">{{levels.pain [level.pain.length-1]| number:0}}</h4>
 					</div>
 				<hr>
 			</article>	
