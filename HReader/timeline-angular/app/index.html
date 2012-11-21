@@ -21,6 +21,7 @@
 	  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>		
 		<link rel="stylesheet" href="css/master.css" type="text/css"/> 
+
 	</head>
 	<body >
 		<section class="well">
@@ -98,6 +99,7 @@
 						<div class="span10"></div>
 						<span class="span2">
 							<button type="submit" class="btn">Submit</button>
+							
 						</span>
 					</div>
 				</form>
@@ -107,7 +109,7 @@
 				<div class="row titles">
 					<h2 class="span4">Overall</h2>
 					<!--   -->
-					<h3 class="span6">levels</h3>
+					<h3 class="span6">levels <span id="alertlevel" class="hidden alert fade in">Submitted</span></h3>
 					<h3 class="span2">log</h3>
 				</div>
 				<!-- <div class="row">
@@ -149,7 +151,8 @@
 					<div class="row">
 						<div class="span10"></div>
 						<span class="span2">
-							<button type="submit" class="btn">Submit</button>
+							<button type="submit" class="btn" onclick="$('#alertlevel').show()">Submit</button>
+							<div id="alertlevel" class="hidden alert fade in">Submitted</div>
 						</span>
 					</div>
 				</form>
