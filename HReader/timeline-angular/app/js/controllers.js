@@ -19,8 +19,6 @@ function RecordListCtrl($scope) {
   $scope.orderProp = 'date'
 }
 
-
-
 */
 
 /* TESTING Code
@@ -104,7 +102,6 @@ function DayListCtrl($scope, $http) {
   });
 };
 
-
 function WeekListCtrl($scope, $http) {
   $http.get('http://hreader.local/timeline.json?page=week', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
@@ -125,6 +122,7 @@ function MonthListCtrl($scope, $http) {
     $scope.encounters = data.encounters
   });
 };
+
 function YearListCtrl($scope, $http) { 
   $http.get('http://hreader.local/timeline.json?page=year', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
@@ -134,6 +132,7 @@ function YearListCtrl($scope, $http) {
 
   });
 };
+
 function DecadeListCtrl($scope, $http) {
   $http.get('http://hreader.local/timeline.json?page=decade', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
