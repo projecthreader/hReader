@@ -22,7 +22,8 @@
 #import "NSString+SentenceCapitalization.h"
 
 @implementation HRMedicationsMasterViewController {
-    //NSArray *_gridViews;
+    id _keyboardWillShowObserver;
+    id _keyboardWillHideObserver;
 }
 
 #pragma mark - object methods
@@ -30,10 +31,47 @@
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (self) {
-        self.title = @"Summary";
+        self.title = @"Medications";
+        
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+        __weak HRMedicationsMasterViewController *weakSelf = self;
+        [center
+         addObserverForName:UIKeyboardWillShowNotification
+         object:nil
+         queue:[NSOperationQueue mainQueue]
+         usingBlock:^(NSNotification *notification) {
+             HRMedicationsMasterViewController *strongSelf = weakSelf;
+             if (strongSelf) {
+                 [strongSelf keyboardWillShow:notification];
+             }
+         }];
+        [center
+         addObserverForName:UIKeyboardWillHideNotification
+         object:nil
+         queue:[NSOperationQueue mainQueue]
+         usingBlock:^(NSNotification *notification) {
+             HRMedicationsMasterViewController *strongSelf = weakSelf;
+             if (strongSelf) {
+                 [strongSelf keyboardWillHide:notification];
+             }
+         }];
     }
     return self;
 }
+
+
+- (void)dealloc {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center
+     removeObserver:_keyboardWillHideObserver
+     name:UIKeyboardWillHideNotification
+     object:nil];
+    [center
+     removeObserver:_keyboardWillShowObserver
+     name:UIKeyboardWillShowNotification
+     object:nil];
+}
+
 
 - (void)reloadWithPatient:(HRMPatient *)patient {
     
@@ -41,34 +79,34 @@
     NSDictionary *syntheticInfo = patient.syntheticInfo;
     
     // date of birth
-    if ([self.dateOfBirthTitleLabel.text isEqualToString:@"DOB:"]) {
-        self.dateOfBirthLabel.text = [patient.dateOfBirth hr_mediumStyleDate];
-    }
-    else {
-        self.dateOfBirthLabel.text = [patient.dateOfBirth hr_ageString];
-    }
-    
-    // allergies
-    {
-        NSArray *allergies = [patient.syntheticInfo objectForKey:@"allergies"];
-        NSUInteger count = [allergies count];
-        self.allergiesLabel.textColor = [UIColor blackColor];
-        if (count) {
-            NSMutableString *string = [[allergies objectAtIndex:0] mutableCopy];
-            if (count > 1) {
-                self.allergiesLabel.textColor = [UIColor hr_redColor];
-                [string appendFormat:@", %lu more", (unsigned long)(count - 1)];
-            }
-            if ([string length] > 0) {
-                self.allergiesLabel.textColor = [UIColor hr_redColor];
-                self.allergiesLabel.text = string;
-            }
-            else {
-                self.allergiesLabel.text = @"None";
-            }
-        }
-        else { self.allergiesLabel.text = @"None"; }
-    }
+//    if ([self.dateOfBirthTitleLabel.text isEqualToString:@"DOB:"]) {
+//        self.dateOfBirthLabel.text = [patient.dateOfBirth hr_mediumStyleDate];
+//    }
+//    else {
+//        self.dateOfBirthLabel.text = [patient.dateOfBirth hr_ageString];
+//    }
+//    
+//    // allergies
+//    {
+//        NSArray *allergies = [patient.syntheticInfo objectForKey:@"allergies"];
+//        NSUInteger count = [allergies count];
+//        self.allergiesLabel.textColor = [UIColor blackColor];
+//        if (count) {
+//            NSMutableString *string = [[allergies objectAtIndex:0] mutableCopy];
+//            if (count > 1) {
+//                self.allergiesLabel.textColor = [UIColor hr_redColor];
+//                [string appendFormat:@", %lu more", (unsigned long)(count - 1)];
+//            }
+//            if ([string length] > 0) {
+//                self.allergiesLabel.textColor = [UIColor hr_redColor];
+//                self.allergiesLabel.text = string;
+//            }
+//            else {
+//                self.allergiesLabel.text = @"None";
+//            }
+//        }
+//        else { self.allergiesLabel.text = @"None"; }
+//    }
     
     // medications
     {
@@ -199,13 +237,13 @@
     [super viewDidLoad];
     
     // date of birth tap
-    NSArray *array = [NSArray arrayWithObjects:self.dateOfBirthLabel, self.dateOfBirthTitleLabel, nil];
-    [array enumerateObjectsUsingBlock:^(UIView *view, NSUInteger index, BOOL *stop) {
-        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]
-                                           initWithTarget:self
-                                           action:@selector(toggleDateOfBirth:)];
-        [view addGestureRecognizer:gesture];
-    }];
+//    NSArray *array = [NSArray arrayWithObjects:self.dateOfBirthLabel, self.dateOfBirthTitleLabel, nil];
+//    [array enumerateObjectsUsingBlock:^(UIView *view, NSUInteger index, BOOL *stop) {
+//        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]
+//                                           initWithTarget:self
+//                                           action:@selector(toggleDateOfBirth:)];
+//        [view addGestureRecognizer:gesture];
+//    }];
     
     
     // gestures
@@ -242,7 +280,10 @@
     
     HRMEntry *medication = [currentPatient.medications objectAtIndex:indexPath.item];
     
+    medication.comments = @"This is a comment.";//TODO: LMD remove/ set to empty string?
+    
     [cell.medicationName setText:medication.desc];//set medication name
+    [cell.commentsTextView setText:medication.comments];
     
     return cell;
 }
@@ -255,17 +296,87 @@
 
 #pragma mark - gestures
 
-- (void)toggleDateOfBirth:(UITapGestureRecognizer *)gesture {
-    if (gesture.state == UIGestureRecognizerStateRecognized) {
-        if ([self.dateOfBirthTitleLabel.text isEqualToString:@"DOB:"]) {
-            self.dateOfBirthTitleLabel.text = @"AGE:";
-        }
-        else {
-            self.dateOfBirthTitleLabel.text = @"DOB:";
-        }
-        [self reloadData];
-    }
+
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    double duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    NSUInteger options = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] doubleValue];
+    [UIView
+     animateWithDuration:duration
+     delay:0.0
+     options:options
+     animations:^{
+         CGRect rect;
+         
+         // header view
+         rect = self.headerView.frame;
+         rect = CGRectMake(0.0,
+                           -1.0 * rect.size.height,
+                           rect.size.width,
+                           rect.size.height);
+         self.headerView.frame = rect;
+         
+         // collection view
+         self.collectionView.frame = self.view.bounds;//TODO: LMD- fix to not hide things clicked
+         //from too large to fit in top frame area (get click position and center)
+         //Also- allow header to remain in view from header fields keyboard click
+         
+     }
+     completion:^(BOOL finished) {
+         
+     }];
 }
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    double duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    NSUInteger options = [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] doubleValue];
+    [UIView
+     animateWithDuration:duration
+     delay:0.0
+     options:options
+     animations:^{
+         CGRect rect;
+         
+         // header view
+         rect = self.headerView.frame;
+         rect = CGRectMake(0.0,
+                           0.0,
+                           rect.size.width,
+                           rect.size.height);
+         self.headerView.frame = rect;
+         
+         // collection view
+         rect = CGRectMake(0.0,
+                           rect.size.height,
+                           rect.size.width,
+                           self.collectionView.bounds.size.height);
+                           //self.view.bounds.size.height - rect.size.height);
+         self.collectionView.frame = rect;
+         
+     }
+     completion:^(BOOL finished) {
+         
+     }];
+}
+
+
+
+
+
+
+//- (void)toggleDateOfBirth:(UITapGestureRecognizer *)gesture {
+//    if (gesture.state == UIGestureRecognizerStateRecognized) {
+//        if ([self.dateOfBirthTitleLabel.text isEqualToString:@"DOB:"]) {
+//            self.dateOfBirthTitleLabel.text = @"AGE:";
+//        }
+//        else {
+//            self.dateOfBirthTitleLabel.text = @"DOB:";
+//        }
+//        [self reloadData];
+//    }
+//}
 
 //- (void)conditionsContainerViewTap:(UITapGestureRecognizer *)gesture {
 //    if (gesture.state == UIGestureRecognizerStateRecognized) {

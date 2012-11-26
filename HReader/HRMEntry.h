@@ -37,6 +37,8 @@ typedef enum {
 @property (nonatomic, retain) NSNumber *type;
 @property (nonatomic, retain) HRMPatient *patient;
 
+@property (nonatomic, retain) NSString *comments;
+
 + (HRMEntry *)instanceWithDictionary:(NSDictionary *)dictionary
                                 type:(HRMEntryType)type
                            inContext:(NSManagedObjectContext *)context;

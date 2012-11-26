@@ -10,9 +10,8 @@
 
 @interface HRMedicationCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *medicationName;
-@property (weak, nonatomic) IBOutlet UITextField *commentsTextField;
-@property (weak, nonatomic) IBOutlet UILabel *patientCommentsLabel;
 @property (assign) BOOL editing;
+@property (weak, nonatomic) IBOutlet UITextView *commentsTextView;
 
 - (IBAction)setEditMode:(UIButton *)sender;
 
