@@ -396,6 +396,8 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     predicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
     dictionary[@"levels"] = [self timelineLevelsGroupedByTypeWithPredicate:predicate];
     
+    dictionary[@"start_date"] = @([start timeIntervalSince1970]);
+    dictionary[@"end_date"] = @([end timeIntervalSince1970]);
     return [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:error];
 }
 
