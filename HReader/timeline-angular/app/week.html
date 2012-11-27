@@ -23,29 +23,30 @@
 				<div class="row titles">
 					<h2 class="span4">Overall</h2>
 					<!--   -->
-					<h3 class="span6">graph</h3>
+					<h3 class="span5">{{start_date}}</h3>
+					<h3 class="span1">{{stop_date}}</h3>
 					<h3 class="span2">last result</h3>
 				</div>
 					<div class="row">
 						<h4 class="titles span4">Pain*</h4>
 						<span class="span6 graph">		
-							<p><sparkline exp="data" class="sparkline">{{level.pain.values.join(', ')}}</sparkline></p>
+							<p><sparkline exp="data" class="sparkline">{{levels.pain.join(', ')}}</sparkline></p>
 						</span>
-						<h4 class="span2">{{levels.pain [level.pain.length-1]| number:0}}</h4>
+						<h4 class="span2">{{levels.pain[level.pain.length-1]| number:0}}</h4>
 					</div>
 					<div class="row">
 						<h4 class="titles span4">Mood*</h4>
 						<span class="span6 graph">		
-							<p><sparkline exp="data" class="sparkline">{{level.mood.values.join(', ')}}</sparkline></p>
+							<p><sparkline exp="data" class="sparkline">{{levels.mood.join(', ')}}</sparkline></p>
 						</span>
-						<h4 class="span2">{{levels.mood.values[level.mood.length-1]| number:0}}</h4>
+						<h4 class="span2">{{levels.mood[level.mood.length-1]| number:0}}</h4>
 					</div>
 					<div class="row">
 						<h4 class="titles span4">Energy Level*</h4>
 						<span class="span6 graph">		
-							<p><sparkline exp="data" class="sparkline">{{level.energy.join(', ')}}</sparkline></p>
+							<p><sparkline exp="data" class="sparkline">{{levels.energy.join(', ')}}</sparkline></p>
 						</span>
-						<h4 class="span2">{{levels.pain [level.pain.length-1]| number:0}}</h4>
+						<h4 class="span2">{{levels.pain[level.pain.length-1]| number:0}}</h4>
 					</div>
 				<hr>
 			</article>	
