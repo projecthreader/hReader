@@ -311,8 +311,11 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     
 }
 
-- (NSData *)timelineJSONPayloadWithPredicate:(NSPredicate *)predicate error:(NSError **)error {
-
+- (NSData *)timelineJSONPayloadWithStartDate:(NSDate *)start endDate:(NSDate *)end error:(NSError **)error {
+    NSPredicate *predicate = nil;
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    NSMutableArray *predicates = nil;
+    
     // type
     static NSDictionary *types = nil;
     static dispatch_once_t token;
@@ -329,16 +332,17 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
         };
     });
     
-    // gather entries
-    NSMutableArray *predicates = [NSMutableArray array];
+    // gather generic entries
+    predicates = [NSMutableArray array];
     [predicates addObject:[NSPredicate predicateWithFormat:@"patient = %@", self]];
     [predicates addObject:[NSPredicate predicateWithFormat:@"type != %@", @(HRMEntryTypeVitalSign)]];
-    if (predicate) { [predicates addObject:predicate]; }
+    [predicates addObject:[NSPredicate predicateWithFormat:@"date >= %@", start]];
+    [predicates addObject:[NSPredicate predicateWithFormat:@"date <= %@", end]];
+    predicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
     NSArray *entries = [HRMEntry
                         allInContext:[self managedObjectContext]
-                        predicate:[NSCompoundPredicate andPredicateWithSubpredicates:predicates]
+                        predicate:predicate
                         sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     [entries enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger idx, BOOL *stop) {
         
         // get scalar
@@ -378,18 +382,28 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
         
     }];
     
-    // build json data
-    dictionary[@"levels"] = [self timelineLevelsGroupedByTypeWithPredicate:predicate];
-    dictionary[@"vitals"] = [self timelineVitalsCategorizedByDescriptionWithPredicate:predicate];
-    return [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:error];
+    // vitals
+    predicates = [NSMutableArray array];
+    [predicates addObject:[NSPredicate predicateWithFormat:@"date >= %@", start]];
+    [predicates addObject:[NSPredicate predicateWithFormat:@"date <= %@", end]];
+    predicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
+    dictionary[@"vitals"] = [self timelineVitalsGroupedByDescriptionWithPredicate:predicate];
     
+    // levels
+    predicates = [NSMutableArray array];
+    [predicates addObject:[NSPredicate predicateWithFormat:@"createdAt >= %@", start]];
+    [predicates addObject:[NSPredicate predicateWithFormat:@"createdAt <= %@", end]];
+    predicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
+    dictionary[@"levels"] = [self timelineLevelsGroupedByTypeWithPredicate:predicate];
+    
+    return [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:error];
 }
 
 - (NSDictionary *)timelineLevelsGroupedByTypeWithPredicate:(NSPredicate *)predicate {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     NSMutableArray *predicates = [NSMutableArray array];
     [predicates addObject:[NSPredicate predicateWithFormat:@"patient = %@", self]];
-//    if (predicate) { [predicates addObject:predicate]; }
+    if (predicate) { [predicates addObject:predicate]; }
     NSArray *levels = [HRMTimelineLevel
                        allInContext:[self managedObjectContext]
                        predicate:[NSCompoundPredicate andPredicateWithSubpredicates:predicates]
@@ -408,7 +422,7 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     return dictionary;
 }
 
-- (NSArray *)timelineVitalsCategorizedByDescriptionWithPredicate:(NSPredicate *)predicate {
+- (NSArray *)timelineVitalsGroupedByDescriptionWithPredicate:(NSPredicate *)predicate {
     
     // gather vitals
     NSMutableDictionary *vitals = [NSMutableDictionary dictionary];

@@ -47,10 +47,10 @@
     });
     
     // determine scope
+    NSDate *startDate = [NSDate date];
+    NSDate *endDate = startDate;
     NSURL *URL = [[self request] URL];
-    NSDate *date = [NSDate date];
     NSDictionary *parameters = [HRAPIClient parametersFromQueryString:[URL query]];
-    NSPredicate *predicate = nil;
     NSDateComponents *components = [[NSDateComponents alloc] init];
     NSString *page = [parameters objectForKey:@"page"];
     if ([page isEqualToString:@"day"]) { [components setDay:-1]; }
@@ -60,8 +60,7 @@
     else if ([page isEqualToString:@"decade"]) { [components setYear:-10]; }
     else { components = nil; }
     if (components) {
-        date = [calendar dateByAddingComponents:components toDate:date options:0];
-        predicate = [NSPredicate predicateWithFormat:@"date >= %@", date];
+        startDate = [calendar dateByAddingComponents:components toDate:endDate options:0];
     }
     
     // get data
@@ -69,7 +68,7 @@
     __block NSError *error = nil;
     [[HRAppDelegate managedObjectContext] performBlockAndWait:^{
         HRMPatient *patient = [HRPeoplePickerViewController selectedPatient];
-        data = [patient timelineJSONPayloadWithPredicate:predicate error:&error];
+        data = [patient timelineJSONPayloadWithStartDate:startDate endDate:endDate error:&error];
     }];
     
     // send response
