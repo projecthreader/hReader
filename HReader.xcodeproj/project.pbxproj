@@ -23,6 +23,7 @@
 		3B04A56914E06A3A00AD91F9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B04A56814E06A3A00AD91F9 /* Security.framework */; };
 		3B0977E41552D1F2006392E2 /* UserImage-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0977E31552D1F2006392E2 /* UserImage-3.png */; };
 		3B0977ED1553217F006392E2 /* people-picker.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0977EC1553217F006392E2 /* people-picker.png */; };
+		3B0A43D916652CBD00492F53 /* HRMTimelineLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A43D816652CBD00492F53 /* HRMTimelineLevel.m */; };
 		3B0FE3FD15386B7000BEC21C /* fitbit-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3F515386B7000BEC21C /* fitbit-overview.png */; };
 		3B0FE3FE15386B7000BEC21C /* fitbit-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3F615386B7000BEC21C /* fitbit-summary.png */; };
 		3B0FE3FF15386B7000BEC21C /* nikeplus-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3F715386B7000BEC21C /* nikeplus-overview.png */; };
@@ -351,6 +352,8 @@
 		3B0977E31552D1F2006392E2 /* UserImage-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-3.png"; sourceTree = "<group>"; };
 		3B0977E61553199E006392E2 /* ns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ns.json; sourceTree = "<group>"; };
 		3B0977EC1553217F006392E2 /* people-picker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "people-picker.png"; sourceTree = "<group>"; };
+		3B0A43D716652CBD00492F53 /* HRMTimelineLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMTimelineLevel.h; sourceTree = "<group>"; };
+		3B0A43D816652CBD00492F53 /* HRMTimelineLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMTimelineLevel.m; sourceTree = "<group>"; };
 		3B0FE3F515386B7000BEC21C /* fitbit-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitbit-overview.png"; sourceTree = "<group>"; };
 		3B0FE3F615386B7000BEC21C /* fitbit-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitbit-summary.png"; sourceTree = "<group>"; };
 		3B0FE3F715386B7000BEC21C /* nikeplus-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nikeplus-overview.png"; sourceTree = "<group>"; };
@@ -370,6 +373,7 @@
 		3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Molly.html"; sourceTree = "<group>"; };
 		3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Sarah.html"; sourceTree = "<group>"; };
 		3B19651F14EEAB970045F827 /* C32-Smith-Tom.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Tom.html"; sourceTree = "<group>"; };
+		3B21D67416651870003DB581 /* hReader 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "hReader 4.xcdatamodel"; sourceTree = "<group>"; };
 		3B2405301608E52E007E043E /* NSBundle+hRreaderAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+hRreaderAdditions.h"; sourceTree = "<group>"; };
 		3B2405311608E52E007E043E /* NSBundle+hRreaderAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+hRreaderAdditions.m"; sourceTree = "<group>"; };
 		3B2405331608E707007E043E /* UIColor+hReaderAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+hReaderAdditions.h"; sourceTree = "<group>"; };
@@ -854,6 +858,8 @@
 		3B5ADF6314E1C5D50025E069 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				3B0A43D716652CBD00492F53 /* HRMTimelineLevel.h */,
+				3B0A43D816652CBD00492F53 /* HRMTimelineLevel.m */,
 				3BD16F0314E1C5B700F2249E /* HRMPatient.h */,
 				3BD16F0414E1C5B700F2249E /* HRMPatient.m */,
 				3BE9A40314E40EBB00F87B60 /* HRMEntry.h */,
@@ -1939,6 +1945,7 @@
 				3B52170A164817CF00DE676A /* UIApplication+hReaderAdditions.m in Sources */,
 				3B29070B16484E830028C2CE /* HRTimelinePOSTURLProtocol.m in Sources */,
 				3BCF598A164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.m in Sources */,
+				3B0A43D916652CBD00492F53 /* HRMTimelineLevel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2080,6 +2087,7 @@
 		3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				3B21D67416651870003DB581 /* hReader 4.xcdatamodel */,
 				3B9C379D1656C3CE00CAE751 /* hReader 3.xcdatamodel */,
 				3B48FA2D165414E00071F707 /* hReader 2.xcdatamodel */,
 				3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */,

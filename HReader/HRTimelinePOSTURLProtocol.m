@@ -60,7 +60,7 @@
     NSDictionary *bodyParameters = [HRAPIClient parametersFromQueryString:bodyString];
     HRDebugLog(@"%@", bodyParameters);
     
-    // new medication
+    // Levels
     if ([action isEqualToString:@"Levels"]) {
         HRDebugLog(@"%@", [bodyParameters objectForKey:@"pain"]);
         HRDebugLog(@"%@", [bodyParameters objectForKey:@"mood"]);
