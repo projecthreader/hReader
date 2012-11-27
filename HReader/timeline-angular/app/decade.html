@@ -16,6 +16,7 @@
 	    <script src="js/app.js"></script>
 	    <script src="js/controllers.js"></script>
 	    <script src="js/directives.js"></script>
+	    <script src="js/date.js"></script>
 	</head>
 	<body >
 		<section class="well">
@@ -23,8 +24,8 @@
 				<div class="titles row">
 					<h2 class="span4">Diagnosis</h2>
 					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span> -->
-					<h3 class="span5">2002*</h3>
-					<h3 class="span1">2012*</h3>
+					<h3 class="span5">2002*{{year-10}}</h3>
+					<h3 class="span1">2012*{{year}}</h3>
 				</div>
 				<div class="row" div class="row  data" ngChange:false ng-repeat="condition in conditions">
 					<h4 class="titles span4">{{condition.description}}</h4>

@@ -139,7 +139,8 @@ function DecadeListCtrl($scope, $http) {
     $scope.vitals = data.vitals;
     $scope.symptoms = data.symptoms;  
     $scope.conditions = data.conditions;
-    $scope.levels = data.levels
+    $scope.levels = data.levels;
+    $scope.Math = window.Math;
 
   });
 };

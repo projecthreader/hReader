@@ -4612,8 +4612,6 @@ a.label:hover, a.badge:hover {
   background-image: linear-gradient(#048a82, #56c4c3);
   background-color: #048a82; }
 
-<<<<<<< Updated upstream
-=======
 button.btn.symbolBTN.ui-btn-hidden {
   border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -4629,19 +4627,12 @@ a#remove {
   border-radius: 4px;
   -webkit-border-radius: 4px; }
 
->>>>>>> Stashed changes
 /*structure*/
 body.ui-mobile-viewport div.ui-body {
   background-color: yellow; }
 
 .span1, .span2, h2.span3, .span4, .span6 form {
   vertical-align: baseline; }
-
-.graph {
-  background-color: #fff;
-  margin-bottom: 20px;
-  padding-top: 30px;
-  padding-bottom: 30px; }
 
 .green {
   border: 1px solid #888888; }
@@ -4820,6 +4811,10 @@ form {
 
 [class^="icon-"], [class*=" icon-"] {
   background-image: url("../images/glyphicons-halflings.png"); }
+
+.graph {
+  background-color: #fff;
+  margin-bottom: 20px; }
 
 .schedule {
   overflow: visible;
