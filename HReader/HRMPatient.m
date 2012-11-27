@@ -10,6 +10,7 @@
 
 #import "HRMPatient.h"
 #import "HRMEntry.h"
+#import "HRMTimelineLevel.h"
 
 #import "HRAppDelegate.h"
 #import "HRAPIClient.h"
@@ -378,12 +379,22 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     }];
     
     // build json data
-    if (self.timelineLevels) {
-        dictionary[@"levels"] = self.timelineLevels;
-    }    
+    dictionary[@"levels"] = [self timelineLevelsGroupedByTypeWithPredicate:predicate];
     dictionary[@"vitals"] = [self timelineVitalsCategorizedByDescriptionWithPredicate:predicate];
     return [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:error];
     
+}
+
+- (NSDictionary *)timelineLevelsGroupedByTypeWithPredicate:(NSPredicate *)predicate {
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    NSMutableArray *predicates = [NSMutableArray array];
+    [predicates addObject:[NSPredicate predicateWithFormat:@"patient = %@", self]];
+    if (predicate) { [predicates addObject:predicate]; }
+    NSArray *levels = [HRMTimelineLevel
+                       allInContext:[self managedObjectContext]
+                       predicate:[NSCompoundPredicate andPredicateWithSubpredicates:predicates]
+                       sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
+    return dictionary;
 }
 
 - (NSArray *)timelineVitalsCategorizedByDescriptionWithPredicate:(NSPredicate *)predicate {

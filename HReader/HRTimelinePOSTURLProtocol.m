@@ -12,6 +12,7 @@
 #import "HRPeoplePickerViewController_private.h"
 
 #import "HRMPatient.h"
+#import "HRMTimelineLevel.h"
 
 @implementation HRTimelinePOSTURLProtocol
 
@@ -62,14 +63,11 @@
     
     // Levels
     if ([action isEqualToString:@"Levels"]) {
-        HRDebugLog(@"%@", [bodyParameters objectForKey:@"pain"]);
-        HRDebugLog(@"%@", [bodyParameters objectForKey:@"mood"]);
-        HRDebugLog(@"%@", [bodyParameters objectForKey:@"energy"]);
-        
         NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
         [context performBlockAndWait:^{
-            HRMPatient *patient = [HRPeoplePickerViewController selectedPatient];
-            patient.timelineLevels = bodyParameters;
+            HRMTimelineLevel *level = [HRMTimelineLevel instanceInContext:context];
+            level.patient = [HRPeoplePickerViewController selectedPatient];
+            level.data = bodyParameters;
             [context save:nil];
         }];
         

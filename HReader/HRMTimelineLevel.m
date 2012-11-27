@@ -14,4 +14,8 @@
 @dynamic patient;
 @dynamic createdAt;
 
++ (NSString *)modelName {
+    return @"TimelineLevel";
+}
+
 @end

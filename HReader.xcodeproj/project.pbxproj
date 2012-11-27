@@ -2092,7 +2092,7 @@
 				3B48FA2D165414E00071F707 /* hReader 2.xcdatamodel */,
 				3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */,
 			);
-			currentVersion = 3B9C379D1656C3CE00CAE751 /* hReader 3.xcdatamodel */;
+			currentVersion = 3B21D67416651870003DB581 /* hReader 4.xcdatamodel */;
 			path = hReader.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
