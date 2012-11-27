@@ -30,7 +30,7 @@
         <attribute name="serverID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="syntheticInfo" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="entries" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Entry" inverseName="patient" inverseEntity="Entry" syncable="YES"/>
-        <relationship name="timelineLevels" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TimelineLevel" inverseName="patient" inverseEntity="TimelineLevel" syncable="YES"/>
+        <relationship name="timelineLevels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TimelineLevel" inverseName="patient" inverseEntity="TimelineLevel" syncable="YES"/>
     </entity>
     <entity name="TimelineLevel" representedClassName="HRMTimelineLevel" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>

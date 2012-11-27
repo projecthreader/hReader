@@ -389,11 +389,22 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     NSMutableArray *predicates = [NSMutableArray array];
     [predicates addObject:[NSPredicate predicateWithFormat:@"patient = %@", self]];
-    if (predicate) { [predicates addObject:predicate]; }
+//    if (predicate) { [predicates addObject:predicate]; }
     NSArray *levels = [HRMTimelineLevel
                        allInContext:[self managedObjectContext]
                        predicate:[NSCompoundPredicate andPredicateWithSubpredicates:predicates]
-                       sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
+                       sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:YES]];
+    [levels enumerateObjectsUsingBlock:^(HRMTimelineLevel *level, NSUInteger idx, BOOL *stop) {
+        NSDictionary *data = level.data;
+        [data enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            NSMutableArray *values = dictionary[key];
+            if (values == nil) {
+                values = [NSMutableArray array];
+                dictionary[key] = values;
+            }
+            [values addObject:obj];
+        }];
+    }];
     return dictionary;
 }
 
