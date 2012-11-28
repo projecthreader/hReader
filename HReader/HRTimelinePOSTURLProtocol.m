@@ -68,7 +68,10 @@
             HRMTimelineLevel *level = [HRMTimelineLevel instanceInContext:context];
             level.patient = [HRPeoplePickerViewController selectedPatient];
             level.data = bodyParameters;
-            [context save:nil];
+            NSError *error = nil;
+            if (![context save:&error]) {
+                HRDebugLog(@"Failed to save levels: %@", error);
+            }
         }];
         
     }

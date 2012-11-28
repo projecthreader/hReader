@@ -421,6 +421,9 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
             [values addObject:obj];
         }];
     }];
+    
+    HRDebugLog(@"Timeline levels: %@", levels);
+    
     return dictionary;
 }
 
