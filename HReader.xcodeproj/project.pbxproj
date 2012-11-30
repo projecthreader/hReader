@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24B2EA901663ED290077CF27 /* HRPopHealthAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2EA8F1663ED290077CF27 /* HRPopHealthAppletTile.m */; };
+		24B2EA9A166421AD0077CF27 /* pophealth in Resources */ = {isa = PBXBuildFile; fileRef = 24B2EA99166421AD0077CF27 /* pophealth */; };
 		3B001D3E157519DB00762FB0 /* InitialSetup_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B001D3D157519DB00762FB0 /* InitialSetup_iPad.storyboard */; };
 		3B001D4315751D0300762FB0 /* HRPeopleSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B001D4215751D0300762FB0 /* HRPeopleSetupViewController.m */; };
 		3B001D46157522C300762FB0 /* HRPeopleSetupPlaceHolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B001D45157522C300762FB0 /* HRPeopleSetupPlaceHolderView.m */; };
@@ -121,7 +123,6 @@
 		3B77F03A15544F18003C2DBD /* UserImage-Smith-Nancy.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03915544F18003C2DBD /* UserImage-Smith-Nancy.png */; };
 		3B77F03D15545452003C2DBD /* Glaucoma_Overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03B15545452003C2DBD /* Glaucoma_Overview.png */; };
 		3B77F03E15545452003C2DBD /* Glaucoma_Summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03C15545452003C2DBD /* Glaucoma_Summary.png */; };
-		3B77F0401554545D003C2DBD /* popHealth_FULL.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B77F03F1554545D003C2DBD /* popHealth_FULL.png */; };
 		3B77F04715546051003C2DBD /* NSString+SentenceCapitalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F04615546051003C2DBD /* NSString+SentenceCapitalization.m */; };
 		3B77F04E15546ABD003C2DBD /* HROxygenSaturationAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F04D15546ABD003C2DBD /* HROxygenSaturationAppletTile.m */; };
 		3B77F05215546AD2003C2DBD /* HRRespiratoryRateAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */; };
@@ -263,7 +264,6 @@
 		94E078C41538A4570051DC01 /* lyme_disease_overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078BD1538A4570051DC01 /* lyme_disease_overview.png */; };
 		94E078C51538A4570051DC01 /* multiple_sclerosis_overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078BE1538A4570051DC01 /* multiple_sclerosis_overview.png */; };
 		94E078C61538A4570051DC01 /* multiple_sclerosis_summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078BF1538A4570051DC01 /* multiple_sclerosis_summary.png */; };
-		94E078C71538A4570051DC01 /* pophealth-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 94E078C01538A4570051DC01 /* pophealth-summary.png */; };
 		94F871F41535D9F60018AF13 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F871F31535D9F60018AF13 /* libz.dylib */; };
 		D8665A3715FE705F002CD855 /* logo-swoosh.png in Resources */ = {isa = PBXBuildFile; fileRef = D8665A3615FE705F002CD855 /* logo-swoosh.png */; };
 		D8665A3A15FE708C002CD855 /* tbiTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8665A3915FE708C002CD855 /* tbiTest.storyboard */; };
@@ -327,6 +327,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		24B2EA8E1663ED290077CF27 /* HRPopHealthAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPopHealthAppletTile.h; sourceTree = "<group>"; };
+		24B2EA8F1663ED290077CF27 /* HRPopHealthAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPopHealthAppletTile.m; sourceTree = "<group>"; };
+		24B2EA99166421AD0077CF27 /* pophealth */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pophealth; sourceTree = "<group>"; };
 		3B001D3D157519DB00762FB0 /* InitialSetup_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InitialSetup_iPad.storyboard; sourceTree = "<group>"; };
 		3B001D4115751D0300762FB0 /* HRPeopleSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPeopleSetupViewController.h; sourceTree = "<group>"; };
 		3B001D4215751D0300762FB0 /* HRPeopleSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeopleSetupViewController.m; sourceTree = "<group>"; };
@@ -467,7 +470,6 @@
 		3B77F03915544F18003C2DBD /* UserImage-Smith-Nancy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-Smith-Nancy.png"; sourceTree = "<group>"; };
 		3B77F03B15545452003C2DBD /* Glaucoma_Overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Glaucoma_Overview.png; sourceTree = "<group>"; };
 		3B77F03C15545452003C2DBD /* Glaucoma_Summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Glaucoma_Summary.png; sourceTree = "<group>"; };
-		3B77F03F1554545D003C2DBD /* popHealth_FULL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popHealth_FULL.png; sourceTree = "<group>"; };
 		3B77F04515546051003C2DBD /* NSString+SentenceCapitalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SentenceCapitalization.h"; sourceTree = "<group>"; };
 		3B77F04615546051003C2DBD /* NSString+SentenceCapitalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SentenceCapitalization.m"; sourceTree = "<group>"; };
 		3B77F04C15546ABD003C2DBD /* HROxygenSaturationAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HROxygenSaturationAppletTile.h; sourceTree = "<group>"; };
@@ -687,7 +689,6 @@
 		94E078BD1538A4570051DC01 /* lyme_disease_overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lyme_disease_overview.png; sourceTree = "<group>"; };
 		94E078BE1538A4570051DC01 /* multiple_sclerosis_overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multiple_sclerosis_overview.png; sourceTree = "<group>"; };
 		94E078BF1538A4570051DC01 /* multiple_sclerosis_summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = multiple_sclerosis_summary.png; sourceTree = "<group>"; };
-		94E078C01538A4570051DC01 /* pophealth-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pophealth-summary.png"; sourceTree = "<group>"; };
 		94F871F31535D9F60018AF13 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HReaderConfig.xcconfig; sourceTree = "<group>"; };
 		D8665A3615FE705F002CD855 /* logo-swoosh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-swoosh.png"; sourceTree = "<group>"; };
@@ -1215,6 +1216,7 @@
 				3BFBEE1D1534C0AE009EBA2D /* Patient Data */,
 				941DB0B31471B32D00A96B8B /* Supporting Files */,
 				3B8D14FE157E3EB700A5B84E /* Images */,
+				24B2EA99166421AD0077CF27 /* pophealth */,
 				3B1925A81619DDDA0024E9BD /* timeline-angular */,
 				3B9A757815DBE0CB00705A52 /* timeline */,
 			);
@@ -1412,6 +1414,8 @@
 				3BCF5988164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.h */,
 				3BCF5989164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.m */,
 				3BCF598B164D8EA700BD0E9C /* HRTotalCholesterolAppletTile.xib */,
+				24B2EA8E1663ED290077CF27 /* HRPopHealthAppletTile.h */,
+				24B2EA8F1663ED290077CF27 /* HRPopHealthAppletTile.m */,
 			);
 			name = "System Applets";
 			sourceTree = "<group>";
@@ -1439,8 +1443,6 @@
 				94E078BD1538A4570051DC01 /* lyme_disease_overview.png */,
 				94E078BE1538A4570051DC01 /* multiple_sclerosis_overview.png */,
 				94E078BF1538A4570051DC01 /* multiple_sclerosis_summary.png */,
-				94E078C01538A4570051DC01 /* pophealth-summary.png */,
-				3B77F03F1554545D003C2DBD /* popHealth_FULL.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -1666,7 +1668,6 @@
 				94E078C41538A4570051DC01 /* lyme_disease_overview.png in Resources */,
 				94E078C51538A4570051DC01 /* multiple_sclerosis_overview.png in Resources */,
 				94E078C61538A4570051DC01 /* multiple_sclerosis_summary.png in Resources */,
-				94E078C71538A4570051DC01 /* pophealth-summary.png in Resources */,
 				94650043153CA3AA003255AF /* HRBloodPressureAppletTile.xib in Resources */,
 				3B4365D61540A2890009F892 /* hs-0-tile.png in Resources */,
 				3B4365D71540A2890009F892 /* hs-1-overview.png in Resources */,
@@ -1724,7 +1725,6 @@
 				3B77F03A15544F18003C2DBD /* UserImage-Smith-Nancy.png in Resources */,
 				3B77F03D15545452003C2DBD /* Glaucoma_Overview.png in Resources */,
 				3B77F03E15545452003C2DBD /* Glaucoma_Summary.png in Resources */,
-				3B77F0401554545D003C2DBD /* popHealth_FULL.png in Resources */,
 				3B77F054155474DE003C2DBD /* HRBMIVitalAppletTile.xib in Resources */,
 				3B74E5C5155477C400593ECF /* HROxygenSaturationAppletTile.xib in Resources */,
 				3B74E5C815547DA200593ECF /* HRRespiratoryRateAppletTile.xib in Resources */,
@@ -1820,6 +1820,7 @@
 				3B48FA3516541D4E0071F707 /* applets-ms.plist in Resources */,
 				3B48FA3616541D4E0071F707 /* applets-ss.plist in Resources */,
 				3B48FA3716541D4E0071F707 /* applets-ts.plist in Resources */,
+				24B2EA9A166421AD0077CF27 /* pophealth in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1939,6 +1940,7 @@
 				3B52170A164817CF00DE676A /* UIApplication+hReaderAdditions.m in Sources */,
 				3B29070B16484E830028C2CE /* HRTimelinePOSTURLProtocol.m in Sources */,
 				3BCF598A164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.m in Sources */,
+				24B2EA901663ED290077CF27 /* HRPopHealthAppletTile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

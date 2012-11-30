@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>popHealth for hReader</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <!-- jQuery Mobile -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+
+    <!-- Twitter Bootstrap -->
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet" />
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+
+    <!-- Applet specific -->
+    <link href="assets/stylesheets/pophealth.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="sideSummary">
+        <img class="logo" src="assets/images/pophealth_small_logo.png" />
+
+        <div id="failing-results" class="pophealth-result-container">
+          <div class="pophealth-slug pophealth-error-slug">Fail</div>
+          <div class="pophealth-result">1</div>
+        </div>
+        <div id="passing-results" class="pophealth-result-container">
+          <div class="pophealth-slug pophealth-success-slug">Pass</div>
+          <div class="pophealth-result">6</div>
+        </div>
+      </div>
+      
+      <div class="measures">
+        <div class="patient">
+          <h1>Henry Smith</h1>
+          <p>
+            popHealth reports the quality of care of the individual's healthcare provider. These are indicators of whether or not the standard of care is given to you, the patient. Each of these measures are selected based on your specific conditions, care, and demographic information. Below are the results of the measures:
+          </p>
+        </div>
+
+        <div class="paramGroup">
+          <div class="paramItem">
+            <div class="category">
+              <h3>Heart Measures</h3>
+              <ul>
+                <li><div class="result result-pass"></div>Ischemic Vascular Disease (IVD): Use of Aspirin or Another Antithrombotic</li>
+                <li><div class="result result-fail"></div>Coronary Artery Disease (CAD): Beta-Blocker Therapy—Prior Myocardial Infarction (MI) or Left Ventricular Systolic Dysfunction (LVEF &lt; 40%)</li>
+                <li><div class="result result-pass"></div>Ischemic Vascular Disease (IVD): Complete Lipid Panel and LDL Control</li>
+                <li><div class="result result-pass"></div>Heart Failure (HF): Angiotensin-Converting Enzyme (ACE) Inhibitor or Angiotensin Receptor Blocker (ARB) Therapy for Left Ventricular Systolic Dysfunction (LVSD)</li>
+                <li><div class="result result-fail"></div>Heart Failure (HF): Beta-Blocker Therapy for Left Ventricular Systolic Dysfunction (LVSD)</li>
+                <li><div class="result result-pass"></div>ADE Prevention and Monitoring: Warfarin Time in Therapeutic Range</li>
+                <li><div class="result result-pass"></div>Functional Status Assessment for Complex Chronic Conditions</li>
+              </ul>
+            </div>
+          </div>  
+        </div>
+
+        <div class="paramGroup">
+          <div class="paramItem">
+            <div class="category">
+              <h3>Diabetes Measures</h3>
+              <ul>
+                <li><div class="result result-fail"></div>Diabetes: Foot Exam</li>
+                <li><div class="result result-fail"></div>Diabetes: Hemoglobin A1c Poor Control</li>
+                <li><div class="result result-pass"></div>Hemoglobin A1c Test for Pediatric Patients</li>
+                <li><div class="result result-pass"></div>Diabetes: Urine Protein Screening</li>
+                <li><div class="result result-pass"></div>Diabetes: Low Density Lipoprotein (LDL) Management</li>
+                <li><div class="result result-pass"></div>Diabetic Retinopathy: Documentation of Presence or Absence of Macular Edema and Level of Severity of Retinopathy</li>
+                <li><div class="result result-fail"></div>Diabetic Retinopathy: Communication with the Physician Managing Ongoing Diabetes Care</li>
+              </ul>
+            </div>
+          </div>  
+        </div>
+
+        <div class="paramGroup">
+          <div class="paramItem">
+            <div class="category">
+              <h3>Orthopedic Measures</h3>
+              <ul>
+                <li><div class="result result-pass"></div>Functional Status Assessment for Hip Replacement</li>
+                <li><div class="result result-fail"></div>Functional Status Assessment for Knee Replacement</li>
+              </ul>
+            </div>
+          </div>  
+        </div>
+
+        <div class="paramGroup">
+          <div class="paramItem">
+            <div class="category">
+              <h3>Cancer Measures</h3>
+              <ul>
+                <li><div class="result result-pass"></div>Oncology: Medical and Radiation – Pain Intensity Quantified</li>
+                <li><div class="result result-pass"></div>Colon Cancer: Chemotherapy for AJCC Stage III Colon Cancer Patients</li>
+                <li><div class="result result-pass"></div>Breast Cancer: Hormonal Therapy for Stage IC-IIIC Estrogen Receptor/Progesterone Receptor (ER/PR) Positive Breast Cancer</li>
+                <li><div class="result result-pass"></div>Prostate Cancer: Avoidance of Overuse of Bone Scan for Staging Low Risk Prostate Cancer Patients</li>
+              </ul>
+            </div>
+          </div>  
+        </div>
+
+        <div class="paramGroup">
+          <div class="paramItem">
+            <div class="category">
+              <h3>Dental Measures</h3>
+              <ul>
+                <li><div class="result result-fail"></div>Children Who Have Dental Decay or Cavities</li>
+              </ul>
+            </div>
+          </div>  
+        </div>
+
+        <div class="paramGroup">
+          <div class="paramItem">
+            <div class="category">
+              <h3>Still Loading Measures</h3>
+              <div class="align-center">
+                <img src="assets/images/loading.gif" />
+              </div>
+            </div>
+          </div>  
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>

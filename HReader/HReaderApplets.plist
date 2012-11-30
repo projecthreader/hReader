@@ -169,6 +169,10 @@
 		<string>HRPopHealthAppletTile</string>
 		<key>display_name</key>
 		<string>popHealth</string>
+		<key>tile_url</key>
+		<string>pophealth/tile</string>
+		<key>fullscreen_url</key>
+		<string>pophealth/fullscreen</string>
 	</dict>
 	<dict>
 		<key>identifier</key>
