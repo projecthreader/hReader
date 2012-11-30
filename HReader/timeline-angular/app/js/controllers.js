@@ -19,8 +19,6 @@ function RecordListCtrl($scope) {
   $scope.orderProp = 'date'
 }
 
-
-
 */
 
 /* TESTING Code
@@ -92,8 +90,10 @@ function RecordListCtrl($scope) {
 /* iPad */
 
 function DayListCtrl($scope, $http) {
-  $http.get('timeline.json?page=day').success(function(data) {
+  //$templateCache.removeAll();
+  $http.get('http://hreader.local/timeline.json?page=day', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
+    $score.results = data.results;
     $scope.symptoms = data.symptoms; 
     $scope.pain = data.pain; 
     $scope.mood = data.mood;
@@ -103,52 +103,44 @@ function DayListCtrl($scope, $http) {
   });
 };
 
-
 function WeekListCtrl($scope, $http) {
-  $http.get('timeline.json?page=week').success(function(data) {
+  $http.get('http://hreader.local/timeline.json?page=week', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
     $scope.symptoms = data.symptoms; 
-    $scope.pain = data.pain; 
-    $scope.mood = data.mood;
-    $scope.mood = data.energy; 
+    $scope.levels = data.levels;  
     $scope.conditions = data.conditions;
-    $scope.levels = data.levels
+    $scope.observations = data.observations
 
   });
 };
 
 function MonthListCtrl($scope, $http) {
-  $http.get('timeline.json?page=month').success(function(data) {
+  $http.get('http://hreader.local/timeline.json?page=month', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
     $scope.symptoms = data.symptoms; 
-    $scope.pain = data.pain; 
-    $scope.mood = data.mood;
-    $scope.mood = data.energy; 
+    $scope.medications = data.medications;
     $scope.conditions = data.conditions;
-    $scope.levels = data.levels
+    $scope.encounters = data.encounters
   });
 };
-function YearListCtrl($scope, $http) {
-  $http.get('timeline.json?page=year').success(function(data) {
+
+function YearListCtrl($scope, $http) { 
+  $http.get('http://hreader.local/timeline.json?page=year', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
     $scope.symptoms = data.symptoms; 
-    $scope.pain = data.pain; 
-    $scope.mood = data.mood;
-    $scope.mood = data.energy; 
     $scope.conditions = data.conditions;
-    $scope.levels = data.levels
+    $scope.treatments = data.treatments;
 
   });
 };
+
 function DecadeListCtrl($scope, $http) {
-  $http.get('timeline.json?page=decade').success(function(data) {
+  $http.get('http://hreader.local/timeline.json?page=decade', {cache:false}).success(function(data) {
     $scope.vitals = data.vitals;
-    $scope.symptoms = data.symptoms; 
-    $scope.pain = data.pain; 
-    $scope.mood = data.mood;
-    $scope.mood = data.energy; 
+    $scope.symptoms = data.symptoms;  
     $scope.conditions = data.conditions;
-    $scope.levels = data.levels
+    $scope.levels = data.levels;
+    $scope.Math = window.Math;
 
   });
 };

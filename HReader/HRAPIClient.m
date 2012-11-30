@@ -80,9 +80,11 @@ static NSMutableDictionary *allClients = nil;
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[array count]];
     [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSUInteger location = [obj rangeOfString:@"="].location;
-        NSString *key = [obj substringToIndex:location];
-        NSString *value = [obj substringFromIndex:(location + 1)];
-        [dictionary setObject:value forKey:key];
+        if (location != NSNotFound) {
+            NSString *key = [obj substringToIndex:location];
+            NSString *value = [obj substringFromIndex:(location + 1)];
+            [dictionary setObject:value forKey:key];
+        }
     }];
     return dictionary;
 }

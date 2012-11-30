@@ -8,24 +8,25 @@
 
 #import "CMDManagedObject.h"
 
-typedef enum {
-    HRMPatientGenderMale = 0,
+typedef NS_ENUM(short, HRMPatientGender) {
+    HRMPatientGenderMale,
     HRMPatientGenderFemale,
     HRMPatientGenderUnknown
-} HRMPatientGender;
+};
 
-typedef enum {
-    HRMPatientRelationshipMe = 0,
+typedef NS_ENUM(short, HRMPatientRelationship) {
+    HRMPatientRelationshipMe,
     HRMPatientRelationshipSpouse,
     HRMPatientRelationshipChild,
     HRMPatientRelationshipFamily,
     HRMPatientRelationshipOther
-} HRMPatientRelationship;
+};
 
 extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 
 @class HRMEntry;
 @class DDXMLElement;
+@class HRMTimelineLevel;
 
 @interface HRMPatient : CMDManagedObject
 
@@ -44,7 +45,7 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 @property (nonatomic, retain) NSArray *applets;
 @property (nonatomic, retain) NSNumber *displayOrder;
 @property (nonatomic, retain) NSNumber *relationship;
-@property (nonatomic, retain) NSDictionary *timelineLevels;
+@property (nonatomic, retain) NSSet *timelineLevels;
 
 #pragma mark - transient properties
 
@@ -95,7 +96,7 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
  
  
  */
-- (NSData *)timelineJSONPayloadWithPredicate:(NSPredicate *)predicate error:(NSError **)error;
+- (NSData *)timelineJSONPayloadWithStartDate:(NSDate *)start endDate:(NSDate *)end error:(NSError **)error;
 
 /*
  
@@ -128,5 +129,10 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 - (void)removeEntriesObject:(HRMEntry *)value;
 - (void)addEntries:(NSSet *)values;
 - (void)removeEntries:(NSSet *)values;
+
+- (void)addTimelineLevelsObject:(HRMTimelineLevel *)value;
+- (void)removeTimelineLevelsObject:(HRMTimelineLevel *)value;
+- (void)addTimelineLevels:(NSSet *)values;
+- (void)removeTimelineLevels:(NSSet *)values;
 
 @end

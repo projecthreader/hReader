@@ -25,10 +25,8 @@
 }
 
 
+
 .ui-btn-down-c {
-
-
-	
 }
 
 .ui-field-contain div.ui-slider {
@@ -60,4 +58,30 @@
 
 .ui-slider .ui-slider-range {
  	background-color: #0064CD !important;
+}
+
+.ui-controlgroup-controls {
+	.ui-btn-active {
+		 background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($green), to($green-top-gradient)) !important;
+		 background-image: linear-gradient($green, $green-top-gradient);
+		 background-color: $green;
+	}
+}
+
+button.btn.symbolBTN.ui-btn-hidden {
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	height: 14px;
+	line-height: 14px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 1px;
+	padding: 0px !important;
+
+}
+
+a#remove{
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
 }
