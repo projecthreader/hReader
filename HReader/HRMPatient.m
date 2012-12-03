@@ -343,10 +343,14 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     
     // get all entries in scope
     predicates = [NSMutableArray array];
+    [predicates addObject:[NSPredicate predicateWithFormat:@"date >= %@ AND date <= %@", start, end]];
+    [predicates addObject:[NSPredicate predicateWithFormat:@"startDate >= %@ AND startDate <= %@", start, end]];
+    [predicates addObject:[NSPredicate predicateWithFormat:@"endDate >= %@ AND endDate <= %@", start, end]];
+    predicate = [NSCompoundPredicate orPredicateWithSubpredicates:predicates];
+    predicates = [NSMutableArray array];
     [predicates addObject:[NSPredicate predicateWithFormat:@"patient = %@", self]];
     [predicates addObject:[NSPredicate predicateWithFormat:@"type != %@", @(HRMEntryTypeVitalSign)]];
-    [predicates addObject:[NSPredicate predicateWithFormat:@"date >= %@", start]];
-    [predicates addObject:[NSPredicate predicateWithFormat:@"date <= %@", end]];
+    [predicates addObject:predicate];
     predicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
     NSArray *entries = [HRMEntry
                         allInContext:[self managedObjectContext]
@@ -365,7 +369,7 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
         NSString *description = entry.desc;
         
         // get target array
-        NSString *type = [types objectForKey:entry.type];
+        NSString *type = types[entry.type];
         NSMutableArray *array = payload[type];
         if (array == nil) {
             array = [NSMutableArray array];
@@ -380,7 +384,6 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
         
         // build payload
         NSDictionary *dictionary = @{
-            @"type" : (type ?: @"unkonwn"),
             @"description" : (description ?: [NSNull null]),
             @"date" : @([date timeIntervalSince1970]),
             @"measurement" : @{
@@ -428,9 +431,6 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
             [values addObject:obj];
         }];
     }];
-    
-    HRDebugLog(@"Timeline levels: %@", dictionary);
-    
     return dictionary;
 }
 
