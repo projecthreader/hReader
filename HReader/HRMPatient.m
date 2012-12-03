@@ -293,6 +293,13 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     return [UIImage imageNamed:[NSString stringWithFormat:@"UserImage-%@", self.serverID]];
 }
 
+- (NSURL *)C32HTMLURL {
+    NSString *string = [NSString stringWithFormat:@"C32-%@-%@", self.lastName, self.firstName];
+    return [[NSBundle mainBundle] URLForResource:string withExtension:@"html"];
+}
+
+#pragma mark - timeline helpers
+
 - (DDXMLElement *)timelineXMLPayload {
     
     // create root
@@ -312,11 +319,13 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
 }
 
 - (NSData *)timelineJSONPayloadWithStartDate:(NSDate *)start endDate:(NSDate *)end error:(NSError **)error {
-    NSPredicate *predicate = nil;
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     NSMutableArray *predicates = nil;
+    NSPredicate *predicate = nil;
+    NSMutableDictionary *payload = [NSMutableDictionary dictionary];
+    payload[@"start_date"] = @([start timeIntervalSince1970]);
+    payload[@"end_date"] = @([end timeIntervalSince1970]);
     
-    // type
+    // types
     static NSDictionary *types = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
@@ -332,7 +341,7 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
         };
     });
     
-    // gather generic entries
+    // get all entries in scope
     predicates = [NSMutableArray array];
     [predicates addObject:[NSPredicate predicateWithFormat:@"patient = %@", self]];
     [predicates addObject:[NSPredicate predicateWithFormat:@"type != %@", @(HRMEntryTypeVitalSign)]];
@@ -352,12 +361,15 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
             scalar = @([scalar floatValue]);
         }
         
+        // get description
+        NSString *description = entry.desc;
+        
         // get target array
         NSString *type = [types objectForKey:entry.type];
-        NSMutableArray *array = [dictionary objectForKey:type];
+        NSMutableArray *array = payload[type];
         if (array == nil) {
             array = [NSMutableArray array];
-            [dictionary setObject:array forKey:type];
+            payload[type] = array;
         }
         
         // get date
@@ -368,12 +380,12 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
         
         // build payload
         NSDictionary *dictionary = @{
-            @"type" : ([types objectForKey:entry.type] ?: @"unkonwn"),
-            @"description" : (entry.desc ?: [NSNull null]),
+            @"type" : (type ?: @"unkonwn"),
+            @"description" : (description ?: [NSNull null]),
             @"date" : @([date timeIntervalSince1970]),
             @"measurement" : @{
                 @"value" : (scalar ?: [NSNull null]),
-                @"unit" : ([value objectForKey:@"units"] ?: [NSNull null])
+                @"unit" : (value[@"units"] ?: [NSNull null])
             }
         };
         
@@ -382,30 +394,25 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
         
     }];
     
-    // vitals
-    predicates = [NSMutableArray array];
-    [predicates addObject:[NSPredicate predicateWithFormat:@"date >= %@", start]];
-    [predicates addObject:[NSPredicate predicateWithFormat:@"date <= %@", end]];
-    predicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
-    dictionary[@"vitals"] = [self timelineVitalsGroupedByDescriptionWithPredicate:predicate];
+    // special data
+    payload[@"levels"] = [self timelineLevelsGroupedByTypeWithStartDate:start endDate:end];
+    payload[@"vitals"] = [self timelineVitalsGroupedByDescriptionWithStartDate:start endDate:end];
     
-    // levels
-    predicates = [NSMutableArray array];
-    [predicates addObject:[NSPredicate predicateWithFormat:@"createdAt >= %@", start]];
-    [predicates addObject:[NSPredicate predicateWithFormat:@"createdAt <= %@", end]];
-    predicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
-    dictionary[@"levels"] = [self timelineLevelsGroupedByTypeWithPredicate:predicate];
+    // finish up
+    NSJSONWritingOptions options = 0;
+#if DEBUG
+    options |= NSJSONWritingPrettyPrinted;
+#endif
+    return [NSJSONSerialization dataWithJSONObject:payload options:options error:error];
     
-    dictionary[@"start_date"] = @([start timeIntervalSince1970]);
-    dictionary[@"end_date"] = @([end timeIntervalSince1970]);
-    return [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:error];
 }
 
-- (NSDictionary *)timelineLevelsGroupedByTypeWithPredicate:(NSPredicate *)predicate {
+- (NSDictionary *)timelineLevelsGroupedByTypeWithStartDate:(NSDate *)start endDate:(NSDate *)end {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     NSMutableArray *predicates = [NSMutableArray array];
     [predicates addObject:[NSPredicate predicateWithFormat:@"patient = %@", self]];
-    if (predicate) { [predicates addObject:predicate]; }
+    [predicates addObject:[NSPredicate predicateWithFormat:@"createdAt >= %@", start]];
+    [predicates addObject:[NSPredicate predicateWithFormat:@"createdAt <= %@", end]];
     NSArray *levels = [HRMTimelineLevel
                        allInContext:[self managedObjectContext]
                        predicate:[NSCompoundPredicate andPredicateWithSubpredicates:predicates]
@@ -427,38 +434,40 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     return dictionary;
 }
 
-- (NSArray *)timelineVitalsGroupedByDescriptionWithPredicate:(NSPredicate *)predicate {
+- (NSArray *)timelineVitalsGroupedByDescriptionWithStartDate:(NSDate *)start endDate:(NSDate *)end {
     
     // gather vitals
     NSMutableDictionary *vitals = [NSMutableDictionary dictionary];
     NSMutableArray *predicates = [NSMutableArray array];
     [predicates addObject:[NSPredicate predicateWithFormat:@"type = %@", @(HRMEntryTypeVitalSign)]];
     [predicates addObject:[NSPredicate predicateWithFormat:@"patient = %@", self]];
-    if (predicate) { [predicates addObject:predicate]; }
+    [predicates addObject:[NSPredicate predicateWithFormat:@"date >= %@", start]];
+    [predicates addObject:[NSPredicate predicateWithFormat:@"date <= %@", end]];
     NSArray *entries = [HRMEntry
                         allInContext:[self managedObjectContext]
                         predicate:[NSCompoundPredicate andPredicateWithSubpredicates:predicates]
                         sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES]];
     [entries enumerateObjectsUsingBlock:^(HRMEntry *entry, NSUInteger idx, BOOL *stop) {
         
+        // get scalar
         NSDictionary *value = entry.value;
         id scalar = [value objectForKey:@"scalar"];
         if ([scalar respondsToSelector:@selector(integerValue)]) {
-            scalar = @([scalar integerValue]);
+            scalar = @([scalar doubleValue]);
         }
         
         // get target collection
         NSString *description = entry.desc;
-        NSDictionary *wrapper = [vitals objectForKey:description];
-        if (wrapper == nil) {
-            wrapper = @{
+        NSDictionary *dictionary = [vitals objectForKey:description];
+        if (dictionary == nil) {
+            dictionary = @{
                 @"description" : description,
                 @"values" : [NSMutableArray array],
-                @"units" : ([value objectForKey:@"units"] ?: [NSNull null])
+                @"units" : (value[@"units"] ?: [NSNull null])
             };
-            [vitals setObject:wrapper forKey:description];
+            [vitals setObject:dictionary forKey:description];
         }
-        NSMutableArray *values = [wrapper objectForKey:@"values"];
+        NSMutableArray *values = dictionary[@"values"];
         if (scalar) { [values addObject:scalar]; }
         
     }];
@@ -474,15 +483,9 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     bloodPressure = [bloodPressure hr_sortedArrayUsingKey:@"description" ascending:NO];
     [wrappers removeObjectsAtIndexes:set];
     [wrappers sortUsingDescriptors:@[ sort ]];
-    [wrappers addObject:bloodPressure];
-    wrappers = (id)[wrappers hr_flatten];
+    [wrappers addObjectsFromArray:bloodPressure];
     return wrappers;
     
-}
-
-- (NSURL *)C32HTMLURL {
-    NSString *string = [NSString stringWithFormat:@"C32-%@-%@", self.lastName, self.firstName];
-    return [[NSBundle mainBundle] URLForResource:string withExtension:@"html"];
 }
 
 @end
