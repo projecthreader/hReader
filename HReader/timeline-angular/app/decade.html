@@ -15,36 +15,8 @@
 	    <script src="lib/angular/angular.js"></script>
 	    <script src="js/app.js"></script>
 	    <script src="js/controllers.js"></script>
-	    <script>
-			var Timeline = angular.module('Timeline', []);
-
-			Timeline.directive('sparkline', function () {
-			  return {
-			    restrict: 'E', // the directive restricts it to an element level
-			    link: function postLink(scope, iElement, attrs) {
-			      scope.$watch('vitals', function (newVal, oldVal) {
-			      	if (newVal != null) {
-						$(iElement).sparkline('html', { 
-									type: 'line',
-							    lineColor: '#000000',
-							    spotColor: '#000000',
-							    minSpotColor: '#d60D26',
-							    maxSpotColor: '#d60D26',
-							    highlightSpotColor: '#048A82',
-    							highlightLineColor: '#d60D26',
-							    fillColor: false,
-							   	lineWidth: 3,
-    							spotRadius: 5,
-							    width: 460,
-							    height: 75,
-							    drawNormalOnTop: false
-								});
-							}
-			      });
-			    }
-			  };
-			});
-		</script>
+	    <script src="js/directives.js"></script>
+	    <script src="js/date.js"></script>
 	</head>
 	<body >
 		<section class="well">
@@ -52,9 +24,8 @@
 				<div class="titles row">
 					<h2 class="span4">Diagnosis</h2>
 					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span> -->
-					<h3 class="span2">Plan</h3>
-					<h3 class="span4">2002</h3>
-					<h3 class="span1">2012</h3>
+					<h3 class="span5">2002*{{year-10}}</h3>
+					<h3 class="span1">2012*{{year}}</h3>
 				</div>
 				<div class="row" div class="row  data" ngChange:false ng-repeat="condition in conditions">
 					<h4 class="titles span4">{{condition.description}}</h4>
@@ -247,6 +218,7 @@
 					<h2 class="titles span4">Vitals</h2>
 					<h3 class="span6">Trends</h3>
 					<h3 class="span2">Result</h3>
+				</div>
 				<div class="row data" ngChange:false ng-repeat="vital in vitals">
 					<span class="span4">
 						<h4>{{vital.description}}</h4>		

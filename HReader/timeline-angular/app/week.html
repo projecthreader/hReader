@@ -15,36 +15,7 @@
 	    <script src="lib/angular/angular.js"></script>
 	    <script src="js/app.js"></script>
 	    <script src="js/controllers.js"></script>
-	    <script>
-			var Timeline = angular.module('Timeline', []);
-
-			Timeline.directive('sparkline', function () {
-			  return {
-			    restrict: 'E', // the directive restricts it to an element level
-			    link: function postLink(scope, iElement, attrs) {
-			      scope.$watch('vitals', function (newVal, oldVal) {
-			      	if (newVal != null) {
-						$(iElement).sparkline('html', { 
-									type: 'line',
-							    lineColor: '#000000',
-							    spotColor: '#000000',
-							    minSpotColor: '#d60D26',
-							    maxSpotColor: '#d60D26',
-							    highlightSpotColor: '#048A82',
-    							highlightLineColor: '#d60D26',
-							    fillColor: false,
-							   	lineWidth: 3,
-    							spotRadius: 5,
-							    width: 460,
-							    height: 75,
-							    drawNormalOnTop: false
-								});
-							}
-			      });
-			    }
-			  };
-			});
-		</script>
+	    <script src="js/directives.js"></script>
 	</head>
 	<body >
 		<section class="well">
@@ -60,21 +31,21 @@
 						<span class="span6 graph">		
 							<p><sparkline exp="data" class="sparkline">{{level.pain.values.join(', ')}}</sparkline></p>
 						</span>
-						<h4 class="span2">{{level.pain.values[level.pain.values.length-1]| number:0}}</h4>
+						<h4 class="span2">{{levels.pain [level.pain.length-1]| number:0}}</h4>
 					</div>
 					<div class="row">
 						<h4 class="titles span4">Mood*</h4>
 						<span class="span6 graph">		
 							<p><sparkline exp="data" class="sparkline">{{level.mood.values.join(', ')}}</sparkline></p>
 						</span>
-						<h4 class="span2">{{level.mood.values[level.mood.values.length-1]| number:0}}</h4>
+						<h4 class="span2">{{levels.mood.values[level.mood.length-1]| number:0}}</h4>
 					</div>
 					<div class="row">
 						<h4 class="titles span4">Energy Level*</h4>
 						<span class="span6 graph">		
-							<p><sparkline exp="data" class="sparkline">{{level.energy.values.join(', ')}}</sparkline></p>
+							<p><sparkline exp="data" class="sparkline">{{level.energy.join(', ')}}</sparkline></p>
 						</span>
-						<h4 class="span2">4</h4>
+						<h4 class="span2">{{levels.pain [level.pain.length-1]| number:0}}</h4>
 					</div>
 				<hr>
 			</article>	

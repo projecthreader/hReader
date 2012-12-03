@@ -8,49 +8,20 @@
 		<link rel="stylesheet" href="css/jquery-ui-1.8.16.custom.css" type="text/css"/> 
 		<link href="http://addyosmani.github.com/jquery-ui-bootstrap/bootstrap/bootstrap.css" rel="stylesheet">
 		<script type="text/javascript" src="lib/jquery/jquery-1.8.1.js"></script>
-	    <script type="text/javascript" src="lib/jquery/jquery.sparkline2.0.js">
+	  <script type="text/javascript" src="lib/jquery/jquery.sparkline2.0.js">
 	    </script>
-	    <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
-	    <script src="lib/angular/angular.js"></script>
-	    <script src="lib/angularUI/animate.js"></script>
-	    <script src="js/app.js"></script>
-	    <script src="js/controllers.js"></script>
+  	<script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+	  <script src="lib/angular/angular.js"></script> 
+    <script src="js/app.js"></script>
+	  <script src="js/controllers.js"></script>
+	  <script src="js/directives.js"></script>
 
 	    <!-- jQuery Mobile -->
-	    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-			<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-			<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>		
+	  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>		
 		<link rel="stylesheet" href="css/master.css" type="text/css"/> 
-		<script>
-			var Timeline = angular.module('Timeline', []);
 
-			Timeline.directive('sparkline', function () {
-			  return {
-			    restrict: 'E', // the directive restricts it to an element level
-			    link: function postLink(scope, iElement, attrs) {
-			      scope.$watch('vitals', function (newVal, oldVal) {
-			      	if (newVal != null) {
-						$(iElement).sparkline('html', { 
-									type: 'line',
-							    lineColor: '#000000',
-							    spotColor: '#000000',
-							    minSpotColor: '#d60D26',
-							    maxSpotColor: '#d60D26',
-							    highlightSpotColor: '#048A82',
-    							highlightLineColor: '#d60D26',
-							    fillColor: false,
-							   	lineWidth: 3,
-    							spotRadius: 5,
-							    width: 460,
-							    height: 75,
-							    drawNormalOnTop: false
-								});
-							}
-			      });
-			    }
-			  };
-			});
-		</script>
 	</head>
 	<body >
 		<section class="well">
@@ -96,10 +67,12 @@
 								   <option value="PC">After Meals</option>
 								</select>
 							</fieldset>
-							<span class="span2">
-								<a class="btn" action="http://hreader.local/timeline.json?key=userData" method="post"><i class="icon-plus"></i></a>
-								<a class="btn"  onclick="$('#newReg').hide()" ><i class="icon-remove"></i></a>
-							</span>
+						</span>
+						<span class="span2">
+							<fieldset data-role="controlgroup" data-type="horizontal">
+								<button type="submit" id="remove" class="symbolBTN"><i class="icon-check"></i></button>
+								<buttom class="btn symbolBTN"  onclick="$('#newReg').hide()" ><i class="icon-remove"></i></button>
+							</fieldset>
 						</span>
 					</form>
 				</div>
@@ -125,7 +98,8 @@
 					<div class="row">
 						<div class="span10"></div>
 						<span class="span2">
-							<input data-role="controlgroup" type="submit" value="submit">
+							<button type="submit" class="btn">Submit</button>
+							
 						</span>
 					</div>
 				</form>
@@ -135,7 +109,7 @@
 				<div class="row titles">
 					<h2 class="span4">Overall</h2>
 					<!--   -->
-					<h3 class="span6">levels</h3>
+					<h3 class="span6">levels <span id="alertlevel" class="hidden alert fade in">Submitted</span></h3>
 					<h3 class="span2">log</h3>
 				</div>
 				<!-- <div class="row">
@@ -177,18 +151,14 @@
 					<div class="row">
 						<div class="span10"></div>
 						<span class="span2">
-							<input type="submit" value="submit">
+							<button type="submit" class="btn" onclick="$('#alertlevel').show()">Submit</button>
+							<div id="alertlevel" class="hidden alert fade in">Submitted</div>
 						</span>
 					</div>
-				</form>
-				<form name="input" action="month.html" method="get">
-				Username: <input type="text" name="user">
-				<input type="submit" value="Submit">
 				</form>
 				<hr>
 			</article>	
 			<article ngChange:false ng-repeat="condition in conditions">
-			<!-- <article > -->
 				<div class="row titles">
 					<h2 class="span3">{{condition.description}}</h2>
 					<span class="span1"><a class="btn" onclick="$('#newSymp').show()"><i class="icon-plus"></i></a>
@@ -197,20 +167,20 @@
 					<h3 class="span2"></h3>
 				</div>
 				<div class="row">
-					<form class="hidden" id="newSymp" action="http://hreader.local/timeline.json?key=ConditionSymptoms">
-						<span class="span4">
-							<fieldset class="span4" data-role="controlgroup" data-type="horizontal">
-								<select name="select-choice-sev" id="select-choice-sev">
-								   <option ngChange:false ng-repeat="vital in vitals">{{vital.description}}</option>
-								</select>
-							</fieldset>
-						</span>
+					<form class="hidden" id="newVitals" action="http://hreader.local/timeline.json?key=ConditionVitals">
+						<fieldset class="span6" data-role="controlgroup" data-type="horizontal">
+							<select name="select-choice-sev" id="select-choice-sev">
+							   <option ngChange:false ng-repeat="vital in vitals">{{vital.description}}</option>
+							</select>
+						</fieldset>
 						<span class="span2">
 							<!-- <a class="btn" action="http://hreader.local/timeline.json?key=userData" method="post"><i class="icon-plus"></i></a> -->
 							<a class="btn"  onclick="$('#newSymp').hide()" ><i class="icon-remove"></i></a>
 						</span>			
 					</form>
 				</div>
+				<!-- Add 2 symptoms to each condition-->
+				<!-- <form id="{{condition.description}}Symp" action="http://hreader.local/timeline.json?key={{condition.description}}Symptoms">
 					<div class="row">
 						<h4 class="titles span4">Symptom1*</h4>
 						<span class="span6">
@@ -256,10 +226,10 @@
 					<div class="row">
 						<div class="span10"></div>
 						<span class="span2">
-							<input data-role="controlgroup" type="submit" value="submit">
+							<button type="submit" class="btn">Submit</button>
 						</span>
 					</div>
-				</form>
+				</form> -->
 				<hr>
 			</article>		
 			<article class="vitals">
@@ -276,6 +246,17 @@
 					</span>
 					<span class="span2"> 
 						<h1>{{vital.values[vital.values.length-1]| number:0}}</h1>{{vital.units}}
+					</span>
+				</div>
+				<div class="row data" ngChange:false ng-repeat="result in results">
+					<span class="span4">
+						<h4>{{result.description}}</h4>		
+					</span>
+					<span class="span6 graph">		
+						<p><sparkline exp="data" class="sparkline">{{result.values.join(', ')}}</sparkline></p>
+					</span>
+					<span class="span2"> 
+						<h1>{{result.values[result.values.length-1]| number:0}}</h1>{{result.units}}
 					</span>
 				</div>
 				<hr>
