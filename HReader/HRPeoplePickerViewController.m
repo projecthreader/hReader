@@ -35,12 +35,18 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
 #pragma mark - class methods
 
 + (void)setSelectedPatient:(HRMPatient *)patient {
+    NSParameterAssert([NSThread isMainThread]);
+    NSParameterAssert(patient != nil);
     
-    // assert
-    NSAssert([NSThread isMainThread], @"This method must be called on the main thread.");
-    NSAssert(patient, @"Patient must not be nil.");
+    // try to get a permanent object id if this doesn't have one
+    if ([[patient objectID] isTemporaryID]) {
+        NSError *error = nil;
+        NSManagedObjectContext *context = [patient managedObjectContext];
+        if (![context obtainPermanentIDsForObjects:@[ patient ] error:&error]) {
+            HRDebugLog(@"Unable to request permanent IDs for objects: %@", error);
+        }
+    }
     
-    // save to user defaults
     NSString *string = [[[patient objectID] URIRepresentation] absoluteString];
     NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
     [settings setObject:string forKey:HRSelectedPatientURIKey];
@@ -53,16 +59,16 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
      userInfo:@{
          HRSelectedPatientKey : patient
      }];
-
+    
 }
 
 + (HRMPatient *)selectedPatient {
-    
-    // assert
-    NSAssert([NSThread isMainThread], @"This method must be called on the main thread.");
-    
-    // grab context
+    NSParameterAssert([NSThread isMainThread]);
     NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
+    return [self selectedPatientInContext:context];
+}
+
++ (HRMPatient *)selectedPatientInContext:(NSManagedObjectContext *)context {
     
     // grab object id
     NSString *string = [[NSUserDefaults standardUserDefaults] objectForKey:HRSelectedPatientURIKey];
@@ -78,6 +84,7 @@ static NSString * const HRSelectedPatientURIKey = @"HRSelectedPatientURI";
         patient = [[context executeFetchRequest:request error:nil] objectAtIndex:0];
     }
     return patient;
+    
 }
 
 + (NSFetchRequest *)allPatientsFetchRequestInContext:(NSManagedObjectContext *)context {
