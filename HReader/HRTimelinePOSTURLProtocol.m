@@ -54,14 +54,14 @@
     NSString *queryString = [[[self request] URL] query];
     NSDictionary *queryParameters = [HRAPIClient parametersFromQueryString:queryString];
     NSString *action = [queryParameters objectForKey:@"key"];
-    HRDebugLog(@"%@", queryParameters);
+    HRDebugLog(@"Query parameters: %@", queryParameters);
     
     // body parameters
     NSString *bodyString = [[NSString alloc] initWithData:[[self request] HTTPBody] encoding:NSUTF8StringEncoding];
     NSDictionary *bodyParameters = [HRAPIClient parametersFromQueryString:bodyString];
-    HRDebugLog(@"%@", bodyParameters);
+    HRDebugLog(@"Body parameters: %@", bodyParameters);
     
-    // Levels
+    // levels
     if ([action isEqualToString:@"Levels"]) {
         NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
         [context performBlockAndWait:^{
@@ -75,8 +75,12 @@
         }];
         
     }
+    
+    // new med regiment
+    else if ([action isEqualToString:@"MedRegiment"]) {
+        
+    }
     // NewMedication
-    // MedRegiment
     // ConditionSymptoms 
     
     // send redirect
