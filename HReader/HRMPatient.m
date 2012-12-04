@@ -51,26 +51,38 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
 }
 
 + (void)performSync {
-    NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
+    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    [context setParentContext:[HRAppDelegate managedObjectContext]];
     [context performBlock:^{
         NSArray *patients = [self allInContext:context];
+        NSUInteger count = [patients count];
         [patients enumerateObjectsUsingBlock:^(HRMPatient *patient, NSUInteger idx, BOOL *stop) {
-            HRAPIClient *client = [HRAPIClient clientWithHost:patient.host];
-            [client
-             JSONForPatientWithIdentifier:patient.serverID
-             startBlock:nil
-             finishBlock:^(NSDictionary *payload) {
-                 if (![patient isDeleted]) {
-                     if (payload) {
-                         [patient populateWithContentsOfDictionary:payload];
-                         NSError *error = nil;
-                         if (![context save:&error]) {
-                             NSLog(@"Unable to save changes to %@. %@", patient.compositeName, error);
-                         }
-                     }
-                     else { NSLog(@"Unable to sync %@", patient.compositeName); }
-                 }
-             }];
+            
+            // gather resources
+            NSString *host = patient.host;
+            NSString *identifier = patient.serverID;
+            HRAPIClient *client = [HRAPIClient clientWithHost:host];
+            
+            // perform download
+            HRDebugLog(@"Downloading %@:%@", host, identifier);
+            NSDictionary *payload = [client JSONForPatientWithIdentifier:identifier];
+            if (payload) {
+                [patient populateWithContentsOfDictionary:payload];
+            }
+#if DEBUG
+            else {
+                HRDebugLog(@"Unable to download %@:%@", host, identifier);
+            }
+#endif
+            
+            // save if needed
+            if (idx == count - 1 && [context hasChanges]) {
+                NSError *error = nil;
+                if (![context save:&error]) {
+                    HRDebugLog(@"Unable to save after patient sync %@", error);
+                }
+            }
+            
         }];
     }];
 }
