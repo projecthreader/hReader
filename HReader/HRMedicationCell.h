@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class HRMEntry;
+
 @interface HRMedicationCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *medicationName;
 @property (assign) BOOL editing;
 @property (weak, nonatomic) IBOutlet UITextView *commentsTextView;
+@property (strong, nonatomic) HRMEntry *medication;
 
 - (IBAction)setEditMode:(UIButton *)sender;
 

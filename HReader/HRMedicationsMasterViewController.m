@@ -277,13 +277,17 @@
     HRMedicationCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MedicationCellReuseID" forIndexPath:indexPath];
     
     HRMPatient *currentPatient = [HRPeoplePickerViewController selectedPatient];
-    
     HRMEntry *medication = [currentPatient.medications objectAtIndex:indexPath.item];
+    [cell setMedication:medication];
     
-    medication.comments = @"This is a comment.";//TODO: LMD remove/ set to empty string?
+    if(cell.medication.comments == nil){
+        [cell.commentsTextView setText:@"-"];//TODO: LMD remove/ set to - string?
+    }else{
+        [cell.commentsTextView setText:cell.medication.comments];
+    }
     
-    [cell.medicationName setText:medication.desc];//set medication name
-    [cell.commentsTextView setText:medication.comments];
+    [cell.medicationName setText:[cell.medication.desc uppercaseString]];//set medication name\
+    
     
     return cell;
 }
