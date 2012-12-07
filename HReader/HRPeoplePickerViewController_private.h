@@ -22,11 +22,18 @@
 
 /*
  
- Fetch the selected patient from the main application managed object context.
- This method will get the stored object id from user defaults and provide an
- object back. This must be called on the main thread.
+ Calls `selectedPatientInContext:` passing the main application context. This
+ must be called on the main thread.
  
  */
 + (HRMPatient *)selectedPatient;
+
+/*
+ 
+ Fetch the selected patient from the provided context. This method will get the
+ stored object id from user defaults and respond with a patient object.
+ 
+ */
++ (HRMPatient *)selectedPatientInContext:(NSManagedObjectContext *)context;
 
 @end
