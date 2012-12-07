@@ -12,8 +12,14 @@
 
 @interface HRMedicationCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *medicationName;
-@property (assign) BOOL editing;
+@property (weak, nonatomic) IBOutlet UITextView *quantityTextView;
+@property (weak, nonatomic) IBOutlet UITextView *doseTextView;
+@property (weak, nonatomic) IBOutlet UITextView *directionsTextView;
+@property (weak, nonatomic) IBOutlet UITextView *prescriberTextView;
 @property (weak, nonatomic) IBOutlet UITextView *commentsTextView;
+
+
+@property (assign) BOOL editing;
 @property (strong, nonatomic) HRMEntry *medication;
 
 - (IBAction)setEditMode:(UIButton *)sender;

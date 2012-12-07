@@ -8,6 +8,7 @@
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dose" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="patientComments" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="reaction" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="severity" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
@@ -39,7 +40,7 @@
         <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="timelineLevels" inverseEntity="Patient" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Entry" positionX="0" positionY="0" width="128" height="255"/>
+        <element name="Entry" positionX="0" positionY="0" width="128" height="270"/>
         <element name="Patient" positionX="0" positionY="0" width="128" height="270"/>
         <element name="TimelineLevel" positionX="160" positionY="192" width="128" height="90"/>
     </elements>

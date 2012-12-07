@@ -278,15 +278,35 @@
     
     HRMPatient *currentPatient = [HRPeoplePickerViewController selectedPatient];
     HRMEntry *medication = [currentPatient.medications objectAtIndex:indexPath.item];
+    
     [cell setMedication:medication];
     
     if(cell.medication.comments == nil){
-        [cell.commentsTextView setText:@"-"];//TODO: LMD remove/ set to - string?
-    }else{
-        [cell.commentsTextView setText:cell.medication.comments];
+        cell.medication.comments = @"-";
     }
     
-    [cell.medicationName setText:[cell.medication.desc uppercaseString]];//set medication name\
+    //testing save dictionary
+    if(cell.medication.patientComments == nil){
+        //codes,dose,date,desc,endDate,startDate,status,value,type,patient,reaction,severity
+        NSArray *keys = [NSArray arrayWithObjects:@"quantity", @"dose", @"directions", @"prescriber", nil];
+        NSArray *objects = [NSArray arrayWithObjects:@"-", @"-", @"-", @"-", nil];
+        cell.medication.patientComments = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+    }
+    
+//    NSLog(@"patientCommentsFrom MasterView:");
+//    for (id key in cell.medication.patientComments) {
+//        
+//        NSLog(@"key: %@, value: %@", key, [cell.medication.patientComments objectForKey:key]);
+//        
+//    }
+    
+    //set text from medication fields
+    [cell.medicationName setText:[cell.medication.desc uppercaseString]];//set medication name
+    [cell.commentsTextView setText:cell.medication.comments];
+    [cell.quantityTextView setText:[cell.medication.patientComments objectForKey:@"quantity"]];
+    [cell.doseTextView setText:[cell.medication.patientComments objectForKey:@"dose"]];
+    [cell.directionsTextView setText:[cell.medication.patientComments objectForKey:@"directions"]];
+    [cell.prescriberTextView setText:[cell.medication.patientComments objectForKey:@"prescriber"]];
     
     
     return cell;

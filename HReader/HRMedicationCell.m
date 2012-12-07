@@ -65,14 +65,26 @@
     if (flag == YES){
         // Change views to edit mode.
         //TODO: LMD add cursor?
-        self.commentsTextView.layer.borderWidth = 1.0f;
-        self.commentsTextView.layer.borderColor = [[UIColor grayColor] CGColor];
-        [self.commentsTextView setEditable:YES];
+        
+        [self setEditStyleForTextView:self.quantityTextView];
+        [self setEditStyleForTextView:self.doseTextView];
+        [self setEditStyleForTextView:self.directionsTextView];
+        [self setEditStyleForTextView:self.prescriberTextView];
+        [self setEditStyleForTextView:self.commentsTextView];
     }
     else {
         
         //save data
         [self.medication setComments:self.commentsTextView.text];
+        NSArray *keys = [NSArray arrayWithObjects:@"quantity", @"dose", @"directions", @"prescriber", nil];
+        NSArray *objects = [NSArray arrayWithObjects:
+                            self.quantityTextView.text,
+                            self.doseTextView.text,
+                            self.directionsTextView.text,
+                            self.prescriberTextView.text,
+                            nil];
+        [self.medication setPatientComments:[NSDictionary dictionaryWithObjects:objects forKeys:keys]];
+        
         NSManagedObjectContext *context = [self.medication managedObjectContext];//[HRAppDelegate managedObjectContext];
         NSError *error;
         if (![context save:&error]) {
@@ -81,9 +93,25 @@
         
         
         //change views to noneditable
-        self.commentsTextView.layer.borderColor = [[UIColor whiteColor] CGColor];
-        [self.commentsTextView setEditable:NO];
+        [self finishEditForTextView:self.quantityTextView];
+        [self finishEditForTextView:self.doseTextView];
+        [self finishEditForTextView:self.directionsTextView];
+        [self finishEditForTextView:self.prescriberTextView];
+        [self finishEditForTextView:self.commentsTextView];
+//        self.commentsTextView.layer.borderColor = [[UIColor whiteColor] CGColor];
+//        [self.commentsTextView setEditable:NO];
     }
+}
+
+- (void) setEditStyleForTextView:(UITextView *)textView{
+    textView.layer.borderWidth = 1.0f;
+    textView.layer.borderColor = [[UIColor grayColor] CGColor];
+    [textView setEditable:YES];
+}
+
+- (void) finishEditForTextView:(UITextView *)textView{
+    textView.layer.borderColor = [[UIColor whiteColor] CGColor];
+    [textView setEditable:NO];
 }
 
 @end
