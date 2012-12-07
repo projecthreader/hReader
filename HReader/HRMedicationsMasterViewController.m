@@ -293,13 +293,6 @@
         cell.medication.patientComments = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
     }
     
-//    NSLog(@"patientCommentsFrom MasterView:");
-//    for (id key in cell.medication.patientComments) {
-//        
-//        NSLog(@"key: %@, value: %@", key, [cell.medication.patientComments objectForKey:key]);
-//        
-//    }
-    
     //set text from medication fields
     [cell.medicationName setText:[cell.medication.desc uppercaseString]];//set medication name
     [cell.commentsTextView setText:cell.medication.comments];
@@ -331,20 +324,35 @@
      delay:0.0
      options:options
      animations:^{
-         CGRect rect;
+         //to move header view up by the header view's height
+         CGFloat newHeaderOriginY = self.headerView.frame.origin.y -
+                                               self.headerView.frame.size.height;
+         //to move collection view up by the header view's height
+         CGFloat newCollectionOriginY = self.collectionView.frame.origin.y -
+                                                   self.headerView.frame.size.height;
+         self.headerView.frame = CGRectMake(self.headerView.frame.origin.x,
+                                            newHeaderOriginY,
+                                            self.headerView.frame.size.width,
+                                            self.headerView.frame.size.height);
+         self.collectionView.frame = CGRectMake(self.collectionView.frame.origin.x,
+                                            newCollectionOriginY,
+                                            self.collectionView.frame.size.width,
+                                            self.collectionView.frame.size.height);
          
-         // header view
-         rect = self.headerView.frame;
-         rect = CGRectMake(0.0,
-                           -1.0 * rect.size.height,
-                           rect.size.width,
-                           rect.size.height);
-         self.headerView.frame = rect;
-         
-         // collection view
-         self.collectionView.frame = self.view.bounds;//TODO: LMD- fix to not hide things clicked
-         //from too large to fit in top frame area (get click position and center)
-         //Also- allow header to remain in view from header fields keyboard click
+//         CGRect rect;
+//         
+//         // header view
+//         rect = self.headerView.frame;
+//         rect = CGRectMake(0.0,
+//                           -1.0 * rect.size.height,
+//                           rect.size.width,
+//                           rect.size.height);
+//         self.headerView.frame = rect;
+//         
+//         // collection view
+//         self.collectionView.frame = self.view.bounds;//TODO: LMD- fix to not hide things clicked
+//         //from too large to fit in top frame area (get click position and center)
+//         //Also- allow header to remain in view from header fields keyboard click
          
      }
      completion:^(BOOL finished) {
@@ -361,23 +369,40 @@
      delay:0.0
      options:options
      animations:^{
-         CGRect rect;
+         //CGRect rect;
          
-         // header view
-         rect = self.headerView.frame;
-         rect = CGRectMake(0.0,
-                           0.0,
-                           rect.size.width,
-                           rect.size.height);
-         self.headerView.frame = rect;
+         id keyboardFrame = [notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey];
          
-         // collection view
-         rect = CGRectMake(0.0,
-                           rect.size.height,
-                           rect.size.width,
-                           self.collectionView.bounds.size.height);
-                           //self.view.bounds.size.height - rect.size.height);
-         self.collectionView.frame = rect;
+         //to move header view down by the header view's height
+         CGFloat newHeaderOriginY = self.headerView.frame.origin.y +
+         self.headerView.frame.size.height;
+         //to move collection view down by the header view's height
+         CGFloat newCollectionOriginY = self.collectionView.frame.origin.y +
+         self.headerView.frame.size.height;
+         self.headerView.frame = CGRectMake(self.headerView.frame.origin.x,
+                                            newHeaderOriginY,
+                                            self.headerView.frame.size.width,
+                                            self.headerView.frame.size.height);
+         self.collectionView.frame = CGRectMake(self.collectionView.frame.origin.x,
+                                                newCollectionOriginY,
+                                                self.collectionView.frame.size.width,
+                                                self.collectionView.frame.size.height);
+         
+//         // header view
+//         rect = self.headerView.frame;
+//         rect = CGRectMake(0.0,
+//                           0.0,
+//                           rect.size.width,
+//                           rect.size.height);
+//         self.headerView.frame = rect;
+//         
+//         // collection view
+//         rect = CGRectMake(0.0,
+//                           rect.size.height,
+//                           rect.size.width,
+//                           self.collectionView.bounds.size.height);
+//                           //self.view.bounds.size.height - rect.size.height);
+//         self.collectionView.frame = rect;
          
      }
      completion:^(BOOL finished) {

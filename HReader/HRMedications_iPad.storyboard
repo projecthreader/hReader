@@ -14,25 +14,25 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="ypw-xe-bS6">
-                                <rect key="frame" x="20" y="228" width="984" height="412"/>
+                                <rect key="frame" x="0.0" y="228" width="1024" height="412"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="KHi-ps-rCU">
-                                    <size key="itemSize" width="325" height="220"/>
+                                    <size key="itemSize" width="304" height="180"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="34" minY="0.0" maxX="34" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MedicationCellReuseID" id="Vul-7l-KvU" customClass="HRMedicationCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="340" height="180"/>
+                                        <rect key="frame" x="34" y="0.0" width="296" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="340" height="180"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="296" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sFT-pJ-8Fx" userLabel="Button - Edit">
-                                                    <rect key="frame" x="264" y="1" width="40" height="25"/>
+                                                    <rect key="frame" x="256" y="1" width="40" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <state key="normal" title="Edit" image="edit.png">
@@ -46,82 +46,82 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Medication Name" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" id="LH0-wW-1KA">
-                                                    <rect key="frame" x="9" y="0.0" width="233" height="25"/>
+                                                    <rect key="frame" x="1" y="0.0" width="233" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" id="dFE-Ok-xo7" userLabel="Hor. Line">
-                                                    <rect key="frame" x="9" y="28" width="295" height="1"/>
+                                                    <rect key="frame" x="1" y="28" width="295" height="1"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="QUANTITY:" lineBreakMode="tailTruncation" minimumFontSize="10" id="KiF-Zh-09v">
-                                                    <rect key="frame" x="9" y="31" width="142" height="21"/>
+                                                    <rect key="frame" x="0.0" y="31" width="142" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Quantity." id="pBi-1F-88b" userLabel="Text View - Quantity">
-                                                    <rect key="frame" x="0.0" y="48" width="142" height="24"/>
+                                                    <rect key="frame" x="2" y="48" width="142" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="DOSE:" lineBreakMode="tailTruncation" minimumFontSize="10" id="XhC-6x-LFd">
-                                                    <rect key="frame" x="159" y="31" width="142" height="21"/>
+                                                    <rect key="frame" x="151" y="31" width="142" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Dose." id="Y8n-Fr-Njk" userLabel="Text View - Dose">
-                                                    <rect key="frame" x="150" y="48" width="142" height="24"/>
+                                                    <rect key="frame" x="152" y="48" width="142" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="DIRECTIONS:" lineBreakMode="tailTruncation" minimumFontSize="10" id="mjI-S1-Xka">
-                                                    <rect key="frame" x="9" y="75" width="142" height="21"/>
+                                                    <rect key="frame" x="1" y="75" width="142" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Directions." id="IzV-8z-WhT" userLabel="Text View - Directions">
-                                                    <rect key="frame" x="0.0" y="93" width="142" height="24"/>
+                                                    <rect key="frame" x="2" y="93" width="142" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PRESCRIBER:" lineBreakMode="tailTruncation" minimumFontSize="10" id="Lec-9E-B6k">
-                                                    <rect key="frame" x="159" y="75" width="142" height="21"/>
+                                                    <rect key="frame" x="151" y="75" width="142" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Prescriber." id="naL-tS-tyn" userLabel="Text View - Prescriber">
-                                                    <rect key="frame" x="150" y="93" width="142" height="24"/>
+                                                    <rect key="frame" x="152" y="93" width="142" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="COMMENTS:" lineBreakMode="tailTruncation" minimumFontSize="10" id="btf-Nt-Ex8">
-                                                    <rect key="frame" x="9" y="122" width="142" height="21"/>
+                                                    <rect key="frame" x="1" y="122" width="142" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="-" id="5nn-PN-wcm" userLabel="Text View - Comments">
-                                                    <rect key="frame" x="0.0" y="140" width="295" height="26"/>
+                                                    <rect key="frame" x="2" y="140" width="292" height="26"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <inset key="contentInset" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
@@ -132,7 +132,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="customSize" width="340" height="180"/>
+                                        <size key="customSize" width="296" height="180"/>
                                         <connections>
                                             <outlet property="commentsTextView" destination="5nn-PN-wcm" id="wzj-EU-fb1"/>
                                             <outlet property="directionsTextView" destination="IzV-8z-WhT" id="EhW-1k-9ly"/>

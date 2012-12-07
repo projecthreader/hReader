@@ -106,6 +106,7 @@
 - (void) setEditStyleForTextView:(UITextView *)textView{
     textView.layer.borderWidth = 1.0f;
     textView.layer.borderColor = [[UIColor grayColor] CGColor];
+    textView.layer.cornerRadius = 5;
     [textView setEditable:YES];
 }
 
