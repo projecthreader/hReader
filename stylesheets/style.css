@@ -7,10 +7,12 @@ body {
 	text-align: left;
 	vertical-align: center;
 }
+
 #taglines h1 {
 	font-weight: 200;
 	padding: 40px 0;
 }
+
 h1 {
 	text-align: left;
 	color: #444444;
@@ -32,20 +34,23 @@ h2 {
 	border-bottom: 1px solid #ccc;
 	text-transform: uppercase;
 }
+
 h3 {
 	font-weight: 200;
 	font-size: 20px;
 	margin-bottom: 5px;
 }
+
 h4 {
 	font-weight: 100;
 	font-size: 24px;
 	margin-bottom: 5px;
-
 }
+
 .tagline {
 	align: left;
 }
+
 a {
 	color: #D61F29;
 }
@@ -53,6 +58,7 @@ a {
 a:hover {
 	color: #999;
 }
+
 ul {
 	list-style-type: none;
 	margin-left: 0;
@@ -66,11 +72,12 @@ h1.logo {
 #openid a {
 	border: none !important;
 }
+
 .navbar-inner {
   background: #EEE;
 }
 
-.navbar .navbar-fixed-top{
+.navbar .navbar-fixed-top {
 	overflow: hidden;
 	width: 100%;
 }
@@ -132,6 +139,7 @@ h1.logo {
 myCarousel {
 		overflow: hidden;
 }
+
 #sections {
   padding-bottom: 10px;
 }
@@ -142,6 +150,24 @@ myCarousel {
 
 #screen_shots .row {
 	padding-top: 30px;
+}
+
+#articles .row {
+  margin-top: 25px;
+  margin-bottom: 40px;
+}
+
+.date .month {
+	display: block;
+  font-size: 1.5em;
+  margin-bottom: .5em;
+	margin-bottom: 10px;
+}
+
+.date .year {
+	display: block;
+  font-size: 2.5em;
+  color: #D61F29;
 }
 
 .caption {
@@ -163,6 +189,7 @@ myCarousel {
 #footer.row {
 	margin-left: 0;
 }
+
 #footer h3 {
 	font-weight: normal;
 	padding-top: 15px;
@@ -172,6 +199,7 @@ myCarousel {
 #footer ul {
 	list-style-type: none;
 	font-size: 14px;
+	padding-right: 20px;
 }
 
 #footer a {
@@ -205,9 +233,11 @@ dt {
 	border-bottom: 1px solid #ccc;
 	text-transform: uppercase;
 }
+
 dd { 
 	margin-left: 0;
 }
+
 #taglines .btn {
 	font-size: 18px;
 }
@@ -270,19 +300,6 @@ a.handle {
 	font-weight: bold;
 }
 
-#date .month {
-	display: block;
-	font-size: 18px;
-	font-weight: bold;
-	margin-bottom: 10px;
-}
-
-#date .year {
-	display: block;
-	color: #999;
-	font-size: 36px;
-}
-
 #documents li {
 	padding-bottom: 15px;
 }
@@ -317,6 +334,7 @@ h1.tag strong {
 	height: 25px;
 	margin-bottom: 5px;
 }
+
 #menu {
 	margin-left:0;
 }

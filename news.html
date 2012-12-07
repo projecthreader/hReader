@@ -44,44 +44,111 @@
 				</div>
 			</div>
 		</div>
-		<div class="container content">
+		<div class="container content" id="news">
 			<h1>Latest News</h1>
 			<div class="row">
-				<div class="span1" id="date">
-					<span class="month">May</span>
-					<span class="year">2012</span>
-				</div>
-				<div class="span11" id="article">
-					<p>
-						The hReader just released two new applets:  Oxygen Saturation and Respiratory Rate!
-					</p>
-				</div>
-			</div>
+			  <div class="span8" id="articles">
+          <div class="row">
+            <div class="span2 date">
+              <span class="month">November</span>
+              <span class="year">2012</span>
+            </div>
+            <div class="span6 article">
+              <p>
+                The hReader just released a new applets:  Total Cholesterol!
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span2 date">
+              <span class="month">October</span>
+              <span class="year">2012</span>
+            </div>
+            <div class="span6 article">
+              <p>
+                hReader team presents hReader at OSEHRA Open Source EHR Summit & Workshop in Washington DC.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span2 date">
+              <span class="month">September</span>
+              <span class="year">2012</span>
+            </div>
+            <div class="span6 article">
+              <p>
+                hReader tests favorably against DISA STIG security measures.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span2 date">
+              <span class="month">May</span>
+              <span class="year">2012</span>
+            </div>
+            <div class="span6 article">
+              <p>
+                The hReader just released two new applets:  Oxygen Saturation and Respiratory Rate!
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="span4" id="twitter">
+          <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>          
+          <script>
+            new TWTR.Widget({
+              version: 2,
+              type: 'profile',
+              rpp: 4,
+              interval: 30000,
+              width: 'auto',
+              height: 300,
+              theme: {
+                shell: {
+                  background: '#eeeeee',
+                  color: '#888'
+                },
+                tweets: {
+                  background: '#ffffff',
+                  color: '#000',
+                  links: '#A6131E'
+                }
+              },
+              features: {
+                scrollbar: false,
+                loop: false,
+                live: false,
+                behavior: 'all'
+              }
+            }).render().setUser('projecthreader').start();
+          </script>
+        </div>
+      </div>
  			<div class="row" id="footer">
  				<div class="span4" id="twitter">
- 					<h3><a href="http://www.twitter.com/projecthreader">TWITTER UPDATES</a></h3>
+ 					<h3><a href="news.html">UPDATES</a></h3>
  					<ul>
  						<li>
- 							<a href="http://www.twitter.com/projecthreader" class="handle">hreader</a>: 
- 							Just released two new applets!
+ 							hReader presented at OSEHRA Open Source EHR Summit
  						</li>
  					</ul>
  				</div>
  				<div class="span4" id="menu">
  					<h3><a href="news.html">LATEST APPLETS</a></h3>
  					<ul>
+ 					  <li>Total Cholesterol</li>
  						<li>Oxygen Saturation</li>
- 						<li>Respiratory Rate</li>
  					</ul>
  				</div>
  				<div class="span4" id="contact">
  					<h3><a href="contact.html">CONTACT</a></h3>
 					<ul>
-						<li>Join the Announcement List</li>
+						<li><a href="mailto:talk@hreader.org">Talk list</a></li>
+						<li><a href="mailto:dev@hreader.org">Developer list</a></li>
 					</ul>
  				</div>
  			</div>
- 			 			<div class="row" id="postscript">
+  		<div class="row" id="postscript">
  				<div class="span1" id="host">
  					<a href="http://github.com/">
  						<img src="images/github_icon.png" alt="GitHub Logo"/>
