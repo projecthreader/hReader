@@ -32,8 +32,8 @@
 					<h3 class="span6">Taken</h3>
 					<h3 class="span2">log</h3>
 				</div>
-				<div class="row" >
-					<form class="hidden" id="newReg" action="http://hreader.local/timeline.json?key=NewMedication">
+				<div class="row">
+					<form class="hidden" id="newReg" action="http://hreader.local/timeline.json?key=NewMedication" method="post">
 						<span class="span4">
 							<input ng-model="meds" placeholder="New Medication">
 						</span>
@@ -62,18 +62,15 @@
 									<option>Special</option>
 								   <option value="PRN">As needed</option>
 								   <option value="HS">At daytime</option>
-								   <option value="QOD">Every other day</option>
 								   <option value="AC">Before Meals</option>
 								   <option value="PC">After Meals</option>
 								</select>
 							</fieldset>
 						</span>
-						<span class="span2">
 							<fieldset data-role="controlgroup" data-type="horizontal">
-								<button type="submit" id="remove" class="symbolBTN"><i class="icon-check"></i></button>
-								<buttom class="btn symbolBTN"  onclick="$('#newReg').hide()" ><i class="icon-remove"></i></button>
+								<button type="submit" class="btn span1 symbolBTN"><i class="icon-check"></i></button>
+								<buttom type="submit" class="btn span1 symbolBTN"  onclick="$('#newReg').hide()" ><i class="icon-remove"></i></button>
 							</fieldset>
-						</span>
 					</form>
 				</div>
 				<!-- <div class="row" ngChange:false ng-repeat="medication in medications"> -->
@@ -99,7 +96,6 @@
 						<div class="span10"></div>
 						<span class="span2">
 							<button type="submit" class="btn">Submit</button>
-							
 						</span>
 					</div>
 				</form>

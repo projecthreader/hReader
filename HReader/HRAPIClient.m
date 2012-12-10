@@ -146,13 +146,13 @@ static NSMutableDictionary *allClients = nil;
     [self patientFeed:completion ignoreCache:NO];
 }
 
-- (void)JSONForPatientWithIdentifier:(NSString *)identifier startBlock:(void (^) (void))startBlock finishBlock:(void (^) (NSDictionary *payload))finishBlock {
-    dispatch_async(_requestQueue, ^{
+- (NSDictionary *)JSONForPatientWithIdentifier:(NSString *)identifier {
+    __block NSDictionary *dictionary = nil;
+    dispatch_sync(_requestQueue, ^{
         
         // start block
         hr_dispatch_main(^{
             [[UIApplication sharedApplication] hr_pushNetworkOperation];
-            if (startBlock) { startBlock(); }
         });
         
         // create request
@@ -167,7 +167,6 @@ static NSMutableDictionary *allClients = nil;
         
         // create patient
         NSError *JSONError = nil;
-        NSDictionary *dictionary = nil;
         if (data && [response statusCode] == 200) {
             dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
         }
@@ -175,6 +174,25 @@ static NSMutableDictionary *allClients = nil;
         // finish block
         hr_dispatch_main(^{
             [[UIApplication sharedApplication] hr_popNetworkOperation];
+        });
+        
+    });
+    return dictionary;
+}
+
+- (void)JSONForPatientWithIdentifier:(NSString *)identifier startBlock:(void (^) (void))startBlock finishBlock:(void (^) (NSDictionary *payload))finishBlock {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        // start block
+        hr_dispatch_main(^{
+            if (startBlock) { startBlock(); }
+        });
+        
+        // run request
+        NSDictionary *dictionary = [self JSONForPatientWithIdentifier:identifier];
+        
+        // finish block
+        hr_dispatch_main(^{
             if (finishBlock) { finishBlock(dictionary); }
         });
         

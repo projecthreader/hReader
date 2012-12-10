@@ -47,9 +47,21 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 @property (nonatomic, retain) NSNumber *relationship;
 @property (nonatomic, retain) NSSet *timelineLevels;
 
-#pragma mark - transient properties
+#pragma mark - helper properties
 
+/*
+ 
+ Returns the first and last name concatenated.
+ 
+ */
 @property (nonatomic, readonly) NSString *compositeName;
+
+/*
+ 
+ Returns the first letter of both the first and last name, concatenated and
+ uppercased.
+ 
+ */
 @property (nonatomic, readonly) NSString *initials;
 @property (nonatomic, readonly) NSString *genderString;
 @property (nonatomic, readonly) NSString *relationshipString;
@@ -69,7 +81,7 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 
 /*
  
- 
+ Kick off a network sync. This method returns immediately.
  
  */
 + (void)performSync;
@@ -93,7 +105,8 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 
 /*
  
- 
+ Generate the JSON document that is used to render the patient timeline. Use
+ the `start` and `end` parameters to set a scope on the returned data.
  
  */
 - (NSData *)timelineJSONPayloadWithStartDate:(NSDate *)start endDate:(NSDate *)end error:(NSError **)error;

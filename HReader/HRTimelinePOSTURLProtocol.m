@@ -49,39 +49,57 @@
 
 - (void)startLoading {
     id<NSURLProtocolClient> client = [self client];
+#define PRIVATE_CONTEXT 1
+#if PRIVATE_CONTEXT
+    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    [context setParentContext:[HRAppDelegate managedObjectContext]];
+#else
+    NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
+#endif
+    
     
     // query string parameters
     NSString *queryString = [[[self request] URL] query];
     NSDictionary *queryParameters = [HRAPIClient parametersFromQueryString:queryString];
     NSString *action = [queryParameters objectForKey:@"key"];
-    HRDebugLog(@"%@", queryParameters);
+    HRDebugLog(@"Query parameters: %@", queryParameters);
     
     // body parameters
     NSString *bodyString = [[NSString alloc] initWithData:[[self request] HTTPBody] encoding:NSUTF8StringEncoding];
     NSDictionary *bodyParameters = [HRAPIClient parametersFromQueryString:bodyString];
-    HRDebugLog(@"%@", bodyParameters);
+    HRDebugLog(@"Body parameters: %@", bodyParameters);
     
-    // Levels
-    if ([action isEqualToString:@"Levels"]) {
-        NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
-        [context performBlockAndWait:^{
-            HRMTimelineLevel *level = [HRMTimelineLevel instanceInContext:context];
-            level.patient = [HRPeoplePickerViewController selectedPatient];
-            level.data = bodyParameters;
-            NSError *error = nil;
-            if (![context save:&error]) {
-                HRDebugLog(@"Failed to save levels: %@", error);
-            }
-        }];
+    [context performBlockAndWait:^{
+        HRMPatient *patient = [HRPeoplePickerViewController selectedPatientInContext:context];
         
-    }
-    // NewMedication
-    // MedRegiment
-    // ConditionSymptoms 
+        // levels
+        if ([action isEqualToString:@"Levels"]) {
+            HRMTimelineLevel *level = [HRMTimelineLevel instanceInContext:context];
+            level.patient = patient;
+            level.data = bodyParameters;
+        }
+        
+        // new medication
+        else if ([action isEqualToString:@"NewMedication"]) {
+//            special: select-choice-add
+//            dosage: select-choice-by
+//            frequency: select-choice-freq
+        }
+        
+        // new med regiment
+        else if ([action isEqualToString:@"MedRegiment"]) {
+            
+        }
+        
+        // save
+        NSError *error = nil;
+        if (![context save:&error]) { HRDebugLog(@"Failed to save levels: %@", error); }
+        NSLog(@"Passed the save.");
+        
+    }];
     
     // send redirect
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[HRTimelinePOSTURLProtocol indexURL]];
-    [request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
     NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc]
                                    initWithURL:[[self request] URL]
                                    statusCode:302
