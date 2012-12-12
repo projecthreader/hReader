@@ -58,6 +58,9 @@
                  [strongSelf keyboardWillHide:notification];
              }
          }];
+        
+        //add data
+        [self initializeData];
     }
     return self;
 }
@@ -201,30 +204,10 @@
     
     HRMedicationCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MedicationCellReuseID" forIndexPath:indexPath];
     
-    HRMPatient *currentPatient = [HRPeoplePickerViewController selectedPatient];
-    HRMEntry *medication = [currentPatient.medications objectAtIndex:indexPath.item];
-    
-    [cell setMedication:medication];
+    [cell setMedication:[self.medicationList objectAtIndex:indexPath.item]];
     
     NSLog(@"dequeuing cell- medication name: %@", cell.medication.desc);
     NSLog(@"Index: %d", indexPath.item);
-    
-    if(cell.medication.comments == nil){
-        cell.medication.comments = @"-";
-    }
-    
-    //testing save dictionary
-    if(cell.medication.patientComments == nil){
-        //codes,dose,date,desc,endDate,startDate,status,value,type,patient,reaction,severity
-        NSArray *keys = [NSArray arrayWithObjects:@"quantity", @"dose", @"directions", @"prescriber", nil];
-        NSArray *objects = [NSArray arrayWithObjects:@"-", @"-", @"-", @"-", nil];
-        [cell.medication setPatientComments:[NSDictionary dictionaryWithObjects:objects forKeys:keys]];
-        NSManagedObjectContext *context = [cell.medication managedObjectContext];
-        NSError *error;
-        if (![context save:&error]) {
-            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-        }
-    }
     
     //set text from medication fields
     [cell.medicationName setText:[cell.medication.desc uppercaseString]];//set medication name
@@ -233,7 +216,6 @@
     [cell.doseTextView setText:[cell.medication.patientComments objectForKey:@"dose"]];
     [cell.directionsTextView setText:[cell.medication.patientComments objectForKey:@"directions"]];
     [cell.prescriberTextView setText:[cell.medication.patientComments objectForKey:@"prescriber"]];
-    
     
     return cell;
 }
@@ -328,5 +310,34 @@
     [self setMedicationRefillLabels:nil];
     [self setMedicationRefillLabels:nil];
     [super viewDidUnload];
+}
+
+- (void)initializeData{
+    NSLog(@"Initializing data");
+    HRMPatient *currentPatient = [HRPeoplePickerViewController selectedPatient];
+    self.medicationList = [currentPatient medications];
+    
+    for(NSUInteger i=0;i<self.medicationList.count;i++){
+        HRMEntry *med = [self.medicationList objectAtIndex:i];
+        if(med.comments == nil){
+            med.comments = @"-";
+        }
+        
+        if(med.patientComments == nil){
+            NSLog(@"patient comments for entry %d are nil, setting to dashes", i);
+            //codes,dose,date,desc,endDate,startDate,status,value,type,patient,reaction,severity
+            NSArray *keys = [NSArray arrayWithObjects:@"quantity", @"dose", @"directions", @"prescriber", nil];
+            NSArray *objects = [NSArray arrayWithObjects:@"-", @"-", @"-", @"-", nil];
+            [med setPatientComments:[NSDictionary dictionaryWithObjects:objects forKeys:keys]];
+        }
+        
+        NSManagedObjectContext *context = [med managedObjectContext];
+        NSError *error;
+        if (![context save:&error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
+    }
+    
+    
 }
 @end

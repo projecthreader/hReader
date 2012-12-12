@@ -17,7 +17,7 @@
                                 <rect key="frame" x="0.0" y="228" width="1024" height="412"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="KHi-ps-rCU">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="KHi-ps-rCU" customClass="HRMedicationsCollectionViewLayout">
                                     <size key="itemSize" width="304" height="180"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -545,6 +545,9 @@
                 <relationship kind="outlet" name="quantityTextView" candidateClass="UITextView"/>
             </relationships>
         </class>
+        <class className="HRMedicationsCollectionViewLayout" superclassName="UICollectionViewFlowLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRMedicationsCollectionViewLayout.h"/>
+        </class>
         <class className="HRMedicationsMasterViewController" superclassName="HRContentViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRMedicationsMasterViewController.h"/>
             <relationships>
@@ -565,6 +568,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

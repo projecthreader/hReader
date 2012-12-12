@@ -28,6 +28,7 @@
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *medicationRefillLabels;
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *refillLocationLabels;
 
-
+//data
+@property (nonatomic, copy) NSArray *medicationList;
 
 @end
