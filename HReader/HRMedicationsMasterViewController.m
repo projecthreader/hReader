@@ -33,6 +33,7 @@
     if (self) {
         self.title = @"Medications";
         
+        //add keyboard show observer
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
         __weak HRMedicationsMasterViewController *weakSelf = self;
         [center
@@ -45,6 +46,8 @@
                  [strongSelf keyboardWillShow:notification];
              }
          }];
+        
+        //add keyboard hide observer
         [center
          addObserverForName:UIKeyboardWillHideNotification
          object:nil
@@ -77,36 +80,6 @@
     
     // synthetic info
     NSDictionary *syntheticInfo = patient.syntheticInfo;
-    
-    // date of birth
-//    if ([self.dateOfBirthTitleLabel.text isEqualToString:@"DOB:"]) {
-//        self.dateOfBirthLabel.text = [patient.dateOfBirth hr_mediumStyleDate];
-//    }
-//    else {
-//        self.dateOfBirthLabel.text = [patient.dateOfBirth hr_ageString];
-//    }
-//    
-//    // allergies
-//    {
-//        NSArray *allergies = [patient.syntheticInfo objectForKey:@"allergies"];
-//        NSUInteger count = [allergies count];
-//        self.allergiesLabel.textColor = [UIColor blackColor];
-//        if (count) {
-//            NSMutableString *string = [[allergies objectAtIndex:0] mutableCopy];
-//            if (count > 1) {
-//                self.allergiesLabel.textColor = [UIColor hr_redColor];
-//                [string appendFormat:@", %lu more", (unsigned long)(count - 1)];
-//            }
-//            if ([string length] > 0) {
-//                self.allergiesLabel.textColor = [UIColor hr_redColor];
-//                self.allergiesLabel.text = string;
-//            }
-//            else {
-//                self.allergiesLabel.text = @"None";
-//            }
-//        }
-//        else { self.allergiesLabel.text = @"None"; }
-//    }
     
     // medications
     {
@@ -203,28 +176,7 @@
     }
     
     // applets
-//    {
-//        NSMutableArray *views = [NSMutableArray array];
-//        NSArray *identifiers = patient.applets;
-//        NSString *token = patient.identityToken;
-//        [identifiers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//            NSMutableDictionary *applet = [[HRAppletConfigurationViewController appletWithIdentifier:obj] mutableCopy];
-//            [applet setObject:token forKey:HRAppletTilePatientIdentityTokenKey];
-//            if ([obj rangeOfString:@"org.mitre.hreader"].location == 0) {
-//                [applet setObject:patient forKey:@"__private_patient__"];
-//            }
-//            if (applet) {
-//                Class c = NSClassFromString([applet objectForKey:@"class_name"]);
-//                [views addObject:[c tileWithUserInfo:applet]];
-//            }
-//            else { NSLog(@"Unable to load applet with identifier %@", obj); }
-//        }];
-//        _gridViews = views;
-//        [self.gridView reloadData];
-//        
-//    }
 
-    
 }
 
 - (void)appletConfigurationDidChange {
@@ -236,34 +188,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // date of birth tap
-//    NSArray *array = [NSArray arrayWithObjects:self.dateOfBirthLabel, self.dateOfBirthTitleLabel, nil];
-//    [array enumerateObjectsUsingBlock:^(UIView *view, NSUInteger index, BOOL *stop) {
-//        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]
-//                                           initWithTarget:self
-//                                           action:@selector(toggleDateOfBirth:)];
-//        [view addGestureRecognizer:gesture];
-//    }];
-    
-    
-    // gestures
-//    {
-//        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]
-//                                           initWithTarget:self
-//                                           action:@selector(conditionsContainerViewTap:)];
-//        gesture.numberOfTapsRequired = 1;
-//        gesture.numberOfTouchesRequired = 1;
-//        [self.currentMedicationsView addGestureRecognizer:gesture];
-//    }
-//    {
-//        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]
-//                                           initWithTarget:self
-//                                           action:@selector(eventsContainerViewTap:)];
-//        gesture.numberOfTapsRequired = 1;
-//        gesture.numberOfTouchesRequired = 1;
-//        [self.upcomingRefillsView addGestureRecognizer:gesture];
-//    }
-    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -274,12 +198,16 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     HRMedicationCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MedicationCellReuseID" forIndexPath:indexPath];
     
     HRMPatient *currentPatient = [HRPeoplePickerViewController selectedPatient];
     HRMEntry *medication = [currentPatient.medications objectAtIndex:indexPath.item];
     
     [cell setMedication:medication];
+    
+    NSLog(@"dequeuing cell- medication name: %@", cell.medication.desc);
+    NSLog(@"Index: %d", indexPath.item);
     
     if(cell.medication.comments == nil){
         cell.medication.comments = @"-";
@@ -290,7 +218,12 @@
         //codes,dose,date,desc,endDate,startDate,status,value,type,patient,reaction,severity
         NSArray *keys = [NSArray arrayWithObjects:@"quantity", @"dose", @"directions", @"prescriber", nil];
         NSArray *objects = [NSArray arrayWithObjects:@"-", @"-", @"-", @"-", nil];
-        cell.medication.patientComments = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+        [cell.medication setPatientComments:[NSDictionary dictionaryWithObjects:objects forKeys:keys]];
+        NSManagedObjectContext *context = [cell.medication managedObjectContext];
+        NSError *error;
+        if (![context save:&error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
     }
     
     //set text from medication fields
@@ -307,7 +240,10 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    
     HRMPatient *currentPatient = [HRPeoplePickerViewController selectedPatient];
+    NSUInteger cnt = [currentPatient.medications count];
+    NSLog(@"Number of items in section: %d", cnt);
     return [currentPatient.medications count];
 }
 
@@ -324,10 +260,15 @@
      delay:0.0
      options:options
      animations:^{
-         //to move header view up by the header view's height
+//         CGRect keyboardEndFrame;
+//         [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
+//         
+//         NSLog(@"keyboard frame end values: %f, %f", keyboardEndFrame.size.height, keyboardEndFrame.size.width);
+         
+         //to move header view up by the headerView's height
          CGFloat newHeaderOriginY = self.headerView.frame.origin.y -
                                                self.headerView.frame.size.height;
-         //to move collection view up by the header view's height
+         //to move collection view up by the headerView's height
          CGFloat newCollectionOriginY = self.collectionView.frame.origin.y -
                                                    self.headerView.frame.size.height;
          self.headerView.frame = CGRectMake(self.headerView.frame.origin.x,
@@ -338,21 +279,6 @@
                                             newCollectionOriginY,
                                             self.collectionView.frame.size.width,
                                             self.collectionView.frame.size.height);
-         
-//         CGRect rect;
-//         
-//         // header view
-//         rect = self.headerView.frame;
-//         rect = CGRectMake(0.0,
-//                           -1.0 * rect.size.height,
-//                           rect.size.width,
-//                           rect.size.height);
-//         self.headerView.frame = rect;
-//         
-//         // collection view
-//         self.collectionView.frame = self.view.bounds;//TODO: LMD- fix to not hide things clicked
-//         //from too large to fit in top frame area (get click position and center)
-//         //Also- allow header to remain in view from header fields keyboard click
          
      }
      completion:^(BOOL finished) {
@@ -369,14 +295,13 @@
      delay:0.0
      options:options
      animations:^{
-         //CGRect rect;
+//         CGRect keyboardEndFrame;
+//         [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
          
-         id keyboardFrame = [notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey];
-         
-         //to move header view down by the header view's height
+         //to move header view down by the headerView's height
          CGFloat newHeaderOriginY = self.headerView.frame.origin.y +
          self.headerView.frame.size.height;
-         //to move collection view down by the header view's height
+         //to move collection view down by the headerView's height
          CGFloat newCollectionOriginY = self.collectionView.frame.origin.y +
          self.headerView.frame.size.height;
          self.headerView.frame = CGRectMake(self.headerView.frame.origin.x,
@@ -387,79 +312,13 @@
                                                 newCollectionOriginY,
                                                 self.collectionView.frame.size.width,
                                                 self.collectionView.frame.size.height);
-         
-//         // header view
-//         rect = self.headerView.frame;
-//         rect = CGRectMake(0.0,
-//                           0.0,
-//                           rect.size.width,
-//                           rect.size.height);
-//         self.headerView.frame = rect;
-//         
-//         // collection view
-//         rect = CGRectMake(0.0,
-//                           rect.size.height,
-//                           rect.size.width,
-//                           self.collectionView.bounds.size.height);
-//                           //self.view.bounds.size.height - rect.size.height);
-//         self.collectionView.frame = rect;
+         //[self reloadInputViews];
          
      }
      completion:^(BOOL finished) {
          
      }];
 }
-
-
-
-
-
-
-//- (void)toggleDateOfBirth:(UITapGestureRecognizer *)gesture {
-//    if (gesture.state == UIGestureRecognizerStateRecognized) {
-//        if ([self.dateOfBirthTitleLabel.text isEqualToString:@"DOB:"]) {
-//            self.dateOfBirthTitleLabel.text = @"AGE:";
-//        }
-//        else {
-//            self.dateOfBirthTitleLabel.text = @"DOB:";
-//        }
-//        [self reloadData];
-//    }
-//}
-
-//- (void)conditionsContainerViewTap:(UITapGestureRecognizer *)gesture {
-//    if (gesture.state == UIGestureRecognizerStateRecognized) {
-//        HRMPatient *patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
-//        NSString *imageName = [NSString stringWithFormat:@"%@-condition-full", [patient initials]];
-//        UIImage *image = [UIImage imageNamed:imageName];
-//        if (image) {
-//            UIViewController *controller = [[UIViewController alloc] init];
-//            controller.title = @"Conditions";
-//            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-//            imageView.frame = controller.view.bounds;
-//            imageView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
-//            [controller.view addSubview:imageView];
-//            [self.navigationController pushViewController:controller animated:YES];   
-//        }
-//    }
-//}
-//
-//- (void)eventsContainerViewTap:(UITapGestureRecognizer *)gesture {
-//    if (gesture.state == UIGestureRecognizerStateRecognized) {
-//        HRMPatient *patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
-//        NSString *imageName = [NSString stringWithFormat:@"%@-events-full", [patient initials]];
-//        UIImage *image = [UIImage imageNamed:imageName];
-//        if (image) {
-//            UIViewController *controller = [[UIViewController alloc] init];
-//            controller.title = @"Recent Events";
-//            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-//            imageView.frame = controller.view.bounds;
-//            imageView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
-//            [controller.view addSubview:imageView];
-//            [self.navigationController pushViewController:controller animated:YES];   
-//        }
-//    }
-//}
 
 - (void)viewDidUnload {
     [self setCollectionView:nil];

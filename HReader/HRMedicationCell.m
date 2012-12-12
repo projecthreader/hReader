@@ -73,8 +73,19 @@
         [self setEditStyleForTextView:self.commentsTextView];
     }
     else {
+        //copying textview text in case is strong reference,
+        //save after finishing edit
         
+        //change views to noneditable
+        [self finishEditForTextView:self.quantityTextView];
+        [self finishEditForTextView:self.doseTextView];
+        [self finishEditForTextView:self.directionsTextView];
+        [self finishEditForTextView:self.prescriberTextView];
+        [self finishEditForTextView:self.commentsTextView];
+        
+
         //save data
+        NSLog(@"Saving data...");
         [self.medication setComments:self.commentsTextView.text];
         NSArray *keys = [NSArray arrayWithObjects:@"quantity", @"dose", @"directions", @"prescriber", nil];
         NSArray *objects = [NSArray arrayWithObjects:
@@ -91,15 +102,7 @@
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
         
-        
-        //change views to noneditable
-        [self finishEditForTextView:self.quantityTextView];
-        [self finishEditForTextView:self.doseTextView];
-        [self finishEditForTextView:self.directionsTextView];
-        [self finishEditForTextView:self.prescriberTextView];
-        [self finishEditForTextView:self.commentsTextView];
-//        self.commentsTextView.layer.borderColor = [[UIColor whiteColor] CGColor];
-//        [self.commentsTextView setEditable:NO];
+        NSLog(@"TextViews may be null. Don't access here.");
     }
 }
 
