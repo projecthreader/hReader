@@ -12,7 +12,7 @@
 #import "HRPeoplePickerViewController_private.h"
 
 #import "HRMPatient.h"
-#import "HRMTimelineLevel.h"
+#import "HRMTimelineEntry.h"
 
 @implementation HRTimelinePOSTURLProtocol
 
@@ -71,19 +71,18 @@
     
     [context performBlockAndWait:^{
         HRMPatient *patient = [HRPeoplePickerViewController selectedPatientInContext:context];
+        HRMTimelineEntry *entry = [HRMTimelineEntry instanceInContext:context];
+        entry.patient = patient;
+        entry.data = bodyParameters;
         
         // levels
         if ([action isEqualToString:@"Levels"]) {
-            HRMTimelineLevel *level = [HRMTimelineLevel instanceInContext:context];
-            level.patient = patient;
-            level.data = bodyParameters;
+            entry.type = @(HRMTimelineEntryTypeLevels);
         }
         
         // new medication
         else if ([action isEqualToString:@"NewMedication"]) {
-//            special: select-choice-add
-//            dosage: select-choice-by
-//            frequency: select-choice-freq
+            entry.type = @(HRMTimelineEntryTypeRegiment);
         }
         
         // new med regiment
@@ -94,7 +93,6 @@
         // save
         NSError *error = nil;
         if (![context save:&error]) { HRDebugLog(@"Failed to save levels: %@", error); }
-        NSLog(@"Passed the save.");
         
     }];
     

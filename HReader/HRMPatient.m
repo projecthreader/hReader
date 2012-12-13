@@ -10,7 +10,7 @@
 
 #import "HRMPatient.h"
 #import "HRMEntry.h"
-#import "HRMTimelineLevel.h"
+#import "HRMTimelineEntry.h"
 
 #import "HRAppDelegate.h"
 #import "HRAPIClient.h"
@@ -424,25 +424,25 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
 
 - (NSDictionary *)timelineLevelsGroupedByTypeWithStartDate:(NSDate *)start endDate:(NSDate *)end {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    NSMutableArray *predicates = [NSMutableArray array];
-    [predicates addObject:[NSPredicate predicateWithFormat:@"patient = %@", self]];
-    [predicates addObject:[NSPredicate predicateWithFormat:@"createdAt >= %@", start]];
-    [predicates addObject:[NSPredicate predicateWithFormat:@"createdAt <= %@", end]];
-    NSArray *levels = [HRMTimelineLevel
-                       allInContext:[self managedObjectContext]
-                       predicate:[NSCompoundPredicate andPredicateWithSubpredicates:predicates]
-                       sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:YES]];
-    [levels enumerateObjectsUsingBlock:^(HRMTimelineLevel *level, NSUInteger idx, BOOL *stop) {
-        NSDictionary *data = level.data;
-        [data enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            NSMutableArray *values = dictionary[key];
-            if (values == nil) {
-                values = [NSMutableArray array];
-                dictionary[key] = values;
-            }
-            [values addObject:obj];
-        }];
-    }];
+//    NSMutableArray *predicates = [NSMutableArray array];
+//    [predicates addObject:[NSPredicate predicateWithFormat:@"patient = %@", self]];
+//    [predicates addObject:[NSPredicate predicateWithFormat:@"createdAt >= %@", start]];
+//    [predicates addObject:[NSPredicate predicateWithFormat:@"createdAt <= %@", end]];
+//    NSArray *levels = [HRMTimelineLevel
+//                       allInContext:[self managedObjectContext]
+//                       predicate:[NSCompoundPredicate andPredicateWithSubpredicates:predicates]
+//                       sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:YES]];
+//    [levels enumerateObjectsUsingBlock:^(HRMTimelineLevel *level, NSUInteger idx, BOOL *stop) {
+//        NSDictionary *data = level.data;
+//        [data enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+//            NSMutableArray *values = dictionary[key];
+//            if (values == nil) {
+//                values = [NSMutableArray array];
+//                dictionary[key] = values;
+//            }
+//            [values addObject:obj];
+//        }];
+//    }];
     return dictionary;
 }
 
