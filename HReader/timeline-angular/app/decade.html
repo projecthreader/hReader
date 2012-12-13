@@ -161,48 +161,17 @@
 						</span>			
 					</form>
 				</div>
-					<div class="row">
-						<h4 class="titles span4">Symptom1*</h4>
-						<span class="span6">
-							<fieldset class="span6" data-role="controlgroup" data-type="horizontal">
-								<select class="" name="select-choice-sev" id="select-choice-sev">
-								   <option value="none">Severity</option>
-								   <option value="none">None</option>
-								   <option value="mild">Mild</option>
-								   <option value="moderate">Moderate</option>
-								   <option value="severe">Severe</option>
-								</select>
-								<select class="" name="select-choice-dur" id="select-choice-dur" >
-								   <option value="null">Duration</option>
-								   <option value="seconds">Seconds</option>
-								   <option value="minutes">Minutes</option>
-								   <option value="hours">Hours</option>
-								   <option value="days">Days</option>
-								</select>  
-							<fieldset>
-						</span>
-					</div>
-					<div class="row">
-						<h4 class="titles span4">Symptom2*</h4>
-						<span class="span6">
-							<fieldset class="span6" data-role="controlgroup" data-type="horizontal">
-								<select name="select-choice-sev" id="select-choice-sev">
-								   <option value="none">Severity</option>
-								   <option value="none">None</option>
-								   <option value="mild">Mild</option>
-								   <option value="moderate">Moderate</option>
-								   <option value="severe">Severe</option>
-								</select>
-								<select name="select-choice-dur" id="select-choice-dur" >
-								   <option value="null">Duration</option>
-								   <option value="seconds">Seconds</option>
-								   <option value="minutes">Minutes</option>
-								   <option value="hours">Hours</option>
-								   <option value="days">Days</option>
-								</select>  
-							<fieldset>
-						</span>
-					</div>
+				<div class="row data" ngChange:false ng-repeat="vital in vitals">
+					<span class="span4">
+						<h4>{{vital.description}}</h4>		
+					</span>
+					<span class="span6 graph">		
+						<p><sparkline exp="data" class="sparkline">{{vital.values.join(', ')}}</sparkline></p>
+					</span>
+					<span class="span2"> 
+						<h1>{{vital.values[vital.values.length-1]| number:0}}</h1>{{vital.units}}
+					</span>
+				</div>
 					<div class="row">
 						<div class="span10"></div>
 						<span class="span2">
