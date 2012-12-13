@@ -8,14 +8,13 @@
 		<link rel="stylesheet" href="css/jquery-ui-1.8.16.custom.css" type="text/css"/> 
 		<link href="http://addyosmani.github.com/jquery-ui-bootstrap/bootstrap/bootstrap.css" rel="stylesheet">
 		<script type="text/javascript" src="lib/jquery/jquery-1.8.1.js"></script>
-	  <script type="text/javascript" src="lib/jquery/jquery.sparkline2.0.js">
-	    </script>
-  	<script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
-	  <script src="lib/angular/angular.js"></script> 
-    <script src="js/app.js"></script>
-	  <script src="js/controllers.js"></script>
-	  <script src="js/directives.js"></script>
-
+	  	<script type="text/javascript" src="lib/jquery/jquery.sparkline2.0.js"></script>
+  		<script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+	  	<script src="lib/angular/angular.js"></script> 
+    	<script src="js/app.js"></script>
+		<script src="js/controllers.js"></script>
+	  	<script src="js/directives.js"></script>
+		<script src="lib/bootstrap/bootstrap.min.js"></script>
 	    <!-- jQuery Mobile -->
 	  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 	  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
@@ -35,7 +34,7 @@
 				<div class="row">
 					<form class="hidden" id="newReg" action="http://hreader.local/timeline.json?key=NewMedication" method="post">
 						<span class="span4">
-							<input ng-model="meds" placeholder="New Medication">
+							<input type="text" name="name" ng-model="meds" placeholder="New Medication" required="required" autofocus="autofocus" />
 						</span>
 						<span class="span6">
 							<fieldset class="span6" data-role="controlgroup" data-type="horizontal">
@@ -73,6 +72,8 @@
 							</fieldset>
 					</form>
 				</div>
+				
+
 				<!-- <div class="row" ngChange:false ng-repeat="medication in medications"> -->
 				<form action="http://hreader.local/timeline.json?key=MedRegiment" method="post">
 					<div class="row  data" ngChange:false ng-repeat="medication in medications">
