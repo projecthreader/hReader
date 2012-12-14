@@ -594,7 +594,7 @@
 		3BEBAE6715767CC900E4CB33 /* HRAPIClient_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRAPIClient_private.h; sourceTree = "<group>"; };
 		3BEBAE6815769ED400E4CB33 /* HRPeopleFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPeopleFeedViewController.h; sourceTree = "<group>"; };
 		3BEBAE6915769ED400E4CB33 /* HRPeopleFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeopleFeedViewController.m; sourceTree = "<group>"; };
-		3BF45EDC167A787600FB47A0 /* hReader 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hReader 5.xcdatamodel"; sourceTree = "<group>"; };
+		3BF45EDC167A787600FB47A0 /* hReader 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "hReader 5.xcdatamodel"; sourceTree = "<group>"; };
 		3BF45EE3167A7E5900FB47A0 /* HRMTimelineEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMTimelineEntry.h; sourceTree = "<group>"; };
 		3BF45EE4167A7E5900FB47A0 /* HRMTimelineEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMTimelineEntry.m; sourceTree = "<group>"; };
 		3BFBEE161534BD33009EBA2D /* HReader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HReader.entitlements; sourceTree = "<group>"; };
