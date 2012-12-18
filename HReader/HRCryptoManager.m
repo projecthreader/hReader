@@ -53,6 +53,7 @@ NSData * HRCryptoManagerHashData(NSData *data) {
 BOOL HRCryptoManagerHasPasscode(void) {
     return IMSCryptoManagerHasPasscode();
 }
+
 BOOL HRCryptoManagerHasSecurityQuestions(void) {
     return IMSCryptoManagerHasSecurityQuestionsAndAnswers();
 }
