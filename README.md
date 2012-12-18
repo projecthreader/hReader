@@ -31,3 +31,13 @@ The application automatically cascades saves from the main context to the root c
 ## Applets
 
 Each patient stores a list of applets that the user has configured. Available applets are loaded from `HReaderApplets.plist` can be accessed through `HRAppletConfigurationViewController`.
+
+## Patients
+
+Patients are managed by `HRPeoplePickerViewController` and `HRPeopleSetupViewController`. The former controls which patient is selected and the order of patients. The later allows the user to download new patients and remove existing patients from the database.
+
+Instances of `HRPeopleFeedViewController` can be shown in a popover to present a list of patients that are stored on the given RHEx server. Set the completion block to receive a callback when the user has made a selection.
+
+## Security
+
+Security is handled by `HRCryptoManager` and `CMDEncryptedSQLiteStore`. All data is encrypted using a shared application encryption key that is stored in the keychain encrypted with an application password. The password creation and verification happens in `HRAppDelegate`.
