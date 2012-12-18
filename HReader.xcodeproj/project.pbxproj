@@ -25,7 +25,6 @@
 		3B04A56914E06A3A00AD91F9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B04A56814E06A3A00AD91F9 /* Security.framework */; };
 		3B0977E41552D1F2006392E2 /* UserImage-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0977E31552D1F2006392E2 /* UserImage-3.png */; };
 		3B0977ED1553217F006392E2 /* people-picker.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0977EC1553217F006392E2 /* people-picker.png */; };
-		3B0A43D916652CBD00492F53 /* HRMTimelineLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A43D816652CBD00492F53 /* HRMTimelineLevel.m */; };
 		3B0FE3FD15386B7000BEC21C /* fitbit-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3F515386B7000BEC21C /* fitbit-overview.png */; };
 		3B0FE3FE15386B7000BEC21C /* fitbit-summary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3F615386B7000BEC21C /* fitbit-summary.png */; };
 		3B0FE3FF15386B7000BEC21C /* nikeplus-overview.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0FE3F715386B7000BEC21C /* nikeplus-overview.png */; };
@@ -207,6 +206,7 @@
 		3BEBAE6215766C3700E4CB33 /* HRAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBAE6115766C3700E4CB33 /* HRAPIClient.m */; };
 		3BEBAE661576771400E4CB33 /* HRRHExLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBAE651576771400E4CB33 /* HRRHExLoginViewController.m */; };
 		3BEBAE6A15769ED400E4CB33 /* HRPeopleFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBAE6915769ED400E4CB33 /* HRPeopleFeedViewController.m */; };
+		3BF45EE5167A7E5900FB47A0 /* HRMTimelineEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF45EE4167A7E5900FB47A0 /* HRMTimelineEntry.m */; };
 		3BFBEE1A1534BEAA009EBA2D /* HRAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */; };
 		3BFBEE1C1534BF32009EBA2D /* HReaderApplets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */; };
 		3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2D14DAE5910037738D /* Icon-72.png */; };
@@ -355,8 +355,6 @@
 		3B0977E31552D1F2006392E2 /* UserImage-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-3.png"; sourceTree = "<group>"; };
 		3B0977E61553199E006392E2 /* ns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ns.json; sourceTree = "<group>"; };
 		3B0977EC1553217F006392E2 /* people-picker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "people-picker.png"; sourceTree = "<group>"; };
-		3B0A43D716652CBD00492F53 /* HRMTimelineLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMTimelineLevel.h; sourceTree = "<group>"; };
-		3B0A43D816652CBD00492F53 /* HRMTimelineLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMTimelineLevel.m; sourceTree = "<group>"; };
 		3B0FE3F515386B7000BEC21C /* fitbit-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitbit-overview.png"; sourceTree = "<group>"; };
 		3B0FE3F615386B7000BEC21C /* fitbit-summary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fitbit-summary.png"; sourceTree = "<group>"; };
 		3B0FE3F715386B7000BEC21C /* nikeplus-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nikeplus-overview.png"; sourceTree = "<group>"; };
@@ -598,6 +596,9 @@
 		3BEBAE6715767CC900E4CB33 /* HRAPIClient_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRAPIClient_private.h; sourceTree = "<group>"; };
 		3BEBAE6815769ED400E4CB33 /* HRPeopleFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPeopleFeedViewController.h; sourceTree = "<group>"; };
 		3BEBAE6915769ED400E4CB33 /* HRPeopleFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeopleFeedViewController.m; sourceTree = "<group>"; };
+		3BF45EDC167A787600FB47A0 /* hReader 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "hReader 5.xcdatamodel"; sourceTree = "<group>"; };
+		3BF45EE3167A7E5900FB47A0 /* HRMTimelineEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMTimelineEntry.h; sourceTree = "<group>"; };
+		3BF45EE4167A7E5900FB47A0 /* HRMTimelineEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMTimelineEntry.m; sourceTree = "<group>"; };
 		3BFBEE161534BD33009EBA2D /* HReader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HReader.entitlements; sourceTree = "<group>"; };
 		3BFBEE181534BEAA009EBA2D /* HRAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAppletTile.h; sourceTree = "<group>"; };
 		3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAppletTile.m; sourceTree = "<group>"; };
@@ -859,8 +860,8 @@
 		3B5ADF6314E1C5D50025E069 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				3B0A43D716652CBD00492F53 /* HRMTimelineLevel.h */,
-				3B0A43D816652CBD00492F53 /* HRMTimelineLevel.m */,
+				3BF45EE3167A7E5900FB47A0 /* HRMTimelineEntry.h */,
+				3BF45EE4167A7E5900FB47A0 /* HRMTimelineEntry.m */,
 				3BD16F0314E1C5B700F2249E /* HRMPatient.h */,
 				3BD16F0414E1C5B700F2249E /* HRMPatient.m */,
 				3BE9A40314E40EBB00F87B60 /* HRMEntry.h */,
@@ -1948,6 +1949,7 @@
 				3BCF598A164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.m in Sources */,
 				24B2EA901663ED290077CF27 /* HRPopHealthAppletTile.m in Sources */,
 				3B0A43D916652CBD00492F53 /* HRMTimelineLevel.m in Sources */,
+				3BF45EE5167A7E5900FB47A0 /* HRMTimelineEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2089,12 +2091,13 @@
 		3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				3BF45EDC167A787600FB47A0 /* hReader 5.xcdatamodel */,
 				3B21D67416651870003DB581 /* hReader 4.xcdatamodel */,
 				3B9C379D1656C3CE00CAE751 /* hReader 3.xcdatamodel */,
 				3B48FA2D165414E00071F707 /* hReader 2.xcdatamodel */,
 				3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */,
 			);
-			currentVersion = 3B21D67416651870003DB581 /* hReader 4.xcdatamodel */;
+			currentVersion = 3BF45EDC167A787600FB47A0 /* hReader 5.xcdatamodel */;
 			path = hReader.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

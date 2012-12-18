@@ -26,7 +26,7 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 
 @class HRMEntry;
 @class DDXMLElement;
-@class HRMTimelineLevel;
+@class HRMTimelineEntry;
 
 @interface HRMPatient : CMDManagedObject
 
@@ -143,9 +143,9 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 - (void)addEntries:(NSSet *)values;
 - (void)removeEntries:(NSSet *)values;
 
-- (void)addTimelineLevelsObject:(HRMTimelineLevel *)value;
-- (void)removeTimelineLevelsObject:(HRMTimelineLevel *)value;
-- (void)addTimelineLevels:(NSSet *)values;
-- (void)removeTimelineLevels:(NSSet *)values;
+- (void)addTimelineEntriesObject:(HRMTimelineEntry *)value;
+- (void)removeTimelineEntriesObject:(HRMTimelineEntry *)value;
+- (void)addTimelineEntries:(NSSet *)values;
+- (void)removeTimelineEntries:(NSSet *)values;
 
 @end
