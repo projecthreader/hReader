@@ -28,26 +28,17 @@
 				<div class="row">
 					<h4 class="titles span4">Outpatient Visit*</h4>
 					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span> -->
-					<div class="progress schedule span5">
-						<div class="span1">
-							<img src="images/encounter.png">
-						</div>
-						<div class="span1">
-							<img src="images/encounter.png">
-						</div>
-						
+					<div class="progress schedule span6">
+						<img src="images/encounter.png" class="diagnosis">
+						<img src="images/encounter.png" class="diagnosis">						
 					</div>
 				</div>
 				<div class="row data" ngChange:false ng-repeat="encounter in encounters">
 					<h4 class="titles span4">{{encounter.description}}</h4>
 					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span> -->
-					<div class="progress schedule span5">
-						<div class="span1">
-							<img src="images/encounter.png">
-						</div>
-						<div class="span1">
-							<img src="images/encounter.png">
-						</div>
+					<div class="progress schedule span6">
+						<img src="images/encounter.png" class="diagnosis">
+						<img src="images/encounter.png" class="diagnosis">
 					</div>
 				</div>
 			</article>
@@ -62,14 +53,9 @@
 					<h4 class="titles span4">Medications*</h4>
 					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span> -->
 					<div class="progress schedule span5">
-						<div class="span1">
-							<img src="images/medication.png">
-						</div>
-						<div class="span1">
-							<img src="images/medication.png">
-						</div>
-						<div class="span2">
-							<img src="images/medication.png">
+							<img src="images/medication.png" class="diagnosis">
+							<img src="images/medication.png" class="diagnosis">
+							<img src="images/medication.png" class="diagnosis">
 						</div>
 					</div>
 					<div class="row data" ngChange:false ng-repeat="medication in medications">

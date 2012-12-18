@@ -4812,6 +4812,10 @@ form {
 [class^="icon-"], [class*=" icon-"] {
   background-image: url("../images/glyphicons-halflings.png"); }
 
+img.diagnosis {
+  position: relative;
+  top: -10px; }
+
 .graph {
   background-color: #fff;
   margin-bottom: 20px; }
