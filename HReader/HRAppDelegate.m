@@ -24,8 +24,6 @@
 #import "HRCryptoManager.h"
 #import "HRMPatient.h"
 
-#import "SSKeychain.h"
-
 @implementation HRAppDelegate {
     NSUInteger passcodeAttempts;
     UINavigationController *securityNavigationController;
@@ -240,9 +238,6 @@
 #pragma mark - application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    // keychain
-    [SSKeychain setAccessibilityType:kSecAttrAccessibleWhenUnlockedThisDeviceOnly];
     
     // notifications
     [[NSNotificationCenter defaultCenter]

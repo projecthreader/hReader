@@ -1,6 +1,3 @@
-[submodule "vendor/sskeychain"]
-	path = vendor/sskeychain
-	url = https://github.com/guicocoa/sskeychain.git
 [submodule "vendor/activityhud"]
 	path = vendor/activityhud
 	url = https://github.com/calebmdavenport/activityhud.git

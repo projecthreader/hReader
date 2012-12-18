@@ -19,7 +19,6 @@
 		3B00A7B8162730AF000BD5F8 /* HRTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00A7B7162730AF000BD5F8 /* HRTabBarController.m */; };
 		3B00A7BB16273E2F000BD5F8 /* HRPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00A7BA16273E2F000BD5F8 /* HRPanelViewController.m */; };
 		3B00A7BE16275004000BD5F8 /* HRContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00A7BD16275004000BD5F8 /* HRContentViewController.m */; };
-		3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B04A55214E0692600AD91F9 /* SSKeychain.m */; };
 		3B04A56914E06A3A00AD91F9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B04A56814E06A3A00AD91F9 /* Security.framework */; };
 		3B0977E41552D1F2006392E2 /* UserImage-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0977E31552D1F2006392E2 /* UserImage-3.png */; };
 		3B0977ED1553217F006392E2 /* people-picker.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B0977EC1553217F006392E2 /* people-picker.png */; };
@@ -368,8 +367,6 @@
 		3B00A7BA16273E2F000BD5F8 /* HRPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPanelViewController.m; sourceTree = "<group>"; };
 		3B00A7BC16275004000BD5F8 /* HRContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRContentViewController.h; sourceTree = "<group>"; };
 		3B00A7BD16275004000BD5F8 /* HRContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRContentViewController.m; sourceTree = "<group>"; };
-		3B04A55114E0692600AD91F9 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
-		3B04A55214E0692600AD91F9 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		3B04A56814E06A3A00AD91F9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3B0977E31552D1F2006392E2 /* UserImage-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-3.png"; sourceTree = "<group>"; };
 		3B0977E61553199E006392E2 /* ns.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ns.json; sourceTree = "<group>"; };
@@ -832,16 +829,6 @@
 				3B00A7BD16275004000BD5F8 /* HRContentViewController.m */,
 			);
 			name = "Root View Controllers";
-			sourceTree = "<group>";
-		};
-		3B04A54C14E0692600AD91F9 /* keychain */ = {
-			isa = PBXGroup;
-			children = (
-				3B04A55114E0692600AD91F9 /* SSKeychain.h */,
-				3B04A55214E0692600AD91F9 /* SSKeychain.m */,
-			);
-			name = keychain;
-			path = sskeychain;
 			sourceTree = "<group>";
 		};
 		3B19651414EE9DCB0045F827 /* Global */ = {
@@ -1381,7 +1368,6 @@
 				3BABEC1916246CA50057D3B8 /* KissXML */,
 				3BD5F0AC15EE8F6F00333320 /* Incremental Store */,
 				3B708F0715DE870C004D2B1D /* activityhud */,
-				3B04A54C14E0692600AD91F9 /* keychain */,
 			);
 			name = Vendor;
 			path = vendor;
@@ -1930,7 +1916,6 @@
 				94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */,
 				94BB032C149BB393009B2FCC /* HRPasscodeWarningViewController.m in Sources */,
 				947FCE4B14B4C76700C716FD /* HRPrivacyViewController.m in Sources */,
-				3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */,
 				3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */,
 				3BD16F0514E1C5B700F2249E /* HRMPatient.m in Sources */,
 				3BE9A40514E40EBB00F87B60 /* HRMEntry.m in Sources */,
