@@ -97,6 +97,9 @@
 		3B48FA3516541D4E0071F707 /* applets-ms.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B48FA3016541D4E0071F707 /* applets-ms.plist */; };
 		3B48FA3616541D4E0071F707 /* applets-ss.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B48FA3116541D4E0071F707 /* applets-ss.plist */; };
 		3B48FA3716541D4E0071F707 /* applets-ts.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B48FA3216541D4E0071F707 /* applets-ts.plist */; };
+		3B4DF3B51680E07100D92BD1 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4DF3991680E04F00D92BD1 /* libcrypto.a */; };
+		3B4DF3B61680E07100D92BD1 /* libSecureFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4DF3AC1680E05700D92BD1 /* libSecureFoundation.a */; };
+		3B4DF3B71680E07100D92BD1 /* libsqlcipher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4DF3A21680E05100D92BD1 /* libsqlcipher.a */; };
 		3B52170A164817CF00DE676A /* UIApplication+hReaderAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B521709164817CF00DE676A /* UIApplication+hReaderAdditions.m */; };
 		3B581D3415BDC68200ED2A63 /* logo_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B581D3215BDC68200ED2A63 /* logo_login.png */; };
 		3B581D3515BDC68200ED2A63 /* logo_login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B581D3315BDC68200ED2A63 /* logo_login@2x.png */; };
@@ -177,8 +180,6 @@
 		3BA11FFF15C0608200ABB012 /* TBITrackerLearn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FD215C0608200ABB012 /* TBITrackerLearn.xib */; };
 		3BA529ED1594AF400011E246 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BA529EC1594AF400011E246 /* libxml2.dylib */; };
 		3BA7F18F1577EFCF00D4EB09 /* HRCryptoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA7F18E1577EFCF00D4EB09 /* HRCryptoManager.m */; };
-		3BAABBD71636D79C009D3543 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAABBC81636D77D009D3543 /* libcrypto.a */; };
-		3BAABBD81636D79F009D3543 /* libsqlcipher.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAABBD21636D782009D3543 /* libsqlcipher.a */; };
 		3BAABBDB1636D830009D3543 /* CMDEncryptedSQLiteStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAABBDA1636D830009D3543 /* CMDEncryptedSQLiteStore.m */; };
 		3BAB78B71644371400E6EE34 /* UIButtonBarArrowLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BAB78B31644371400E6EE34 /* UIButtonBarArrowLeft.png */; };
 		3BAB78B81644371400E6EE34 /* UIButtonBarArrowLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BAB78B41644371400E6EE34 /* UIButtonBarArrowLeft@2x.png */; };
@@ -297,33 +298,54 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3BAABBC71636D77D009D3543 /* PBXContainerItemProxy */ = {
+		3B4DF3981680E04F00D92BD1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3BAABBC01636D77D009D3543 /* openssl.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 9069D28C0FCE659A0042E34C;
 			remoteInfo = crypto;
 		};
-		3BAABBD11636D782009D3543 /* PBXContainerItemProxy */ = {
+		3B4DF3A11680E05100D92BD1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3BAABBC91636D782009D3543 /* sqlcipher.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D2AAC046055464E500DB518D;
 			remoteInfo = sqlcipher;
 		};
-		3BAABBD31636D78F009D3543 /* PBXContainerItemProxy */ = {
+		3B4DF3AB1680E05700D92BD1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 3BAABBC91636D782009D3543 /* sqlcipher.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC045055464E500DB518D;
-			remoteInfo = sqlcipher;
+			containerPortal = 3B4DF3A31680E05700D92BD1 /* SecureFoundation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3B89357C162C92F1003750B6;
+			remoteInfo = SecureFoundation;
 		};
-		3BAABBD51636D792009D3543 /* PBXContainerItemProxy */ = {
+		3B4DF3AD1680E05700D92BD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B4DF3A31680E05700D92BD1 /* SecureFoundation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3B89358D162C92F1003750B6;
+			remoteInfo = SecureFoundationTests;
+		};
+		3B4DF3AF1680E06300D92BD1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3BAABBC01636D77D009D3543 /* openssl.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 9069D28B0FCE659A0042E34C;
 			remoteInfo = crypto;
+		};
+		3B4DF3B11680E06700D92BD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B4DF3A31680E05700D92BD1 /* SecureFoundation.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B89357B162C92F1003750B6;
+			remoteInfo = SecureFoundation;
+		};
+		3B4DF3B31680E06A00D92BD1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3BAABBC91636D782009D3543 /* sqlcipher.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC045055464E500DB518D;
+			remoteInfo = sqlcipher;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -441,6 +463,7 @@
 		3B48FA3016541D4E0071F707 /* applets-ms.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "applets-ms.plist"; sourceTree = "<group>"; };
 		3B48FA3116541D4E0071F707 /* applets-ss.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "applets-ss.plist"; sourceTree = "<group>"; };
 		3B48FA3216541D4E0071F707 /* applets-ts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "applets-ts.plist"; sourceTree = "<group>"; };
+		3B4DF3A31680E05700D92BD1 /* SecureFoundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SecureFoundation.xcodeproj; path = SecureFoundation/SecureFoundation.xcodeproj; sourceTree = "<group>"; };
 		3B521708164817CF00DE676A /* UIApplication+hReaderAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+hReaderAdditions.h"; sourceTree = "<group>"; };
 		3B521709164817CF00DE676A /* UIApplication+hReaderAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+hReaderAdditions.m"; sourceTree = "<group>"; };
 		3B581D3215BDC68200ED2A63 /* logo_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_login.png; sourceTree = "<group>"; };
@@ -539,8 +562,8 @@
 		3BA529EC1594AF400011E246 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		3BA7F18D1577EFCF00D4EB09 /* HRCryptoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCryptoManager.h; sourceTree = "<group>"; };
 		3BA7F18E1577EFCF00D4EB09 /* HRCryptoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCryptoManager.m; sourceTree = "<group>"; };
-		3BAABBC01636D77D009D3543 /* openssl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openssl.xcodeproj; path = "vendor/encrypted-core-data/vendor/openssl/openssl.xcodeproj"; sourceTree = "<group>"; };
-		3BAABBC91636D782009D3543 /* sqlcipher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = sqlcipher.xcodeproj; path = "vendor/encrypted-core-data/vendor/sqlcipher/sqlcipher.xcodeproj"; sourceTree = "<group>"; };
+		3BAABBC01636D77D009D3543 /* openssl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openssl.xcodeproj; path = "encrypted-core-data/vendor/openssl/openssl.xcodeproj"; sourceTree = "<group>"; };
+		3BAABBC91636D782009D3543 /* sqlcipher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = sqlcipher.xcodeproj; path = "encrypted-core-data/vendor/sqlcipher/sqlcipher.xcodeproj"; sourceTree = "<group>"; };
 		3BAABBD91636D830009D3543 /* CMDEncryptedSQLiteStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CMDEncryptedSQLiteStore.h; path = "vendor/encrypted-core-data/Incremental Store/CMDEncryptedSQLiteStore.h"; sourceTree = SOURCE_ROOT; };
 		3BAABBDA1636D830009D3543 /* CMDEncryptedSQLiteStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CMDEncryptedSQLiteStore.m; path = "vendor/encrypted-core-data/Incremental Store/CMDEncryptedSQLiteStore.m"; sourceTree = SOURCE_ROOT; };
 		3BAB78B31644371400E6EE34 /* UIButtonBarArrowLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIButtonBarArrowLeft.png; sourceTree = "<group>"; };
@@ -738,8 +761,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BAABBD81636D79F009D3543 /* libsqlcipher.a in Frameworks */,
-				3BAABBD71636D79C009D3543 /* libcrypto.a in Frameworks */,
+				3B4DF3B51680E07100D92BD1 /* libcrypto.a in Frameworks */,
+				3B4DF3B61680E07100D92BD1 /* libSecureFoundation.a in Frameworks */,
+				3B4DF3B71680E07100D92BD1 /* libsqlcipher.a in Frameworks */,
 				3BA529ED1594AF400011E246 /* libxml2.dylib in Frameworks */,
 				945286B0155844C600CF5EA3 /* MessageUI.framework in Frameworks */,
 				94F871F41535D9F60018AF13 /* libz.dylib in Frameworks */,
@@ -854,6 +878,31 @@
 				3BEBAE6115766C3700E4CB33 /* HRAPIClient.m */,
 			);
 			name = "API Interaction";
+			sourceTree = "<group>";
+		};
+		3B4DF3951680E04F00D92BD1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B4DF3991680E04F00D92BD1 /* libcrypto.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3B4DF39D1680E05100D92BD1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B4DF3A21680E05100D92BD1 /* libsqlcipher.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3B4DF3A41680E05700D92BD1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B4DF3AC1680E05700D92BD1 /* libSecureFoundation.a */,
+				3B4DF3AE1680E05700D92BD1 /* SecureFoundationTests.octest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		3B5ADF6314E1C5D50025E069 /* Core Data */ = {
@@ -1021,22 +1070,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		3BAABBC11636D77D009D3543 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3BAABBC81636D77D009D3543 /* libcrypto.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		3BAABBCA1636D782009D3543 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3BAABBD21636D782009D3543 /* libsqlcipher.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		3BABEC1916246CA50057D3B8 /* KissXML */ = {
 			isa = PBXGroup;
 			children = (
@@ -1175,12 +1208,10 @@
 		941DB09D1471B32D00A96B8B = {
 			isa = PBXGroup;
 			children = (
-				3BAABBC91636D782009D3543 /* sqlcipher.xcodeproj */,
-				3BAABBC01636D77D009D3543 /* openssl.xcodeproj */,
 				3BD5F08F15EE767200333320 /* README.md */,
 				C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */,
-				94689ABC14964BBF00E1FCA6 /* Vendor */,
 				941DB0B21471B32D00A96B8B /* HReader */,
+				94689ABC14964BBF00E1FCA6 /* Vendor */,
 				941DB0AB1471B32D00A96B8B /* Frameworks */,
 				941DB0A91471B32D00A96B8B /* Products */,
 			);
@@ -1342,6 +1373,9 @@
 		94689ABC14964BBF00E1FCA6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				3B4DF3A31680E05700D92BD1 /* SecureFoundation.xcodeproj */,
+				3BAABBC91636D782009D3543 /* sqlcipher.xcodeproj */,
+				3BAABBC01636D77D009D3543 /* openssl.xcodeproj */,
 				3B8935DC162D9E0F003750B6 /* blockskit */,
 				3BABEC3F162479090057D3B8 /* managedobject */,
 				3BABEC1916246CA50057D3B8 /* KissXML */,
@@ -1563,8 +1597,9 @@
 			buildRules = (
 			);
 			dependencies = (
-				3BAABBD61636D792009D3543 /* PBXTargetDependency */,
-				3BAABBD41636D78F009D3543 /* PBXTargetDependency */,
+				3B4DF3B41680E06A00D92BD1 /* PBXTargetDependency */,
+				3B4DF3B21680E06700D92BD1 /* PBXTargetDependency */,
+				3B4DF3B01680E06300D92BD1 /* PBXTargetDependency */,
 			);
 			name = HReader;
 			productName = HReader;
@@ -1593,11 +1628,15 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 3BAABBC11636D77D009D3543 /* Products */;
+					ProductGroup = 3B4DF3951680E04F00D92BD1 /* Products */;
 					ProjectRef = 3BAABBC01636D77D009D3543 /* openssl.xcodeproj */;
 				},
 				{
-					ProductGroup = 3BAABBCA1636D782009D3543 /* Products */;
+					ProductGroup = 3B4DF3A41680E05700D92BD1 /* Products */;
+					ProjectRef = 3B4DF3A31680E05700D92BD1 /* SecureFoundation.xcodeproj */;
+				},
+				{
+					ProductGroup = 3B4DF39D1680E05100D92BD1 /* Products */;
 					ProjectRef = 3BAABBC91636D782009D3543 /* sqlcipher.xcodeproj */;
 				},
 			);
@@ -1609,18 +1648,32 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		3BAABBC81636D77D009D3543 /* libcrypto.a */ = {
+		3B4DF3991680E04F00D92BD1 /* libcrypto.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libcrypto.a;
-			remoteRef = 3BAABBC71636D77D009D3543 /* PBXContainerItemProxy */;
+			remoteRef = 3B4DF3981680E04F00D92BD1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3BAABBD21636D782009D3543 /* libsqlcipher.a */ = {
+		3B4DF3A21680E05100D92BD1 /* libsqlcipher.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libsqlcipher.a;
-			remoteRef = 3BAABBD11636D782009D3543 /* PBXContainerItemProxy */;
+			remoteRef = 3B4DF3A11680E05100D92BD1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3B4DF3AC1680E05700D92BD1 /* libSecureFoundation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSecureFoundation.a;
+			remoteRef = 3B4DF3AB1680E05700D92BD1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3B4DF3AE1680E05700D92BD1 /* SecureFoundationTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SecureFoundationTests.octest;
+			remoteRef = 3B4DF3AD1680E05700D92BD1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1953,15 +2006,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3BAABBD41636D78F009D3543 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = sqlcipher;
-			targetProxy = 3BAABBD31636D78F009D3543 /* PBXContainerItemProxy */;
-		};
-		3BAABBD61636D792009D3543 /* PBXTargetDependency */ = {
+		3B4DF3B01680E06300D92BD1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = crypto;
-			targetProxy = 3BAABBD51636D792009D3543 /* PBXContainerItemProxy */;
+			targetProxy = 3B4DF3AF1680E06300D92BD1 /* PBXContainerItemProxy */;
+		};
+		3B4DF3B21680E06700D92BD1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SecureFoundation;
+			targetProxy = 3B4DF3B11680E06700D92BD1 /* PBXContainerItemProxy */;
+		};
+		3B4DF3B41680E06A00D92BD1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = sqlcipher;
+			targetProxy = 3B4DF3B31680E06A00D92BD1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
