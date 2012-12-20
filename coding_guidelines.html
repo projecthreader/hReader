@@ -30,10 +30,10 @@
 							<li class=""><a href="about.html">About</a></li>
 							<li class=""><a href="screen_shots.html">Screen Shots</a></li>
 							<li class=""><a href="code.html">Code</a></li>
-							<li class=""><a href="documentation.html">Docs</a></li>
+							<li class="active"><a href="documentation.html">Docs</a></li>
 							<li class=""><a href="participate.html">Participate</a></li>
 							<li class=""><a href="news.html">News</a></li>
-							<li class="active"><a href="faq.html">FAQ</a></li>
+							<li class=""><a href="faq.html">FAQ</a></li>
 							<li class=""><a href="contact.html">Contact</a></li>
 						</ul>
 						<ul class="nav pull-right">
@@ -44,277 +44,291 @@
 				</div>
 			</div>
 		</div>
-		<div class="container content" id="faq">
-		  <div class="row">
-        <h1>hReader Coding Guidelines</h1>
-        <p>
-          This will serve as the style guide for all source code checked into hReader. 
-          This expands on 
-          <a href="http://developer.apple.com/documentation/Cocoa/Conceptual/CodingGuidelines/index.html">
-            Apple's guidelines</a>.
-        </p>
-        <dl>
-          <dt>General</dt>
-          <dd>
-            <ul>
-              <li>Group system <code>#import</code> statements together.</li>
-              <li>Group all other <code>#import</code> statements by like prefix.</li>
-              <li>
-                Prefer <code>@class</code> and <code>@protocol</code> to <code>#import</code> 
-                when referring to external classes in a public <code>@interface</code>.
-              </li>
-              <li>
-                Prefer <code>@property</code> for public attributes to declaring instance 
-                variables with accessors and mutators.
-              </li>
-              <li>Prefix class, protocol, and file names with a 2- or 3-letter identifier.</li>
-              <li>Order <code>@property</code> modifiers: atomicity, memory management, writability.</li>
-              <li>Separate methods by function using <code>#pragma mark - &lt;Section Name&gt;</code></li>
-              <li>Separate sections into subsections using <code>#pragma mark &lt;Subsection Name&gt;</code></li>
-              <li>
-                Use <code>@[ arrayObject ]</code>, <code>@{ @"key" : value }</code>, 
-                <code>@(YES or NO)</code>, and <code>@5.0</code> literals.
-              </li>
-              <li>Use <code>@interface ClassName ()</code> to declare private properties.</li>
-              <li>Use <code>lowerCamelCase</code> for method names.</li>
-              <li>
-                Use <code>NSAssert</code> and <code>NSParameterAssert</code> in methods 
-                that require the presence of certain arguments.
-              </li>
-              <li>Declare internal constants using <code>static</code> and <code>const</code>.</li>
-              <li>Declare external constants using <code>extern</code> and <code>const</code>.</li>
-            </ul
-          <dd>
-          <dt id="brackets">Brackets</dt>
-          <dd>
-            <p>
-              Always place opening brackets on the same line as the opening statement. Always use brackets on blocks of code.
-              <code class="example">
-                - (void)foo {<br />
-                <br />
-                }
-              </code>
-              <code class="example">
-                if (foo) {<br />
-                <br />
-                }
-              </code>
-            </p>
-            <p>
-              Always place closing brackets on their own line.
-              <code class="example">
-                if (foo) {<br />
-                <br />
-                }<br />
-                else {<br />
-                <br />
-                }
-              </code>
-            </p>
-            <p>
-              It is acceptable to place the body of a block of code on one line in certain cases.
-              <code class="example">
-                if (foo) { return; }
-              </code>
-            </p>
-          </dd>
-          <dt id="indentation">Indent style</dt>
-          <dd>
-            K&R C indent style is preferred. When adhering to K&R, each function has its opening 
-            brace at the next line on the same indentation level as its header, the statements 
-            within the braces are indented, and the closing brace at the end is on the same 
-            indentation level as the header of the function at a line of its own. The blocks 
-            inside a function, however, have their opening braces at the same line as their 
-            respective control statements; closing braces remain in a line of their own, unless 
-            followed by an else or while keyword.
-          </dd>
-          <dt id="identifiers">Identifier Naming</dt>
-          <dd>
-            <p>
-              Stack variables are named using lower-camel-case, and should form a noun.
-              <code class="example">
-                int someVariable = 0;
-              </code>
-            </p>
-            <p>
-              The asterisk used for pointer declarations should be prefixed to the variable identifier.
-              <code class="example">
-                NSString *someString;
-              </code>
-            </p>
-            <p>
-              C functions are prefixed with an identifier and are named in upper-camel-case.
-              <code class="example">
-                void ABCDoSomething(BOOL argument);
-              </code>
-            </p>
-          </dd>
-          <dt id="commenting">Commenting</dt>
-          <dd>
-            <p>
-              While comments are highly encouraged for documenting details and reasonings that 
-              are not obvious from the code itself, comments should never be considered a 
-              replacement for clear code. Before adding a comment, ask yourself if the code 
-              itself could be clarified, removing the need for the comment altogether.
-            </p>
-            <p>
-              <h3>Don't do:</h3>
-              <code class="example">
-                int nEntsW; // Number of entities in the world
-              </code>
-            </p>
-            <p>
-              <h3>Do:</h3>
-              <code class="example">
-                int numberOfEntitiesInTheWorld;
-              </code>
-            <p>
-          </dd>
-          <dt id="whitespace">Whitespace</dt>
-          <dd>
-            <ul>
-              <li>4 spaces for indentation - no tabs.</li>
-              <li>End files with a newline.</li>
-            </ul>
-          </dd>
-          <dt id="documentation">Documentation</dt>
-          <dd>
-            <ul>
-              <li>All public method declarations should be documented.</li>
-              <li>Comments should be hard-wrapped at 80 characters.</li>
-            </ul>
-          </dd>
-          <dt id="declarations">Declarations</dt>
-          <dd>
-            <ul>
-              <li>
-                Prefer exposing an immutable type for a property if it being mutable is an 
-                implementation detail. This is a valid reason to declare an ivar for a property.
-              </li>
-              <li>Always declare memory-management semantics even on <code>readonly</code> properties.</li>
-              <li>Declare properties <code>readonly</code> if they are only set once in <code>-init</code>.</li>
-              <li>
-                Don't use <code>@synthesize</code> unless the compiler requires it. Note 
-                that optional properties in protocols must be explicitly synthesized in 
-                order to exist.
-              </li>
-              <li>
-                Instance variables should be prefixed with an underscore (just like when 
-                implicitly synthesized).
-              </li>
-            </ul>
-          </dd>
-          <dt id="expressions">Expressions</dt>
-          <dd>
-            <ul>
-              <li>
-                Don't access a property-declared ivar unless you're in <code>-init</code>, 
-                <code>-dealloc</code>, or an overridden accessor.
-              </li>
-              <li>Only use dot-syntax on methods that are declared as properties.</li>
-              <li>Comparisons should be explicit for everything except <code>BOOL</code>s.</li>
-              <li>Prefer positive comparisons to negative.</li>
-              <li>
-                Long form ternary operators should be wrapped in parentheses and only used 
-                for assignment and arguments.
-              </li>
-              <li>Short form, <code>nil</code> coalescing ternary operators should avoid parentheses.</li>
-              <li>There shouldn't be a space between a cast and the variable being cast.</li>
-            </ul>
-          </dd>
-          <dt id="control">Control Structures</dt>
-          <dd>
-            <ul>
-              <li>
-                Always surround <code>if</code> bodies with curly braces. Single-line <code>if</code> bodies 
-                without an <code>else</code> should be on the same line as the <code>if</code>. 
-              </li>
-              <li>
-                All curly braces should begin on the same line as their associated statement. 
-                They should end on a new line.
-              </li>
-              <li>Put a single space after keywords and before their parentheses.</li>
-              <li>Return and break early.</li>
-              <li>No spaces between parentheses and their contents.</li>
-            </ul>
-          </dd>
-          <dt id="blocks">Blocks</dt>
-          <dd>
-            <ul>
-              <li>Blocks should have a space between their return type and name.</li>
-              <li>Block definitions should omit their return type when possible.</li>
-              <li>Block definitions should omit their arguments if they are <code>void</code>.</li>
-            </ul>
-          </dd>
-          <dt id="literals">Literals</dt>
-          <dd>
-            <ul>
-              <li>The contents of array and dictionary literals should have a space on both sides.</li>
-              <li>Longer or more complex literals should be split over multiple lines.</li>
-            </ul>
-          </dd>
-          <dt id="categories">Categories</dt>
-          <dd>
-            <ul>
-              <li>Category methods should always be prefixed.</li>
-              <li>
-                If you need to expose private methods for subclasses or unit testing, 
-                create a class extension named <code>Class+Private</code>.
-              </li>
-            </ul>
-          </dd>
-          <dt id="references">References</dt>
-          <dd>
-            <ul>
-              <li><a href="https://github.com/thoughtbot/guides">thoughtbot</a></li>
-              <li><a href="https://github.com/romaonthego/Objective-C-Style-Guide">Roman Efimov's Objective-C Style and Usage Guide</a></li>
-              <li><a href="https://github.com/github/objective-c-conventions">GitHub Objective-C Conventions</a></li>
-            </ul>
-          </dd>
-        </dl>
-        
+		<div class="container content" id="content">
+      <div class="row">
+        <div class="span12">
+          <h1>hReader Coding Guidelines</h1>
+          <p>
+            This will serve as the style guide for all source code checked into hReader. 
+            This expands on 
+            <a href="http://developer.apple.com/documentation/Cocoa/Conceptual/CodingGuidelines/index.html">
+              Apple's guidelines</a>.
+          </p>
+          <dl>
+            <dt>General</dt>
+            <dd>
+              <ul>
+                <li>Group system <code>#import</code> statements together.</li>
+                <li>Group all other <code>#import</code> statements by like prefix.</li>
+                <li>
+                  Prefer <code>@class</code> and <code>@protocol</code> to <code>#import</code> 
+                  when referring to external classes in a public <code>@interface</code>.
+                </li>
+                <li>
+                  Prefer <code>@property</code> for public attributes to declaring instance 
+                  variables with accessors and mutators.
+                </li>
+                <li>Prefix class, protocol, and file names with a 2- or 3-letter identifier.</li>
+                <li>Order <code>@property</code> modifiers: atomicity, memory management, writability.</li>
+                <li>Separate methods by function using <code>#pragma mark - &lt;Section Name&gt;</code></li>
+                <li>Separate sections into subsections using <code>#pragma mark &lt;Subsection Name&gt;</code></li>
+                <li>
+                  Use <code>@[ arrayObject ]</code>, <code>@{ @"key" : value }</code>, 
+                  <code>@(YES or NO)</code>, and <code>@5.0</code> literals.
+                </li>
+                <li>Use <code>@interface ClassName ()</code> to declare private properties.</li>
+                <li>Use <code>lowerCamelCase</code> for method names.</li>
+                <li>
+                  Use <code>NSAssert</code> and <code>NSParameterAssert</code> in methods 
+                  that require the presence of certain arguments.
+                </li>
+                <li>Declare internal constants using <code>static</code> and <code>const</code>.</li>
+                <li>Declare external constants using <code>extern</code> and <code>const</code>.</li>
+              </ul
+            <dd>
+            <dt id="brackets">Brackets</dt>
+            <dd>
+              <p>
+                Always place opening brackets on the same line as the opening statement. Always use brackets on blocks of code.
+                <code class="example">
+                  - (void)foo {<br />
+                  <br />
+                  }
+                </code>
+                <code class="example">
+                  if (foo) {<br />
+                  <br />
+                  }
+                </code>
+              </p>
+              <p>
+                Always place closing brackets on their own line.
+                <code class="example">
+                  if (foo) {<br />
+                  <br />
+                  }<br />
+                  else {<br />
+                  <br />
+                  }
+                </code>
+              </p>
+              <p>
+                It is acceptable to place the body of a block of code on one line in certain cases.
+                <code class="example">
+                  if (foo) { return; }
+                </code>
+              </p>
+            </dd>
+            <dt id="indentation">Indent style</dt>
+            <dd>
+              K&R C indent style is preferred. When adhering to K&R, each function has its opening 
+              brace at the next line on the same indentation level as its header, the statements 
+              within the braces are indented, and the closing brace at the end is on the same 
+              indentation level as the header of the function at a line of its own. The blocks 
+              inside a function, however, have their opening braces at the same line as their 
+              respective control statements; closing braces remain in a line of their own, unless 
+              followed by an else or while keyword.
+            </dd>
+            <dt id="identifiers">Identifier Naming</dt>
+            <dd>
+              <p>
+                Stack variables are named using lower-camel-case, and should form a noun.
+                <code class="example">
+                  int someVariable = 0;
+                </code>
+              </p>
+              <p>
+                The asterisk used for pointer declarations should be prefixed to the variable identifier.
+                <code class="example">
+                  NSString *someString;
+                </code>
+              </p>
+              <p>
+                C functions are prefixed with an identifier and are named in upper-camel-case.
+                <code class="example">
+                  void ABCDoSomething(BOOL argument);
+                </code>
+              </p>
+            </dd>
+            <dt id="commenting">Commenting</dt>
+            <dd>
+              <p>
+                While comments are highly encouraged for documenting details and reasonings that 
+                are not obvious from the code itself, comments should never be considered a 
+                replacement for clear code. Before adding a comment, ask yourself if the code 
+                itself could be clarified, removing the need for the comment altogether.
+              </p>
+              <p>
+                <h3>Don't do:</h3>
+                <code class="example">
+                  int nEntsW; // Number of entities in the world
+                </code>
+              </p>
+              <p>
+                <h3>Do:</h3>
+                <code class="example">
+                  int numberOfEntitiesInTheWorld;
+                </code>
+              <p>
+            </dd>
+            <dt id="whitespace">Whitespace</dt>
+            <dd>
+              <ul>
+                <li>4 spaces for indentation - no tabs.</li>
+                <li>End files with a newline.</li>
+              </ul>
+            </dd>
+            <dt id="documentation">Documentation</dt>
+            <dd>
+              <ul>
+                <li>All public method declarations should be documented.</li>
+                <li>Comments should be hard-wrapped at 80 characters.</li>
+              </ul>
+            </dd>
+            <dt id="declarations">Declarations</dt>
+            <dd>
+              <ul>
+                <li>
+                  Prefer exposing an immutable type for a property if it being mutable is an 
+                  implementation detail. This is a valid reason to declare an ivar for a property.
+                </li>
+                <li>Always declare memory-management semantics even on <code>readonly</code> properties.</li>
+                <li>Declare properties <code>readonly</code> if they are only set once in <code>-init</code>.</li>
+                <li>
+                  Don't use <code>@synthesize</code> unless the compiler requires it. Note 
+                  that optional properties in protocols must be explicitly synthesized in 
+                  order to exist.
+                </li>
+                <li>
+                  Instance variables should be prefixed with an underscore (just like when 
+                  implicitly synthesized).
+                </li>
+              </ul>
+            </dd>
+            <dt id="expressions">Expressions</dt>
+            <dd>
+              <ul>
+                <li>
+                  Don't access a property-declared ivar unless you're in <code>-init</code>, 
+                  <code>-dealloc</code>, or an overridden accessor.
+                </li>
+                <li>Only use dot-syntax on methods that are declared as properties.</li>
+                <li>Comparisons should be explicit for everything except <code>BOOL</code>s.</li>
+                <li>Prefer positive comparisons to negative.</li>
+                <li>
+                  Long form ternary operators should be wrapped in parentheses and only used 
+                  for assignment and arguments.
+                </li>
+                <li>Short form, <code>nil</code> coalescing ternary operators should avoid parentheses.</li>
+                <li>There shouldn't be a space between a cast and the variable being cast.</li>
+              </ul>
+            </dd>
+            <dt id="control">Control Structures</dt>
+            <dd>
+              <ul>
+                <li>
+                  Always surround <code>if</code> bodies with curly braces. Single-line <code>if</code> bodies 
+                  without an <code>else</code> should be on the same line as the <code>if</code>. 
+                </li>
+                <li>
+                  All curly braces should begin on the same line as their associated statement. 
+                  They should end on a new line.
+                </li>
+                <li>Put a single space after keywords and before their parentheses.</li>
+                <li>Return and break early.</li>
+                <li>No spaces between parentheses and their contents.</li>
+              </ul>
+            </dd>
+            <dt id="blocks">Blocks</dt>
+            <dd>
+              <ul>
+                <li>Blocks should have a space between their return type and name.</li>
+                <li>Block definitions should omit their return type when possible.</li>
+                <li>Block definitions should omit their arguments if they are <code>void</code>.</li>
+              </ul>
+            </dd>
+            <dt id="literals">Literals</dt>
+            <dd>
+              <ul>
+                <li>The contents of array and dictionary literals should have a space on both sides.</li>
+                <li>Longer or more complex literals should be split over multiple lines.</li>
+              </ul>
+            </dd>
+            <dt id="categories">Categories</dt>
+            <dd>
+              <ul>
+                <li>Category methods should always be prefixed.</li>
+                <li>
+                  If you need to expose private methods for subclasses or unit testing, 
+                  create a class extension named <code>Class+Private</code>.
+                </li>
+              </ul>
+            </dd>
+            <dt id="references">References</dt>
+            <dd>
+              <ul>
+                <li><a href="https://github.com/thoughtbot/guides">thoughtbot</a></li>
+                <li><a href="https://github.com/romaonthego/Objective-C-Style-Guide">Roman Efimov's Objective-C Style and Usage Guide</a></li>
+                <li><a href="https://github.com/github/objective-c-conventions">GitHub Objective-C Conventions</a></li>
+              </ul>
+            </dd>
+          </dl>  
+        </div>
       </div>
- 			<div class="row" id="footer">
- 				<div class="span4" id="twitter">
- 					<h3><a href="news.html">UPDATES</a></h3>
- 					<ul>
- 						<li>
- 							hReader presented at OSEHRA Open Source EHR Summit
- 						</li>
- 					</ul>
- 				</div>
- 				<div class="span4" id="menu">
- 					<h3><a href="news.html">LATEST APPLETS</a></h3>
- 					<ul>
- 					  <li>Total Cholesterol</li>
- 						<li>Oxygen Saturation</li>
- 					</ul>
- 				</div>
- 				<div class="span4" id="contact">
- 					<h3><a href="contact.html">CONTACT</a></h3>
-					<ul>
-						<li><a href="mailto:talk@hreader.org">Talk list</a></li>
-						<li><a href="mailto:dev@hreader.org">Developer list</a></li>
-					</ul>
- 				</div>
- 			</div>
-  		<div class="row" id="postscript">
- 				<div class="span1" id="host">
- 					<a href="http://github.com/">
- 						<img src="images/github_icon.png" alt="GitHub Logo"/>
- 					</a>
- 				</div>
- 				<div class="span5">
- 					<p>hReader is a collaborative research project from 
- 						<a href="http://www.mitre.org/">the MITRE Corporation</a>
- 					</p>
- 				</div>
- 				<div class="span6">
- 					<p>
- 						*All health data and information in the screen shots is synthetic.
- 					</p>
- 				</div>
- 			</div>
+      <div class="row" id="footer">
+        <div class="span4" id="twitter">
+          <h3><a href="news.html">UPDATES</a></h3>
+          <ul>
+            <li>
+              hReader presented at OSEHRA Open Source EHR Summit
+            </li>
+          </ul>
+        </div>
+        <div class="span4" id="menu">
+          <h3><a href="news.html">LATEST APPLETS</a></h3>
+          <ul>
+            <li>Total Cholesterol</li>
+            <li>Oxygen Saturation</li>
+          </ul>
+        </div>
+        <div class="span4" id="contact">
+          <h3><a href="contact.html">CONTACT</a></h3>
+          <ul>
+            <li><a href="mailto:talk@hreader.org">Talk list</a></li>
+            <li><a href="mailto:dev@hreader.org">Developer list</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row" id="postscript">
+        <div class="span1" id="host">
+          <a href="http://github.com/">
+            <img src="images/github_icon.png" alt="GitHub Logo"/>
+          </a>
+        </div>
+        <div class="span5">
+          <p>hReader is a collaborative research project from 
+            <a href="http://www.mitre.org/">the MITRE Corporation</a>
+          </p>
+        </div>
+        <div class="span6">
+          <p>
+            *All health data and information in the screen shots is synthetic.
+          </p>
+        </div>
+      </div>
     </div>
   </body>
+  <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-35626795-1']);
+		_gaq.push(['_trackPageview']);
+	
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 </html>

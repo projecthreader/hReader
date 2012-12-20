@@ -46,92 +46,94 @@
 		</div>
 		<div class="container content" id="content">
 		  <div class="row">
-        <h1>hReader Developer's Guide</h1>
-        <h2>API Interaction</h2>
-        
-        <p>
-          hReader talks to 
-          <a href="http://wiki.siframework.org/RHEx">RHEx</a> 
-          servers using instances of <code>HRAPIClient</code>. This class is 
-          responsible for all network communication between hReader and any number of 
-          <a href="http://wiki.siframework.org/RHEx">RHEx</a>  
-          servers. Request a client for a given host using <code>-[HRAPIClient clientWithHost:]</code>. 
-          Every client operates its own internal request queue and has both synchronous and 
-          asynchronous methods for handling 
-          <a href="http://wiki.siframework.org/RHEx">RHEx</a> data.
-        </p>
-        
-        <h2>Persistence</h2>
-        
-        <p>
-          The app uses CoreData to persist all local data. Instances of <code>HRMPatient</code> and 
-          <code>HRMEntry</code> are responsible for storing all data that comes from 
-          <a href="http://wiki.siframework.org/RHEx">RHEx</a>. Data is kept 
-          in an SQLCipher-encrypted database using <code>CMDEncryptedSQLiteStore</code>.
-        </p>
-        
-        <p>
-          hReader uses several managed object contexts to keep the app responsive as it handles 
-          fairly large amounts of data. The managed object contexts or organized as follows:
-        </p>
-        
-        <ul>
-          <li>
-            The root managed object context is created with <code>NSPrivateQueueConcurrencyType</code>. 
-            This pushes all database reads and writes onto a background thread that is managed 
-            by the context. This is not directly accessible to the application.
-          </li>
-          <li>
-            The context that is shared by the application is accessible through the app delegate: 
-            <code>-[HRAppDelegate managedObjectContext]</code>. This context is designed to be accessed on 
-            the main thread and is the only descendent of the root application context. It is 
-            used throughout the application to show data to the user.
-          </li>
-          <li>
-            Child contexts for specific tasks (network operations, user edits, etc) are created 
-            as children of the shared application context.
-          </li>
-        </ul>
-        
-        <p>
-          The application automatically cascades saves from the main context to the root context, 
-          and from direct descendants of the main context into the main context itself. It is 
-          your responsibility to push saves for other related contexts.
-        </p>
-        
-        <h2>Applets</h2>
-        
-        <p>
-          Each patient stores a list of applets that the user has configured. Available applets 
-          are loaded from <code>HReaderApplets.plist</code> can be accessed through 
-          <code>HRAppletConfigurationViewController</code>.
-        </p>
-        
-        <h2>Patients</h2>
-        
-        <p>
-          Patients are managed by <code>HRPeoplePickerViewController</code> and 
-          <code>HRPeopleSetupViewController</code>. The former controls which patient is 
-          selected and the order of patients. The later allows the user to download new 
-          patients and remove existing patients from the database.
-        </p>
-        
-        <p>
-          Instances of <code>HRPeopleFeedViewController</code> can be shown in a popover 
-          to present a list of patients that are stored on the given 
-          <a href="http://wiki.siframework.org/RHEx">RHEx</a> server. Set the 
-          completion block to receive a callback when the user has made a selection.
-        </p>
-        
-        <h2>Security</h2>
-        
-        <p>
-          Security is handled by <code>HRCryptoManager</code> and 
-          <code>CMDEncryptedSQLiteStore</code>. All data is encrypted using a shared 
-          application encryption key that is stored in the keychain encrypted with an 
-          application password. The password creation and verification happens 
-          in <code>HRAppDelegate</code>.
-        </p>
+		    <div class="span12">
+          <h1>hReader Developer's Guide</h1>
+          <h2>API Interaction</h2>
+          
+          <p>
+            hReader talks to 
+            <a href="http://wiki.siframework.org/RHEx">RHEx</a> 
+            servers using instances of <code>HRAPIClient</code>. This class is 
+            responsible for all network communication between hReader and any number of 
+            <a href="http://wiki.siframework.org/RHEx">RHEx</a>  
+            servers. Request a client for a given host using <code>-[HRAPIClient clientWithHost:]</code>. 
+            Every client operates its own internal request queue and has both synchronous and 
+            asynchronous methods for handling 
+            <a href="http://wiki.siframework.org/RHEx">RHEx</a> data.
+          </p>
+          
+          <h2>Persistence</h2>
+          
+          <p>
+            The app uses CoreData to persist all local data. Instances of <code>HRMPatient</code> and 
+            <code>HRMEntry</code> are responsible for storing all data that comes from 
+            <a href="http://wiki.siframework.org/RHEx">RHEx</a>. Data is kept 
+            in an SQLCipher-encrypted database using <code>CMDEncryptedSQLiteStore</code>.
+          </p>
+          
+          <p>
+            hReader uses several managed object contexts to keep the app responsive as it handles 
+            fairly large amounts of data. The managed object contexts or organized as follows:
+          </p>
+          
+          <ul>
+            <li>
+              The root managed object context is created with <code>NSPrivateQueueConcurrencyType</code>. 
+              This pushes all database reads and writes onto a background thread that is managed 
+              by the context. This is not directly accessible to the application.
+            </li>
+            <li>
+              The context that is shared by the application is accessible through the app delegate: 
+              <code>-[HRAppDelegate managedObjectContext]</code>. This context is designed to be accessed on 
+              the main thread and is the only descendent of the root application context. It is 
+              used throughout the application to show data to the user.
+            </li>
+            <li>
+              Child contexts for specific tasks (network operations, user edits, etc) are created 
+              as children of the shared application context.
+            </li>
+          </ul>
+          
+          <p>
+            The application automatically cascades saves from the main context to the root context, 
+            and from direct descendants of the main context into the main context itself. It is 
+            your responsibility to push saves for other related contexts.
+          </p>
+          
+          <h2>Applets</h2>
+          
+          <p>
+            Each patient stores a list of applets that the user has configured. Available applets 
+            are loaded from <code>HReaderApplets.plist</code> can be accessed through 
+            <code>HRAppletConfigurationViewController</code>.
+          </p>
+          
+          <h2>Patients</h2>
+          
+          <p>
+            Patients are managed by <code>HRPeoplePickerViewController</code> and 
+            <code>HRPeopleSetupViewController</code>. The former controls which patient is 
+            selected and the order of patients. The later allows the user to download new 
+            patients and remove existing patients from the database.
+          </p>
+          
+          <p>
+            Instances of <code>HRPeopleFeedViewController</code> can be shown in a popover 
+            to present a list of patients that are stored on the given 
+            <a href="http://wiki.siframework.org/RHEx">RHEx</a> server. Set the 
+            completion block to receive a callback when the user has made a selection.
+          </p>
+          
+          <h2>Security</h2>
+          
+          <p>
+            Security is handled by <code>HRCryptoManager</code> and 
+            <code>CMDEncryptedSQLiteStore</code>. All data is encrypted using a shared 
+            application encryption key that is stored in the keychain encrypted with an 
+            application password. The password creation and verification happens 
+            in <code>HRAppDelegate</code>.
+          </p>
+        </div>
       </div>
  			<div class="row" id="footer">
  				<div class="span4" id="twitter">
@@ -176,5 +178,18 @@
  			</div>
     </div>
   </body>
+  <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-35626795-1']);
+		_gaq.push(['_trackPageview']);
+	
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 </html>
 
