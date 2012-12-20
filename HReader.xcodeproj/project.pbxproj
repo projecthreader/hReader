@@ -1948,7 +1948,6 @@
 				3B29070B16484E830028C2CE /* HRTimelinePOSTURLProtocol.m in Sources */,
 				3BCF598A164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.m in Sources */,
 				24B2EA901663ED290077CF27 /* HRPopHealthAppletTile.m in Sources */,
-				3B0A43D916652CBD00492F53 /* HRMTimelineLevel.m in Sources */,
 				3BF45EE5167A7E5900FB47A0 /* HRMTimelineEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

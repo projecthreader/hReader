@@ -59,14 +59,26 @@ body {
     width: 300px;
     height: 100px;
   }
-  .pophealth-result-container { margin-top: 80px; }
+
+  .pophealth-result-container { margin-top: 100px; }
   padding: 10px 0;
   position: fixed;
   left: 30px;
   top: 12px;
   bottom: 0px;
-  width: 400px;
+  width: 315px;
   font-size:11px;
+
+  .paramGroup {
+    margin-top: 100px;
+    height: 200px;
+    &.pass { background: $successColor; }
+    &.fail { background: $errorColor; }
+  }
+  .paramItem {
+    height: 200px;
+    overflow: scroll;
+  }
 }
 
 .patient {

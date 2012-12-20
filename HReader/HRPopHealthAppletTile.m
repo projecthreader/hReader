@@ -7,11 +7,13 @@
 //
 
 #import "HRPopHealthAppletTile.h"
+#import "HRMPatient.h"
 
 @implementation HRPopHealthAppletTile
 
 - (void)tileDidLoad {
     [super tileDidLoad];
+    HRMPatient *patient = [self.userInfo objectForKey:@"__private_patient__"];
 }
 
 @end

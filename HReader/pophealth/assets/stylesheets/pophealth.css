@@ -75,13 +75,23 @@ body {
   left: 30px;
   top: 12px;
   bottom: 0px;
-  width: 400px;
+  width: 315px;
   font-size: 11px; }
   .sideSummary .logo {
     width: 300px;
     height: 100px; }
   .sideSummary .pophealth-result-container {
-    margin-top: 80px; }
+    margin-top: 100px; }
+  .sideSummary .paramGroup {
+    margin-top: 100px;
+    height: 200px; }
+    .sideSummary .paramGroup.pass {
+      background: #048a82; }
+    .sideSummary .paramGroup.fail {
+      background: #d60d26; }
+  .sideSummary .paramItem {
+    height: 200px;
+    overflow: scroll; }
 
 .patient {
   margin-bottom: 30px; }
