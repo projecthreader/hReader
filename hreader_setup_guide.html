@@ -2,7 +2,7 @@
 <meta charset=utf-8>
 <html>
   <head> 
-    <title>Documentation for hReader</title>
+    <title>hReader Setup Guide</title>
     <!-- Enable IE9 Standards mode -->
     <meta http-equiv="X-UA-Compatible" content="IE=9" >
     <!--[if lt IE 9]>
@@ -45,54 +45,46 @@
 			</div>
 		</div>
 		<div class="container content" id="content">
-			<h1>Documentation</h1>
-			<div class="row">
-				<div class="span12">
-					<ul id="documents">
-						<li>
-							<a href="hreader_setup_guide.html">hReader Setup Guide</a>
-							<p>
-								This document provides instructions for setting up a local development
-								environment for hReader.
-							</p>
-						</li>
-						<li>
-						  <a href="hreader_dev_guide.html">hReader Developer's Guide</a>
-						  <p>
-						    This document provides developers information about how the hReader
-						    framework operates.
-						  </p>
-						<li>
-							<a href="applet_dev_guide.html">hReader Applet Developer's Guide</a>
-							<p>
-								This document describes the hReader applet architecture and how to write
-								both native iOS applets as well as HTML5/CSS-based applets for hReader.
-							</p>
-						</li>
-						<li>
-						  <a href="coding_guidelines.html">Coding Guidelines</a>
-						  <p>
-						    This document lists our guidelines for coding style, which we encourage
-						    developers of both the framework and the applets to follow.
-						  </p>
-						<li>
-							<a href="https://github.com/project-rhex/patient-data-server/blob/master/README.md">
-								Setting up the RHEx Patient Data Server
-							</a>
-							<p>
-								This document provides instructions for setting a local instance of the
-								RHEx patient data server, which provides the patient data to hReader.
-							</p>
-						</li>
-					<p id="pdf">
-						*Documents in PDF format require 
-						<a href="http://get.adobe.com/reader">Adobe Acrobat Reader</a>.<br />
-						If you experience problems with PDF documents, please
-						<a href="http://get.adobe.com/reader">download</a> 
-						the latest version of Acrobat Reader.
-					</p>
-				</div>
-			</div>
+		  <div class="row">
+        <h1>Project Setup</h1>
+        <ul>
+          <li>
+            Building hReader requires at least Xcode 4.5.1.
+          </li>
+          <li>
+            The build process requires the `plist` gem. Run 
+            `<code>sudo gem install plist --no-rdoc --no-ri</code>` 
+            to install the gem in your system Ruby.
+          </li>
+          <li>
+            hReader relies on several git submodules. Run 
+            `<code>git submodule update --init --recursive</code>` 
+            to update all submodules.
+          </li>
+          <li>
+            The build process requires the presence of the Xcode "Command Line Tools" package. 
+            Navigate to Xcode > Preferences > Downloads > Components and install the package.
+          </li>
+          <li>
+            The build process requires openssl source code to be setup in the environment.
+            <ul>
+              <li>
+                Download OpenSSL from
+                <a href="http://www.openssl.org/source/">http://www.openssl.org/source</a>. 
+                hReader has been tested against version 1.0.1c.
+              </li>
+              <li>
+                Untar the OpenSSL archive.
+              </li>
+              <li>
+                Create a new source tree in your Xcode preferences 
+                (Xcode > Preferences > Locations > Source Trees) 
+                called `OPENSSL_SRC` pointed at the location of the OpenSSL source directory.
+              </li>
+            </ul>
+          </li>
+        </ul>
+        </div>
  			<div class="row" id="footer">
  				<div class="span4" id="twitter">
  					<h3><a href="news.html">UPDATES</a></h3>
@@ -134,19 +126,7 @@
  					</p>
  				</div>
  			</div>
-		</div>
-	</body>
-  <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
-	<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-	<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-35626795-1']);
-		_gaq.push(['_trackPageview']);
-	
-		(function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-	</script>
+    </div>
+  </body>
 </html>
+

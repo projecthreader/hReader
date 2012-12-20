@@ -59,7 +59,7 @@ a:hover {
 	color: #999;
 }
 
-ul {
+ul.faq {
 	list-style-type: none;
 	margin-left: 0;
 }
@@ -67,6 +67,17 @@ ul {
 h1.logo {
 	text-align: left;
 	width: 100%;
+}
+
+code {
+  color: #D61F29;
+}
+
+code.example {
+  margin-left: 20px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  display: table;
 }
 
 #openid a {

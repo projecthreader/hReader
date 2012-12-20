@@ -1,0 +1,180 @@
+<!doctype html>
+<meta charset=utf-8>
+<html>
+  <head> 
+    <title>hReader Developer's Guide</title>
+    <!-- Enable IE9 Standards mode -->
+    <meta http-equiv="X-UA-Compatible" content="IE=9" >
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css" />
+		<link rel="stylesheet" href="bootstrap/css/bootstrap-responsive.css" type="text/css" />
+		<link rel="stylesheet" href="stylesheets/style.css" type="text/css" />  
+    <link rel="icon" type="image/png" href="images/hreader_icon2.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+  	<div class="navbar navbar-fixed-top">
+  		<div class="navbar-inner">
+  			<div class="container">
+  				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+  				</a>
+      		<a class="brand" href="index.html"><img src="images/hreader_logo_small.png" alt="hReader Logo" /></a>
+      		<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li class=""><a href="index.html">Home</a></li>
+							<li class=""><a href="about.html">About</a></li>
+							<li class=""><a href="screen_shots.html">Screen Shots</a></li>
+							<li class=""><a href="code.html">Code</a></li>
+							<li class="active"><a href="documentation.html">Docs</a></li>
+							<li class=""><a href="participate.html">Participate</a></li>
+							<li class=""><a href="news.html">News</a></li>
+							<li class=""><a href="faq.html">FAQ</a></li>
+							<li class=""><a href="contact.html">Contact</a></li>
+						</ul>
+						<ul class="nav pull-right">
+							<li><a class="right" href="http://twitter.com/projecthreader"><img src="images/twitter.png" /></a></li>
+							<li><a class="right" href="http://www.facebook.com/projecthreader"><img src="images/facebook.png" /></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container content" id="content">
+		  <div class="row">
+        <h1>hReader Developer's Guide</h1>
+        <h2>API Interaction</h2>
+        
+        <p>
+          hReader talks to 
+          <a href="http://wiki.siframework.org/RHEx">RHEx</a> 
+          servers using instances of <code>HRAPIClient</code>. This class is 
+          responsible for all network communication between hReader and any number of 
+          <a href="http://wiki.siframework.org/RHEx">RHEx</a>  
+          servers. Request a client for a given host using <code>-[HRAPIClient clientWithHost:]</code>. 
+          Every client operates its own internal request queue and has both synchronous and 
+          asynchronous methods for handling 
+          <a href="http://wiki.siframework.org/RHEx">RHEx</a> data.
+        </p>
+        
+        <h2>Persistence</h2>
+        
+        <p>
+          The app uses CoreData to persist all local data. Instances of <code>HRMPatient</code> and 
+          <code>HRMEntry</code> are responsible for storing all data that comes from 
+          <a href="http://wiki.siframework.org/RHEx">RHEx</a>. Data is kept 
+          in an SQLCipher-encrypted database using <code>CMDEncryptedSQLiteStore</code>.
+        </p>
+        
+        <p>
+          hReader uses several managed object contexts to keep the app responsive as it handles 
+          fairly large amounts of data. The managed object contexts or organized as follows:
+        </p>
+        
+        <ul>
+          <li>
+            The root managed object context is created with <code>NSPrivateQueueConcurrencyType</code>. 
+            This pushes all database reads and writes onto a background thread that is managed 
+            by the context. This is not directly accessible to the application.
+          </li>
+          <li>
+            The context that is shared by the application is accessible through the app delegate: 
+            <code>-[HRAppDelegate managedObjectContext]</code>. This context is designed to be accessed on 
+            the main thread and is the only descendent of the root application context. It is 
+            used throughout the application to show data to the user.
+          </li>
+          <li>
+            Child contexts for specific tasks (network operations, user edits, etc) are created 
+            as children of the shared application context.
+          </li>
+        </ul>
+        
+        <p>
+          The application automatically cascades saves from the main context to the root context, 
+          and from direct descendants of the main context into the main context itself. It is 
+          your responsibility to push saves for other related contexts.
+        </p>
+        
+        <h2>Applets</h2>
+        
+        <p>
+          Each patient stores a list of applets that the user has configured. Available applets 
+          are loaded from <code>HReaderApplets.plist</code> can be accessed through 
+          <code>HRAppletConfigurationViewController</code>.
+        </p>
+        
+        <h2>Patients</h2>
+        
+        <p>
+          Patients are managed by <code>HRPeoplePickerViewController</code> and 
+          <code>HRPeopleSetupViewController</code>. The former controls which patient is 
+          selected and the order of patients. The later allows the user to download new 
+          patients and remove existing patients from the database.
+        </p>
+        
+        <p>
+          Instances of <code>HRPeopleFeedViewController</code> can be shown in a popover 
+          to present a list of patients that are stored on the given 
+          <a href="http://wiki.siframework.org/RHEx">RHEx</a> server. Set the 
+          completion block to receive a callback when the user has made a selection.
+        </p>
+        
+        <h2>Security</h2>
+        
+        <p>
+          Security is handled by <code>HRCryptoManager</code> and 
+          <code>CMDEncryptedSQLiteStore</code>. All data is encrypted using a shared 
+          application encryption key that is stored in the keychain encrypted with an 
+          application password. The password creation and verification happens 
+          in <code>HRAppDelegate</code>.
+        </p>
+      </div>
+ 			<div class="row" id="footer">
+ 				<div class="span4" id="twitter">
+ 					<h3><a href="news.html">UPDATES</a></h3>
+ 					<ul>
+ 						<li>
+ 							hReader presented at OSEHRA Open Source EHR Summit
+ 						</li>
+ 					</ul>
+ 				</div>
+ 				<div class="span4" id="menu">
+ 					<h3><a href="news.html">LATEST APPLETS</a></h3>
+ 					<ul>
+ 					  <li>Total Cholesterol</li>
+ 						<li>Oxygen Saturation</li>
+ 					</ul>
+ 				</div>
+ 				<div class="span4" id="contact">
+ 					<h3><a href="contact.html">CONTACT</a></h3>
+					<ul>
+						<li><a href="mailto:talk@hreader.org">Talk list</a></li>
+						<li><a href="mailto:dev@hreader.org">Developer list</a></li>
+					</ul>
+ 				</div>
+ 			</div>
+  		<div class="row" id="postscript">
+ 				<div class="span1" id="host">
+ 					<a href="http://github.com/">
+ 						<img src="images/github_icon.png" alt="GitHub Logo"/>
+ 					</a>
+ 				</div>
+ 				<div class="span5">
+ 					<p>hReader is a collaborative research project from 
+ 						<a href="http://www.mitre.org/">the MITRE Corporation</a>
+ 					</p>
+ 				</div>
+ 				<div class="span6">
+ 					<p>
+ 						*All health data and information in the screen shots is synthetic.
+ 					</p>
+ 				</div>
+ 			</div>
+    </div>
+  </body>
+</html>
+
