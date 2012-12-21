@@ -25,6 +25,19 @@
     return self;
 }
 
+- (void)setMedication:(HRMEntry *)medication{
+    _medication = medication;
+    
+    //set textViews from medication fields
+    [self.medicationName setText:[medication.desc uppercaseString]];//set medication name
+    [self.commentsTextView setText:medication.comments];
+    [self.quantityTextView setText:[medication.patientComments objectForKey:QUANTITY_KEY]];
+    [self.doseTextView setText:[medication.patientComments objectForKey:DOSE_KEY]];
+    [self.directionsTextView setText:[medication.patientComments objectForKey:DIRECTIONS_KEY]];
+    [self.prescriberTextView setText:[medication.patientComments objectForKey:PRESCRIBER_KEY]];
+    
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -73,7 +86,6 @@
         [self setEditStyleForTextView:self.commentsTextView];
     }
     else {
-        //copying textview text in case is strong reference,
         //save after finishing edit
         
         //change views to noneditable
@@ -87,7 +99,7 @@
         //save data
         NSLog(@"Saving data...");
         [self.medication setComments:self.commentsTextView.text];
-        NSArray *keys = [NSArray arrayWithObjects:@"quantity", @"dose", @"directions", @"prescriber", nil];
+        NSArray *keys = [NSArray arrayWithObjects:QUANTITY_KEY, DOSE_KEY, DIRECTIONS_KEY, PRESCRIBER_KEY, nil];
         NSArray *objects = [NSArray arrayWithObjects:
                             self.quantityTextView.text,
                             self.doseTextView.text,
@@ -101,8 +113,6 @@
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
-        
-        NSLog(@"TextViews may be null. Don't access here.");
     }
 }
 
