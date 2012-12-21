@@ -142,7 +142,6 @@
 		<hr class="soften">
 	 -->
 	 		<article ngChange:false ng-repeat="condition in conditions">
-			<!-- <article > -->
 				<div class="row titles">
 					<h2 class="span3">{{condition.description}}</h2>
 					<span class="span1"><a class="btn" onclick="$('#newSymp').show()"><i class="icon-plus"></i></a>
@@ -165,54 +164,6 @@
 						</span>			
 					</form>
 				</div>
-					<div class="row">
-						<h4 class="titles span4">Symptom1*</h4>
-						<span class="span6">
-							<fieldset class="span6" data-role="controlgroup" data-type="horizontal">
-								<select class="" name="select-choice-sev" id="select-choice-sev">
-								   <option value="none">Severity</option>
-								   <option value="none">None</option>
-								   <option value="mild">Mild</option>
-								   <option value="moderate">Moderate</option>
-								   <option value="severe">Severe</option>
-								</select>
-								<select class="" name="select-choice-dur" id="select-choice-dur" >
-								   <option value="null">Duration</option>
-								   <option value="seconds">Seconds</option>
-								   <option value="minutes">Minutes</option>
-								   <option value="hours">Hours</option>
-								   <option value="days">Days</option>
-								</select>  
-							<fieldset>
-						</span>
-					</div>
-					<div class="row">
-						<h4 class="titles span4">Symptom2*</h4>
-						<span class="span6">
-							<fieldset class="span6" data-role="controlgroup" data-type="horizontal">
-								<select name="select-choice-sev" id="select-choice-sev">
-								   <option value="none">Severity</option>
-								   <option value="none">None</option>
-								   <option value="mild">Mild</option>
-								   <option value="moderate">Moderate</option>
-								   <option value="severe">Severe</option>
-								</select>
-								<select name="select-choice-dur" id="select-choice-dur" >
-								   <option value="null">Duration</option>
-								   <option value="seconds">Seconds</option>
-								   <option value="minutes">Minutes</option>
-								   <option value="hours">Hours</option>
-								   <option value="days">Days</option>
-								</select>  
-							<fieldset>
-						</span>
-					</div>
-					<div class="row">
-						<div class="span10"></div>
-						<span class="span2">
-							<input data-role="controlgroup" type="submit" value="submit">
-						</span>
-					</div>
 				</form>
 				<hr>
 			</article>	

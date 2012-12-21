@@ -12,7 +12,7 @@
 #import "HRPeoplePickerViewController_private.h"
 
 #import "HRMPatient.h"
-#import "HRMTimelineLevel.h"
+#import "HRMTimelineEntry.h"
 
 @implementation HRTimelinePOSTURLProtocol
 
@@ -49,6 +49,14 @@
 
 - (void)startLoading {
     id<NSURLProtocolClient> client = [self client];
+#define PRIVATE_CONTEXT 1
+#if PRIVATE_CONTEXT
+    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    [context setParentContext:[HRAppDelegate managedObjectContext]];
+#else
+    NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
+#endif
+    
     
     // query string parameters
     NSString *queryString = [[[self request] URL] query];
@@ -61,31 +69,35 @@
     NSDictionary *bodyParameters = [HRAPIClient parametersFromQueryString:bodyString];
     HRDebugLog(@"Body parameters: %@", bodyParameters);
     
-    // levels
-    if ([action isEqualToString:@"Levels"]) {
-        NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
-        [context performBlockAndWait:^{
-            HRMTimelineLevel *level = [HRMTimelineLevel instanceInContext:context];
-            level.patient = [HRPeoplePickerViewController selectedPatient];
-            level.data = bodyParameters;
-            NSError *error = nil;
-            if (![context save:&error]) {
-                HRDebugLog(@"Failed to save levels: %@", error);
-            }
-        }];
+    [context performBlockAndWait:^{
+        HRMPatient *patient = [HRPeoplePickerViewController selectedPatientInContext:context];
+        HRMTimelineEntry *entry = [HRMTimelineEntry instanceInContext:context];
+        entry.patient = patient;
+        entry.data = bodyParameters;
         
-    }
-    
-    // new med regiment
-    else if ([action isEqualToString:@"MedRegiment"]) {
+        // levels
+        if ([action isEqualToString:@"Levels"]) {
+            entry.type = @(HRMTimelineEntryTypeLevels);
+        }
         
-    }
-    // NewMedication
-    // ConditionSymptoms 
+        // new medication
+        else if ([action isEqualToString:@"NewMedication"]) {
+            entry.type = @(HRMTimelineEntryTypeRegiment);
+        }
+        
+        // new med regiment
+        else if ([action isEqualToString:@"MedRegiment"]) {
+            
+        }
+        
+        // save
+        NSError *error = nil;
+        if (![context save:&error]) { HRDebugLog(@"Failed to save levels: %@", error); }
+        
+    }];
     
     // send redirect
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[HRTimelinePOSTURLProtocol indexURL]];
-    [request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
     NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc]
                                    initWithURL:[[self request] URL]
                                    statusCode:302
