@@ -205,28 +205,18 @@
     HRMedicationCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MedicationCellReuseID" forIndexPath:indexPath];
     
     [cell setMedication:[self.medicationList objectAtIndex:indexPath.item]];
-    
-    NSLog(@"dequeuing cell- medication name: %@", cell.medication.desc);
-    NSLog(@"Index: %d", indexPath.item);
-    
-    //set text from medication fields
-    [cell.medicationName setText:[cell.medication.desc uppercaseString]];//set medication name
-    [cell.commentsTextView setText:cell.medication.comments];
-    [cell.quantityTextView setText:[cell.medication.patientComments objectForKey:@"quantity"]];
-    [cell.doseTextView setText:[cell.medication.patientComments objectForKey:@"dose"]];
-    [cell.directionsTextView setText:[cell.medication.patientComments objectForKey:@"directions"]];
-    [cell.prescriberTextView setText:[cell.medication.patientComments objectForKey:@"prescriber"]];
-    
+
     return cell;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     
-    HRMPatient *currentPatient = [HRPeoplePickerViewController selectedPatient];
-    NSUInteger cnt = [currentPatient.medications count];
-    NSLog(@"Number of items in section: %d", cnt);
-    return [currentPatient.medications count];
+//    HRMPatient *currentPatient = [HRPeoplePickerViewController selectedPatient];
+//    NSUInteger cnt = [currentPatient.medications count];
+    NSLog(@"Number of items in section: %d", [self.medicationList count]);
+//    return [currentPatient.medications count];
+    return [self.medicationList count];
 }
 
 #pragma mark - gestures
