@@ -214,6 +214,7 @@
 		49539E02165A9937004CB11B /* HRMedicationsMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539DFF165A9937004CB11B /* HRMedicationsMasterViewController.m */; };
 		49539E14165AAEDA004CB11B /* HRMedicationsAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539E12165AAEDA004CB11B /* HRMedicationsAppletTile.m */; };
 		49539E15165AAEDA004CB11B /* HRMedicationsAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49539E13165AAEDA004CB11B /* HRMedicationsAppletTile.xib */; };
+		4953C73C1679350200A6B98D /* HRMedicationsCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4953C73B1679350200A6B98D /* HRMedicationsCollectionViewLayout.m */; };
 		497775841663B8C700FF6E95 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 497775831663B8C700FF6E95 /* edit.png */; };
 		497775861663B8D200FF6E95 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 497775851663B8D200FF6E95 /* save.png */; };
 		9413C74914EC0B7800BFA521 /* HRPatientSwipeControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9413C74814EC0B7800BFA521 /* HRPatientSwipeControl.xib */; };
@@ -614,8 +615,11 @@
 		49539E11165AAEDA004CB11B /* HRMedicationsAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMedicationsAppletTile.h; sourceTree = "<group>"; };
 		49539E12165AAEDA004CB11B /* HRMedicationsAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMedicationsAppletTile.m; sourceTree = "<group>"; };
 		49539E13165AAEDA004CB11B /* HRMedicationsAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRMedicationsAppletTile.xib; sourceTree = "<group>"; };
+		4953C73A1679350100A6B98D /* HRMedicationsCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMedicationsCollectionViewLayout.h; sourceTree = "<group>"; };
+		4953C73B1679350200A6B98D /* HRMedicationsCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMedicationsCollectionViewLayout.m; sourceTree = "<group>"; };
 		497775831663B8C700FF6E95 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		497775851663B8D200FF6E95 /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
+		497775A01669070100FF6E95 /* hReader 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "hReader 5.xcdatamodel"; sourceTree = "<group>"; };
 		940C0467152B6ADF00834416 /* hs-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "hs-synthetic.json"; sourceTree = "<group>"; };
 		940C0468152B6ADF00834416 /* js-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "js-synthetic.json"; sourceTree = "<group>"; };
 		940C0469152B6ADF00834416 /* ms-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ms-synthetic.json"; sourceTree = "<group>"; };
@@ -1196,6 +1200,8 @@
 				49539DFD165A9937004CB11B /* HRMedications_iPad.storyboard */,
 				49539DFE165A9937004CB11B /* HRMedicationsMasterViewController.h */,
 				49539DFF165A9937004CB11B /* HRMedicationsMasterViewController.m */,
+				4953C73A1679350100A6B98D /* HRMedicationsCollectionViewLayout.h */,
+				4953C73B1679350200A6B98D /* HRMedicationsCollectionViewLayout.m */,
 			);
 			name = HRMedicationsApp;
 			sourceTree = "<group>";
@@ -1978,6 +1984,7 @@
 				49539E02165A9937004CB11B /* HRMedicationsMasterViewController.m in Sources */,
 				49539E14165AAEDA004CB11B /* HRMedicationsAppletTile.m in Sources */,
 				3B0A43D916652CBD00492F53 /* HRMTimelineLevel.m in Sources */,
+				4953C73C1679350200A6B98D /* HRMedicationsCollectionViewLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2120,11 +2127,12 @@
 			isa = XCVersionGroup;
 			children = (
 				3B21D67416651870003DB581 /* hReader 4.xcdatamodel */,
+				497775A01669070100FF6E95 /* hReader 5.xcdatamodel */,
 				3B9C379D1656C3CE00CAE751 /* hReader 3.xcdatamodel */,
 				3B48FA2D165414E00071F707 /* hReader 2.xcdatamodel */,
 				3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */,
 			);
-			currentVersion = 3B21D67416651870003DB581 /* hReader 4.xcdatamodel */;
+			currentVersion = 497775A01669070100FF6E95 /* hReader 5.xcdatamodel */;
 			path = hReader.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
