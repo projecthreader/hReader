@@ -8,6 +8,24 @@
 
 #import "CMDManagedObject.h"
 
+#define DESCRIPTION_KEY @"description"
+#define STATUS_KEY @"status"
+#define TIME_KEY @"time"
+#define START_TIME_KEY @"start_time"
+#define END_TIME_KEY @"end_time"
+#define CODES_KEY @"codes"
+#define VALUE_KEY @"value"
+#define DOSE_KEY @"dose"
+#define REACTION_KEY @"reaction"
+#define SEVERITY_KEY @"severity"
+#define STATUS_KEY @"status"
+
+//unsupported data keys
+#define QUANTITY_KEY @"quantity"
+#define DIRECTIONS_KEY @"directions"
+#define PRESCRIBER_KEY @"prescriber"
+
+
 typedef NS_ENUM(int, HRMEntryType) {
     HRMEntryTypeCondition,
     HRMEntryTypeAllergy,
