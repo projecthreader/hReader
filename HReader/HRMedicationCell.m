@@ -52,8 +52,7 @@
     if (self.editing) {
         //received "save button" click
         [sender setTitle:@"Edit" forState:UIControlStateNormal];
-        //TODO: LMD acquire image more gracefully (relative path?)
-        NSString *editImageFile = @"/Users/laurend/Dev/hReaderProject/HReader/edit.png";
+        NSString *editImageFile = [[NSBundle mainBundle] pathForResource:@"edit" ofType:@"png"];
         UIImage *editImage = [UIImage imageWithContentsOfFile:editImageFile];
         [sender setImage:editImage forState:UIControlStateNormal];
         
@@ -61,7 +60,7 @@
     } else {
         
         [sender setTitle:@"Done" forState:UIControlStateNormal];
-        NSString *saveImageFile = @"/Users/laurend/Dev/hReaderProject/HReader/save.png";
+        NSString *saveImageFile = [[NSBundle mainBundle] pathForResource:@"save" ofType:@"png"];
         UIImage *saveImage = [UIImage imageWithContentsOfFile:saveImageFile];
         [sender setImage:saveImage forState:UIControlStateNormal];
         
@@ -77,8 +76,6 @@
     
     if (flag == YES){
         // Change views to edit mode.
-        //TODO: LMD add cursor?
-        
         [self setEditStyleForTextView:self.quantityTextView];
         [self setEditStyleForTextView:self.doseTextView];
         [self setEditStyleForTextView:self.directionsTextView];
@@ -86,8 +83,6 @@
         [self setEditStyleForTextView:self.commentsTextView];
     }
     else {
-        //save after finishing edit
-        
         //change views to noneditable
         [self finishEditForTextView:self.quantityTextView];
         [self finishEditForTextView:self.doseTextView];
@@ -108,7 +103,7 @@
                             nil];
         [self.medication setPatientComments:[NSDictionary dictionaryWithObjects:objects forKeys:keys]];
         
-        NSManagedObjectContext *context = [self.medication managedObjectContext];//[HRAppDelegate managedObjectContext];
+        NSManagedObjectContext *context = [self.medication managedObjectContext];
         NSError *error;
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
