@@ -34,13 +34,17 @@
       return popHealth.filterResults(event.target.getAttribute("data-filter-criteria"));
     });
     return $.ajax({
-      url: 'http://localhost:3000/measures/results/1',
-      success: function(data) {
-        return alert('success!');
+      type: "GET",
+      url: 'http://127.0.0.1:3000/measures/results/1.json',
+      isModified: false,
+      dataType: "jsonp",
+      data: {
+        id: 1
       },
-      error: function(data) {
-        return alert('broken!');
-      }
+      success: function(data) {
+        return alert('success?');
+      },
+      error: function() {}
     });
   });
 
