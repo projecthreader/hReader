@@ -169,21 +169,24 @@
                     <navigationItem key="navigationItem" title="Title" id="W9b-SY-ftR">
                         <barButtonItem key="rightBarButtonItem" title="Next" style="done" id="Hhl-h6-BzB">
                             <connections>
-                                <action selector="create:" destination="4zr-1M-trb" id="Hrr-5N-8hb"/>
+                                <action selector="doneButtonAction:" destination="4zr-1M-trb" id="Lmz-sC-RZ0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
+                        <userDefinedRuntimeAttribute type="number" keyPath="mode">
                             <real key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="string" keyPath="passwordSecurityPattern" value="^.*(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,}).*$"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="passwordFieldContainerView" destination="LYH-0K-SbB" id="5ih-Fj-Env"/>
                         <outlet property="passwordFieldDividerView" destination="M56-o4-vAm" id="rD9-v2-Nph"/>
                         <outlet property="passwordOneField" destination="AM3-E7-vci" id="S1c-qN-kyc"/>
                         <outlet property="passwordTwoField" destination="a9A-pq-hwx" id="FU0-EV-p0x"/>
+                        <outletCollection property="passwordFields" destination="AM3-E7-vci" id="wrZ-qF-FXn"/>
+                        <outletCollection property="passwordFields" destination="a9A-pq-hwx" id="FHf-6V-hf4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QU7-G2-qI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -388,7 +391,7 @@
                     <navigationItem key="navigationItem" title="Title" id="OUR-DL-eYI">
                         <barButtonItem key="rightBarButtonItem" title="Login" style="done" id="xMQ-cZ-WvQ">
                             <connections>
-                                <action selector="verify:" destination="HUK-hN-tT9" id="FcW-i2-3Vt"/>
+                                <action selector="doneButtonAction:" destination="HUK-hN-tT9" id="vC7-Ps-WK3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -520,6 +523,9 @@
         <class className="HRRHExLoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRRHExLoginViewController.h"/>
             <relationships>
+                <relationship kind="action" name="navigateBack:"/>
+                <relationship kind="action" name="navigateForward:"/>
+                <relationship kind="action" name="navigateReload:"/>
                 <relationship kind="outlet" name="navigationToolbar" candidateClass="UIToolbar"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
@@ -540,6 +546,7 @@
         <class className="IMSPasswordViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IMSPasswordViewController.h"/>
             <relationships>
+                <relationship kind="action" name="doneButtonAction:"/>
                 <relationship kind="outlet" name="passwordOneField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passwordTwoField" candidateClass="UITextField"/>
                 <relationship kind="outletCollection" name="passwordFields" candidateClass="UITextField"/>
