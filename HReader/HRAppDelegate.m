@@ -75,7 +75,7 @@
         NSFileManager *fileManager = [NSFileManager defaultManager];
         NSURL *applicationSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
         [fileManager createDirectoryAtURL:applicationSupportURL withIntermediateDirectories:NO attributes:nil error:nil];
-        NSURL *databaseURL = [applicationSupportURL URLByAppendingPathComponent:@"database.sqlite3"];
+        NSURL *databaseURL = [applicationSupportURL URLByAppendingPathComponent:@"database.sqlite3.2"];
         NSDictionary *options = @{
             NSPersistentStoreFileProtectionKey : NSFileProtectionComplete,
             NSMigratePersistentStoresAutomaticallyOption : @YES,
