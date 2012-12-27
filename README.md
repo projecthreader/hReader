@@ -14,7 +14,7 @@ hReader is an open-source, patient-centric mobile health data manager that secur
 
 ## API Interaction
 
-hReader talks to RHEx servers using instances of `HRAPIClient`. This class is responsible for all network communication between hReader and any number of RHEx servers. Request a client for a given host using `-[HRAPIClient clientWithHost:]`. Every client operates its own internal request queue and has both synchronous and asynchronous methods for handling RHEx data.
+hReader talks to RHEx servers using instances of `HRAPIClient`. This class is responsible for all network communication between hReader and any number of RHEx servers. Request a client for a given host using `-[HRAPIClient clientWithHost:]`. Every client operates its own internal request queue &mdash; managed using [Grand Central Dispatch](https://developer.apple.com/library/mac/#documentation/Performance/Reference/GCD_libdispatch_Ref/Reference/reference.html) &mdash; and has both synchronous and asynchronous methods for handling RHEx data.
 
 ## Persistence
 
