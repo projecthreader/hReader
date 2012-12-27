@@ -16,3 +16,6 @@
 [submodule "vendor/SecureFoundation"]
 	path = vendor/SecureFoundation
 	url = https://github.com/project-imas/securefoundation.git
+[submodule "vendor/apppassword"]
+	path = vendor/apppassword
+	url = https://github.com/project-imas/app-password.git
