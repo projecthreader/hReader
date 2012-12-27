@@ -15,11 +15,6 @@
 #import "SSKeychain.h"
 
 #define hr_dispatch_main(block) dispatch_async(dispatch_get_main_queue(), block)
-#if DEBUG
-#define hr_api_log(fmt, args...) NSLog(@"%@ " fmt, self, ##args)
-#else
-#define hr_api_log(fmt, args...)
-#endif
 
 // oauth client resources
 static NSString * const HROAuthClientIdentifier = @"c0b6b6139ff056f343f05c58c5b90a00";
@@ -85,9 +80,11 @@ static NSMutableDictionary *allClients = nil;
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[array count]];
     [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSUInteger location = [obj rangeOfString:@"="].location;
-        NSString *key = [obj substringToIndex:location];
-        NSString *value = [obj substringFromIndex:(location + 1)];
-        [dictionary setObject:value forKey:key];
+        if (location != NSNotFound) {
+            NSString *key = [obj substringToIndex:location];
+            NSString *value = [obj substringFromIndex:(location + 1)];
+            [dictionary setObject:value forKey:key];
+        }
     }];
     return dictionary;
 }
@@ -150,13 +147,13 @@ static NSMutableDictionary *allClients = nil;
     [self patientFeed:completion ignoreCache:NO];
 }
 
-- (void)JSONForPatientWithIdentifier:(NSString *)identifier startBlock:(void (^) (void))startBlock finishBlock:(void (^) (NSDictionary *payload))finishBlock {
-    dispatch_async(_requestQueue, ^{
+- (NSDictionary *)JSONForPatientWithIdentifier:(NSString *)identifier {
+    __block NSDictionary *dictionary = nil;
+    dispatch_sync(_requestQueue, ^{
         
         // start block
         hr_dispatch_main(^{
             [[UIApplication sharedApplication] hr_pushNetworkOperation];
-            if (startBlock) { startBlock(); }
         });
         
         // create request
@@ -171,7 +168,6 @@ static NSMutableDictionary *allClients = nil;
         
         // create patient
         NSError *JSONError = nil;
-        NSDictionary *dictionary = nil;
         if (data && [response statusCode] == 200) {
             dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
         }
@@ -179,6 +175,25 @@ static NSMutableDictionary *allClients = nil;
         // finish block
         hr_dispatch_main(^{
             [[UIApplication sharedApplication] hr_popNetworkOperation];
+        });
+        
+    });
+    return dictionary;
+}
+
+- (void)JSONForPatientWithIdentifier:(NSString *)identifier startBlock:(void (^) (void))startBlock finishBlock:(void (^) (NSDictionary *payload))finishBlock {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        // start block
+        hr_dispatch_main(^{
+            if (startBlock) { startBlock(); }
+        });
+        
+        // run request
+        NSDictionary *dictionary = [self JSONForPatientWithIdentifier:identifier];
+        
+        // finish block
+        hr_dispatch_main(^{
             if (finishBlock) { finishBlock(dictionary); }
         });
         
@@ -190,18 +205,18 @@ static NSMutableDictionary *allClients = nil;
 - (NSMutableURLRequest *)GETRequestWithPath:(NSString *)path {
     
     // log initial statement
-    hr_api_log(@"Building request");
+    HRDebugLog(@"Building request");
     
     // make sure we have a refresh token
     NSString *refresh = HRCryptoManagerKeychainItemString(HROAuthKeychainService, _host);
     if (refresh == nil) {
-        hr_api_log(@"No refresh token is present");
+        HRDebugLog(@"No refresh token is present");
         return nil;
     }
     
     // used to refresh the access token
     NSTimeInterval interval = [_accessTokenExiprationDate timeIntervalSinceNow];
-    if (_accessTokenExiprationDate) { hr_api_log(@"Access token expires in %f minutes", interval / 60.0); }
+    if (_accessTokenExiprationDate) { HRDebugLog(@"Access token expires in %f minutes", interval / 60.0); }
     NSDictionary *refreshParameters = @{
         @"refresh_token" : refresh,
         @"grant_type" : @"refresh_token"
@@ -209,7 +224,7 @@ static NSMutableDictionary *allClients = nil;
     
     // make sure we have both required elements
     if (_accessToken == nil || _accessTokenExiprationDate == nil || interval < 60.0) {
-        hr_api_log(@"Access token is invalid -- refreshing...");
+        HRDebugLog(@"Access token is invalid -- refreshing...");
         if (![self refreshAccessTokenWithParameters:refreshParameters]) {
             return nil;
         }
@@ -217,7 +232,7 @@ static NSMutableDictionary *allClients = nil;
     
     // check if our access token will expire soon
     else if (interval < 60.0 * 3.0) {
-        hr_api_log(@"Access token will expire soon -- refreshing later");
+        HRDebugLog(@"Access token will expire soon -- refreshing later");
         dispatch_async(_requestQueue, ^{
             [self refreshAccessTokenWithParameters:refreshParameters];
         });
@@ -293,11 +308,11 @@ static NSMutableDictionary *allClients = nil;
     NSError *connectionError = nil;
     NSHTTPURLResponse *response = nil;
     NSData *body = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&connectionError];
-    if (connectionError) { hr_api_log(@"%@", connectionError); }
+    if (connectionError) { HRDebugLog(@"%@", connectionError); }
     if (body) {
         NSError *JSONError = nil;
         payload = [NSJSONSerialization JSONObjectWithData:body options:0 error:&JSONError];
-        if (JSONError) { hr_api_log(@"%@", JSONError); }
+        if (JSONError) { HRDebugLog(@"%@", JSONError); }
     }
     
     // parse payload
@@ -333,7 +348,7 @@ static NSMutableDictionary *allClients = nil;
     
     // payload error
     else {
-        hr_api_log(@"%@", payload);
+        HRDebugLog(@"%@", payload);
     }
     
     // last ditch return

@@ -7,12 +7,6 @@
 //
 
 #import "HRSparkLineView.h"
-#import "HRSparkLineLine.h"
-#import "HRSparkLinePoint.h"
-
-#if !__has_feature(objc_arc)
-#error This class requires ARC
-#endif
 
 @interface HRSparkLineView ()  {
 @private

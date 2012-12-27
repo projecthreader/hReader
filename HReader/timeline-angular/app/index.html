@@ -8,212 +8,201 @@
 		<link rel="stylesheet" href="css/jquery-ui-1.8.16.custom.css" type="text/css"/> 
 		<link href="http://addyosmani.github.com/jquery-ui-bootstrap/bootstrap/bootstrap.css" rel="stylesheet">
 		<script type="text/javascript" src="lib/jquery/jquery-1.8.1.js"></script>
-	    <script type="text/javascript" src="lib/jquery/jquery.sparkline2.0.js">
-	    </script>
-	    <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
-	    <script src="lib/angular/angular.js"></script>
-	    <script src="lib/angularUI/animate.js"></script>
-	    <script src="js/app.js"></script>
-	    <script src="js/controllers.js"></script>
-
+	  	<script type="text/javascript" src="lib/jquery/jquery.sparkline2.0.js"></script>
+  		<script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+	  	<script src="lib/angular/angular.js"></script> 
+    	<script src="js/app.js"></script>
+		<script src="js/controllers.js"></script>
+	  	<script src="js/directives.js"></script>
+		<script src="lib/bootstrap/bootstrap.min.js"></script>
 	    <!-- jQuery Mobile -->
-	    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-			<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-			<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-	    
-	    <script>
-			var Timeline = angular.module('Timeline', []);
-
-			Timeline.directive('sparkline', function () {
-			  return {
-			    restrict: 'E', // the directive restricts it to an element level
-			    link: function postLink(scope, iElement, attrs) {
-			      scope.$watch('vitals', function (newVal, oldVal) {
-			      	if (newVal != null) {
-						$(iElement).sparkline('html', { 
-							type: 'line',
-						    lineColor: '#000000',
-						    spotColor: '#000000',
-						    minSpotColor: '#d60D26',
-						    maxSpotColor: '#d60D26',
-						    highlightSpotColor: '#048A82',
-							highlightLineColor: '#d60D26',
-						    fillColor: false,
-						   	lineWidth: 3,
-							spotRadius: 5,
-						    width: 460,
-						    height: 75,
-						    drawNormalOnTop: false
-							});
-						}
-			     	});
-			   	 }
-			  };
-			});
-		</script>
-
-		<script>
-			var myApp = angular.module('Timeline', []);
-				myApp.directive('replybox', function($rootScope) {
-			    var linkFn = function(scope, element, attrs) {
-			        var label = angular.element(element.children()[0]);
-			        scope.showInput = false;
-
-			        label.bind("click", textbox);
-
-			        function textbox() {
-			            console.log('click');
-			            scope.$apply('showInput = true');
-			        }
-			    };
-			    return {
-			        link: linkFn,
-			        restrict: 'E',
-			        scope: {
-			            label: '@'
-			        },
-			        template: '<div class="row" ng-show="showInput">
-						<form ng-submit="addMessage(message)">
-							<input ng-model="message" class="span4">
-							<input ng-model="notes">
-						</form>
-						</div>',
-			        transclude: true
-			    };
-			})
-
-			function MyCtrl($scope) {
-			    $scope.name = 'Superhero';
-			}​
-		</script>
-
-
+	  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>		
 		<link rel="stylesheet" href="css/master.css" type="text/css"/> 
+
 	</head>
 	<body >
 		<section class="well">
 			<article>
 				<div class="row titles">
 					<h2 class="span3">Regiment</h2>
-					<span class="span1"><a class="btn" ng-show="showInput"><i class="icon-plus"></i></a></span>
-					<h3 class="span2">Plan</h3>
-					<h3 class="span1">Edit</h3>
-					<h3 class="span4">AM</h3>
-					<h3 class="span1">PM</h3>
+					<span class="span1"><a class="btn" onclick="$('#newReg').show()"><i class="icon-plus"></i></a></span>
+					<h3 class="span6">Taken</h3>
+					<h3 class="span2">log</h3>
 				</div>
 				<div class="row">
-					<h4 class="titles span4">Medication*</h4>
-					<h4 class="span2">Take 2x Daily*</h4>
-					<form action="http://hreader.local/timeline.json?key=userData" method="post">
-						<span class="span1"><input type="submit" value="Log" class="btn"></span>
-
-						<div class="schedule span5">
-							<div class=" span2 containing-element">
-								<select name="flip-min" id="flip-min" data-role="slider">
-									<option value="off">Not taken</option>
-									<option value="on">Taken</option>
+					<form class="hidden" id="newReg" action="http://hreader.local/timeline.json?key=NewMedication" method="post">
+						<span class="span4">
+							<input type="text" name="name" ng-model="meds" placeholder="New Medication" required="required" autofocus="autofocus" />
+						</span>
+						<span class="span6">
+							<fieldset class="span6" data-role="controlgroup" data-type="horizontal">
+								<select  name="select-choice-by" id="select-choice-by">
+								   <option>Dosage</option>
+								   <option value="PO">50 gm</option>
+								   <option value="PO">100 gm</option>
+								   <option value="TOP">150 mg</option>
+								   <option value="TOP">200 mg</option>
+								   <option value="PR">300 mg</option>
+								   <option value="PR">500 mg</option>
+								   <option value="PR">1 g</option>
 								</select>
-							</div>
-							<div class=" span2 containing-element">
-								<select name="flip-min" id="flip-min" data-role="slider">
-									<option value="off">Not taken</option>
-									<option value="on">Taken</option>
+								<select name="select-choice-freq" id="select-choice-freq">
+								   <option value="">Frequency</option>
+								   <option value="OD">Once daily</option>
+								   <option value="BID">2 times a day</option>
+								   <option value="TID">3 times a day</option>
+								   <option value="QID">4 Times a day</option>
+								   <option value="Q2H">Every 2 hours</option>
+								   <option value="QH">Every hour</option>
 								</select>
-							</div>
-						</form>
-					</div>
+								<select name="select-choice-add" id="select-choice-add">
+									<option>Special</option>
+								   <option value="PRN">As needed</option>
+								   <option value="HS">At daytime</option>
+								   <option value="AC">Before Meals</option>
+								   <option value="PC">After Meals</option>
+								</select>
+							</fieldset>
+						</span>
+							<fieldset data-role="controlgroup" data-type="horizontal">
+								<button type="submit" class="btn span1 symbolBTN"><i class="icon-check"></i></button>
+								<buttom type="submit" class="btn span1 symbolBTN"  onclick="$('#newReg').hide()" ><i class="icon-remove"></i></button>
+							</fieldset>
+					</form>
 				</div>
+				
+
+				<!-- <div class="row" ngChange:false ng-repeat="medication in medications"> -->
+				<form action="http://hreader.local/timeline.json?key=MedRegiment" method="post">
+					<div class="row  data" ngChange:false ng-repeat="medication in medications">
+						<h4 class="titles span4">{{medication.description}}</h4>
+						<div class="span1"><img src="images/medication.png"></div>
+				    <fieldset data-role="controlgroup" data-type="horizontal">
+				         	<input type="radio" name="medDose" id="No-Dose" value="ND" checked="checked" />
+				         	<label for="No-Dose">None</label>
+
+				         	<input type="radio" name="medDose" id="Under-dosed" value="UD"  />
+				         	<label for="Under-dosed">Less</label>
+
+				         	<input type="radio" name="medDose" id="As-directed" value="AD"  />
+				         	<label for="As-directed">As Directed</label>
+
+				         	<input type="radio" name="medDose" id="Over-dosed" value="OD"  />
+				         	<label for="Over-dosed">More</label>
+				    </fieldset>
+					</div>
+					<div class="row">
+						<div class="span10"></div>
+						<span class="span2">
+							<button type="submit" class="btn">Submit</button>
+						</span>
+					</div>
+				</form>
 				<hr>
-				<div class="row titles">
-					<h2 class="span3">Overall</h2>
-					<span class="span1"><a class="btn" ng:click="addSymptom()"><i class="icon-plus"></i></a></span>
-
-					<h3 class="span2">PLAN</h3>
-					<h3 class="span1">CHANGE</h3>
-					<h3 class="span4">LOG</h3>
-				</div>
-				<div class="row">
-					<h4 class="titles span4">Pain*</h4>
-					<h4 class="span2">Log instances*</h4>
-					<form action="http://hreader.local/timeline.json?key=userData" class="span6" method="post">
-						<input type="range" name="slider" id="slider-0" value="5" min="0" max="10" data-highlight="true" />
-					</form>
-					</div>
-				</div>
-				<div class="row">
-					<h4 class="titles span4">Mood*</h4>
-					<h4 class="span2">Log instances*</h4>
-					<form class="span2" action="http://hreader.local/timeline.json?key=userData" method="post">
-						<select name="select-choice-min" id="select-choice-min" data-mini="true">
-						   <option value="standard">Happy</option>
-						   <option value="rush">Sad</option>
-						   <option value="express">Excited</option>
-						   <option value="overnight">Depressed</option>
-						</select> 
-					</form>
-					</div>
-				</div>
 			</article>
-			<hr>
 			<article>
 				<div class="row titles">
-					<h2 class="span3">Hrt Disease</h2>
-					<span class="span1"><input type="checkbox" ng-model="checked"></span>
-					<a>{{label}}</a><textarea ng-show="showInput"></textarea>
-					<h3 class="span2">Plan</h3>
-					<h3 class="span2">Log</h3>
-					<h3 class="span2"></h3>
-					<h3 class="span2"></h3>
+					<h2 class="span4">Overall</h2>
+					<!--   -->
+					<h3 class="span6">levels <span id="alertlevel" class="hidden alert fade in">Submitted</span></h3>
+					<h3 class="span2">log</h3>
 				</div>
-				
-<!-- 					<form ng-submit="addMessage(message)">
-						<input ng-model="message" class="span4">
-						<input ng-model="notes">
-					</form> -->
-				<!-- 		<ul>
-							<li ng:repeat="message in messages" class="message" animate="in">{{message}}</li>
-							<li>{{care-plan}}</li>
-						</ul> -->
-				<div class="row" ng-hide="checked">
-					<h4 class="titles span4">{{symptoms}}</h4>
-					<h4 class="span2">{{notes}}</h4>
-					<div class="span6">
-						<form action="http://hreader.local/timeline.json?key=userData" method="post" data-role="fieldcontain">
-							<fieldset data-role="controlgroup" data-type="horizontal">
-								<label for="select-choice-sev">SEVERITY</label>
-								<select name="select-choice-sev" id="select-choice-sev">
-								   <option value="none">Severity</option>
-								   <option value="none">None</option>
-								   <option value="mild">Mild</option>
-								   <option value="moderate">Moderate</option>
-								   <option value="severe">Severe</option>
-								</select>
-								<label for="select-choice-dur">DURATION</label>
-								<select name="select-choice-dur" id="select-choice-dur" >
-								   <option value="null">Duration</option>
-								   <option value="seconds">Seconds</option>
-								   <option value="minutes">Minutes</option>
-								   <option value="hours">Hours</option>
-								   <option value="days">Days</option>
-								</select>  
-							<fieldset>
-						</form>
+				<!-- <div class="row">
+					<form class="hidden" id="newLevel" action="http://hreader.local/timeline.json?key=userData">
+						<span class="span4">
+							<input ng-model="symptoms" class="span4" placeholder="New Level" ui-reset=" 'Empty' ">
+						</span>
+						<span class="span6">
+							<input type="range" name="slider" id="slider-0" value="5" min="0" max="10" data-highlight="true" />
+						</span>
+						<span class="span2">
+							<a class="btn" action="http://hreader.local/timeline.json?key=userData" method="post"><i class="icon-plus"></i></a>
+							<a class="btn"  onclick="$('#newLevel').hide()" ><i class="icon-remove"></i></a>
+						</span>			
+					</form>
+				</div> -->
+				<form action="http://hreader.local/timeline.json?key=Levels" method="post" ng-model="pain">
+					<div class="row">
+						<h4 class="titles span4">Pain*</h4>
+						<span class="span6">
+							<input type="range" name="pain" id="pain" value="5" min="0" max="10" data-highlight="true" />
+						</span>
+						<h4 class="span2">{{level.pain.value}}</h4>
 					</div>
+					<div class="row">
+						<h4 class="titles span4">Mood*</h4>
+						<span class="span6">
+							<input type="range" name="mood" id="mood" value="5" min="0" max="10" data-highlight="true"/>
+						</span>
+						<h4 class="span2">{{level.mood.value}}</h4>
+					</div>
+					<div class="row">
+						<h4 class="titles span4">Energy Level*</h4>
+						<span class="span6">
+							<input type="range" name="energy" id="energy" value="5" min="0" max="10" data-highlight="true" />
+						</span>
+						<h4 class="span2">{{level.energy.value}}</h4>
+					</div>
+					<div class="row">
+						<div class="span10"></div>
+						<span class="span2">
+							<button type="submit" class="btn" onclick="$('#alertlevel').show()">Submit</button>
+							<div id="alertlevel" class="hidden alert fade in">Submitted</div>
+						</span>
+					</div>
+				</form>
+				<hr>
+			</article>	
+			<article ngChange:false ng-repeat="condition in conditions">
+				<div class="row titles">
+					<h2 class="span3">{{condition.description}}</h2>
+					<span class="span1"><a class="btn" onclick="$('#newSymp').show()"><i class="icon-plus"></i></a>
+					</span>
+					<h3 class="span6">Log</h3>
+					<h3 class="span2"></h3>
 				</div>
-				<div class="row" ng-show="checked">
-					<form ng-submit="addSymptom(symptom)">
-						<input ng-model="symptoms" class="span4" placeholder="New Symptom">
-						<input ng-model="notes" class="span2" placeholder="Notes">
-					
+				<div class="row">
+					<form class="hidden" id="newVitals" action="http://hreader.local/timeline.json?key=ConditionVitals">
+						<fieldset class="span6" data-role="controlgroup" data-type="horizontal">
+							<select name="select-choice-sev" id="select-choice-sev">
+							   <option ngChange:false ng-repeat="vital in vitals">{{vital.description}}</option>
+							</select>
+						</fieldset>
+						<span class="span2">
+							<!-- <a class="btn" action="http://hreader.local/timeline.json?key=userData" method="post"><i class="icon-plus"></i></a> -->
+							<a class="btn"  onclick="$('#newSymp').hide()" ><i class="icon-remove"></i></a>
+						</span>			
 					</form>
 				</div>
-				<div class="row">
-					<h4 class="titles span4">Symptom1*</h4>
-					<h4 class="span2">Patient Note*</h4>
-					<div class="span6">
-						<form action="http://hreader.local/timeline.json?key=userData" method="post" data-role="fieldcontain">
-							<fieldset data-role="controlgroup" data-type="horizontal">
-								<label for="select-choice-sev">SEVERITY</label>
+				<!-- Add 2 symptoms to each condition-->
+				<!-- <form id="{{condition.description}}Symp" action="http://hreader.local/timeline.json?key={{condition.description}}Symptoms">
+					<div class="row">
+						<h4 class="titles span4">Symptom1*</h4>
+						<span class="span6">
+							<fieldset class="span6" data-role="controlgroup" data-type="horizontal">
+								<select class="" name="select-choice-sev" id="select-choice-sev">
+								   <option value="none">Severity</option>
+								   <option value="none">None</option>
+								   <option value="mild">Mild</option>
+								   <option value="moderate">Moderate</option>
+								   <option value="severe">Severe</option>
+								</select>
+								<select class="" name="select-choice-dur" id="select-choice-dur" >
+								   <option value="null">Duration</option>
+								   <option value="seconds">Seconds</option>
+								   <option value="minutes">Minutes</option>
+								   <option value="hours">Hours</option>
+								   <option value="days">Days</option>
+								</select>  
+							<fieldset>
+						</span>
+					</div>
+					<div class="row">
+						<h4 class="titles span4">Symptom2*</h4>
+						<span class="span6">
+							<fieldset class="span6" data-role="controlgroup" data-type="horizontal">
 								<select name="select-choice-sev" id="select-choice-sev">
 								   <option value="none">Severity</option>
 								   <option value="none">None</option>
@@ -221,7 +210,6 @@
 								   <option value="moderate">Moderate</option>
 								   <option value="severe">Severe</option>
 								</select>
-								<label for="select-choice-dur">DURATION</label>
 								<select name="select-choice-dur" id="select-choice-dur" >
 								   <option value="null">Duration</option>
 								   <option value="seconds">Seconds</option>
@@ -230,154 +218,45 @@
 								   <option value="days">Days</option>
 								</select>  
 							<fieldset>
-						</form>
+						</span>
 					</div>
-				</div>
-				<div class="row">
-					<h4 class="titles span4">Symptom2*</h4>
-					<h4 class="span2">Patient Note*</h4>
-					<div class="span6">
-						<form action="http://hreader.local/timeline.json?key=userData" method="post" data-role="fieldcontain">
-							<fieldset data-role="controlgroup" data-type="horizontal">
-								<label for="select-choice-sev">SEVERITY</label>
-								<select name="select-choice-sev" id="select-choice-sev">
-								   <option value="none">Severity</option>
-								   <option value="none">None</option>
-								   <option value="mild">Mild</option>
-								   <option value="moderate">Moderate</option>
-								   <option value="severe">Severe</option>
-								</select>
-								<label for="select-choice-dur">DURATION</label>
-								<select name="select-choice-dur" id="select-choice-dur" >
-								   <option value="null">Duration</option>
-								   <option value="seconds">Seconds</option>
-								   <option value="minutes">Minutes</option>
-								   <option value="hours">Hours</option>
-								   <option value="days">Days</option>
-								</select>  
-							<fieldset>
-						</form>
+					<div class="row">
+						<div class="span10"></div>
+						<span class="span2">
+							<button type="submit" class="btn">Submit</button>
+						</span>
 					</div>
-				</div>
-			</article>
-			<hr>
-
-<!--<div class="titles row">
-				<h2 class="span4">Glucose Test</h2>
-				<p class="span2">Take prior to Injection</p>
-				<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span>
-				<div class="progress schedule span5">
-					<div class="span1">
-						<img src="images/observation.png">
-					</div>
-					<div class="span2">
-						<img src="images/observation.png">
-					</div>
-					<div class="span1">
-						<img src="images/observation.png">
-					</div>
-				</div>
-			</div>
-			</div>
-			<div class="titles row">
-				<h2 class="span4">Injections</h2>
-				<p class="span2">Take after food</p>
-				<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span>
-				<div class="progress schedule span5">
-				<div class="span1">
-					<img src="images/treatment.png">
-				</div>
-				<div class="span2">
-					<img src="images/treatment.png">
-				</div>
-				<div class="span1">
-					<img src="images/treatment.png">
-				</div>
-				</div>
-			</div>
-			</article>
-		<hr class="soften"> -->
-<!-- 		<article class="condition">
-			<header class="titles row">
-				<h1 class="titles span3">Condition</h1>
-				<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
-				<h2 class="span2">Results</h2>
-				<h2 class="span4">Graph</h2>
-			</header>
-			<div class="row">
-				<h2 class="span4">{{condition}}</h2>
-				<div class="span2">
-					<i class="icon-arrow-up"></i>
-					<h2>7</h2> / 10
-				</div>
-				<div class="span6">
-
-				</div>
-			</div>
-				
-			</div>
-			<div class="row">
-				<h2 class="span4">Symptom 1</h2>
-				<div class="span2">
-					<i class="icon-arrow-up"></i>
-					<h2>2</h2>/10
-				</div>
-				<div class="span6">
-					<div class="slider"></div>
-				</div>
-
-			</div>
-		</article>
-		<hr class="soften"> -->
-		<!-- <article class="activities">
-			<div class="titles row">
-				<h1 class="span3">Activities</h1>
-				<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
-				<h2 class="span2">Results</h2>
-
-				<h2 class="span2">Status</h2>
-			</div>
-			<div class="row">
-				<h2 class="span4">Distance</h2>
-				<div class="span2">
-					<i class="icon-arrow-up"> </i><h2 class>1.2</h2> mile
-				</div>
-				<div class="progress span6">
-						<div class="bar" style="width: 60%;">
-	 				</div>
-				</div>
-			</div>
-			<div class="row">
-				<h2 class="span4">Calories</h2>
-				<div class="span2"><i class="icon-arrow-up"> </i><h2>1500</h2> cal
-				</div>
-				<div class="progress span6">
-				</div>
-			</div>
-		</article>
-		<hr class="soften">
-	 -->
+				</form> -->
+				<hr>
+			</article>		
 			<article class="vitals">
 				<div class="row titles">
-					<h2 class="titles span3">Vitals</h2>
-					<span class="span1">
-						<a class="btn" data-toggle="dropdown">
-						<i class="icon-plus"></i>
-						</a></span>
-					<h3 class="span2">Result</h3>
+					<h2 class="titles span4">Vitals</h2>
 					<h3 class="span6">Trends</h3>
-			  	</div>
+					<h3 class="span2">Result</h3>
 				<div class="row data" ngChange:false ng-repeat="vital in vitals">
-					<div class="span4">
+					<span class="span4">
 						<h4>{{vital.description}}</h4>		
-					</div>
-					<div class="span2"> 
-						<h1>{{vital.values[vital.values.length-1]| number:0}}</h1>{{vital.units}}
-					</div>
-					<div class="span6 graph">		
+					</span>
+					<span class="span6 graph">		
 						<p><sparkline exp="data" class="sparkline">{{vital.values.join(', ')}}</sparkline></p>
-					</div>
+					</span>
+					<span class="span2"> 
+						<h1>{{vital.values[vital.values.length-1]| number:0}}</h1>{{vital.units}}
+					</span>
 				</div>
+				<div class="row data" ngChange:false ng-repeat="result in results">
+					<span class="span4">
+						<h4>{{result.description}}</h4>		
+					</span>
+					<span class="span6 graph">		
+						<p><sparkline exp="data" class="sparkline">{{result.values.join(', ')}}</sparkline></p>
+					</span>
+					<span class="span2"> 
+						<h1>{{result.values[result.values.length-1]| number:0}}</h1>{{result.units}}
+					</span>
+				</div>
+				<hr>
 			</article>
 		</section>
 	</body>

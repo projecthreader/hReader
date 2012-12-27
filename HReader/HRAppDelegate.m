@@ -45,12 +45,22 @@
     return coordinator;
 }
 
++ (NSManagedObjectContext *)rootManagedObjectContext {
+    static NSManagedObjectContext *context = nil;
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        [context setPersistentStoreCoordinator:[self persistentStoreCoordinator]];
+    });
+    return context;
+}
+
 + (NSManagedObjectContext *)managedObjectContext {
     static NSManagedObjectContext *context = nil;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-        [context setPersistentStoreCoordinator:[self persistentStoreCoordinator]];
+        [context setParentContext:[self rootManagedObjectContext]];
     });
     return context;
 }
@@ -68,9 +78,9 @@
         [fileManager createDirectoryAtURL:applicationSupportURL withIntermediateDirectories:NO attributes:nil error:nil];
         NSURL *databaseURL = [applicationSupportURL URLByAppendingPathComponent:@"database.sqlite3"];
         NSDictionary *options = @{
-        NSPersistentStoreFileProtectionKey : NSFileProtectionComplete,
-        NSMigratePersistentStoresAutomaticallyOption : @(YES),
-        NSInferMappingModelAutomaticallyOption : @(YES)
+            NSPersistentStoreFileProtectionKey : NSFileProtectionComplete,
+            NSMigratePersistentStoresAutomaticallyOption : @YES,
+            NSInferMappingModelAutomaticallyOption : @YES
         };
         
         // add store
@@ -104,9 +114,7 @@
         138, 159, 154, 145, '\0'
     };
     XOR(243, path1, strlen(path1));
-#if DEBUG
-    NSLog(@"Checking for %s", path1);
-#endif
+    HRDebugLog(@"Checking for %s", path1);
     struct stat s1;
     if (stat(path1, &s1) == 0) { // file exists
         PEACE_OUT();
@@ -117,9 +125,7 @@
         230, 188, 186, 187, 230, 171, 160, 167, 230, 186, 186, 161, 173, '\0'
     };
     XOR(201, path2, strlen(path2));
-#if DEBUG
-    NSLog(@"Checking for %s", path2);
-#endif
+    HRDebugLog(@"Checking for %s", path2);
     struct stat s2;
     if (stat(path2, &s2) == 0) { // file exists
         PEACE_OUT();
@@ -208,13 +214,28 @@
 #pragma mark - notifications
 
 - (void)managedObjectContextDidSave:(NSNotification *)notification {
-    NSManagedObjectContext *rootContext = [HRAppDelegate managedObjectContext];
+    
+    // get contexts
+    NSManagedObjectContext *rootContext = [HRAppDelegate rootManagedObjectContext];
+    NSManagedObjectContext *mainContext = [HRAppDelegate managedObjectContext];
     NSManagedObjectContext *savingContext = [notification object];
-    if ([savingContext parentContext] == rootContext) {
+    
+    // main -> root
+    if (savingContext == mainContext) {
         [rootContext performBlock:^{
-            [rootContext save:nil];
+            NSError *error = nil;
+            if (![rootContext save:&error]) { HRDebugLog(@"Unable to save root context: %@", error); }
         }];
     }
+    
+    // child -> main
+    else if ([savingContext parentContext] == mainContext) {
+        [mainContext performBlock:^{
+            NSError *error = nil;
+            if (![mainContext save:&error]) { HRDebugLog(@"Unable to save main context: %@", error); }
+        }];
+    }
+    
 }
 
 #pragma mark - application lifecycle

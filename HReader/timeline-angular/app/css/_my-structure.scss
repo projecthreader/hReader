@@ -1,15 +1,27 @@
 
 /*structure*/
 
-section.well {
-	background-color: #fff !important;
+body.ui-mobile-viewport {
+	div.ui-body {
+		background-color: yellow;
+
+	}
+}
+
+.span1, .span2, h2.span3, .span4, .span6 form {
+	vertical-align: baseline;
 }
 
 .green {
 	border: 1px solid $border;
 }
 
-
+.titles {
+	.span1 {
+		position: relative;
+		bottom: 0;
+	}
+}
 
 .background {
 	border: 1px solid $border;
@@ -66,4 +78,22 @@ hr {
 
 .row {
 	vertical-align: baseline;
+}
+
+.hidden {
+	display: none;
+}
+.range {
+	margin-left: 100px;
+	
+	input {
+		display: inline;
+	} 
+}
+
+
+form {
+	input, fieldset, span {
+		display: inline;
+	}
 }

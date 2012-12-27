@@ -20,7 +20,7 @@
 	</dict>
 	<dict>
 		<key>identifier</key>
-		<string>org.mitre.hreader.vital_sign.oxygen_saturation</string>
+		<string>org.mitre.hreader.vital-sign.oxygen-saturation</string>
 		<key>class_name</key>
 		<string>HROxygenSaturationAppletTile</string>
 		<key>display_name</key>
@@ -28,7 +28,7 @@
 	</dict>
 	<dict>
 		<key>identifier</key>
-		<string>org.mitre.hreader.vital_sign.respiratory_rate</string>
+		<string>org.mitre.hreader.vital-sign.respiratory-rate</string>
 		<key>class_name</key>
 		<string>HRRespiratoryRateAppletTile</string>
 		<key>display_name</key>
@@ -185,6 +185,14 @@
 		<string>Glaucoma_Summary</string>
 		<key>fullscreen_image</key>
 		<string>Glaucoma_Overview</string>
+	</dict>
+	<dict>
+		<key>class_name</key>
+		<string>HRTotalCholesterolAppletTile</string>
+		<key>display_name</key>
+		<string>Total Cholesterol</string>
+		<key>identifier</key>
+		<string>org.mitre.hreader.vital-sign.total-cholesterol</string>
 	</dict>
 </array>
 </plist>

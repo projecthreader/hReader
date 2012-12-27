@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>org.mitre.hreader.bmi</string>
+	<string>org.mitre.hreader.bloodpressure</string>
+	<string>org.mitre.hreader.vital-sign.total-cholesterol</string>
+	<string>org.mitre.hreader.medications</string>
+	<string>org.mitre.hreader.placeholder.fitbit</string>
+</array>
+</plist>

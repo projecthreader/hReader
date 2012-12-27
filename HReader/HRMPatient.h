@@ -8,24 +8,25 @@
 
 #import "CMDManagedObject.h"
 
-typedef enum {
-    HRMPatientGenderMale = 0,
+typedef NS_ENUM(short, HRMPatientGender) {
+    HRMPatientGenderMale,
     HRMPatientGenderFemale,
     HRMPatientGenderUnknown
-} HRMPatientGender;
+};
 
-typedef enum {
-    HRMPatientRelationshipMe = 0,
+typedef NS_ENUM(short, HRMPatientRelationship) {
+    HRMPatientRelationshipMe,
     HRMPatientRelationshipSpouse,
     HRMPatientRelationshipChild,
     HRMPatientRelationshipFamily,
     HRMPatientRelationshipOther
-} HRMPatientRelationship;
+};
 
 extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 
 @class HRMEntry;
 @class DDXMLElement;
+@class HRMTimelineEntry;
 
 @interface HRMPatient : CMDManagedObject
 
@@ -44,10 +45,23 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 @property (nonatomic, retain) NSArray *applets;
 @property (nonatomic, retain) NSNumber *displayOrder;
 @property (nonatomic, retain) NSNumber *relationship;
+@property (nonatomic, retain) NSSet *timelineLevels;
 
-#pragma mark - transient properties
+#pragma mark - helper properties
 
+/*
+ 
+ Returns the first and last name concatenated.
+ 
+ */
 @property (nonatomic, readonly) NSString *compositeName;
+
+/*
+ 
+ Returns the first letter of both the first and last name, concatenated and
+ uppercased.
+ 
+ */
 @property (nonatomic, readonly) NSString *initials;
 @property (nonatomic, readonly) NSString *genderString;
 @property (nonatomic, readonly) NSString *relationshipString;
@@ -67,7 +81,7 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 
 /*
  
- 
+ Kick off a network sync. This method returns immediately.
  
  */
 + (void)performSync;
@@ -91,10 +105,11 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 
 /*
  
- 
+ Generate the JSON document that is used to render the patient timeline. Use
+ the `start` and `end` parameters to set a scope on the returned data.
  
  */
-- (NSData *)timelineJSONPayloadWithPredicate:(NSPredicate *)predicate error:(NSError **)error;
+- (NSData *)timelineJSONPayloadWithStartDate:(NSDate *)start endDate:(NSDate *)end error:(NSError **)error;
 
 /*
  
@@ -103,6 +118,13 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
  
  */
 - (NSArray *)vitalSignsWithType:(NSString *)type;
+
+/*
+ 
+ Fetch certain types of data from the entries collection.
+ 
+ */
+- (NSArray *)totalCholesterol;
 
 /*
  
@@ -120,5 +142,10 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 - (void)removeEntriesObject:(HRMEntry *)value;
 - (void)addEntries:(NSSet *)values;
 - (void)removeEntries:(NSSet *)values;
+
+- (void)addTimelineEntriesObject:(HRMTimelineEntry *)value;
+- (void)removeTimelineEntriesObject:(HRMTimelineEntry *)value;
+- (void)addTimelineEntries:(NSSet *)values;
+- (void)removeTimelineEntries:(NSSet *)values;
 
 @end

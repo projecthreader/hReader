@@ -1,3 +1,9 @@
+.moodlabel {
+	position: relative;
+	line-height: 0;
+	bottom: -1.75em;
+}
+
 .current-date {
 	font-size: 2.5em;
 	verticle-align: baseline;
@@ -6,4 +12,70 @@
 
 ui-slider-handle ui-state-default ui-corner-all  {
 	background-image: url('images/treatment.png');
+}
+
+.containing-element .ui-slider-switch { 
+	width: 8em !important;
+	} 
+
+.ui-field-contain div.ui-slider-switch { width: 9em; }
+
+.ui-slider-inneroffset {
+	repeat: none;
+}
+
+.ui-btn-active {
+	border: 1px solid #2373A5;
+	background: #5393C5;
+	font-weight: bold;
+	color: white;
+	cursor: pointer;
+	text-shadow: 0 1px 1px #3373A5;
+	text-decoration: none;
+	background-image: -webkit-gradient(linear,left top,left bottom,from( #5393C5 ),to( #6FACD5 ));
+	background-image: -webkit-linear-gradient( #5393C5,#6FACD5 );
+	background-image: -moz-linear-gradient( #5393C5,#6FACD5 );
+	background-image: -ms-linear-gradient( #5393C5,#6FACD5 );
+	background-image: -o-linear-gradient( #5393C5,#6FACD5 );
+	background-image: linear-gradient( #5393C5,#6FACD5 );
+	font-family: Helvetica,Arial,sans-serif;
+}
+
+form {
+	width: 100%;
+}
+
+.ui-btn-active {
+ background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($green-top-gradient), to($green)) !important;
+ background-image: linear-gradient($green-top-gradient, $green);
+ background-color: $green;
+}
+
+.schedule {
+	.ui-btn-inner {
+		
+		background-position: center 10%;
+		background-repeat: no-repeat;
+		margin-top: -2px;
+
+		}
+}
+
+.ui-btn-inner {
+	padding: 5px 14px 6px;
+			line-height: 20px;
+	
+	.ui-btn-text {
+		padding: 0;
+
+	}
+
+}
+
+.ui-btn-down-c, .ui-input-text {
+
+background-image: -webkit-linear-gradient( #FFFFFF, #FFFFFF );
+background-color: white;
+-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 4px 0px inset;
+
 }

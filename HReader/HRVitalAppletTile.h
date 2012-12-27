@@ -8,9 +8,8 @@
 
 #import "HRAppletTile.h"
 
-#import "HRSparkLineView.h"
-
 @class HRMPatient;
+@class HRSparkLineView;
 
 @interface HRVitalAppletTile : HRAppletTile
 

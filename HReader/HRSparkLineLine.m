@@ -52,7 +52,7 @@
         __outOfRangeDotColor = [UIColor redColor];
         __lineCap = kCGLineCapRound;
         __lineJoin = kCGLineJoinRound;
-        __range = HRZeroRange;
+        __range = HRZeroRange();
         __rangeColor = [UIColor colorWithWhite:0.9 alpha:1.0];
     }
     return self;
