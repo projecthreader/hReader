@@ -339,13 +339,6 @@
         return YES;
     }
     else {
-        [[[UIAlertView alloc]
-          initWithTitle:@"The passcode you provided is not correct."
-          message:nil
-          delegate:nil
-          cancelButtonTitle:@"OK"
-          otherButtonTitles:nil]
-         show];
         if (++passcodeAttempts > 2) {
             controller.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
                                                            initWithTitle:@"Reset Passcode" 
@@ -417,16 +410,7 @@
         [controller.navigationController pushViewController:password animated:YES];
         return YES;
     }
-    else {
-        [[[UIAlertView alloc]
-          initWithTitle:@"The passcode you provided is not correct."
-          message:nil
-          delegate:nil
-          cancelButtonTitle:@"OK"
-          otherButtonTitles:nil]
-         show];
-        return NO;
-    }
+    return NO;
 }
 
 #pragma mark - security scenario four
@@ -448,16 +432,7 @@
         [controller.navigationController pushViewController:questions animated:YES];
         return YES;
     }
-    else {
-        [[[UIAlertView alloc]
-          initWithTitle:@"The passcode you provided is not correct."
-          message:nil
-          delegate:nil
-          cancelButtonTitle:@"OK"
-          otherButtonTitles:nil]
-         show];
-        return NO;
-    }
+    return NO;
 }
 
 - (void)updateSecurityQuestions :(HRSecurityQuestionsViewController *)controller :(NSArray *)questions :(NSArray *)answers {
