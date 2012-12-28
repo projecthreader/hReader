@@ -209,7 +209,6 @@
 		3BFBEE1A1534BEAA009EBA2D /* HRAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */; };
 		3BFBEE1C1534BF32009EBA2D /* HReaderApplets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */; };
 		3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2D14DAE5910037738D /* Icon-72.png */; };
-		9413C74914EC0B7800BFA521 /* HRPatientSwipeControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9413C74814EC0B7800BFA521 /* HRPatientSwipeControl.xib */; };
 		9415152314AA3A7B009FF674 /* fail.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152114AA3A7B009FF674 /* fail.png */; };
 		9415152414AA3A7B009FF674 /* win.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152214AA3A7B009FF674 /* win.png */; };
 		9415152614AA3F9F009FF674 /* question_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152514AA3F9F009FF674 /* question_mark.png */; };
@@ -235,8 +234,6 @@
 		94650043153CA3AA003255AF /* HRBloodPressureAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94650042153CA3AA003255AF /* HRBloodPressureAppletTile.xib */; };
 		94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94689ACA1496560C00E1FCA6 /* HRAboutTableViewController.m */; };
 		947FCE4614B4C18600C716FD /* chevron-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE4514B4C18600C716FD /* chevron-left.png */; };
-		947FCE4B14B4C76700C716FD /* HRPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 947FCE4914B4C76700C716FD /* HRPrivacyViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		947FCE4C14B4C76700C716FD /* HRPrivacyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 947FCE4A14B4C76700C716FD /* HRPrivacyViewController.xib */; };
 		947FCE5914B4D7E400C716FD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947FCE5814B4D7E400C716FD /* AudioToolbox.framework */; };
 		9483F67115669E5400867CFC /* female-bmi-chart.json in Resources */ = {isa = PBXBuildFile; fileRef = 9483F67015669E5400867CFC /* female-bmi-chart.json */; };
 		9483F67315669EE000867CFC /* male-bmi-chart.json in Resources */ = {isa = PBXBuildFile; fileRef = 9483F67215669EE000867CFC /* male-bmi-chart.json */; };
@@ -1645,10 +1642,8 @@
 				9415152414AA3A7B009FF674 /* win.png in Resources */,
 				9415152614AA3F9F009FF674 /* question_mark.png in Resources */,
 				947FCE4614B4C18600C716FD /* chevron-left.png in Resources */,
-				947FCE4C14B4C76700C716FD /* HRPrivacyViewController.xib in Resources */,
 				3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */,
 				941F254114E2EC7E0077D6D1 /* HRVitalAppletTile.xib in Resources */,
-				9413C74914EC0B7800BFA521 /* HRPatientSwipeControl.xib in Resources */,
 				9452D7F414FC167200021E69 /* HRProviderView.xib in Resources */,
 				3BFBEE1C1534BF32009EBA2D /* HReaderApplets.plist in Resources */,
 				94AACFB01535D080005E3851 /* HRMedicationsAppletTile.xib in Resources */,
@@ -1876,7 +1871,6 @@
 				DD5597C114897DE2006A0D1D /* HRDoctorsViewController.m in Sources */,
 				94689ACB1496560C00E1FCA6 /* HRAboutTableViewController.m in Sources */,
 				94BB032C149BB393009B2FCC /* HRPasscodeWarningViewController.m in Sources */,
-				947FCE4B14B4C76700C716FD /* HRPrivacyViewController.m in Sources */,
 				3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */,
 				3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */,
 				3BD16F0514E1C5B700F2249E /* HRMPatient.m in Sources */,
