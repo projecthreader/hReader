@@ -69,5 +69,5 @@ Each of these objects are registered automatically with the URL loading system b
 
 - **CMDManagedObject**: Wraps up some of the Core Data boiler plate code into an `NSManagedObject` subclass. It has helpers for generating fetch requests, creating instances in a given context, and single line fetches.
 - **CMDActivityHUD**: Full-screen, blocking activity view that greys out the screen with a gradient. Used when performing operations that the user must wait on, like fetching OAuth tokens for the first time.
-- **iMAS**: hReader relies on several libraries from the [iMAS]() project including an encrypted Core Data helper, cipher utilities, and encryption key management.
+- **iMAS**: hReader relies on several libraries from the [iMAS](https://github.com/project-imas) project including an encrypted Core Data helper, cipher utilities, and encryption key management.
 - **BlocksKit**: This small set of classes adds block helpers to a few common classes like `UIAlertView` and `UIActionSheet` to reduce the complexity of delegate callback code.
