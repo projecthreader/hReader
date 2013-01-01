@@ -19,9 +19,14 @@ $(document).ready ->
     popHealth.filterResults(event.target.getAttribute("data-filter-criteria"))
 
   $.ajax(
-    url: 'http://localhost:3000/measures/results/1',
+    type: "GET",
+    url: 'http://127.0.0.1:3000/measures/results/1.json',
+    isModified: false,
+    dataType: "jsonp",
+    data: 
+      id: 1
     success: (data) ->
-      alert('success!')
-    error: (data) ->
-      alert('broken!')
+      alert('success?')
+    error: ->
+      
   )
