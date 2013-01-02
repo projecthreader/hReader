@@ -14,7 +14,7 @@ hReader is an open-source, patient-centric mobile health data manager that secur
 
 ## API Interaction
 
-hReader talks to RHEx servers using instances of `HRAPIClient`. This class is responsible for all network communication between hReader and any number of RHEx servers. Request a client for a given host using `-[HRAPIClient clientWithHost:]`. Every client operates its own internal request queue and has both synchronous and asynchronous methods for handling RHEx data.
+hReader talks to RHEx servers using instances of `HRAPIClient`. This class is responsible for all network communication between hReader and any number of RHEx servers. Request a client for a given host using `-[HRAPIClient clientWithHost:]`. Every client operates its own internal request queue &mdash; managed using [Grand Central Dispatch](https://developer.apple.com/library/mac/#documentation/Performance/Reference/GCD_libdispatch_Ref/Reference/reference.html) &mdash; and has both synchronous and asynchronous methods for handling RHEx data.
 
 ## Persistence
 
@@ -31,3 +31,13 @@ The application automatically cascades saves from the main context to the root c
 ## Applets
 
 Each patient stores a list of applets that the user has configured. Available applets are loaded from `HReaderApplets.plist` can be accessed through `HRAppletConfigurationViewController`.
+
+## Patients
+
+Patients are managed by `HRPeoplePickerViewController` and `HRPeopleSetupViewController`. The former controls which patient is selected and the order of patients. The later allows the user to download new patients and remove existing patients from the database.
+
+Instances of `HRPeopleFeedViewController` can be shown in a popover to present a list of patients that are stored on the given RHEx server. Set the completion block to receive a callback when the user has made a selection.
+
+## Security
+
+Security is handled by `HRCryptoManager` and `CMDEncryptedSQLiteStore`. All data is encrypted using a shared application encryption key that is stored in the keychain encrypted with an application password. The password creation and verification happens in `HRAppDelegate`.
