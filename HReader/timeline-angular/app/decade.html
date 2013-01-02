@@ -49,10 +49,10 @@
 					<!-- <p class="span2">ER*</p> -->			
 					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span> -->
 					<div class="progress schedule span6">
-						<div 
-						<img src="images/diag.png" class="diagnosis" 
-							ng-style="{'left':icon.x+{{(condition.date*1000-(1.01e+12))/(315569259747/460)}}}">
-					</div>
+						<style>img {position: relative; left:{{(condition.date*1000-(1.01e+12))/(315569259747/460)}}};}</style>
+						</div>
+						<img src="images/diag.png" class="diagnosis">
+							
 				</div>
 			</article>
 			<hr>
