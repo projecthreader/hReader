@@ -152,6 +152,11 @@ function DecadeListCtrl($scope, $http) {
     $scope.end_date = data.end_date;
     $scope.Math = window.Math;
   });
+
+  $scope.entryOffset = function(entry) {
+    var offset = (entry.date*1000-(1.01e+12))/(315569259747/460);
+    return { 'left' : offset + 'px' }
+  }
 };
 
 
