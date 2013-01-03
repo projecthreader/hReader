@@ -41,6 +41,6 @@ typedef NS_ENUM(int, HRMEntryType) {
                                 type:(HRMEntryType)type
                            inContext:(NSManagedObjectContext *)context;
 
-- (DDXMLElement *)timelineXMLElement;
+- (DDXMLElement *)timelineXMLElement DEPRECATED_ATTRIBUTE;
 
 @end
