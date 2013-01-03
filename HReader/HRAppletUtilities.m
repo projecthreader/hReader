@@ -7,7 +7,7 @@
 //
 
 #import <objc/runtime.h>
-#import <CommonCrypto/CommonDigest.h>
+#import <SecureFoundation/SecureFoundation.h>
 
 #import "HRAppletUtilities.h"
 #import "HRCryptoManager.h"
@@ -93,15 +93,14 @@ static NSString *HRAppletKeysKeychainService = @"org.mitre.hreader.applet-keys";
         if (URL == nil) {
             
             // generate applet folder
+            NSData *data = [identifier dataUsingEncoding:NSUTF8StringEncoding];
+            NSMutableData *mutableData = [IMSHashData_MD5(data) mutableCopy];
+            unsigned char *bytes = (unsigned char *)[mutableData mutableBytes];
+            IMSXOR(153, bytes, [mutableData length]);
             NSMutableString *appletFolder = [NSMutableString string];
-            NSData *identifierData = [identifier dataUsingEncoding:NSUTF8StringEncoding];
-            unsigned char *buffer = malloc(CC_MD5_DIGEST_LENGTH);
-            CC_MD5([identifierData bytes], [identifierData length], buffer);
-            XOR(153, buffer, CC_MD5_DIGEST_LENGTH);
             for (NSUInteger i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
-                [appletFolder appendFormat:@"%02x", (unsigned int)buffer[i]];
+                [appletFolder appendFormat:@"%02x", (unsigned int)bytes[i]];
             }
-            free(buffer);
             
             // create and return
             NSFileManager *manager = [NSFileManager defaultManager];
