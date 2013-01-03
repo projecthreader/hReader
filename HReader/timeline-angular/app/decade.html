@@ -39,20 +39,19 @@
 				<div class="titles row">
 					<h2 class="span4">Diagnosis</h2>
 					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span> -->
-					<h3 class="span5" date|date[:YYYY]>2002*{{start_time}}</h3>
-					<h3 class="span1">2012*{{end_time}}</h3>
+					<h3 class="span5" date|date[:YYYY]>{{start_date}}</h3>
+					<h3 class="span1">{{end_date}}</h3>
 				</div>
 				<div class="row" div class="row data" ngChange:false ng-repeat="condition in conditions">
 					<h4 class="titles span4">{{condition.description}}</h4>
-
 					<h4 class="span1">{{(condition.date*1000-(1.01e+12))/(315569259747/460)}}</h4>
 					<!-- <p class="span2">ER*</p> -->			
 					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span> -->
 					<div class="progress schedule span6">
-						<style>img {position: relative; left:{{(condition.date*1000-(1.01e+12))/(315569259747/460)}}};}</style>
-						</div>
-						<img src="images/diag.png" class="diagnosis">
-							
+						<img src="images/diag.png" 
+							class="diagnosis" 
+							ng-style="{ 'left':'{{(condition.date*1000-(1.01e+12))/(315569259747/460)}}px'}">
+					</div>
 				</div>
 			</article>
 			<hr>

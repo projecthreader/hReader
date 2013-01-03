@@ -99,7 +99,9 @@ function DayListCtrl($scope, $http) {
     $scope.mood = data.mood;
     $scope.mood = data.energy; 
     $scope.conditions = data.conditions;
-    $scope.levels = data.levels
+    $scope.levels = data.levels;
+    $scope.start_date = data.start_date;
+    $scope.end_date = data.end_date;
   });
 };
 
@@ -109,7 +111,9 @@ function WeekListCtrl($scope, $http) {
     $scope.symptoms = data.symptoms; 
     $scope.levels = data.levels;  
     $scope.conditions = data.conditions;
-    $scope.observations = data.observations
+    $scope.observations = data.observations;
+    $scope.start_date = data.start_date;
+    $scope.end_date = data.end_date;
 
   });
 };
@@ -120,7 +124,9 @@ function MonthListCtrl($scope, $http) {
     $scope.symptoms = data.symptoms; 
     $scope.medications = data.medications;
     $scope.conditions = data.conditions;
-    $scope.encounters = data.encounters
+    $scope.encounters = data.encounters;
+    $scope.start_date = data.start_date;
+    $scope.end_date = data.end_date;
   });
 };
 
@@ -130,6 +136,8 @@ function YearListCtrl($scope, $http) {
     $scope.symptoms = data.symptoms; 
     $scope.conditions = data.conditions;
     $scope.treatments = data.treatments;
+    $scope.start_date = data.start_date;
+    $scope.end_date = data.end_date;
 
   });
 };
@@ -140,6 +148,8 @@ function DecadeListCtrl($scope, $http) {
     $scope.symptoms = data.symptoms;  
     $scope.conditions = data.conditions;
     $scope.levels = data.levels;
+    $scope.start_date = data.start_date;
+    $scope.end_date = data.end_date;
     $scope.Math = window.Math;
   });
 };
