@@ -27,27 +27,13 @@
 					<h3 class="span1">{{end_date}}</h3>
 					<h3 class="span2">last result</h3>
 				</div>
-					<div class="row">
-						<h4 class="titles span4">Pain*</h4>
-						<span class="span6 graph">		
-							<p><sparkline exp="data" class="sparkline">{{levels.pain.join(', ')}}</sparkline></p>
-						</span>
-						<h4 class="span2">{{levels.pain[level.pain.length-1]| number:0}}</h4>
-					</div>
-					<div class="row">
-						<h4 class="titles span4">Mood*</h4>
-						<span class="span6 graph">		
-							<p><sparkline exp="data" class="sparkline">{{levels.mood.join(', ')}}</sparkline></p>
-						</span>
-						<h4 class="span2">{{levels.mood[level.mood.length-1]| number:0}}</h4>
-					</div>
-					<div class="row">
-						<h4 class="titles span4">Energy Level*</h4>
-						<span class="span6 graph">		
-							<p><sparkline exp="data" class="sparkline">{{levels.energy.join(', ')}}</sparkline></p>
-						</span>
-						<h4 class="span2">{{levels.pain[level.pain.length-1]| number:0}}</h4>
-					</div>
+				<div class="row data" ngChange:false ng-repeat="level in levels">>
+					<h4 class="titles span4">{{levels.description}}</h4>
+					<span class="span6 graph">		
+						<p><sparkline exp="data" class="sparkline">{{levels.value.join(', ')}}</sparkline></p>
+					</span>
+					<h4 class="span2">{{levels.pain[level.pain.length-1]| number:0}}</h4>
+				</div>
 				<hr>
 			</article>	
 			<article>
@@ -73,8 +59,9 @@
 				</div>
 
 				</div>
+				<hr>
 			</article>
-			<hr>
+			
 						<article ngChange:false ng-repeat="condition in conditions">
 				<div class="row titles">
 					<h2 class="span3">{{condition.description}}</h2>
@@ -214,11 +201,12 @@
 		</article>
 		<hr class="soften">
 	 -->
-			<article class="vitals">
+	 		<article class="vitals">
 				<div class="row titles">
 					<h2 class="titles span4">Vitals</h2>
 					<h3 class="span6">Trends</h3>
 					<h3 class="span2">Result</h3>
+				</div>
 				<div class="row data" ngChange:false ng-repeat="vital in vitals">
 					<span class="span4">
 						<h4>{{vital.description}}</h4>		

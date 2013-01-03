@@ -19,21 +19,20 @@
 	</head>
 	<body >
 		<section class="well">
+<!-- 			Treatment listings  -->
 			<article>
 				<div class="titles row">
 					<h2 class="span4">Treatment</h2>
-					<!-- <span class="span1">
-						<a class="btn" data-toggle="dropdown">
-						<i class="icon-plus"></i>
-						</a></span> -->
+
 					<h3 class="span5">{{start_date}}</h3>
 					<h3 class="span1">{{end_date}}</h3>
 				</div>
 				<div class="row" div class="row  data" ngChange:false ng-repeat="treatment in treatments">
 					<h4 class="titles span4">{{treatment.description}}</h4>
-					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span> -->
 					<div class="progress schedule span6">
-						<img src="images/treatment.png">
+						<img src="images/treatment.png" 
+							class="diagnosis" 
+							ng-style="entryOffset(treatment)">
 					</div>
 				</div>
 			</article>
@@ -60,6 +59,19 @@
 							<a class="btn"  onclick="$('#newSymp').hide()" ><i class="icon-remove"></i></a>
 						</span>			
 					</form>
+					<!-- <form class="hidden" id="newSymp" action="http://hreader.local/timeline.json?key=userData">
+						<span class="span4">
+							<fieldset class="span4" data-role="controlgroup" data-type="horizontal">
+								<select name="select-choice-sev" id="select-choice-sev">
+								   <option ngChange:false ng-repeat="vital in vitals">{{vital.description}}</option>
+								</select>
+							</fieldset>
+						</span>
+						<span class="span2">
+							<a class="btn" action="http://hreader.local/timeline.json?key=userData" method="post"><i class="icon-plus"></i></a>
+							<a class="btn"  onclick="$('#newSymp').hide()" ><i class="icon-remove"></i></a>
+						</span>			
+					</form> -->
 				</div>
 				</form>
 				<hr>
