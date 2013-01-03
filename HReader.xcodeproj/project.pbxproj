@@ -198,7 +198,6 @@
 		3BC6A69015A5D17E00FA0C3A /* HRHIPPAMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC6A68F15A5D17E00FA0C3A /* HRHIPPAMessageViewController.m */; };
 		3BCF598A164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF5989164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.m */; };
 		3BCF598C164D8EA700BD0E9C /* HRTotalCholesterolAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCF598B164D8EA700BD0E9C /* HRTotalCholesterolAppletTile.xib */; };
-		3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3BD16ED614E1B32400F2249E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BD16ED514E1B32400F2249E /* CoreData.framework */; };
 		3BD16F0514E1C5B700F2249E /* HRMPatient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD16F0414E1C5B700F2249E /* HRMPatient.m */; };
 		3BE9A40514E40EBB00F87B60 /* HRMEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9A40414E40EBB00F87B60 /* HRMEntry.m */; };
@@ -215,8 +214,10 @@
 		49539E14165AAEDA004CB11B /* HRMedicationsAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539E12165AAEDA004CB11B /* HRMedicationsAppletTile.m */; };
 		49539E15165AAEDA004CB11B /* HRMedicationsAppletTile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49539E13165AAEDA004CB11B /* HRMedicationsAppletTile.xib */; };
 		4953C73C1679350200A6B98D /* HRMedicationsCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4953C73B1679350200A6B98D /* HRMedicationsCollectionViewLayout.m */; };
+		4953C7651684E6AF00A6B98D /* hReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4953C75F1684E6AF00A6B98D /* hReader.xcdatamodeld */; };
 		497775841663B8C700FF6E95 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 497775831663B8C700FF6E95 /* edit.png */; };
 		497775861663B8D200FF6E95 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 497775851663B8D200FF6E95 /* save.png */; };
+		4978672A169485A900B07D9D /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 49786729169485A900B07D9D /* delete.png */; };
 		9413C74914EC0B7800BFA521 /* HRPatientSwipeControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9413C74814EC0B7800BFA521 /* HRPatientSwipeControl.xib */; };
 		9415152314AA3A7B009FF674 /* fail.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152114AA3A7B009FF674 /* fail.png */; };
 		9415152414AA3A7B009FF674 /* win.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152214AA3A7B009FF674 /* win.png */; };
@@ -377,7 +378,6 @@
 		3B19651D14EEAB970045F827 /* C32-Smith-Molly.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Molly.html"; sourceTree = "<group>"; };
 		3B19651E14EEAB970045F827 /* C32-Smith-Sarah.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Sarah.html"; sourceTree = "<group>"; };
 		3B19651F14EEAB970045F827 /* C32-Smith-Tom.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "C32-Smith-Tom.html"; sourceTree = "<group>"; };
-		3B21D67416651870003DB581 /* hReader 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "hReader 4.xcdatamodel"; sourceTree = "<group>"; };
 		3B2405301608E52E007E043E /* NSBundle+hRreaderAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+hRreaderAdditions.h"; sourceTree = "<group>"; };
 		3B2405311608E52E007E043E /* NSBundle+hRreaderAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+hRreaderAdditions.m"; sourceTree = "<group>"; };
 		3B2405331608E707007E043E /* UIColor+hReaderAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+hReaderAdditions.h"; sourceTree = "<group>"; };
@@ -441,7 +441,6 @@
 		3B4365D31540A2890009F892 /* ts-4-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-4-tile.png"; sourceTree = "<group>"; };
 		3B4365D41540A2890009F892 /* ts-5-overview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-5-overview.png"; sourceTree = "<group>"; };
 		3B4365D51540A2890009F892 /* ts-5-tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ts-5-tile.png"; sourceTree = "<group>"; };
-		3B48FA2D165414E00071F707 /* hReader 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "hReader 2.xcdatamodel"; sourceTree = "<group>"; };
 		3B48FA2E16541D4E0071F707 /* applets-hs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "applets-hs.plist"; sourceTree = "<group>"; };
 		3B48FA2F16541D4E0071F707 /* applets-js.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "applets-js.plist"; sourceTree = "<group>"; };
 		3B48FA3016541D4E0071F707 /* applets-ms.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "applets-ms.plist"; sourceTree = "<group>"; };
@@ -495,7 +494,6 @@
 		3B9A757815DBE0CB00705A52 /* timeline */ = {isa = PBXFileReference; lastKnownFileType = folder; path = timeline; sourceTree = "<group>"; };
 		3B9A757F15DC040F00705A52 /* HRAppletUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAppletUtilities.h; sourceTree = "<group>"; };
 		3B9A758015DC040F00705A52 /* HRAppletUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAppletUtilities.m; sourceTree = "<group>"; };
-		3B9C379D1656C3CE00CAE751 /* hReader 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "hReader 3.xcdatamodel"; sourceTree = "<group>"; };
 		3BA11FA215C0608200ABB012 /* circle-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-2.png"; sourceTree = "<group>"; };
 		3BA11FA315C0608200ABB012 /* circle-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-3.png"; sourceTree = "<group>"; };
 		3BA11FA415C0608200ABB012 /* circle-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-4.png"; sourceTree = "<group>"; };
@@ -581,7 +579,6 @@
 		3BCF5988164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRTotalCholesterolAppletTile.h; sourceTree = "<group>"; };
 		3BCF5989164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRTotalCholesterolAppletTile.m; sourceTree = "<group>"; };
 		3BCF598B164D8EA700BD0E9C /* HRTotalCholesterolAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRTotalCholesterolAppletTile.xib; sourceTree = "<group>"; };
-		3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hReader.xcdatamodel; sourceTree = "<group>"; };
 		3BD16ED514E1B32400F2249E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3BD16F0314E1C5B700F2249E /* HRMPatient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMPatient.h; sourceTree = "<group>"; };
 		3BD16F0414E1C5B700F2249E /* HRMPatient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMPatient.m; sourceTree = "<group>"; };
@@ -600,7 +597,6 @@
 		3BEBAE6715767CC900E4CB33 /* HRAPIClient_private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRAPIClient_private.h; sourceTree = "<group>"; };
 		3BEBAE6815769ED400E4CB33 /* HRPeopleFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPeopleFeedViewController.h; sourceTree = "<group>"; };
 		3BEBAE6915769ED400E4CB33 /* HRPeopleFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeopleFeedViewController.m; sourceTree = "<group>"; };
-		3BF45EDC167A787600FB47A0 /* hReader 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "hReader 5.xcdatamodel"; sourceTree = "<group>"; };
 		3BF45EE3167A7E5900FB47A0 /* HRMTimelineEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMTimelineEntry.h; sourceTree = "<group>"; };
 		3BF45EE4167A7E5900FB47A0 /* HRMTimelineEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMTimelineEntry.m; sourceTree = "<group>"; };
 		3BFBEE161534BD33009EBA2D /* HReader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HReader.entitlements; sourceTree = "<group>"; };
@@ -618,9 +614,15 @@
 		49539E13165AAEDA004CB11B /* HRMedicationsAppletTile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRMedicationsAppletTile.xib; sourceTree = "<group>"; };
 		4953C73A1679350100A6B98D /* HRMedicationsCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMedicationsCollectionViewLayout.h; sourceTree = "<group>"; };
 		4953C73B1679350200A6B98D /* HRMedicationsCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMedicationsCollectionViewLayout.m; sourceTree = "<group>"; };
+		4953C7601684E6AF00A6B98D /* hReader 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "hReader 2.xcdatamodel"; sourceTree = "<group>"; };
+		4953C7611684E6AF00A6B98D /* hReader 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "hReader 3.xcdatamodel"; sourceTree = "<group>"; };
+		4953C7621684E6AF00A6B98D /* hReader 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "hReader 4.xcdatamodel"; sourceTree = "<group>"; };
+		4953C7631684E6AF00A6B98D /* hReader 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "hReader 5.xcdatamodel"; sourceTree = "<group>"; };
+		4953C7641684E6AF00A6B98D /* hReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = hReader.xcdatamodel; sourceTree = "<group>"; };
+		4953C7661684E70D00A6B98D /* hReader 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "hReader 6.xcdatamodel"; sourceTree = "<group>"; };
 		497775831663B8C700FF6E95 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		497775851663B8D200FF6E95 /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
-		497775A01669070100FF6E95 /* hReader 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "hReader 5.xcdatamodel"; sourceTree = "<group>"; };
+		49786729169485A900B07D9D /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		940C0467152B6ADF00834416 /* hs-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "hs-synthetic.json"; sourceTree = "<group>"; };
 		940C0468152B6ADF00834416 /* js-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "js-synthetic.json"; sourceTree = "<group>"; };
 		940C0469152B6ADF00834416 /* ms-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ms-synthetic.json"; sourceTree = "<group>"; };
@@ -922,6 +924,7 @@
 		3B8D14FE157E3EB700A5B84E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				49786729169485A900B07D9D /* delete.png */,
 				3BAB78B31644371400E6EE34 /* UIButtonBarArrowLeft.png */,
 				3BAB78B41644371400E6EE34 /* UIButtonBarArrowLeft@2x.png */,
 				3BAB78B51644371400E6EE34 /* UIButtonBarArrowRight.png */,
@@ -1266,7 +1269,7 @@
 		941DB0B31471B32D00A96B8B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */,
+				4953C75F1684E6AF00A6B98D /* hReader.xcdatamodeld */,
 				941DB0C11471B32D00A96B8B /* MainStoryboard_iPad.storyboard */,
 				3BFBEE161534BD33009EBA2D /* HReader.entitlements */,
 				941DB0B41471B32D00A96B8B /* HReader-Info.plist */,
@@ -1863,6 +1866,7 @@
 				49539E15165AAEDA004CB11B /* HRMedicationsAppletTile.xib in Resources */,
 				497775841663B8C700FF6E95 /* edit.png in Resources */,
 				497775861663B8D200FF6E95 /* save.png in Resources */,
+				4978672A169485A900B07D9D /* delete.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1914,7 +1918,6 @@
 				94BB032C149BB393009B2FCC /* HRPasscodeWarningViewController.m in Sources */,
 				947FCE4B14B4C76700C716FD /* HRPrivacyViewController.m in Sources */,
 				3B04A56114E0692600AD91F9 /* SSKeychain.m in Sources */,
-				3BD16ED314E1B2F400F2249E /* hReader.xcdatamodeld in Sources */,
 				3BD16F0514E1C5B700F2249E /* HRMPatient.m in Sources */,
 				3BE9A40514E40EBB00F87B60 /* HRMEntry.m in Sources */,
 				941F253F14E2EC5D0077D6D1 /* HRVitalAppletTile.m in Sources */,
@@ -1984,9 +1987,9 @@
 				49539E00165A9937004CB11B /* HRMedicationCell.m in Sources */,
 				49539E02165A9937004CB11B /* HRMedicationsMasterViewController.m in Sources */,
 				49539E14165AAEDA004CB11B /* HRMedicationsAppletTile.m in Sources */,
-				3B0A43D916652CBD00492F53 /* HRMTimelineLevel.m in Sources */,
 				4953C73C1679350200A6B98D /* HRMedicationsCollectionViewLayout.m in Sources */,
 				3BF45EE5167A7E5900FB47A0 /* HRMTimelineEntry.m in Sources */,
+				4953C7651684E6AF00A6B98D /* hReader.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2125,18 +2128,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		3BD16ED114E1B2F400F2249E /* hReader.xcdatamodeld */ = {
+		4953C75F1684E6AF00A6B98D /* hReader.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				3BF45EDC167A787600FB47A0 /* hReader 5.xcdatamodel */,
-				3B21D67416651870003DB581 /* hReader 4.xcdatamodel */,
-				497775A01669070100FF6E95 /* hReader 5.xcdatamodel */,
-				3B9C379D1656C3CE00CAE751 /* hReader 3.xcdatamodel */,
-				3B48FA2D165414E00071F707 /* hReader 2.xcdatamodel */,
-				3BD16ED214E1B2F400F2249E /* hReader.xcdatamodel */,
+				4953C7661684E70D00A6B98D /* hReader 6.xcdatamodel */,
+				4953C7601684E6AF00A6B98D /* hReader 2.xcdatamodel */,
+				4953C7611684E6AF00A6B98D /* hReader 3.xcdatamodel */,
+				4953C7621684E6AF00A6B98D /* hReader 4.xcdatamodel */,
+				4953C7631684E6AF00A6B98D /* hReader 5.xcdatamodel */,
+				4953C7641684E6AF00A6B98D /* hReader.xcdatamodel */,
 			);
-			currentVersion = 497775A01669070100FF6E95 /* hReader 5.xcdatamodel */;
-			currentVersion = 3BF45EDC167A787600FB47A0 /* hReader 5.xcdatamodel */;
+			currentVersion = 4953C7661684E70D00A6B98D /* hReader 6.xcdatamodel */;
 			path = hReader.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

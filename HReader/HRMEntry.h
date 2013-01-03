@@ -57,6 +57,7 @@ typedef NS_ENUM(int, HRMEntryType) {
 
 @property (nonatomic, retain) NSDictionary *patientComments;
 @property (nonatomic, retain) NSString *comments;
+@property (nonatomic) BOOL userDeleted;
 
 + (HRMEntry *)instanceWithDictionary:(NSDictionary *)dictionary
                                 type:(HRMEntryType)type

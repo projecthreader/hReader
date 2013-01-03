@@ -17,11 +17,14 @@
 @property (weak, nonatomic) IBOutlet UITextView *directionsTextView;
 @property (weak, nonatomic) IBOutlet UITextView *prescriberTextView;
 @property (weak, nonatomic) IBOutlet UITextView *commentsTextView;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+
 
 
 @property (assign) BOOL editing;
 @property (strong, nonatomic) HRMEntry *medication;
 
 - (IBAction)setEditMode:(UIButton *)sender;
+- (IBAction)setDeleteMedication:(UIButton *)sender;
 
 @end

@@ -28,14 +28,40 @@
 - (void)setMedication:(HRMEntry *)medication{
     _medication = medication;
     
-    //set textViews from medication fields
-    [self.medicationName setText:[medication.desc uppercaseString]];//set medication name
-    [self.commentsTextView setText:medication.comments];
-    [self.quantityTextView setText:[medication.patientComments objectForKey:QUANTITY_KEY]];
-    [self.doseTextView setText:[medication.patientComments objectForKey:DOSE_KEY]];
-    [self.directionsTextView setText:[medication.patientComments objectForKey:DIRECTIONS_KEY]];
-    [self.prescriberTextView setText:[medication.patientComments objectForKey:PRESCRIBER_KEY]];
-    
+    if(medication.userDeleted){
+        NSLog(@"Setting user deleted views.");
+        
+        //set all content subviews to hidden
+        for(UIView *subView in self.contentView.subviews){
+            [subView setHidden:YES];
+        }
+        
+        //show medication name with asterisk
+        [self.medicationName setText:[NSString stringWithFormat:@"*%@",[medication.desc uppercaseString]]];
+        [self.medicationName setHidden:NO];
+        
+        //show delete button as "restore"
+        [self.deleteButton setTitle:@"Restore" forState:UIControlStateNormal];
+        [self.deleteButton setHidden:NO];
+        
+    }else{
+        NSLog(@"Setting regular views.");
+        //set textViews from medication fields
+        [self.medicationName setText:[medication.desc uppercaseString]];//set medication name
+        [self.commentsTextView setText:medication.comments];
+        [self.quantityTextView setText:[medication.patientComments objectForKey:QUANTITY_KEY]];
+        [self.doseTextView setText:[medication.patientComments objectForKey:DOSE_KEY]];
+        [self.directionsTextView setText:[medication.patientComments objectForKey:DIRECTIONS_KEY]];
+        [self.prescriberTextView setText:[medication.patientComments objectForKey:PRESCRIBER_KEY]];
+        
+        //set all content subviews to not hidden
+        for(UIView *subView in self.contentView.subviews){
+            [subView setHidden:NO];
+        }
+        
+        [self.deleteButton setTitle:@"Delete" forState:UIControlStateNormal];
+        [self.deleteButton setHidden:YES]; //TODO: LMD fix
+    }
 }
 
 /*
@@ -70,6 +96,24 @@
     
 }
 
+- (IBAction)setDeleteMedication:(UIButton *)sender {
+    if (self.editing){
+        
+        if(!self.medication.userDeleted){
+            //user-delete medication
+            [self.medication setUserDeleted:YES];
+            [sender setBackgroundColor:[UIColor redColor]];
+        }else{
+            //TODO: LMD save in the case of restore
+            //[self.medication setUserDeleted:NO];
+            [sender setBackgroundColor:[UIColor whiteColor]];
+        }
+        
+        
+        //TODO: LMD set "delete button enacted" change (must hit save to actually change)
+    }
+}
+
 - (void)setEditing:(BOOL)flag animated:(BOOL)animated
 {
     self.editing = flag;
@@ -81,6 +125,8 @@
         [self setEditStyleForTextView:self.directionsTextView];
         [self setEditStyleForTextView:self.prescriberTextView];
         [self setEditStyleForTextView:self.commentsTextView];
+        
+        [self.deleteButton setHidden:NO];
     }
     else {
         //change views to noneditable
@@ -90,6 +136,10 @@
         [self finishEditForTextView:self.prescriberTextView];
         [self finishEditForTextView:self.commentsTextView];
         
+        [self.deleteButton setBackgroundColor:[UIColor whiteColor]];
+        [self.deleteButton setHidden:YES];
+        
+        //TODO: LMD -if user deleted, set user-deleted views?
 
         //save data
         NSLog(@"Saving data...");

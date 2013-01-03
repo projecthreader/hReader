@@ -214,7 +214,7 @@
     
 //    HRMPatient *currentPatient = [HRPeoplePickerViewController selectedPatient];
 //    NSUInteger cnt = [currentPatient.medications count];
-    NSLog(@"Number of items in section: %d", [self.medicationList count]);
+//    NSLog(@"Number of items in section: %d", [self.medicationList count]);
 //    return [currentPatient.medications count];
     return [self.medicationList count];
 }
