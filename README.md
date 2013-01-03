@@ -40,4 +40,4 @@ Instances of `HRPeopleFeedViewController` can be shown in a popover to present a
 
 ## Security
 
-Security is handled by `HRCryptoManager` and `CMDEncryptedSQLiteStore`. All data is encrypted using a shared application encryption key that is stored in the keychain encrypted with an application password. The password creation and verification happens in `HRAppDelegate`.
+Security is handled by [SecureFoundation](https://github.com/project-imas/securefoundation) and `CMDEncryptedSQLiteStore`. All data is encrypted using a shared application encryption key that is stored in the keychain encrypted with an application password. The password creation and verification is coordinated by instances of `HRAppDelegate`.

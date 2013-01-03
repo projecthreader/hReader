@@ -1,6 +1,3 @@
-[submodule "vendor/sskeychain"]
-	path = vendor/sskeychain
-	url = https://github.com/guicocoa/sskeychain.git
 [submodule "vendor/activityhud"]
 	path = vendor/activityhud
 	url = https://github.com/calebmdavenport/activityhud.git
@@ -15,4 +12,10 @@
 	url = https://github.com/calebmdavenport/blockskit.git
 [submodule "vendor/encrypted-core-data"]
 	path = vendor/encrypted-core-data
-	url = https://github.com/calebmdavenport/encrypted-core-data.git
+	url = https://github.com/project-imas/encrypted-core-data.git
+[submodule "vendor/SecureFoundation"]
+	path = vendor/SecureFoundation
+	url = https://github.com/project-imas/securefoundation.git
+[submodule "vendor/apppassword"]
+	path = vendor/apppassword
+	url = https://github.com/project-imas/app-password.git
