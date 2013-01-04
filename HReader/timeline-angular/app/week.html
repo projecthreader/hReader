@@ -23,8 +23,8 @@
 				<div class="row titles">
 					<h2 class="span4">Overall</h2>
 					<!--   -->
-					<h3 class="span5">{{start_date}}</h3>
-					<h3 class="span1">{{end_date}}</h3>
+					<h3 class="span5">JAN 1</h3>
+					<h3 class="span1">JAN 8 </h3>
 					<h3 class="span2">last result</h3>
 				</div>
 				<div class="row data" ngChange:false ng-repeat="level in levels">>
@@ -36,33 +36,8 @@
 				</div>
 				<hr>
 			</article>	
-			<article>
-				<div class="row titles">
-					<h2 class="span4">Observations</h2>
-					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span> -->
-					<h3 class="span2">date</h3>
-					<h3 class="span1">type</h3>
-					<h3 class="span4"></h3>
-					<h3 class="span1"></h3>
-				</div>
-				<div class="row">
-					<div class="row data" ngChange:false ng-repeat="observation in observations">
-					<span class="span4">
-						<h4>{{observation.description}}</h4>		
-					</span>
-					<span class="span2 graph">		
-						<h4>{{observation.date}}</h4>
-					</span>
-					<span class="span2"> 
-						<div class="span1"><img src="images/observation.png"></div>}
-					</span>
-				</div>
-
-				</div>
-				<hr>
-			</article>
-			
-						<article ngChange:false ng-repeat="condition in conditions">
+				
+			<article ngChange:false ng-repeat="condition in conditions">
 				<div class="row titles">
 					<h2 class="span3">{{condition.description}}</h2>
 					<span class="span1"><a class="btn" onclick="$('#newSymp').show()"><i class="icon-plus"></i></a>

@@ -39,15 +39,17 @@
 				<div class="titles row">
 					<h2 class="span4">Diagnosis</h2>
 					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span> -->
-					<h3 class="span5">{{start_date}}</h3>
-					<h3 class="span1">{{end_date}}</h3>
+					<h3 class="span5">2003</h3>
+					<h3 class="span1">2013</h3>
 				</div>
 				<div class="row" div class="row data" ngChange:false ng-repeat="condition in conditions">
 					<h4 class="titles span4">{{condition.description}}</h4>
+					<!-- <p class="span2">ER*</p> -->			
+					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span> -->
 					<div class="progress schedule span6">
 						<img src="images/diag.png" 
 							class="diagnosis" 
-							ng-style="entryOffset(condition)">
+							ng-style="DecadeOffset(condition)">
 					</div>
 				</div>
 			</article>
@@ -155,12 +157,10 @@
 					<h3 class="span6">Log</h3>
 					<h3 class="span2"></h3>
 				</div>
-
-				<!-- Add a Vital  -->
 				<div class="row">
 					<form class="hidden" id="newSymp" action="http://hreader.local/timeline.json?key=userData">
-						<span class="span5">
-							<fieldset class="span5" data-role="controlgroup" data-type="horizontal">
+						<span class="span4">
+							<fieldset class="span4" data-role="controlgroup" data-type="horizontal">
 								<select name="select-choice-sev" id="select-choice-sev">
 								   <option ngChange:false ng-repeat="vital in vitals">{{vital.description}}</option>
 								</select>
@@ -183,6 +183,7 @@
 						<h1>{{vital.values[vital.values.length-1]| number:0}}</h1>{{vital.units}}
 					</span>
 				</div>
+				</form>
 				<hr>
 			</article>	
 			<article class="vitals">

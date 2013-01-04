@@ -100,8 +100,7 @@ function DayListCtrl($scope, $http) {
     $scope.mood = data.energy; 
     $scope.conditions = data.conditions;
     $scope.levels = data.levels;
-    $scope.start_date = data.start_date;
-    $scope.end_date = data.end_date;
+    $scope.format = 'yyyy/d/MM';
   });
 };
 
@@ -153,11 +152,23 @@ function DecadeListCtrl($scope, $http) {
     $scope.Math = window.Math;
   });
 
-  $scope.entryOffset = function(entry) {
+  $scope.DecadeOffset = function(entry) {
     var offset = (entry.date*1000-(1.01e+12))/(315569259747/460);
     return { 'left' : offset + 'px' }
   }
 };
+
+//  $scope.YearOffset = function(entry) {
+//     var offset = (entry.date*1000-(1.01e+12))/(31556925975/460);
+//     return { 'left' : offset + 'px' }
+//   }
+// };
+//  $scope.MonthOffset = function(entry) {
+//     var offset = (entry.date*1000-(1.01e+12))/(2629743831/460);
+//     return { 'left' : offset + 'px' }
+//   }
+// };
+
 
 
 // DayListCtrl.$inject = ['values', '$http'];
