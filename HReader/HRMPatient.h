@@ -63,8 +63,29 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
  
  */
 @property (nonatomic, readonly) NSString *initials;
+
+/*
+ 
+ Returns a pretty string that can be shown to the user based on the `gender`
+ property.
+ 
+ */
 @property (nonatomic, readonly) NSString *genderString;
+
+/*
+ 
+ Returns a pretty string that can be shown to the user based on the 
+ `relationship` and `gender` properties.
+ 
+ */
 @property (nonatomic, readonly) NSString *relationshipString;
+
+/*
+ 
+ Used by applets to determine which patient is currently being viewed without
+ actually giving them the patient object. It is based on the server host and id.
+ 
+ */
 @property (nonatomic, readonly) NSString *identityToken;
 
 #pragma mark - fetched properties
@@ -81,7 +102,8 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 
 /*
  
- Kick off a network sync. This method returns immediately.
+ Kick off a network sync. This method performs its work
+ on a background thread and returns immediately.
  
  */
 + (void)performSync;
@@ -101,7 +123,7 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
  Generate the XML document that is used to render the patient timeline.
  
  */
-- (DDXMLElement *)timelineXMLPayload;
+- (DDXMLElement *)timelineXMLPayload DEPRECATED_ATTRIBUTE;
 
 /*
  

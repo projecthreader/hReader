@@ -112,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="-218" y="434"/>
         </scene>
-        <!--Passcode View Controller - Title-->
+        <!--Password View Controller - Title-->
         <scene sceneID="N3K-w8-E5b">
             <objects>
-                <viewController storyboardIdentifier="CreatePasscodeViewController" id="4zr-1M-trb" customClass="HRPasscodeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreatePasscodeViewController" id="4zr-1M-trb" customClass="HRPasswordViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z3i-Nr-DEi">
                         <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -124,7 +124,7 @@
                                 <rect key="frame" x="212" y="52" width="600" height="141"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Passcode" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" id="a9A-pq-hwx">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" id="a9A-pq-hwx">
                                         <rect key="frame" x="15" y="86" width="570" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -134,7 +134,7 @@
                                             <outlet property="delegate" destination="4zr-1M-trb" id="nwv-4h-Ddi"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Passcode" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" id="AM3-E7-vci">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" id="AM3-E7-vci">
                                         <rect key="frame" x="15" y="15" width="570" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -169,15 +169,24 @@
                     <navigationItem key="navigationItem" title="Title" id="W9b-SY-ftR">
                         <barButtonItem key="rightBarButtonItem" title="Next" style="done" id="Hhl-h6-BzB">
                             <connections>
-                                <action selector="create:" destination="4zr-1M-trb" id="Hrr-5N-8hb"/>
+                                <action selector="doneButtonAction:" destination="4zr-1M-trb" id="Lmz-sC-RZ0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="mode">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="string" keyPath="passwordSecurityPattern" value="^.*(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,}).*$"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="dividerView" destination="M56-o4-vAm" id="515-vZ-Fdv"/>
-                        <outlet property="passcodeOneField" destination="AM3-E7-vci" id="jnI-VP-9C1"/>
-                        <outlet property="passcodeTwoField" destination="a9A-pq-hwx" id="9im-gk-lef"/>
+                        <outlet property="passwordFieldContainerView" destination="LYH-0K-SbB" id="5ih-Fj-Env"/>
+                        <outlet property="passwordFieldDividerView" destination="M56-o4-vAm" id="rD9-v2-Nph"/>
+                        <outlet property="passwordOneField" destination="AM3-E7-vci" id="S1c-qN-kyc"/>
+                        <outlet property="passwordTwoField" destination="a9A-pq-hwx" id="FU0-EV-p0x"/>
+                        <outletCollection property="passwordFields" destination="AM3-E7-vci" id="wrZ-qF-FXn"/>
+                        <outletCollection property="passwordFields" destination="a9A-pq-hwx" id="FHf-6V-hf4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QU7-G2-qI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -346,10 +355,10 @@
             </objects>
             <point key="canvasLocation" x="1004" y="-106"/>
         </scene>
-        <!--Passcode View Controller - Title-->
+        <!--Password View Controller - Title-->
         <scene sceneID="rSU-lD-Yx8">
             <objects>
-                <viewController storyboardIdentifier="VerifyPasscodeViewController" id="HUK-hN-tT9" customClass="HRPasscodeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VerifyPasscodeViewController" id="HUK-hN-tT9" customClass="HRPasswordViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SdH-Qh-4Yx">
                         <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -358,7 +367,7 @@
                                 <rect key="frame" x="212" y="149" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Passcode" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" id="SCb-Wh-Sjs">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" id="SCb-Wh-Sjs">
                                         <rect key="frame" x="15" y="30" width="570" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -382,13 +391,20 @@
                     <navigationItem key="navigationItem" title="Title" id="OUR-DL-eYI">
                         <barButtonItem key="rightBarButtonItem" title="Login" style="done" id="xMQ-cZ-WvQ">
                             <connections>
-                                <action selector="verify:" destination="HUK-hN-tT9" id="FcW-i2-3Vt"/>
+                                <action selector="doneButtonAction:" destination="HUK-hN-tT9" id="vC7-Ps-WK3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="mode">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="passcodeOneField" destination="SCb-Wh-Sjs" id="BjD-Tg-KEl"/>
+                        <outlet property="passwordFieldContainerView" destination="b26-g1-799" id="kuL-xS-Hkm"/>
+                        <outlet property="passwordOneField" destination="SCb-Wh-Sjs" id="rDu-TJ-3az"/>
+                        <outletCollection property="passwordFields" destination="SCb-Wh-Sjs" id="i44-Pk-9ms"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Yd-97-KjL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -478,15 +494,11 @@
                 <relationship kind="outletCollection" name="buttons" candidateClass="UIButton"/>
             </relationships>
         </class>
-        <class className="HRPasscodeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRPasscodeViewController.h"/>
+        <class className="HRPasswordViewController" superclassName="IMSPasswordViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HRPasswordViewController.h"/>
             <relationships>
-                <relationship kind="action" name="create:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="textFieldTextDidChange:" candidateClass="UITextField"/>
-                <relationship kind="action" name="verify:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="dividerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="passcodeOneField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passcodeTwoField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordFieldContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="passwordFieldDividerView" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="HRPeopleSetupPlaceHolderView" superclassName="UIView">
@@ -511,6 +523,9 @@
         <class className="HRRHExLoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRRHExLoginViewController.h"/>
             <relationships>
+                <relationship kind="action" name="navigateBack:"/>
+                <relationship kind="action" name="navigateForward:"/>
+                <relationship kind="action" name="navigateReload:"/>
                 <relationship kind="outlet" name="navigationToolbar" candidateClass="UIToolbar"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
@@ -527,6 +542,15 @@
         </class>
         <class className="HRSplashScreenViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRSplashScreenViewController.h"/>
+        </class>
+        <class className="IMSPasswordViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IMSPasswordViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="doneButtonAction:"/>
+                <relationship kind="outlet" name="passwordOneField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordTwoField" candidateClass="UITextField"/>
+                <relationship kind="outletCollection" name="passwordFields" candidateClass="UITextField"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -13,11 +13,22 @@
     PopHealth.prototype.showResult = function(measure) {
       var title;
       title = $(measure).innerHTML;
-      return $("#more-info").removeClass("pass fail hidden");
+      $("#more-info").hide();
+      return $("#more-info").slideDown();
     };
 
     PopHealth.prototype.filterResults = function(criteria) {
-      return $(".category ul li." + criteria).slideToggle();
+      var results;
+      results = $(".category ul li." + criteria);
+      results.slideToggle();
+      return results.toggleClass('result-filter');
+    };
+
+    PopHealth.prototype.filterCategory = function(categoryHeader) {
+      var measures;
+      measures = $(categoryHeader).parent(".category").find("li");
+      measures.slideToggle();
+      return measures.toggleClass('category-filter');
     };
 
     return PopHealth;
@@ -30,21 +41,11 @@
     $(".category ul li").on("mouseup", function(event) {
       return popHealth.showResult(event.target);
     });
-    $(".pophealth-result-container").on("mouseup", function(event) {
-      return popHealth.filterResults(event.target.getAttribute("data-filter-criteria"));
+    $(".category h3").on("mouseup", function(event) {
+      return popHealth.filterCategory(event.target);
     });
-    return $.ajax({
-      type: "GET",
-      url: 'http://127.0.0.1:3000/measures/results/1.json',
-      isModified: false,
-      dataType: "jsonp",
-      data: {
-        id: 1
-      },
-      success: function(data) {
-        return alert('success?');
-      },
-      error: function() {}
+    return $(".pophealth-result-container").on("mouseup", function(event) {
+      return popHealth.filterResults(event.target.getAttribute("data-filter-criteria"));
     });
   });
 
