@@ -27,7 +27,7 @@
 					<h3 class="span1">JAN 8 </h3>
 					<h3 class="span2">last result</h3>
 				</div>
-				<div class="row data" ngChange:false ng-repeat="level in levels">>
+				<div class="row data" ngChange:false ng-repeat="level in levels">
 					<h4 class="titles span4">{{levels.description}}</h4>
 					<span class="span6 graph">		
 						<p><sparkline exp="data" class="sparkline">{{levels.value.join(', ')}}</sparkline></p>
