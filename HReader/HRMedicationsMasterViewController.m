@@ -211,11 +211,6 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    
-//    HRMPatient *currentPatient = [HRPeoplePickerViewController selectedPatient];
-//    NSUInteger cnt = [currentPatient.medications count];
-//    NSLog(@"Number of items in section: %d", [self.medicationList count]);
-//    return [currentPatient.medications count];
     return [self.medicationList count];
 }
 
@@ -315,9 +310,15 @@
         
         if(med.patientComments == nil){
             NSLog(@"patient comments for entry %d are nil, setting to dashes", i);
-            //codes,dose,date,desc,endDate,startDate,status,value,type,patient,reaction,severity
-            NSArray *keys = [NSArray arrayWithObjects:@"quantity", @"dose", @"directions", @"prescriber", nil];
-            NSArray *objects = [NSArray arrayWithObjects:@"-", @"-", @"-", @"-", nil];
+            //default dose comment from entry's dose information
+            NSString *doseString = @"-";
+            //TODO: LMD how to get/properly format dose information?
+            if(med.dose.description != nil){
+                doseString = med.dose.description;
+            }
+            
+            NSArray *keys = [NSArray arrayWithObjects:QUANTITY_KEY, DOSE_KEY, DIRECTIONS_KEY, PRESCRIBER_KEY, nil];
+            NSArray *objects = [NSArray arrayWithObjects:@"-", doseString, @"-", @"-", nil];
             [med setPatientComments:[NSDictionary dictionaryWithObjects:objects forKeys:keys]];
         }
         

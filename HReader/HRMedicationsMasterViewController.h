@@ -13,11 +13,6 @@
 // container views
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-// key labels
-//@property (nonatomic, weak) IBOutlet UILabel *dateOfBirthLabel;
-//@property (nonatomic, weak) IBOutlet UILabel *dateOfBirthTitleLabel;
-//@property (nonatomic, weak) IBOutlet UILabel *allergiesLabel;
-
 // current medications
 @property (nonatomic, weak) IBOutlet UIView *currentMedicationsView;
 @property (nonatomic, strong) IBOutletCollection(UILabel) NSArray *medicationNameLabels;

@@ -14,6 +14,7 @@
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="userDeleted" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="entries" inverseEntity="Patient" syncable="YES"/>
     </entity>
@@ -41,7 +42,7 @@
         <relationship name="patient" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="timelineEntries" inverseEntity="Patient" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Entry" positionX="0" positionY="0" width="128" height="270"/>
+        <element name="Entry" positionX="0" positionY="0" width="128" height="285"/>
         <element name="Patient" positionX="0" positionY="0" width="128" height="270"/>
         <element name="TimelineEntry" positionX="160" positionY="192" width="128" height="105"/>
     </elements>

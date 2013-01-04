@@ -28,7 +28,7 @@
 - (void)setMedication:(HRMEntry *)medication{
     _medication = medication;
     
-    if(medication.userDeleted){
+    if(medication.userDeleted.boolValue){
         NSLog(@"Setting user deleted views.");
         
         //set all content subviews to hidden
@@ -59,8 +59,9 @@
             [subView setHidden:NO];
         }
         
+        //hide delete button
         [self.deleteButton setTitle:@"Delete" forState:UIControlStateNormal];
-        [self.deleteButton setHidden:YES]; //TODO: LMD fix
+        [self.deleteButton setHidden:YES];
     }
 }
 
@@ -84,7 +85,7 @@
         
         [self setEditing:NO animated:YES];
     } else {
-        
+        //received "edit button" click
         [sender setTitle:@"Done" forState:UIControlStateNormal];
         NSString *saveImageFile = [[NSBundle mainBundle] pathForResource:@"save" ofType:@"png"];
         UIImage *saveImage = [UIImage imageWithContentsOfFile:saveImageFile];
@@ -97,20 +98,24 @@
 }
 
 - (IBAction)setDeleteMedication:(UIButton *)sender {
-    if (self.editing){
         
-        if(!self.medication.userDeleted){
-            //user-delete medication
-            [self.medication setUserDeleted:YES];
-            [sender setBackgroundColor:[UIColor redColor]];
-        }else{
-            //TODO: LMD save in the case of restore
-            //[self.medication setUserDeleted:NO];
-            [sender setBackgroundColor:[UIColor whiteColor]];
+    if(!self.medication.userDeleted.boolValue){
+        //delete button checked (must hit save to actually change)
+        [self.medication setUserDeleted:[NSNumber numberWithBool:YES]];
+        [sender setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    }else{
+        //delete button unchecked
+        [self.medication setUserDeleted:[NSNumber numberWithBool:NO]];
+        [sender setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        
+        if(!self.editing){
+            //case restore clicked: must save
+            NSManagedObjectContext *context = [self.medication managedObjectContext];
+            NSError *error;
+            if (![context save:&error]) {
+                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+            }
         }
-        
-        
-        //TODO: LMD set "delete button enacted" change (must hit save to actually change)
     }
 }
 
@@ -125,7 +130,6 @@
         [self setEditStyleForTextView:self.directionsTextView];
         [self setEditStyleForTextView:self.prescriberTextView];
         [self setEditStyleForTextView:self.commentsTextView];
-        
         [self.deleteButton setHidden:NO];
     }
     else {
@@ -135,13 +139,9 @@
         [self finishEditForTextView:self.directionsTextView];
         [self finishEditForTextView:self.prescriberTextView];
         [self finishEditForTextView:self.commentsTextView];
-        
-        [self.deleteButton setBackgroundColor:[UIColor whiteColor]];
-        [self.deleteButton setHidden:YES];
-        
-        //TODO: LMD -if user deleted, set user-deleted views?
+        [self.deleteButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
 
-        //save data
+        //set managed object fields from text fields
         NSLog(@"Saving data...");
         [self.medication setComments:self.commentsTextView.text];
         NSArray *keys = [NSArray arrayWithObjects:QUANTITY_KEY, DOSE_KEY, DIRECTIONS_KEY, PRESCRIBER_KEY, nil];
@@ -153,6 +153,7 @@
                             nil];
         [self.medication setPatientComments:[NSDictionary dictionaryWithObjects:objects forKeys:keys]];
         
+        //save data
         NSManagedObjectContext *context = [self.medication managedObjectContext];
         NSError *error;
         if (![context save:&error]) {

@@ -19,8 +19,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *commentsTextView;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
-
-
 @property (assign) BOOL editing;
 @property (strong, nonatomic) HRMEntry *medication;
 
