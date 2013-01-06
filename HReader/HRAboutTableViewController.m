@@ -9,13 +9,14 @@
 #import "HRAboutTableViewController.h"
 #import "HRPasscodeWarningViewController.h"
 #import "HRAppDelegate.h"
-#import "HRPasscodeViewController.h"
 #import "HRAPIClient_private.h"
 
 #import "CMDBlocksKit.h"
 #import "CMDActivityHUD.h"
 
 #import "HRMPatient.h"
+
+#import "IMSPasswordViewController.h"
 
 @interface HRAboutTableViewController ()
 
@@ -155,17 +156,16 @@
 
 - (void)presentPasscodeVerificationControllerWithAction:(SEL)action {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
-    HRPasscodeViewController *passcode = [storyboard instantiateViewControllerWithIdentifier:@"VerifyPasscodeViewController"];
-    passcode.mode = HRPasscodeViewControllerModeVerify;
-    passcode.target = [[UIApplication sharedApplication] delegate];
-    passcode.action = action;
-    passcode.title = @"Enter Passcode";
-    passcode.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+    IMSPasswordViewController *password = [storyboard instantiateViewControllerWithIdentifier:@"VerifyPasscodeViewController"];;
+    password.target = [[UIApplication sharedApplication] delegate];
+    password.action = action;
+    password.title = @"Enter Password";
+    password.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                                   initWithTitle:@"Next"
                                                   style:UIBarButtonItemStyleDone
-                                                  target:passcode
-                                                  action:@selector(verify:)];
-    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:passcode];
+                                                  target:password
+                                                  action:@selector(doneButtonAction:)];
+    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:password];
     UIViewController *presenting = self.presentingViewController;
     [presenting dismissViewControllerAnimated:YES completion:^{
         [presenting presentViewController:navigation animated:YES completion:nil];

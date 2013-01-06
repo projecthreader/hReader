@@ -58,9 +58,10 @@ body {
   .logo {
     width: 300px;
     height: 100px;
+    margin-bottom: 100px;
   }
 
-  .pophealth-result-container { margin-top: 100px; }
+  .pophealth-result-container { margin-bottom: 75px; }
   padding: 10px 0;
   position: fixed;
   left: 30px;
@@ -78,6 +79,11 @@ body {
   .paramItem {
     height: 200px;
     overflow: scroll;
+  }
+
+  #more-info {
+    
+    display: none;
   }
 }
 
