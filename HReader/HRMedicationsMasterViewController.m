@@ -81,6 +81,11 @@
 
 - (void)reloadWithPatient:(HRMPatient *)patient {
     
+    //hide header edit buttons
+    NSLog(@"Setting header edit buttons to hidden.");
+    [self.currentMedicationsEditButton setHidden:YES];
+    [self.upcomingRefillsEditButton setHidden:YES];
+    
     // synthetic info
     NSDictionary *syntheticInfo = patient.syntheticInfo;
     
@@ -309,6 +314,8 @@
     [self setRefillLocationLabels:nil];
     [self setMedicationRefillLabels:nil];
     [self setMedicationRefillLabels:nil];
+    [self setCurrentMedicationsEditButton:nil];
+    [self setUpcomingRefillsEditButton:nil];
     [super viewDidUnload];
 }
 
