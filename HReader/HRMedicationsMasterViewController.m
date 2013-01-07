@@ -86,7 +86,15 @@
     
     // medications
     {
-        NSArray *medications = [patient medications];
+        NSArray *foundMedications = [patient medications];
+        NSMutableArray *medications = [NSMutableArray arrayWithCapacity:[foundMedications count]];
+        //remove user-deleted medications
+        for(HRMEntry *med in foundMedications){
+            if(!med.userDeleted.boolValue){
+                [medications addObject:med];
+            }
+        }
+        
         NSArray *nameLabels = [self.medicationNameLabels hr_sortedArrayUsingKey:@"tag" ascending:YES];
         NSArray *dosageLabels = [self.medicationDosageLabels hr_sortedArrayUsingKey:@"tag" ascending:YES];
         NSUInteger medicationsCount = [medications count];
@@ -130,7 +138,14 @@
     
     //refills
     {
-        NSArray *medications = [patient medications];
+        NSArray *foundMedications = [patient medications];
+        NSMutableArray *medications = [NSMutableArray arrayWithCapacity:[foundMedications count]];
+        //remove user-deleted medications
+        for(HRMEntry *med in foundMedications){
+            if(!med.userDeleted.boolValue){
+                [medications addObject:med];
+            }
+        }
         NSArray *nameLabels = [self.medicationRefillLabels hr_sortedArrayUsingKey:@"tag" ascending:YES];
         NSArray *locationLabels = [self.refillLocationLabels hr_sortedArrayUsingKey:@"tag" ascending:YES];
         NSUInteger medicationsCount = [medications count];
@@ -331,4 +346,98 @@
     
     
 }
+- (IBAction)upcomingRefillsEdit:(id)sender {
+    if (self.editing) {
+        //received "save button" click
+        [sender setTitle:@"Edit" forState:UIControlStateNormal];
+        NSString *editImageFile = [[NSBundle mainBundle] pathForResource:@"edit" ofType:@"png"];
+        UIImage *editImage = [UIImage imageWithContentsOfFile:editImageFile];
+        [sender setImage:editImage forState:UIControlStateNormal];
+        
+        [self setEditing:NO animated:YES];
+    } else {
+        //received "edit button" click
+        [sender setTitle:@"Done" forState:UIControlStateNormal];
+        NSString *saveImageFile = [[NSBundle mainBundle] pathForResource:@"save" ofType:@"png"];
+        UIImage *saveImage = [UIImage imageWithContentsOfFile:saveImageFile];
+        [sender setImage:saveImage forState:UIControlStateNormal];
+        
+        [self setEditing:YES animated:YES];
+    }
+}
+
+- (IBAction)currentMedicationsEdit:(id)sender {
+    if (self.editing) {
+        //received "save button" click
+        [sender setTitle:@"Edit" forState:UIControlStateNormal];
+        NSString *editImageFile = [[NSBundle mainBundle] pathForResource:@"edit" ofType:@"png"];
+        UIImage *editImage = [UIImage imageWithContentsOfFile:editImageFile];
+        [sender setImage:editImage forState:UIControlStateNormal];
+        
+        [self setEditing:NO animated:YES];
+    } else {
+        //received "edit button" click
+        [sender setTitle:@"Done" forState:UIControlStateNormal];
+        NSString *saveImageFile = [[NSBundle mainBundle] pathForResource:@"save" ofType:@"png"];
+        UIImage *saveImage = [UIImage imageWithContentsOfFile:saveImageFile];
+        [sender setImage:saveImage forState:UIControlStateNormal];
+        
+        [self setEditing:YES animated:YES];
+    }
+}
+
+- (IBAction)setEditMode:(UIButton *)sender {
+    
+    if (self.editing) {
+        //received "save button" click
+        [sender setTitle:@"Edit" forState:UIControlStateNormal];
+        NSString *editImageFile = [[NSBundle mainBundle] pathForResource:@"edit" ofType:@"png"];
+        UIImage *editImage = [UIImage imageWithContentsOfFile:editImageFile];
+        [sender setImage:editImage forState:UIControlStateNormal];
+        
+        [self setEditing:NO animated:YES];
+    } else {
+        //received "edit button" click
+        [sender setTitle:@"Done" forState:UIControlStateNormal];
+        NSString *saveImageFile = [[NSBundle mainBundle] pathForResource:@"save" ofType:@"png"];
+        UIImage *saveImage = [UIImage imageWithContentsOfFile:saveImageFile];
+        [sender setImage:saveImage forState:UIControlStateNormal];
+        
+        [self setEditing:YES animated:YES];
+    }
+    
+    
+}
+
+- (void)setEditing:(BOOL)flag animated:(BOOL)animated
+{
+    self.editing = flag;
+    
+    if (flag == YES){
+        // Change views to edit mode.
+    }
+    else {
+        //change views to noneditable
+        
+        
+        //set managed object fields from text fields
+        
+        
+        //save data
+        
+    }
+}
+
+- (void) setEditStyleForTextView:(UITextView *)textView{
+    textView.layer.borderWidth = 1.0f;
+    textView.layer.borderColor = [[UIColor grayColor] CGColor];
+    textView.layer.cornerRadius = 5;
+    [textView setEditable:YES];
+}
+
+- (void) finishEditForTextView:(UITextView *)textView{
+    textView.layer.borderColor = [[UIColor whiteColor] CGColor];
+    [textView setEditable:NO];
+}
+
 @end

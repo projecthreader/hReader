@@ -17,13 +17,16 @@
 @property (nonatomic, weak) IBOutlet UIView *currentMedicationsView;
 @property (nonatomic, strong) IBOutletCollection(UILabel) NSArray *medicationNameLabels;
 @property (nonatomic, strong) IBOutletCollection(UILabel) NSArray *medicationDosageLabels;
+- (IBAction)currentMedicationsEdit:(id)sender;
 
 // upcoming refills
 @property (nonatomic, weak) IBOutlet UIView *upcomingRefillsView;
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *medicationRefillLabels;
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *refillLocationLabels;
+- (IBAction)upcomingRefillsEdit:(id)sender;
 
 //data
 @property (nonatomic, copy) NSArray *medicationList;
+@property (assign) BOOL editing;
 
 @end
