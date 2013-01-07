@@ -8,8 +8,8 @@
 
 #import "CMDManagedObject.h"
 
-typedef enum {
-    HRMEntryTypeCondition = 0,
+typedef NS_ENUM(int, HRMEntryType) {
+    HRMEntryTypeCondition,
     HRMEntryTypeAllergy,
     HRMEntryTypeEncounter,
     HRMEntryTypeMedication,
@@ -17,7 +17,7 @@ typedef enum {
     HRMEntryTypeResult,
     HRMEntryTypeVitalSign,
     HRMEntryTypeImmunization
-} HRMEntryType;
+};
 
 @class HRMPatient;
 @class DDXMLElement;
@@ -41,6 +41,6 @@ typedef enum {
                                 type:(HRMEntryType)type
                            inContext:(NSManagedObjectContext *)context;
 
-- (DDXMLElement *)timelineXMLElement;
+- (DDXMLElement *)timelineXMLElement DEPRECATED_ATTRIBUTE;
 
 @end

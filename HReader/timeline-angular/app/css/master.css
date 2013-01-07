@@ -4607,17 +4607,32 @@ a.label:hover, a.badge:hover {
 .ui-slider .ui-slider-range {
   background-color: #0064CD !important; }
 
+.ui-controlgroup-controls .ui-btn-active {
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#048a82), to(#56c4c3)) !important;
+  background-image: linear-gradient(#048a82, #56c4c3);
+  background-color: #048a82; }
+
+button.btn.symbolBTN.ui-btn-hidden {
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  height: 14px;
+  line-height: 14px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 1px;
+  padding: 0px !important; }
+
+a#remove {
+  border-radius: 4px;
+  -webkit-border-radius: 4px; }
+
 /*structure*/
 body.ui-mobile-viewport div.ui-body {
   background-color: yellow; }
 
 .span1, .span2, h2.span3, .span4, .span6 form {
   vertical-align: baseline; }
-
-.graph {
-  background-color: #fff;
-  margin-bottom: 20px;
-  padding: 30px; }
 
 .green {
   border: 1px solid #888888; }
@@ -4797,6 +4812,10 @@ form {
 [class^="icon-"], [class*=" icon-"] {
   background-image: url("../images/glyphicons-halflings.png"); }
 
+.graph {
+  background-color: #fff;
+  margin-bottom: 20px; }
+
 .schedule {
   overflow: visible;
   margin-top: 10px; }
@@ -4828,6 +4847,11 @@ path.area {
 .y.axis line, .y.axis path {
   fill: none;
   stroke: #000; }
+
+path {
+  stroke: black;
+  stroke-width: 1.5;
+  fill: none; }
 
 #sparkline {
   width: 150px; }

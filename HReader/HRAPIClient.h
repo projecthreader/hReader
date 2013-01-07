@@ -61,4 +61,12 @@
                           startBlock:(void (^) (void))startBlock
                          finishBlock:(void (^) (NSDictionary *payload))finishBlock;
 
+/*
+ 
+ Fetch a given patient payload from the receiver. This method waits for the
+ response to come back so do not call this on the main thread.
+ 
+ */
+- (NSDictionary *)JSONForPatientWithIdentifier:(NSString *)identifier;
+
 @end

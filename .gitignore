@@ -20,3 +20,5 @@ profile
 .rake_tasks
 build.output
 pkg
+
+.sass-cache/

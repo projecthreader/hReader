@@ -8,24 +8,25 @@
 
 #import "CMDManagedObject.h"
 
-typedef enum {
-    HRMPatientGenderMale = 0,
+typedef NS_ENUM(short, HRMPatientGender) {
+    HRMPatientGenderMale,
     HRMPatientGenderFemale,
     HRMPatientGenderUnknown
-} HRMPatientGender;
+};
 
-typedef enum {
-    HRMPatientRelationshipMe = 0,
+typedef NS_ENUM(short, HRMPatientRelationship) {
+    HRMPatientRelationshipMe,
     HRMPatientRelationshipSpouse,
     HRMPatientRelationshipChild,
     HRMPatientRelationshipFamily,
     HRMPatientRelationshipOther
-} HRMPatientRelationship;
+};
 
 extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 
 @class HRMEntry;
 @class DDXMLElement;
+@class HRMTimelineEntry;
 
 @interface HRMPatient : CMDManagedObject
 
@@ -44,14 +45,47 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 @property (nonatomic, retain) NSArray *applets;
 @property (nonatomic, retain) NSNumber *displayOrder;
 @property (nonatomic, retain) NSNumber *relationship;
-@property (nonatomic, retain) NSDictionary *timelineLevels;
+@property (nonatomic, retain) NSSet *timelineLevels;
 
-#pragma mark - transient properties
+#pragma mark - helper properties
 
+/*
+ 
+ Returns the first and last name concatenated.
+ 
+ */
 @property (nonatomic, readonly) NSString *compositeName;
+
+/*
+ 
+ Returns the first letter of both the first and last name, concatenated and
+ uppercased.
+ 
+ */
 @property (nonatomic, readonly) NSString *initials;
+
+/*
+ 
+ Returns a pretty string that can be shown to the user based on the `gender`
+ property.
+ 
+ */
 @property (nonatomic, readonly) NSString *genderString;
+
+/*
+ 
+ Returns a pretty string that can be shown to the user based on the 
+ `relationship` and `gender` properties.
+ 
+ */
 @property (nonatomic, readonly) NSString *relationshipString;
+
+/*
+ 
+ Used by applets to determine which patient is currently being viewed without
+ actually giving them the patient object. It is based on the server host and id.
+ 
+ */
 @property (nonatomic, readonly) NSString *identityToken;
 
 #pragma mark - fetched properties
@@ -68,7 +102,8 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 
 /*
  
- 
+ Kick off a network sync. This method performs its work
+ on a background thread and returns immediately.
  
  */
 + (void)performSync;
@@ -88,14 +123,15 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
  Generate the XML document that is used to render the patient timeline.
  
  */
-- (DDXMLElement *)timelineXMLPayload;
+- (DDXMLElement *)timelineXMLPayload DEPRECATED_ATTRIBUTE;
 
 /*
  
- 
+ Generate the JSON document that is used to render the patient timeline. Use
+ the `start` and `end` parameters to set a scope on the returned data.
  
  */
-- (NSData *)timelineJSONPayloadWithPredicate:(NSPredicate *)predicate error:(NSError **)error;
+- (NSData *)timelineJSONPayloadWithStartDate:(NSDate *)start endDate:(NSDate *)end error:(NSError **)error;
 
 /*
  
@@ -128,5 +164,10 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 - (void)removeEntriesObject:(HRMEntry *)value;
 - (void)addEntries:(NSSet *)values;
 - (void)removeEntries:(NSSet *)values;
+
+- (void)addTimelineEntriesObject:(HRMTimelineEntry *)value;
+- (void)removeTimelineEntriesObject:(HRMTimelineEntry *)value;
+- (void)addTimelineEntries:(NSSet *)values;
+- (void)removeTimelineEntries:(NSSet *)values;
 
 @end

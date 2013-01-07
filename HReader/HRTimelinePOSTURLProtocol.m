@@ -8,6 +8,11 @@
 
 #import "HRTimelinePOSTURLProtocol.h"
 #import "HRAPIClient.h"
+#import "HRAppDelegate.h"
+#import "HRPeoplePickerViewController_private.h"
+
+#import "HRMPatient.h"
+#import "HRMTimelineEntry.h"
 
 @implementation HRTimelinePOSTURLProtocol
 
@@ -32,7 +37,7 @@
     }
     static NSString * const location = @"http://hreader.local/timeline.json";
     NSURL *URL = [request URL];
-    if ([[URL absoluteString] rangeOfString:location].location == 0) {
+    if (URL && [[URL absoluteString] rangeOfString:location].location == 0) {
         return YES;
     }
     return NO;
@@ -44,20 +49,55 @@
 
 - (void)startLoading {
     id<NSURLProtocolClient> client = [self client];
+#define PRIVATE_CONTEXT 1
+#if PRIVATE_CONTEXT
+    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    [context setParentContext:[HRAppDelegate managedObjectContext]];
+#else
+    NSManagedObjectContext *context = [HRAppDelegate managedObjectContext];
+#endif
+    
     
     // query string parameters
     NSString *queryString = [[[self request] URL] query];
     NSDictionary *queryParameters = [HRAPIClient parametersFromQueryString:queryString];
-    HRDebugLog(@"%@", queryParameters);
+    NSString *action = [queryParameters objectForKey:@"key"];
+    HRDebugLog(@"Query parameters: %@", queryParameters);
     
     // body parameters
     NSString *bodyString = [[NSString alloc] initWithData:[[self request] HTTPBody] encoding:NSUTF8StringEncoding];
     NSDictionary *bodyParameters = [HRAPIClient parametersFromQueryString:bodyString];
-    HRDebugLog(@"%@", bodyParameters);
+    HRDebugLog(@"Body parameters: %@", bodyParameters);
+    
+    [context performBlockAndWait:^{
+        HRMPatient *patient = [HRPeoplePickerViewController selectedPatientInContext:context];
+        HRMTimelineEntry *entry = [HRMTimelineEntry instanceInContext:context];
+        entry.patient = patient;
+        entry.data = bodyParameters;
+        
+        // levels
+        if ([action isEqualToString:@"Levels"]) {
+            entry.type = @(HRMTimelineEntryTypeLevels);
+        }
+        
+        // new medication
+        else if ([action isEqualToString:@"NewMedication"]) {
+            entry.type = @(HRMTimelineEntryTypeRegiment);
+        }
+        
+        // new med regiment
+        else if ([action isEqualToString:@"MedRegiment"]) {
+            
+        }
+        
+        // save
+        NSError *error = nil;
+        if (![context save:&error]) { HRDebugLog(@"Failed to save levels: %@", error); }
+        
+    }];
     
     // send redirect
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[HRTimelinePOSTURLProtocol indexURL]];
-    [request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
     NSHTTPURLResponse *response = [[NSHTTPURLResponse alloc]
                                    initWithURL:[[self request] URL]
                                    statusCode:302
