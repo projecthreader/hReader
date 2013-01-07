@@ -36,6 +36,8 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
 @dynamic displayOrder;
 @dynamic relationship;
 @dynamic timelineLevels;
+@dynamic timelineMedications;
+@dynamic timelineRegimens;
 
 @synthesize identityToken = _identityToken;
 
@@ -414,7 +416,9 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     }];
     
     // special data
-    payload[@"levels"] = [self timelineLevelsGroupedByTypeWithStartDate:start endDate:end];
+    payload[@"timeline_medications"] = [self timelineEntriesGroupedByTypeWithStartDate:start endDate:end type:HRMTimelineEntryTypeMedication];
+    payload[@"regimens"] = [self timelineEntriesGroupedByTypeWithStartDate:start endDate:end type:HRMTimelineEntryTypeRegimen];
+    payload[@"levels"] = [self timelineEntriesGroupedByTypeWithStartDate:start endDate:end type:HRMTimelineEntryTypeLevels];
     payload[@"vitals"] = [self timelineVitalsGroupedByDescriptionWithStartDate:start endDate:end];
     
     // finish up
@@ -426,13 +430,13 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     
 }
 
-- (NSDictionary *)timelineLevelsGroupedByTypeWithStartDate:(NSDate *)start endDate:(NSDate *)end {
+- (NSDictionary *)timelineEntriesGroupedByTypeWithStartDate:(NSDate *)start endDate:(NSDate *)end type:(HRMTimelineEntryType)type {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     NSMutableArray *predicates = [NSMutableArray array];
     [predicates addObject:[NSPredicate predicateWithFormat:@"patient = %@", self]];
     [predicates addObject:[NSPredicate predicateWithFormat:@"createdAt >= %@", start]];
     [predicates addObject:[NSPredicate predicateWithFormat:@"createdAt <= %@", end]];
-    [predicates addObject:[NSPredicate predicateWithFormat:@"type == %@", @(HRMTimelineEntryTypeLevels)]];
+    [predicates addObject:[NSPredicate predicateWithFormat:@"type == %@", @(type)]];
     NSArray *entries = [HRMTimelineEntry
                         allInContext:[self managedObjectContext]
                         predicate:[NSCompoundPredicate andPredicateWithSubpredicates:predicates]

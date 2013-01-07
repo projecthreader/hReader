@@ -66,14 +66,14 @@
 								</select>
 							</fieldset>
 						</span>
-							<fieldset data-role="controlgroup" data-type="horizontal">
-								<button type="submit" class="btn span1 symbolBTN">
-									<i class="icon-plus"></i>
-								</button>
-								<buttom type="submit" class="btn span1 symbolBTN"  onclick="$('#newReg').hide()" >
-									<i class="icon-remove"></i>
-								</button>
-							</fieldset>
+						<fieldset data-role="controlgroup" data-type="horizontal">
+							<button type="submit" class="btn span1 symbolBTN">
+								<i class="icon-plus"></i>
+							</button>
+							<buttom type="submit" class="btn span1 symbolBTN"  onclick="$('#newReg').hide()" >
+								<i class="icon-remove"></i>
+							</button>
+						</fieldset>
 					</form>
 				</div>
 				<div class="row">
@@ -83,7 +83,7 @@
 
 				<!-- <div class="row" ngChange:false ng-repeat="medication in medications"> -->
 				<form action="http://hreader.local/timeline.json?key=MedRegiment" method="post">
-					<div class="row  data" ngChange:false ng-repeat="medication in medications">
+					<div class="row data" ngChange:false ng-repeat="medication in medications">
 						<h4 class="titles span4">{{medication.description}}</h4>
 						<div class="span1"><img src="images/medication.png"></div>
 					    <fieldset data-role="controlgroup" data-type="horizontal">
