@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11G56" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="6U1-hI-wo6">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+    </dependencies>
+    <scenes>
+        <!--Medications Master View Controller-->
+        <scene sceneID="Upp-8A-4Fx">
+            <objects>
+                <viewController storyboardIdentifier="SummaryViewController" id="6U1-hI-wo6" customClass="HRMedicationsMasterViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xuw-Vt-WTG">
+                        <rect key="frame" x="0.0" y="64" width="1024" height="660"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="ypw-xe-bS6">
+                                <rect key="frame" x="0.0" y="228" width="1024" height="412"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="KHi-ps-rCU" customClass="HRMedicationsCollectionViewLayout">
+                                    <size key="itemSize" width="304" height="180"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="34" minY="0.0" maxX="34" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MedicationCellReuseID" id="Vul-7l-KvU" customClass="HRMedicationCell">
+                                        <rect key="frame" x="34" y="0.0" width="296" height="180"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="296" height="180"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YfO-TZ-EX5">
+                                                    <rect key="frame" x="188" y="1" width="60" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="Delete">
+                                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="setDeleteMedication:" destination="Vul-7l-KvU" eventType="touchUpInside" id="EWf-8i-Np1"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sFT-pJ-8Fx" userLabel="Button - Edit">
+                                                    <rect key="frame" x="256" y="0.0" width="40" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="Edit" image="edit.png">
+                                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="setEditMode:" destination="Vul-7l-KvU" eventType="touchUpInside" id="5Ra-0a-bmE"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Medication Name" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" id="LH0-wW-1KA">
+                                                    <rect key="frame" x="1" y="0.0" width="188" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" id="dFE-Ok-xo7" userLabel="Hor. Line">
+                                                    <rect key="frame" x="1" y="28" width="295" height="1"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="QUANTITY:" lineBreakMode="tailTruncation" minimumFontSize="10" id="KiF-Zh-09v">
+                                                    <rect key="frame" x="0.0" y="31" width="142" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Quantity." id="pBi-1F-88b" userLabel="Text View - Quantity">
+                                                    <rect key="frame" x="2" y="48" width="142" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="DOSE:" lineBreakMode="tailTruncation" minimumFontSize="10" id="XhC-6x-LFd">
+                                                    <rect key="frame" x="151" y="31" width="142" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Dose." id="Y8n-Fr-Njk" userLabel="Text View - Dose">
+                                                    <rect key="frame" x="152" y="48" width="142" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="DIRECTIONS:" lineBreakMode="tailTruncation" minimumFontSize="10" id="mjI-S1-Xka">
+                                                    <rect key="frame" x="1" y="75" width="142" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Directions." id="IzV-8z-WhT" userLabel="Text View - Directions">
+                                                    <rect key="frame" x="2" y="93" width="142" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PRESCRIBER:" lineBreakMode="tailTruncation" minimumFontSize="10" id="Lec-9E-B6k">
+                                                    <rect key="frame" x="151" y="75" width="142" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="Prescriber." id="naL-tS-tyn" userLabel="Text View - Prescriber">
+                                                    <rect key="frame" x="152" y="93" width="142" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="COMMENTS:" lineBreakMode="tailTruncation" minimumFontSize="10" id="btf-Nt-Ex8">
+                                                    <rect key="frame" x="1" y="122" width="142" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="-" id="5nn-PN-wcm" userLabel="Text View - Comments">
+                                                    <rect key="frame" x="2" y="140" width="292" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <inset key="contentInset" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <size key="customSize" width="296" height="180"/>
+                                        <connections>
+                                            <outlet property="commentsTextView" destination="5nn-PN-wcm" id="wzj-EU-fb1"/>
+                                            <outlet property="deleteButton" destination="YfO-TZ-EX5" id="x4S-hV-C3p"/>
+                                            <outlet property="directionsTextView" destination="IzV-8z-WhT" id="EhW-1k-9ly"/>
+                                            <outlet property="doseTextView" destination="Y8n-Fr-Njk" id="SYs-vb-8yA"/>
+                                            <outlet property="editButton" destination="sFT-pJ-8Fx" id="Ztw-YR-C8D"/>
+                                            <outlet property="medicationName" destination="LH0-wW-1KA" id="5wr-hs-NAu"/>
+                                            <outlet property="prescriberTextView" destination="naL-tS-tyn" id="mjl-Ca-U9R"/>
+                                            <outlet property="quantityTextView" destination="pBi-1F-88b" id="XEL-vm-w38"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="6U1-hI-wo6" id="42F-AB-Nbg"/>
+                                    <outlet property="delegate" destination="6U1-hI-wo6" id="pl9-Tb-6kW"/>
+                                </connections>
+                            </collectionView>
+                            <view contentMode="scaleToFill" id="cBw-FY-Dtr">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="220"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="JOHNNY SMITH" lineBreakMode="tailTruncation" minimumFontSize="10" id="7yZ-tu-F7Q" userLabel="Name Label">
+                                        <rect key="frame" x="34" y="20" width="296" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <size key="shadowOffset" width="0.0" height="1"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" id="mqV-xM-smS">
+                                        <rect key="frame" x="34" y="65" width="149" height="134"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" id="CfE-Xb-Pt1">
+                                                <rect key="frame" x="0.0" y="0.0" width="149" height="134"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="YbR-Cv-XXO">
+                                        <rect key="frame" x="364" y="20" width="296" height="180"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="CURRENT MEDICATIONS" lineBreakMode="tailTruncation" minimumFontSize="10" id="Jrl-Zw-2Xc" userLabel="Medications Label">
+                                                <rect key="frame" x="0.0" y="0.0" width="269" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" id="etQ-v8-8Yn" userLabel="Medications Line">
+                                                <rect key="frame" x="0.0" y="28" width="296" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CO8-fV-K4h" userLabel="Button - Edit">
+                                                <rect key="frame" x="270" y="0.0" width="40" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="Edit" image="edit.png">
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="currentMedicationsEdit:" destination="6U1-hI-wo6" eventType="touchUpInside" id="f7H-7L-c55"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="DRUG:" lineBreakMode="tailTruncation" minimumFontSize="10" id="3Ie-nO-bSS">
+                                                <rect key="frame" x="0.0" y="33" width="188" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="DOSAGE:" lineBreakMode="tailTruncation" minimumFontSize="10" id="VAG-yP-rxP">
+                                                <rect key="frame" x="216" y="33" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="1" contentMode="left" text="Xopenex (levalbuterol HCI)" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="xUG-Oc-hjV">
+                                                <rect key="frame" x="0.0" y="51" width="208" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="1" contentMode="left" text="0.63mg/3mL" lineBreakMode="tailTruncation" minimumFontSize="10" id="kxv-It-bvb">
+                                                <rect key="frame" x="216" y="51" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="2" contentMode="left" text="name" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="sSu-je-BfJ">
+                                                <rect key="frame" x="0.0" y="69" width="208" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="2" contentMode="left" text="dosage" lineBreakMode="tailTruncation" minimumFontSize="10" id="kx6-8a-tL7">
+                                                <rect key="frame" x="216" y="69" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="3" contentMode="left" text="name" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="Yop-7y-dlq">
+                                                <rect key="frame" x="0.0" y="87" width="208" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="3" contentMode="left" text="dosage" lineBreakMode="tailTruncation" minimumFontSize="10" id="Jsy-1w-X2w">
+                                                <rect key="frame" x="216" y="87" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="4" contentMode="left" text="name" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="sHF-Gx-DVa">
+                                                <rect key="frame" x="0.0" y="105" width="208" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="4" contentMode="left" text="dosage" lineBreakMode="tailTruncation" minimumFontSize="10" id="2ON-a4-S5Y">
+                                                <rect key="frame" x="216" y="105" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="5" contentMode="left" text="name" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="1hO-a5-nYT">
+                                                <rect key="frame" x="0.0" y="123" width="208" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="5" contentMode="left" text="dosage" lineBreakMode="tailTruncation" minimumFontSize="10" id="412-NU-3ua">
+                                                <rect key="frame" x="216" y="123" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="6" contentMode="left" text="name" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="fXH-Oa-Tvw">
+                                                <rect key="frame" x="0.0" y="141" width="208" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="6" contentMode="left" text="dosage" lineBreakMode="tailTruncation" minimumFontSize="10" id="tYK-Wv-X7w">
+                                                <rect key="frame" x="216" y="141" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="7" contentMode="left" text="name" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="lH8-3o-T69">
+                                                <rect key="frame" x="0.0" y="159" width="208" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="6" contentMode="left" text="dosage" lineBreakMode="tailTruncation" minimumFontSize="10" id="voz-P6-Ugj">
+                                                <rect key="frame" x="216" y="159" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="mKM-qx-0MT">
+                                        <rect key="frame" x="694" y="20" width="296" height="180"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="UPCOMING REFILLS" lineBreakMode="tailTruncation" minimumFontSize="10" id="2tW-2T-gh4" userLabel="Refills Label">
+                                                <rect key="frame" x="0.0" y="0.0" width="269" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" id="lfL-qx-L6F" userLabel="Refills Line">
+                                                <rect key="frame" x="0.0" y="28" width="296" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LJ6-oW-qwf" userLabel="Button - Edit">
+                                                <rect key="frame" x="270" y="-0.5" width="40" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="Edit" image="edit.png">
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="upcomingRefillsEdit:" destination="6U1-hI-wo6" eventType="touchUpInside" id="0ja-ae-ym5"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="DRUG:" lineBreakMode="tailTruncation" minimumFontSize="10" id="m2x-GY-hl5">
+                                                <rect key="frame" x="0.0" y="33" width="188" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="LOCATION:" lineBreakMode="tailTruncation" minimumFontSize="10" id="MlB-zb-hf7">
+                                                <rect key="frame" x="216" y="33" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="1" contentMode="left" text="Xopenex (levalbuterol HCI)" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="f5Y-IG-BJ2">
+                                                <rect key="frame" x="0.0" y="51" width="208" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="1" contentMode="left" text="CVS" lineBreakMode="tailTruncation" minimumFontSize="10" id="gRU-OZ-qWT">
+                                                <rect key="frame" x="216" y="51" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="2" contentMode="left" text="name" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="ejT-xT-kCI">
+                                                <rect key="frame" x="0.0" y="69" width="208" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="2" contentMode="left" text="location" lineBreakMode="tailTruncation" minimumFontSize="10" id="qkl-EM-0Wv">
+                                                <rect key="frame" x="216" y="69" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="3" contentMode="left" text="name" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="akN-Af-jXG">
+                                                <rect key="frame" x="0.0" y="87" width="208" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="3" contentMode="left" text="location" lineBreakMode="tailTruncation" minimumFontSize="10" id="BQf-CN-ugL">
+                                                <rect key="frame" x="216" y="87" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="4" contentMode="left" text="name" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="qnI-df-Xud">
+                                                <rect key="frame" x="0.0" y="105" width="208" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="4" contentMode="left" text="location" lineBreakMode="tailTruncation" minimumFontSize="10" id="DrO-s9-1Lt">
+                                                <rect key="frame" x="216" y="105" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="5" contentMode="left" text="name" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="lng-6M-CUm">
+                                                <rect key="frame" x="0.0" y="123" width="208" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="5" contentMode="left" text="location" lineBreakMode="tailTruncation" minimumFontSize="10" id="buw-ld-qbv">
+                                                <rect key="frame" x="216" y="123" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="6" contentMode="left" text="name" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="oL9-IT-S12">
+                                                <rect key="frame" x="0.0" y="141" width="208" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="6" contentMode="left" text="location" lineBreakMode="tailTruncation" minimumFontSize="10" id="CFW-M8-m7P">
+                                                <rect key="frame" x="216" y="141" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="7" contentMode="left" text="name" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="WBk-Ke-eVq">
+                                                <rect key="frame" x="0.0" y="159" width="208" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" tag="6" contentMode="left" text="location" lineBreakMode="tailTruncation" minimumFontSize="10" id="XRe-Gs-HXF">
+                                                <rect key="frame" x="216" y="159" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="collectionView" destination="ypw-xe-bS6" id="d5f-FS-xDF"/>
+                        <outlet property="currentMedicationsEditButton" destination="CO8-fV-K4h" id="dRW-5x-OJD"/>
+                        <outlet property="currentMedicationsView" destination="YbR-Cv-XXO" id="jeo-Tp-NFH"/>
+                        <outlet property="headerView" destination="cBw-FY-Dtr" id="hSs-j6-zZP"/>
+                        <outlet property="patientImageView" destination="CfE-Xb-Pt1" id="vRY-wg-sFR"/>
+                        <outlet property="patientNameLabel" destination="7yZ-tu-F7Q" id="WbD-F3-Aa8"/>
+                        <outlet property="upcomingRefillsEditButton" destination="LJ6-oW-qwf" id="8ek-2o-Myc"/>
+                        <outlet property="upcomingRefillsView" destination="mKM-qx-0MT" id="0l2-2X-mhB"/>
+                        <outletCollection property="medicationNameLabels" destination="lH8-3o-T69" id="0sl-yR-r7L"/>
+                        <outletCollection property="medicationNameLabels" destination="fXH-Oa-Tvw" id="Jkx-6e-QLu"/>
+                        <outletCollection property="medicationNameLabels" destination="xUG-Oc-hjV" id="WcC-oT-OP5"/>
+                        <outletCollection property="medicationNameLabels" destination="sHF-Gx-DVa" id="6Kw-xl-jdr"/>
+                        <outletCollection property="medicationNameLabels" destination="1hO-a5-nYT" id="tn6-gQ-Q2n"/>
+                        <outletCollection property="medicationNameLabels" destination="sSu-je-BfJ" id="aB7-bP-J80"/>
+                        <outletCollection property="medicationNameLabels" destination="Yop-7y-dlq" id="BKa-wq-WKi"/>
+                        <outletCollection property="medicationDosageLabels" destination="voz-P6-Ugj" id="Ngt-DO-I1n"/>
+                        <outletCollection property="medicationDosageLabels" destination="412-NU-3ua" id="kmn-co-jXk"/>
+                        <outletCollection property="medicationDosageLabels" destination="kxv-It-bvb" id="2TJ-ed-8fr"/>
+                        <outletCollection property="medicationDosageLabels" destination="2ON-a4-S5Y" id="JxU-Nl-Loq"/>
+                        <outletCollection property="medicationDosageLabels" destination="tYK-Wv-X7w" id="mps-3y-FQv"/>
+                        <outletCollection property="medicationDosageLabels" destination="kx6-8a-tL7" id="niU-0v-bbr"/>
+                        <outletCollection property="medicationDosageLabels" destination="Jsy-1w-X2w" id="0be-Pn-Lbh"/>
+                        <outletCollection property="refillLocationLabels" destination="gRU-OZ-qWT" id="hI4-YQ-R09"/>
+                        <outletCollection property="medicationRefillLabels" destination="f5Y-IG-BJ2" id="Ghe-23-Kv6"/>
+                        <outletCollection property="medicationRefillLabels" destination="ejT-xT-kCI" id="Tgm-ag-En9"/>
+                        <outletCollection property="medicationRefillLabels" destination="akN-Af-jXG" id="iep-du-4y8"/>
+                        <outletCollection property="medicationRefillLabels" destination="qnI-df-Xud" id="qZV-7E-mMF"/>
+                        <outletCollection property="medicationRefillLabels" destination="lng-6M-CUm" id="5yC-Jg-l9h"/>
+                        <outletCollection property="medicationRefillLabels" destination="oL9-IT-S12" id="coN-49-9gZ"/>
+                        <outletCollection property="medicationRefillLabels" destination="WBk-Ke-eVq" id="Jor-kt-w2m"/>
+                        <outletCollection property="refillLocationLabels" destination="qkl-EM-0Wv" id="MRU-0c-uLd"/>
+                        <outletCollection property="refillLocationLabels" destination="BQf-CN-ugL" id="WLC-pl-jET"/>
+                        <outletCollection property="refillLocationLabels" destination="DrO-s9-1Lt" id="D2y-Hn-0zY"/>
+                        <outletCollection property="refillLocationLabels" destination="buw-ld-qbv" id="4AN-yH-smw"/>
+                        <outletCollection property="refillLocationLabels" destination="CFW-M8-m7P" id="dpB-bF-bhX"/>
+                        <outletCollection property="refillLocationLabels" destination="XRe-Gs-HXF" id="NbI-ha-jWZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uev-ki-5WF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="625" y="-1948"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="edit.png" width="15" height="15"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
+        <simulatedOrientationMetrics key="orientation" orientation="landscapeRight"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>

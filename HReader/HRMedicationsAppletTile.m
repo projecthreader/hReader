@@ -7,6 +7,7 @@
 //
 
 #import "HRMedicationsAppletTile.h"
+#import "HRMedicationsMasterViewController.h"
 
 #import "HRMEntry.h"
 #import "HRMPatient.h"
@@ -49,5 +50,18 @@
         label.text = nil;
     }];
 }
+
+-(void)didReceiveTap:(UIViewController *)sender inRect:(CGRect)rect
+{
+ 
+    UIStoryboard *medicationsStoryboard = [UIStoryboard storyboardWithName:@"HRMedications_iPad" bundle:nil];
+    HRMedicationsMasterViewController *controller = [medicationsStoryboard instantiateInitialViewController];
+    controller.title = [self.userInfo objectForKey:@"display_name"];
+    //controller.tile = self;
+    [sender.navigationController pushViewController:controller animated:YES];
+    
+}
+
+
 
 @end
