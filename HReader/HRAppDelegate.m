@@ -186,7 +186,7 @@
             // update local data
             NSString *host = [hosts lastObject];
             [[HRAPIClient clientWithHost:host] patientFeed:nil];
-            //[HRMPatient performSync];
+            [HRMPatient performSync];
             
             // push storyboard if we need to
             if ([controller isKindOfClass:[HRSplashScreenViewController class]] ||
