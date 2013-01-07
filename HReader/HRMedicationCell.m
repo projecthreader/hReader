@@ -29,8 +29,6 @@
     _medication = medication;
     
     if(medication.userDeleted.boolValue){
-        NSLog(@"Setting user deleted views.");
-        
         //set all content subviews to hidden
         for(UIView *subView in self.contentView.subviews){
             [subView setHidden:YES];
@@ -45,7 +43,6 @@
         [self.deleteButton setHidden:NO];
         
     }else{
-        NSLog(@"Setting regular views.");
         //set textViews from medication fields
         [self.medicationName setText:[medication.desc uppercaseString]];//set medication name
         [self.commentsTextView setText:medication.comments];
