@@ -18,13 +18,12 @@
 #import "HRPeopleSetupViewController.h"
 #import "HRCryptoManager.h"
 #import "HRSplashScreenViewController.h"
-#import "HRPasscodeViewController.h"
 #import "HRHIPPAMessageViewController.h"
 #import "HRAppletConfigurationViewController.h"
 #import "HRCryptoManager.h"
 #import "HRMPatient.h"
 
-#import "SSKeychain.h"
+#import "IMSPasswordViewController.h"
 
 @implementation HRAppDelegate {
     NSUInteger passcodeAttempts;
@@ -76,7 +75,7 @@
         NSFileManager *fileManager = [NSFileManager defaultManager];
         NSURL *applicationSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
         [fileManager createDirectoryAtURL:applicationSupportURL withIntermediateDirectories:NO attributes:nil error:nil];
-        NSURL *databaseURL = [applicationSupportURL URLByAppendingPathComponent:@"database.sqlite3"];
+        NSURL *databaseURL = [applicationSupportURL URLByAppendingPathComponent:@"database.sqlite3.2"];
         NSDictionary *options = @{
             NSPersistentStoreFileProtectionKey : NSFileProtectionComplete,
             NSMigratePersistentStoresAutomaticallyOption : @YES,
@@ -148,13 +147,12 @@
     // check for passcode
     else if (!HRCryptoManagerHasPasscode() || !HRCryptoManagerHasSecurityQuestions()) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
-        HRPasscodeViewController *passcode = [storyboard instantiateViewControllerWithIdentifier:@"CreatePasscodeViewController"];
-        passcode.mode = HRPasscodeViewControllerModeCreate;
-        passcode.title = @"Set Passcode";
-        passcode.target = self;
-        passcode.action = @selector(createInitialPasscode::);
-        passcode.navigationItem.hidesBackButton = YES;
-        [(id)self.window.rootViewController pushViewController:passcode animated:YES];
+        IMSPasswordViewController *password = [storyboard instantiateViewControllerWithIdentifier:@"CreatePasscodeViewController"];
+        password.title = @"Set Password";
+        password.target = self;
+        password.action = @selector(createInitialPasscode::);
+        password.navigationItem.hidesBackButton = YES;
+        [(id)self.window.rootViewController pushViewController:password animated:YES];
         [[[UIAlertView alloc]
           initWithTitle:@"Welcome"
           message:@"Before you start using hReader, you must set a passcode and create security questions."
@@ -241,9 +239,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    // keychain
-    [SSKeychain setAccessibilityType:kSecAttrAccessibleWhenUnlockedThisDeviceOnly];
-    
     // notifications
     [[NSNotificationCenter defaultCenter]
      addObserver:self
@@ -291,7 +286,7 @@
  
  */
 
-- (void)createInitialPasscode :(HRPasscodeViewController *)controller :(NSString *)passcode {
+- (void)createInitialPasscode :(IMSPasswordViewController *)controller :(NSString *)passcode {
     HRCryptoManagerStoreTemporaryPasscode(passcode);
     HRSecurityQuestionsViewController *questions = [controller.storyboard instantiateViewControllerWithIdentifier:@"SecurityQuestionsController"];
     questions.navigationItem.hidesBackButton = YES;
@@ -320,12 +315,11 @@
     NSAssert(!securityNavigationController, @"You cannot present two passcode verification controllers");
     passcodeAttempts = 0;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
-    HRPasscodeViewController *passcode = [storyboard instantiateViewControllerWithIdentifier:@"VerifyPasscodeViewController"];
-    passcode.mode = HRPasscodeViewControllerModeVerify;
-    passcode.target = self;
-    passcode.action = @selector(verifyPasscodeOnLaunch::);
-    passcode.title = @"Enter Passcode";
-    securityNavigationController = [[UINavigationController alloc] initWithRootViewController:passcode];
+    IMSPasswordViewController *password = [storyboard instantiateViewControllerWithIdentifier:@"VerifyPasscodeViewController"];
+    password.target = self;
+    password.action = @selector(verifyPasscodeOnLaunch::);
+    password.title = @"Enter Password";
+    securityNavigationController = [[UINavigationController alloc] initWithRootViewController:password];
     UIViewController *controller = self.window.rootViewController;
     while (YES) {
         UIViewController *presented = controller.presentedViewController;
@@ -335,7 +329,7 @@
     [controller presentViewController:securityNavigationController animated:animated completion:nil];
 }
 
-- (BOOL)verifyPasscodeOnLaunch :(HRPasscodeViewController *)controller :(NSString *)passcode {
+- (BOOL)verifyPasscodeOnLaunch :(IMSPasswordViewController *)controller :(NSString *)passcode {
     if (HRCryptoManagerUnlockWithPasscode(passcode)) {
         [self addPersistentStoreIfNeeded];
         [controller dismissViewControllerAnimated:YES completion:^{
@@ -345,13 +339,6 @@
         return YES;
     }
     else {
-        [[[UIAlertView alloc]
-          initWithTitle:@"The passcode you provided is not correct."
-          message:nil
-          delegate:nil
-          cancelButtonTitle:@"OK"
-          otherButtonTitles:nil]
-         show];
         if (++passcodeAttempts > 2) {
             controller.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
                                                            initWithTitle:@"Reset Passcode" 
@@ -376,13 +363,12 @@
 
 - (void)resetPasscodeWithSecurityQuestions :(HRSecurityQuestionsViewController *)controller :(NSArray *)questions :(NSArray *)answers {
     if (HRCryptoManagerUnlockWithAnswersForSecurityQuestions(answers)) {
-        HRPasscodeViewController *passcode = [controller.storyboard instantiateViewControllerWithIdentifier:@"CreatePasscodeViewController"];
-        passcode.mode = HRPasscodeViewControllerModeCreate;
-        passcode.target = self;
-        passcode.action = @selector(resetPasscode::);
-        passcode.title = @"Enter Passcode";
-        passcode.navigationItem.hidesBackButton = YES;
-        [controller.navigationController pushViewController:passcode animated:YES];
+        IMSPasswordViewController *password = [controller.storyboard instantiateViewControllerWithIdentifier:@"CreatePasscodeViewController"];
+        password.target = self;
+        password.action = @selector(resetPasscode::);
+        password.title = @"Enter Password";
+        password.navigationItem.hidesBackButton = YES;
+        [controller.navigationController pushViewController:password animated:YES];
     }
     else {
         [[[UIAlertView alloc]
@@ -395,7 +381,7 @@
     }
 }
 
-- (void)resetPasscode :(HRPasscodeViewController *)controller :(NSString *)passcode {
+- (void)resetPasscode :(IMSPasswordViewController *)controller :(NSString *)passcode {
     HRCryptoManagerUpdatePasscode(passcode);
     [controller dismissViewControllerAnimated:YES completion:^{
         [self performLaunchSteps];
@@ -410,31 +396,21 @@
  
  */
 
-- (BOOL)verifyPasscodeOnPasscodeChange :(HRPasscodeViewController *)controller :(NSString *)passcode {
+- (BOOL)verifyPasscodeOnPasscodeChange :(IMSPasswordViewController *)controller :(NSString *)passcode {
     if (HRCryptoManagerUnlockWithPasscode(passcode)) {
-        HRPasscodeViewController *passcode = [controller.storyboard instantiateViewControllerWithIdentifier:@"CreatePasscodeViewController"];
-        passcode.mode = HRPasscodeViewControllerModeCreate;
-        passcode.target = self;
-        passcode.action = @selector(resetPasscode::);
-        passcode.title = @"Enter New Passcode";
-        passcode.navigationItem.hidesBackButton = YES;
-        passcode.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+        IMSPasswordViewController *password = [controller.storyboard instantiateViewControllerWithIdentifier:@"CreatePasscodeViewController"];
+        password.target = self;
+        password.action = @selector(resetPasscode::);
+        password.title = @"Enter New Password";
+        password.navigationItem.hidesBackButton = YES;
+        password.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                                       initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                      target:passcode
-                                                      action:@selector(create:)];
-        [controller.navigationController pushViewController:passcode animated:YES];
+                                                      target:password
+                                                      action:@selector(doneButtonAction:)];
+        [controller.navigationController pushViewController:password animated:YES];
         return YES;
     }
-    else {
-        [[[UIAlertView alloc]
-          initWithTitle:@"The passcode you provided is not correct."
-          message:nil
-          delegate:nil
-          cancelButtonTitle:@"OK"
-          otherButtonTitles:nil]
-         show];
-        return NO;
-    }
+    return NO;
 }
 
 #pragma mark - security scenario four
@@ -445,7 +421,7 @@
  
  */
 
-- (BOOL)verifyPasscodeOnQuestionsChange :(HRPasscodeViewController *)controller :(NSString *)passcode {
+- (BOOL)verifyPasscodeOnQuestionsChange :(IMSPasswordViewController *)controller :(NSString *)passcode {
     if (HRCryptoManagerUnlockWithPasscode(passcode)) {
         HRSecurityQuestionsViewController *questions = [controller.storyboard instantiateViewControllerWithIdentifier:@"SecurityQuestionsController"];
         questions.navigationItem.hidesBackButton = YES;
@@ -456,16 +432,7 @@
         [controller.navigationController pushViewController:questions animated:YES];
         return YES;
     }
-    else {
-        [[[UIAlertView alloc]
-          initWithTitle:@"The passcode you provided is not correct."
-          message:nil
-          delegate:nil
-          cancelButtonTitle:@"OK"
-          otherButtonTitles:nil]
-         show];
-        return NO;
-    }
+    return NO;
 }
 
 - (void)updateSecurityQuestions :(HRSecurityQuestionsViewController *)controller :(NSArray *)questions :(NSArray *)answers {

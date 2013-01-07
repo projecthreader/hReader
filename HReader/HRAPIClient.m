@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
+#import <SecureFoundation/SecureFoundation.h>
+
 #import "HRAPIClient_private.h"
 #import "HRCryptoManager.h"
 #import "HRRHExLoginViewController.h"
 
 #import "DDXML.h"
-
-#import "SSKeychain.h"
 
 #define hr_dispatch_main(block) dispatch_async(dispatch_get_main_queue(), block)
 
@@ -64,7 +64,7 @@ static NSMutableDictionary *allClients = nil;
 }
 
 + (NSArray *)hosts {
-    return [[SSKeychain accountsForService:HROAuthKeychainService] valueForKey:(__bridge NSString *)kSecAttrAccount];
+    return [[IMSKeychain accountsForService:HROAuthKeychainService] valueForKey:(__bridge NSString *)kSecAttrAccount];
 }
 
 + (NSString *)queryStringWithParameters:(NSDictionary *)parameters {
@@ -370,7 +370,7 @@ static NSMutableDictionary *allClients = nil;
 }
 
 - (void)destroy {
-    [SSKeychain deletePasswordForService:HROAuthKeychainService account:_host];
+    [IMSKeychain deletePasswordForService:HROAuthKeychainService account:_host];
     [allClients removeObjectForKey:_host];
 }
 

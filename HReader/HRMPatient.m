@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
-#import <CommonCrypto/CommonDigest.h>
+#import <SecureFoundation/SecureFoundation.h>
 
 #import "HRMPatient.h"
 #import "HRMEntry.h"
@@ -95,17 +95,21 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
 
 - (NSString *)identityToken {
     if (_identityToken == nil) {
-        NSMutableString *token = [NSMutableString string];
+        
+        // build identity data
         NSString *identity = [NSString stringWithFormat:@"%@%@", self.host, self.serverID];
-        NSData *identityData = [identity dataUsingEncoding:NSUTF8StringEncoding];
-        unsigned char *buffer = malloc(CC_MD5_DIGEST_LENGTH);
-        CC_MD5([identityData bytes], [identityData length], buffer);
-        XOR(236, buffer, CC_MD5_DIGEST_LENGTH);
-        for (NSUInteger i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
-            [token appendFormat:@"%02x", (unsigned int)buffer[i]];
+        NSData *data = [identity dataUsingEncoding:NSUTF8StringEncoding];
+        NSMutableData *mutableData = [IMSHashData_MD5(data) mutableCopy];
+        unsigned char *bytes = (unsigned char *)[mutableData mutableBytes];
+        IMSXOR(236, bytes, [mutableData length]);
+        
+        // build token from data
+        NSMutableString *token = [NSMutableString string];
+        for (NSUInteger i = 0; i < [mutableData length]; i++) {
+            [token appendFormat:@"%02x", (unsigned int)bytes[i]];
         }
-        free(buffer);
         _identityToken = [token copy];
+        
     }
     return _identityToken;
 }
