@@ -68,13 +68,11 @@
 				</div>
 				<div class="row">
 					<form class="hidden" id="newSymp" action="http://hreader.local/timeline.json?key=userData">
-						<span class="span4">
-							<fieldset class="span4" data-role="controlgroup" data-type="horizontal">
-								<select name="select-choice-sev" id="select-choice-sev">
-								   <option ngChange:false ng-repeat="vital in vitals">{{vital.description}}</option>
-								</select>
-							</fieldset>
-						</span>
+						<fieldset class="span4" data-role="controlgroup" data-type="horizontal">
+							<select name="select-choice-sev" id="select-choice-sev">
+							   <option ngChange:false ng-repeat="vital in vitals">{{vital.description}}</option>
+							</select>
+						</fieldset>
 						<span class="span2">
 							<a class="btn" action="http://hreader.local/timeline.json?key=userData" method="post"><i class="icon-plus"></i></a>
 							<a class="btn"  onclick="$('#newSymp').hide()" ><i class="icon-remove"></i></a>

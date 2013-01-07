@@ -4591,6 +4591,12 @@ a.label:hover, a.badge:hover {
       color: #fff;
       background-color: #ccc; }
 
+button.hidden {
+  display: none; }
+
+ui-btn {
+  display: none; }
+
 .ui-btn-up-a {
   background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(#e6e6e6)) !important;
   background-image: -webkit-linear-gradient(white, #e6e6e6) !important;
@@ -6944,3 +6950,8 @@ header {
 li.current-date {
   padding-left: 20px;
   margin-bottom: -10px; }
+
+input[type="text"], input[type="password"], .ui-autocomplete-input, textarea, .uneditable-input {
+  height: 24px !important;
+  padding-top: 18px !important;
+  padding-bottom: 18px !important; }

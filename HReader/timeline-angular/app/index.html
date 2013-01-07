@@ -34,7 +34,7 @@
 				<div class="row">
 					<form class="hidden" id="newReg" action="http://hreader.local/timeline.json?key=NewMedication" method="post">
 						<span class="span4">
-							<input type="text" name="name" ng-model="meds" placeholder="New Medication" required="required" autofocus="autofocus" />
+							<input type="text" name="description" ng-model="meds" placeholder="New Medication" required="required" autofocus="autofocus" class="medName"/>
 						</span>
 						<span class="span6">
 							<fieldset class="span6" data-role="controlgroup" data-type="horizontal">
@@ -67,10 +67,17 @@
 							</fieldset>
 						</span>
 							<fieldset data-role="controlgroup" data-type="horizontal">
-								<button type="submit" class="btn span1 symbolBTN"><i class="icon-check"></i></button>
-								<buttom type="submit" class="btn span1 symbolBTN"  onclick="$('#newReg').hide()" ><i class="icon-remove"></i></button>
+								<button type="submit" class="btn span1 symbolBTN">
+									<i class="icon-plus"></i>
+								</button>
+								<buttom type="submit" class="btn span1 symbolBTN"  onclick="$('#newReg').hide()" >
+									<i class="icon-remove"></i>
+								</button>
 							</fieldset>
 					</form>
+				</div>
+				<div class="row">
+					<h3 class="span3">Add New Medications</h3>
 				</div>
 				
 
@@ -96,7 +103,7 @@
 					<div class="row">
 						<div class="span10"></div>
 						<span class="span2">
-							<button type="submit" class="btn">Submit</button>
+							<button type="submit" class="btn hidden">Submit</button>
 						</span>
 					</div>
 				</form>
