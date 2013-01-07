@@ -97,21 +97,26 @@
 - (IBAction)setDeleteMedication:(UIButton *)sender {
         
     if(!self.medication.userDeleted.boolValue){
-        //delete button checked (must hit save to actually change)
+        //delete button- set deleted
         [self.medication setUserDeleted:[NSNumber numberWithBool:YES]];
-        [sender setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    }else{
-        //delete button unchecked
-        [self.medication setUserDeleted:[NSNumber numberWithBool:NO]];
-        [sender setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         
-        if(!self.editing){
-            //case restore clicked: must save
-            NSManagedObjectContext *context = [self.medication managedObjectContext];
-            NSError *error;
-            if (![context save:&error]) {
-                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-            }
+        //make sure button goes back to edit (in case of restore)
+        [sender setTitle:@"Edit" forState:UIControlStateNormal];
+        NSString *editImageFile = [[NSBundle mainBundle] pathForResource:@"edit" ofType:@"png"];
+        UIImage *editImage = [UIImage imageWithContentsOfFile:editImageFile];
+        [self.editButton setImage:editImage forState:UIControlStateNormal];
+        
+        //end editing and save
+        [self setEditing:NO animated:YES];
+    }else{
+        //restore button- set not deleted
+        [self.medication setUserDeleted:[NSNumber numberWithBool:NO]];
+        
+        //save data
+        NSManagedObjectContext *context = [self.medication managedObjectContext];
+        NSError *error;
+        if (![context save:&error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
     }
 }
@@ -136,7 +141,6 @@
         [self finishEditForTextView:self.directionsTextView];
         [self finishEditForTextView:self.prescriberTextView];
         [self finishEditForTextView:self.commentsTextView];
-        [self.deleteButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
 
         //set managed object fields from text fields
         NSLog(@"Saving data...");

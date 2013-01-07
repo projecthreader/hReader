@@ -153,6 +153,7 @@
                                             <outlet property="deleteButton" destination="YfO-TZ-EX5" id="x4S-hV-C3p"/>
                                             <outlet property="directionsTextView" destination="IzV-8z-WhT" id="EhW-1k-9ly"/>
                                             <outlet property="doseTextView" destination="Y8n-Fr-Njk" id="SYs-vb-8yA"/>
+                                            <outlet property="editButton" destination="sFT-pJ-8Fx" id="Ztw-YR-C8D"/>
                                             <outlet property="medicationName" destination="LH0-wW-1KA" id="5wr-hs-NAu"/>
                                             <outlet property="prescriberTextView" destination="naL-tS-tyn" id="mjl-Ca-U9R"/>
                                             <outlet property="quantityTextView" destination="pBi-1F-88b" id="XEL-vm-w38"/>
