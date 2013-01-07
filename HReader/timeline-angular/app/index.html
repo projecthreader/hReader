@@ -86,19 +86,15 @@
 					<div class="row  data" ngChange:false ng-repeat="medication in medications">
 						<h4 class="titles span4">{{medication.description}}</h4>
 						<div class="span1"><img src="images/medication.png"></div>
-				    <fieldset data-role="controlgroup" data-type="horizontal">
-				         	<input type="radio" name="medDose" id="No-Dose" value="ND" checked="checked" />
-				         	<label for="No-Dose">None</label>
-
-				         	<input type="radio" name="medDose" id="Under-dosed" value="UD"  />
-				         	<label for="Under-dosed">Less</label>
-
-				         	<input type="radio" name="medDose" id="As-directed" value="AD"  />
-				         	<label for="As-directed">As Directed</label>
-
-				         	<input type="radio" name="medDose" id="Over-dosed" value="OD"  />
-				         	<label for="Over-dosed">More</label>
-				    </fieldset>
+					    <fieldset data-role="controlgroup" data-type="horizontal">
+					    	<select  name="select-choice-by" id="select-choice-by">
+							   <option>Dosage</option>
+							   <option value="ND">Not Taken</option>
+							   <option value="UD">Take Less</option>
+							   <option value="AD">As Directed</option>
+							   <option value="OD">More Taken</option>
+							</select>
+					    </fieldset>
 					</div>
 					<div class="row">
 						<div class="span10"></div>
