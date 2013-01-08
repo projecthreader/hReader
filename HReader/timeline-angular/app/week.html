@@ -34,6 +34,20 @@
 					</span>
 					<h4 class="span2">{{levels.pain[level.pain.length-1]| number:0}}</h4>
 				</div>
+				<div class="row data" ngChange:false ng-repeat="level in levels">
+					<h4 class="titles span4">{{levels.description}}</h4>
+					<span class="span6 graph">		
+						<p><sparkline exp="data" class="sparkline">{{levels.value.join(', ')}}</sparkline></p>
+					</span>
+					<h4 class="span2">{{levels.pain[levels.mood.length-1]| number:0}}</h4>
+				</div>
+				<div class="row data" ngChange:false ng-repeat="level in levels">
+					<h4 class="titles span4">{{levels.description}}</h4>
+					<span class="span6 graph">		
+						<p><sparkline exp="data" class="sparkline">{{levels.value.join(', ')}}</sparkline></p>
+					</span>
+					<h4 class="span2">{{levels.energy[levels.energy.length-1]| number:0}}</h4>
+				</div>
 				<hr>
 			</article>	
 				
