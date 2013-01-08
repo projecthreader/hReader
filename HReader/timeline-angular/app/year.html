@@ -27,6 +27,9 @@
 					<h3 class="span5">2012</h3>
 					<h3 class="span1">2013</h3>
 				</div>
+				<div class="noData row">
+					<h3 class="span3">NO DATA</h3>
+				</div>
 				<div class="row" div class="row  data" ngChange:false ng-repeat="treatment in treatments">
 					<h4 class="titles span4">{{treatment.description}}</h4>
 					<div class="progress schedule span6">
@@ -48,11 +51,11 @@
 				<div class="row">
 					<form class="hidden" id="newSymp" action="http://hreader.local/timeline.json?key=userData">
 						<h3 class="span12">Add Vital to Condition</h3>
-							<fieldset class="span4" data-role="controlgroup" data-type="horizontal">
-								<select name="select-choice-sev" id="select-choice-sev">
-								   <option ngChange:false ng-repeat="vital in vitals">{{vital.description}}</option>
-								</select>
-							</fieldset>
+						<fieldset class="span4" data-role="controlgroup" data-type="horizontal">
+							<select name="select-choice-sev" id="select-choice-sev">
+							   <option ngChange:false ng-repeat="vital in vitals">{{vital.description}}</option>
+							</select>
+						</fieldset>
 						<span class="span2">
 							<a class="btn" action="http://hreader.local/timeline.json?key=userData" method="post"><i class="icon-plus"></i></a>
 							<a class="btn"  onclick="$('#newSymp').hide()" ><i class="icon-remove"></i></a>

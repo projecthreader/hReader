@@ -79,8 +79,6 @@
 				<div class="row">
 					<h3 class="span3">Add New Medications</h3>
 				</div>
-				
-
 				<!-- <div class="row" ngChange:false ng-repeat="medication in medications"> -->
 				<form action="http://hreader.local/timeline.json?key=MedRegiment" method="post">
 					<div class="row data" ngChange:false ng-repeat="medication in medications">
@@ -112,20 +110,6 @@
 					<h3 class="span6">levels <span id="alertlevel" class="hidden alert fade in">Submitted</span></h3>
 					<h3 class="span2">log</h3>
 				</div>
-				<!-- <div class="row">
-					<form class="hidden" id="newLevel" action="http://hreader.local/timeline.json?key=userData">
-						<span class="span4">
-							<input ng-model="symptoms" class="span4" placeholder="New Level" ui-reset=" 'Empty' ">
-						</span>
-						<span class="span6">
-							<input type="range" name="slider" id="slider-0" value="5" min="0" max="10" data-highlight="true" />
-						</span>
-						<span class="span2">
-							<a class="btn" action="http://hreader.local/timeline.json?key=userData" method="post"><i class="icon-plus"></i></a>
-							<a class="btn"  onclick="$('#newLevel').hide()" ><i class="icon-remove"></i></a>
-						</span>			
-					</form>
-				</div> -->
 				<form action="http://hreader.local/timeline.json?key=Levels" method="post" ng-model="pain">
 					<div class="row">
 						<h4 class="titles span4">Pain*</h4>
@@ -174,62 +158,10 @@
 							</select>
 						</fieldset>
 						<span class="span2">
-							<!-- <a class="btn" action="http://hreader.local/timeline.json?key=userData" method="post"><i class="icon-plus"></i></a> -->
 							<a class="btn"  onclick="$('#newSymp').hide()" ><i class="icon-remove"></i></a>
 						</span>			
 					</form>
 				</div>
-				<!-- Add 2 symptoms to each condition-->
-				<!-- <form id="{{condition.description}}Symp" action="http://hreader.local/timeline.json?key={{condition.description}}Symptoms">
-					<div class="row">
-						<h4 class="titles span4">Symptom1*</h4>
-						<span class="span6">
-							<fieldset class="span6" data-role="controlgroup" data-type="horizontal">
-								<select class="" name="select-choice-sev" id="select-choice-sev">
-								   <option value="none">Severity</option>
-								   <option value="none">None</option>
-								   <option value="mild">Mild</option>
-								   <option value="moderate">Moderate</option>
-								   <option value="severe">Severe</option>
-								</select>
-								<select class="" name="select-choice-dur" id="select-choice-dur" >
-								   <option value="null">Duration</option>
-								   <option value="seconds">Seconds</option>
-								   <option value="minutes">Minutes</option>
-								   <option value="hours">Hours</option>
-								   <option value="days">Days</option>
-								</select>  
-							<fieldset>
-						</span>
-					</div>
-					<div class="row">
-						<h4 class="titles span4">Symptom2*</h4>
-						<span class="span6">
-							<fieldset class="span6" data-role="controlgroup" data-type="horizontal">
-								<select name="select-choice-sev" id="select-choice-sev">
-								   <option value="none">Severity</option>
-								   <option value="none">None</option>
-								   <option value="mild">Mild</option>
-								   <option value="moderate">Moderate</option>
-								   <option value="severe">Severe</option>
-								</select>
-								<select name="select-choice-dur" id="select-choice-dur" >
-								   <option value="null">Duration</option>
-								   <option value="seconds">Seconds</option>
-								   <option value="minutes">Minutes</option>
-								   <option value="hours">Hours</option>
-								   <option value="days">Days</option>
-								</select>  
-							<fieldset>
-						</span>
-					</div>
-					<div class="row">
-						<div class="span10"></div>
-						<span class="span2">
-							<button type="submit" class="btn">Submit</button>
-						</span>
-					</div>
-				</form> -->
 				<hr>
 			</article>		
 			<article class="vitals">
@@ -237,6 +169,9 @@
 					<h2 class="titles span4">Vitals</h2>
 					<h3 class="span6">Trends</h3>
 					<h3 class="span2">Result</h3>
+				</div>
+				<div class="noData row">
+					<h3 class="span3">NO DATA</h3>
 				</div>
 				<div class="row data" ngChange:false ng-repeat="vital in vitals">
 					<span class="span4">
