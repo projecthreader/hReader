@@ -27,24 +27,24 @@
 					<h3 class="span1">JAN 8 </h3>
 					<h3 class="span2">last result</h3>
 				</div>
-				<div class="row data" ngChange:false ng-repeat="level in levels">
-					<h4 class="titles span4">{{levels.description}}</h4>
+				<div class="row data" ngChange:false>
+					<h4 class="titles span4">Pain</h4>
 					<span class="span6 graph">		
-						<p><sparkline exp="data" class="sparkline">{{levels.value.join(', ')}}</sparkline></p>
+						<p><sparkline exp="data" class="sparkline">{{levels.pain.join(', ')}}</sparkline></p>
 					</span>
-					<h4 class="span2">{{levels.pain[level.pain.length-1]| number:0}}</h4>
+					<h4 class="span2">{{levels.pain[levels.pain.length-1]| number:0}}</h4>
 				</div>
-				<div class="row data" ngChange:false ng-repeat="level in levels">
-					<h4 class="titles span4">{{levels.description}}</h4>
+				<div class="row data" ngChange:false>
+					<h4 class="titles span4">Mood</h4>
 					<span class="span6 graph">		
-						<p><sparkline exp="data" class="sparkline">{{levels.value.join(', ')}}</sparkline></p>
+						<p><sparkline exp="data" class="sparkline">{{levels.mood.join(', ')}}</sparkline></p>
 					</span>
-					<h4 class="span2">{{levels.pain[levels.mood.length-1]| number:0}}</h4>
+					<h4 class="span2">{{levels.mood[levels.mood.length-1]| number:0}}</h4>
 				</div>
-				<div class="row data" ngChange:false ng-repeat="level in levels">
-					<h4 class="titles span4">{{levels.description}}</h4>
+				<div class="row data" ngChange:false>
+					<h4 class="titles span4">Energy</h4>
 					<span class="span6 graph">		
-						<p><sparkline exp="data" class="sparkline">{{levels.value.join(', ')}}</sparkline></p>
+						<p><sparkline exp="data" class="sparkline">{{levels.energy.join(', ')}}</sparkline></p>
 					</span>
 					<h4 class="span2">{{levels.energy[levels.energy.length-1]| number:0}}</h4>
 				</div>
