@@ -4696,6 +4696,12 @@ hr {
 form input, form fieldset, form span {
   display: inline; }
 
+div.medIcon {
+  line-height: 50px !important; }
+
+fieldset {
+  line-height: 60px; }
+
 h1 {
   font-size: 60px;
   font-weight: 600;
