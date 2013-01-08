@@ -12,14 +12,6 @@ body.ui-mobile-viewport {
 	vertical-align: baseline;
 }
 
-
-.graph {
-	background-color: #fff;
-	margin-bottom: 20px;
-	padding: 30px;
-}
-
-
 .green {
 	border: 1px solid $border;
 }
@@ -103,5 +95,15 @@ hr {
 form {
 	input, fieldset, span {
 		display: inline;
+
 	}
+}
+
+div.medIcon {
+	line-height: 50px !important;
+
+}
+
+fieldset {
+	line-height: 60px;
 }

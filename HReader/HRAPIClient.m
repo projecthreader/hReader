@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
+#import <SecureFoundation/SecureFoundation.h>
+
 #import "HRAPIClient_private.h"
 #import "HRCryptoManager.h"
 #import "HRRHExLoginViewController.h"
 
 #import "DDXML.h"
-
-#import "SSKeychain.h"
 
 #define hr_dispatch_main(block) dispatch_async(dispatch_get_main_queue(), block)
 
@@ -29,7 +29,7 @@ static NSMutableDictionary *allClients = nil;
 @interface HRAPIClient () {
     NSString *_host;
     NSString *_accessToken;
-    NSDate *_accessTokenExiprationDate;
+    NSDate *_accessTokenExpirationDate;
     NSArray *_patientFeed;
     NSConditionLock *_authorizationLock;
     dispatch_queue_t _requestQueue;
@@ -64,7 +64,7 @@ static NSMutableDictionary *allClients = nil;
 }
 
 + (NSArray *)hosts {
-    return [[SSKeychain accountsForService:HROAuthKeychainService] valueForKey:(__bridge NSString *)kSecAttrAccount];
+    return [[IMSKeychain accountsForService:HROAuthKeychainService] valueForKey:(__bridge NSString *)kSecAttrAccount];
 }
 
 + (NSString *)queryStringWithParameters:(NSDictionary *)parameters {
@@ -80,9 +80,11 @@ static NSMutableDictionary *allClients = nil;
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithCapacity:[array count]];
     [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSUInteger location = [obj rangeOfString:@"="].location;
-        NSString *key = [obj substringToIndex:location];
-        NSString *value = [obj substringFromIndex:(location + 1)];
-        [dictionary setObject:value forKey:key];
+        if (location != NSNotFound) {
+            NSString *key = [obj substringToIndex:location];
+            NSString *value = [obj substringFromIndex:(location + 1)];
+            [dictionary setObject:value forKey:key];
+        }
     }];
     return dictionary;
 }
@@ -144,13 +146,13 @@ static NSMutableDictionary *allClients = nil;
     [self patientFeed:completion ignoreCache:NO];
 }
 
-- (void)JSONForPatientWithIdentifier:(NSString *)identifier startBlock:(void (^) (void))startBlock finishBlock:(void (^) (NSDictionary *payload))finishBlock {
-    dispatch_async(_requestQueue, ^{
+- (NSDictionary *)JSONForPatientWithIdentifier:(NSString *)identifier {
+    __block NSDictionary *dictionary = nil;
+    dispatch_sync(_requestQueue, ^{
         
         // start block
         hr_dispatch_main(^{
             [[UIApplication sharedApplication] hr_pushNetworkOperation];
-            if (startBlock) { startBlock(); }
         });
         
         // create request
@@ -165,7 +167,6 @@ static NSMutableDictionary *allClients = nil;
         
         // create patient
         NSError *JSONError = nil;
-        NSDictionary *dictionary = nil;
         if (data && [response statusCode] == 200) {
             dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
         }
@@ -173,10 +174,61 @@ static NSMutableDictionary *allClients = nil;
         // finish block
         hr_dispatch_main(^{
             [[UIApplication sharedApplication] hr_popNetworkOperation];
+        });
+        
+    });
+    return dictionary;
+}
+
+- (void)JSONForPatientWithIdentifier:(NSString *)identifier startBlock:(void (^) (void))startBlock finishBlock:(void (^) (NSDictionary *payload))finishBlock {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        // start block
+        hr_dispatch_main(^{
+            if (startBlock) { startBlock(); }
+        });
+        
+        // run request
+        NSDictionary *dictionary = [self JSONForPatientWithIdentifier:identifier];
+        
+        // finish block
+        hr_dispatch_main(^{
             if (finishBlock) { finishBlock(dictionary); }
         });
         
     });
+}
+
+#pragma mark - send data
+
+- (BOOL) sendDataWithParameters:(NSDictionary *)params forPatientWithIdentifier:(NSString *)identifier{
+    BOOL success = NO;
+    // start block
+    hr_dispatch_main(^{
+        [[UIApplication sharedApplication] hr_pushNetworkOperation];
+    });
+    
+    // create request
+    NSString *path = [NSString stringWithFormat:@"/records/%@/c32/%@", identifier, identifier];
+    NSMutableURLRequest *request = [self POSTRequestWithPath:path andParameters:params];
+    
+    // run request
+    NSError *connectionError = nil;
+    NSHTTPURLResponse *response = nil;
+    //TODO: LMD discard data?
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&connectionError];
+    
+    success = ([response statusCode] == 200);
+    
+    // finish block
+    if(success){
+        hr_dispatch_main(^{
+            [[UIApplication sharedApplication] hr_popNetworkOperation];
+        });
+    }
+    
+    
+    return success;
 }
 
 #pragma mark - build requests
@@ -194,15 +246,15 @@ static NSMutableDictionary *allClients = nil;
     }
     
     // used to refresh the access token
-    NSTimeInterval interval = [_accessTokenExiprationDate timeIntervalSinceNow];
-    if (_accessTokenExiprationDate) { HRDebugLog(@"Access token expires in %f minutes", interval / 60.0); }
+    NSTimeInterval interval = [_accessTokenExpirationDate timeIntervalSinceNow];
+    if (_accessTokenExpirationDate) { HRDebugLog(@"Access token expires in %f minutes", interval / 60.0); }
     NSDictionary *refreshParameters = @{
         @"refresh_token" : refresh,
         @"grant_type" : @"refresh_token"
     };
     
     // make sure we have both required elements
-    if (_accessToken == nil || _accessTokenExiprationDate == nil || interval < 60.0) {
+    if (_accessToken == nil || _accessTokenExpirationDate == nil || interval < 60.0) {
         HRDebugLog(@"Access token is invalid -- refreshing...");
         if (![self refreshAccessTokenWithParameters:refreshParameters]) {
             return nil;
@@ -233,6 +285,67 @@ static NSMutableDictionary *allClients = nil;
     
 }
 
+- (NSMutableURLRequest *)POSTRequestWithPath:(NSString *)path andParameters:(NSDictionary *)params {
+    
+    // log initial statement
+    HRDebugLog(@"Building request");
+    
+    // make sure we have a refresh token
+    NSString *refresh = HRCryptoManagerKeychainItemString(HROAuthKeychainService, _host);
+    if (refresh == nil) {
+        HRDebugLog(@"No refresh token is present");
+        return nil;
+    }
+    
+    // used to refresh the access token
+    NSTimeInterval interval = [_accessTokenExpirationDate timeIntervalSinceNow];
+    if (_accessTokenExpirationDate) { HRDebugLog(@"Access token expires in %f minutes", interval / 60.0); }
+    NSDictionary *refreshParameters = @{
+    @"refresh_token" : refresh,
+    @"grant_type" : @"refresh_token"
+    };
+    
+    // make sure we have both required elements
+    if (_accessToken == nil || _accessTokenExpirationDate == nil || interval < 60.0) {
+        HRDebugLog(@"Access token is invalid -- refreshing...");
+        if (![self refreshAccessTokenWithParameters:refreshParameters]) {
+            return nil;
+        }
+    }
+    
+    // check if our access token will expire soon
+    else if (interval < 60.0 * 3.0) {
+        HRDebugLog(@"Access token will expire soon -- refreshing later");
+        dispatch_async(_requestQueue, ^{
+            [self refreshAccessTokenWithParameters:refreshParameters];
+        });
+    }
+    
+    // build request parameters
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:params];
+    [parameters setObject:_accessToken forKey:@"access_token"];
+    
+    NSString *query = [HRAPIClient queryStringWithParameters:parameters];
+    NSData *post = [query dataUsingEncoding:NSUnicodeStringEncoding allowLossyConversion:YES];//LMD TODO: Change to ascii?
+    NSString *URLString = [NSString stringWithFormat:@"https://%@%@", _host, path];//TODO: LMD other post URL changes?
+    NSURL *URL = [NSURL URLWithString:URLString];
+    
+    // build request
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URL];
+    [request setHTTPShouldHandleCookies:NO];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:[NSString stringWithFormat:@"%d", [post length]] forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:post];
+    
+    
+    
+    
+    // return
+    return request;
+    
+}
+
 - (NSURLRequest *)authorizationRequest {
     NSDictionary *parameters = @{
         @"client_id" : HROAuthClientIdentifier,
@@ -257,7 +370,7 @@ static NSMutableDictionary *allClients = nil;
 }
 
 - (void)destroy {
-    [SSKeychain deletePasswordForService:HROAuthKeychainService account:_host];
+    [IMSKeychain deletePasswordForService:HROAuthKeychainService account:_host];
     [allClients removeObjectForKey:_host];
 }
 
@@ -300,7 +413,7 @@ static NSMutableDictionary *allClients = nil;
             HRCryptoManagerSetKeychainItemString(HROAuthKeychainService, _host, [payload objectForKey:@"refresh_token"]);
         }
         NSTimeInterval interval = [[payload objectForKey:@"expires_in"] doubleValue];
-        _accessTokenExiprationDate = [NSDate dateWithTimeIntervalSinceNow:interval];
+        _accessTokenExpirationDate = [NSDate dateWithTimeIntervalSinceNow:interval];
         _accessToken = [payload objectForKey:@"access_token"];
         return YES;
     }

@@ -15,190 +15,104 @@
 	    <script src="lib/angular/angular.js"></script>
 	    <script src="js/app.js"></script>
 	    <script src="js/controllers.js"></script>
-	    <script>
-			var Timeline = angular.module('Timeline', []);
-
-			Timeline.directive('sparkline', function () {
-			  return {
-			    restrict: 'E', // the directive restricts it to an element level
-			    link: function postLink(scope, iElement, attrs) {
-			      scope.$watch('vitals', function (newVal, oldVal) {
-			      	if (newVal != null) {
-						$(iElement).sparkline('html', { 
-									type: 'line',
-							    lineColor: '#000000',
-							    spotColor: '#000000',
-							    minSpotColor: '#d60D26',
-							    maxSpotColor: '#d60D26',
-							    highlightSpotColor: '#048A82',
-    							highlightLineColor: '#d60D26',
-							    fillColor: false,
-							   	lineWidth: 3,
-    							spotRadius: 5,
-							    width: 460,
-							    height: 75,
-							    drawNormalOnTop: false
-								});
-							}
-			      });
-			    }
-			  };
-			});
-		</script>
+	    <script src="js/directives.js"></script>
 	</head>
 	<body >
 		<section class="well">
 			<article>
 				<div class="row titles">
-					<h2 class="span3">Observations</h2>
-					<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
-					<h3 class="span2">Plan</h3>
-					<h3 class="span1">Level</h3>
-					<h3 class="span4"></h3>
-					<h3 class="span1"></h3>
+					<h2 class="span4">Overall</h2>
+					<!--   -->
+					<h3 class="span5">JAN 1</h3>
+					<h3 class="span1">JAN 8 </h3>
+					<h3 class="span2">last result</h3>
 				</div>
-				<div class="row">
-
+				<div class="row data" ngChange:false>
+					<h4 class="titles span4">Pain</h4>
+					<span class="span6 graph">		
+						<p><sparkline exp="data" class="sparkline">{{levels.pain.join(', ')}}</sparkline></p>
+					</span>
+					<h1 class="span2">{{levels.pain[levels.pain.length-1]| number:0}}</h1>
 				</div>
-			</article>
-			<hr>
-						<article>
-				<div class="row titles">
-					<h2 class="span3">Hrt Disease</h2>
-					<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
-					<h3 class="span2">Plan</h3>
-					<h3 class="span2">Results</h3>
-					<h3 class="span2"></h3>
-					<h3 class="span2"></h3>
+				<div class="row data" ngChange:false>
+					<h4 class="titles span4">Mood</h4>
+					<span class="span6 graph">		
+						<p><sparkline exp="data" class="sparkline">{{levels.mood.join(', ')}}</sparkline></p>
+					</span>
+					<h1 class="span2">{{levels.mood[levels.mood.length-1]| number:0}}</h1>
 				</div>
-				<div class="row">
-					<h4 class="titles span4">Symptom1*</h4>
-					<h4 class="span2">Patient Note*</h4>
-					<div class="span7">
-					</div>
+				<div class="row data" ngChange:false>
+					<h4 class="titles span4">Energy</h4>
+					<span class="span6 graph">		
+						<p><sparkline exp="data" class="sparkline">{{levels.energy.join(', ')}}</sparkline></p>
+					</span>
+					<h1 class="span2">{{levels.energy[levels.energy.length-1]| number:0}}</h1>
 				</div>
-				<div class="row">
-					<h4 class="titles span4">Symptom2*</h4>
-					<h4 class="span2">Patient Note*</h4>
-				</div>
-			</article>
-			<hr>
-<!--<div class="titles row">
-				<h2 class="span4">Glucose Test</h2>
-				<p class="span2">Take prior to Injection</p>
-				<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span>
-				<div class="progress schedule span5">
-					<div class="span1">
-						<img src="images/observation.png">
-					</div>
-					<div class="span2">
-						<img src="images/observation.png">
-					</div>
-					<div class="span1">
-						<img src="images/observation.png">
-					</div>
-				</div>
-			</div>
-			</div>
-			<div class="titles row">
-				<h2 class="span4">Injections</h2>
-				<p class="span2">Take after food</p>
-				<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span>
-				<div class="progress schedule span5">
-				<div class="span1">
-					<img src="images/treatment.png">
-				</div>
-				<div class="span2">
-					<img src="images/treatment.png">
-				</div>
-				<div class="span1">
-					<img src="images/treatment.png">
-				</div>
-				</div>
-			</div>
-			</article>
-		<hr class="soften"> -->
-<!-- 		<article class="condition">
-			<header class="titles row">
-				<h1 class="titles span3">Condition</h1>
-				<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
-				<h2 class="span2">Results</h2>
-				<h2 class="span4">Graph</h2>
-			</header>
-			<div class="row">
-				<h2 class="span4">{{condition}}</h2>
-				<div class="span2">
-					<i class="icon-arrow-up"></i>
-					<h2>7</h2> / 10
-				</div>
-				<div class="span6">
-
-				</div>
-			</div>
+				<hr>
+			</article>	
 				
-			</div>
-			<div class="row">
-				<h2 class="span4">Symptom 1</h2>
-				<div class="span2">
-					<i class="icon-arrow-up"></i>
-					<h2>2</h2>/10
-				</div>
-				<div class="span6">
-					<div class="slider"></div>
-				</div>
-
-			</div>
-		</article>
-		<hr class="soften"> -->
-		<!-- <article class="activities">
-			<div class="titles row">
-				<h1 class="span3">Activities</h1>
-				<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
-				<h2 class="span2">Results</h2>
-
-				<h2 class="span2">Status</h2>
-			</div>
-			<div class="row">
-				<h2 class="span4">Distance</h2>
-				<div class="span2">
-					<i class="icon-arrow-up"> </i><h2 class>1.2</h2> mile
-				</div>
-				<div class="progress span6">
-						<div class="bar" style="width: 60%;">
-	 				</div>
-				</div>
-			</div>
-			<div class="row">
-				<h2 class="span4">Calories</h2>
-				<div class="span2"><i class="icon-arrow-up"> </i><h2>1500</h2> cal
-				</div>
-				<div class="progress span6">
-				</div>
-			</div>
-		</article>
-		<hr class="soften">
-	 -->
-			<article class="vitals">
+			<article ngChange:false ng-repeat="condition in conditions">
 				<div class="row titles">
-					<h2 class="titles span3">Vitals</h2>
-					<span class="span1">
-						<a class="btn" data-toggle="dropdown">
-						<i class="icon-plus"></i>
-						</a></span>
-					<h3 class="span2">Result</h3>
-					<h3 class="span6">Trends</h3>
-			  	</div>
-				<div class="row data" ngChange:false ng-repeat="vital in vitals">
-					<div class="span4">
-						<h4>{{vital.description}}</h4>		
-					</div>
-					<div class="span2"> 
-						<h1>{{vital.values[vital.values.length-1]}}</h1>{{vital.units}}
-					</div>
-					<div class="span6 graph">		
-						<p><sparkline exp="data" class="sparkline">{{vital.values.join(', ')}}</sparkline></p>
-					</div>
+					<h2 class="span3">{{condition.description}}</h2>
+					<span class="span1"><a class="btn" onclick="$('#newSymp').show()"><i class="icon-plus"></i></a>
+					</span>
+					<h3 class="span6">Log</h3>
+					<h3 class="span2"></h3>
 				</div>
+				<div class="row">
+					<form class="hidden" id="newSymp" action="http://hreader.local/timeline.json?key=userData">
+						<fieldset class="span4" data-role="controlgroup" data-type="horizontal">
+							<select name="select-choice-sev" id="select-choice-sev">
+							   <option ngChange:false ng-repeat="vital in vitals">{{vital.description}}</option>
+							</select>
+						</fieldset>
+						<span class="span2">
+							<a class="btn" action="http://hreader.local/timeline.json?key=userData" method="post"><i class="icon-plus"></i></a>
+							<a class="btn"  onclick="$('#newSymp').hide()" ><i class="icon-remove"></i></a>
+						</span>			
+					</form>
+				</div>
+				<div class="row data" ngChange:false ng-repeat="vital in vitals">
+					<span class="span4">
+						<h4>{{vital.description}}</h4>		
+					</span>
+					<span class="span6 graph">		
+						<p><sparkline exp="data" class="sparkline">{{vital.values.join(', ')}}</sparkline></p>
+					</span>
+					<span class="span2"> 
+						<h1>{{vital.values[vital.values.length-1]| number:0}}</h1>{{vital.units}}
+					</span>
+				</div>
+					<div class="row">
+						<div class="span10"></div>
+						<span class="span2">
+							<input data-role="controlgroup" type="submit" value="submit">
+						</span>
+					</div>
+				</form>
+				<hr>
+			</article>	
+	 		<article class="vitals">
+				<div class="row titles">
+					<h2 class="titles span4">Vitals</h2>
+					<h3 class="span6">Trends</h3>
+					<h3 class="span2">Result</h3>
+				</div>
+				<div class="noData row">
+					<h3 class="span3">NO DATA</h3>
+				</div>
+				<div class="row data" ngChange:false ng-repeat="vital in vitals">
+					<span class="span4">
+						<h4>{{vital.description}}</h4>		
+					</span>
+					<span class="span6 graph">		
+						<p><sparkline exp="data" class="sparkline">{{vital.values.join(', ')}}</sparkline></p>
+					</span>
+					<span class="span2"> 
+						<h1>{{vital.values[vital.values.length-1]| number:0}}</h1>{{vital.units}}
+					</span>
+				</div>
+				<hr>
 			</article>
 		</section>
 	</body>

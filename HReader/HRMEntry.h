@@ -8,8 +8,26 @@
 
 #import "CMDManagedObject.h"
 
-typedef enum {
-    HRMEntryTypeCondition = 0,
+#define DESCRIPTION_KEY @"description"
+#define STATUS_KEY @"status"
+#define TIME_KEY @"time"
+#define START_TIME_KEY @"start_time"
+#define END_TIME_KEY @"end_time"
+#define CODES_KEY @"codes"
+#define VALUE_KEY @"value"
+#define DOSE_KEY @"dose"
+#define REACTION_KEY @"reaction"
+#define SEVERITY_KEY @"severity"
+#define STATUS_KEY @"status"
+
+//unsupported data keys
+#define QUANTITY_KEY @"quantity"
+#define DIRECTIONS_KEY @"directions"
+#define PRESCRIBER_KEY @"prescriber"
+
+
+typedef NS_ENUM(int, HRMEntryType) {
+    HRMEntryTypeCondition,
     HRMEntryTypeAllergy,
     HRMEntryTypeEncounter,
     HRMEntryTypeMedication,
@@ -17,7 +35,7 @@ typedef enum {
     HRMEntryTypeResult,
     HRMEntryTypeVitalSign,
     HRMEntryTypeImmunization
-} HRMEntryType;
+};
 
 @class HRMPatient;
 @class DDXMLElement;
@@ -37,10 +55,14 @@ typedef enum {
 @property (nonatomic, retain) NSNumber *type;
 @property (nonatomic, retain) HRMPatient *patient;
 
+@property (nonatomic, retain) NSDictionary *patientComments;
+@property (nonatomic, retain) NSString *comments;
+@property (nonatomic, retain) NSNumber *userDeleted;
+
 + (HRMEntry *)instanceWithDictionary:(NSDictionary *)dictionary
                                 type:(HRMEntryType)type
                            inContext:(NSManagedObjectContext *)context;
 
-- (DDXMLElement *)timelineXMLElement;
+- (DDXMLElement *)timelineXMLElement DEPRECATED_ATTRIBUTE;
 
 @end

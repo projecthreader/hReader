@@ -24,6 +24,8 @@
 @dynamic patient;
 @dynamic reaction;
 @dynamic severity;
+@dynamic comments;
+@dynamic patientComments;
 
 + (HRMEntry *)instanceWithDictionary:(NSDictionary *)dictionary
                                 type:(HRMEntryType)type
@@ -159,5 +161,13 @@
     return element;
     
 }
+
+//-(void) didSave{
+//    [super didSave];
+    
+    
+    //TODO: LMD queue up to send to server via APIClient
+    
+//}
 
 @end

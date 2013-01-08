@@ -7,9 +7,11 @@
 //
 
 #import "HRAppletConfigurationViewController.h"
-#import "HRMPatient.h"
 #import "HRPeoplePickerViewController.h"
 #import "HRPanelViewController.h"
+#import "HRAppDelegate.h"
+
+#import "HRMPatient.h"
 
 @implementation HRAppletConfigurationViewController {
     NSArray *_installedApplets;
@@ -55,7 +57,7 @@
          addObserver:self
          selector:@selector(managedObjectContextDidSave)
          name:NSManagedObjectContextDidSaveNotification
-         object:nil];
+         object:[HRAppDelegate managedObjectContext]];
         [center
          addObserver:self
          selector:@selector(selectedPatientDidChange:)
@@ -74,7 +76,7 @@
     [center
      removeObserver:self
      name:NSManagedObjectContextDidSaveNotification
-     object:nil];
+     object:[HRAppDelegate managedObjectContext]];
 }
 
 - (void)reloadApplets {

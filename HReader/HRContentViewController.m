@@ -26,7 +26,7 @@
          addObserver:self
          selector:@selector(reloadDataWithNotification:)
          name:NSManagedObjectContextDidSaveNotification
-         object:nil];
+         object:[HRAppDelegate managedObjectContext]];
         [center
          addObserver:self
          selector:@selector(reloadDataWithNotification:)
@@ -44,7 +44,7 @@
          addObserver:self
          selector:@selector(reloadDataWithNotification:)
          name:NSManagedObjectContextDidSaveNotification
-         object:nil];
+         object:[HRAppDelegate managedObjectContext]];
         [center
          addObserver:self
          selector:@selector(reloadDataWithNotification:)
@@ -59,7 +59,7 @@
     [center
      removeObserver:self
      name:NSManagedObjectContextDidSaveNotification
-     object:nil];
+     object:[HRAppDelegate managedObjectContext]];
     [center
      removeObserver:self
      name:HRSelectedPatientDidChangeNotification

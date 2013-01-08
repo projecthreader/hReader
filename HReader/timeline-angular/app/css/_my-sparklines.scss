@@ -1,16 +1,24 @@
+img.diagnosis {
+    position: relative;
+    top: -10px;
+}
+.graph {
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
 .schedule {
   overflow: visible;
   margin-top: 10px;
-  
-    img {
 
-      margin-top: 0px important;
-    }
-    div.span1, div.span2 {
-      margin-top: -10px;
+  img {
 
-    }
+    margin-top: 0px important;
+  }
+  div.span1, div.span2 {
+    margin-top: -10px;
 
+  }
 }
 
 $red: #d60D26;
@@ -48,11 +56,12 @@ path.area {
   fill: none;
   stroke: #000;
 }
-
-
-
-
-
+// D3 comments
+path {
+  stroke: black;
+  stroke-width: 1.5;
+  fill: none;
+}
 
 #sparkline {
   width: 150px;
