@@ -430,29 +430,27 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     
 }
 
-- (NSDictionary *)timelineEntriesGroupedByTypeWithStartDate:(NSDate *)start endDate:(NSDate *)end type:(HRMTimelineEntryType)type {
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+- (NSArray *)timelineEntriesGroupedByTypeWithStartDate:(NSDate *)start endDate:(NSDate *)end type:(HRMTimelineEntryType)type {
+    NSMutableArray *results = [NSMutableArray array];
+    
+    // Only use this patient's entries within the bounds of time specified
     NSMutableArray *predicates = [NSMutableArray array];
     [predicates addObject:[NSPredicate predicateWithFormat:@"patient = %@", self]];
     [predicates addObject:[NSPredicate predicateWithFormat:@"createdAt >= %@", start]];
     [predicates addObject:[NSPredicate predicateWithFormat:@"createdAt <= %@", end]];
     [predicates addObject:[NSPredicate predicateWithFormat:@"type == %@", @(type)]];
+    
+    // Gather all relevant timeline entries
     NSArray *entries = [HRMTimelineEntry
                         allInContext:[self managedObjectContext]
                         predicate:[NSCompoundPredicate andPredicateWithSubpredicates:predicates]
                         sortDescriptor:[NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:YES]];
     [entries enumerateObjectsUsingBlock:^(HRMTimelineEntry *entry, NSUInteger idx, BOOL *stop) {
         NSDictionary *data = entry.data;
-        [data enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-            NSMutableArray *values = dictionary[key];
-            if (values == nil) {
-                values = [NSMutableArray array];
-                dictionary[key] = values;
-            }
-            [values addObject:obj];
-        }];
+        if ([data count] > 0) { [results addObject:data]; }
     }];
-    return dictionary;
+    
+    return results;
 }
 
 - (NSArray *)timelineVitalsGroupedByDescriptionWithStartDate:(NSDate *)start endDate:(NSDate *)end {
