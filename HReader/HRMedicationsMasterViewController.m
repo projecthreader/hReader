@@ -60,7 +60,7 @@
          }];
         
         //add data
-        [self initializeData];
+        //[self initializeData];
     }
     return self;
 }
@@ -80,6 +80,8 @@
 
 
 - (void)reloadWithPatient:(HRMPatient *)patient {
+    
+    NSLog(@"Reloading with patient");
     
     //hide header edit buttons
     [self.currentMedicationsEditButton setHidden:YES];
@@ -194,6 +196,9 @@
         
     // Medication details
     {
+        //add data
+
+        [self initializeDatawithPatient:patient];
         [self.collectionView reloadData];
     }
     
@@ -318,15 +323,20 @@
     [super viewDidUnload];
 }
 
-- (void)initializeData{
+- (void)initializeDatawithPatient:(HRMPatient *)currentPatient{
     NSLog(@"Initializing data");
-    HRMPatient *currentPatient = [HRPeoplePickerViewController selectedPatient];
     self.medicationList = [currentPatient medications];
     
     for(NSUInteger i=0;i<self.medicationList.count;i++){
         HRMEntry *med = [self.medicationList objectAtIndex:i];
         if(med.comments == nil){
             med.comments = @"-";
+            
+            NSManagedObjectContext *context = [med managedObjectContext];
+            NSError *error;
+            if (![context save:&error]) {
+                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+            }
         }
         
         if(med.patientComments == nil){
@@ -341,15 +351,15 @@
             NSArray *keys = [NSArray arrayWithObjects:QUANTITY_KEY, DOSE_KEY, DIRECTIONS_KEY, PRESCRIBER_KEY, nil];
             NSArray *objects = [NSArray arrayWithObjects:@"-", doseString, @"-", @"-", nil];
             [med setPatientComments:[NSDictionary dictionaryWithObjects:objects forKeys:keys]];
+            
+            NSManagedObjectContext *context = [med managedObjectContext];
+            NSError *error;
+            if (![context save:&error]) {
+                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+            }
         }
         
-        NSManagedObjectContext *context = [med managedObjectContext];
-        NSError *error;
-        if (![context save:&error]) {
-            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-        }
     }
-    
     
 }
 - (IBAction)upcomingRefillsEdit:(id)sender {
