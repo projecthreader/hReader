@@ -13,7 +13,10 @@
 
 - (void)tileDidLoad {
     [super tileDidLoad];
-    HRMPatient *patient = [self.userInfo objectForKey:@"__private_patient__"];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    return YES;
 }
 
 @end

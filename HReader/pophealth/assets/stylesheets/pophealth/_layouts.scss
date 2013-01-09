@@ -58,10 +58,10 @@ body {
   .logo {
     width: 300px;
     height: 100px;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
   }
 
-  .pophealth-result-container { margin-bottom: 75px; }
+  .pophealth-result-container { margin-bottom: 70px; }
   padding: 10px 0;
   position: fixed;
   left: 30px;
@@ -71,19 +71,19 @@ body {
   font-size:11px;
 
   .paramGroup {
-    margin-top: 100px;
+    margin-top: 75px;
     height: 200px;
     &.pass { background: $successColor; }
     &.fail { background: $errorColor; }
   }
   .paramItem {
-    height: 200px;
+    height: 195px;
     overflow: scroll;
   }
 
   #more-info {
-    
     display: none;
+    h6 { font-weight: 600 }
   }
 }
 

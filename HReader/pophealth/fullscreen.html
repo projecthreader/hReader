@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     
     <!-- jQuery Mobile -->
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="assets/stylesheets/externals/jquery.mobile-1.2.0.min.css" />
+    <script type="text/javascript" src="assets/javascripts/externals/jquery-1.8.3.min.js"></script>
 
     <!-- Twitter Bootstrap -->
-    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet" />
-    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="assets/stylesheets/externals/bootstrap-combined-2.2.1.min.css" rel="stylesheet" />
+    <script src="assets/javascripts/externals/bootstrap-2.2.1.min.js"></script>
 
     <!-- Applet specific -->
     <link href="assets/stylesheets/pophealth.css" rel="stylesheet" />
@@ -25,29 +25,28 @@
 
         <div id="failing-results" class="pophealth-result-container">
           <div class="pophealth-slug pophealth-error-slug" data-filter-criteria="fail">Fail</div>
-          <div class="pophealth-result">7</div>
+          <div class="pophealth-result">6</div>
         </div>
         <div id="passing-results" class="pophealth-result-container">
           <div class="pophealth-slug pophealth-success-slug" data-filter-criteria="pass">Pass</div>
-          <div class="pophealth-result">14</div>
+          <div class="pophealth-result">8</div>
         </div>
 
           <div id="more-info" class="paramGroup">
             <div class="paramItem">
               <div class="category">
-                <h6><strong>Ischemic Vascular Disease (IVD): Use of Aspirin or Another Antithrombotic</strong></h6>
-                
+                <h6 id="mi-title"></h6>
                 <p>
                   <strong>Description:</strong>
-                  Percentage of patients 18 years of age and older who were discharged alive for acute myocardial infarction (AMI), coronary artery bypass graft (CABG) or percutaneous coronary interventions (PCI) in the 12 months prior to the measurement period, or who had an active diagnosis of ischemic vascular disease (IVD) during the measurement period, and who had documentation of use of aspirin or another antithrombotic during the measurement period.
+                  <span id="mi-description"></span>
                 </p>
                 <p>
                   <strong>Status:</strong>
-                  <span class="pass">Pass</span>
+                  <span id="mi-status" class="pass"></span>
                 </p>
                 <p>
                   <strong>Recommendation:</strong>
-                  The USPSTF strongly recommends that clinicians discuss aspirin chemoprevention with adults who are at increased risk (5-year risk of greater than or equal to 3 percent) for coronary heart disease (CHD). Discussions with patients should address both the potential benefits and harms of aspirin therapy. ('A' recommendation) The USPSTF recommends the use of aspirin for men age 45 to 79 years when the potential benefit due to a reduction in myocardial infarctions outweighs the potential harm due to an increase in gastrointestinal hemorrhage ('A' recommendation). The USPSTF recommends the use of aspirin for women age 55 to 79 years when the potential benefit of a reduction in ischemic stroke outweighs the potential harm of an increase in gastrointestinal hemorrhage. ('A' recommendation)
+                  <span id="mi-recommendation"></span>
                 </p>
               </div>
             </div>
@@ -67,13 +66,10 @@
             <div class="category">
               <h3>Heart Measures</h3>
               <ul>
-                <li class="pass"><div class="result result-pass"></div>Ischemic Vascular Disease (IVD): Use of Aspirin or Another Antithrombotic</li>
-                <li class="fail"><div class="result result-fail"></div>Coronary Artery Disease (CAD): Beta-Blocker Therapy—Prior Myocardial Infarction (MI) or Left Ventricular Systolic Dysfunction (LVEF &lt; 40%)</li>
-                <li class="pass"><div class="result result-pass"></div>Ischemic Vascular Disease (IVD): Complete Lipid Panel and LDL Control</li>
-                <li class="pass"><div class="result result-pass"></div>Heart Failure (HF): Angiotensin-Converting Enzyme (ACE) Inhibitor or Angiotensin Receptor Blocker (ARB) Therapy for Left Ventricular Systolic Dysfunction (LVSD)</li>
-                <li class="fail"><div class="result result-fail"></div>Heart Failure (HF): Beta-Blocker Therapy for Left Ventricular Systolic Dysfunction (LVSD)</li>
-                <li class="pass"><div class="result result-pass"></div>ADE Prevention and Monitoring: Warfarin Time in Therapeutic Range</li>
-                <li class="pass"><div class="result result-pass"></div>Functional Status Assessment for Complex Chronic Conditions</li>
+                <li id="8A4D92B2-397A-48D2-0139-C626C0935307" class="pass"><div class="result result-pass"></div>Ischemic Vascular Disease (IVD): Use of Aspirin or Another Antithrombotic</li>
+                <li id="8A4D92B2-3946-CDAE-0139-78E0235B7B8B" class="fail"><div class="result result-fail"></div>Coronary Artery Disease (CAD): Beta-Blocker Therapy—Prior Myocardial Infarction (MI) or Left Ventricular Systolic Dysfunction (LVEF &lt; 40%)</li>
+                <li id="8A4D92B2-3946-CDAE-0139-78E4E5077D41" class="pass"><div class="result result-pass"></div>Heart Failure (HF): Angiotensin-Converting Enzyme (ACE) Inhibitor or Angiotensin Receptor Blocker (ARB) Therapy for Left Ventricular Systolic Dysfunction (LVSD)</li>
+                <li id="8A4D92B2-3676-1350-0136-9768076550F0" class="fail"><div class="result result-fail"></div>Heart Failure (HF): Beta-Blocker Therapy for Left Ventricular Systolic Dysfunction (LVSD)</li>
               </ul>
             </div>
           </div>  
@@ -84,13 +80,11 @@
             <div class="category">
               <h3>Diabetes Measures</h3>
               <ul>
-                <li class="fail"><div class="result result-fail"></div>Diabetes: Foot Exam</li>
-                <li class="fail"><div class="result result-fail"></div>Diabetes: Hemoglobin A1c Poor Control</li>
-                <li class="pass"><div class="result result-pass"></div>Hemoglobin A1c Test for Pediatric Patients</li>
-                <li class="pass"><div class="result result-pass"></div>Diabetes: Urine Protein Screening</li>
-                <li class="pass"><div class="result result-pass"></div>Diabetes: Low Density Lipoprotein (LDL) Management</li>
-                <li class="pass"><div class="result result-pass"></div>Diabetic Retinopathy: Documentation of Presence or Absence of Macular Edema and Level of Severity of Retinopathy</li>
-                <li class="fail"><div class="result result-fail"></div>Diabetic Retinopathy: Communication with the Physician Managing Ongoing Diabetes Care</li>
+                <li id="8A4D92B2-397A-48D2-0139-7CCB48F6025D" class="fail"><div class="result result-fail"></div>Diabetes: Foot Exam</li>
+                <li id="8A4D92B2-397A-48D2-0139-9CD4937E6C86" class="fail"><div class="result result-fail"></div>Diabetes: Hemoglobin A1c Poor Control</li>
+                <li id="8A4D92B2-39CA-AF4B-0139-D472724E0C46" class="pass"><div class="result result-pass"></div>Diabetes: Eye Exam</li>
+                <li id="8A4D92B2-3946-CDAE-0139-77E3674A60FC" class="pass"><div class="result result-pass"></div>Diabetic Retinopathy: Documentation of Presence or Absence of Macular Edema and Level of Severity of Retinopathy</li>
+                <li id="8A4D92B2-397A-48D2-0139-7E243C8B15B6" class="fail"><div class="result result-fail"></div>Diabetic Retinopathy: Communication with the Physician Managing Ongoing Diabetes Care</li>
               </ul>
             </div>
           </div>  
@@ -101,8 +95,8 @@
             <div class="category">
               <h3>Orthopedic Measures</h3>
               <ul>
-                <li class="pass"><div class="result result-pass"></div>Functional Status Assessment for Hip Replacement</li>
-                <li class="fail"><div class="result result-fail"></div>Functional Status Assessment for Knee Replacement</li>
+                <li id="8A4D92B2-356D-A09E-0135-AF80862E655B" class="pass"><div class="result result-pass"></div>Functional Status Assessment for Hip Replacement</li>
+                <li id="8A4D92B2-356D-A09E-0135-9B065EFA5D47" class="fail"><div class="result result-fail"></div>Functional Status Assessment for Knee Replacement</li>
               </ul>
             </div>
           </div>  
@@ -113,33 +107,10 @@
             <div class="category">
               <h3>Cancer Measures</h3>
               <ul>
-                <li class="pass"><div class="result result-pass"></div>Oncology: Medical and Radiation – Pain Intensity Quantified</li>
-                <li class="pass"><div class="result result-pass"></div>Colon Cancer: Chemotherapy for AJCC Stage III Colon Cancer Patients</li>
-                <li class="pass"><div class="result result-pass"></div>Breast Cancer: Hormonal Therapy for Stage IC-IIIC Estrogen Receptor/Progesterone Receptor (ER/PR) Positive Breast Cancer</li>
-                <li class="pass"><div class="result result-pass"></div>Prostate Cancer: Avoidance of Overuse of Bone Scan for Staging Low Risk Prostate Cancer Patients</li>
+                <li id="8A4D92B2-397A-48D2-0139-9CEA5D84733A" class="pass"><div class="result result-pass"></div>Colon Cancer: Chemotherapy for AJCC Stage III Colon Cancer Patients</li>
+                <li id="8A4D92B2-397A-48D2-0139-B0A6A11F2DA5" class="pass"><div class="result result-pass"></div>Breast Cancer: Hormonal Therapy for Stage IC-IIIC Estrogen Receptor/Progesterone Receptor (ER/PR) Positive Breast Cancer</li>
+                <li id="8A4D92B2-397A-48D2-0139-B0A4BCA22CF1" class="pass"><div class="result result-pass"></div>Prostate Cancer: Avoidance of Overuse of Bone Scan for Staging Low Risk Prostate Cancer Patients</li>
               </ul>
-            </div>
-          </div>  
-        </div>
-
-        <div class="paramGroup">
-          <div class="paramItem">
-            <div class="category">
-              <h3>Dental Measures</h3>
-              <ul>
-                <li class="fail"><div class="result result-fail"></div>Children Who Have Dental Decay or Cavities</li>
-              </ul>
-            </div>
-          </div>  
-        </div>
-
-        <div class="paramGroup">
-          <div class="paramItem">
-            <div class="category">
-              <h3>Still Loading Measures</h3>
-              <div class="align-center">
-                <img src="assets/images/loading.gif" />
-              </div>
             </div>
           </div>  
         </div>

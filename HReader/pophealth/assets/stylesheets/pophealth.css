@@ -80,21 +80,23 @@ body {
   .sideSummary .logo {
     width: 300px;
     height: 100px;
-    margin-bottom: 100px; }
+    margin-bottom: 80px; }
   .sideSummary .pophealth-result-container {
-    margin-bottom: 75px; }
+    margin-bottom: 70px; }
   .sideSummary .paramGroup {
-    margin-top: 100px;
+    margin-top: 75px;
     height: 200px; }
     .sideSummary .paramGroup.pass {
       background: #048a82; }
     .sideSummary .paramGroup.fail {
       background: #d60d26; }
   .sideSummary .paramItem {
-    height: 200px;
+    height: 195px;
     overflow: scroll; }
   .sideSummary #more-info {
     display: none; }
+    .sideSummary #more-info h6 {
+      font-weight: 600; }
 
 .patient {
   margin-bottom: 30px; }
