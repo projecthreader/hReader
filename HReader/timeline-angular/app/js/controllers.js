@@ -92,57 +92,93 @@ function RecordListCtrl($scope) {
 function DayListCtrl($scope, $http) {
   //$templateCache.removeAll();
   $http.get('http://hreader.local/timeline.json?page=day', {cache:false}).success(function(data) {
+    // alert(JSON.stringify(data))
+
     $scope.vitals = data.vitals;
-    $score.results = data.results;
+    $scope.medications = data.timeline_medications;
+    $scope.results = data.results;
     $scope.symptoms = data.symptoms; 
     $scope.pain = data.pain; 
     $scope.mood = data.mood;
-    $scope.mood = data.energy; 
+    $scope.mood = data.energy;
     $scope.conditions = data.conditions;
-    $scope.levels = data.levels
+    $scope.levels = data.levels;
+    $scope.format = 'yyyy/d/MM';
   });
 };
 
 function WeekListCtrl($scope, $http) {
   $http.get('http://hreader.local/timeline.json?page=week', {cache:false}).success(function(data) {
+    // alert(JSON.stringify(data))
+
     $scope.vitals = data.vitals;
     $scope.symptoms = data.symptoms; 
     $scope.levels = data.levels;  
     $scope.conditions = data.conditions;
-    $scope.observations = data.observations
-
+    $scope.observations = data.observations;
+    $scope.start_date = data.start_date;
+    $scope.end_date = data.end_date;
   });
 };
 
 function MonthListCtrl($scope, $http) {
   $http.get('http://hreader.local/timeline.json?page=month', {cache:false}).success(function(data) {
+    // alert(JSON.stringify(data))
+
     $scope.vitals = data.vitals;
     $scope.symptoms = data.symptoms; 
     $scope.medications = data.medications;
     $scope.conditions = data.conditions;
-    $scope.encounters = data.encounters
+    $scope.encounters = data.encounters;
+    $scope.start_date = data.start_date;
+    $scope.end_date = data.end_date;
   });
 };
 
 function YearListCtrl($scope, $http) { 
   $http.get('http://hreader.local/timeline.json?page=year', {cache:false}).success(function(data) {
+    // alert(JSON.stringify(data))
+
     $scope.vitals = data.vitals;
     $scope.symptoms = data.symptoms; 
     $scope.conditions = data.conditions;
     $scope.treatments = data.treatments;
+    $scope.start_date = data.start_date;
+    $scope.end_date = data.end_date;
 
   });
 };
 
 function DecadeListCtrl($scope, $http) {
   $http.get('http://hreader.local/timeline.json?page=decade', {cache:false}).success(function(data) {
+    // alert(JSON.stringify(data))
+
     $scope.vitals = data.vitals;
     $scope.symptoms = data.symptoms;  
     $scope.conditions = data.conditions;
     $scope.levels = data.levels;
+    $scope.start_date = data.start_date;
+    $scope.end_date = data.end_date;
     $scope.Math = window.Math;
   });
+
+  $scope.DecadeOffset = function(entry) {
+    var offset = (entry.date*1000-(1.01e+12))/(315569259747/460);
+    return { 'left' : offset + 'px' }
+  }
 };
+
+//  $scope.YearOffset = function(entry) {
+//     var offset = (entry.date*1000-(1.01e+12))/(31556925975/460);
+//     return { 'left' : offset + 'px' }
+//   }
+// };
+//  $scope.MonthOffset = function(entry) {
+//     var offset = (entry.date*1000-(1.01e+12))/(2629743831/460);
+//     return { 'left' : offset + 'px' }
+//   }
+// };
+
 
 
 // DayListCtrl.$inject = ['values', '$http'];

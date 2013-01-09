@@ -10,7 +10,8 @@
 
 typedef NS_ENUM(unsigned int, HRMTimelineEntryType) {
     HRMTimelineEntryTypeLevels,
-    HRMTimelineEntryTypeRegiment
+    HRMTimelineEntryTypeMedication,
+    HRMTimelineEntryTypeRegimen
 };
 
 @class HRMPatient;

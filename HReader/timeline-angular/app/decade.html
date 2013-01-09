@@ -17,6 +17,21 @@
 	    <script src="js/controllers.js"></script>
 	    <script src="js/directives.js"></script>
 	    <script src="js/date.js"></script>
+	    <script>
+	    	$(document).ready(function(){
+	    		var DcMiliPixel = {315569259747/442};
+	    		var start_time = {currentDate - MiliPerPixel};
+	    		var stop_time = {currentDate};
+	    		var stop = 442;
+	    		var img =$("img");
+	    		var position = img.position();
+	    		img + $(this)position.left;
+	    		if (event.date) {
+	    			return;
+	    		position.x += object.positionLeft;
+	    	}	
+	    },
+	    </script>
 	</head>
 	<body >
 		<section class="well">
@@ -24,21 +39,17 @@
 				<div class="titles row">
 					<h2 class="span4">Diagnosis</h2>
 					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span> -->
-					<h3 class="span5">2002*{{start_time}}</h3>
-					<h3 class="span1">2012*{{end_time}}</h3>
+					<h3 class="span5">2003</h3>
+					<h3 class="span1">2013</h3>
 				</div>
-				<div class="row" div class="row  data" ngChange:false ng-repeat="condition in conditions">
+				<div class="row" div class="row data" ngChange:false ng-repeat="condition in conditions">
 					<h4 class="titles span4">{{condition.description}}</h4>
 					<!-- <p class="span2">ER*</p> -->			
 					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span> -->
-					<div class="progress schedule span5">
-						<div class="span1">
-						</div>
-						<div class="span1">
-						</div>
-						<div class=" offset2 span2">
-							<img src="images/diag.png">
-						</div>
+					<div class="progress schedule span6">
+						<img src="images/diag.png" 
+							class="diagnosis" 
+							ng-style="DecadeOffset(condition)">
 					</div>
 				</div>
 			</article>
@@ -148,13 +159,12 @@
 				</div>
 				<div class="row">
 					<form class="hidden" id="newSymp" action="http://hreader.local/timeline.json?key=userData">
-						<span class="span4">
-							<fieldset class="span4" data-role="controlgroup" data-type="horizontal">
-								<select name="select-choice-sev" id="select-choice-sev">
-								   <option ngChange:false ng-repeat="vital in vitals">{{vital.description}}</option>
-								</select>
-							</fieldset>
-						</span>
+						<h3 class="span12">Add Vital to Condition</h3>
+						<fieldset class="span4" data-role="controlgroup" data-type="horizontal">
+							<select name="select-choice-sev" id="select-choice-sev">
+							   <option ngChange:false ng-repeat="vital in vitals">{{vital.description}}</option>
+							</select>
+						</fieldset>
 						<span class="span2">
 							<a class="btn" action="http://hreader.local/timeline.json?key=userData" method="post"><i class="icon-plus"></i></a>
 							<a class="btn"  onclick="$('#newSymp').hide()" ><i class="icon-remove"></i></a>

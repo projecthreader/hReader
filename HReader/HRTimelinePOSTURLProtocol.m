@@ -82,12 +82,12 @@
         
         // new medication
         else if ([action isEqualToString:@"NewMedication"]) {
-            entry.type = @(HRMTimelineEntryTypeRegiment);
+            entry.type = @(HRMTimelineEntryTypeMedication);
         }
         
         // new med regiment
         else if ([action isEqualToString:@"MedRegiment"]) {
-            
+            entry.type = @(HRMTimelineEntryTypeRegimen);
         }
         
         // save

@@ -54,7 +54,7 @@
     NSDateComponents *components = [[NSDateComponents alloc] init];
     NSString *page = [parameters objectForKey:@"page"];
     if ([page isEqualToString:@"day"]) { [components setDay:-1]; }
-    else if ([page isEqualToString:@"week"]) { [components setWeek:-1]; }
+    else if ([page isEqualToString:@"week"]) { [components setDay:-7]; }
     else if ([page isEqualToString:@"month"]) { [components setMonth:-1]; }
     else if ([page isEqualToString:@"year"]) { [components setYear:-1]; }
     else if ([page isEqualToString:@"decade"]) { [components setYear:-10]; }
