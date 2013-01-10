@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>popHealth for hReader</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <!-- jQuery Mobile -->
+    <link rel="stylesheet" href="assets/stylesheets/externals/jquery.mobile-1.2.0.min.css" />
+    <script type="text/javascript" src="assets/javascripts/externals/jquery-1.8.3.min.js"></script>
+
+    <!-- Twitter Bootstrap -->
+    <link href="assets/stylesheets/externals/bootstrap-combined-2.2.1.min.css" rel="stylesheet" />
+    <script src="assets/javascripts/externals/bootstrap-2.2.1.min.js"></script>
+
+    <!-- Applet specific -->
+    <link href="assets/stylesheets/pophealth.css" rel="stylesheet" />
+    <script src="assets/javascripts/pophealth.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="sideSummary">
+        <img class="logo" src="assets/images/pophealth_small_logo.png" />
+
+        <div id="failing-results" class="pophealth-result-container">
+          <div class="pophealth-slug pophealth-error-slug" data-filter-criteria="fail">Fail</div>
+          <div class="pophealth-result">6</div>
+        </div>
+        <div id="passing-results" class="pophealth-result-container">
+          <div class="pophealth-slug pophealth-success-slug" data-filter-criteria="pass">Pass</div>
+          <div class="pophealth-result">8</div>
+        </div>
+
+          <div id="more-info" class="paramGroup">
+            <div class="paramItem">
+              <div class="category">
+                <h6 id="mi-title"></h6>
+                <p>
+                  <strong>Description:</strong>
+                  <span id="mi-description"></span>
+                </p>
+                <p>
+                  <strong>Status:</strong>
+                  <span id="mi-status" class="pass"></span>
+                </p>
+                <p>
+                  <strong>Recommendation:</strong>
+                  <span id="mi-recommendation"></span>
+                </p>
+              </div>
+            </div>
+        </div>
+      </div>
+      
+      <div class="measures">
+        <div class="patient">
+          <h1>Henry Smith</h1>
+          <p>
+            popHealth reports the quality of care of the individual's healthcare provider. These are indicators of whether or not the standard of care is given to you, the patient. Each of these measures are selected based on your specific conditions, care, and demographic information. Below are the results of the measures:
+          </p>
+        </div>
+
+        <div class="paramGroup">
+          <div class="paramItem">
+            <div class="category">
+              <h3>Heart Measures</h3>
+              <ul>
+                <li id="8A4D92B2-397A-48D2-0139-C626C0935307" class="pass"><div class="result result-pass"></div>Ischemic Vascular Disease (IVD): Use of Aspirin or Another Antithrombotic</li>
+                <li id="8A4D92B2-3946-CDAE-0139-78E0235B7B8B" class="fail"><div class="result result-fail"></div>Coronary Artery Disease (CAD): Beta-Blocker Therapy—Prior Myocardial Infarction (MI) or Left Ventricular Systolic Dysfunction (LVEF &lt; 40%)</li>
+                <li id="8A4D92B2-3946-CDAE-0139-78E4E5077D41" class="pass"><div class="result result-pass"></div>Heart Failure (HF): Angiotensin-Converting Enzyme (ACE) Inhibitor or Angiotensin Receptor Blocker (ARB) Therapy for Left Ventricular Systolic Dysfunction (LVSD)</li>
+                <li id="8A4D92B2-3676-1350-0136-9768076550F0" class="fail"><div class="result result-fail"></div>Heart Failure (HF): Beta-Blocker Therapy for Left Ventricular Systolic Dysfunction (LVSD)</li>
+              </ul>
+            </div>
+          </div>  
+        </div>
+
+        <div class="paramGroup">
+          <div class="paramItem">
+            <div class="category">
+              <h3>Diabetes Measures</h3>
+              <ul>
+                <li id="8A4D92B2-397A-48D2-0139-7CCB48F6025D" class="fail"><div class="result result-fail"></div>Diabetes: Foot Exam</li>
+                <li id="8A4D92B2-397A-48D2-0139-9CD4937E6C86" class="fail"><div class="result result-fail"></div>Diabetes: Hemoglobin A1c Poor Control</li>
+                <li id="8A4D92B2-39CA-AF4B-0139-D472724E0C46" class="pass"><div class="result result-pass"></div>Diabetes: Eye Exam</li>
+                <li id="8A4D92B2-3946-CDAE-0139-77E3674A60FC" class="pass"><div class="result result-pass"></div>Diabetic Retinopathy: Documentation of Presence or Absence of Macular Edema and Level of Severity of Retinopathy</li>
+                <li id="8A4D92B2-397A-48D2-0139-7E243C8B15B6" class="fail"><div class="result result-fail"></div>Diabetic Retinopathy: Communication with the Physician Managing Ongoing Diabetes Care</li>
+              </ul>
+            </div>
+          </div>  
+        </div>
+
+        <div class="paramGroup">
+          <div class="paramItem">
+            <div class="category">
+              <h3>Orthopedic Measures</h3>
+              <ul>
+                <li id="8A4D92B2-356D-A09E-0135-AF80862E655B" class="pass"><div class="result result-pass"></div>Functional Status Assessment for Hip Replacement</li>
+                <li id="8A4D92B2-356D-A09E-0135-9B065EFA5D47" class="fail"><div class="result result-fail"></div>Functional Status Assessment for Knee Replacement</li>
+              </ul>
+            </div>
+          </div>  
+        </div>
+
+        <div class="paramGroup">
+          <div class="paramItem">
+            <div class="category">
+              <h3>Cancer Measures</h3>
+              <ul>
+                <li id="8A4D92B2-397A-48D2-0139-9CEA5D84733A" class="pass"><div class="result result-pass"></div>Colon Cancer: Chemotherapy for AJCC Stage III Colon Cancer Patients</li>
+                <li id="8A4D92B2-397A-48D2-0139-B0A6A11F2DA5" class="pass"><div class="result result-pass"></div>Breast Cancer: Hormonal Therapy for Stage IC-IIIC Estrogen Receptor/Progesterone Receptor (ER/PR) Positive Breast Cancer</li>
+                <li id="8A4D92B2-397A-48D2-0139-B0A4BCA22CF1" class="pass"><div class="result result-pass"></div>Prostate Cancer: Avoidance of Overuse of Bone Scan for Staging Low Risk Prostate Cancer Patients</li>
+              </ul>
+            </div>
+          </div>  
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>

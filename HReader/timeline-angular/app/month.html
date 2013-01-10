@@ -6,174 +6,65 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<link rel="stylesheet" href="css/jquery-ui-1.8.16.custom.css" type="text/css"/> 
-		<link href="http://addyosmani.github.com/jquery-ui-bootstrap/bootstrap/bootstrap.css" rel="stylesheet">
+		<link href="lib/bootstrap/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/master.css" type="text/css"/> 
 		<script type="text/javascript" src="lib/jquery/jquery-1.8.1.js"></script>
 	    <script type="text/javascript" src="lib/jquery/jquery.sparkline2.0.js">
 	    </script>
-	    <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+	    <script src="lib/ajax/jquery.tmpl.min.js"></script>
 	    <script src="lib/angular/angular.js"></script>
 	    <script src="js/app.js"></script>
 	    <script src="js/controllers.js"></script>
 	    <script src="js/directives.js"></script>
+	    <script src="js/date.js"></script>
 	</head>
 	<body >
 		<section class="well">
+<!-- 			Encounter Event Listing -->
 			<article>
 				<div class="titles row">
 					<h2 class="span4">Encounter</h2>
-					<h3 class="span4">Week1</h3>
-					<h3 class="span2">Week4</h3>
+					<h3 class="span4">DEC</h3>
+					<h3 class="span2">JAN</h3>
 				</div>
-				<div class="row">
-					<h4 class="titles span4">Outpatient Visit*</h4>
-					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span> -->
-					<div class="progress schedule span5">
-						<div class="span1">
-							<img src="images/encounter.png">
-						</div>
-						<div class="span1">
-							<img src="images/encounter.png">
-						</div>
-						
-					</div>
+				<div class="noData row">
+					<h3 class="span3">NO DATA</h3>
 				</div>
-				<div class="row data" ngChange:false ng-repeat="encounter in encounters">
+				<div class="row" div class="row data" ngChange:false ng-repeat="encounter in encounters">
 					<h4 class="titles span4">{{encounter.description}}</h4>
+					<!-- <p class="span2">ER*</p> -->			
 					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span> -->
-					<div class="progress schedule span5">
-						<div class="span1">
-							<img src="images/encounter.png">
-						</div>
-						<div class="span1">
-							<img src="images/encounter.png">
-						</div>
+					<div class="progress schedule span6">
+						<img src="images/encounter.png"
+							class="diagnosis" 
+							ng-style="DecadeOffset(encounter)">
 					</div>
 				</div>
 			</article>
 			<hr>
+<!-- 			Prescription Event listing -->
 			<article>
 				<div class="titles row">
 					<h2 class="span4">Prescription</h2>
-					<h3 class="span4">Week1</h3>
-					<h3 class="span2">Week4</h3>
+					<h3 class="span4">DEC</h3>
+					<h3 class="span2">JAN</h3>
 				</div>
-				<div class="row">
-					<h4 class="titles span4">Medications*</h4>
+				<div class="noData row">
+					<h3 class="span3">NO DATA</h3>
+				</div>
+				<div class="row" div class="row data" ngChange:false ng-repeat="prescription in prescriptions">
+					<h4 class="titles span4">{{prescription.description}}</h4>
+					<!-- <p class="span2">ER*</p> -->			
 					<!-- <span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span> -->
-					<div class="progress schedule span5">
-						<div class="span1">
-							<img src="images/medication.png">
-						</div>
-						<div class="span1">
-							<img src="images/medication.png">
-						</div>
-						<div class="span2">
-							<img src="images/medication.png">
-						</div>
+					<div class="progress schedule span6">
+						<img src="images/medication.png"
+							class="diagnosis" 
+							ng-style="DecadeOffset(prescription)">
 					</div>
-					<div class="row data" ngChange:false ng-repeat="medication in medications">
-						<h4 class="titles span4">{{medication.description}}</h4>
-						<div class="span1"><img src="images/medication.png"></div>
 				</div>
 			</article>
 			<hr>
-<!--<div class="titles row">
-				<h2 class="span4">Glucose Test</h2>
-				<p class="span2">Take prior to Injection</p>
-				<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span>
-				<div class="progress schedule span5">
-					<div class="span1">
-						<img src="images/observation.png">
-					</div>
-					<div class="span2">
-						<img src="images/observation.png">
-					</div>
-					<div class="span1">
-						<img src="images/observation.png">
-					</div>
-				</div>
-			</div>
-			</div>
-			<div class="titles row">
-				<h2 class="span4">Injections</h2>
-				<p class="span2">Take after food</p>
-				<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span>
-				<div class="progress schedule span5">
-				<div class="span1">
-					<img src="images/treatment.png">
-				</div>
-				<div class="span2">
-					<img src="images/treatment.png">
-				</div>
-				<div class="span1">
-					<img src="images/treatment.png">
-				</div>
-				</div>
-			</div>
-			</article>
-		<hr class="soften"> -->
-<!-- 		<article class="condition">
-			<header class="titles row">
-				<h1 class="titles span3">Symptoms</h1>
-				<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
-				<h2 class="span2">Results</h2>
-				<h2 class="span4">Graph</h2>
-			</header>
-			<div class="row">
-				<h2 class="span4">{{condition}}</h2>
-				<div class="span2">
-					<i class="icon-arrow-up"></i>
-					<h2>7</h2> / 10
-				</div>
-				<div class="span6">
-
-				</div>
-			</div>
-				
-			</div>
-			<div class="row">
-				<h2 class="span4">Symptom 1</h2>
-				<div class="span2">
-					<i class="icon-arrow-up"></i>
-					<h2>2</h2>/10
-				</div>
-				<div class="span6">
-					<div class="slider"></div>
-				</div>
-
-			</div>
-		</article>
-		<hr class="soften"> -->
-		<!-- <article class="activities">
-			<div class="titles row">
-				<h1 class="span3">Activities</h1>
-				<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
-				<h2 class="span2">Results</h2>
-
-				<h2 class="span2">Status</h2>
-			</div>
-			<div class="row">
-				<h2 class="span4">Distance</h2>
-				<div class="span2">
-					<i class="icon-arrow-up"> </i><h2 class>1.2</h2> mile
-				</div>
-				<div class="progress span6">
-						<div class="bar" style="width: 60%;">
-	 				</div>
-				</div>
-			</div>
-			<div class="row">
-				<h2 class="span4">Calories</h2>
-				<div class="span2"><i class="icon-arrow-up"> </i><h2>1500</h2> cal
-				</div>
-				<div class="progress span6">
-				</div>
-			</div>
-		</article>
-		<hr class="soften">
-	 -->
-	 <article ngChange:false ng-repeat="condition in conditions">
+			<article ngChange:false ng-repeat="condition in conditions">
 			<!-- <article > -->
 				<div class="row titles">
 					<h2 class="span3">{{condition.description}}</h2>
@@ -184,68 +75,19 @@
 				</div>
 				<div class="row">
 					<form class="hidden" id="newSymp" action="http://hreader.local/timeline.json?key=userData">
-						<span class="span4">
-							<fieldset class="span4" data-role="controlgroup" data-type="horizontal">
-								<select name="select-choice-sev" id="select-choice-sev">
-								   <option ngChange:false ng-repeat="vital in vitals">{{vital.description}}</option>
-								</select>
-							</fieldset>
-						</span>
+						<h3 class="span12">Add Vital to Condition</h3>
+						<fieldset class="span4" data-role="controlgroup" data-type="horizontal">
+							<select name="select-choice-sev" id="select-choice-sev">
+							   <option ngChange:false ng-repeat="vital in vitals">{{vital.description}}</option>
+							</select>
+						</fieldset>
 						<span class="span2">
 							<a class="btn" action="http://hreader.local/timeline.json?key=userData" method="post"><i class="icon-plus"></i></a>
 							<a class="btn"  onclick="$('#newSymp').hide()" ><i class="icon-remove"></i></a>
 						</span>			
 					</form>
 				</div>
-					<div class="row">
-						<h4 class="titles span4">Symptom1*</h4>
-						<span class="span6">
-							<fieldset class="span6" data-role="controlgroup" data-type="horizontal">
-								<select class="" name="select-choice-sev" id="select-choice-sev">
-								   <option value="none">Severity</option>
-								   <option value="none">None</option>
-								   <option value="mild">Mild</option>
-								   <option value="moderate">Moderate</option>
-								   <option value="severe">Severe</option>
-								</select>
-								<select class="" name="select-choice-dur" id="select-choice-dur" >
-								   <option value="null">Duration</option>
-								   <option value="seconds">Seconds</option>
-								   <option value="minutes">Minutes</option>
-								   <option value="hours">Hours</option>
-								   <option value="days">Days</option>
-								</select>  
-							<fieldset>
-						</span>
-					</div>
-					<div class="row">
-						<h4 class="titles span4">Symptom2*</h4>
-						<span class="span6">
-							<fieldset class="span6" data-role="controlgroup" data-type="horizontal">
-								<select name="select-choice-sev" id="select-choice-sev">
-								   <option value="none">Severity</option>
-								   <option value="none">None</option>
-								   <option value="mild">Mild</option>
-								   <option value="moderate">Moderate</option>
-								   <option value="severe">Severe</option>
-								</select>
-								<select name="select-choice-dur" id="select-choice-dur" >
-								   <option value="null">Duration</option>
-								   <option value="seconds">Seconds</option>
-								   <option value="minutes">Minutes</option>
-								   <option value="hours">Hours</option>
-								   <option value="days">Days</option>
-								</select>  
-							<fieldset>
-						</span>
-					</div>
-					<div class="row">
-						<div class="span10"></div>
-						<span class="span2">
-							<input data-role="controlgroup" type="submit" value="submit">
-						</span>
-					</div>
-				</form>
+				
 				<hr>
 			</article>	
 			<article class="vitals">
@@ -253,6 +95,10 @@
 					<h2 class="titles span4">Vitals</h2>
 					<h3 class="span6">Trends</h3>
 					<h3 class="span2">Result</h3>
+				</div>
+				<div class="noData row">
+					<h3 class="span3">NO DATA</h3>
+				</div>
 				<div class="row data" ngChange:false ng-repeat="vital in vitals">
 					<span class="span4">
 						<h4>{{vital.description}}</h4>		

@@ -46,6 +46,8 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 @property (nonatomic, retain) NSNumber *displayOrder;
 @property (nonatomic, retain) NSNumber *relationship;
 @property (nonatomic, retain) NSSet *timelineLevels;
+@property (nonatomic, retain) NSSet *timelineMedications;
+@property (nonatomic, retain) NSSet *timelineRegimens;
 
 #pragma mark - helper properties
 

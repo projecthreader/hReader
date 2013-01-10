@@ -4591,6 +4591,12 @@ a.label:hover, a.badge:hover {
       color: #fff;
       background-color: #ccc; }
 
+button.hidden {
+  display: none; }
+
+ui-btn {
+  display: none; }
+
 .ui-btn-up-a {
   background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(#e6e6e6)) !important;
   background-image: -webkit-linear-gradient(white, #e6e6e6) !important;
@@ -4689,6 +4695,12 @@ hr {
 
 form input, form fieldset, form span {
   display: inline; }
+
+div.medIcon {
+  line-height: 50px !important; }
+
+fieldset {
+  line-height: 60px; }
 
 h1 {
   font-size: 60px;
@@ -4811,6 +4823,10 @@ form {
 
 [class^="icon-"], [class*=" icon-"] {
   background-image: url("../images/glyphicons-halflings.png"); }
+
+img.diagnosis {
+  position: relative;
+  top: -10px; }
 
 .graph {
   background-color: #fff;
@@ -6940,3 +6956,10 @@ header {
 li.current-date {
   padding-left: 20px;
   margin-bottom: -10px; }
+
+input[type="text"], input[type="password"], .ui-autocomplete-input, textarea, .uneditable-input {
+  height: 24px !important;
+  padding-top: 18px !important;
+  padding-bottom: 18px !important;
+  line-height: 60px;
+  margin-top: 20px; }

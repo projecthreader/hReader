@@ -24,6 +24,8 @@
 #import "HRMPatient.h"
 
 #import "IMSPasswordViewController.h"
+#import <SecureFoundation/SecureFoundation.h>
+
 
 @implementation HRAppDelegate {
     NSUInteger passcodeAttempts;
@@ -112,7 +114,7 @@
         154, 159, 150, 160, 134, 145, 128, 135, 129, 146, 135, 150, 221, 151,
         138, 159, 154, 145, '\0'
     };
-    XOR(243, path1, strlen(path1));
+    IMSXOR(243, path1, strlen(path1));
     HRDebugLog(@"Checking for %s", path1);
     struct stat s1;
     if (stat(path1, &s1) == 0) { // file exists
@@ -123,7 +125,7 @@
     char path2[] = {
         230, 188, 186, 187, 230, 171, 160, 167, 230, 186, 186, 161, 173, '\0'
     };
-    XOR(201, path2, strlen(path2));
+    IMSXOR(201, path2, strlen(path2));
     HRDebugLog(@"Checking for %s", path2);
     struct stat s2;
     if (stat(path2, &s2) == 0) { // file exists
@@ -186,8 +188,7 @@
             // update local data
             NSString *host = [hosts lastObject];
             [[HRAPIClient clientWithHost:host] patientFeed:nil];
-            //[HRMPatient performSync];
-            
+            [HRMPatient performSync];
             // push storyboard if we need to
             if ([controller isKindOfClass:[HRSplashScreenViewController class]] ||
                 [controller isKindOfClass:[HRHIPPAMessageViewController class]]) {

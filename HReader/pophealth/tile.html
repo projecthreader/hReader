@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>popHealth for hReader</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
+    <!-- jQuery Mobile -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+    <script type="text/javascript" src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+
+    <!-- Twitter Bootstrap -->
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet" />
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+
+    <!-- Applet specific -->
+    <link href="assets/stylesheets/pophealth.css" rel="stylesheet" />
+    <script type="text/javascript" src="assets/javascripts/pophealth.js"></script>
+  </head>
+
+  <body>
+    <div class="tile">
+      <div class="section-header">
+        <img class="logo" src="assets/images/pophealth_small_logo.png" />
+        <img class="pull-right align-vertical" src="assets/images/chevron.png" />
+      </div>
+
+      <div id="loading" class="hidden">
+        <h2>Loading results...</h2>
+        <div class="align-center">
+          <img src="assets/images/loading.gif" />
+        </div>
+      </div>
+
+      <div id="measures">
+        <h6>Measures:</h6>
+        <div id="failing-results" class="pophealth-result-container">
+          <div class="pophealth-slug pophealth-error-slug">FAIL</div>
+          <div class="pophealth-result">6</div>
+        </div>
+        <div id="passing-results" class="pophealth-result-container">
+          <div class="pophealth-slug pophealth-success-slug">PASS</div>
+          <div class="pophealth-result">8</div>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
