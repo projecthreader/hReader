@@ -26,6 +26,7 @@
 @dynamic severity;
 @dynamic comments;
 @dynamic patientComments;
+@dynamic userDeleted;
 
 + (HRMEntry *)instanceWithDictionary:(NSDictionary *)dictionary
                                 type:(HRMEntryType)type
