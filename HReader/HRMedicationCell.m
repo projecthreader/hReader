@@ -34,8 +34,8 @@
             [subView setHidden:YES];
         }
         
-        //show medication name with asterisk
-        [self.medicationName setAttributedText:[self strikeThroughString:[medication.desc uppercaseString]]];
+        //show medication name with strike-through
+        [self.medicationName setAttributedText:[medication getDescAttributeString]];
         [self.medicationName setHidden:NO];
         
         //show delete button as "restore"
@@ -44,7 +44,7 @@
         
     }else{
         //set textViews from medication fields
-        [self.medicationName setText:[medication.desc uppercaseString]];//set medication name
+        [self.medicationName setAttributedText:[medication getDescAttributeString]];//set medication name
         [self.commentsTextView setText:medication.comments];
         [self.quantityTextView setText:[medication.patientComments objectForKey:QUANTITY_KEY]];
         [self.doseTextView setText:[medication.patientComments objectForKey:DOSE_KEY]];
@@ -173,12 +173,6 @@
 - (void) finishEditForTextView:(UITextView *)textView{
     textView.layer.borderColor = [[UIColor whiteColor] CGColor];
     [textView setEditable:NO];
-}
-
--(NSMutableAttributedString *)strikeThroughString:(NSString *) s{
-    NSMutableAttributedString * attString = [[NSMutableAttributedString alloc] initWithString:s];
-    [attString addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInteger: NSUnderlineStyleSingle] range:NSMakeRange(0,s.length)];
-    return attString;
 }
 
 @end

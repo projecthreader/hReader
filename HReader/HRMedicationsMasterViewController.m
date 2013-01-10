@@ -92,14 +92,15 @@
     
     // medications
     {
-        NSArray *foundMedications = [patient medications];
-        NSMutableArray *medications = [NSMutableArray arrayWithCapacity:[foundMedications count]];
-        //remove user-deleted medications
-        for(HRMEntry *med in foundMedications){
-            if(!med.userDeleted.boolValue){
-                [medications addObject:med];
-            }
-        }
+        NSArray *medications = [patient medications];
+//        NSArray *foundMedications = [patient medications];
+//        NSMutableArray *medications = [NSMutableArray arrayWithCapacity:[foundMedications count]];
+//        //remove user-deleted medications
+//        for(HRMEntry *med in foundMedications){
+//            if(!med.userDeleted.boolValue){
+//                [medications addObject:med];
+//            }
+//        }
         
         NSArray *nameLabels = [self.medicationNameLabels hr_sortedArrayUsingKey:@"tag" ascending:YES];
         NSArray *dosageLabels = [self.medicationDosageLabels hr_sortedArrayUsingKey:@"tag" ascending:YES];
@@ -117,7 +118,8 @@
             // normal medication label
             else if (index < medicationsCount) {
                 HRMEntry *medication = [medications objectAtIndex:index];
-                label.text = [medication.desc sentenceCapitalizedString];
+                [label setAttributedText:[medication getDescAttributeString]];
+                //label.text = [medication.desc sentenceCapitalizedString];
             }
             
             // no medications
@@ -144,14 +146,15 @@
     
     //refills
     {
-        NSArray *foundMedications = [patient medications];
-        NSMutableArray *medications = [NSMutableArray arrayWithCapacity:[foundMedications count]];
-        //remove user-deleted medications
-        for(HRMEntry *med in foundMedications){
-            if(!med.userDeleted.boolValue){
-                [medications addObject:med];
-            }
-        }
+        NSArray *medications = [patient medications];
+//        NSArray *foundMedications = [patient medications];
+//        NSMutableArray *medications = [NSMutableArray arrayWithCapacity:[foundMedications count]];
+//        //remove user-deleted medications
+//        for(HRMEntry *med in foundMedications){
+//            if(!med.userDeleted.boolValue){
+//                [medications addObject:med];
+//            }
+//        }
         NSArray *nameLabels = [self.medicationRefillLabels hr_sortedArrayUsingKey:@"tag" ascending:YES];
         NSArray *locationLabels = [self.refillLocationLabels hr_sortedArrayUsingKey:@"tag" ascending:YES];
         NSUInteger medicationsCount = [medications count];
@@ -168,7 +171,9 @@
             // normal medication label
             else if (index < medicationsCount) {
                 HRMEntry *medication = [medications objectAtIndex:index];
-                label.text = [medication.desc sentenceCapitalizedString];
+                
+                [label setAttributedText:[medication getDescAttributeString]];
+                //label.text = [medication.desc sentenceCapitalizedString];
             }
             
             // no medications

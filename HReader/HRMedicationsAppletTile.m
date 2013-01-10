@@ -33,13 +33,14 @@
             label.text = [NSString stringWithFormat:@"%lu more…", (unsigned long)(medicationsCount - labelCount + 1)];
         }
         
-        // normal condition label
+        // normal medication label
         else if (index < medicationsCount) {
-            HRMEntry *condition = [medications objectAtIndex:index];
-            label.text = condition.desc;
+            HRMEntry *medication = [medications objectAtIndex:index];
+            [label setAttributedText:[medication getDescAttributeString]];
+            //label.text = medication.desc;
         }
         
-        // no conditions
+        // no medications
         else if (index == 0) { label.text = @"None"; }
         
         // clear the label
@@ -47,7 +48,26 @@
         
     }];
     [dosageLabels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger index, BOOL *stop) {
-        label.text = nil;
+        // this is the last label and we should show count
+        if (index == labelCount - 1 && showCountLabel) {
+            label.text = [NSString stringWithFormat:@"%lu more…", (unsigned long)(medicationsCount - labelCount + 1)];
+        }
+        
+        // normal medication label
+        else if (index < medicationsCount) {
+            HRMEntry *medication = [medications objectAtIndex:index];
+            if(medication.patientComments!=nil){
+                label.text=[medication.patientComments objectForKey:DOSE_KEY];
+            }else{
+                label.text=@"";
+            }
+        }
+        
+        // no medications
+        else if (index == 0) { label.text = @"None"; }
+        
+        // clear the label
+        else { label.text = nil; }
     }];
 }
 
