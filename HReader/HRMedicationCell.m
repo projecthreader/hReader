@@ -35,7 +35,7 @@
         }
         
         //show medication name with asterisk
-        [self.medicationName setText:[NSString stringWithFormat:@"*%@",[medication.desc uppercaseString]]];
+        [self.medicationName setAttributedText:[self strikeThroughString:[medication.desc uppercaseString]]];
         [self.medicationName setHidden:NO];
         
         //show delete button as "restore"
@@ -173,6 +173,12 @@
 - (void) finishEditForTextView:(UITextView *)textView{
     textView.layer.borderColor = [[UIColor whiteColor] CGColor];
     [textView setEditable:NO];
+}
+
+-(NSMutableAttributedString *)strikeThroughString:(NSString *) s{
+    NSMutableAttributedString * attString = [[NSMutableAttributedString alloc] initWithString:s];
+    [attString addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInteger: NSUnderlineStyleSingle] range:NSMakeRange(0,s.length)];
+    return attString;
 }
 
 @end
