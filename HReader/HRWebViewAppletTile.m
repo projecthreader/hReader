@@ -20,7 +20,7 @@
     webView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
     
     NSString *tileURL = [self.userInfo objectForKey:@"tile_url"];
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:tileURL]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:tileURL ofType:@"html"]isDirectory:NO]]];
     
     [self addSubview:webView];
 }
@@ -34,7 +34,7 @@
     webView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
     
     NSString *fullscreenURL = [self.userInfo objectForKey:@"fullscreen_url"];
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fullscreenURL]]];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:fullscreenURL ofType:@"html"]isDirectory:NO]]];
     
     [controller.view addSubview:webView];
     [sender.navigationController pushViewController:controller animated:YES];   

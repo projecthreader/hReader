@@ -1,0 +1,18 @@
+.pophealth-slug {
+  @include rounded-border;
+  display: inline;
+  font-size: 28px;
+  font-weight: 600;
+  width: 225px;
+  text-transform: uppercase;
+  line-height: 42px;
+  text-align: center;
+  position: absolute;
+  color: $white;
+  margin-left: -1px;
+  margin-top: -1px;
+}
+
+.pophealth-neutral-slug { background-color: $defaultColor; }
+.pophealth-error-slug { background-color: $errorColor; }
+.pophealth-success-slug { background: $successColor; }
