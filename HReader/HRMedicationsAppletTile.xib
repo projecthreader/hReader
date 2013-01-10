@@ -86,7 +86,6 @@
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
-						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUINumberOfLines">0</int>
 						<int key="IBUILineBreakMode">0</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription" id="832646865">
@@ -98,6 +97,7 @@
 							<double key="NSSize">12</double>
 							<int key="NSfFlags">16</int>
 						</object>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 						<double key="preferredMaxLayoutWidth">162</double>
 					</object>
 					<object class="IBUILabel" id="813080555">
@@ -191,11 +191,11 @@
 						<reference key="IBUITextColor" ref="589048782"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
-						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUINumberOfLines">0</int>
 						<int key="IBUILineBreakMode">0</int>
 						<reference key="IBUIFontDescription" ref="832646865"/>
 						<reference key="IBUIFont" ref="535996197"/>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 						<double key="preferredMaxLayoutWidth">162</double>
 					</object>
 					<object class="IBUILabel" id="148553322">
@@ -215,11 +215,11 @@
 						<reference key="IBUITextColor" ref="589048782"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
-						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUINumberOfLines">0</int>
 						<int key="IBUILineBreakMode">0</int>
 						<reference key="IBUIFontDescription" ref="832646865"/>
 						<reference key="IBUIFont" ref="535996197"/>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 						<double key="preferredMaxLayoutWidth">162</double>
 					</object>
 					<object class="IBUILabel" id="435732130">
@@ -239,11 +239,11 @@
 						<reference key="IBUITextColor" ref="589048782"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
-						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUINumberOfLines">0</int>
 						<int key="IBUILineBreakMode">0</int>
 						<reference key="IBUIFontDescription" ref="832646865"/>
 						<reference key="IBUIFont" ref="535996197"/>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 						<double key="preferredMaxLayoutWidth">162</double>
 					</object>
 					<object class="IBUILabel" id="58647606">
@@ -263,11 +263,11 @@
 						<reference key="IBUITextColor" ref="589048782"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
-						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUINumberOfLines">0</int>
 						<int key="IBUILineBreakMode">0</int>
 						<reference key="IBUIFontDescription" ref="832646865"/>
 						<reference key="IBUIFont" ref="535996197"/>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 						<double key="preferredMaxLayoutWidth">162</double>
 					</object>
 					<object class="IBUILabel" id="927073063">
@@ -287,11 +287,11 @@
 						<reference key="IBUITextColor" ref="589048782"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
-						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUINumberOfLines">0</int>
 						<int key="IBUILineBreakMode">0</int>
 						<reference key="IBUIFontDescription" ref="832646865"/>
 						<reference key="IBUIFont" ref="535996197"/>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 						<double key="preferredMaxLayoutWidth">162</double>
 					</object>
 					<object class="IBUILabel" id="427580139">
@@ -311,11 +311,11 @@
 						<reference key="IBUITextColor" ref="589048782"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
-						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUINumberOfLines">0</int>
 						<int key="IBUILineBreakMode">0</int>
 						<reference key="IBUIFontDescription" ref="832646865"/>
 						<reference key="IBUIFont" ref="535996197"/>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 						<double key="preferredMaxLayoutWidth">162</double>
 					</object>
 					<object class="IBUILabel" id="161837980">
@@ -335,11 +335,11 @@
 						<reference key="IBUITextColor" ref="589048782"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
-						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUINumberOfLines">0</int>
 						<int key="IBUILineBreakMode">0</int>
 						<reference key="IBUIFontDescription" ref="832646865"/>
 						<reference key="IBUIFont" ref="535996197"/>
+						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 						<double key="preferredMaxLayoutWidth">162</double>
 					</object>
 					<object class="IBUILabel" id="697512650">
