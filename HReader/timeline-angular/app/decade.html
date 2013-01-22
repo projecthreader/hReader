@@ -38,13 +38,13 @@
 			<article ngChange:false ng-repeat="condition in conditions">
 				<div class="row titles">
 					<h2 class="span3">{{condition.description}}</h2>
-					<span class="span1"><a class="btn" onclick="$('#newSymp-{{condition.description}}').show()"><i class="icon-plus"></i></a>
+					<span class="span1"><a class="btn" onclick="$('#newSymp-{{condition.id}}').show()"><i class="icon-plus"></i></a>
 					</span>
 					<h3 class="span6">Log</h3>
 					<h3 class="span2"></h3>
 				</div>
-				<div class="row">
-					<form class="hidden" id="newSymp-{{condition.description}}" action="http://hreader.local/timeline.json?key=userData">
+				<div class="row hidden" id="newSymp-{{condition.id}}">
+					<form action="http://hreader.local/timeline.json?key=userData">
 						<h3 class="span12">Add Vital to Condition</h3>
 						<fieldset class="span4" data-role="controlgroup" data-type="horizontal">
 							<select name="select-choice-sev" id="select-choice-sev">
@@ -53,7 +53,7 @@
 						</fieldset>
 						<span class="span2">
 							<a class="btn" action="http://hreader.local/timeline.json?key=userData" method="post"><i class="icon-plus"></i></a>
-							<a class="btn" onclick="$('#newSymp').hide()" ><i class="icon-remove"></i></a>
+							<a class="btn" onclick="$('#newSymp-{{condition.id}}').hide()" ><i class="icon-remove"></i></a>
 						</span>			
 					</form>
 				</div>
