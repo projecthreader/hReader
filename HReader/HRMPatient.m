@@ -402,6 +402,7 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
         
         // build payload
         NSDictionary *dictionary = @{
+            @"id" : [NSString stringWithFormat:@"%d", idx],
             @"description" : (description ?: [NSNull null]),
             @"date" : @([date timeIntervalSince1970]),
             @"measurement" : @{
