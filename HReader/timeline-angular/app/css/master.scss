@@ -9,58 +9,58 @@
  */
 
 // Core variables and mixins
-@import "../../../../../sass-twitter-bootstrap/lib/variables"; // Modify this for custom colors, font-sizes, etc
-@import "../../../../../sass-twitter-bootstrap/lib/mixins";
+@import "sass-bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
+@import "sass-bootstrap/mixins";
 @import "my-variables";
 
 // CSS Reset
-@import "../../../../../sass-twitter-bootstrap/lib/reset";
+@import "sass-bootstrap/reset";
 
 // Grid system and page structure
-@import "../../../../../sass-twitter-bootstrap/lib/scaffolding";
-@import "../../../../../sass-twitter-bootstrap/lib/grid";
-@import "../../../../../sass-twitter-bootstrap/lib/layouts";
+@import "sass-bootstrap/scaffolding";
+@import "sass-bootstrap/grid";
+@import "sass-bootstrap/layouts";
 
 // Base CSS
-@import "../../../../../sass-twitter-bootstrap/lib/type";
-@import "../../../../../sass-twitter-bootstrap/lib/code";
-@import "../../../../../sass-twitter-bootstrap/lib/forms";
-@import "../../../../../sass-twitter-bootstrap/lib/tables";
+@import "sass-bootstrap/type";
+@import "sass-bootstrap/code";
+@import "sass-bootstrap/forms";
+@import "sass-bootstrap/tables";
 
 // Components: common
-@import "../../../../../sass-twitter-bootstrap/lib/sprites";
-@import "../../../../../sass-twitter-bootstrap/lib/dropdowns";
-@import "../../../../../sass-twitter-bootstrap/lib/wells";
-@import "../../../../../sass-twitter-bootstrap/lib/component-animations";
-@import "../../../../../sass-twitter-bootstrap/lib/close";
+@import "sass-bootstrap/sprites";
+@import "sass-bootstrap/dropdowns";
+@import "sass-bootstrap/wells";
+@import "sass-bootstrap/component-animations";
+@import "sass-bootstrap/close";
 
 // Components: Buttons & Alerts
-@import "../../../../../sass-twitter-bootstrap/lib/buttons";
-@import "../../../../../sass-twitter-bootstrap/lib/button-groups";
-@import "../../../../../sass-twitter-bootstrap/lib/alerts"; // Note: alerts share common CSS with buttons and thus have styles in buttons
+@import "sass-bootstrap/buttons";
+@import "sass-bootstrap/button-groups";
+@import "sass-bootstrap/alerts"; // Note: alerts share common CSS with buttons and thus have styles in buttons
 
 // Components: Nav
-@import "../../../../../sass-twitter-bootstrap/lib/navs";
-@import "../../../../../sass-twitter-bootstrap/lib/navbar";
-@import "../../../../../sass-twitter-bootstrap/lib/breadcrumbs";
-@import "../../../../../sass-twitter-bootstrap/lib/pagination";
-@import "../../../../../sass-twitter-bootstrap/lib/pager";
+@import "sass-bootstrap/navs";
+@import "sass-bootstrap/navbar";
+@import "sass-bootstrap/breadcrumbs";
+@import "sass-bootstrap/pagination";
+@import "sass-bootstrap/pager";
 
 // Components: Popovers
-@import "../../../../../sass-twitter-bootstrap/lib/modals";
-@import "../../../../../sass-twitter-bootstrap/lib/tooltip";
-@import "../../../../../sass-twitter-bootstrap/lib/popovers";
+@import "sass-bootstrap/modals";
+@import "sass-bootstrap/tooltip";
+@import "sass-bootstrap/popovers";
 
 // Components: Misc
-@import "../../../../../sass-twitter-bootstrap/lib/thumbnails";
-@import "../../../../../sass-twitter-bootstrap/lib/labels-badges";
-@import "../../../../../sass-twitter-bootstrap/lib/progress-bars";
-@import "../../../../../sass-twitter-bootstrap/lib/accordion";
-@import "../../../../../sass-twitter-bootstrap/lib/carousel";
-@import "../../../../../sass-twitter-bootstrap/lib/hero-unit";
+@import "sass-bootstrap/thumbnails";
+@import "sass-bootstrap/labels-badges";
+@import "sass-bootstrap/progress-bars";
+@import "sass-bootstrap/accordion";
+@import "sass-bootstrap/carousel";
+@import "sass-bootstrap/hero-unit";
 
 // Utility classes
-@import "../../../../../sass-twitter-bootstrap/lib/utilities"; 
+@import "sass-bootstrap/utilities"; 
 // Has to be last to override when necessary
 
 @import "my-variables";
@@ -72,4 +72,3 @@
 @import "my-sparklines";
 @import "my-header";
 @import "my_inputs"
-

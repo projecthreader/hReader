@@ -132,7 +132,6 @@
 		3B8935E8162D9E0F003750B6 /* CMDActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8935DF162D9E0F003750B6 /* CMDActionSheet.m */; };
 		3B8935E9162D9E0F003750B6 /* CMDAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8935E1162D9E0F003750B6 /* CMDAlertView.m */; };
 		3B8935EB162D9E0F003750B6 /* NSArray+CMDBlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8935E5162D9E0F003750B6 /* NSArray+CMDBlocksKit.m */; };
-		3B9A757915DBE0CB00705A52 /* timeline in Resources */ = {isa = PBXBuildFile; fileRef = 3B9A757815DBE0CB00705A52 /* timeline */; };
 		3B9A758115DC040F00705A52 /* HRAppletUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9A758015DC040F00705A52 /* HRAppletUtilities.m */; };
 		3BA11FD315C0608200ABB012 /* circle-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FA215C0608200ABB012 /* circle-2.png */; };
 		3BA11FD415C0608200ABB012 /* circle-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FA315C0608200ABB012 /* circle-3.png */; };
@@ -512,7 +511,6 @@
 		3B8935E2162D9E0F003750B6 /* CMDBlocksKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDBlocksKit.h; sourceTree = "<group>"; };
 		3B8935E4162D9E0F003750B6 /* NSArray+CMDBlocksKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CMDBlocksKit.h"; sourceTree = "<group>"; };
 		3B8935E5162D9E0F003750B6 /* NSArray+CMDBlocksKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CMDBlocksKit.m"; sourceTree = "<group>"; };
-		3B9A757815DBE0CB00705A52 /* timeline */ = {isa = PBXFileReference; lastKnownFileType = folder; path = timeline; sourceTree = "<group>"; };
 		3B9A757F15DC040F00705A52 /* HRAppletUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAppletUtilities.h; sourceTree = "<group>"; };
 		3B9A758015DC040F00705A52 /* HRAppletUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAppletUtilities.m; sourceTree = "<group>"; };
 		3BA11FA215C0608200ABB012 /* circle-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-2.png"; sourceTree = "<group>"; };
@@ -1297,7 +1295,6 @@
 				941DB0B31471B32D00A96B8B /* Supporting Files */,
 				3B8D14FE157E3EB700A5B84E /* Images */,
 				3B1925A81619DDDA0024E9BD /* timeline-angular */,
-				3B9A757815DBE0CB00705A52 /* timeline */,
 			);
 			path = HReader;
 			sourceTree = "<group>";
@@ -1891,7 +1888,6 @@
 				3BA11FFB15C0608200ABB012 /* TBITrackerAppletTile.xib in Resources */,
 				3BA11FFD15C0608200ABB012 /* TBITrackerDashboard.xib in Resources */,
 				3BA11FFF15C0608200ABB012 /* TBITrackerLearn.xib in Resources */,
-				3B9A757915DBE0CB00705A52 /* timeline in Resources */,
 				D8665A3715FE705F002CD855 /* logo-swoosh.png in Resources */,
 				D8665A3A15FE708C002CD855 /* tbiTest.storyboard in Resources */,
 				D8665A50160230D5002CD855 /* buttons-pressed.png in Resources */,
