@@ -69,4 +69,7 @@
  */
 - (NSDictionary *)JSONForPatientWithIdentifier:(NSString *)identifier;
 
+//Pushes key-value pairs to the server
+-(NSDictionary *)pushParams:(NSDictionary *)paramDictionary ForPatientWithIdentifier:(NSString *)identifier;
+
 @end

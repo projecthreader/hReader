@@ -38,46 +38,46 @@
     id object = nil;
     
     // set properties
-    object = [dictionary objectForKey:@"description"];
+    object = [dictionary objectForKey:DESCRIPTION_KEY];
     if (object && [object isKindOfClass:[NSString class]]) {
         entry.desc = object;
     }
-    object = [dictionary objectForKey:@"status"];
+    object = [dictionary objectForKey:STATUS_KEY];
     if (object && [object isKindOfClass:[NSString class]]) {
         entry.status = object;
     }
-    object = [dictionary objectForKey:@"time"];
+    object = [dictionary objectForKey:TIME_KEY];
     if (object && [object isKindOfClass:[NSNumber class]]) {
         NSTimeInterval stamp = [object doubleValue];
         entry.date = [NSDate dateWithTimeIntervalSince1970:stamp];
     }
-    object = [dictionary objectForKey:@"start_time"];
+    object = [dictionary objectForKey:START_TIME_KEY];
     if (object && [object isKindOfClass:[NSNumber class]]) {
         NSTimeInterval stamp = [object doubleValue];
         entry.startDate = [NSDate dateWithTimeIntervalSince1970:stamp];
     }
-    object = [dictionary objectForKey:@"end_time"];
+    object = [dictionary objectForKey:END_TIME_KEY];
     if (object && [object isKindOfClass:[NSNumber class]]) {
         NSTimeInterval stamp = [object doubleValue];
         entry.endDate = [NSDate dateWithTimeIntervalSince1970:stamp];
     }
-    object = [dictionary objectForKey:@"codes"];
+    object = [dictionary objectForKey:CODES_KEY];
     if (object && [object isKindOfClass:[NSDictionary class]]) {
         entry.codes = object;
     }
-    object = [dictionary objectForKey:@"value"];
+    object = [dictionary objectForKey:VALUE_KEY];
     if (object && [object isKindOfClass:[NSDictionary class]]) {
         entry.value = object;
     }
-    object = [dictionary objectForKey:@"dose"];
+    object = [dictionary objectForKey:DOSE_KEY];
     if (object && [object isKindOfClass:[NSDictionary class]]) {
         entry.dose = object;
     }
-    object = [dictionary objectForKey:@"reaction"];
+    object = [dictionary objectForKey:REACTION_KEY];
     if (object && [object isKindOfClass:[NSDictionary class]]) {
         entry.reaction = object;
     }
-    object = [dictionary objectForKey:@"severity"];
+    object = [dictionary objectForKey:SEVERITY_KEY];
     if (object && [object isKindOfClass:[NSDictionary class]]) {
         entry.severity = object;
     }
@@ -171,12 +171,28 @@
     return attString;
 }
 
-//-(void) didSave{
-//    [super didSave];
+-(NSDictionary *)getAttributeDictionary{
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
+    if(self.type!=nil)[dictionary setObject:self.type forKey:@"type"];//TODO: LMD ?
+    if(self.desc!=nil)[dictionary setObject:self.desc forKey:DESCRIPTION_KEY];
+    if(self.status!=nil)[dictionary setObject:self.status forKey:STATUS_KEY];
+    if(self.date!=nil)[dictionary setObject:[NSNumber numberWithDouble:[self.date timeIntervalSince1970]]forKey:TIME_KEY];
+    if(self.startDate!=nil)[dictionary setObject:[NSNumber numberWithDouble:[self.startDate timeIntervalSince1970]]forKey:START_TIME_KEY];
+    if(self.endDate!=nil)[dictionary setObject:[NSNumber numberWithDouble:[self.endDate timeIntervalSince1970]]forKey:END_TIME_KEY];
+    if(self.codes!=nil)[dictionary setObject:self.codes forKey:CODES_KEY];
+    if(self.value!=nil)[dictionary setObject:self.value forKey:VALUE_KEY];
+    if(self.dose!=nil)[dictionary setObject:self.dose forKey:DOSE_KEY];
+    if(self.reaction!=nil)[dictionary setObject:self.reaction forKey:REACTION_KEY];
+    if(self.severity!=nil)[dictionary setObject:self.severity forKey:SEVERITY_KEY];
     
-    //TODO: LMD queue up to send to server via APIClient
+    if(self.comments!=nil)[dictionary setObject:self.comments forKey:GENERAL_COMMENTS_KEY];
+    if(self.patientComments!=nil)[dictionary setObject:self.patientComments forKey:PATIENT_COMMENTS_KEY];
+    if(self.userDeleted!=nil)[dictionary setObject:self.userDeleted forKey:USER_DELETED_KEY];
     
-//}
+    return [NSDictionary dictionaryWithDictionary:dictionary];
+    
+    //return dictionary;
+}
 
 @end

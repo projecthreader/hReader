@@ -332,6 +332,7 @@
     NSLog(@"Initializing data");
     self.medicationList = [currentPatient medications];
     
+    //TODO: LMD- push  comment deafults to server???
     for(NSUInteger i=0;i<self.medicationList.count;i++){
         HRMEntry *med = [self.medicationList objectAtIndex:i];
         if(med.comments == nil){

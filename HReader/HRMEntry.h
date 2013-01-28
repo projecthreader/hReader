@@ -18,7 +18,10 @@
 #define DOSE_KEY @"dose"
 #define REACTION_KEY @"reaction"
 #define SEVERITY_KEY @"severity"
-#define STATUS_KEY @"status"
+
+#define GENERAL_COMMENTS_KEY @"general_comments"
+#define PATIENT_COMMENTS_KEY @"patient_comments"
+#define USER_DELETED_KEY @"user_deleted"
 
 //unsupported data keys
 #define QUANTITY_KEY @"quantity"
@@ -66,5 +69,7 @@ typedef NS_ENUM(int, HRMEntryType) {
 - (DDXMLElement *)timelineXMLElement DEPRECATED_ATTRIBUTE;
 
 -(NSMutableAttributedString *)getDescAttributeString;
+
+-(NSDictionary *)getAttributeDictionary;
 
 @end

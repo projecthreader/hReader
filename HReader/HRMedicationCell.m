@@ -117,6 +117,9 @@
         NSError *error;
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }else{
+            //push medication
+            [[self.medication patient] pushEntryChange:self.medication];
         }
     }
 }
@@ -159,6 +162,9 @@
         NSError *error;
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }else{
+            //push medication
+            [[self.medication patient] pushEntryChange:self.medication];
         }
     }
 }

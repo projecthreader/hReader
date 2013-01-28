@@ -532,4 +532,28 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
     
 }
 
+//push all attributes of an entry up for this patient
+-(void) pushEntryChange: (HRMEntry *) entry{
+    
+    //send as parameters for single patient
+    NSString *host = self.host;
+    NSString *identifier = self.serverID;
+    HRAPIClient *client = [HRAPIClient clientWithHost:host];
+    
+    // Push data
+    HRDebugLog(@"Pushing to %@:%@", host, identifier);
+    //TODO: LMD Get success or fail
+    NSDictionary *pushCode = [client pushParams:[entry getAttributeDictionary] ForPatientWithIdentifier:identifier];
+    //    if (payload) {
+    //        [self populateWithContentsOfDictionary:payload];
+    //    }
+    
+    //TODO: LMD queue up to send to server via APIClient
+    
+    
+    
+    
+    //TODO: LMD: How to indicate specific entry (in addition to attributes of entry)?-> i.e. type
+}
+
 @end

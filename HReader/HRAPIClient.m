@@ -201,34 +201,37 @@ static NSMutableDictionary *allClients = nil;
 
 #pragma mark - send data
 
-- (BOOL) sendDataWithParameters:(NSDictionary *)params forPatientWithIdentifier:(NSString *)identifier{
-    BOOL success = NO;
-    // start block
-    hr_dispatch_main(^{
-        [[UIApplication sharedApplication] hr_pushNetworkOperation];
-    });
-    
-    // create request
-    NSString *path = [NSString stringWithFormat:@"/records/%@/c32/%@", identifier, identifier];
-    NSMutableURLRequest *request = [self POSTRequestWithPath:path andParameters:params];
-    
-    // run request
-    NSError *connectionError = nil;
-    NSHTTPURLResponse *response = nil;
-    //TODO: LMD discard data?
-    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&connectionError];
-    
-    success = ([response statusCode] == 200);
-    
-    // finish block
-    if(success){
+
+-(NSDictionary *)pushParams:(NSDictionary *)paramDictionary ForPatientWithIdentifier:(NSString *)identifier{
+    __block NSDictionary *dictionary = nil;
+    dispatch_sync(_requestQueue, ^{
+        
+        // start block
+        hr_dispatch_main(^{
+            [[UIApplication sharedApplication] hr_pushNetworkOperation];
+        });
+        
+        // create request
+        NSString *path = [NSString stringWithFormat:@"/records/%@/c32/%@", identifier, identifier];
+        NSMutableURLRequest *request = [self POSTRequestWithPath:path andParameters:paramDictionary];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        
+        // run request
+        NSError *connectionError = nil;
+        NSHTTPURLResponse *response = nil;
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&connectionError];
+        
+        //dictionary = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:[response statusCode]] forKey:@"code_key"]; //;
+        //        //BOOL success = (([response statusCode] == 200) && !connectionError);
+        //        // create patient
+        
+        // finish block
         hr_dispatch_main(^{
             [[UIApplication sharedApplication] hr_popNetworkOperation];
         });
-    }
-    
-    
-    return success;
+        
+    });
+    return dictionary;
 }
 
 #pragma mark - build requests
@@ -286,7 +289,6 @@ static NSMutableDictionary *allClients = nil;
 }
 
 - (NSMutableURLRequest *)POSTRequestWithPath:(NSString *)path andParameters:(NSDictionary *)params {
-    
     // log initial statement
     HRDebugLog(@"Building request");
     
@@ -321,13 +323,24 @@ static NSMutableDictionary *allClients = nil;
         });
     }
     
+    
     // build request parameters
     NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:params];
     [parameters setObject:_accessToken forKey:@"access_token"];
+
+    NSDictionary *allParameters = [NSDictionary dictionaryWithDictionary:parameters];
+    NSString *query = @"";//[HRAPIClient queryStringWithParameters:parameters];
     
-    NSString *query = [HRAPIClient queryStringWithParameters:parameters];
-    NSData *post = [query dataUsingEncoding:NSUnicodeStringEncoding allowLossyConversion:YES];//LMD TODO: Change to ascii?
-    NSString *URLString = [NSString stringWithFormat:@"https://%@%@", _host, path];//TODO: LMD other post URL changes?
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:[allParameters count]];
+    [allParameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        [array addObject:[NSString stringWithFormat:@"%@=%@", key, obj]];
+    }];
+    query = [array componentsJoinedByString:@"&"];
+    HRDebugLog(@"new query string: %@",query);//TODO: LMD readd hr encoding
+    
+    
+    NSData *post = [query dataUsingEncoding:NSUnicodeStringEncoding allowLossyConversion:YES];
+    NSString *URLString = [NSString stringWithFormat:@"https://%@%@", _host, path];
     NSURL *URL = [NSURL URLWithString:URLString];
     
     // build request
@@ -337,9 +350,6 @@ static NSMutableDictionary *allClients = nil;
     [request setValue:[NSString stringWithFormat:@"%d", [post length]] forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:post];
-    
-    
-    
     
     // return
     return request;
