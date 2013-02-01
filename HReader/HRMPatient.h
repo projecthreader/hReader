@@ -158,8 +158,8 @@ extern NSString * const HRMPatientSyncStatusDidChangeNotification;
 - (UIImage *)patientImage;
 - (NSURL *)C32HTMLURL;
 
-//Pushes an individual entry to the server
--(void) pushEntryChange: (HRMEntry *)entry;
+//Pushes an individual entry's comments to the server
+-(void) pushCommentsForEntry: (HRMEntry *)entry;
 
 @end
 

@@ -119,7 +119,7 @@
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }else{
             //push medication
-            [[self.medication patient] pushEntryChange:self.medication];
+            [[self.medication patient] pushCommentsForEntry:self.medication];
         }
     }
 }
@@ -164,7 +164,7 @@
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }else{
             //push medication
-            [[self.medication patient] pushEntryChange:self.medication];
+            [[self.medication patient] pushCommentsForEntry:self.medication];
         }
     }
 }

@@ -12,6 +12,7 @@
 
 @implementation HRMEntry
 
+@dynamic entryID;
 @dynamic codes;
 @dynamic dose;
 @dynamic date;
@@ -38,6 +39,10 @@
     id object = nil;
     
     // set properties
+    object = [dictionary objectForKey:ID_KEY];
+    if (object && [object isKindOfClass:[NSString class]]) {
+        entry.entryID = object;
+    }
     object = [dictionary objectForKey:DESCRIPTION_KEY];
     if (object && [object isKindOfClass:[NSString class]]) {
         entry.desc = object;

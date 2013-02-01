@@ -8,6 +8,7 @@
 
 #import "CMDManagedObject.h"
 
+#define ID_KEY @"_id"
 #define DESCRIPTION_KEY @"description"
 #define STATUS_KEY @"status"
 #define TIME_KEY @"time"
@@ -45,6 +46,7 @@ typedef NS_ENUM(int, HRMEntryType) {
 
 @interface HRMEntry : CMDManagedObject
 
+@property (nonatomic, retain) NSString *entryID;
 @property (nonatomic, retain) NSString *desc;
 @property (nonatomic, retain) NSString *status;
 @property (nonatomic, retain) NSString *reaction;

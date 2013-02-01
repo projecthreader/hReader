@@ -533,27 +533,60 @@ NSString * const HRMPatientSyncStatusDidChangeNotification = @"HRMPatientSyncSta
 }
 
 //push all attributes of an entry up for this patient
--(void) pushEntryChange: (HRMEntry *) entry{
+-(void) pushCommentsForEntry: (HRMEntry *) entry{
+    NSString *attributeType = @"comments";
+    //comments attribute keys
+    NSString *authorKey = @"author";
+    NSString *textKey = @"text";
+    NSString *categoryKey = @"category";
+    NSString *author = self.serverID;//TODO: LMD temp just patient name-> change to user
     
     //send as parameters for single patient
     NSString *host = self.host;
     NSString *identifier = self.serverID;
     HRAPIClient *client = [HRAPIClient clientWithHost:host];
     
+    NSDictionary *comments = [entry patientComments];
+    //For each comment, create comments attribute dictionary, send to host
+    //attribute type (initially comments), author,
+    //category, text(value).
+    for(id key in comments){
+        
+        NSString *category = key;
+        NSString *text = [comments objectForKey:key];
+        //check to see if a comment exists for this key before pushing
+        if(text){
+            NSDictionary *attributeDictionary = [NSDictionary dictionaryWithObjectsAndKeys:author,authorKey,text,textKey,category,categoryKey, nil];
+            
+            // Push data
+            HRDebugLog(@"Pushing %@ comment to %@:%@", category, host, identifier);
+            //TODO: LMD Get success or fail
+            BOOL success = [client pushAttribute:attributeDictionary withType:attributeType ToEntry:entry ForPatientWithIdentifier:identifier];
+        }
+    }
+    //general comment
+    NSString *category = @"general";
+    NSString *text = [entry comments];
+    //check to see if a comment exists for this key before pushing
+    if(text){
+        NSDictionary *attributeDictionary = [NSDictionary dictionaryWithObjectsAndKeys:author,authorKey,text,textKey,category,categoryKey, nil];
+        
+        // Push data
+        HRDebugLog(@"Pushing %@ comment to %@:%@", category, host, identifier);
+        //TODO: LMD Get success or fail
+        BOOL success = [client pushAttribute:attributeDictionary withType:attributeType ToEntry:entry ForPatientWithIdentifier:identifier];
+    }
+    //userDeleted
+    category = @"userDeleted";
+    text = ([entry userDeleted] ? @"true" : @"false");
+    //check to see if a comment exists for this key before pushing
+    NSDictionary *attributeDictionary = [NSDictionary dictionaryWithObjectsAndKeys:author,authorKey,text,textKey,category,categoryKey, nil];
+    
     // Push data
-    HRDebugLog(@"Pushing to %@:%@", host, identifier);
+    HRDebugLog(@"Pushing %@ comment to %@:%@", category, host, identifier);
     //TODO: LMD Get success or fail
-    NSDictionary *pushCode = [client pushParams:[entry getAttributeDictionary] ForPatientWithIdentifier:identifier];
-    //    if (payload) {
-    //        [self populateWithContentsOfDictionary:payload];
-    //    }
+    BOOL success = [client pushAttribute:attributeDictionary withType:attributeType ToEntry:entry ForPatientWithIdentifier:identifier];
     
-    //TODO: LMD queue up to send to server via APIClient
-    
-    
-    
-    
-    //TODO: LMD: How to indicate specific entry (in addition to attributes of entry)?-> i.e. type
 }
 
 @end

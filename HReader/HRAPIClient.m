@@ -168,6 +168,7 @@ static NSMutableDictionary *allClients = nil;
         // create patient
         NSError *JSONError = nil;
         if (data && [response statusCode] == 200) {
+            //HRDebugLog(@"JSON data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
             dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&JSONError];
         }
         
@@ -201,10 +202,61 @@ static NSMutableDictionary *allClients = nil;
 
 #pragma mark - send data
 
+-(NSString *)JSONfromDictionary:(NSDictionary *)dictionary{
+    NSMutableString *json = [NSMutableString stringWithCapacity:30];
+    [json appendString:@"{"];
+    for(id key in dictionary){
+        [json appendString:@"\""];
+        [json appendString:key];
+        [json appendString:@"\":\""];
+        [json appendString:[dictionary objectForKey:key]];
+        [json appendString:@"\""];
+    }
+    [json appendString:@"}"];
+    return [NSString stringWithString:json];
+}
 
--(NSDictionary *)pushParams:(NSDictionary *)paramDictionary ForPatientWithIdentifier:(NSString *)identifier{
-    __block NSDictionary *dictionary = nil;
+//Pushes new attribute to server
+//attributeDictionary must have attribute type (initially comments), author,
+//category, text(value). (Call multiple times- once for each part of comment dictionary changed)
+//Returns true if the attribute was successfully pushed/put
+-(BOOL)pushAttribute:(NSDictionary *)attributeDictionary withType:(NSString *)attributeType ToEntry: (HRMEntry *)entry ForPatientWithIdentifier:(NSString *)identifier{
+    __block BOOL success = NO;
     dispatch_sync(_requestQueue, ^{
+        // get entry attribute- TODO: LMD use real id and entry type
+        NSString *entryType;// = [entry type];//@"medications";
+        switch([[entry type] integerValue])
+        {
+            case HRMEntryTypeAllergy:
+                entryType = @"allergies";
+                break;
+            case HRMEntryTypeCondition:
+                entryType = @"conditions";
+                break;
+            case HRMEntryTypeResult:
+                entryType = @"results";
+                break;
+            case HRMEntryTypeEncounter:
+                entryType = @"encounters";
+                break;
+            case HRMEntryTypeVitalSign:
+                entryType = @"vitals";
+                break;
+            case HRMEntryTypeImmunization:
+                entryType = @"immunizations";
+                break;
+            case HRMEntryTypeMedication:
+                entryType = @"medications";
+                break;
+            case HRMEntryTypeProcedure:
+                entryType = @"procedures";
+                break;
+            default:
+                entryType = @"";
+                break;
+        }
+        
+        NSString *entryID = [entry entryID];//@"1";
         
         // start block
         hr_dispatch_main(^{
@@ -212,18 +264,20 @@ static NSMutableDictionary *allClients = nil;
         });
         
         // create request
-        NSString *path = [NSString stringWithFormat:@"/records/%@/c32/%@", identifier, identifier];
-        NSMutableURLRequest *request = [self POSTRequestWithPath:path andParameters:paramDictionary];
-        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        NSString *path = [NSString stringWithFormat:@"/records/%@/%@/%@/%@", identifier, entryType,entryID,attributeType];
+         HRDebugLog(@"Request path: %@",path);
+        NSString *content = [self JSONfromDictionary:attributeDictionary];
+        
+        NSMutableURLRequest *request = [self POSTRequestWithPath:path andContent:content];
+        
+        //[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         
         // run request
         NSError *connectionError = nil;
         NSHTTPURLResponse *response = nil;
-        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&connectionError];
+        [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&connectionError];
         
-        //dictionary = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:[response statusCode]] forKey:@"code_key"]; //;
-        //        //BOOL success = (([response statusCode] == 200) && !connectionError);
-        //        // create patient
+        success = (([response statusCode] == 200) && !connectionError);
         
         // finish block
         hr_dispatch_main(^{
@@ -231,8 +285,40 @@ static NSMutableDictionary *allClients = nil;
         });
         
     });
-    return dictionary;
+    return success;
 }
+
+//-(NSDictionary *)pushParams:(NSDictionary *)paramDictionary ForPatientWithIdentifier:(NSString *)identifier{
+//    __block NSDictionary *dictionary = nil;
+//    dispatch_sync(_requestQueue, ^{
+//        
+//        // start block
+//        hr_dispatch_main(^{
+//            [[UIApplication sharedApplication] hr_pushNetworkOperation];
+//        });
+//        
+//        // create request
+//        NSString *path = [NSString stringWithFormat:@"/records/%@/c32/%@", identifier, identifier];
+//        NSMutableURLRequest *request = [self POSTRequestWithPath:path andParameters:paramDictionary];
+//        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//        
+//        // run request
+//        NSError *connectionError = nil;
+//        NSHTTPURLResponse *response = nil;
+//        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&connectionError];
+//        
+//        //dictionary = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:[response statusCode]] forKey:@"code_key"]; //;
+//        //        //BOOL success = (([response statusCode] == 200) && !connectionError);
+//        //        // create patient
+//        
+//        // finish block
+//        hr_dispatch_main(^{
+//            [[UIApplication sharedApplication] hr_popNetworkOperation];
+//        });
+//        
+//    });
+//    return dictionary;
+//}
 
 #pragma mark - build requests
 
@@ -288,7 +374,7 @@ static NSMutableDictionary *allClients = nil;
     
 }
 
-- (NSMutableURLRequest *)POSTRequestWithPath:(NSString *)path andParameters:(NSDictionary *)params {
+- (NSMutableURLRequest *)POSTRequestWithPath:(NSString *)path andContent:(NSString *)content {
     // log initial statement
     HRDebugLog(@"Building request");
     
@@ -325,21 +411,21 @@ static NSMutableDictionary *allClients = nil;
     
     
     // build request parameters
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:params];
-    [parameters setObject:_accessToken forKey:@"access_token"];
-
-    NSDictionary *allParameters = [NSDictionary dictionaryWithDictionary:parameters];
-    NSString *query = @"";//[HRAPIClient queryStringWithParameters:parameters];
-    
-    NSMutableArray *array = [NSMutableArray arrayWithCapacity:[allParameters count]];
-    [allParameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        [array addObject:[NSString stringWithFormat:@"%@=%@", key, obj]];
-    }];
-    query = [array componentsJoinedByString:@"&"];
-    HRDebugLog(@"new query string: %@",query);//TODO: LMD readd hr encoding
-    
-    
-    NSData *post = [query dataUsingEncoding:NSUnicodeStringEncoding allowLossyConversion:YES];
+//    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:params];
+//    [parameters setObject:_accessToken forKey:@"access_token"];
+//
+//    NSDictionary *allParameters = [NSDictionary dictionaryWithDictionary:parameters];
+//    NSString *query = @"";//[HRAPIClient queryStringWithParameters:parameters];
+//    
+//    NSMutableArray *array = [NSMutableArray arrayWithCapacity:[allParameters count]];
+//    [allParameters enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+//        [array addObject:[NSString stringWithFormat:@"%@=%@", key, obj]];
+//    }];
+//    query = [array componentsJoinedByString:@"&"];
+//    HRDebugLog(@"new query string: %@",query);//TODO: LMD readd hr encoding
+//    
+//
+    NSData *post = [content dataUsingEncoding:NSUnicodeStringEncoding allowLossyConversion:YES];
     NSString *URLString = [NSString stringWithFormat:@"https://%@%@", _host, path];
     NSURL *URL = [NSURL URLWithString:URLString];
     
@@ -348,7 +434,8 @@ static NSMutableDictionary *allClients = nil;
     [request setHTTPShouldHandleCookies:NO];
     [request setHTTPMethod:@"POST"];
     [request setValue:[NSString stringWithFormat:@"%d", [post length]] forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"Bearer %@",_accessToken] forHTTPHeaderField:@"authorization"];//TODO: LMD try capital?
     [request setHTTPBody:post];
     
     // return

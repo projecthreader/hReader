@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HRMEntry.h"
 
 @interface HRAPIClient : NSObject
 
@@ -69,7 +70,9 @@
  */
 - (NSDictionary *)JSONForPatientWithIdentifier:(NSString *)identifier;
 
-//Pushes key-value pairs to the server
--(NSDictionary *)pushParams:(NSDictionary *)paramDictionary ForPatientWithIdentifier:(NSString *)identifier;
+//Pushes new attribute to server
+//attributeDictionary must have author, category, text(value). 
+//Returns true if the attribute was successfully pushed/put
+-(BOOL)pushAttribute:(NSDictionary *)attributeDictionary withType:(NSString *)attributeType ToEntry: (HRMEntry *)entry ForPatientWithIdentifier:(NSString *)identifier;
 
 @end
