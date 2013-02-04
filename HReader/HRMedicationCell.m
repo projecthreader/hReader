@@ -43,13 +43,11 @@
         [self.deleteButton setHidden:NO];
         
     }else{
+        
         //set textViews from medication fields
         [self.medicationName setAttributedText:[medication getDescAttributeString]];//set medication name
-        [self.commentsTextView setText:medication.comments];
-        [self.quantityTextView setText:[medication.patientComments objectForKey:QUANTITY_KEY]];
-        [self.doseTextView setText:[medication.patientComments objectForKey:DOSE_KEY]];
-        [self.directionsTextView setText:[medication.patientComments objectForKey:DIRECTIONS_KEY]];
-        [self.prescriberTextView setText:[medication.patientComments objectForKey:PRESCRIBER_KEY]];
+        
+        [self switchCommentsTextViewsFrom:@"" To:@"-"];
         
         //set all content subviews to not hidden
         for(UIView *subView in self.contentView.subviews){
@@ -60,6 +58,30 @@
         [self.deleteButton setTitle:@"Delete" forState:UIControlStateNormal];
         [self.deleteButton setHidden:YES];
     }
+}
+
+- (void)switchCommentsTextViewsFrom:(NSString *)findString To:(NSString *)replaceString{
+    NSString *viewText;
+    viewText = self.medication.comments;
+    //check for no comment- add dash for viewing purposes
+    if([viewText isEqualToString:findString]) viewText = replaceString;
+    [self.commentsTextView setText:viewText];
+    
+    viewText = [self.medication.patientComments objectForKey:QUANTITY_KEY];
+    if([viewText isEqualToString:findString]) viewText = replaceString;
+    [self.quantityTextView setText:viewText];
+    
+    viewText = [self.medication.patientComments objectForKey:DOSE_KEY];
+    if([viewText isEqualToString:findString]) viewText = replaceString;
+    [self.doseTextView setText:viewText];
+    
+    viewText = [self.medication.patientComments objectForKey:DIRECTIONS_KEY];
+    if([viewText isEqualToString:findString]) viewText = replaceString;
+    [self.directionsTextView setText:viewText];
+    
+    viewText = [self.medication.patientComments objectForKey:PRESCRIBER_KEY];
+    if([viewText isEqualToString:findString]) viewText = replaceString;
+    [self.prescriberTextView setText:viewText];
 }
 
 /*
@@ -136,6 +158,7 @@
         [self setEditStyleForTextView:self.prescriberTextView];
         [self setEditStyleForTextView:self.commentsTextView];
         [self.deleteButton setHidden:NO];
+        [self switchCommentsTextViewsFrom:@"-" To:@""];
     }
     else {
         //change views to noneditable
@@ -166,6 +189,8 @@
             //push medication
             [[self.medication patient] pushCommentsForEntry:self.medication];
         }
+        
+        [self switchCommentsTextViewsFrom:@"" To:@"-"];
     }
 }
 

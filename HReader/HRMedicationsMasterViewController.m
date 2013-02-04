@@ -332,11 +332,12 @@
     NSLog(@"Initializing data");
     self.medicationList = [currentPatient medications];
     
-    //TODO: LMD- push  comment deafults to server???
+    //TODO: LMD- push  comment deafults to server??? - change to empty string?
+    //(How not to save default appearance?)
     for(NSUInteger i=0;i<self.medicationList.count;i++){
         HRMEntry *med = [self.medicationList objectAtIndex:i];
         if(med.comments == nil){
-            med.comments = @"-";
+            med.comments = @"";
             
             NSManagedObjectContext *context = [med managedObjectContext];
             NSError *error;
@@ -348,14 +349,14 @@
         if(med.patientComments == nil){
             NSLog(@"patient comments for entry %d are nil, setting to dashes", i);
             //default dose comment from entry's dose information
-            NSString *doseString = @"-";
+            NSString *doseString = @"";
             //TODO: LMD how to get/properly format dose information?
             if(med.dose.description != nil){
                 doseString = med.dose.description;
             }
             
             NSArray *keys = [NSArray arrayWithObjects:QUANTITY_KEY, DOSE_KEY, DIRECTIONS_KEY, PRESCRIBER_KEY, nil];
-            NSArray *objects = [NSArray arrayWithObjects:@"-", doseString, @"-", @"-", nil];
+            NSArray *objects = [NSArray arrayWithObjects:@"", doseString, @"", @"", nil];
             [med setPatientComments:[NSDictionary dictionaryWithObjects:objects forKeys:keys]];
             
             NSManagedObjectContext *context = [med managedObjectContext];
