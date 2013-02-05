@@ -1,0 +1,46 @@
+
+<!doctype html>
+<html lang="en" ng-app id="top">
+	<head>
+		<title ng-bind-template="{{query}}"></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" href="css/master.css" type="text/css"/> 
+		<script type="text/javascript" src="lib/jquery/jquery-1.8.1.js"></script>
+	    <script type="text/javascript" src="lib/bootstrap/bootstrap.js"></script>
+	    <script src="js/controllers.js"></script>
+	   	<script src="lib/angular/angular.js"></script> 
+		<script src="lib/bootstrap/bootstrap.min.js"></script>
+	    
+	    <script src="js/directives.js"></script>
+	    <script src="http://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.1.0-SNAPSHOT.js"></script>
+
+ 		
+<!--  		Elements for the demo of the popover -->
+
+	    <script src="js/tooltip.js"></script>
+
+	    <link rel="author" href="https://github.com/angular-ui/bootstrap/graphs/contributors">
+	</head>
+	<body class="ng-cloak" ng-controller="TooltipDemo">
+
+
+	  <div class="well">
+	  	<p rel="popover" data-content="This would be something that pops up" data-original-title="<a>touch me</a>">This is what should be said:</p>
+	    <div>Dynamic Tooltip Text: <input type="text" ng-model="dynamicTooltipText"></div>
+	    <div>Dynamic Tooltip Popup Text: <input type="text" ng-model="dynamicTooltip"></div>
+	    <p>
+	      <a><span tooltip="{{dynamicTooltip}}">{{dynamicTooltipText}}</span></a>,
+	      
+	      <a><span tooltip-placement="left" tooltip="On the Left!">left</span></a>
+	      <a><span tooltip-placement="right" tooltip="On the Right!">right</span></a> 
+	    
+	      <a><span tooltip-placement="bottom" tooltip="On the Bottom!">bottom</span></a> 
+
+	      <a><span tooltip-animation="true" tooltip="I fade in and out!">fading</span></a> 
+	     
+	    </p>
+	</div>
+		
+	</body>
+</html>
