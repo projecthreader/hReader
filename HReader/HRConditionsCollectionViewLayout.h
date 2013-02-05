@@ -1,5 +1,5 @@
 //
-//  HRMedicationsCollectionViewLayout.h
+//  HRConditionsCollectionViewLayout.h
 //  HReader
 //
 //  Created by DiCristofaro, Lauren M on 12/12/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRMedicationsCollectionViewLayout : UICollectionViewFlowLayout
+@interface HRConditionsCollectionViewLayout : UICollectionViewFlowLayout
 
 @end

@@ -211,6 +211,10 @@
 		3BFBEE1A1534BEAA009EBA2D /* HRAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */; };
 		3BFBEE1C1534BF32009EBA2D /* HReaderApplets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */; };
 		3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2D14DAE5910037738D /* Icon-72.png */; };
+		493062E516C033A300744044 /* HRConditionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 493062DF16C033A300744044 /* HRConditionCell.m */; };
+		493062E616C033A300744044 /* HRConditions_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 493062E016C033A300744044 /* HRConditions_iPad.storyboard */; };
+		493062E816C033A300744044 /* HRConditionsMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 493062E416C033A300744044 /* HRConditionsMasterViewController.m */; };
+		493062EA16C0376000744044 /* HRConditionsCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 493062E916C0376000744044 /* HRConditionsCollectionViewLayout.m */; };
 		49539E00165A9937004CB11B /* HRMedicationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539DFC165A9937004CB11B /* HRMedicationCell.m */; };
 		49539E01165A9937004CB11B /* HRMedications_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49539DFD165A9937004CB11B /* HRMedications_iPad.storyboard */; };
 		49539E02165A9937004CB11B /* HRMedicationsMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539DFF165A9937004CB11B /* HRMedicationsMasterViewController.m */; };
@@ -628,6 +632,13 @@
 		3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAppletTile.m; sourceTree = "<group>"; };
 		3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HReaderApplets.plist; sourceTree = "<group>"; };
 		3BFE7A2D14DAE5910037738D /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		493062DE16C033A300744044 /* HRConditionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRConditionCell.h; sourceTree = "<group>"; };
+		493062DF16C033A300744044 /* HRConditionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRConditionCell.m; sourceTree = "<group>"; };
+		493062E016C033A300744044 /* HRConditions_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRConditions_iPad.storyboard; sourceTree = "<group>"; };
+		493062E116C033A300744044 /* HRConditionsCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRConditionsCollectionViewLayout.h; sourceTree = "<group>"; };
+		493062E316C033A300744044 /* HRConditionsMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRConditionsMasterViewController.h; sourceTree = "<group>"; };
+		493062E416C033A300744044 /* HRConditionsMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRConditionsMasterViewController.m; sourceTree = "<group>"; };
+		493062E916C0376000744044 /* HRConditionsCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRConditionsCollectionViewLayout.m; sourceTree = "<group>"; };
 		49539DFB165A9937004CB11B /* HRMedicationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMedicationCell.h; sourceTree = "<group>"; };
 		49539DFC165A9937004CB11B /* HRMedicationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMedicationCell.m; sourceTree = "<group>"; };
 		49539DFD165A9937004CB11B /* HRMedications_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRMedications_iPad.storyboard; sourceTree = "<group>"; };
@@ -1159,6 +1170,7 @@
 		3BCAC50415404AC8007C874B /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				493062DD16C0336500744044 /* Conditions */,
 				3B001D4015751CC700762FB0 /* Initial Setup */,
 				DD8BD9EB148D2B270090F729 /* Root View */,
 				94BB032E149BB398009B2FCC /* Passcode Warning */,
@@ -1227,6 +1239,20 @@
 				3B48FA3216541D4E0071F707 /* applets-ts.plist */,
 			);
 			name = "Patient Data";
+			sourceTree = "<group>";
+		};
+		493062DD16C0336500744044 /* Conditions */ = {
+			isa = PBXGroup;
+			children = (
+				493062E916C0376000744044 /* HRConditionsCollectionViewLayout.m */,
+				493062DE16C033A300744044 /* HRConditionCell.h */,
+				493062DF16C033A300744044 /* HRConditionCell.m */,
+				493062E016C033A300744044 /* HRConditions_iPad.storyboard */,
+				493062E116C033A300744044 /* HRConditionsCollectionViewLayout.h */,
+				493062E316C033A300744044 /* HRConditionsMasterViewController.h */,
+				493062E416C033A300744044 /* HRConditionsMasterViewController.m */,
+			);
+			name = Conditions;
 			sourceTree = "<group>";
 		};
 		49539DFA165A98D8004CB11B /* HRMedicationsApp */ = {
@@ -1920,6 +1946,7 @@
 				3BA73393168C9732005ABFC9 /* IMSPassword.bundle in Resources */,
 				3BA73394168C9732005ABFC9 /* IMSPasswordStoryboard_iPad.storyboard in Resources */,
 				3BA73395168C9732005ABFC9 /* IMSPasswordStoryboard_iPhone.storyboard in Resources */,
+				493062E616C033A300744044 /* HRConditions_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2043,6 +2070,9 @@
 				3BA73396168C9732005ABFC9 /* IMSPasswordViewController.m in Sources */,
 				3BA7339C168C9B5D005ABFC9 /* HRPasswordViewController.m in Sources */,
 				24584D8C169F41C500F69B1A /* HRPopHealthAppletTile.m in Sources */,
+				493062E516C033A300744044 /* HRConditionCell.m in Sources */,
+				493062E816C033A300744044 /* HRConditionsMasterViewController.m in Sources */,
+				493062EA16C0376000744044 /* HRConditionsCollectionViewLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

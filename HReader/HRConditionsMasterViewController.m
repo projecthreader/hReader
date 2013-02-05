@@ -1,5 +1,5 @@
 //
-//  HRMedicationsMasterViewController.m
+//  HRConditionsMasterViewController.m
 //  HReader
 //
 //  Created by DiCristofaro, Lauren M on 11/13/12.
@@ -8,7 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "HRMedicationsMasterViewController.h"
+#import "HRConditionsMasterViewController.h"
 #import "HRAppletConfigurationViewController.h"
 #import "HRPeoplePickerViewController.h"
 #import "HRAppletTile.h"
@@ -16,12 +16,12 @@
 #import "HRMPatient.h"
 #import "HRMEntry.h"
 #import "HRPanelViewController.h"
-#import "HRMedicationCell.h"
+#import "HRConditionCell.h"
 #import "HRPeoplePickerViewController_private.h"
 
 #import "NSString+SentenceCapitalization.h"
 
-@implementation HRMedicationsMasterViewController {
+@implementation HRConditionsMasterViewController {
     id _keyboardWillShowObserver;
     id _keyboardWillHideObserver;
 }
@@ -35,13 +35,13 @@
         
         //add keyboard show observer
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-        __weak HRMedicationsMasterViewController *weakSelf = self;
+        __weak HRConditionsMasterViewController *weakSelf = self;
         [center
          addObserverForName:UIKeyboardWillShowNotification
          object:nil
          queue:[NSOperationQueue mainQueue]
          usingBlock:^(NSNotification *notification) {
-             HRMedicationsMasterViewController *strongSelf = weakSelf;
+             HRConditionsMasterViewController *strongSelf = weakSelf;
              if (strongSelf) {
                  [strongSelf keyboardWillShow:notification];
              }
@@ -53,7 +53,7 @@
          object:nil
          queue:[NSOperationQueue mainQueue]
          usingBlock:^(NSNotification *notification) {
-             HRMedicationsMasterViewController *strongSelf = weakSelf;
+             HRConditionsMasterViewController *strongSelf = weakSelf;
              if (strongSelf) {
                  [strongSelf keyboardWillHide:notification];
              }
@@ -231,7 +231,7 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    HRMedicationCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MedicationCellReuseID" forIndexPath:indexPath];
+    HRConditionCell *cell = [collectionView  dequeueReusableCellWithReuseIdentifier:@"MedicationCellReuseID" forIndexPath:indexPath];
     
     [cell setMedication:[self.medicationList objectAtIndex:indexPath.item]];
 

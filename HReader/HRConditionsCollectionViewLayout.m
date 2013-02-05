@@ -1,14 +1,14 @@
 //
-//  HRMedicationsCollectionViewLayout.m
+//  HRConditionsCollectionViewLayout.m
 //  HReader
 //
 //  Created by DiCristofaro, Lauren M on 12/12/12.
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
-#import "HRMedicationsCollectionViewLayout.h"
+#import "HRConditionsCollectionViewLayout.h"
 
-@implementation HRMedicationsCollectionViewLayout
+@implementation HRConditionsCollectionViewLayout
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
     NSArray *attributes = [super layoutAttributesForElementsInRect:rect];
     NSMutableArray *newAttributes = [NSMutableArray arrayWithCapacity:attributes.count];

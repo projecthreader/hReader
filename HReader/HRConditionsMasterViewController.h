@@ -1,5 +1,5 @@
 //
-//  HRMedicationsMasterViewController.h
+//  HRConditionsMasterViewController.h
 //  HReader
 //
 //  Created by DiCristofaro, Lauren M on 11/13/12.
@@ -8,7 +8,7 @@
 
 #import "HRContentViewController.h"
 
-@interface HRMedicationsMasterViewController : HRContentViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface HRConditionsMasterViewController : HRContentViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
 // container views
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;

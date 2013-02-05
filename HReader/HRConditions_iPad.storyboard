@@ -594,7 +594,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HRMedicationsMasterViewController.h"/>
             <relationships>
                 <relationship kind="action" name="currentMedicationsEdit:"/>
-                <relationship kind="action" name="setEditMode:" candidateClass="UIButton"/>
                 <relationship kind="action" name="upcomingRefillsEdit:"/>
                 <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="currentMedicationsEditButton" candidateClass="UIButton"/>

@@ -1,5 +1,5 @@
 //
-//  HRMedicationCell.h
+//  HRConditionCell.h
 //  HReader
 //
 //  Created by DiCristofaro, Lauren M on 11/13/12.
@@ -10,7 +10,7 @@
 
 @class HRMEntry;
 
-@interface HRMedicationCell : UICollectionViewCell
+@interface HRConditionCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *medicationName;
 @property (weak, nonatomic) IBOutlet UITextView *quantityTextView;
 @property (weak, nonatomic) IBOutlet UITextView *doseTextView;

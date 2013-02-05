@@ -1,5 +1,5 @@
 //
-//  HRMedicationCell.m
+//  HRConditionCell.m
 //  HReader
 //
 //  Created by DiCristofaro, Lauren M on 11/13/12.
@@ -7,14 +7,14 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "HRMedicationCell.h"
+#import "HRConditionCell.h"
 #import "HRPeoplePickerViewController_private.h"
 #import "HRMPatient.h" 
 #import "HRMEntry.h"
 #import "HRAppDelegate.h"
 
 
-@implementation HRMedicationCell
+@implementation HRConditionCell
 
 - (id)initWithFrame:(CGRect)frame
 {

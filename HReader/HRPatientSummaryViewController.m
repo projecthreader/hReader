@@ -16,6 +16,7 @@
 #import "HRMPatient.h"
 #import "HRMEntry.h"
 #import "HRPanelViewController.h"
+#import "HRConditionsMasterViewController.h"
 
 #import "NSString+SentenceCapitalization.h"
 
@@ -313,18 +314,10 @@
 
 - (void)conditionsContainerViewTap:(UITapGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateRecognized) {
-        HRMPatient *patient = [(id)self.panelViewController.leftAccessoryViewController selectedPatient];
-        NSString *imageName = [NSString stringWithFormat:@"%@-condition-full", [patient initials]];
-        UIImage *image = [UIImage imageNamed:imageName];
-        if (image) {
-            UIViewController *controller = [[UIViewController alloc] init];
-            controller.title = @"Conditions";
-            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-            imageView.frame = controller.view.bounds;
-            imageView.autoresizingMask = (UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
-            [controller.view addSubview:imageView];
-            [self.navigationController pushViewController:controller animated:YES];   
-        }
+        UIStoryboard *conditionsStoryboard = [UIStoryboard storyboardWithName:@"HRConditions_iPad" bundle:nil];
+        HRConditionsMasterViewController *controller = [conditionsStoryboard instantiateInitialViewController];
+        controller.title = @"Conditions";
+        [self.navigationController pushViewController:controller animated:YES];
     }
 }
 
