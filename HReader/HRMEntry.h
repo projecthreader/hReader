@@ -65,4 +65,6 @@ typedef NS_ENUM(int, HRMEntryType) {
 
 - (DDXMLElement *)timelineXMLElement DEPRECATED_ATTRIBUTE;
 
+-(NSMutableAttributedString *)getDescAttributeString;
+
 @end

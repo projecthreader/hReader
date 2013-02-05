@@ -60,7 +60,7 @@
          }];
         
         //add data
-        [self initializeData];
+        //[self initializeData];
     }
     return self;
 }
@@ -81,6 +81,8 @@
 
 - (void)reloadWithPatient:(HRMPatient *)patient {
     
+    NSLog(@"Reloading with patient");
+    
     //hide header edit buttons
     [self.currentMedicationsEditButton setHidden:YES];
     [self.upcomingRefillsEditButton setHidden:YES];
@@ -90,14 +92,15 @@
     
     // medications
     {
-        NSArray *foundMedications = [patient medications];
-        NSMutableArray *medications = [NSMutableArray arrayWithCapacity:[foundMedications count]];
-        //remove user-deleted medications
-        for(HRMEntry *med in foundMedications){
-            if(!med.userDeleted.boolValue){
-                [medications addObject:med];
-            }
-        }
+        NSArray *medications = [patient medications];
+//        NSArray *foundMedications = [patient medications];
+//        NSMutableArray *medications = [NSMutableArray arrayWithCapacity:[foundMedications count]];
+//        //remove user-deleted medications
+//        for(HRMEntry *med in foundMedications){
+//            if(!med.userDeleted.boolValue){
+//                [medications addObject:med];
+//            }
+//        }
         
         NSArray *nameLabels = [self.medicationNameLabels hr_sortedArrayUsingKey:@"tag" ascending:YES];
         NSArray *dosageLabels = [self.medicationDosageLabels hr_sortedArrayUsingKey:@"tag" ascending:YES];
@@ -115,7 +118,8 @@
             // normal medication label
             else if (index < medicationsCount) {
                 HRMEntry *medication = [medications objectAtIndex:index];
-                label.text = [medication.desc sentenceCapitalizedString];
+                [label setAttributedText:[medication getDescAttributeString]];
+                //label.text = [medication.desc sentenceCapitalizedString];
             }
             
             // no medications
@@ -142,14 +146,15 @@
     
     //refills
     {
-        NSArray *foundMedications = [patient medications];
-        NSMutableArray *medications = [NSMutableArray arrayWithCapacity:[foundMedications count]];
-        //remove user-deleted medications
-        for(HRMEntry *med in foundMedications){
-            if(!med.userDeleted.boolValue){
-                [medications addObject:med];
-            }
-        }
+        NSArray *medications = [patient medications];
+//        NSArray *foundMedications = [patient medications];
+//        NSMutableArray *medications = [NSMutableArray arrayWithCapacity:[foundMedications count]];
+//        //remove user-deleted medications
+//        for(HRMEntry *med in foundMedications){
+//            if(!med.userDeleted.boolValue){
+//                [medications addObject:med];
+//            }
+//        }
         NSArray *nameLabels = [self.medicationRefillLabels hr_sortedArrayUsingKey:@"tag" ascending:YES];
         NSArray *locationLabels = [self.refillLocationLabels hr_sortedArrayUsingKey:@"tag" ascending:YES];
         NSUInteger medicationsCount = [medications count];
@@ -166,7 +171,9 @@
             // normal medication label
             else if (index < medicationsCount) {
                 HRMEntry *medication = [medications objectAtIndex:index];
-                label.text = [medication.desc sentenceCapitalizedString];
+                
+                [label setAttributedText:[medication getDescAttributeString]];
+                //label.text = [medication.desc sentenceCapitalizedString];
             }
             
             // no medications
@@ -194,6 +201,9 @@
         
     // Medication details
     {
+        //add data
+
+        [self initializeDatawithPatient:patient];
         [self.collectionView reloadData];
     }
     
@@ -318,15 +328,20 @@
     [super viewDidUnload];
 }
 
-- (void)initializeData{
+- (void)initializeDatawithPatient:(HRMPatient *)currentPatient{
     NSLog(@"Initializing data");
-    HRMPatient *currentPatient = [HRPeoplePickerViewController selectedPatient];
     self.medicationList = [currentPatient medications];
     
     for(NSUInteger i=0;i<self.medicationList.count;i++){
         HRMEntry *med = [self.medicationList objectAtIndex:i];
         if(med.comments == nil){
             med.comments = @"-";
+            
+            NSManagedObjectContext *context = [med managedObjectContext];
+            NSError *error;
+            if (![context save:&error]) {
+                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+            }
         }
         
         if(med.patientComments == nil){
@@ -341,15 +356,15 @@
             NSArray *keys = [NSArray arrayWithObjects:QUANTITY_KEY, DOSE_KEY, DIRECTIONS_KEY, PRESCRIBER_KEY, nil];
             NSArray *objects = [NSArray arrayWithObjects:@"-", doseString, @"-", @"-", nil];
             [med setPatientComments:[NSDictionary dictionaryWithObjects:objects forKeys:keys]];
+            
+            NSManagedObjectContext *context = [med managedObjectContext];
+            NSError *error;
+            if (![context save:&error]) {
+                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+            }
         }
         
-        NSManagedObjectContext *context = [med managedObjectContext];
-        NSError *error;
-        if (![context save:&error]) {
-            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-        }
     }
-    
     
 }
 - (IBAction)upcomingRefillsEdit:(id)sender {

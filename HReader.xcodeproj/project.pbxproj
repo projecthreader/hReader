@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		24B2EA901663ED290077CF27 /* HRPopHealthAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2EA8F1663ED290077CF27 /* HRPopHealthAppletTile.m */; };
-		24B2EA9A166421AD0077CF27 /* pophealth in Resources */ = {isa = PBXBuildFile; fileRef = 24B2EA99166421AD0077CF27 /* pophealth */; };
+		24584D8C169F41C500F69B1A /* HRPopHealthAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 24584D8B169F41C500F69B1A /* HRPopHealthAppletTile.m */; };
 		3B001D3E157519DB00762FB0 /* InitialSetup_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B001D3D157519DB00762FB0 /* InitialSetup_iPad.storyboard */; };
 		3B001D4315751D0300762FB0 /* HRPeopleSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B001D4215751D0300762FB0 /* HRPeopleSetupViewController.m */; };
 		3B001D46157522C300762FB0 /* HRPeopleSetupPlaceHolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B001D45157522C300762FB0 /* HRPeopleSetupPlaceHolderView.m */; };
@@ -133,7 +132,6 @@
 		3B8935E8162D9E0F003750B6 /* CMDActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8935DF162D9E0F003750B6 /* CMDActionSheet.m */; };
 		3B8935E9162D9E0F003750B6 /* CMDAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8935E1162D9E0F003750B6 /* CMDAlertView.m */; };
 		3B8935EB162D9E0F003750B6 /* NSArray+CMDBlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8935E5162D9E0F003750B6 /* NSArray+CMDBlocksKit.m */; };
-		3B9A757915DBE0CB00705A52 /* timeline in Resources */ = {isa = PBXBuildFile; fileRef = 3B9A757815DBE0CB00705A52 /* timeline */; };
 		3B9A758115DC040F00705A52 /* HRAppletUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9A758015DC040F00705A52 /* HRAppletUtilities.m */; };
 		3BA11FD315C0608200ABB012 /* circle-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FA215C0608200ABB012 /* circle-2.png */; };
 		3BA11FD415C0608200ABB012 /* circle-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FA315C0608200ABB012 /* circle-3.png */; };
@@ -357,9 +355,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		24B2EA8E1663ED290077CF27 /* HRPopHealthAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPopHealthAppletTile.h; sourceTree = "<group>"; };
-		24B2EA8F1663ED290077CF27 /* HRPopHealthAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPopHealthAppletTile.m; sourceTree = "<group>"; };
-		24B2EA99166421AD0077CF27 /* pophealth */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pophealth; sourceTree = "<group>"; };
+		24584D8A169F41C500F69B1A /* HRPopHealthAppletTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPopHealthAppletTile.h; sourceTree = "<group>"; };
+		24584D8B169F41C500F69B1A /* HRPopHealthAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPopHealthAppletTile.m; sourceTree = "<group>"; };
 		3B001D3D157519DB00762FB0 /* InitialSetup_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InitialSetup_iPad.storyboard; sourceTree = "<group>"; };
 		3B001D4115751D0300762FB0 /* HRPeopleSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPeopleSetupViewController.h; sourceTree = "<group>"; };
 		3B001D4215751D0300762FB0 /* HRPeopleSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPeopleSetupViewController.m; sourceTree = "<group>"; };
@@ -514,7 +511,6 @@
 		3B8935E2162D9E0F003750B6 /* CMDBlocksKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMDBlocksKit.h; sourceTree = "<group>"; };
 		3B8935E4162D9E0F003750B6 /* NSArray+CMDBlocksKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CMDBlocksKit.h"; sourceTree = "<group>"; };
 		3B8935E5162D9E0F003750B6 /* NSArray+CMDBlocksKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CMDBlocksKit.m"; sourceTree = "<group>"; };
-		3B9A757815DBE0CB00705A52 /* timeline */ = {isa = PBXFileReference; lastKnownFileType = folder; path = timeline; sourceTree = "<group>"; };
 		3B9A757F15DC040F00705A52 /* HRAppletUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAppletUtilities.h; sourceTree = "<group>"; };
 		3B9A758015DC040F00705A52 /* HRAppletUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAppletUtilities.m; sourceTree = "<group>"; };
 		3BA11FA215C0608200ABB012 /* circle-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-2.png"; sourceTree = "<group>"; };
@@ -1298,9 +1294,7 @@
 				3BFBEE1D1534C0AE009EBA2D /* Patient Data */,
 				941DB0B31471B32D00A96B8B /* Supporting Files */,
 				3B8D14FE157E3EB700A5B84E /* Images */,
-				24B2EA99166421AD0077CF27 /* pophealth */,
 				3B1925A81619DDDA0024E9BD /* timeline-angular */,
-				3B9A757815DBE0CB00705A52 /* timeline */,
 			);
 			path = HReader;
 			sourceTree = "<group>";
@@ -1489,6 +1483,8 @@
 				3B77F04C15546ABD003C2DBD /* HROxygenSaturationAppletTile.h */,
 				3B77F04D15546ABD003C2DBD /* HROxygenSaturationAppletTile.m */,
 				3B74E5C4155477C400593ECF /* HROxygenSaturationAppletTile.xib */,
+				24584D8B169F41C500F69B1A /* HRPopHealthAppletTile.m */,
+				24584D8A169F41C500F69B1A /* HRPopHealthAppletTile.h */,
 				3B77F05015546AD2003C2DBD /* HRRespiratoryRateAppletTile.h */,
 				3B77F05115546AD2003C2DBD /* HRRespiratoryRateAppletTile.m */,
 				3B74E5C715547DA200593ECF /* HRRespiratoryRateAppletTile.xib */,
@@ -1497,8 +1493,6 @@
 				3BCF5988164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.h */,
 				3BCF5989164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.m */,
 				3BCF598B164D8EA700BD0E9C /* HRTotalCholesterolAppletTile.xib */,
-				24B2EA8E1663ED290077CF27 /* HRPopHealthAppletTile.h */,
-				24B2EA8F1663ED290077CF27 /* HRPopHealthAppletTile.m */,
 			);
 			name = "System Applets";
 			sourceTree = "<group>";
@@ -1894,7 +1888,6 @@
 				3BA11FFB15C0608200ABB012 /* TBITrackerAppletTile.xib in Resources */,
 				3BA11FFD15C0608200ABB012 /* TBITrackerDashboard.xib in Resources */,
 				3BA11FFF15C0608200ABB012 /* TBITrackerLearn.xib in Resources */,
-				3B9A757915DBE0CB00705A52 /* timeline in Resources */,
 				D8665A3715FE705F002CD855 /* logo-swoosh.png in Resources */,
 				D8665A3A15FE708C002CD855 /* tbiTest.storyboard in Resources */,
 				D8665A50160230D5002CD855 /* buttons-pressed.png in Resources */,
@@ -1919,7 +1912,6 @@
 				3B48FA3516541D4E0071F707 /* applets-ms.plist in Resources */,
 				3B48FA3616541D4E0071F707 /* applets-ss.plist in Resources */,
 				3B48FA3716541D4E0071F707 /* applets-ts.plist in Resources */,
-				24B2EA9A166421AD0077CF27 /* pophealth in Resources */,
 				49539E01165A9937004CB11B /* HRMedications_iPad.storyboard in Resources */,
 				49539E15165AAEDA004CB11B /* HRMedicationsAppletTile.xib in Resources */,
 				497775841663B8C700FF6E95 /* edit.png in Resources */,
@@ -2042,7 +2034,6 @@
 				3B52170A164817CF00DE676A /* UIApplication+hReaderAdditions.m in Sources */,
 				3B29070B16484E830028C2CE /* HRTimelinePOSTURLProtocol.m in Sources */,
 				3BCF598A164D8C0600BD0E9C /* HRTotalCholesterolAppletTile.m in Sources */,
-				24B2EA901663ED290077CF27 /* HRPopHealthAppletTile.m in Sources */,
 				49539E00165A9937004CB11B /* HRMedicationCell.m in Sources */,
 				49539E02165A9937004CB11B /* HRMedicationsMasterViewController.m in Sources */,
 				49539E14165AAEDA004CB11B /* HRMedicationsAppletTile.m in Sources */,
@@ -2051,6 +2042,7 @@
 				4953C7651684E6AF00A6B98D /* hReader.xcdatamodeld in Sources */,
 				3BA73396168C9732005ABFC9 /* IMSPasswordViewController.m in Sources */,
 				3BA7339C168C9B5D005ABFC9 /* HRPasswordViewController.m in Sources */,
+				24584D8C169F41C500F69B1A /* HRPopHealthAppletTile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2137,14 +2129,14 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = HReader/HReader.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Adam Goldstein (38473AKAAR)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HReader/HReader-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2/**";
 				INFOPLIST_FILE = "HReader/HReader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = $TARGET_NAME;
-				PROVISIONING_PROFILE = "3A835D21-3D4E-458E-8FE3-18C7956F0FB3";
+				PROVISIONING_PROFILE = "";
 				STRIP_INSTALLED_PRODUCT = NO;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
@@ -2156,14 +2148,14 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = HReader/HReader.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Adam Goldstein (38473AKAAR)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: The MITRE Corporation";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HReader/HReader-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2/**";
 				INFOPLIST_FILE = "HReader/HReader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = $TARGET_NAME;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "B0CECA52-3D26-4DED-9577-8C98A922800C";
 				STRIP_INSTALLED_PRODUCT = YES;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;

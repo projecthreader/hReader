@@ -5,33 +5,14 @@
 		<title ng-bind-template="{{query}}"></title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<link rel="stylesheet" href="css/jquery-ui-1.8.16.custom.css" type="text/css"/> 
-		<link href="http://addyosmani.github.com/jquery-ui-bootstrap/bootstrap/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/master.css" type="text/css"/> 
-		<script type="text/javascript" src="lib/jquery/jquery-1.8.1.js"></script>
-	    <script type="text/javascript" src="lib/jquery/jquery.sparkline2.0.js">
-	    </script>
-	    <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
-	    <script src="lib/angular/angular.js"></script>
-	    <script src="js/app.js"></script>
-	    <script src="js/controllers.js"></script>
-	    <script src="js/directives.js"></script>
-	    <script src="js/date.js"></script>
-	    <script>
-	    	$(document).ready(function(){
-	    		var DcMiliPixel = {315569259747/442};
-	    		var start_time = {currentDate - MiliPerPixel};
-	    		var stop_time = {currentDate};
-	    		var stop = 442;
-	    		var img =$("img");
-	    		var position = img.position();
-	    		img + $(this)position.left;
-	    		if (event.date) {
-	    			return;
-	    		position.x += object.positionLeft;
-	    	}	
-	    },
-	    </script>
+		<script type="text/javascript" src="lib/jquery/jquery-1.8.2.min.js"></script>
+	  <script type="text/javascript" src="lib/jquery/jquery.sparkline2.0.js"></script>
+	  <script type="text/javascript" src="lib/angular/angular.js"></script>
+	  <script type="text/javascript" src="js/app.js"></script>
+	  <script type="text/javascript" src="js/controllers.js"></script>
+	  <script type="text/javascript" src="js/directives.js"></script>
+	  <script type="text/javascript" src="js/date.js"></script>
 	</head>
 	<body >
 		<section class="well">
@@ -54,111 +35,16 @@
 				</div>
 			</article>
 			<hr>
-<!--<div class="titles row">
-				<h2 class="span4">Glucose Test</h2>
-				<p class="span2">Take prior to Injection</p>
-				<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span>
-				<div class="progress schedule span5">
-					<div class="span1">
-						<img src="images/observation.png">
-					</div>
-					<div class="span2">
-						<img src="images/observation.png">
-					</div>
-					<div class="span1">
-						<img src="images/observation.png">
-					</div>
-				</div>
-			</div>
-			</div>
-			<div class="titles row">
-				<h2 class="span4">Injections</h2>
-				<p class="span2">Take after food</p>
-				<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-pencil"></i></a></span>
-				<div class="progress schedule span5">
-				<div class="span1">
-					<img src="images/treatment.png">
-				</div>
-				<div class="span2">
-					<img src="images/treatment.png">
-				</div>
-				<div class="span1">
-					<img src="images/treatment.png">
-				</div>
-				</div>
-			</div>
-			</article>
-		<hr class="soften"> -->
-<!-- 		<article class="condition">
-			<header class="titles row">
-				<h1 class="titles span3">Condition</h1>
-				<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
-				<h2 class="span2">Results</h2>
-				<h2 class="span4">Graph</h2>
-			</header>
-			<div class="row">
-				<h2 class="span4">{{condition}}</h2>
-				<div class="span2">
-					<i class="icon-arrow-up"></i>
-					<h2>7</h2> / 10
-				</div>
-				<div class="span6">
-
-				</div>
-			</div>
-				
-			</div>
-			<div class="row">
-				<h2 class="span4">Symptom 1</h2>
-				<div class="span2">
-					<i class="icon-arrow-up"></i>
-					<h2>2</h2>/10
-				</div>
-				<div class="span6">
-					<div class="slider"></div>
-				</div>
-
-			</div>
-		</article>
-		<hr class="soften"> -->
-		<!-- <article class="activities">
-			<div class="titles row">
-				<h1 class="span3">Activities</h1>
-				<span class="span1"><a class="btn" data-toggle="dropdown"><i class="icon-plus"></i></a></span>
-				<h2 class="span2">Results</h2>
-
-				<h2 class="span2">Status</h2>
-			</div>
-			<div class="row">
-				<h2 class="span4">Distance</h2>
-				<div class="span2">
-					<i class="icon-arrow-up"> </i><h2 class>1.2</h2> mile
-				</div>
-				<div class="progress span6">
-						<div class="bar" style="width: 60%;">
-	 				</div>
-				</div>
-			</div>
-			<div class="row">
-				<h2 class="span4">Calories</h2>
-				<div class="span2"><i class="icon-arrow-up"> </i><h2>1500</h2> cal
-				</div>
-				<div class="progress span6">
-				</div>
-			</div>
-		</article>
-		<hr class="soften">
-	 -->
 			<article ngChange:false ng-repeat="condition in conditions">
 				<div class="row titles">
 					<h2 class="span3">{{condition.description}}</h2>
-					<span class="span1"><a class="btn" onclick="$('#newSymp').show()"><i class="icon-plus"></i></a>
+					<span class="span1"><a class="btn" onclick="$('#newSymp-{{condition.id}}').show()"><i class="icon-plus"></i></a>
 					</span>
 					<h3 class="span6">Log</h3>
 					<h3 class="span2"></h3>
 				</div>
-				<div class="row">
-					<form class="hidden" id="newSymp" action="http://hreader.local/timeline.json?key=userData">
+				<div class="row hidden" id="newSymp-{{condition.id}}">
+					<form action="http://hreader.local/timeline.json?key=userData">
 						<h3 class="span12">Add Vital to Condition</h3>
 						<fieldset class="span4" data-role="controlgroup" data-type="horizontal">
 							<select name="select-choice-sev" id="select-choice-sev">
@@ -167,7 +53,7 @@
 						</fieldset>
 						<span class="span2">
 							<a class="btn" action="http://hreader.local/timeline.json?key=userData" method="post"><i class="icon-plus"></i></a>
-							<a class="btn"  onclick="$('#newSymp').hide()" ><i class="icon-remove"></i></a>
+							<a class="btn" onclick="$('#newSymp-{{condition.id}}').hide()" ><i class="icon-remove"></i></a>
 						</span>			
 					</form>
 				</div>
@@ -207,5 +93,3 @@
 		</section>
 	</body>
 </html>
-
-
