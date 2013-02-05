@@ -221,6 +221,26 @@
 		497775841663B8C700FF6E95 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 497775831663B8C700FF6E95 /* edit.png */; };
 		497775861663B8D200FF6E95 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 497775851663B8D200FF6E95 /* save.png */; };
 		4978672A169485A900B07D9D /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 49786729169485A900B07D9D /* delete.png */; };
+		668B07F016C1C60E004C7AE6 /* chevron.png in Resources */ = {isa = PBXBuildFile; fileRef = 668B07D716C1C60D004C7AE6 /* chevron.png */; };
+		668B07F116C1C60E004C7AE6 /* henry_smith.png in Resources */ = {isa = PBXBuildFile; fileRef = 668B07D816C1C60D004C7AE6 /* henry_smith.png */; };
+		668B07F216C1C60E004C7AE6 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 668B07D916C1C60D004C7AE6 /* loading.gif */; };
+		668B07F316C1C60E004C7AE6 /* pophealth_small_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 668B07DA16C1C60D004C7AE6 /* pophealth_small_logo.png */; };
+		668B07F416C1C60E004C7AE6 /* bootstrap-2.2.1.min.js in Sources */ = {isa = PBXBuildFile; fileRef = 668B07DD16C1C60D004C7AE6 /* bootstrap-2.2.1.min.js */; };
+		668B07F516C1C60E004C7AE6 /* jquery-1.8.3.min.js in Sources */ = {isa = PBXBuildFile; fileRef = 668B07DE16C1C60D004C7AE6 /* jquery-1.8.3.min.js */; };
+		668B07F616C1C60E004C7AE6 /* pophealth.coffee in Resources */ = {isa = PBXBuildFile; fileRef = 668B07DF16C1C60D004C7AE6 /* pophealth.coffee */; };
+		668B07F716C1C60E004C7AE6 /* pophealth.js in Sources */ = {isa = PBXBuildFile; fileRef = 668B07E016C1C60D004C7AE6 /* pophealth.js */; };
+		668B07F816C1C60E004C7AE6 /* bootstrap-combined-2.2.1.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 668B07E316C1C60D004C7AE6 /* bootstrap-combined-2.2.1.min.css */; };
+		668B07F916C1C60E004C7AE6 /* jquery.mobile-1.2.0.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 668B07E416C1C60D004C7AE6 /* jquery.mobile-1.2.0.min.css */; };
+		668B07FA16C1C60E004C7AE6 /* _fonts.scss in Resources */ = {isa = PBXBuildFile; fileRef = 668B07E616C1C60D004C7AE6 /* _fonts.scss */; };
+		668B07FB16C1C60E004C7AE6 /* _labels.scss in Resources */ = {isa = PBXBuildFile; fileRef = 668B07E716C1C60D004C7AE6 /* _labels.scss */; };
+		668B07FC16C1C60E004C7AE6 /* _layouts.scss in Resources */ = {isa = PBXBuildFile; fileRef = 668B07E816C1C60D004C7AE6 /* _layouts.scss */; };
+		668B07FD16C1C60E004C7AE6 /* _mixins.scss in Resources */ = {isa = PBXBuildFile; fileRef = 668B07E916C1C60D004C7AE6 /* _mixins.scss */; };
+		668B07FE16C1C60E004C7AE6 /* _utilities.scss in Resources */ = {isa = PBXBuildFile; fileRef = 668B07EA16C1C60E004C7AE6 /* _utilities.scss */; };
+		668B07FF16C1C60E004C7AE6 /* _variables.scss in Resources */ = {isa = PBXBuildFile; fileRef = 668B07EB16C1C60E004C7AE6 /* _variables.scss */; };
+		668B080016C1C60E004C7AE6 /* pophealth.css in Resources */ = {isa = PBXBuildFile; fileRef = 668B07EC16C1C60E004C7AE6 /* pophealth.css */; };
+		668B080116C1C60E004C7AE6 /* pophealth.scss in Resources */ = {isa = PBXBuildFile; fileRef = 668B07ED16C1C60E004C7AE6 /* pophealth.scss */; };
+		668B080216C1C60E004C7AE6 /* fullscreen.html in Resources */ = {isa = PBXBuildFile; fileRef = 668B07EE16C1C60E004C7AE6 /* fullscreen.html */; };
+		668B080316C1C60E004C7AE6 /* tile.html in Resources */ = {isa = PBXBuildFile; fileRef = 668B07EF16C1C60E004C7AE6 /* tile.html */; };
 		9415152314AA3A7B009FF674 /* fail.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152114AA3A7B009FF674 /* fail.png */; };
 		9415152414AA3A7B009FF674 /* win.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152214AA3A7B009FF674 /* win.png */; };
 		9415152614AA3F9F009FF674 /* question_mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9415152514AA3F9F009FF674 /* question_mark.png */; };
@@ -647,6 +667,26 @@
 		497775831663B8C700FF6E95 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		497775851663B8D200FF6E95 /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
 		49786729169485A900B07D9D /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		668B07D716C1C60D004C7AE6 /* chevron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chevron.png; sourceTree = "<group>"; };
+		668B07D816C1C60D004C7AE6 /* henry_smith.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = henry_smith.png; sourceTree = "<group>"; };
+		668B07D916C1C60D004C7AE6 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
+		668B07DA16C1C60D004C7AE6 /* pophealth_small_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pophealth_small_logo.png; sourceTree = "<group>"; };
+		668B07DD16C1C60D004C7AE6 /* bootstrap-2.2.1.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "bootstrap-2.2.1.min.js"; sourceTree = "<group>"; };
+		668B07DE16C1C60D004C7AE6 /* jquery-1.8.3.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-1.8.3.min.js"; sourceTree = "<group>"; };
+		668B07DF16C1C60D004C7AE6 /* pophealth.coffee */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pophealth.coffee; sourceTree = "<group>"; };
+		668B07E016C1C60D004C7AE6 /* pophealth.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = pophealth.js; sourceTree = "<group>"; };
+		668B07E316C1C60D004C7AE6 /* bootstrap-combined-2.2.1.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "bootstrap-combined-2.2.1.min.css"; sourceTree = "<group>"; };
+		668B07E416C1C60D004C7AE6 /* jquery.mobile-1.2.0.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "jquery.mobile-1.2.0.min.css"; sourceTree = "<group>"; };
+		668B07E616C1C60D004C7AE6 /* _fonts.scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _fonts.scss; sourceTree = "<group>"; };
+		668B07E716C1C60D004C7AE6 /* _labels.scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _labels.scss; sourceTree = "<group>"; };
+		668B07E816C1C60D004C7AE6 /* _layouts.scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _layouts.scss; sourceTree = "<group>"; };
+		668B07E916C1C60D004C7AE6 /* _mixins.scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _mixins.scss; sourceTree = "<group>"; };
+		668B07EA16C1C60E004C7AE6 /* _utilities.scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _utilities.scss; sourceTree = "<group>"; };
+		668B07EB16C1C60E004C7AE6 /* _variables.scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _variables.scss; sourceTree = "<group>"; };
+		668B07EC16C1C60E004C7AE6 /* pophealth.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = pophealth.css; sourceTree = "<group>"; };
+		668B07ED16C1C60E004C7AE6 /* pophealth.scss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pophealth.scss; sourceTree = "<group>"; };
+		668B07EE16C1C60E004C7AE6 /* fullscreen.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = fullscreen.html; sourceTree = "<group>"; };
+		668B07EF16C1C60E004C7AE6 /* tile.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tile.html; sourceTree = "<group>"; };
 		940C0467152B6ADF00834416 /* hs-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "hs-synthetic.json"; sourceTree = "<group>"; };
 		940C0468152B6ADF00834416 /* js-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "js-synthetic.json"; sourceTree = "<group>"; };
 		940C0469152B6ADF00834416 /* ms-synthetic.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "ms-synthetic.json"; sourceTree = "<group>"; };
@@ -1246,6 +1286,89 @@
 			name = HRMedicationsApp;
 			sourceTree = "<group>";
 		};
+		668B07D416C1C60D004C7AE6 /* pophealth */ = {
+			isa = PBXGroup;
+			children = (
+				668B07D516C1C60D004C7AE6 /* assets */,
+				668B07EE16C1C60E004C7AE6 /* fullscreen.html */,
+				668B07EF16C1C60E004C7AE6 /* tile.html */,
+			);
+			path = pophealth;
+			sourceTree = "<group>";
+		};
+		668B07D516C1C60D004C7AE6 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				668B07D616C1C60D004C7AE6 /* images */,
+				668B07DB16C1C60D004C7AE6 /* javascripts */,
+				668B07E116C1C60D004C7AE6 /* stylesheets */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+		668B07D616C1C60D004C7AE6 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				668B07D716C1C60D004C7AE6 /* chevron.png */,
+				668B07D816C1C60D004C7AE6 /* henry_smith.png */,
+				668B07D916C1C60D004C7AE6 /* loading.gif */,
+				668B07DA16C1C60D004C7AE6 /* pophealth_small_logo.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		668B07DB16C1C60D004C7AE6 /* javascripts */ = {
+			isa = PBXGroup;
+			children = (
+				668B07DC16C1C60D004C7AE6 /* externals */,
+				668B07DF16C1C60D004C7AE6 /* pophealth.coffee */,
+				668B07E016C1C60D004C7AE6 /* pophealth.js */,
+			);
+			path = javascripts;
+			sourceTree = "<group>";
+		};
+		668B07DC16C1C60D004C7AE6 /* externals */ = {
+			isa = PBXGroup;
+			children = (
+				668B07DD16C1C60D004C7AE6 /* bootstrap-2.2.1.min.js */,
+				668B07DE16C1C60D004C7AE6 /* jquery-1.8.3.min.js */,
+			);
+			path = externals;
+			sourceTree = "<group>";
+		};
+		668B07E116C1C60D004C7AE6 /* stylesheets */ = {
+			isa = PBXGroup;
+			children = (
+				668B07E216C1C60D004C7AE6 /* externals */,
+				668B07E516C1C60D004C7AE6 /* pophealth */,
+				668B07EC16C1C60E004C7AE6 /* pophealth.css */,
+				668B07ED16C1C60E004C7AE6 /* pophealth.scss */,
+			);
+			path = stylesheets;
+			sourceTree = "<group>";
+		};
+		668B07E216C1C60D004C7AE6 /* externals */ = {
+			isa = PBXGroup;
+			children = (
+				668B07E316C1C60D004C7AE6 /* bootstrap-combined-2.2.1.min.css */,
+				668B07E416C1C60D004C7AE6 /* jquery.mobile-1.2.0.min.css */,
+			);
+			path = externals;
+			sourceTree = "<group>";
+		};
+		668B07E516C1C60D004C7AE6 /* pophealth */ = {
+			isa = PBXGroup;
+			children = (
+				668B07E616C1C60D004C7AE6 /* _fonts.scss */,
+				668B07E716C1C60D004C7AE6 /* _labels.scss */,
+				668B07E816C1C60D004C7AE6 /* _layouts.scss */,
+				668B07E916C1C60D004C7AE6 /* _mixins.scss */,
+				668B07EA16C1C60E004C7AE6 /* _utilities.scss */,
+				668B07EB16C1C60E004C7AE6 /* _variables.scss */,
+			);
+			path = pophealth;
+			sourceTree = "<group>";
+		};
 		941DB09D1471B32D00A96B8B = {
 			isa = PBXGroup;
 			children = (
@@ -1294,6 +1417,7 @@
 				3BFBEE1D1534C0AE009EBA2D /* Patient Data */,
 				941DB0B31471B32D00A96B8B /* Supporting Files */,
 				3B8D14FE157E3EB700A5B84E /* Images */,
+				668B07D416C1C60D004C7AE6 /* pophealth */,
 				3B1925A81619DDDA0024E9BD /* timeline-angular */,
 			);
 			path = HReader;
@@ -1920,6 +2044,23 @@
 				3BA73393168C9732005ABFC9 /* IMSPassword.bundle in Resources */,
 				3BA73394168C9732005ABFC9 /* IMSPasswordStoryboard_iPad.storyboard in Resources */,
 				3BA73395168C9732005ABFC9 /* IMSPasswordStoryboard_iPhone.storyboard in Resources */,
+				668B07F016C1C60E004C7AE6 /* chevron.png in Resources */,
+				668B07F116C1C60E004C7AE6 /* henry_smith.png in Resources */,
+				668B07F216C1C60E004C7AE6 /* loading.gif in Resources */,
+				668B07F316C1C60E004C7AE6 /* pophealth_small_logo.png in Resources */,
+				668B07F616C1C60E004C7AE6 /* pophealth.coffee in Resources */,
+				668B07F816C1C60E004C7AE6 /* bootstrap-combined-2.2.1.min.css in Resources */,
+				668B07F916C1C60E004C7AE6 /* jquery.mobile-1.2.0.min.css in Resources */,
+				668B07FA16C1C60E004C7AE6 /* _fonts.scss in Resources */,
+				668B07FB16C1C60E004C7AE6 /* _labels.scss in Resources */,
+				668B07FC16C1C60E004C7AE6 /* _layouts.scss in Resources */,
+				668B07FD16C1C60E004C7AE6 /* _mixins.scss in Resources */,
+				668B07FE16C1C60E004C7AE6 /* _utilities.scss in Resources */,
+				668B07FF16C1C60E004C7AE6 /* _variables.scss in Resources */,
+				668B080016C1C60E004C7AE6 /* pophealth.css in Resources */,
+				668B080116C1C60E004C7AE6 /* pophealth.scss in Resources */,
+				668B080216C1C60E004C7AE6 /* fullscreen.html in Resources */,
+				668B080316C1C60E004C7AE6 /* tile.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2043,6 +2184,9 @@
 				3BA73396168C9732005ABFC9 /* IMSPasswordViewController.m in Sources */,
 				3BA7339C168C9B5D005ABFC9 /* HRPasswordViewController.m in Sources */,
 				24584D8C169F41C500F69B1A /* HRPopHealthAppletTile.m in Sources */,
+				668B07F416C1C60E004C7AE6 /* bootstrap-2.2.1.min.js in Sources */,
+				668B07F516C1C60E004C7AE6 /* jquery-1.8.3.min.js in Sources */,
+				668B07F716C1C60E004C7AE6 /* pophealth.js in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
