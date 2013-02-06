@@ -156,7 +156,7 @@ static NSMutableDictionary *allClients = nil;
         });
         
         // create request
-        NSString *path = [NSString stringWithFormat:@"/records/%@/c32/%@", identifier, identifier];
+        NSString *path = [NSString stringWithFormat:@"/records/%@/c32/%@.json", identifier, identifier];
         NSMutableURLRequest *request = [self GETRequestWithPath:path];
         [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         
