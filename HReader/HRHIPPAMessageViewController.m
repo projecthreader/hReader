@@ -66,6 +66,8 @@ typedef void (^cbBlock) (void);
     layer.borderWidth = 1.0;
     layer.shouldRasterize = YES;
     layer.rasterizationScale = [[UIScreen mainScreen] scale];
+
+#if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR
     
     //--------------------------------------------------------------------------
     // check for the presence of a debugger, call weHaveAProblem if there is one
@@ -91,7 +93,7 @@ typedef void (^cbBlock) (void);
     dispatch_resume(_timer);
     
     //-----------------------------------------------------------------------------
-    
+#endif    
 }
 
 //--------------------------------------------------------------------
