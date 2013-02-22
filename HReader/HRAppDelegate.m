@@ -23,8 +23,27 @@
 #import "HRCryptoManager.h"
 #import "HRMPatient.h"
 
-#import "IMSPasswordViewController.h"
+#import <SecurityCheck/debugCheck.h>
+#import <AppPassword/IMSPasswordViewController.h>
 #import <SecureFoundation/SecureFoundation.h>
+
+@interface HRAppDelegate() {
+    
+    //--------------------------------
+    // debugCheck timer
+    //--------------------------------
+    dispatch_queue_t  _queue;
+    dispatch_source_t _timer;
+    
+}
+//--------------------------------
+// Callback block from debugCheck
+//--------------------------------
+typedef void (^cbBlock) (void);
+
+- (void) weHaveAProblem;
+
+@end
 
 
 @implementation HRAppDelegate {
@@ -80,8 +99,10 @@
         NSURL *databaseURL = [applicationSupportURL URLByAppendingPathComponent:@"database.sqlite3.2"];
         NSDictionary *options = @{
             NSPersistentStoreFileProtectionKey : NSFileProtectionComplete,
-            NSMigratePersistentStoresAutomaticallyOption : @YES,
-            NSInferMappingModelAutomaticallyOption : @YES
+            NSMigratePersistentStoresAutomaticallyOption : [NSNumber numberWithBool:YES],
+            NSInferMappingModelAutomaticallyOption : [NSNumber numberWithBool:YES]
+//            NSMigratePersistentStoresAutomaticallyOption : @YES,
+//            NSInferMappingModelAutomaticallyOption : @YES
         };
         
         // add store
@@ -133,7 +154,6 @@
     };
     
 #endif
-    
     // check for hippa message
     if (![HRHIPPAMessageViewController hasAcceptedHIPPAMessage]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
@@ -240,6 +260,38 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+#if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR
+    //--------------------------------
+    // do not allow debuggers
+    //--------------------------------
+    dbgStop;
+    
+    //--------------------------------------------------------------------------
+    // check for the presence of a debugger, call weHaveAProblem if there is one
+    //--------------------------------------------------------------------------
+    cbBlock dbChkCallback = ^{
+        
+        __weak id weakSelf = self;
+        
+        if (weakSelf) [weakSelf weHaveAProblem];
+        
+    };
+    
+    _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,_queue);
+    
+    dispatch_source_set_timer(_timer
+                              ,dispatch_time(DISPATCH_TIME_NOW, 0)
+                              ,1.0 * NSEC_PER_SEC
+                              ,0.0 * NSEC_PER_SEC);
+    
+    dispatch_source_set_event_handler(_timer, ^{ dbgCheck(dbChkCallback); } );
+    
+    dispatch_resume(_timer);
+    
+    //-----------------------------------------------------------------------------
+#endif
+    
     // notifications
     [[NSNotificationCenter defaultCenter]
      addObserver:self
@@ -247,6 +299,7 @@
      name:NSManagedObjectContextDidSaveNotification
      object:nil];
     
+    // launch steps
     dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
     dispatch_after(time, dispatch_get_main_queue(), ^(void){
         [self performLaunchSteps];
@@ -255,6 +308,16 @@
     // return
     return YES;
     
+}
+
+//--------------------------------------------------------------------
+// if a debugger is attched to the app then this method will be called
+//--------------------------------------------------------------------
+- (void) weHaveAProblem {
+    
+    dispatch_source_cancel(_timer);
+    
+    exit(0);
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

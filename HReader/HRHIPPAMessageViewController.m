@@ -9,10 +9,30 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "HRHIPPAMessageViewController.h"
+#import <SecurityCheck/debugCheck.h>
 
 static NSString * const HRHIPPAMessageAcceptedKey = @"HRHIPPAMessageAccepted";
 
+@interface HRHIPPAMessageViewController() {
+    
+    //--------------------------------
+    // debugCheck timer
+    //--------------------------------
+    dispatch_queue_t  _queue;
+    dispatch_source_t _timer;
+    
+}
+//--------------------------------
+// Callback block from debugCheck
+//--------------------------------
+typedef void (^cbBlock) (void);
+
+- (void) weHaveAProblem;
+
+@end
+
 @implementation HRHIPPAMessageViewController
+
 
 + (void)initialize {
     if (self == [HRHIPPAMessageViewController class]) {
@@ -46,6 +66,46 @@ static NSString * const HRHIPPAMessageAcceptedKey = @"HRHIPPAMessageAccepted";
     layer.borderWidth = 1.0;
     layer.shouldRasterize = YES;
     layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    
+    //--------------------------------------------------------------------------
+    // check for the presence of a debugger, call weHaveAProblem if there is one
+    //--------------------------------------------------------------------------
+    cbBlock dbChkCallback = ^{
+        
+        __weak id weakSelf = self;
+        
+        if (weakSelf) [weakSelf weHaveAProblem];
+        
+    };
+    
+    _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,_queue);
+    
+    dispatch_source_set_timer(_timer
+                              ,dispatch_time(DISPATCH_TIME_NOW, 0)
+                              ,1.0 * NSEC_PER_SEC
+                              ,0.0 * NSEC_PER_SEC);
+    
+    dispatch_source_set_event_handler(_timer, ^{ dbgCheck(dbChkCallback); } );
+    
+    dispatch_resume(_timer);
+    
+    //-----------------------------------------------------------------------------
+    
+}
+
+//--------------------------------------------------------------------
+// if a debugger is attched to the app then this method will be called
+//--------------------------------------------------------------------
+- (void) weHaveAProblem {
+    
+    dispatch_source_cancel(_timer);
+    
+    exit(0);
+}
+- (void)invalidate {
+    
+    dispatch_source_cancel(_timer);
 }
 
 - (IBAction)acceptButtonPressed:(id)sender {

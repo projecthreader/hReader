@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 MITRE Corporation. All rights reserved.
 //
 
-#import "IMSPasswordViewController.h"
+#import <AppPassword/IMSPasswordViewController.h>
 
 @interface HRPasswordViewController : IMSPasswordViewController
 

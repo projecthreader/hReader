@@ -120,9 +120,10 @@ static NSString *HROAuthURLHost = @"oauth";
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [CMDActivityHUD dismiss];
     NSArray *buttons = self.navigationToolbar.items;
-    [(UIBarButtonItem *)buttons[0] setEnabled:[webView canGoBack]];
-    [(UIBarButtonItem *)buttons[1] setEnabled:[webView canGoForward]];
-    [(UIBarButtonItem *)buttons[2] setEnabled:YES];
+        
+    [(UIBarButtonItem *)[buttons objectAtIndex:0] setEnabled:[webView canGoBack]];
+    [(UIBarButtonItem *)[buttons objectAtIndex:1] setEnabled:[webView canGoForward]];
+    [(UIBarButtonItem *)[buttons objectAtIndex:2] setEnabled:YES];
 }
 
 @end
