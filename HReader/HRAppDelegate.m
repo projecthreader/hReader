@@ -23,25 +23,18 @@
 #import "HRCryptoManager.h"
 #import "HRMPatient.h"
 
-#import <SecurityCheck/debugCheck.h>
+#import <SecurityCheck/SecurityCheck.h>
 #import <AppPassword/IMSPasswordViewController.h>
 #import <SecureFoundation/SecureFoundation.h>
 
-@interface HRAppDelegate() {
-    
-    //--------------------------------
-    // debugCheck timer
-    //--------------------------------
-    dispatch_queue_t  _queue;
-    dispatch_source_t _timer;
-    
-}
-//--------------------------------
-// Callback block from debugCheck
-//--------------------------------
-typedef void (^cbBlock) (void);
+@interface HRAppDelegate() 
 
-- (void) weHaveAProblem;
+    //-----------------------------------
+    // Callback block from SecurityCheck
+    //-----------------------------------
+    typedef void (^cbBlock) (void);
+
+    - (void) weHaveAProblem;
 
 @end
 
@@ -119,39 +112,23 @@ typedef void (^cbBlock) (void);
 - (void)performLaunchSteps {
     
 #if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR
-#define PEACE_OUT() raise(SIGKILL); abort(); exit(EXIT_FAILURE);
     
-    // fork test
-    pid_t child = fork();
-    if (child == 0) { exit(0); } // child process should exit
-    if (child > 0) { // fork succeeded, compromised!
-        PEACE_OUT();
-    }
-    
-    // mobile substrate test
-    char path1[] = {
-        220, 191, 154, 145, 129, 146, 129, 138, 220, 190, 156, 145, 154, 159,
-        150, 160, 134, 145, 128, 135, 129, 146, 135, 150, 220, 190, 156, 145,
-        154, 159, 150, 160, 134, 145, 128, 135, 129, 146, 135, 150, 221, 151,
-        138, 159, 154, 145, '\0'
-    };
-    IMSXOR(243, path1, strlen(path1));
-    HRDebugLog(@"Checking for %s", path1);
-    struct stat s1;
-    if (stat(path1, &s1) == 0) { // file exists
-        PEACE_OUT();
+    //-----------------------------------
+    // call back to weHaveAProblem
+    //-----------------------------------
+    cbBlock chkCallback  = ^{
+        
+        __weak id weakSelf = self;
+        
+        if (weakSelf) [weakSelf weHaveAProblem];
     };
     
-    // sshd test
-    char path2[] = {
-        230, 188, 186, 187, 230, 171, 160, 167, 230, 186, 186, 161, 173, '\0'
-    };
-    IMSXOR(201, path2, strlen(path2));
-    HRDebugLog(@"Checking for %s", path2);
-    struct stat s2;
-    if (stat(path2, &s2) == 0) { // file exists
-        PEACE_OUT();
-    };
+    //-----------------------------------
+    // jailbreak detection
+    //-----------------------------------
+    checkFork(chkCallback);
+    checkFiles(chkCallback);
+    checkLinks(chkCallback);
     
 #endif
     // check for hippa message
@@ -274,22 +251,10 @@ typedef void (^cbBlock) (void);
         __weak id weakSelf = self;
         
         if (weakSelf) [weakSelf weHaveAProblem];
-        
     };
     
-    _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,_queue);
+    dbgCheck(dbChkCallback);
     
-    dispatch_source_set_timer(_timer
-                              ,dispatch_time(DISPATCH_TIME_NOW, 0)
-                              ,1.0 * NSEC_PER_SEC
-                              ,0.0 * NSEC_PER_SEC);
-    
-    dispatch_source_set_event_handler(_timer, ^{ dbgCheck(dbChkCallback); } );
-    
-    dispatch_resume(_timer);
-    
-    //-----------------------------------------------------------------------------
 #endif
     
     // notifications
@@ -314,9 +279,7 @@ typedef void (^cbBlock) (void);
 // if a debugger is attched to the app then this method will be called
 //--------------------------------------------------------------------
 - (void) weHaveAProblem {
-    
-    dispatch_source_cancel(_timer);
-    
+        
     exit(0);
 }
 
