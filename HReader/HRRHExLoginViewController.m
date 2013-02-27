@@ -121,9 +121,9 @@ static NSString *HROAuthURLHost = @"oauth";
     [CMDActivityHUD dismiss];
     NSArray *buttons = self.navigationToolbar.items;
         
-    [(UIBarButtonItem *)[buttons objectAtIndex:0] setEnabled:[webView canGoBack]];
-    [(UIBarButtonItem *)[buttons objectAtIndex:1] setEnabled:[webView canGoForward]];
-    [(UIBarButtonItem *)[buttons objectAtIndex:2] setEnabled:YES];
+    [(UIBarButtonItem *) buttons[0] setEnabled:[webView canGoBack]];
+    [(UIBarButtonItem *) buttons[1] setEnabled:[webView canGoForward]];
+    [(UIBarButtonItem *) buttons[2] setEnabled:YES];
 }
 
 @end
