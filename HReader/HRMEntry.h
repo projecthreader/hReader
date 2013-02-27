@@ -26,17 +26,7 @@
 #define PRESCRIBER_KEY @"prescriber"
 
 
-//typedef NS_ENUM(int, HRMEntryType) {
-//    HRMEntryTypeCondition,
-//    HRMEntryTypeAllergy,
-//    HRMEntryTypeEncounter,
-//    HRMEntryTypeMedication,
-//    HRMEntryTypeProcedure,
-//    HRMEntryTypeResult,
-//    HRMEntryTypeVitalSign,
-//    HRMEntryTypeImmunization
-//};
-typedef enum {
+typedef NS_ENUM(int, HRMEntryType) {
     HRMEntryTypeCondition,
     HRMEntryTypeAllergy,
     HRMEntryTypeEncounter,
@@ -45,7 +35,7 @@ typedef enum {
     HRMEntryTypeResult,
     HRMEntryTypeVitalSign,
     HRMEntryTypeImmunization
-}HRMEntryType;
+};
 
 @class HRMPatient;
 @class DDXMLElement;
