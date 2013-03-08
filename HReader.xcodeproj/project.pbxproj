@@ -177,10 +177,6 @@
 		3BA11FFE15C0608200ABB012 /* TBITrackerLearn.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA11FD115C0608200ABB012 /* TBITrackerLearn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3BA11FFF15C0608200ABB012 /* TBITrackerLearn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA11FD215C0608200ABB012 /* TBITrackerLearn.xib */; };
 		3BA529ED1594AF400011E246 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BA529EC1594AF400011E246 /* libxml2.dylib */; };
-		3BA73393168C9732005ABFC9 /* IMSPassword.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BA7338E168C9732005ABFC9 /* IMSPassword.bundle */; };
-		3BA73394168C9732005ABFC9 /* IMSPasswordStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BA7338F168C9732005ABFC9 /* IMSPasswordStoryboard_iPad.storyboard */; };
-		3BA73395168C9732005ABFC9 /* IMSPasswordStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BA73390168C9732005ABFC9 /* IMSPasswordStoryboard_iPhone.storyboard */; };
-		3BA73396168C9732005ABFC9 /* IMSPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA73392168C9732005ABFC9 /* IMSPasswordViewController.m */; };
 		3BA7339C168C9B5D005ABFC9 /* HRPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA7339B168C9B5D005ABFC9 /* HRPasswordViewController.m */; };
 		3BA7F18F1577EFCF00D4EB09 /* HRCryptoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA7F18E1577EFCF00D4EB09 /* HRCryptoManager.m */; };
 		3BAABBDB1636D830009D3543 /* CMDEncryptedSQLiteStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAABBDA1636D830009D3543 /* CMDEncryptedSQLiteStore.m */; };
@@ -211,6 +207,8 @@
 		3BFBEE1A1534BEAA009EBA2D /* HRAppletTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */; };
 		3BFBEE1C1534BF32009EBA2D /* HReaderApplets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */; };
 		3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2D14DAE5910037738D /* Icon-72.png */; };
+		481943D316CE99CA0016DB79 /* AppPassword.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481943D216CE99CA0016DB79 /* AppPassword.framework */; };
+		4819443416CE9DB00016DB79 /* SecurityCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4819443316CE9DB00016DB79 /* SecurityCheck.framework */; };
 		49539E00165A9937004CB11B /* HRMedicationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539DFC165A9937004CB11B /* HRMedicationCell.m */; };
 		49539E01165A9937004CB11B /* HRMedications_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49539DFD165A9937004CB11B /* HRMedications_iPad.storyboard */; };
 		49539E02165A9937004CB11B /* HRMedicationsMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539DFF165A9937004CB11B /* HRMedicationsMasterViewController.m */; };
@@ -352,6 +350,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC045055464E500DB518D;
 			remoteInfo = sqlcipher;
+		};
+		481943CC16CE98120016DB79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 481943BD16CE980E0016DB79 /* AppPassword.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4819438D16CE96B90016DB79;
+			remoteInfo = AppPassword;
+		};
+		481943CF16CE98FB0016DB79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 481943BD16CE980E0016DB79 /* AppPassword.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4819438C16CE96B90016DB79;
+			remoteInfo = AppPassword;
+		};
+		48D8891616D3CCC90070C70A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48D888F016D3CC6C0070C70A /* SecurityCheck.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 481943E316CE9B470016DB79;
+			remoteInfo = SecurityCheck;
+		};
+		48D8891816D3CCD70070C70A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48D888F016D3CC6C0070C70A /* SecurityCheck.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 481943E216CE9B470016DB79;
+			remoteInfo = SecurityCheck;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -561,11 +587,6 @@
 		3BA11FD115C0608200ABB012 /* TBITrackerLearn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBITrackerLearn.m; sourceTree = "<group>"; };
 		3BA11FD215C0608200ABB012 /* TBITrackerLearn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBITrackerLearn.xib; sourceTree = "<group>"; };
 		3BA529EC1594AF400011E246 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		3BA7338E168C9732005ABFC9 /* IMSPassword.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IMSPassword.bundle; sourceTree = "<group>"; };
-		3BA7338F168C9732005ABFC9 /* IMSPasswordStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IMSPasswordStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		3BA73390168C9732005ABFC9 /* IMSPasswordStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IMSPasswordStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		3BA73391168C9732005ABFC9 /* IMSPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMSPasswordViewController.h; sourceTree = "<group>"; };
-		3BA73392168C9732005ABFC9 /* IMSPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMSPasswordViewController.m; sourceTree = "<group>"; };
 		3BA7339A168C9B5D005ABFC9 /* HRPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPasswordViewController.h; sourceTree = "<group>"; };
 		3BA7339B168C9B5D005ABFC9 /* HRPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPasswordViewController.m; sourceTree = "<group>"; };
 		3BA7F18D1577EFCF00D4EB09 /* HRCryptoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCryptoManager.h; sourceTree = "<group>"; };
@@ -629,6 +650,10 @@
 		3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAppletTile.m; sourceTree = "<group>"; };
 		3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HReaderApplets.plist; sourceTree = "<group>"; };
 		3BFE7A2D14DAE5910037738D /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		481943BD16CE980E0016DB79 /* AppPassword.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AppPassword.xcodeproj; path = apppassword/AppPassword.xcodeproj; sourceTree = "<group>"; };
+		481943D216CE99CA0016DB79 /* AppPassword.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppPassword.framework; path = "../../../../Library/Developer/Xcode/DerivedData/HReader-gmihlhiowkmoypgmppowquplwtvm/Build/Products/Debug-iphoneos/AppPassword.framework"; sourceTree = "<group>"; };
+		4819443316CE9DB00016DB79 /* SecurityCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityCheck.framework; path = "../../../../Library/Developer/Xcode/DerivedData/HReader-gmihlhiowkmoypgmppowquplwtvm/Build/Products/Debug-iphoneos/SecurityCheck.framework"; sourceTree = "<group>"; };
+		48D888F016D3CC6C0070C70A /* SecurityCheck.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SecurityCheck.xcodeproj; path = "../../security-check/SecurityCheck.xcodeproj"; sourceTree = "<group>"; };
 		49539DFB165A9937004CB11B /* HRMedicationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMedicationCell.h; sourceTree = "<group>"; };
 		49539DFC165A9937004CB11B /* HRMedicationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMedicationCell.m; sourceTree = "<group>"; };
 		49539DFD165A9937004CB11B /* HRMedications_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRMedications_iPad.storyboard; sourceTree = "<group>"; };
@@ -793,6 +818,8 @@
 				941DB0AD1471B32D00A96B8B /* UIKit.framework in Frameworks */,
 				941DB0AF1471B32D00A96B8B /* Foundation.framework in Frameworks */,
 				941DB0B11471B32D00A96B8B /* CoreGraphics.framework in Frameworks */,
+				4819443416CE9DB00016DB79 /* SecurityCheck.framework in Frameworks */,
+				481943D316CE99CA0016DB79 /* AppPassword.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1083,19 +1110,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		3BA7338D168C9732005ABFC9 /* App Password */ = {
-			isa = PBXGroup;
-			children = (
-				3BA7338E168C9732005ABFC9 /* IMSPassword.bundle */,
-				3BA7338F168C9732005ABFC9 /* IMSPasswordStoryboard_iPad.storyboard */,
-				3BA73390168C9732005ABFC9 /* IMSPasswordStoryboard_iPhone.storyboard */,
-				3BA73391168C9732005ABFC9 /* IMSPasswordViewController.h */,
-				3BA73392168C9732005ABFC9 /* IMSPasswordViewController.m */,
-			);
-			name = "App Password";
-			path = "apppassword/App Password";
-			sourceTree = "<group>";
-		};
 		3BABEC1916246CA50057D3B8 /* KissXML */ = {
 			isa = PBXGroup;
 			children = (
@@ -1231,6 +1245,22 @@
 			name = "Patient Data";
 			sourceTree = "<group>";
 		};
+		481943C916CE98120016DB79 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				481943CD16CE98120016DB79 /* AppPassword.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		48D8891316D3CCC90070C70A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				48D8891716D3CCC90070C70A /* SecurityCheck.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		49539DFA165A98D8004CB11B /* HRMedicationsApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -1271,6 +1301,8 @@
 		941DB0AB1471B32D00A96B8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4819443316CE9DB00016DB79 /* SecurityCheck.framework */,
+				481943D216CE99CA0016DB79 /* AppPassword.framework */,
 				3BA529EC1594AF400011E246 /* libxml2.dylib */,
 				94F871F31535D9F60018AF13 /* libz.dylib */,
 				945286AF155844C600CF5EA3 /* MessageUI.framework */,
@@ -1416,6 +1448,8 @@
 		94689ABC14964BBF00E1FCA6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				48D888F016D3CC6C0070C70A /* SecurityCheck.xcodeproj */,
+				481943BD16CE980E0016DB79 /* AppPassword.xcodeproj */,
 				3B4DF3A31680E05700D92BD1 /* SecureFoundation.xcodeproj */,
 				3BAABBC91636D782009D3543 /* sqlcipher.xcodeproj */,
 				3BAABBC01636D77D009D3543 /* openssl.xcodeproj */,
@@ -1424,7 +1458,6 @@
 				3BABEC1916246CA50057D3B8 /* KissXML */,
 				3BD5F0AC15EE8F6F00333320 /* Incremental Store */,
 				3B708F0715DE870C004D2B1D /* activityhud */,
-				3BA7338D168C9732005ABFC9 /* App Password */,
 			);
 			name = Vendor;
 			path = vendor;
@@ -1641,6 +1674,8 @@
 				3B4DF3B41680E06A00D92BD1 /* PBXTargetDependency */,
 				3B4DF3B21680E06700D92BD1 /* PBXTargetDependency */,
 				3B4DF3B01680E06300D92BD1 /* PBXTargetDependency */,
+				48D8891916D3CCD70070C70A /* PBXTargetDependency */,
+				481943D016CE98FB0016DB79 /* PBXTargetDependency */,
 			);
 			name = HReader;
 			productName = HReader;
@@ -1669,12 +1704,20 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 481943C916CE98120016DB79 /* Products */;
+					ProjectRef = 481943BD16CE980E0016DB79 /* AppPassword.xcodeproj */;
+				},
+				{
 					ProductGroup = 3B4DF3951680E04F00D92BD1 /* Products */;
 					ProjectRef = 3BAABBC01636D77D009D3543 /* openssl.xcodeproj */;
 				},
 				{
 					ProductGroup = 3B4DF3A41680E05700D92BD1 /* Products */;
 					ProjectRef = 3B4DF3A31680E05700D92BD1 /* SecureFoundation.xcodeproj */;
+				},
+				{
+					ProductGroup = 48D8891316D3CCC90070C70A /* Products */;
+					ProjectRef = 48D888F016D3CC6C0070C70A /* SecurityCheck.xcodeproj */;
 				},
 				{
 					ProductGroup = 3B4DF39D1680E05100D92BD1 /* Products */;
@@ -1715,6 +1758,20 @@
 			fileType = wrapper.cfbundle;
 			path = SecureFoundationTests.octest;
 			remoteRef = 3B4DF3AD1680E05700D92BD1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		481943CD16CE98120016DB79 /* AppPassword.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AppPassword.framework;
+			remoteRef = 481943CC16CE98120016DB79 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		48D8891716D3CCC90070C70A /* SecurityCheck.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SecurityCheck.framework;
+			remoteRef = 48D8891616D3CCC90070C70A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -2044,7 +2101,6 @@
 				4953C73C1679350200A6B98D /* HRMedicationsCollectionViewLayout.m in Sources */,
 				3BF45EE5167A7E5900FB47A0 /* HRMTimelineEntry.m in Sources */,
 				4953C7651684E6AF00A6B98D /* hReader.xcdatamodeld in Sources */,
-				3BA73396168C9732005ABFC9 /* IMSPasswordViewController.m in Sources */,
 				3BA7339C168C9B5D005ABFC9 /* HRPasswordViewController.m in Sources */,
 				24584D8C169F41C500F69B1A /* HRPopHealthAppletTile.m in Sources */,
 			);
@@ -2067,6 +2123,16 @@
 			isa = PBXTargetDependency;
 			name = sqlcipher;
 			targetProxy = 3B4DF3B31680E06A00D92BD1 /* PBXContainerItemProxy */;
+		};
+		481943D016CE98FB0016DB79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AppPassword;
+			targetProxy = 481943CF16CE98FB0016DB79 /* PBXContainerItemProxy */;
+		};
+		48D8891916D3CCD70070C70A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SecurityCheck;
+			targetProxy = 48D8891816D3CCD70070C70A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2097,14 +2163,19 @@
 				ARCHS = armv7;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DSQLITE_HAS_CODEC";
+				OTHER_CODE_SIGN_FLAGS = "";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
 			};
 			name = Debug;
@@ -2116,13 +2187,18 @@
 				ARCHS = armv7;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = (
 					"-DNS_BLOCK_ASSERTIONS=1",
 					"-DSQLITE_HAS_CODEC",
 				);
+				OTHER_CODE_SIGN_FLAGS = "";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = armv7;
 			};
@@ -2132,17 +2208,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_ENTITLEMENTS = HReader/HReader.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/HReader-gmihlhiowkmoypgmppowquplwtvm/Build/Products/Debug-iphoneos\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HReader/HReader-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2/**";
 				INFOPLIST_FILE = "HReader/HReader-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = $TARGET_NAME;
 				PROVISIONING_PROFILE = "";
 				STRIP_INSTALLED_PRODUCT = NO;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2151,17 +2230,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_ENTITLEMENTS = HReader/HReader.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: The MITRE Corporation";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/HReader-gmihlhiowkmoypgmppowquplwtvm/Build/Products/Debug-iphoneos\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HReader/HReader-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2/**";
 				INFOPLIST_FILE = "HReader/HReader-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = $TARGET_NAME;
-				PROVISIONING_PROFILE = "B0CECA52-3D26-4DED-9577-8C98A922800C";
+				PROVISIONING_PROFILE = "";
 				STRIP_INSTALLED_PRODUCT = YES;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

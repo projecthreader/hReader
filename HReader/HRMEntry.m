@@ -166,7 +166,9 @@
 -(NSMutableAttributedString *)getDescAttributeString{
     NSMutableAttributedString * attString = [[NSMutableAttributedString alloc] initWithString:[self.desc uppercaseString]];
     if(self.userDeleted.boolValue){
-        [attString addAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInteger: NSUnderlineStyleSingle] range:NSMakeRange(0,self.desc.length)];
+        [attString addAttribute:NSStrikethroughStyleAttributeName
+                          value:[NSNumber numberWithInteger: NSUnderlineStyleSingle]
+                          range:NSMakeRange(0,self.desc.length)];
     }
     return attString;
 }

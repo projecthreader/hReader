@@ -8,11 +8,13 @@
 
 #import "CMDManagedObject.h"
 
+
 typedef NS_ENUM(short, HRMPatientGender) {
     HRMPatientGenderMale,
     HRMPatientGenderFemale,
     HRMPatientGenderUnknown
 };
+
 
 typedef NS_ENUM(short, HRMPatientRelationship) {
     HRMPatientRelationshipMe,

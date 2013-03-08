@@ -23,8 +23,20 @@
 #import "HRCryptoManager.h"
 #import "HRMPatient.h"
 
-#import "IMSPasswordViewController.h"
+#import <SecurityCheck/SecurityCheck.h>
+#import <AppPassword/IMSPasswordViewController.h>
 #import <SecureFoundation/SecureFoundation.h>
+
+@interface HRAppDelegate() 
+
+    //-----------------------------------
+    // Callback block from SecurityCheck
+    //-----------------------------------
+    typedef void (^cbBlock) (void);
+
+    - (void) weHaveAProblem;
+
+@end
 
 
 @implementation HRAppDelegate {
@@ -80,8 +92,10 @@
         NSURL *databaseURL = [applicationSupportURL URLByAppendingPathComponent:@"database.sqlite3.2"];
         NSDictionary *options = @{
             NSPersistentStoreFileProtectionKey : NSFileProtectionComplete,
-            NSMigratePersistentStoresAutomaticallyOption : @YES,
-            NSInferMappingModelAutomaticallyOption : @YES
+            NSMigratePersistentStoresAutomaticallyOption : [NSNumber numberWithBool:YES],
+            NSInferMappingModelAutomaticallyOption : [NSNumber numberWithBool:YES]
+//            NSMigratePersistentStoresAutomaticallyOption : @YES,
+//            NSInferMappingModelAutomaticallyOption : @YES
         };
         
         // add store
@@ -98,42 +112,25 @@
 - (void)performLaunchSteps {
     
 #if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR
-#define PEACE_OUT() raise(SIGKILL); abort(); exit(EXIT_FAILURE);
     
-    // fork test
-    pid_t child = fork();
-    if (child == 0) { exit(0); } // child process should exit
-    if (child > 0) { // fork succeeded, compromised!
-        PEACE_OUT();
-    }
-    
-    // mobile substrate test
-    char path1[] = {
-        220, 191, 154, 145, 129, 146, 129, 138, 220, 190, 156, 145, 154, 159,
-        150, 160, 134, 145, 128, 135, 129, 146, 135, 150, 220, 190, 156, 145,
-        154, 159, 150, 160, 134, 145, 128, 135, 129, 146, 135, 150, 221, 151,
-        138, 159, 154, 145, '\0'
-    };
-    IMSXOR(243, path1, strlen(path1));
-    HRDebugLog(@"Checking for %s", path1);
-    struct stat s1;
-    if (stat(path1, &s1) == 0) { // file exists
-        PEACE_OUT();
+    //-----------------------------------
+    // call back to weHaveAProblem
+    //-----------------------------------
+    cbBlock chkCallback  = ^{
+        
+        __weak id weakSelf = self;
+        
+        if (weakSelf) [weakSelf weHaveAProblem];
     };
     
-    // sshd test
-    char path2[] = {
-        230, 188, 186, 187, 230, 171, 160, 167, 230, 186, 186, 161, 173, '\0'
-    };
-    IMSXOR(201, path2, strlen(path2));
-    HRDebugLog(@"Checking for %s", path2);
-    struct stat s2;
-    if (stat(path2, &s2) == 0) { // file exists
-        PEACE_OUT();
-    };
+    //-----------------------------------
+    // jailbreak detection
+    //-----------------------------------
+    checkFork(chkCallback);
+    checkFiles(chkCallback);
+    checkLinks(chkCallback);
     
 #endif
-    
     // check for hippa message
     if (![HRHIPPAMessageViewController hasAcceptedHIPPAMessage]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
@@ -240,6 +237,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+#if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR
+    //--------------------------------
+    // do not allow debuggers
+    //--------------------------------
+    dbgStop;
+    
+    //--------------------------------------------------------------------------
+    // check for the presence of a debugger, call weHaveAProblem if there is one
+    //--------------------------------------------------------------------------
+    cbBlock dbChkCallback = ^{
+        
+        __weak id weakSelf = self;
+        
+        if (weakSelf) [weakSelf weHaveAProblem];
+    };
+    
+    dbgCheck(dbChkCallback);
+    
+#endif
+    
     // notifications
     [[NSNotificationCenter defaultCenter]
      addObserver:self
@@ -247,6 +264,7 @@
      name:NSManagedObjectContextDidSaveNotification
      object:nil];
     
+    // launch steps
     dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
     dispatch_after(time, dispatch_get_main_queue(), ^(void){
         [self performLaunchSteps];
@@ -255,6 +273,14 @@
     // return
     return YES;
     
+}
+
+//--------------------------------------------------------------------
+// if a debugger is attched to the app then this method will be called
+//--------------------------------------------------------------------
+- (void) weHaveAProblem {
+        
+    exit(0);
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

@@ -16,7 +16,7 @@
 
 #import "HRMPatient.h"
 
-#import "IMSPasswordViewController.h"
+#import <AppPassword/IMSPasswordViewController.h>
 
 @interface HRAboutTableViewController ()
 

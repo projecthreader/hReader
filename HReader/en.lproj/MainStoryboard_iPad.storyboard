@@ -731,7 +731,15 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <sections>
                             <tableViewSection id="xQB-mH-yr2">
-                                <string key="headerTitle">hReader allows you to gather, correct, and manage all of your health data. hReader is not meant to replace the advice of a physician.     You should not rely on any information or suggestions in hReader to replace consultations with a qualified health professional regarding your own specific health issues.     All patient names with an asterisk (such as Smith*) indicate a patient constructed from purely synthetic and fictitious data. Any resemblance of a synthetic patient to real persons, living or dead, is purely coincidental.</string>
+                                <string key="headerTitle">hReader allows you to gather, correct, and manage all of your health data. hReader is not meant to replace the advice of a physician. 
+
+
+
+You should not rely on any information or suggestions in hReader to replace consultations with a qualified health professional regarding your own specific health issues. 
+
+
+
+All patient names with an asterisk (such as Smith*) indicate a patient constructed from purely synthetic and fictitious data. Any resemblance of a synthetic patient to real persons, living or dead, is purely coincidental.</string>
                                 <cells/>
                             </tableViewSection>
                         </sections>
