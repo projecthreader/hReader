@@ -5,6 +5,8 @@ hReader is an open-source, patient-centric mobile health data manager that secur
 ## Project Setup
 
 - The build process requires the `plist` gem. Run `sudo gem install plist --no-rdoc --no-ri` to install the gem in your system Ruby.
+  - If you haven't configured your Ruby environment yet, first install Ruby via RVM and then RubyGems. For more details, see https://rvm.io/rvm/install and http://rubygems.org.
+  - If you are having difficulty installing the plist gem, make sure you have your HTTP_PROXY and HTTPS_PROXY settings configured correctly for RubyGems.
 - hReader relies on several git submodules. Run `git submodule update --init --recursive` to update all submodules.
 - The build process requires the presence of the Xcode "Command Line Tools" package. Navigate to Xcode > Preferences > Downloads > Components and install the package.
 - The build process requires openssl source code to be setup in the environment.
