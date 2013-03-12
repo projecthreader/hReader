@@ -209,6 +209,7 @@
 		3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2D14DAE5910037738D /* Icon-72.png */; };
 		481943D316CE99CA0016DB79 /* AppPassword.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481943D216CE99CA0016DB79 /* AppPassword.framework */; };
 		4819443416CE9DB00016DB79 /* SecurityCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4819443316CE9DB00016DB79 /* SecurityCheck.framework */; };
+		48CEC26816EFE0C500D1BB40 /* IMSPassword.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 48CEC26716EFE0C500D1BB40 /* IMSPassword.bundle */; };
 		49539E00165A9937004CB11B /* HRMedicationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539DFC165A9937004CB11B /* HRMedicationCell.m */; };
 		49539E01165A9937004CB11B /* HRMedications_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49539DFD165A9937004CB11B /* HRMedications_iPad.storyboard */; };
 		49539E02165A9937004CB11B /* HRMedicationsMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539DFF165A9937004CB11B /* HRMedicationsMasterViewController.m */; };
@@ -350,30 +351,30 @@
 			remoteGlobalIDString = D2AAC045055464E500DB518D;
 			remoteInfo = sqlcipher;
 		};
-		481943CC16CE98120016DB79 /* PBXContainerItemProxy */ = {
+		48C8D8BC16EFE10B00D09446 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 481943BD16CE980E0016DB79 /* AppPassword.xcodeproj */;
+			containerPortal = 48CEC25416EFE08D00D1BB40 /* AppPassword.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 4819438D16CE96B90016DB79;
 			remoteInfo = AppPassword;
 		};
-		481943CF16CE98FB0016DB79 /* PBXContainerItemProxy */ = {
+		48C8D8C016EFE11600D09446 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 481943BD16CE980E0016DB79 /* AppPassword.xcodeproj */;
+			containerPortal = 48CEC25416EFE08D00D1BB40 /* AppPassword.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 4819438C16CE96B90016DB79;
 			remoteInfo = AppPassword;
 		};
-		48D8891616D3CCC90070C70A /* PBXContainerItemProxy */ = {
+		48CEC26516EFE0A700D1BB40 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 48D888F016D3CC6C0070C70A /* SecurityCheck.xcodeproj */;
+			containerPortal = 48CEC25C16EFE0A200D1BB40 /* SecurityCheck.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 481943E316CE9B470016DB79;
 			remoteInfo = SecurityCheck;
 		};
-		48D8891816D3CCD70070C70A /* PBXContainerItemProxy */ = {
+		48CEC26916EFE0DE00D1BB40 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 48D888F016D3CC6C0070C70A /* SecurityCheck.xcodeproj */;
+			containerPortal = 48CEC25C16EFE0A200D1BB40 /* SecurityCheck.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 481943E216CE9B470016DB79;
 			remoteInfo = SecurityCheck;
@@ -649,10 +650,11 @@
 		3BFBEE191534BEAA009EBA2D /* HRAppletTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAppletTile.m; sourceTree = "<group>"; };
 		3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HReaderApplets.plist; sourceTree = "<group>"; };
 		3BFE7A2D14DAE5910037738D /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		481943BD16CE980E0016DB79 /* AppPassword.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AppPassword.xcodeproj; path = apppassword/AppPassword.xcodeproj; sourceTree = "<group>"; };
 		481943D216CE99CA0016DB79 /* AppPassword.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppPassword.framework; path = "../../../../Library/Developer/Xcode/DerivedData/HReader-gmihlhiowkmoypgmppowquplwtvm/Build/Products/Debug-iphoneos/AppPassword.framework"; sourceTree = "<group>"; };
 		4819443316CE9DB00016DB79 /* SecurityCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityCheck.framework; path = "../../../../Library/Developer/Xcode/DerivedData/HReader-gmihlhiowkmoypgmppowquplwtvm/Build/Products/Debug-iphoneos/SecurityCheck.framework"; sourceTree = "<group>"; };
-		48D888F016D3CC6C0070C70A /* SecurityCheck.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SecurityCheck.xcodeproj; path = "../../security-check/SecurityCheck.xcodeproj"; sourceTree = "<group>"; };
+		48CEC25416EFE08D00D1BB40 /* AppPassword.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AppPassword.xcodeproj; path = apppassword/AppPassword.xcodeproj; sourceTree = "<group>"; };
+		48CEC25C16EFE0A200D1BB40 /* SecurityCheck.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SecurityCheck.xcodeproj; path = "security-check/SecurityCheck.xcodeproj"; sourceTree = "<group>"; };
+		48CEC26716EFE0C500D1BB40 /* IMSPassword.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = IMSPassword.bundle; path = vendor/apppassword/AppPassword/IMSPassword.bundle; sourceTree = "<group>"; };
 		49539DFB165A9937004CB11B /* HRMedicationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRMedicationCell.h; sourceTree = "<group>"; };
 		49539DFC165A9937004CB11B /* HRMedicationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRMedicationCell.m; sourceTree = "<group>"; };
 		49539DFD165A9937004CB11B /* HRMedications_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRMedications_iPad.storyboard; sourceTree = "<group>"; };
@@ -1243,18 +1245,18 @@
 			name = "Patient Data";
 			sourceTree = "<group>";
 		};
-		481943C916CE98120016DB79 /* Products */ = {
+		48C8D8B916EFE10B00D09446 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				481943CD16CE98120016DB79 /* AppPassword.framework */,
+				48C8D8BD16EFE10B00D09446 /* AppPassword.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		48D8891316D3CCC90070C70A /* Products */ = {
+		48CEC26216EFE0A700D1BB40 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				48D8891716D3CCC90070C70A /* SecurityCheck.framework */,
+				48CEC26616EFE0A700D1BB40 /* SecurityCheck.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1279,6 +1281,7 @@
 		941DB09D1471B32D00A96B8B = {
 			isa = PBXGroup;
 			children = (
+				48CEC26716EFE0C500D1BB40 /* IMSPassword.bundle */,
 				3BD5F08F15EE767200333320 /* README.md */,
 				C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */,
 				941DB0B21471B32D00A96B8B /* HReader */,
@@ -1445,8 +1448,8 @@
 		94689ABC14964BBF00E1FCA6 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				48D888F016D3CC6C0070C70A /* SecurityCheck.xcodeproj */,
-				481943BD16CE980E0016DB79 /* AppPassword.xcodeproj */,
+				48CEC25C16EFE0A200D1BB40 /* SecurityCheck.xcodeproj */,
+				48CEC25416EFE08D00D1BB40 /* AppPassword.xcodeproj */,
 				3B4DF3A31680E05700D92BD1 /* SecureFoundation.xcodeproj */,
 				3BAABBC91636D782009D3543 /* sqlcipher.xcodeproj */,
 				3BAABBC01636D77D009D3543 /* openssl.xcodeproj */,
@@ -1668,11 +1671,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				48C8D8C116EFE11600D09446 /* PBXTargetDependency */,
+				48CEC26A16EFE0DE00D1BB40 /* PBXTargetDependency */,
 				3B4DF3B41680E06A00D92BD1 /* PBXTargetDependency */,
 				3B4DF3B21680E06700D92BD1 /* PBXTargetDependency */,
 				3B4DF3B01680E06300D92BD1 /* PBXTargetDependency */,
-				48D8891916D3CCD70070C70A /* PBXTargetDependency */,
-				481943D016CE98FB0016DB79 /* PBXTargetDependency */,
 			);
 			name = HReader;
 			productName = HReader;
@@ -1701,8 +1704,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 481943C916CE98120016DB79 /* Products */;
-					ProjectRef = 481943BD16CE980E0016DB79 /* AppPassword.xcodeproj */;
+					ProductGroup = 48C8D8B916EFE10B00D09446 /* Products */;
+					ProjectRef = 48CEC25416EFE08D00D1BB40 /* AppPassword.xcodeproj */;
 				},
 				{
 					ProductGroup = 3B4DF3951680E04F00D92BD1 /* Products */;
@@ -1713,8 +1716,8 @@
 					ProjectRef = 3B4DF3A31680E05700D92BD1 /* SecureFoundation.xcodeproj */;
 				},
 				{
-					ProductGroup = 48D8891316D3CCC90070C70A /* Products */;
-					ProjectRef = 48D888F016D3CC6C0070C70A /* SecurityCheck.xcodeproj */;
+					ProductGroup = 48CEC26216EFE0A700D1BB40 /* Products */;
+					ProjectRef = 48CEC25C16EFE0A200D1BB40 /* SecurityCheck.xcodeproj */;
 				},
 				{
 					ProductGroup = 3B4DF39D1680E05100D92BD1 /* Products */;
@@ -1757,18 +1760,18 @@
 			remoteRef = 3B4DF3AD1680E05700D92BD1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		481943CD16CE98120016DB79 /* AppPassword.framework */ = {
+		48C8D8BD16EFE10B00D09446 /* AppPassword.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = AppPassword.framework;
-			remoteRef = 481943CC16CE98120016DB79 /* PBXContainerItemProxy */;
+			remoteRef = 48C8D8BC16EFE10B00D09446 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		48D8891716D3CCC90070C70A /* SecurityCheck.framework */ = {
+		48CEC26616EFE0A700D1BB40 /* SecurityCheck.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = SecurityCheck.framework;
-			remoteRef = 48D8891616D3CCC90070C70A /* PBXContainerItemProxy */;
+			remoteRef = 48CEC26516EFE0A700D1BB40 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1778,6 +1781,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48CEC26816EFE0C500D1BB40 /* IMSPassword.bundle in Resources */,
 				941DB0B71471B32D00A96B8B /* InfoPlist.strings in Resources */,
 				941DB0C31471B32D00A96B8B /* MainStoryboard_iPad.storyboard in Resources */,
 				DD695D8614897C2200E4E2E1 /* HRMessagesViewController.xib in Resources */,
@@ -2117,15 +2121,15 @@
 			name = sqlcipher;
 			targetProxy = 3B4DF3B31680E06A00D92BD1 /* PBXContainerItemProxy */;
 		};
-		481943D016CE98FB0016DB79 /* PBXTargetDependency */ = {
+		48C8D8C116EFE11600D09446 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AppPassword;
-			targetProxy = 481943CF16CE98FB0016DB79 /* PBXContainerItemProxy */;
+			targetProxy = 48C8D8C016EFE11600D09446 /* PBXContainerItemProxy */;
 		};
-		48D8891916D3CCD70070C70A /* PBXTargetDependency */ = {
+		48CEC26A16EFE0DE00D1BB40 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SecurityCheck;
-			targetProxy = 48D8891816D3CCD70070C70A /* PBXContainerItemProxy */;
+			targetProxy = 48CEC26916EFE0DE00D1BB40 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

@@ -19,3 +19,6 @@
 [submodule "vendor/apppassword"]
 	path = vendor/apppassword
 	url = https://github.com/project-imas/app-password.git
+[submodule "vendor/security-check"]
+	path = vendor/security-check
+	url = git://github.com/project-imas/security-check.git
