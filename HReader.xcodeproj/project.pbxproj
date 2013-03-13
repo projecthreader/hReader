@@ -1981,9 +1981,6 @@
 				497775841663B8C700FF6E95 /* edit.png in Resources */,
 				497775861663B8D200FF6E95 /* save.png in Resources */,
 				4978672A169485A900B07D9D /* delete.png in Resources */,
-				3BA73393168C9732005ABFC9 /* IMSPassword.bundle in Resources */,
-				3BA73394168C9732005ABFC9 /* IMSPasswordStoryboard_iPad.storyboard in Resources */,
-				3BA73395168C9732005ABFC9 /* IMSPasswordStoryboard_iPhone.storyboard in Resources */,
 				668B083716C1CDE8004C7AE6 /* pophealth in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
