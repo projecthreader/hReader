@@ -10,6 +10,19 @@
 
 #import "HRPasswordViewController.h"
 
+#import <SecurityCheck/debugCheck.h>
+
+@interface HRPasswordViewController()
+
+//-----------------------------------
+// Callback block from securityCheck
+//-----------------------------------
+typedef void (^cbBlock) (void);
+
+- (void) weHaveAProblem;
+
+@end
+
 @interface HRPasswordViewController ()
 
 @property (nonatomic, weak) IBOutlet UIView *passwordFieldContainerView;
@@ -35,7 +48,32 @@
     layer.shadowOffset = CGSizeMake(0.0, 1.0);
     layer.shadowOpacity = 0.5;
     layer.shadowRadius = 0.0;
+
+#if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR
     
+    //--------------------------------------------------------------------------
+    // check for the presence of a debugger, call weHaveAProblem if there is one
+    //--------------------------------------------------------------------------
+    cbBlock dbChkCallback = ^{
+        
+        __weak id weakSelf = self;
+        
+        if (weakSelf) [weakSelf weHaveAProblem];
+        
+    };
+    
+    dbgCheck(dbChkCallback);
+    
+#endif
+
+}
+
+//--------------------------------------------------------------------
+// if a debugger is attched to the app then this method will be called
+//--------------------------------------------------------------------
+- (void) weHaveAProblem {
+    
+    exit(0);
 }
 
 @end
