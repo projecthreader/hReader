@@ -208,7 +208,7 @@
 		3BFBEE1C1534BF32009EBA2D /* HReaderApplets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */; };
 		3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2D14DAE5910037738D /* Icon-72.png */; };
 		481943D316CE99CA0016DB79 /* AppPassword.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481943D216CE99CA0016DB79 /* AppPassword.framework */; };
-		4819443416CE9DB00016DB79 /* SecurityCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4819443316CE9DB00016DB79 /* SecurityCheck.framework */; };
+		4836B0C716F23FE700A88507 /* libSecurityCheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48CEC26616EFE0A700D1BB40 /* libSecurityCheck.a */; };
 		48CEC26816EFE0C500D1BB40 /* IMSPassword.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 48CEC26716EFE0C500D1BB40 /* IMSPassword.bundle */; };
 		49539E00165A9937004CB11B /* HRMedicationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539DFC165A9937004CB11B /* HRMedicationCell.m */; };
 		49539E01165A9937004CB11B /* HRMedications_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49539DFD165A9937004CB11B /* HRMedications_iPad.storyboard */; };
@@ -377,7 +377,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 48CEC25C16EFE0A200D1BB40 /* SecurityCheck.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 481943E216CE9B470016DB79;
+			remoteGlobalIDString = 48965CEF16F2044E00B14F8A;
 			remoteInfo = SecurityCheck;
 		};
 /* End PBXContainerItemProxy section */
@@ -652,7 +652,6 @@
 		3BFBEE1B1534BF32009EBA2D /* HReaderApplets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HReaderApplets.plist; sourceTree = "<group>"; };
 		3BFE7A2D14DAE5910037738D /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		481943D216CE99CA0016DB79 /* AppPassword.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppPassword.framework; path = "../../../../Library/Developer/Xcode/DerivedData/HReader-gmihlhiowkmoypgmppowquplwtvm/Build/Products/Debug-iphoneos/AppPassword.framework"; sourceTree = "<group>"; };
-		4819443316CE9DB00016DB79 /* SecurityCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityCheck.framework; path = "../../../../Library/Developer/Xcode/DerivedData/HReader-gmihlhiowkmoypgmppowquplwtvm/Build/Products/Debug-iphoneos/SecurityCheck.framework"; sourceTree = "<group>"; };
 		48CEC25416EFE08D00D1BB40 /* AppPassword.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AppPassword.xcodeproj; path = apppassword/AppPassword.xcodeproj; sourceTree = "<group>"; };
 		48CEC25C16EFE0A200D1BB40 /* SecurityCheck.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SecurityCheck.xcodeproj; path = "security-check/SecurityCheck.xcodeproj"; sourceTree = "<group>"; };
 		48CEC26716EFE0C500D1BB40 /* IMSPassword.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = IMSPassword.bundle; path = vendor/apppassword/AppPassword/IMSPassword.bundle; sourceTree = "<group>"; };
@@ -808,6 +807,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4836B0C716F23FE700A88507 /* libSecurityCheck.a in Frameworks */,
 				3B4DF3B51680E07100D92BD1 /* libcrypto.a in Frameworks */,
 				3B4DF3B61680E07100D92BD1 /* libSecureFoundation.a in Frameworks */,
 				3B4DF3B71680E07100D92BD1 /* libsqlcipher.a in Frameworks */,
@@ -820,7 +820,6 @@
 				941DB0AD1471B32D00A96B8B /* UIKit.framework in Frameworks */,
 				941DB0AF1471B32D00A96B8B /* Foundation.framework in Frameworks */,
 				941DB0B11471B32D00A96B8B /* CoreGraphics.framework in Frameworks */,
-				4819443416CE9DB00016DB79 /* SecurityCheck.framework in Frameworks */,
 				481943D316CE99CA0016DB79 /* AppPassword.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1258,7 +1257,7 @@
 		48CEC26216EFE0A700D1BB40 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				48CEC26616EFE0A700D1BB40 /* SecurityCheck.framework */,
+				48CEC26616EFE0A700D1BB40 /* libSecurityCheck.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1304,7 +1303,6 @@
 		941DB0AB1471B32D00A96B8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4819443316CE9DB00016DB79 /* SecurityCheck.framework */,
 				481943D216CE99CA0016DB79 /* AppPassword.framework */,
 				3BA529EC1594AF400011E246 /* libxml2.dylib */,
 				94F871F31535D9F60018AF13 /* libz.dylib */,
@@ -1770,10 +1768,10 @@
 			remoteRef = 48C8D8BC16EFE10B00D09446 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		48CEC26616EFE0A700D1BB40 /* SecurityCheck.framework */ = {
+		48CEC26616EFE0A700D1BB40 /* libSecurityCheck.a */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SecurityCheck.framework;
+			fileType = archive.ar;
+			path = libSecurityCheck.a;
 			remoteRef = 48CEC26516EFE0A700D1BB40 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
