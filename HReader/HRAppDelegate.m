@@ -24,10 +24,15 @@
 #import "HRMPatient.h"
 
 #import <SecurityCheck/SecurityCheck.h>
-#import <AppPassword/IMSPasswordViewController.h>
+#import <AppPassword/AppPassword.h>
 #import <SecureFoundation/SecureFoundation.h>
 
 @interface HRAppDelegate() 
+
+    @property (nonatomic)        PASS_CTL   passControl;
+    @property (nonatomic,strong) APPass    *appPass;
+    @property (nonatomic,strong) APPass    *appQuestion;
+    @property (nonatomic)        NSInteger  numberOfQuestions;
 
     //-----------------------------------
     // Callback block from SecurityCheck
@@ -40,39 +45,57 @@
 
 
 @implementation HRAppDelegate {
-    NSUInteger passcodeAttempts;
+    NSUInteger              passcodeAttempts;
     UINavigationController *securityNavigationController;
-    NSPersistentStore *persistentStore;
+    NSPersistentStore      *persistentStore;
 }
 
 #pragma mark - class methods
 
-+ (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
++ (NSPersistentStoreCoordinator *) persistentStoreCoordinator {
+    
     static NSPersistentStoreCoordinator *coordinator = nil;
     static dispatch_once_t token;
+    
     dispatch_once(&token, ^{
-        NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"hReader" withExtension:@"momd"];
-        NSManagedObjectModel *model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-        coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
+        
+        NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"hReader"
+                                                  withExtension:@"momd"];
+        
+        NSManagedObjectModel *model = [[NSManagedObjectModel alloc]
+                                       initWithContentsOfURL:modelURL];
+        
+        coordinator = [[NSPersistentStoreCoordinator alloc]
+                       initWithManagedObjectModel:model];
     });
+    
     return coordinator;
 }
-
-+ (NSManagedObjectContext *)rootManagedObjectContext {
++ (NSManagedObjectContext       *) rootManagedObjectContext   {
+    
     static NSManagedObjectContext *context = nil;
     static dispatch_once_t token;
+    
     dispatch_once(&token, ^{
-        context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-        [context setPersistentStoreCoordinator:[self persistentStoreCoordinator]];
+        
+        context = [[NSManagedObjectContext alloc]
+                   initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        
+        [context
+         setPersistentStoreCoordinator:[self persistentStoreCoordinator]];
     });
     return context;
 }
-
-+ (NSManagedObjectContext *)managedObjectContext {
++ (NSManagedObjectContext       *) managedObjectContext       {
+    
     static NSManagedObjectContext *context = nil;
     static dispatch_once_t token;
+    
     dispatch_once(&token, ^{
-        context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        
+        context = [[NSManagedObjectContext alloc]
+                   initWithConcurrencyType:NSMainQueueConcurrencyType];
+        
         [context setParentContext:[self rootManagedObjectContext]];
     });
     return context;
@@ -80,36 +103,49 @@
 
 #pragma mark - object methods
 
-- (void)addPersistentStoreIfNeeded {
+- (void) addPersistentStoreIfNeeded {
+    
     if (persistentStore == nil) {
+        
         NSError *error = nil;
-        NSPersistentStoreCoordinator *coordinator = [HRAppDelegate persistentStoreCoordinator];
+        NSPersistentStoreCoordinator *coordinator =
+        [HRAppDelegate persistentStoreCoordinator];
         
         // store configuration
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        NSURL *applicationSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
-        [fileManager createDirectoryAtURL:applicationSupportURL withIntermediateDirectories:NO attributes:nil error:nil];
-        NSURL *databaseURL = [applicationSupportURL URLByAppendingPathComponent:@"database.sqlite3.2"];
-        NSDictionary *options = @{
-            NSPersistentStoreFileProtectionKey : NSFileProtectionComplete,
-            NSMigratePersistentStoresAutomaticallyOption : [NSNumber numberWithBool:YES],
-            NSInferMappingModelAutomaticallyOption : [NSNumber numberWithBool:YES]
-//            NSMigratePersistentStoresAutomaticallyOption : @YES,
-//            NSInferMappingModelAutomaticallyOption : @YES
+        NSFileManager *fileManager   = [NSFileManager defaultManager];
+        NSURL *applicationSupportURL =
+        [[fileManager URLsForDirectory:NSApplicationSupportDirectory
+                             inDomains:NSUserDomainMask] lastObject];
+        
+        [fileManager createDirectoryAtURL:applicationSupportURL
+              withIntermediateDirectories:NO
+                               attributes:nil
+                                    error:nil];
+        
+        NSURL *databaseURL =
+        [applicationSupportURL
+         URLByAppendingPathComponent:@"database.sqlite3.2"];
+        
+        NSDictionary *options =
+        @{
+        NSPersistentStoreFileProtectionKey           : NSFileProtectionComplete,
+        NSMigratePersistentStoresAutomaticallyOption : @YES,
+        NSInferMappingModelAutomaticallyOption       : @YES        
         };
         
         // add store
-        persistentStore = HRCryptoManagerAddEncryptedStoreToCoordinator(coordinator,
-                                                                        nil,
-                                                                        databaseURL,
-                                                                        options,
-                                                                        &error);
+        persistentStore =
+        HRCryptoManagerAddEncryptedStoreToCoordinator( coordinator
+                                                      ,nil
+                                                      ,databaseURL
+                                                      ,options
+                                                      ,&error);
+        
         NSAssert(persistentStore, @"Unable to add persistent store\n%@", error);
         
     }
 }
-
-- (void)performLaunchSteps {
+- (void) performLaunchSteps         {
     
 #if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR
     
@@ -126,32 +162,40 @@
     //-----------------------------------
     // jailbreak detection
     //-----------------------------------
-    checkFork(chkCallback);
-    checkFiles(chkCallback);
-    checkLinks(chkCallback);
+//    checkFork(chkCallback);
+//    checkFiles(chkCallback);
+//    checkLinks(chkCallback);
     
 #endif
+    
     // check for hippa message
     if (![HRHIPPAMessageViewController hasAcceptedHIPPAMessage]) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
-        HRHIPPAMessageViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"HIPPAViewController"];
+        
+        UIStoryboard *storyboard =
+        [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
+        
+        HRHIPPAMessageViewController *controller  =
+        [storyboard
+         instantiateViewControllerWithIdentifier:@"HIPPAViewController"];
+        
         controller.navigationItem.hidesBackButton = YES;
-        controller.target = self;
-        controller.action = _cmd;
+        controller.target                         = self;
+        controller.action                         = _cmd;
+        
         UINavigationController *navigation = (id)self.window.rootViewController;
+        
         [navigation popToRootViewControllerAnimated:NO];
-        [navigation pushViewController:controller animated:YES];
+        
+        [navigation pushViewController:controller
+                              animated:YES];
     }
     
     // check for passcode
-    else if (!HRCryptoManagerHasPasscode() || !HRCryptoManagerHasSecurityQuestions()) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
-        IMSPasswordViewController *password = [storyboard instantiateViewControllerWithIdentifier:@"CreatePasscodeViewController"];
-        password.title = @"Set Password";
-        password.target = self;
-        password.action = @selector(createInitialPasscode::);
-        password.navigationItem.hidesBackButton = YES;
-        [(id)self.window.rootViewController pushViewController:password animated:YES];
+    else if (!HRCryptoManagerHasPasscode()
+         ||  !HRCryptoManagerHasSecurityQuestions()) {
+        
+        [self presentPass:PASS_CREATE];
+        
         [[[UIAlertView alloc]
           initWithTitle:@"Welcome"
           message:@"Before you start using hReader, you must set a passcode and create security questions."
@@ -163,44 +207,62 @@
     
     // unlocked
     else if (HRCryptoManagerIsUnlocked()) {
-        NSArray *hosts = [HRAPIClient hosts];
-        UIViewController *controller = [(id)self.window.rootViewController topViewController];
+        
+        NSArray          *hosts      = [HRAPIClient hosts];
+        UIViewController *controller = [(id)self.window.rootViewController
+                                        topViewController];
         
         // load persistent store
         [self addPersistentStoreIfNeeded];
         
         // check for accounts
         if ([hosts count] == 0) {
-            HRAPIClient *client = [HRAPIClient clientWithHost:@"growing-spring-4857.herokuapp.com"];
-            HRRHExLoginViewController *controller = [HRRHExLoginViewController loginViewControllerForClient:client];
+            
+            HRAPIClient *client = [HRAPIClient clientWithHost:
+                                   @"growing-spring-4857.herokuapp.com"];
+            
+            HRRHExLoginViewController *controller =
+            [HRRHExLoginViewController loginViewControllerForClient:client];
+            
             controller.navigationItem.hidesBackButton = YES;
             controller.target = self;
             controller.action = @selector(initialLoginDidSucceed:);
-            [(id)self.window.rootViewController pushViewController:controller animated:YES];
-        }
-        
-        // carry on
-        else {
+            
+            [(id)self.window.rootViewController pushViewController:controller
+                                                          animated:YES];
+            
+        } else {    // carry on
             
             // update local data
             NSString *host = [hosts lastObject];
+            
             [[HRAPIClient clientWithHost:host] patientFeed:nil];
+            
             [HRMPatient performSync];
+            
             // push storyboard if we need to
-            if ([controller isKindOfClass:[HRSplashScreenViewController class]] ||
-                [controller isKindOfClass:[HRHIPPAMessageViewController class]]) {
-                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
-                id controller = [storyboard instantiateViewControllerWithIdentifier:@"PeopleSetupViewController"];
+            if ([controller isKindOfClass:[HRSplashScreenViewController class]]
+            ||  [controller isKindOfClass:[HRHIPPAMessageViewController class]])
+            {
+                UIStoryboard *storyboard =
+                [UIStoryboard storyboardWithName:@"InitialSetup_iPad"
+                                          bundle:nil];
+                
+                id controller =
+                [storyboard instantiateViewControllerWithIdentifier:
+                 @"PeopleSetupViewController"];
+                
                 [[controller navigationItem] setHidesBackButton:YES];
-                [(id)self.window.rootViewController pushViewController:controller animated:YES];
+                
+                [(id)self.window.rootViewController pushViewController:controller
+                                                              animated:YES];
             }
             
         }
         
-    }
-    
-    // locked
-    else {
+    } else {  // locked
+        
+        // VERIFICATION
         [self presentPasscodeVerificationController:YES];
     }
     
@@ -211,23 +273,33 @@
 - (void)managedObjectContextDidSave:(NSNotification *)notification {
     
     // get contexts
-    NSManagedObjectContext *rootContext = [HRAppDelegate rootManagedObjectContext];
-    NSManagedObjectContext *mainContext = [HRAppDelegate managedObjectContext];
+    NSManagedObjectContext *rootContext   = [HRAppDelegate
+                                             rootManagedObjectContext];
+    NSManagedObjectContext *mainContext   = [HRAppDelegate
+                                             managedObjectContext];
     NSManagedObjectContext *savingContext = [notification object];
     
     // main -> root
     if (savingContext == mainContext) {
+        
         [rootContext performBlock:^{
+            
             NSError *error = nil;
-            if (![rootContext save:&error]) { HRDebugLog(@"Unable to save root context: %@", error); }
+            
+            if (![rootContext save:&error]) {
+                HRDebugLog(@"Unable to save root context: %@", error);
+            }
         }];
-    }
-    
-    // child -> main
-    else if ([savingContext parentContext] == mainContext) {
+        
+    } else if ([savingContext parentContext] == mainContext) { // child -> main
+        
         [mainContext performBlock:^{
+            
             NSError *error = nil;
-            if (![mainContext save:&error]) { HRDebugLog(@"Unable to save main context: %@", error); }
+            
+            if (![mainContext save:&error]) {
+                HRDebugLog(@"Unable to save main context: %@", error);
+            }
         }];
     }
     
@@ -235,13 +307,14 @@
 
 #pragma mark - application lifecycle
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)           application:(UIApplication *) application
+ didFinishLaunchingWithOptions:(NSDictionary  *) launchOptions {
     
 #if TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR
     //--------------------------------
     // do not allow debuggers
     //--------------------------------
-    dbgStop;
+    //    dbgStop;
     
     //--------------------------------------------------------------------------
     // check for the presence of a debugger, call weHaveAProblem if there is one
@@ -253,33 +326,38 @@
         if (weakSelf) [weakSelf weHaveAProblem];
     };
     
-    dbgCheck(dbChkCallback);
+//    dbgCheck(dbChkCallback);
     
 #endif
+    //--------------------------------------------------------------------------
+    // Setup AppPass API 
+    //--------------------------------------------------------------------------
+    [self initAppAPI];
     
     // notifications
     [[NSNotificationCenter defaultCenter]
+     
      addObserver:self
-     selector:@selector(managedObjectContextDidSave:)
-     name:NSManagedObjectContextDidSaveNotification
-     object:nil];
+        selector:@selector(managedObjectContextDidSave:)
+            name:NSManagedObjectContextDidSaveNotification
+          object:nil];
     
     // launch steps
     dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
+    
     dispatch_after(time, dispatch_get_main_queue(), ^(void){
         [self performLaunchSteps];
     });
     
     // return
     return YES;
-    
 }
 
 //--------------------------------------------------------------------
 // if a debugger is attched to the app then this method will be called
 //--------------------------------------------------------------------
 - (void) weHaveAProblem {
-        
+    
     exit(0);
 }
 
@@ -296,158 +374,219 @@
     HRCryptoManagerPurge();
     
     // reset interface
-    if (!HRCryptoManagerHasPasscode() || !HRCryptoManagerHasSecurityQuestions()) {
+    if (!HRCryptoManagerHasPasscode()
+    ||  !HRCryptoManagerHasSecurityQuestions()) {
+        
         [(id)self.window.rootViewController popToRootViewControllerAnimated:NO];
     }
-    [securityNavigationController dismissViewControllerAnimated:NO completion:nil];
-    securityNavigationController = nil;
-    [self presentPasscodeVerificationController:NO];
     
+    [securityNavigationController dismissViewControllerAnimated:NO
+                                                     completion:nil];
+    securityNavigationController = nil;
+    
+    // VERIFICATION
+    [self presentPasscodeVerificationController:NO];
 }
 
 #pragma mark - security scenario one
 
-/*
- 
- Methods used when setting the security information on first launch.
- 
- */
 
-- (void)createInitialPasscode :(IMSPasswordViewController *)controller :(NSString *)passcode {
-    HRCryptoManagerStoreTemporaryPasscode(passcode);
-    HRSecurityQuestionsViewController *questions = [controller.storyboard instantiateViewControllerWithIdentifier:@"SecurityQuestionsController"];
-    questions.navigationItem.hidesBackButton = YES;
-    questions.mode = HRSecurityQuestionsViewControllerModeCreate;
-    questions.delegate = self;
-    questions.title = @"Security Questions";
-    questions.action = @selector(createInitialSecurityQuestions:::);
-    [controller.navigationController pushViewController:questions animated:YES];
+//------------------------------------------------------------------------------
+// APPass
+//------------------------------------------------------------------------------
+-(void) initAppAPI {
+
+    self.numberOfQuestions    = 2;
+    
+    self.appPass              = [APPass
+                                  complexPassWithName:@"APComplexPass"
+                               fromStoryboardWithName:@"InitialSetup_iPad"];
+    
+    self.appQuestion          = [APPass
+                                         passWithName:@"APQuestionPass"
+                               fromStoryboardWithName:@"InitialSetup_iPad"
+                                        withQuestions:self.numberOfQuestions];
+    self.appPass.delegate     = self;
+    self.appQuestion.delegate = self;
+    
+    self.appPass.syntax       = @"^.*(?=.*[a-zA-Z])(?=.*[0-9])(?=.{8,}).*$";
+
 }
 
-- (void)createInitialSecurityQuestions :(HRSecurityQuestionsViewController *)controller :(NSArray *)questions :(NSArray *)answers {
-    HRCryptoManagerStoreTemporarySecurityQuestionsAndAnswers(questions, answers);
-    HRCryptoManagerFinalize();
+-(void)     presentPass:(PASS_CTL) cntrl {
+    
+    self.passControl              = cntrl;
+    self.appPass.verify           = (cntrl == PASS_VERIFY) ? @"verify" : nil;
+    self.appPass.parentController = self.window.rootViewController;
+
+}
+-(void) presentQuestion:(PASS_CTL) cntrl {
+    
+    self.passControl                  = cntrl;
+    
+    if (cntrl == PASS_VERIFY_Q)
+        
+    self.appQuestion.verifyQuestions  = IMSCryptoManagerSecurityQuestions();
+    
+    self.appQuestion.parentController = self.window.rootViewController;
+
+}
+
+//------------------------------------------------------------------------------
+// APPassProtocol - required
+//------------------------------------------------------------------------------
+-(void) APPassComplete:(UIViewController*) viewController
+            withPhrase:(NSString*)         phrase {
+    
+    if ( nil != phrase ) {
+        
+        switch (self.passControl) {
+            
+            case PASS_CREATE: [self processCreate:viewController
+                                        withPhrase:phrase];
+                               break;
+                
+            case PASS_RESET:  [self  processReset:viewController
+                                        withPhrase:phrase];
+                               break;
+                
+            case PASS_VERIFY: [self processVerify:viewController
+                                        withPhrase:phrase];
+                               break;
+            default: break;
+        }
+    }
+}
+//------------------------------------------------------------------------------
+// APPassProtocol - verify the entered passcode with the stored one
+//------------------------------------------------------------------------------
+-(BOOL) verifyPhraseWithSecureFoundation:(NSString*) phrase {
+    
+    BOOL ret = NO;
+    
+    if (phrase) ret = HRCryptoManagerUnlockWithPasscode(phrase);
+    
+    return ret;
+}
+
+-(void) resetPassAP {
+    
+    [self presentQuestion:PASS_VERIFY_Q];
+}
+
+-(void) resetQuestionAP {
+    
+    NSLog(@"resetPassQuestions?");
+}
+//------------------------------------------------------------------------------
+// The passcode has been entered now present the questions
+//------------------------------------------------------------------------------
+- (void) processCreate:(UIViewController*) viewController
+            withPhrase:(NSString*) phrase {
+    
+    // hold on to the phrase for finialize method 
+    HRCryptoManagerStoreTemporaryPasscode(phrase);
+    
+    // ask to create questions 
+    [self presentQuestion:PASS_CREATE_Q];
+}
+//------------------------------------------------------------------------------
+// 
+//------------------------------------------------------------------------------
+- (void) processVerify:(UIViewController*) viewController
+            withPhrase:(NSString*) phrase {
+    
+    if (HRCryptoManagerUnlockWithPasscode(phrase)) {
+        
+        [self addPersistentStoreIfNeeded];
+        
+        [self performLaunchSteps];
+    }
+}
+//------------------------------------------------------------------------------
+// Update the stored passcode with a new one
+//------------------------------------------------------------------------------
+- (void)  processReset:(UIViewController*) viewController
+            withPhrase:(NSString*) phrase {
+    
+    HRCryptoManagerUpdatePasscode(phrase);
+    
     [self performLaunchSteps];
 }
 
-#pragma mark - security scenario two
-
-/*
- 
- Methods used when verifying the user's passcode on launch.
- 
- */
-
-- (void)presentPasscodeVerificationController:(BOOL)animated {
-    NSAssert(!securityNavigationController, @"You cannot present two passcode verification controllers");
-    passcodeAttempts = 0;
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
-    IMSPasswordViewController *password = [storyboard instantiateViewControllerWithIdentifier:@"VerifyPasscodeViewController"];
-    password.target = self;
-    password.action = @selector(verifyPasscodeOnLaunch::);
-    password.title = @"Enter Password";
-    securityNavigationController = [[UINavigationController alloc] initWithRootViewController:password];
-    UIViewController *controller = self.window.rootViewController;
-    while (YES) {
-        UIViewController *presented = controller.presentedViewController;
-        if (presented) { controller = presented; }
-        else { break; }
-    }
-    [controller presentViewController:securityNavigationController animated:animated completion:nil];
-}
-
-- (BOOL)verifyPasscodeOnLaunch :(IMSPasswordViewController *)controller :(NSString *)passcode {
-    if (HRCryptoManagerUnlockWithPasscode(passcode)) {
-        [self addPersistentStoreIfNeeded];
-        [controller dismissViewControllerAnimated:YES completion:^{
-            securityNavigationController = nil;
-            [self performLaunchSteps];
-        }];
-        return YES;
-    }
-    else {
-        if (++passcodeAttempts > 2) {
-            controller.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
-                                                           initWithTitle:@"Reset Passcode" 
-                                                           style:UIBarButtonItemStyleDone 
-                                                           target:self 
-                                                           action:@selector(resetPasscodeWithSecurityQuestions)];
+//------------------------------------------------------------------------------
+// APQuestionProtocol - required
+//------------------------------------------------------------------------------
+-(void) APPassComplete:(UIViewController *) viewController
+         withQuestions:(NSArray *)          questions
+            andAnswers:(NSArray *)          answers {
+    
+    if ( nil != questions && nil != answers ) {
+        
+        switch (self.passControl) {
+                
+            case PASS_CREATE_Q: [self processCreateQuestion:questions
+                                                withAnswers:answers];
+                break;
+                
+            case PASS_RESET_Q:  [self processResetQuestion:questions
+                                               withAnswers:answers];
+                break;
+                
+            default: break;
         }
-        return NO;
     }
+    
+    [self performLaunchSteps];
 }
 
-- (void)resetPasscodeWithSecurityQuestions {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
-    HRSecurityQuestionsViewController *questions = [storyboard instantiateViewControllerWithIdentifier:@"SecurityQuestionsController"];
-    questions.navigationItem.hidesBackButton = YES;
-    questions.mode = HRSecurityQuestionsViewControllerModeVerify;
-    questions.delegate = self;
-    questions.title = @"Security Questions";
-    questions.action = @selector(resetPasscodeWithSecurityQuestions:::);
-    [securityNavigationController pushViewController:questions animated:YES];
+-(void) processCreateQuestion:questions withAnswers:answers {
+    
+    IMSCryptoManagerStoreTemporarySecurityQuestionsAndAnswers(questions
+                                                              ,answers);
+    IMSCryptoManagerFinalize();
 }
 
-- (void)resetPasscodeWithSecurityQuestions :(HRSecurityQuestionsViewController *)controller :(NSArray *)questions :(NSArray *)answers {
-    if (HRCryptoManagerUnlockWithAnswersForSecurityQuestions(answers)) {
-        IMSPasswordViewController *password = [controller.storyboard instantiateViewControllerWithIdentifier:@"CreatePasscodeViewController"];
-        password.target = self;
-        password.action = @selector(resetPasscode::);
-        password.title = @"Enter Password";
-        password.navigationItem.hidesBackButton = YES;
-        [controller.navigationController pushViewController:password animated:YES];
-    }
-    else {
-        [[[UIAlertView alloc]
-          initWithTitle:@"The answers you provided are not correct."
-          message:nil
-          delegate:nil
-          cancelButtonTitle:@"OK"
-          otherButtonTitles:nil]
-         show];
-    }
+-(void)  processResetQuestion:questions withAnswers:answers {
+    
+    IMSCryptoManagerUpdateSecurityQuestionsAndAnswers(questions, answers);
+    
 }
 
-- (void)resetPasscode :(IMSPasswordViewController *)controller :(NSString *)passcode {
-    HRCryptoManagerUpdatePasscode(passcode);
-    [controller dismissViewControllerAnimated:YES completion:^{
-        [self performLaunchSteps];
-    }];
+-(BOOL) APPassQuestion:(UIViewController *) viewController
+         verifyAnswers:(NSArray *)          answers {
+    
+    return IMSCryptoManagerUnlockWithAnswersForSecurityQuestions(answers);
 }
 
-#pragma mark - security scenario three
-
-/*
- 
- Methods used when changing the passcode at the request of the user.
- 
- */
-
-- (BOOL)verifyPasscodeOnPasscodeChange :(IMSPasswordViewController *)controller :(NSString *)passcode {
-    if (HRCryptoManagerUnlockWithPasscode(passcode)) {
-        IMSPasswordViewController *password = [controller.storyboard instantiateViewControllerWithIdentifier:@"CreatePasscodeViewController"];
-        password.target = self;
-        password.action = @selector(resetPasscode::);
-        password.title = @"Enter New Password";
-        password.navigationItem.hidesBackButton = YES;
-        password.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                                      initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                      target:password
-                                                      action:@selector(doneButtonAction:)];
-        [controller.navigationController pushViewController:password animated:YES];
-        return YES;
-    }
-    return NO;
+//------------------------------------------------------------------------------
+// user forgot the passcode and is answering security questions in order to
+// reset it
+//------------------------------------------------------------------------------
+-(void) APPassQuestionVerified:(UIViewController *) viewController
+                   verifyState:(BOOL)               verify {
+    
+    [self presentPass:PASS_RESET];
 }
 
-#pragma mark - security scenario four
+
+//------------------------------------------------------------------------------
+// Passcode exists and must be entered
+//------------------------------------------------------------------------------
+- (void)presentPasscodeVerificationController:(BOOL)animated {
+
+    passcodeAttempts = 0;
+
+    [self presentPass:PASS_VERIFY];
+}
+
 
 /*
  
  Methods used when changing the security questions at the request of the user.
  
  */
-
+/*
 - (BOOL)verifyPasscodeOnQuestionsChange :(IMSPasswordViewController *)controller :(NSString *)passcode {
     if (HRCryptoManagerUnlockWithPasscode(passcode)) {
         HRSecurityQuestionsViewController *questions = [controller.storyboard instantiateViewControllerWithIdentifier:@"SecurityQuestionsController"];
@@ -466,7 +605,7 @@
     HRCryptoManagerUpdateSecurityQuestionsAndAnswers(questions, answers);
     [controller dismissViewControllerAnimated:YES completion:nil];
 }
-
+*/
 #pragma mark - security scenario five
 
 - (void)initialLoginDidSucceed :(HRRHExLoginViewController *)login {

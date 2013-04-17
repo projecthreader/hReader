@@ -209,6 +209,7 @@
 		3BFE7A2E14DAE5910037738D /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFE7A2D14DAE5910037738D /* Icon-72.png */; };
 		481943D316CE99CA0016DB79 /* AppPassword.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481943D216CE99CA0016DB79 /* AppPassword.framework */; };
 		4836B0C716F23FE700A88507 /* libSecurityCheck.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48CEC26616EFE0A700D1BB40 /* libSecurityCheck.a */; };
+		48A5C440171F11F800FE964C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7037B21490103300F58A83 /* QuartzCore.framework */; };
 		48CEC26816EFE0C500D1BB40 /* IMSPassword.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 48CEC26716EFE0C500D1BB40 /* IMSPassword.bundle */; };
 		49539E00165A9937004CB11B /* HRMedicationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49539DFC165A9937004CB11B /* HRMedicationCell.m */; };
 		49539E01165A9937004CB11B /* HRMedications_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49539DFD165A9937004CB11B /* HRMedications_iPad.storyboard */; };
@@ -807,6 +808,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48A5C440171F11F800FE964C /* QuartzCore.framework in Frameworks */,
 				4836B0C716F23FE700A88507 /* libSecurityCheck.a in Frameworks */,
 				3B4DF3B51680E07100D92BD1 /* libcrypto.a in Frameworks */,
 				3B4DF3B61680E07100D92BD1 /* libSecureFoundation.a in Frameworks */,

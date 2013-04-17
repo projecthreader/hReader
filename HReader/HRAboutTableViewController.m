@@ -16,9 +16,11 @@
 
 #import "HRMPatient.h"
 
-#import <AppPassword/IMSPasswordViewController.h>
+#import <AppPassword/AppPassword.h>
 
 @interface HRAboutTableViewController ()
+
+@property (nonatomic) PASS_CTL passControl;
 
 @property (nonatomic, weak) IBOutlet UILabel *versionLabel;
 @property (nonatomic, weak) IBOutlet UILabel *buildDateLabel;
@@ -155,6 +157,10 @@
 #pragma mark - private
 
 - (void)presentPasscodeVerificationControllerWithAction:(SEL)action {
+    
+    self.passControl = PASS_VERIFY;
+    [self presentPass:PASS_VERIFY];
+    /*
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
     IMSPasswordViewController *password = [storyboard instantiateViewControllerWithIdentifier:@"VerifyPasscodeViewController"];;
     password.target = [[UIApplication sharedApplication] delegate];
@@ -165,11 +171,65 @@
                                                   style:UIBarButtonItemStyleDone
                                                   target:password
                                                   action:@selector(doneButtonAction:)];
+    
     UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:password];
     UIViewController *presenting = self.presentingViewController;
     [presenting dismissViewControllerAnimated:YES completion:^{
         [presenting presentViewController:navigation animated:YES completion:nil];
     }];
+     */
+}
+
+//------------------------------------------------------------------------------
+// APPass
+//------------------------------------------------------------------------------
+-(void) presentPass:(PASS_CTL) cntrl {
+    
+    self.passControl   = cntrl;
+    APPass * appPass   = [APPass
+                          complexPassWithName:@"APComplexPass"
+                          fromStoryboardWithName:@"InitialSetup_iPad"];
+    
+    appPass.delegate   = self;
+    appPass.verify     = (cntrl == PASS_VERIFY) ? @"verify" : nil;
+    //8 characters - one lowercase, one uppercase, and one number.
+    appPass.syntax     = @"^.*(?=.*[a-zA-Z])(?=.*[0-9])(?=.{8,}).*$";
+    appPass.parentView = self.view;
+    
+}
+//------------------------------------------------------------------------------
+// APPassProtocol - required
+//------------------------------------------------------------------------------
+-(void) APPassComplete:(UIViewController*) viewController
+            withPhrase:(NSString*)         phrase {
+    
+    if ( nil != phrase ) {
+        
+        switch (self.passControl) {
+                
+            case PASS_CREATE: [self processCreate:viewController withPhrase:phrase];
+                break;
+            case PASS_RESET:  [self  processReset:viewController withPhrase:phrase];
+                break;
+            case PASS_VERIFY: [self processVerify:viewController withPhrase:phrase];
+                break;
+            default: break;
+        }
+    }
+}
+- (void) processCreate:(UIViewController*) viewController
+            withPhrase:(NSString*) phrase {
+    NSLog(@"processCreate");
+}
+- (void) processVerify:(UIViewController*) viewController
+            withPhrase:(NSString*) phrase {
+    NSLog(@"processVerify");
+    
+}
+- (void)  processReset:(UIViewController*) viewController
+            withPhrase:(NSString*) phrase {
+    NSLog(@"processReset");
+    
 }
 
 @end
