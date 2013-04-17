@@ -62,7 +62,7 @@ typedef void (^cbBlock) (void);
         
     };
     
-//    dbgCheck(dbChkCallback);
+    dbgCheck(dbChkCallback);
     
 #endif
 

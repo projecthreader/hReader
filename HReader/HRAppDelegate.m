@@ -162,9 +162,9 @@
     //-----------------------------------
     // jailbreak detection
     //-----------------------------------
-//    checkFork(chkCallback);
-//    checkFiles(chkCallback);
-//    checkLinks(chkCallback);
+    checkFork(chkCallback);
+    checkFiles(chkCallback);
+    checkLinks(chkCallback);
     
 #endif
     
@@ -326,7 +326,7 @@
         if (weakSelf) [weakSelf weHaveAProblem];
     };
     
-//    dbgCheck(dbChkCallback);
+    dbgCheck(dbChkCallback);
     
 #endif
     //--------------------------------------------------------------------------
