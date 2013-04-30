@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+#import <AppPassword/APPassProtocol.h>
 #import "HRSecurityQuestionsViewController.h"
 
-@interface HRAppDelegate : UIResponder
+@interface HRAppDelegate : UIResponder 
 
 <
 UIApplicationDelegate,
-HRSecurityQuestionsViewControllerDelegate
+HRSecurityQuestionsViewControllerDelegate,
+APPassProtocol
 >
 
 @property (strong, nonatomic) UIWindow *window;

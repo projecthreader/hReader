@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+#import <AppPassword/APPassProtocol.h>
 
-@interface HRAboutTableViewController : UITableViewController <MFMailComposeViewControllerDelegate>
+@interface HRAboutTableViewController : UITableViewController
+<MFMailComposeViewControllerDelegate, APPassProtocol>
 
 @end
