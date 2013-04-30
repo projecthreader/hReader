@@ -16,11 +16,19 @@
 
 #import "HRMPatient.h"
 
+#import "HRCryptoManager.h"
+
 #import <AppPassword/AppPassword.h>
 
 @interface HRAboutTableViewController ()
 
-@property (nonatomic) PASS_CTL passControl;
+@property (nonatomic)        PASS_CTL passControl;
+@property (nonatomic)        PASS_CTL passNextStep;
+
+@property (nonatomic,strong) APPass    *appPass;
+@property (nonatomic,strong) APPass    *appQuestion;
+@property (nonatomic)        NSInteger  numberOfQuestions;
+
 
 @property (nonatomic, weak) IBOutlet UILabel *versionLabel;
 @property (nonatomic, weak) IBOutlet UILabel *buildDateLabel;
@@ -41,6 +49,11 @@
     [super viewDidLoad];
     self.versionLabel.text = [[NSBundle mainBundle] hr_displayVersion];
     self.buildDateLabel.text = [[NSBundle mainBundle] hr_buildTime];
+    //--------------------------------------------------------------------------
+    // Setup AppPass API
+    //--------------------------------------------------------------------------
+    [self initAppAPI];
+
 }
 
 #pragma mark - table view
@@ -91,12 +104,12 @@
     
     // passcode cell
     else if ([cell.reuseIdentifier isEqualToString:@"ChangePasscodeCell"]) {
-        [self presentPasscodeVerificationControllerWithAction:@selector(verifyPasscodeOnPasscodeChange::)];
+        [self presentPasscodeVerificationControllerWithAction:PASS_CREATE];
     }
     
     // questions cell
     else if ([cell.reuseIdentifier isEqualToString:@"ChangeQuestionsCell"]) {
-        [self presentPasscodeVerificationControllerWithAction:@selector(verifyPasscodeOnQuestionsChange::)];
+        [self presentPasscodeVerificationControllerWithAction:PASS_CREATE_Q];
     }
     
     // logout cell
@@ -156,9 +169,10 @@
 
 #pragma mark - private
 
-- (void)presentPasscodeVerificationControllerWithAction:(SEL)action {
+- (void)presentPasscodeVerificationControllerWithAction:(PASS_CTL)action {
     
-    self.passControl = PASS_VERIFY;
+    self.passNextStep = action;
+
     [self presentPass:PASS_VERIFY];
     /*
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"InitialSetup_iPad" bundle:nil];
@@ -179,24 +193,45 @@
     }];
      */
 }
+//------------------------------------------------------------------------------
+// APPass
+//------------------------------------------------------------------------------
+-(void) initAppAPI {
+    
+    self.numberOfQuestions    = 2;
+    
+    if ( nil == self.appPass)
+    self.appPass              = [APPass
+                                 complexPassWithName:@"APComplexPass"
+                                 fromStoryboardWithName:@"InitialSetup_iPad"];
+    
+    if ( nil == self.appQuestion)
+    self.appQuestion          = [APPass
+                                 passWithName:@"APQuestionPass"
+                                 fromStoryboardWithName:@"InitialSetup_iPad"
+                                 withQuestions:self.numberOfQuestions];
+    self.appPass.delegate     = self;
+    self.appQuestion.delegate = self;
+    
+    self.appPass.syntax       = @"^.*(?=.*[a-zA-Z])(?=.*[0-9])(?=.{8,}).*$";
+    
+}
 
 //------------------------------------------------------------------------------
 // APPass
 //------------------------------------------------------------------------------
 -(void) presentPass:(PASS_CTL) cntrl {
     
-    self.passControl   = cntrl;
-    APPass * appPass   = [APPass
-                          complexPassWithName:@"APComplexPass"
-                          fromStoryboardWithName:@"InitialSetup_iPad"];
-    
-    appPass.delegate   = self;
-    appPass.verify     = (cntrl == PASS_VERIFY) ? @"verify" : nil;
-    //8 characters - one lowercase, one uppercase, and one number.
-    appPass.syntax     = @"^.*(?=.*[a-zA-Z])(?=.*[0-9])(?=.{8,}).*$";
-    appPass.parentView = self.view;
-    
+    self.passControl              = cntrl;
+    self.appPass.verify           = (cntrl == PASS_VERIFY) ? @"verify" : nil;
+    self.appPass.parentController = self.navigationController;
 }
+-(void) presentQuestion:(PASS_CTL) cntrl {
+    
+    self.passControl                  = cntrl;
+    self.appQuestion.parentController = self.navigationController;
+}
+
 //------------------------------------------------------------------------------
 // APPassProtocol - required
 //------------------------------------------------------------------------------
@@ -207,29 +242,76 @@
         
         switch (self.passControl) {
                 
-            case PASS_CREATE: [self processCreate:viewController withPhrase:phrase];
+            case PASS_CREATE: [self processCreate:viewController
+                                       withPhrase:phrase];
                 break;
-            case PASS_RESET:  [self  processReset:viewController withPhrase:phrase];
-                break;
-            case PASS_VERIFY: [self processVerify:viewController withPhrase:phrase];
+            case PASS_VERIFY: [self processVerify:viewController
+                                       withPhrase:phrase];
                 break;
             default: break;
         }
     }
 }
+//------------------------------------------------------------------------------
+// APPassProtocol - verify the entered passcode with the stored one
+//------------------------------------------------------------------------------
+-(BOOL) verifyPhraseWithSecureFoundation:(NSString*) phrase {
+    
+    BOOL ret = NO;
+    
+    if (phrase) ret = HRCryptoManagerUnlockWithPasscode(phrase);
+    
+    return ret;
+}
+
+-(void) resetPassAP {
+    
+//    [self presentQuestion:PASS_VERIFY_Q];
+}
+
+//------------------------------------------------------------------------------
+// The new passcode has been entered so update the old 
+//------------------------------------------------------------------------------
 - (void) processCreate:(UIViewController*) viewController
             withPhrase:(NSString*) phrase {
-    NSLog(@"processCreate");
+    
+    HRCryptoManagerUpdatePasscode(phrase);
+    
+    [self done];
 }
+//------------------------------------------------------------------------------
+// The old passcode has been verified, so take the next step
+//------------------------------------------------------------------------------
 - (void) processVerify:(UIViewController*) viewController
             withPhrase:(NSString*) phrase {
-    NSLog(@"processVerify");
     
+    if (HRCryptoManagerUnlockWithPasscode(phrase)) {
+
+        switch (self.passNextStep) {
+                
+            case PASS_CREATE:   [self presentPass:self.passNextStep];
+                break;
+            case PASS_CREATE_Q: [self presentQuestion:self.passNextStep];
+                break;
+            default: break;
+        }
+    }
 }
-- (void)  processReset:(UIViewController*) viewController
-            withPhrase:(NSString*) phrase {
-    NSLog(@"processReset");
+//------------------------------------------------------------------------------
+// APQuestionProtocol - required
+//------------------------------------------------------------------------------
+-(void) APPassComplete:(UIViewController *) viewController
+         withQuestions:(NSArray *)          questions
+            andAnswers:(NSArray *)          answers {
     
+    if ( nil != questions && nil != answers ) {
+        
+        HRCryptoManagerUpdateSecurityQuestionsAndAnswers(questions, answers);
+
+        [self done];
+    }
 }
+
+
 
 @end
