@@ -72,7 +72,7 @@ typedef void (^cbBlock) (void);
 // if a debugger is attched to the app then this method will be called
 //--------------------------------------------------------------------
 - (void) weHaveAProblem {
-    
+
     exit(0);
 }
 
