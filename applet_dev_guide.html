@@ -87,7 +87,7 @@ html,body{color:black}*{margin:0;padding:0}body{font:13.34px helvetica,arial,fre
             &lt;key&gt;identifier&lt;/key&gt;
             &lt;string&gt;org.mitre.hreader.pharmacyfinder&lt;/string&gt;
             &lt;key&gt;class_name&lt;/key&gt;
-            &lt;string&gt;HRBrowserAppletTile&lt;/string&gt;
+            &lt;string&gt;HRWebViewAppletTile&lt;/string&gt;
             &lt;key&gt;display_name&lt;/key&gt;
             &lt;string&gt;Pharmacy Finder&lt;/string&gt;
             &lt;key&gt;summary_url&lt;/key&gt;
@@ -111,9 +111,11 @@ html,body{color:black}*{margin:0;padding:0}body{font:13.34px helvetica,arial,fre
 
 <p><strong>HTML5/CSS3-based applets</strong> need to define two additional keys so that hReader knows where to get the content for your applet.</p>
 
-<p><code>summary_url</code> is the URL to present the applet on the summary page.  Each patient has a summary page where active applets are displayed in a grid.  Each applet has a ??? x ??? pixel space to present content within the grid.</p>
+<p><code>tile_url</code> is the URL to present the applet on the summary page. Each patient has a summary page where active applets are displayed in a grid. Each applet has a 296 x 200 pixel space to present content within the grid.</p>
 
-<p><code>main_url</code> is the URL to display content when the applet is selected in the summary grid.  When selected, the applet expands to most of the display and can provide much more detailed information.  The main URL can also provide navigation to many other pages, as needed by the applet.</p>
+<p><code>fullscreen_url</code> is the URL to display content when the applet is selected in the summary grid.  When selected, the applet expands to most of the display and can provide much more detailed information. The main URL can also provide navigation to many other pages, as needed by the applet.</p>
+
+<p>Currently, HTML5/CSS3-based applets load local URLs but support for external views will be added soon.</p>
 
 <h4 id="optionalkeys">Optional Keys</h4>
 
@@ -194,4 +196,4 @@ html,body{color:black}*{margin:0;padding:0}body{font:13.34px helvetica,arial,fre
 	</script>
 
 </body>
-</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+</html>
