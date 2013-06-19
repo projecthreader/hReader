@@ -145,11 +145,17 @@ NSPersistentStore *HRCryptoManagerAddEncryptedStoreToCoordinator(NSPersistentSto
     if (HRCryptoManagerIsUnlocked()) {
         NSString *key = HRCryptoManagerKeychainItemString(HRCryptoManagerKeychainService, HRDatabaseKeyKeychainAccount);
         if (key == nil) {
-            key = [[NSProcessInfo processInfo] globallyUniqueString];
-            HRCryptoManagerSetKeychainItemString(HRCryptoManagerKeychainService, HRDatabaseKeyKeychainAccount, key);
+           NSString* keyt = [[NSProcessInfo processInfo] globallyUniqueString];
+            HRCryptoManagerSetKeychainItemString(HRCryptoManagerKeychainService, HRDatabaseKeyKeychainAccount, keyt);
         }
+        key = [[NSUUID UUID] UUIDString];
         NSMutableDictionary *mutableOptions = [options mutableCopy];
+        
+        NSString *service = HRCryptoManagerKeychainService;
+        NSString *account = HRDatabaseKeyKeychainAccount;
         [mutableOptions setObject:key forKey:CMDEncryptedSQLiteStorePassphraseKey];
+        [mutableOptions setObject:service forKey:CMDEncryptedSQLiteStoreService];
+        [mutableOptions setObject:account forKey:CMDEncryptedSQLiteStoreAccount];
         return [coordinator
                 addPersistentStoreWithType:(ENCRYPTED_STORE ? CMDEncryptedSQLiteStoreType : NSSQLiteStoreType)
                 configuration:configuration
