@@ -104,6 +104,7 @@
                                                                         databaseURL,
                                                                         options,
                                                                         &error);
+        NSLog(@"Persist:%@", persistentStore);
         NSAssert(persistentStore, @"Unable to add persistent store\n%@", error);
         
     }

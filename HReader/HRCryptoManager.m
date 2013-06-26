@@ -142,6 +142,7 @@ NSPersistentStore *HRCryptoManagerAddEncryptedStoreToCoordinator(NSPersistentSto
                                                                  NSDictionary *options,
                                                                  NSError **error) {
 #define ENCRYPTED_STORE YES
+    NSPersistentStore * ret = nil;
     if (HRCryptoManagerIsUnlocked()) {
         NSString *key = HRCryptoManagerKeychainItemString(HRCryptoManagerKeychainService, HRDatabaseKeyKeychainAccount);
         if (key == nil) {
@@ -156,12 +157,15 @@ NSPersistentStore *HRCryptoManagerAddEncryptedStoreToCoordinator(NSPersistentSto
         [mutableOptions setObject:key forKey:CMDEncryptedSQLiteStorePassphraseKey];
         [mutableOptions setObject:service forKey:CMDEncryptedSQLiteStoreService];
         [mutableOptions setObject:account forKey:CMDEncryptedSQLiteStoreAccount];
-        return [coordinator
-                addPersistentStoreWithType:(ENCRYPTED_STORE ? CMDEncryptedSQLiteStoreType : NSSQLiteStoreType)
+        NSURL *urlPrime = [URL URLByAppendingPathExtension:@"encrypted"];
+        ret =  [coordinator
+                addPersistentStoreWithType:(CMDEncryptedSQLiteStoreType)
                 configuration:configuration
-                URL:(ENCRYPTED_STORE ? [URL URLByAppendingPathExtension:@"encrypted"] : URL)
+               // URL:(ENCRYPTED_STORE ? [URL URLByAppendingPathExtension:@"encrypted"] : URL)
+                URL:urlPrime
                 options:mutableOptions
                 error:error];
     }
-    return nil;
+    NSLog(@"Returning");
+    return ret;
 }
