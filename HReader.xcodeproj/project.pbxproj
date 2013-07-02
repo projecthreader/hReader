@@ -800,6 +800,7 @@
 		DD8BD9DF148D1D660090F729 /* UserImage-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-2.png"; sourceTree = "<group>"; };
 		DD8BD9E0148D1D660090F729 /* UserImage-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-4.png"; sourceTree = "<group>"; };
 		DD8BD9E1148D1D660090F729 /* UserImage-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserImage-1.png"; sourceTree = "<group>"; };
+		FE068EBE17033DE100489A6D /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1282,6 +1283,7 @@
 		941DB09D1471B32D00A96B8B = {
 			isa = PBXGroup;
 			children = (
+				FE068EBE17033DE100489A6D /* libcommonCrypto.dylib */,
 				48CEC26716EFE0C500D1BB40 /* IMSPassword.bundle */,
 				3BD5F08F15EE767200333320 /* README.md */,
 				C3390522155D536B00E77EBF /* HReaderConfig.xcconfig */,
@@ -2170,6 +2172,7 @@
 					"$(inherited)",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DSQLITE_HAS_CODEC";
 				OTHER_CODE_SIGN_FLAGS = "";
 				PROVISIONING_PROFILE = "";
@@ -2190,6 +2193,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = (
 					"-DNS_BLOCK_ASSERTIONS=1",
 					"-DSQLITE_HAS_CODEC",
@@ -2217,10 +2221,15 @@
 				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2/**";
 				INFOPLIST_FILE = "HReader/HReader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/system\"",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = $TARGET_NAME;
 				PROVISIONING_PROFILE = "";
 				STRIP_INSTALLED_PRODUCT = NO;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2239,10 +2248,15 @@
 				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2/**";
 				INFOPLIST_FILE = "HReader/HReader-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/lib/system\"",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = $TARGET_NAME;
 				PROVISIONING_PROFILE = "";
 				STRIP_INSTALLED_PRODUCT = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
